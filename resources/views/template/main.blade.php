@@ -44,8 +44,8 @@
 					</div><!-- /.col -->
 					<div class="col-sm-6">
 						<ol class="breadcrumb float-sm-right">
-							<li class="breadcrumb-item"><a href="#">Inicio</a></li>
-							<li class="breadcrumb-item active">@yield('title', 'Inicio')</li>
+							@yield('navegacion')
+							<li class="breadcrumb-item active">@yield('title')</li>
 						</ol>
 					</div><!-- /.col -->
 				</div><!-- /.row -->
@@ -131,7 +131,15 @@
 {{-- Google Maps --}}
 {{-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEg9FTRwRH0bfUVa_bP5QUOe-hHJM6LHM&libraries=places&sensor=false"></script> --}}
 
-@section('pilaScripts')
+<script>
+	$("input:text").keyup(function() {
+        $(this).val($(this).val().toUpperCase());
+	    });
+	$("textarea").keyup(function() {
+		$(this).val($(this).val().toUpperCase());
+	});
+</script>
+@yield('pilaScripts')
 @include('sweet::alert')
 </body>
 </html>

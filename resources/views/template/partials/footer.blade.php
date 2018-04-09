@@ -1,8 +1,8 @@
 <footer class="main-footer">
 	<!-- To the right -->
 	<div class="float-right d-sm-none d-md-block">
-		Develop by QuarkCode
+		Desarrollado por FGE
 	</div>
 	<!-- Default to the left -->
-	<strong>Copyright &copy; 2018.</strong> All rights reserved.
+	<strong>Derechos de autor &copy; 2018.</strong> Todos los derechos reservados.
 </footer>

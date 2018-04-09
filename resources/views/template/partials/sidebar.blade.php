@@ -29,7 +29,6 @@
 							<p>
 								Preregistros
 								<i class="right fa fa-angle-left"></i>
-								
 							</p>
 						</a>
 						<ul class="nav nav-treeview">
