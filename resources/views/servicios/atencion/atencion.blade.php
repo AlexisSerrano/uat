@@ -1,17 +1,9 @@
-@extends('template.main')
+@extends('template.form')
 @section('title','Atención Rápida')
 @section('content')
 {{--  @include('orientador.sidebar-orientador')  --}}
 <div id="page-content-wrapper">
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include('fields.errores')
     {{--  <div class="card">
         <div class="card-header" style="text-align: center;">
             <p class="lead">Atención Rápida<span> <i class="fa fa-exchange"></i></span></p>
