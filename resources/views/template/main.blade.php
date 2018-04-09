@@ -19,7 +19,9 @@
 	{{-- SweetAlert --}}
 	<link rel="stylesheet" href="{{asset ('css/sweetalert.css')}}">
 		{{-- estilos --}}
+	<link rel="stylesheet" href="{{asset ('css/cssfonts.css')}}">
 	<link rel="stylesheet" href="{{asset ('css/estilos.css')}}">
+
 	<!-- TimePicker style -->
 	{{-- <link rel="stylesheet" href="{{ asset('CSS/bootstrap-datepicker.min.css') }}"> --}}
 
