@@ -36,7 +36,7 @@ class RegistrosCasoController extends Controller
         ->where('nombre', '!=', 'SIN INFORMACION')
         ->orderBy('nombre','asc')
         ->get();
-        return view('orientador.denunciante.fields-denunciante.filtroBusqueda')->with('registros',$preregistros)->with('municipios', $municipios);
+        return view('servicios.tables.denunciantes')->with('registros',$preregistros)->with('municipios', $municipios);
         
        }
 

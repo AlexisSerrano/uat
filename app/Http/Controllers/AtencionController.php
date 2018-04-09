@@ -17,7 +17,7 @@ class AtencionController extends Controller
         foreach($modulos2 as $modulo){
             $modulos1[$modulo->id] = $modulo->titulo;
         }
-        return view("atencion.atencion")->with('modulos',$modulos1);
+        return view("servicios.atencion.atencion")->with('modulos',$modulos1);
     }
 
     public function addAtencion(AtencionRequest $request){

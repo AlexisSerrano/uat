@@ -1,5 +1,6 @@
 
-@extends('template.main')
+@extends('template.form')
+
 @section('content')
 @if ($errors->any())
 	<div class="alert alert-danger">
@@ -25,7 +26,7 @@
 
 	</p>
 	<div>
-		@include('preregistroWeb.fields.tipo-persona')
+		@include('servicios.preregistro.fields.tipo-persona')
 	</div>
 	<div class="card" id="datosPer">
 		<div class="card-header">
@@ -38,7 +39,7 @@
 		<div id="collapsePersonales1" class="collapse show boxcollapse" >
 			<div class="boxtwo">
 				<div class="col">
-				@include('preregistroWeb.fields.datos-personales')
+				@include('servicios.preregistro.fields.datos-personales')
 				</div>
 			</div>
 		</div>
@@ -46,7 +47,7 @@
 		<div id="collapsePersonales2" class="collapse show boxcollapse" >
 			<div class="boxtwo">
 				<div class="col">
-				@include('preregistroWeb.fields.datos-empresa')
+				@include('servicios.preregistro.fields.datos-empresa')
 				</div>
 			</div>
 		</div>

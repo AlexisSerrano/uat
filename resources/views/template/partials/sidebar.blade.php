@@ -14,7 +14,7 @@
 					<img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="Imagen de perfil">
 				</div>
 				<div class="info">
-					<a href="#" class="d-block">Alexander Pierce</a>
+					<a href="#" class="d-block">USUARIO</a>
 				</div>
 			</div>
 
@@ -27,113 +27,45 @@
 						<a href="#" class="nav-link">
 							<i class="nav-icon fa fa-list"></i>
 							<p>
-								Catálogos
+								Preregistros
 								<i class="right fa fa-angle-left"></i>
+								
 							</p>
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="{{ url('/') }}" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Áreas</p>
+								<a href="{{url('crear-caso')}}" class="nav-link">
+									<i class="fa fa-plus nav-icon"></i>
+									<p>Nuevo Registro</p>
 								</a>
 							</li>
 							<li class="nav-item">
-								<a href="{{ url('/') }}" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Especialidades</p>
+								<a href='{{url("registros")}}' class="nav-link">
+										<i class="fa fa-pencil nav-icon"></i>
+										<p>Consulta de preregistros</p>
 								</a>
 							</li>
-							<li class="nav-item">
-								<a href="{{ url('/') }}" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Modelos</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="{{ url('/') }}" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Maquinas</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="{{ url('/') }}" class="nav-link">
-										<i class="fa fa-circle-o nav-icon"></i>
-										<p>Usuarios</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="{{ url('/') }}" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Sucursales</p>
-								</a>
-							</li>
-							
 						</ul>
 					</li>
 
 					<li class="nav-item has-treeview menu-open">
-						<a href="#" class="nav-link active">
-							<i class="nav-icon fa fa-dashboard"></i>
+						<a href="{{url('Traerturno')}}" class="nav-link active">
+							<i class="nav-icon fa fa-check-circle-o"></i>
 							<p>
-								Dashboard
-								<i class="right fa fa-angle-left"></i>
-							</p>
-						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Dashboard v1</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link active">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Dashboard v2</p>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="nav-item">
-						<a href="#" class="nav-link">
-							<i class="nav-icon fa fa-th"></i>
-							<p>
-								Widgets
-								<span class="right badge badge-danger">New</span>
+								Tomar turno
 							</p>
 						</a>
 					</li>
 					<li class="nav-item has-treeview">
 						<a href="#" class="nav-link">
-							<i class="nav-icon fa fa-pie-chart"></i>
+							<i class="nav-icon fa fa-search"></i>
 							<p>
-								Charts
-								<i class="right fa fa-angle-left"></i>
+								Busquedas
+								{{-- <i class="right fa fa-angle-left"></i> --}}
 							</p>
 						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>ChartJS</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Flot</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Inline</p>
-								</a>
-							</li>
-						</ul>
 					</li>
-					<li class="nav-item has-treeview">
+					{{-- <li class="nav-item has-treeview">
 						<a href="#" class="nav-link">
 							<i class="nav-icon fa fa-tree"></i>
 							<p>
@@ -148,35 +80,17 @@
 									<p>General</p>
 								</a>
 							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Icons</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Buttons</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Sliders</p>
-								</a>
-							</li>
 						</ul>
-					</li>
+					</li> --}}
 					<li class="nav-item has-treeview">
-						<a href="#" class="nav-link">
-							<i class="nav-icon fa fa-edit"></i>
+						<a href='{{route("cancelar.caso")}}' class="nav-link">
+							<i class="nav-icon fa fa-ban"></i>
 							<p>
-								Forms
-								<i class="fa fa-angle-left right"></i>
+								Cancelar registro
+								{{-- <i class="fa fa-angle-left right"></i> --}}
 							</p>
 						</a>
-						<ul class="nav nav-treeview">
+						{{-- <ul class="nav nav-treeview">
 							<li class="nav-item">
 								<a href="#" class="nav-link">
 									<i class="fa fa-circle-o nav-icon"></i>
@@ -195,17 +109,17 @@
 									<p>Editors</p>
 								</a>
 							</li>
-						</ul>
+						</ul> --}}
 					</li>
 					<li class="nav-item has-treeview">
 						<a href="#" class="nav-link">
-							<i class="nav-icon fa fa-table"></i>
+							<i class="nav-icon fa fa-user-times"></i>
 							<p>
-								Tables
-								<i class="fa fa-angle-left right"></i>
+								Ausente
+								{{-- <i class="fa fa-angle-left right"></i> --}}
 							</p>
 						</a>
-						<ul class="nav nav-treeview">
+						{{-- <ul class="nav nav-treeview">
 							<li class="nav-item">
 								<a href="#" class="nav-link">
 									<i class="fa fa-circle-o nav-icon"></i>
@@ -218,8 +132,20 @@
 									<p>Data Tables</p>
 								</a>
 							</li>
-						</ul>
+						</ul> --}}
 					</li>
+					<li class="nav-item has-treeview">
+						<a href="{{url('atencion')}}" class="nav-link">
+							{{-- <span class="bagde">{{countAtencion()}}</span> --}}
+							<i class="nav-icon fa fa-user-times"></i>
+							<p>
+								Atencion rapida
+								{{-- <i class="fa fa-angle-left right"></i> --}}
+							</p>
+						</a>
+					</li>
+
+
 					{{--
 					<li class="nav-header">EXAMPLES</li>
 					<li class="nav-item">
@@ -241,18 +167,6 @@
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="pages/mailbox/mailbox.html" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Inbox</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="pages/mailbox/compose.html" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Compose</p>
-								</a>
-							</li>
-							<li class="nav-item">
 								<a href="pages/mailbox/read-mail.html" class="nav-link">
 									<i class="fa fa-circle-o nav-icon"></i>
 									<p>Read</p>
@@ -269,18 +183,6 @@
 							</p>
 						</a>
 						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="pages/examples/invoice.html" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Invoice</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="pages/examples/profile.html" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Profile</p>
-								</a>
-							</li>
 							<li class="nav-item">
 								<a href="pages/examples/login.html" class="nav-link">
 									<i class="fa fa-circle-o nav-icon"></i>

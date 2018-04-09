@@ -1,6 +1,6 @@
-@extends('template.main')
+@extends('template.form')
 @section('content')
-@include('orientador.sidebar-orientador')
+{{-- @include('orientador.sidebar-orientador') --}}
 <div id="page-content-wrapper">
     @if ($errors->any())
         <div class="alert alert-danger">
