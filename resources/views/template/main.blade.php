@@ -19,9 +19,9 @@
 	{{-- SweetAlert --}}
     <link rel="stylesheet" href="{{asset ('css/sweetalert.css')}}">
 	<!-- TimePicker style -->
-		<link rel="stylesheet" href="{{ asset('CSS/bootstrap-datepicker.min.css') }}">
+	{{-- <link rel="stylesheet" href="{{ asset('CSS/bootstrap-datepicker.min.css') }}"> --}}
 
-	@stack('csss')
+	@section('css')
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -56,7 +56,8 @@
 		<!-- Main content -->
 		<section class="content">
 			<div class="container-fluid">
-				@yield('content')
+				
+				@yield('contenido')
 				{{--
 				<div class="row">
 					<div class="col-md-12">
@@ -82,7 +83,8 @@
 				--}}
 			</div><!--/. container-fluid -->
 		</section>
-		<!-- /.content -->
+
+		<!-- /.content -->	
 	</div>
 	<!-- /.content-wrapper -->
 
@@ -124,12 +126,12 @@
 <script src="{{asset ('js/sweetalert.min.js')}}"></script>
 
 {{-- TimePicker --}}
-<script src="{{asset ('js/bootstrap-datepicker.min.js')}}"></script>
+{{-- <script src="{{asset ('js/bootstrap-datepicker.min.js')}}"></script> --}}
 
 {{-- Google Maps --}}
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEg9FTRwRH0bfUVa_bP5QUOe-hHJM6LHM&libraries=places&sensor=false"></script>
+{{-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEg9FTRwRH0bfUVa_bP5QUOe-hHJM6LHM&libraries=places&sensor=false"></script> --}}
 
-@stack('scripts')
+@section('pilaScripts')
 @include('sweet::alert')
 </body>
 </html>

@@ -1,17 +1,7 @@
-@extends('template.main')
+@extends('template.form')
 @section('content')
-@if ($errors->any())
-	<div class="alert alert-danger">
-		<ul>
-			@foreach ($errors->all() as $error)
-				<li>{{ $error }}</li>
-			@endforeach
-		</ul>
-	</div>
-@endif
+@include('fields.errores')
 
-
-@include('orientador.sidebar-orientador')
 <div id="page-content-wrapper">
 
 {!!Form::open(['route' => 'store.denunciante'])!!}
@@ -96,12 +86,12 @@
 					
 				<div class="boxtwo">
 					<div class="row">
-						@include('orientador.denunciante.fields-denunciante-new.tipo-persona')
+						@include('fields.tipo-persona')
 					</div>
 				</div>
 			
 				<div class="boxtwo">
-					@include('orientador.denunciante.fields-denunciante-new.personales')
+					@include('fields.personales')
 				</div>
 			
 				<div>
@@ -117,7 +107,7 @@
 			</div>
 			{{--  direccion particular  --}}
 			<div class="tab-pane fade" id="direccion" role="tabpanel" aria-labelledby="direccion-tab">
-				@include('orientador.denunciante.fields-denunciante-new.direcciones')
+				@include('fields.direcciones')
 				<div>
 					<div class="row">
 						<div class="col text-left">
@@ -134,7 +124,7 @@
 			</div>
 			{{--  direccion de trabajo  --}}
 			<div class="tab-pane fade" id="dirTrabajo" role="tabpanel" aria-labelledby="dirTrabajo-tab">
-				@include('orientador.denunciante.fields-denunciante-new.lugartrabajo')
+				@include('fields.lugartrabajo')
 				<div class="row menu">
 					<div class="col text-left">
 						<a href="{{route('cancelar.caso')}}" class="btn button1">Cancelar</a>
@@ -146,7 +136,7 @@
 			</div>	
 			{{--  direccion de Notificaciones  --}}
 			<div class="tab-pane fade" id="dirNotificaciones" role="tabpanel" aria-labelledby="dirNotificaciones-tab">
-				@include('orientador.denunciante.fields-denunciante-new.notificaciones')
+				@include('fields.notificaciones')
 				<div class="row menu">
 					<div class="col text-left">
 						<a href="{{route('cancelar.caso')}}" class="btn button1">Cancelar</a>
@@ -158,7 +148,7 @@
 			</div>
 			{{--  informacion denunciante  --}}
 			<div class="tab-pane fade" id="dirDenunciante" role="tabpanel" aria-labelledby="dirDenunciante-tab">
-				@include('orientador.denunciante.fields-denunciante-new.extra-denunciante')
+				@include('fields.extra-denunciante')
 				<div>
 					<div class="row menu">
 						
@@ -180,7 +170,7 @@
 		</div>
 		
 		<div>
-			@include('orientador.denunciante.fields-denunciante-new.denunciantesTable')
+			@include('tables.denunciantes')
 		</div>
 	</div>
 </div>

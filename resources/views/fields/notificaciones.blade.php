@@ -1,4 +1,4 @@
-@include('orientador.denunciante.fields-denunciante-new.direccionesnotif')
+@include('fields.direccionesnotif')
 <div class="row">
 	<div class="col-4">
 		<div class="form-group">

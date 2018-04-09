@@ -1,17 +1,6 @@
-@extends('template.main')
+@extends('template.form')
 @section('content')
-@if ($errors->any())
-	<div class="alert alert-danger">
-		<ul>
-			@foreach ($errors->all() as $error)
-				<li>{{ $error }}</li>
-			@endforeach
-		</ul>
-	</div>
-@endif
-
-@include('orientador.sidebar-orientador')
-
+@include('fields.errores')
 
 {!!Form::open(['route' => 'store.denunciante'])!!}
 
