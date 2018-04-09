@@ -44,8 +44,8 @@
 					</div><!-- /.col -->
 					<div class="col-sm-6">
 						<ol class="breadcrumb float-sm-right">
-							<li class="breadcrumb-item"><a href="#">Inicio</a></li>
-							<li class="breadcrumb-item active">@yield('title', 'Inicio')</li>
+							@yield('navegacion')
+							<li class="breadcrumb-item active">@yield('title')</li>
 						</ol>
 					</div><!-- /.col -->
 				</div><!-- /.row -->

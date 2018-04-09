@@ -220,6 +220,15 @@
 							</li>
 						</ul>
 					</li>
+					<li class="nav-item">
+						<a href="{{url('atencion')}}" class="nav-link">
+							<i class="nav-icon fa fa-exchange"></i>
+							<p>
+								Atención Rápida
+								<span class="right badge badge-danger">{{countAtencion()}}</span>
+							</p>
+						</a>
+					</li>
 					{{--
 					<li class="nav-header">EXAMPLES</li>
 					<li class="nav-item">
