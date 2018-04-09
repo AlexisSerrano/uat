@@ -12,4 +12,4 @@
 		</div>
 	</div>
 </div>
-@include('orientador.denunciante.fields-denunciante-new.direccionestrab')
+@include('fields.direccionestrab')
