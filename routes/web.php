@@ -49,7 +49,7 @@ Route::get('/atender/{id}', 'PreregistroAuxController@atender');
 Route::get('/turno/{id}', 'PreregistroAuxController@turno');
 Route::get('/Traerturno', 'PreregistroAuxController@Traerturno')->name('turno.denunciante');
 Route::get('/devolver/{id}', 'PreregistroAuxController@devolverturno')->name('devolver');
-/*********************************************************************/
+/*****************************Rutas para modulo recepción****************************************/
 	
 
 Route::resource('/preregistro','PreregistroController');
@@ -60,7 +60,6 @@ Route::get('/encola', 'PreregistroAuxController@encola');
 Route::get('/urgentes', 'PreregistroAuxController@urgentes');
 
 Route::resource('/predenuncias','PreregistroAuxController');
-//Route::resource('/solicitante','solicitanteController');
 
 
 Route::get('/preregistroWeb/pre-auxiliar', 'PreregistroAuxController@create'); //ver formulario
@@ -107,7 +106,7 @@ Route::get('correo', 'PreregistroAuxController@boton');
 Route::post('enviar/correo', 'PreregistroController@enviar')->name('envio');
 
 
-/*---------atención------------*/
+/*---------Atención rápida------------*/
 Route::get('atencion', 'AtencionController@index');
 Route::post('addatencion', 'AtencionController@addAtencion')->name('addatencion');
 

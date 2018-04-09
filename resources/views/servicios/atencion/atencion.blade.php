@@ -1,14 +1,8 @@
 @extends('template.form')
 @section('title','Atención Rápida')
 @section('content')
-{{--  @include('orientador.sidebar-orientador')  --}}
 <div id="page-content-wrapper">
     @include('fields.errores')
-    {{--  <div class="card">
-        <div class="card-header" style="text-align: center;">
-            <p class="lead">Atención Rápida<span> <i class="fa fa-exchange"></i></span></p>
-        </div>
-    </div>  --}}
     {!!Form::open(['route' => 'addatencion'])!!}
         <div class="row">
             <div class="col-6">
