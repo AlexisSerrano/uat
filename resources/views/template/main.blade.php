@@ -17,7 +17,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
 	{{-- SweetAlert --}}
-    <link rel="stylesheet" href="{{asset ('css/sweetalert.css')}}">
+	<link rel="stylesheet" href="{{asset ('css/sweetalert.css')}}">
+		{{-- estilos --}}
+	<link rel="stylesheet" href="{{asset ('css/estilos.css')}}">
 	<!-- TimePicker style -->
 	{{-- <link rel="stylesheet" href="{{ asset('CSS/bootstrap-datepicker.min.css') }}"> --}}
 

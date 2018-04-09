@@ -19,7 +19,7 @@
     <div id="collapsePersonales1" class="collapse show boxcollapse" >
         <div class="boxtwo">
             <div class="col">
-                @include('recepcion.personales-edit')
+                @include('servicios.recepcion.personales-edit')
             </div>
         </div>
     </div>

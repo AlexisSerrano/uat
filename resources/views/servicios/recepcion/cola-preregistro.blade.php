@@ -1,4 +1,4 @@
-@extends('template.main')
+@extends('template.form')
 
 @section('content')
 <div class="container">
