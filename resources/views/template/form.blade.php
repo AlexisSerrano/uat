@@ -1,19 +1,22 @@
 @extends('template.main')
 
-@section('css')
+@section('csss')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">   --}}
 <link rel="stylesheet" href="https://rawcdn.githack.com/Romaincks/assets/master/dist/css/bootstrap.css"><!---bootstrap modificado-->
-   
+@yield('css')
 @endsection
 
 @section('contenido')
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="content-fluid"></div>
-            @yield('content')
+            <div class="card-body">
+                <div class="container">
+                    @yield('content')
+                </div>
+            </div>
         </div>
     </div>
 </div>

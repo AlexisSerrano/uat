@@ -79,9 +79,9 @@
 				
 				<div class="boxtwo">
 					@if($tipopersona==0)
-						@include('orientador.denunciante.fields-denunciante-new.persona')
+						@include('fields.persona')
 					@else
-						@include('orientador.denunciante.fields-denunciante-new.empresa')
+						@include('fields.empresa')
 					@endif
 				</div>
 				
@@ -98,7 +98,7 @@
 			</div>
 			{{--  direccion particular  --}}
 			<div class="tab-pane fade" id="direccion" role="tabpanel" aria-labelledby="direccion-tab">
-				@include('orientador.denunciante.fields-denunciante-new.direcciones')
+				@include('fields.direcciones')
 				<div>
 					<div class="row">
 						<div class="col text-left">
@@ -121,7 +121,7 @@
 			{{--  direccion de trabajo  --}}
 			@if ($tipopersona==0)
 				<div class="tab-pane fade" id="dirTrabajo" role="tabpanel" aria-labelledby="dirTrabajo-tab">
-					@include('orientador.denunciante.fields-denunciante-new.lugartrabajo')
+					@include('fields.lugartrabajo')
 					<div class="row menu">
 						<div class="col text-left">
 							<a href="{{route('devolver', $idpreregistro)}}" class="btn button button1">Devolver Turno</a>
@@ -134,7 +134,7 @@
 			@endif
 			{{--  direccion de Notificaciones  --}}
 			<div class="tab-pane fade" id="dirNotificaciones" role="tabpanel" aria-labelledby="dirNotificaciones-tab">
-				@include('orientador.denunciante.fields-denunciante-new.notificaciones')
+				@include('fields.notificaciones')
 				<div class="row menu">
 					<div class="col text-left">
 						<a href="{{route('devolver', $idpreregistro)}}" class="btn button button1">Devolver Turno</a>
@@ -146,7 +146,7 @@
 			</div>
 			{{--  informacion denunciante  --}}
 			<div class="tab-pane fade" id="dirDenunciante" role="tabpanel" aria-labelledby="dirDenunciante-tab">
-				@include('orientador.denunciante.fields-denunciante-new.extra-denunciante')
+				@include('fields.extra-denunciante')
 				<div>
 					<div class="row menu">
 						<div class="col text-left">
@@ -162,7 +162,7 @@
 		</div>
 		
 		<div>
-			@include('orientador.denunciante.fields-denunciante-new.denunciantesTable')
+			@include('tables.denunciantes')
 		</div>
 	</div>
 </div>
@@ -177,8 +177,8 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
 	<script src="{{ asset('js/selectsDirecciones.js') }}"></script>
 	{{-- <script src="{{ asset('js/predenunciacaso.js') }}"></script> --}}
-	<script src="{{ asset('js/validation.js')}}"></script>
-	<script src="{{ asset('js/validation-orientador.js')}}"></script>
+	{{-- <script src="{{ asset('js/validation.js')}}"></script> --}}
+	{{-- <script src="{{ asset('js/validation-orientador.js')}}"></script> --}}
 	<script>
 
 	

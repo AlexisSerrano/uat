@@ -1,4 +1,7 @@
 @extends('template.form')
+
+@section('title', 'Agregar denunciante')
+
 @section('content')
 @include('fields.errores')
 
@@ -37,8 +40,6 @@
 	@endphp
 
 	
-	<br><br>
-	
 <div class="btn-group col">
 	
 	<div class="btn-group" role="group" aria-label="Basic example">
@@ -62,7 +63,6 @@
 	<div class="col-md-12">
 		<br>
 		<nav>
-			
 			<div class="nav nav-tabs color-nav-tab" id="nav-tab" role="tablist">
 				{{--  datos personales  --}}
 				<a class="nav-item nav-link active color-nav-tab" id="personales-tab" data-toggle="tab" href="#personales" role="tab" aria-controls="nav-personales" aria-selected="true">Datos personales <span><i class="fa fa-address-card-o"></i></span></a>
@@ -190,6 +190,8 @@
 	<script src="{{ asset('js/validation.js')}}"></script>
 	<script src="{{ asset('js/validation-orientador.js')}}"></script> --}}
 	<script>
+
+	$('#dirTrabajo-tab').hide();
 
 	$('#Adireccion').click(function(){
 		//Quito la clase active al tab actual

@@ -23,7 +23,7 @@
 	<!-- TimePicker style -->
 	{{-- <link rel="stylesheet" href="{{ asset('CSS/bootstrap-datepicker.min.css') }}"> --}}
 
-	@section('css')
+	@yield('csss')
 </head>
 
 <body class="hold-transition sidebar-mini">

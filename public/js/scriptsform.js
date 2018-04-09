@@ -367,6 +367,7 @@ $(document).ready(function(){
     $('#extra-fis').hide();
     $('#Atrabajo').hide();
     $('#direccion-tab').hide();
+    $('#dirTrabajo-tab').hide();
     $('#dirNotificaciones-tab').hide();
     $('#dirDenunciante-tab').hide();
     $('#ANotificaciones2').hide();
@@ -384,6 +385,8 @@ $(document).ready(function(){
             $('#datosExtra').show();
             $('#extra-fis').hide();
             
+           
+
             $('#Atrabajo').hide();
             $('#ANotificaciones2').show();
 
