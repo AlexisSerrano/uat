@@ -114,3 +114,6 @@ Route::post('enviar/correo', 'PreregistroController@enviar')->name('envio');
 Route::get('atencion', 'AtencionController@index');
 Route::post('addatencion', 'AtencionController@addAtencion')->name('addatencion');
 
+/*---------Medidas de protección------------*/
+Route::get('medidas', 'MedidasProteccionController@index');
+Route::post('addMedidas', 'MedidasProteccionController@addMedidas')->name('addMedidas');

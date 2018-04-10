@@ -68,6 +68,9 @@ class DatabaseSeeder extends Seeder
         $this->call(RedireccionesSeeder::class);
 		$this->call(DelitosSeeder::class);
         $this->call(LugarSeeder::class);
+
+        $this->call(ProvidenciasSeeder::class);
+        $this->call(EjecutorSeeder::class);
        
     }
 }

@@ -8,7 +8,7 @@
             <div class="col-12">
                 <div class="form-group">
                     {!! Form::label('tipoProvidencia', 'Tipo de providencia precautoria', ['class' => 'col-form-label-sm']) !!}
-                    {!! Form::select('tipoProvidencia', ['' => ''],null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+                    {!! Form::select('tipoProvidencia', $providencias ,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
                 </div>
             </div>
             <div class="col-6">
@@ -36,7 +36,7 @@
             <div class="col-6">
                     <div class="form-group">
                         {!! Form::label('quienEjecuta', 'Quién ejecuta', ['class' => 'col-form-label-sm']) !!}
-                        {!! Form::select('tipoProvidencia', ['' => 'Seleccione quién ejecuta'],null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+                        {!! Form::select('tipoProvidencia', $ejecutores ,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
                     </div>
             </div>
             <div class="col-6">
