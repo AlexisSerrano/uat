@@ -1,5 +1,5 @@
 @extends('template.form')
-@section('title','Pre-registros')
+@section('title','Pre-registros/recepción')
 @section('content')
 	<div class="row">
 		<div class="col-12">
