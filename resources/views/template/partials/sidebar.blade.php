@@ -35,29 +35,29 @@
 							 with font-awesome or any other icon font library -->
 					<li class="nav-item has-treeview">
 						<a href="#" class="nav-link">
-							<i class="nav-icon fa fa-list"></i>
+							<i class="nav-icon fa fa-users"></i>
 							<p>
-								Preregistros
+								Pre-registros
 								<i class="right fa fa-angle-left"></i>
 							</p>
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="{{url('crear-caso')}}" class="nav-link">
-									<i class="fa fa-plus nav-icon"></i>
-									<p>Nuevo Registro</p>
-								</a>
-							</li>
+									<a href="{{url('recepcionista')}}" class="nav-link">
+										<i class="fa fa-user-plus nav-icon"></i>
+										<p>Nuevo pre-registro</p>
+									</a>
+								</li>
 							<li class="nav-item">
 								<a href='{{url("registros")}}' class="nav-link">
 										<i class="fa fa-pencil nav-icon"></i>
-										<p>Consulta de preregistros</p>
+										<p>Consulta de pre-registros</p>
 								</a>
 							</li>
 						</ul>
 					</li>
-
-					<li class="nav-item has-treeview menu-open">
+					{{-- menu-open --}}
+					<li class="nav-item has-treeview ">
 						<a href="{{url('Traerturno')}}" class="nav-link active">
 							<i class="nav-icon fa fa-check-circle-o"></i>
 							<p>
@@ -65,6 +65,12 @@
 							</p>
 						</a>
 					</li>
+					<li class="nav-item has-treeview">
+							<a href="{{url('crear-caso')}}" class="nav-link">
+								<i class="fa fa-folder-open nav-icon"></i>
+								<p>Nuevo Caso</p>
+							</a>
+						</li>
 					<li class="nav-item has-treeview">
 						<a href="#" class="nav-link">
 							<i class="nav-icon fa fa-search"></i>
@@ -138,6 +144,16 @@
 						</a>
 					</li>
 		<!--termina recepcion-->
+				<li class="nav-item has-treeview">
+						<a href="#" class="nav-link">
+							{{-- <span class="bagde">{{countAtencion()}}</span> --}}
+							<i class="nav-icon  fa fa-list-ul"></i>
+							<p>
+								Medidas de protección
+								{{-- <i class="fa fa-angle-left right"></i> --}}
+							</p>
+						</a>
+					</li>
 					<li class="nav-item has-treeview">
 						<a href="{{url('atencion')}}" class="nav-link">
 							{{-- <span class="bagde">{{countAtencion()}}</span> --}}
