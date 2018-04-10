@@ -7,7 +7,10 @@
 	<title>FGE-UAT | @yield('title', 'Inicio')</title>
 	<link rel="icon" href="{{ asset('img/logo.png') }}">
 	<!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+	{{-- estilos --}}
+	<link rel="stylesheet" href="{{asset ('css/cssfonts.css')}}">
+	<link rel="stylesheet" href="{{asset ('css/estilos.css')}}">
 
 	<!-- Font Awesome Icons -->
 	<link rel="stylesheet" href="{{ asset('admin/plugins/font-awesome/css/font-awesome.min.css') }}">
@@ -18,9 +21,7 @@
 
 	{{-- SweetAlert --}}
 	<link rel="stylesheet" href="{{asset ('css/sweetalert.css')}}">
-		{{-- estilos --}}
-	<link rel="stylesheet" href="{{asset ('css/cssfonts.css')}}">
-	<link rel="stylesheet" href="{{asset ('css/estilos.css')}}">
+		
 
 	<!-- TimePicker style -->
 	{{-- <link rel="stylesheet" href="{{ asset('CSS/bootstrap-datepicker.min.css') }}"> --}}
@@ -128,6 +129,7 @@
 
 {{-- SweetAlert --}}
 <script src="{{asset ('js/sweetalert.min.js')}}"></script>
+
 
 {{-- TimePicker --}}
 {{-- <script src="{{asset ('js/bootstrap-datepicker.min.js')}}"></script> --}}
