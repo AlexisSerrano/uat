@@ -22,7 +22,7 @@
         <div id="collapsePersonales2" class="collapse show boxcollapse" >
             <div class="boxtwo">
                 <div class="col">
-                @include('recepcion.empresa-edit')
+                @include('servicios.recepcion.empresa-edit')
                 </div>
             </div>
         </div>

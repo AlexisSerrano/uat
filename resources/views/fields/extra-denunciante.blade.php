@@ -18,6 +18,12 @@
 			</div>
 		</div>
 	</div>
+	<div class="col-6">
+		<div class="form-group">
+			{!! Form::label('victima', 'Tipo de Solicitante', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('victima', [1 => 'Victima', 0 => 'Ofendido'], 1, ['class' => 'form-control form-control-sm', 'required']) !!}
+		</div>
+	</div>
 	<div class="col-12">
 		<div class="form-group">
 			{!! Form::label('narracion', 'Narración', ['class' => 'col-form-label-sm']) !!}

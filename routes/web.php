@@ -23,6 +23,10 @@ Route::get('/pruebasIndex', function(){
 return view('prueba-index');
 
 });
+
+Route::get('/pruebaMedidas', function () {
+    return view('forms.medidasProteccion');
+});
 /**************************************************************/
 // -------------------------------------------------------------------
 

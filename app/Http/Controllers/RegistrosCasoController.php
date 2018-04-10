@@ -36,7 +36,8 @@ class RegistrosCasoController extends Controller
         ->where('nombre', '!=', 'SIN INFORMACION')
         ->orderBy('nombre','asc')
         ->get();
-        return view('orientador.denunciante.fields-denunciante.filtroBusqueda')->with('registros',$preregistros)->with('municipios', $municipios);
+        // return view('orientador.denunciante.fields-denunciante.filtroBusqueda')
+        return view('servicios.recepcion.fiscalSinRecepcion')->with('registros',$preregistros)->with('municipios', $municipios);
         
        }
 
@@ -227,7 +228,7 @@ class RegistrosCasoController extends Controller
         ->where('nombre', '!=', 'SIN INFORMACION')
         ->orderBy('nombre','asc')
         ->get();
-        return view('orientador.denunciante.fields-denunciante.filtroBusqueda')->with('registros',$preregistros)->with('municipios', $municipios)->with('idMunicipioSelect',$id);
+        return view('servicios.recepcion.fiscalSinRecepcion')->with('registros',$preregistros)->with('municipios', $municipios)->with('idMunicipioSelect',$id);
     }
 
 
@@ -256,6 +257,6 @@ class RegistrosCasoController extends Controller
         ->orderBy('nombre','asc')
         ->get();
         //dd($preregistros);
-        return view('orientador.denunciante.fields-denunciante.filtroBusqueda')->with('registros',$preregistros)->with('municipios', $municipios);
+        return view('servicios.recepcion.fiscalSinRecepcion')->with('registros',$preregistros)->with('municipios', $municipios);
     }
 }

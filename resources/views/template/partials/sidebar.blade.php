@@ -1,20 +1,30 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+{{-- <aside class="main-sidebar sidebar-dark-primary elevation-4">
 		<!-- Brand Logo -->
 		<a href="#" class="brand-link">
 			<img src="{{ asset('img/logofge.png') }}" alt="Logo" class="brand-image " style="opacity: .8">
 			{{-- <img src="{{ asset('img/logoblack.png') }}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
-			<span class="brand-text font-weight-light">- UAT</span>
-		</a>
+			{{-- <span class="brand-text font-weight-light"></span>
+		</a>  --}}
+
+		<aside class="main-sidebar  elevation-4 barra-izquierda">
+			<!-- Brand Logo -->
+			<a href="index3.html" class="brand-link">
+				<img src="https://rawcdn.githack.com/Romaincks/assets/master/img/logo-150px-FGE.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+				style="opacity: .8">
+				<span class="brand-text font-weight-light">FGE Veracruz</span>
+			</a>
 
 		<!-- Sidebar -->
 		<div class="sidebar font-weight-light">
 			<!-- Sidebar user panel (optional) -->
 			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 				<div class="image">
-					<img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="Imagen de perfil">
+						
+					{{-- <img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="Imagen de perfil" > --}}
+
 				</div>
 				<div class="info">
-					<a href="#" class="d-block">Alexander Pierce</a>
+					<a href="#" class="d-block"><i class="fa fa-user-circle" aria-hidden="true"></i> USUARIO</a>
 				</div>
 			</div>
 
@@ -25,187 +35,67 @@
 							 with font-awesome or any other icon font library -->
 					<li class="nav-item has-treeview">
 						<a href="#" class="nav-link">
-							<i class="nav-icon fa fa-list"></i>
+							<i class="nav-icon fa fa-users"></i>
 							<p>
-								Catálogos
+								Pre-registros
 								<i class="right fa fa-angle-left"></i>
 							</p>
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="{{ url('/') }}" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Áreas</p>
-								</a>
-							</li>
+									<a href="{{url('recepcionista')}}" class="nav-link">
+										<i class="fa fa-user-plus nav-icon"></i>
+										<p>Nuevo pre-registro</p>
+									</a>
+								</li>
 							<li class="nav-item">
-								<a href="{{ url('/') }}" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Especialidades</p>
+								<a href='{{url("registros")}}' class="nav-link">
+										<i class="fa fa-pencil nav-icon"></i>
+										<p>Consulta de pre-registros</p>
 								</a>
 							</li>
-							<li class="nav-item">
-								<a href="{{ url('/') }}" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Modelos</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="{{ url('/') }}" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Maquinas</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="{{ url('/') }}" class="nav-link">
-										<i class="fa fa-circle-o nav-icon"></i>
-										<p>Usuarios</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="{{ url('/') }}" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Sucursales</p>
-								</a>
-							</li>
-							
 						</ul>
 					</li>
-
-					<li class="nav-item has-treeview menu-open">
-						<a href="#" class="nav-link active">
-							<i class="nav-icon fa fa-dashboard"></i>
+					{{-- menu-open --}}
+					<li class="nav-item has-treeview ">
+						<a href="{{url('Traerturno')}}" class="nav-link active">
+							<i class="nav-icon fa fa-check-circle-o"></i>
 							<p>
-								Dashboard
-								<i class="right fa fa-angle-left"></i>
+								Tomar turno
 							</p>
 						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Dashboard v1</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link active">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Dashboard v2</p>
-								</a>
-							</li>
-						</ul>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item has-treeview">
+							<a href="{{url('crear-caso')}}" class="nav-link">
+								<i class="fa fa-folder-open nav-icon"></i>
+								<p>Nuevo Caso</p>
+							</a>
+						</li>
+					<li class="nav-item has-treeview">
 						<a href="#" class="nav-link">
-							<i class="nav-icon fa fa-th"></i>
+							<i class="nav-icon fa fa-search"></i>
 							<p>
-								Widgets
-								<span class="right badge badge-danger">New</span>
+								Busquedas
+								{{-- <i class="right fa fa-angle-left"></i> --}}
+							</p>
+						</a>
+					</li>
+					<li class="nav-item has-treeview">
+						<a href='{{route("cancelar.caso")}}' class="nav-link">
+							<i class="nav-icon fa fa-ban"></i>
+							<p>
+								Cancelar registro
 							</p>
 						</a>
 					</li>
 					<li class="nav-item has-treeview">
 						<a href="#" class="nav-link">
-							<i class="nav-icon fa fa-pie-chart"></i>
+							<i class="nav-icon fa fa-user-times"></i>
 							<p>
-								Charts
-								<i class="right fa fa-angle-left"></i>
+								Ausente
 							</p>
 						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>ChartJS</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Flot</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Inline</p>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="nav-item has-treeview">
-						<a href="#" class="nav-link">
-							<i class="nav-icon fa fa-tree"></i>
-							<p>
-								UI Elements
-								<i class="fa fa-angle-left right"></i>
-							</p>
-						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>General</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Icons</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Buttons</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Sliders</p>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="nav-item has-treeview">
-						<a href="#" class="nav-link">
-							<i class="nav-icon fa fa-edit"></i>
-							<p>
-								Forms
-								<i class="fa fa-angle-left right"></i>
-							</p>
-						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>General Elements</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Advanced Elements</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Editors</p>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="nav-item has-treeview">
-						<a href="#" class="nav-link">
-							<i class="nav-icon fa fa-table"></i>
-							<p>
-								Tables
-								<i class="fa fa-angle-left right"></i>
-							</p>
-						</a>
-						<ul class="nav nav-treeview">
+						{{-- <ul class="nav nav-treeview">
 							<li class="nav-item">
 								<a href="#" class="nav-link">
 									<i class="fa fa-circle-o nav-icon"></i>
@@ -218,29 +108,76 @@
 									<p>Data Tables</p>
 								</a>
 							</li>
-						</ul>
+						</ul> --}}
+	<!---botones solo para recepcion-->
 					</li>
-					<li class="nav-item">
-						<a href="{{url('atencion')}}" class="nav-link">
-							<i class="nav-icon fa fa-exchange"></i>
+					<li class="nav-item has-treeview">
+						<a href="{{url('predenuncias')}}" class="nav-link">
+							{{-- <i class="nav-icon fa fa-user-times"></i> --}}
 							<p>
-								Atención Rápida
-								<span class="right badge badge-danger">{{countAtencion()}}</span>
-							</p>
-						</a>
-					</li>
-					{{--
-					<li class="nav-header">EXAMPLES</li>
-					<li class="nav-item">
-						<a href="pages/calendar.html" class="nav-link">
-							<i class="nav-icon fa fa-calendar"></i>
-							<p>
-								Calendar
-								<span class="badge badge-info right">2</span>
+								Todos los registros
 							</p>
 						</a>
 					</li>
 					<li class="nav-item has-treeview">
+						<a href="{{url('encola')}}" class="nav-link">
+							{{-- <i class="nav-icon fa fa-user-times"></i> --}}
+							<p>
+								Registros en cola
+							</p>
+						</a>
+					</li>
+					<li class="nav-item has-treeview">
+						<a href="{{url('urgentes')}}" class="nav-link">
+							{{-- <i class="nav-icon fa fa-user-times"></i> --}}
+							<p>
+								Urgentes
+							</p>
+						</a>
+					</li>
+					<li class="nav-item has-treeview">
+						<a href="{{url('recepcionista')}}" class="nav-link">
+							{{-- <i class="nav-icon fa fa-user-times"></i> --}}
+							<p>
+								Agregar
+							</p>
+						</a>
+					</li>
+		<!--termina recepcion-->
+				<li class="nav-item has-treeview">
+						<a href="#" class="nav-link">
+							{{-- <span class="bagde">{{countAtencion()}}</span> --}}
+							<i class="nav-icon  fa fa-list-ul"></i>
+							<p>
+								Medidas de protección
+								{{-- <i class="fa fa-angle-left right"></i> --}}
+							</p>
+						</a>
+					</li>
+					<li class="nav-item has-treeview">
+						<a href="{{url('atencion')}}" class="nav-link">
+							{{-- <span class="bagde">{{countAtencion()}}</span> --}}
+							<i class="nav-icon  fa fa-clock-o"></i>
+							<p>
+								Atencion rapida
+								{{-- <i class="fa fa-angle-left right"></i> --}}
+							</p>
+						</a>
+					</li>
+
+
+					
+					<li class="nav-header">EXTRAS</li>
+					<li class="nav-item">
+						<a href="pages/calendar.html" class="nav-link">
+							<i class="nav-icon fa fa-calendar"></i>
+							<p>
+								Agenda 
+								<span class="badge badge-info right">2</span>
+							</p>
+						</a>
+					</li>
+					{{-- <li class="nav-item has-treeview">
 						<a href="#" class="nav-link">
 							<i class="nav-icon fa fa-envelope-o"></i>
 							<p>
@@ -249,18 +186,6 @@
 							</p>
 						</a>
 						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="pages/mailbox/mailbox.html" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Inbox</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="pages/mailbox/compose.html" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Compose</p>
-								</a>
-							</li>
 							<li class="nav-item">
 								<a href="pages/mailbox/read-mail.html" class="nav-link">
 									<i class="fa fa-circle-o nav-icon"></i>
@@ -278,18 +203,6 @@
 							</p>
 						</a>
 						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="pages/examples/invoice.html" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Invoice</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="pages/examples/profile.html" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Profile</p>
-								</a>
-							</li>
 							<li class="nav-item">
 								<a href="pages/examples/login.html" class="nav-link">
 									<i class="fa fa-circle-o nav-icon"></i>
@@ -370,8 +283,8 @@
 							<i class="nav-icon fa fa-circle-o text-info"></i>
 							<p>Informational</p>
 						</a>
-					</li>
-					--}}
+					</li> --}}
+				
 				</ul>
 			</nav>
 			<!-- /.sidebar-menu -->

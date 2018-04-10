@@ -4,10 +4,11 @@
         <thead>
             <th>Nombre</th>
             <th>RFC</th>
-            <th>Edad</th>
-            <th>Sexo</th>
+            {{-- <th>Edad</th>
+            <th>Sexo</th> --}}
             <th>Teléfono</th>
-            <th>Persona moral</th>
+            <th>Tipo de persona</th>
+            <th>Tipo de solicitante</th>
             {{--  <th>Opciones</th>  --}}
         </thead>
         <tbody>
@@ -18,13 +19,18 @@
                     <tr>
                         <td>{{ $denunciante->nombres." ".$denunciante->primerAp." ".$denunciante->segundoAp }}</td>
                         <td>{{ $denunciante->rfc }}</td>
-                        <td>{{ $denunciante->edad }}</td>
-                        <td>{{ $denunciante->sexo }}</td>
+                        {{-- <td>{{ $denunciante->edad }}</td>
+                        <td>{{ $denunciante->sexo }}</td> --}}
                         <td>{{ $denunciante->telefono }}</td>
                         @if($denunciante->esEmpresa==1)
-                            <td>SI</td>
+                            <td>Persona Moral</td>
                         @else
-                            <td>NO</td>
+                            <td>Persona Fisica</td>
+                        @endif
+                        @if($denunciante->victima==1)
+                            <td>Victima</td>
+                        @else
+                            <td>Ofendido</td>
                         @endif
                         {{--  <td><a href="{{ route('constancia.hechos', $denunciante->id) }}" class="btn btn-secondary text-right">Descargar constancia de hechos</a></td>  --}}
                     </tr>

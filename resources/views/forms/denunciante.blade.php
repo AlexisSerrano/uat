@@ -1,4 +1,7 @@
 @extends('template.form')
+
+@section('title', 'Agregar denunciante')
+
 @section('content')
 @include('fields.errores')
 
@@ -37,13 +40,8 @@
 	@endphp
 
 	
-	<br><br>
-	
 <div class="btn-group col">
 	
-	<div class="btn-group" role="group" aria-label="Basic example">
-		<button type="button" class="btn btn-secondary" href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars"></i></button>   
-	</div>
 	<a href="{{route('new.denunciante')}}" class="{{$registroDenunciante}} form-control">Denunciante</a>
 	<a  class="{{$registroDenunciado}} form-control">Denunciado</a>
 	<a  class="{{$registroAbogado}} form-control">Abogado</a>
@@ -62,7 +60,6 @@
 	<div class="col-md-12">
 		<br>
 		<nav>
-			
 			<div class="nav nav-tabs color-nav-tab" id="nav-tab" role="tablist">
 				{{--  datos personales  --}}
 				<a class="nav-item nav-link active color-nav-tab" id="personales-tab" data-toggle="tab" href="#personales" role="tab" aria-controls="nav-personales" aria-selected="true">Datos personales <span><i class="fa fa-address-card-o"></i></span></a>
@@ -186,10 +183,12 @@
 @push('scripts')
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
 	<script src="{{ asset('js/selectsDirecciones.js') }}"></script>
-	{{-- <script src="{{ asset('js/scriptsform.js') }}"></script>
-	<script src="{{ asset('js/validation.js')}}"></script>
+	<script src="{{ asset('js/scriptsform.js') }}"></script>
+	{{-- <script src="{{ asset('js/validation.js')}}"></script>
 	<script src="{{ asset('js/validation-orientador.js')}}"></script> --}}
 	<script>
+
+	$('#dirTrabajo-tab').hide();
 
 	$('#Adireccion').click(function(){
 		//Quito la clase active al tab actual

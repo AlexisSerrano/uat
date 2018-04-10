@@ -1,7 +1,6 @@
 @extends('template.form')
 @section('title','Pre-registros')
 @section('content')
-<div class="container">
 	<div class="row">
 		<div class="col-12">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbarpredenuncia">
@@ -10,27 +9,7 @@
 			  	</button>
 			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			    	<ul class="navbar-nav mr-auto" style="margin-left: -20px;">
-			      		<li class="nav-item active">
-			        	<a class="nav-link" href="{{url('predenuncias')}}">
-			        		<button class="btn btn-outline-secondary">Todos</button>
-			        	</a>
-			      		</li>
-			      		<li class="nav-item" style="margin-left: -10px;">
-			        		<a class="nav-link" href="{{url('encola')}}">
-			        			<button class="btn btn-outline-secondary">En cola</button>
-			        		</a>
-			      		</li>
-			      		<li class="nav-item" style="margin-left: -10px;">
-			        		<a class="nav-link" href="{{url('urgentes')}}">
-			        			<button class="btn btn-outline-secondary">Urgentes</button>
-			        		</a>
-			      		</li>
-			      		<li class="nav-item" style="margin-left: -10px;">
-			        		<a class="nav-link" href="{{url('recepcionista')}}">
-			        			<button class="btn btn-outline-secondary">Agregar</button>
-			        		</a>
-			      		</li>
-			      		<li class="nav-item">
+			      		<li class="nav-item" style="margin-left: 30px;">
 			        		<select class="form-control" id="filmunicipio" name="filmunicipio">
                                 @forelse($municipios as $municipio)
                                 	@if(isset($idMunicipioSelect))
@@ -75,7 +54,7 @@
 			      		<td>{{($registro->esEmpresa==0)?'Fisica':'Moral'}}</td>
 			      		<td>{{($registro->esEmpresa==0)?$registro->nombre.' '.$registro->primerAp.' '.$registro->segundoAp:$registro->representanteLegal}}</td>
 			      		<td>{{$registro->docIdentificacion}}</td>
-			      		<td><a href="{{url("predenuncias/".$registro->id."/edit")}}"><img src="{{asset('img/check3.png')}}" alt=""></a></td>
+			      		<td><a href="{{url("predenuncias/".$registro->id."/edit")}}"><i class="fa fa-check-square-o" aria-hidden="true"></i></a></td>
 			    	</tr>
 					@empty
 
@@ -89,5 +68,5 @@
 			@endif
 		</div>	
 	</div>
-</div>
+
 @endsection

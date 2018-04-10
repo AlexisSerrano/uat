@@ -347,6 +347,9 @@ public function showForm()
             if ($request->conoceAlDenunciado==1){
                 $ExtraDenunciante->conoceAlDenunciado = 1;
             }
+            if ($request->conoceAlDenunciado==0){
+                $ExtraDenunciante->conoceAlDenunciado = 0;
+            }
             $ExtraDenunciante->narracion = $request->narracion;
             $ExtraDenunciante->save();
         }
