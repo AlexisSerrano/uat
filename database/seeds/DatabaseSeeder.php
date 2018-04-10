@@ -36,6 +36,8 @@ class DatabaseSeeder extends Seeder
         //semillas de colonias
         $this->call(ColoniasCampecheSeeder::class);
         $this->call(ColoniasMexicoSeeder::class);
+        $this->call(ColoniasGuerreroSeeder::class);
+        $this->call(ColoniasTlaxcalaSeeder::class);
 
 
         //$this->call(LocalidadSeeder::class);

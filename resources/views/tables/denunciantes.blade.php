@@ -8,6 +8,7 @@
             <th>Sexo</th> --}}
             <th>Teléfono</th>
             <th>Tipo de persona</th>
+            <th>Tipo de solicitante</th>
             {{--  <th>Opciones</th>  --}}
         </thead>
         <tbody>
@@ -25,6 +26,11 @@
                             <td>Persona Moral</td>
                         @else
                             <td>Persona Fisica</td>
+                        @endif
+                        @if($denunciante->victima==1)
+                            <td>Victima</td>
+                        @else
+                            <td>Ofendido</td>
                         @endif
                         {{--  <td><a href="{{ route('constancia.hechos', $denunciante->id) }}" class="btn btn-secondary text-right">Descargar constancia de hechos</a></td>  --}}
                     </tr>
