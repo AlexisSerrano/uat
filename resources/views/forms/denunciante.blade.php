@@ -1,7 +1,14 @@
 @extends('template.form')
 
 @section('title', 'Agregar denunciante')
-
+@section('css')
+<style>
+	.btn-success{
+		background: black;
+	}	
+</style>
+	
+@endsection
 @section('content')
 @include('fields.errores')
 

@@ -1,9 +1,6 @@
 @extends('template.form')
-
+@section('title','Pre-registros')
 @section('content')
-
-<div class="container">
-	<br>
 	<div class="row">
 		<div class="col-12">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbarpredenuncia">
@@ -11,13 +8,12 @@
 			    <span class="navbar-toggler-icon"></span>
 			  	</button>
 			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			    	<ul class="navbar-nav mr-auto" style="margin-left: -20px;">
-			      		<li class="nav-item active">
-			        	<a class="nav-link" href="{{url('registros')}}">
-			        		<button class="btn btn-outline-secondary">Todos</button>
-			        	</a>
-			      		</li>
-			      		
+			    	<ul class="navbar-nav mr-auto" style="margin-left: 10px;">
+							<li class=" nav-item active">
+									<a class="nav-link" href="{{url('registros')}}">
+										<button class="btn btn-outline-secondary">Todos</button>
+									</a>
+									  </li>
 			      		<li class="nav-item">
 			        		<select class="form-control" id="filfiscal" name="filfiscal">
                                 @forelse($municipios as $municipio)
@@ -33,7 +29,8 @@
                                 @empty
                                 @endforelse
                             </select>
-			      		</li>
+						  </li>
+					
 			    	</ul>
 			    	<form class="form-inline my-2 my-lg-0" method="POST" action="{{ url('buscarfolio') }}" id="busquedafolio">
 			    		@csrf
