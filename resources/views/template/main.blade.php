@@ -5,13 +5,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<title>FGE-UAT | @yield('title', 'Inicio')</title>
-	<link rel="icon" href="{{ asset('img/logo.png') }}">
-	<!-- CSRF Token -->
-	<meta name="csrf-token" content="{{ csrf_token() }}">
 	{{-- estilos --}}
 	<link rel="stylesheet" href="{{asset ('css/cssfonts.css')}}">
 	<link rel="stylesheet" href="{{asset ('css/estilos.css')}}">
-
+	<link rel="icon" href="{{ asset('img/logo.png') }}">
+	<!-- CSRF Token -->
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<!-- Font Awesome Icons -->
 	<link rel="stylesheet" href="{{ asset('admin/plugins/font-awesome/css/font-awesome.min.css') }}">
 	<!-- Theme style -->
