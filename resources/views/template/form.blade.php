@@ -14,11 +14,11 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            {{-- <div class="card-body"> --}}
+            <div class="container">
                 {{-- <div class="container"> --}}
                     @yield('content')
                 {{-- </div> --}}
-            {{-- </div> --}}
+            </div>
         </div>
     </div>
 </div>
