@@ -97,6 +97,7 @@ public function showForm()
         $idCarpeta = session('carpeta');
         $carpeta = Carpeta::findOrFail($idCarpeta);
         $carpeta->delete();
+        session()->forget('carpeta');
         Alert::info('El caso a sido cancelado con exito.', 'Hecho')->persistent("Aceptar");
         return redirect(url('registros'));
     }

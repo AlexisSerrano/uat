@@ -89,11 +89,16 @@
 			<div class="col-12">
 				<div class="col">
 					<label for="narracion" class="col-form-label-sm">Narración</label>
-					<textarea name="narracion" id="narracion" cols="30" rows="10" class="form-control form-control-sm" required=>
+					@if(isset($form['narracion']))
+						{{ Form::textarea('narracion', $form['narracion'], ['class' => 'form-control form-control-sm', 'size' => '30x10', 'required']) }}
+					@else
+						{{ Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'size' => '30x10', 'required']) }}
+					@endif
+					{{-- <textarea name="narracion" id="narracion" cols="30" rows="10" class="form-control form-control-sm" required=>
 						@if(isset($form['narracion']))
 							{{$form['narracion']}}
 						@endif
-					</textarea>
+					</textarea> --}}
 				</div>
 			</div>
 		</div>

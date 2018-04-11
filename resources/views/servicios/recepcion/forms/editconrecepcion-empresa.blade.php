@@ -1,81 +1,63 @@
-@extends('template.main')
+@extends('template.form')
 @section('content')
-@if ($errors->any())
-	<div class="alert alert-danger">
-		<ul>
-			@foreach ($errors->all() as $error)
-				<li>{{ $error }}</li>
-			@endforeach
-		</ul>
-	</div>
-@endif
-       
-{!!Form::model($preregistro, array('route' => array('predenuncias.update', $preregistro->id), 'method' => 'PUT')) !!}
-<input type="hidden" name="esEmpresa" value="0">
-<div class="card container-create" id="datosPer">
-    <div class="card-header">
-        <p class="lead" align="center">Datos personales</p>
-    </div>
-    <div id="collapsePersonales1" class="collapse show boxcollapse" >
-        <div class="boxtwo">
-            <div class="col">
-                @include('servicios.recepcion.personales-edit')
-            </div>
-        </div>
-    </div>
-        
-    <div class="form-group">
-        <div class="col-12">
-            <label for="narracion" class="col-form-label-sm">Narración: </label>
-            {!!Form::label('nombre',$preregistro->narracion ,['class'=> 'col-form-label-sm labelCambioNarracion'])!!}
-            <div class="input-group inputOculto" id="inputNarracion">
-                {{ Form::textarea('narracion', $preregistro->narracion, ['class'=>'form-control form-control-sm','size' => '30x5']) }}
-                <!--textarea name="narracion" id="" cols="30" rows="10" class="form-control form-control-sm" ></textarea-->
-                <input type="button" id="botonCambioNarracion" value="Cancelar" class="btn btn-sm btn-danger">
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="text-left col">
-            <a href="{{url('predenuncias')}}" title="" class="btn  button button3 ">Regresar</a>
-        </div>       
-        <div class="text-right col">
-            <a href="{{url('estado/'.$preregistro->id.'/0')}}" title="button1" class="btn  button button1 ">En cola</a>
-            <a href="{{url('estado/'.$preregistro->id.'/1')}}" title="" class="btn button button2">Urgente</a>
-            {!!Form::submit('Guardar',array('class' => 'btn  button button4'))!!}
-        </div>
-    </div>
-</div>
-{!!Form::close()!!}
+@include('fields.errores')
 
-@endsection
-@section('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
-    <style>
-        .inputOculto{
-            display: none;
-        }
-    </style>
+{!!Form::model($preregistro, array('route' => array('predenuncias.update', $preregistro->id), 'method' => 'PUT' )) !!}
+    <div>
+        {{-- @include('recepcion.tipo-p-edit') --}}
+        <input type="hidden" name="esEmpresa" value="1">
+    </div>
+        <div class="card-header">
+            <p class="lead" align="center">Datos personales</p>
+        </div>
+            <div class="boxtwo">
+                <div class="col">
+                @include('servicios.recepcion.fields.empresa-edit')
+                </div>
+            </div>
+        <div class="form-group">
+            <div class="col-12">
+                <label for="narracion" class="col-form-label-sm">Narración: </label>
+                {!!Form::label('nombre',$preregistro->narracion ,['class'=> 'col-form-label-sm labelCambioNarracion'])!!}
+				<div class="input-group inputOculto" id="inputNarracion">
+					{{ Form::textarea('narracion', $preregistro->narracion, ['class'=>'form-control form-control-sm','size' => '30x5']) }}
+                    <!--textarea name="narracion" id="" cols="30" rows="10" class="form-control form-control-sm" ></textarea-->
+                    <input type="button" id="botonCambioNarracion" value="Cancelar" class="btn btn-sm btn-danger">
+				</div>
+            </div>
+        </div>
+        <div><p style="color:blue">NOTA:Todas las etiquetas que se encuentran arriba pueden ser editadas dando click en el texto</p></div>
     
+        <div class="boxtwo">
+            <div class="row">
+                <div class="text-left col">
+                    <a href="{{url('predenuncias')}}" title="" class="btn  button button3 ">Regresar</a>
+                </div>       
+                <div class="text-right col">
+                    <a href="{{url('estado/'.$preregistro->id.'/0')}}" title="button1" class="btn  button button1 ">En cola</a>
+                    <a href="#" title="" class="btn button button2 btnEnUrgente" id="{{$preregistro->id}}">Urgente</a>
+                    {!!Form::submit('Guardar',array('class' => 'btn  button button4'))!!}
+                </div>
+                <meta name="csrf-token" content="{{ csrf_token() }}">
+            </div>
+        </div>
+
+
+    {!!Form::close()!!}
+    <br><br><br><br>
 @endsection
-@section('scripts')
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+
+@section('css')
+<style>
+    .inputOculto{
+        display: none;
+    }
+
+</style>
+@endsection
+
+@push('scripts')
 <script>
-    $(function () {
-        $('#fechanac').datetimepicker({
-            format: 'YYYY-MM-DD'
-        });
-    });
-
-    $("#fechanac").on("change.datetimepicker", function (e) {
-        $('#edad').val(moment().diff(e.date,'years'));
-    });
-
-    $( "#edad" ).change(function() {
-        var anios = $('#edad').val();
-        $('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
-    });
-
     $(document).ready(function(){
         //editar el campo al dar clic en el label de nombre
         $(".labelCambioNombre").click(function(){
@@ -86,28 +68,6 @@
         $("#botonCambioNombre").click(function(){
             $('.labelCambioNombre').show();
             $('#inputNombre').hide();
-        });
-        
-        //editar el campo al dar clic en el label de nombre
-        $(".labelCambioPrimerAp").click(function(){
-            $('.labelCambioPrimerAp').hide();
-            $('#inputPrimerAp').show().css('display', 'flex');
-        });
-        //ocultar el campo de nombre y mostrar el label anterior
-        $("#botonCambioPrimerAp").click(function(){
-            $('.labelCambioPrimerAp').show();
-            $('#inputPrimerAp').hide();
-        });
-        
-        //editar el campo al dar clic en el label de nombre
-        $(".labelCambioSegundoAp").click(function(){
-            $('.labelCambioSegundoAp').hide();
-            $('#inputSegundoAp').show().css('display', 'flex');
-        });
-        //ocultar el campo de nombre y mostrar el label anterior
-        $("#botonCambioSegundoAp").click(function(){
-            $('.labelCambioSegundoAp').show();
-            $('#inputSegundoAp').hide();
         });
         
         //editar el campo al dar clic en el label de rfc
@@ -121,38 +81,15 @@
             $('#inputRfc').hide();
         });
         
-        //editar el campo al dar clic en el label de rfc
-        $(".labelCambioFechaNac").click(function(){
-            $('.labelCambioFechaNac').hide();
-            $('#inputFechaNac').show().css('display', 'flex');
-            $('.labelCambioEdad').hide();
-            $('#inputEdad').show().css('display', 'flex');
-        });
-        
         //editar el campo al dar clic en el label de representante legal
-        $(".labelCambioEdad").click(function(){
-            $('.labelCambioFechaNac').hide();
-            $('#inputFechaNac').show().css('display', 'flex');
-            $('.labelCambioEdad').hide();
-            $('#inputEdad').show().css('display', 'flex');
+        $(".labelCambioRepLegal").click(function(){
+            $('.labelCambioRepLegal').hide();
+            $('#inputRepLegal').show().css('display', 'flex');
         });
         //ocultar el campo y mostrar el label anterior
-        $("#botonCambioEdad").click(function(){
-            $('.labelCambioFechaNac').show();
-            $('#inputFechaNac').hide();
-            $('.labelCambioEdad').show();
-            $('#inputEdad').hide();
-        });
-        
-        //editar el campo al dar clic en el label de representante legal
-        $(".labelCambioSexo").click(function(){
-            $('.labelCambioSexo').hide();
-            $('#inputSexo').show().css('display', 'flex');
-        });
-        //ocultar el campo y mostrar el label anterior
-        $("#botonCambioSexo").click(function(){
-            $('.labelCambioSexo').show();
-            $('#inputSexo').hide();
+        $("#botonCambioRepLegal").click(function(){
+            $('.labelCambioRepLegal').show();
+            $('#inputRepLegal').hide();
         });
         
         //editar el campo al dar clic en el label de Telefono
@@ -164,17 +101,6 @@
         $("#botonCambioTelefono").click(function(){
             $('.labelCambioTelefono').show();
             $('#inputTelefono').hide();
-        });
-        
-        //editar el campo al dar clic en el label de Telefono
-        $(".labelCambioCurp").click(function(){
-            $('.labelCambioCurp').hide();
-            $('#inputCurp').show().css('display', 'flex');
-        });
-        //ocultar el campo y mostrar el label anterior
-        $("#botonCambioCurp").click(function(){
-            $('.labelCambioCurp').show();
-            $('#inputCurp').hide();
         });
 
         //editar el campo al dar clic en el label de Calle
@@ -219,28 +145,6 @@
         $("#botonCambioNarracion").click(function(){
             $('.labelCambioNarracion').show();
             $('#inputNarracion').hide();
-        });
-        
-        //editar el campo al dar clic en el label de Numero Externo
-        $(".labelCambioDoc").click(function(){
-            $('.labelCambioDoc').hide();
-            $('#inputDoc').show().css('display', 'flex');
-        });
-        //ocultar el campo y mostrar el label anterior
-        $("#botonCambioDoc").click(function(){
-            $('.labelCambioDoc').show();
-            $('#inputDoc').hide();
-        });
-        
-        //editar el campo al dar clic en el label de Numero Externo
-        $(".labelCambioDocIden").click(function(){
-            $('.labelCambioDocIden').hide();
-            $('#inputDocIden').show().css('display', 'flex');
-        });
-        //ocultar el campo y mostrar el label anterior
-        $("#botonCambioDocIden").click(function(){
-            $('.labelCambioDocIden').show();
-            $('#inputDocIden').hide();
         });
 
 
@@ -325,6 +229,5 @@
     });
 
 
-
 </script>
-@endsection
+@endpush
