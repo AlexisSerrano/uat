@@ -99,9 +99,53 @@
 
 	<input type="hidden" name="idCarpeta" value="{{session('carpeta')}}">
 
+	<div id="qrr">
+		<div class="boxtwo">
+			<div class="row">
+				<div class="col-12">
+					<div class="form-group">
+						{!! Form::label('nombresQ', 'Nombre', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::text('nombresQ', "QUIEN RESULTE RESPONSABLE", ['class' => 'form-control form-control-sm', 'readonly']) !!}
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="row menu">
+					
+					<div class="col text-left">
+							
+					
+						<a href="{{route('cancelar.caso')}}" class="btn button1">Cancelar</a>
+						
+					</div>
+					
+					<div class="col text-right">
+						
+						{!!Form::submit('Guardar',array('class' => 'btn button1','id'=>'guardarDenunciante'))!!}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="conocido">
+		<div class="boxtwo">
+			@include('fields.det-conocido')
+			<div>
+				<div class="row menu">
+					<div class="col text-left">
+						<a href="{{route('cancelar.caso')}}" class="btn button1">Cancelar</a>
+					</div>
+					
+					<div class="col text-right">
+						{!!Form::submit('Guardar',array('class' => 'btn button1','id'=>'guardarDenunciante'))!!}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-
-	<div class="col-md-12">
+	<div  class="col-md-12 comparecencia">
 		<br>
 		<nav>
 			<div class="nav nav-tabs color-nav-tab" id="nav-tab" role="tablist">
@@ -120,51 +164,7 @@
 		</nav>
 		{{-- personales-orientador --}}
 		
-		<div id="qrr">
-			<div class="boxtwo">
-				<div class="row">
-					<div class="col-12">
-						<div class="form-group">
-							{!! Form::label('nombresQ', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-							{!! Form::text('nombresQ', "QUIEN RESULTE RESPONSABLE", ['class' => 'form-control form-control-sm', 'readonly']) !!}
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="row menu">
-						
-						<div class="col text-left">
-								
-						
-							<a href="{{route('cancelar.caso')}}" class="btn button1">Cancelar</a>
-							
-						</div>
-						
-						<div class="col text-right">
-							
-							{!!Form::submit('Guardar',array('class' => 'btn button1','id'=>'guardarDenunciante'))!!}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 		
-		<div id="conocido">
-			<div class="boxtwo">
-				@include('fields.det-conocido')
-				<div>
-					<div class="row menu">
-						<div class="col text-left">
-							<a href="{{route('cancelar.caso')}}" class="btn button1">Cancelar</a>
-						</div>
-						
-						<div class="col text-right">
-							{!!Form::submit('Guardar',array('class' => 'btn button1','id'=>'guardarDenunciante'))!!}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 
 
 		<div class="tab-content" id="nav-tabContent">
@@ -257,9 +257,10 @@
 
 		</div>
 		
-		<div>
-			@include('tables.denunciados')
-		</div>
+	</div>
+	
+	<div>
+		@include('tables.denunciados')
 	</div>
 </div>
 
