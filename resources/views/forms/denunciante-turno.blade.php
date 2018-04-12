@@ -37,11 +37,8 @@
 	@endphp
 	<br><br>
 <div class="btn-group col">
-	<div class="btn-group" role="group" aria-label="Basic example">
-		<button type="button" class="btn btn-secondary" href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars"></i></button>   
-	</div>
 	<a href="{{route('new.denunciante')}}" class="{{$registroDenunciante}} form-control">Denunciante</a>
-	<a  class="{{$registroDenunciado}} form-control">Denunciado</a>
+	<a href="{{route('new.denunciado')}}" class="{{$registroDenunciado}} form-control">Denunciado</a>
 	<a  class="{{$registroAbogado}} form-control">Abogado</a>
 	<a  class="{{$registroAutoridad}} form-control">Autoridad</a>
 	<a  class="{{$registroDelitos}} form-control">Delitos</a>
@@ -50,7 +47,7 @@
 	<a href="{{route('narracion')}}" class="{{$registroDescripcion}} form-control">Descripción de hechos</a>
 </div>
   
-<input type="hidden" name="idCarpeta" value="{{session('carpeta')}}">
+<input type="hidden" name="idCarpeta" value="{{$idCarpeta}}">
 <div id="page-content-wrapper">
 {{--  <span class="datotip" id="{{$tipopersona}}"></span> 	  --}}
 	
