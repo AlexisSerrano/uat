@@ -38,7 +38,7 @@ class MedidasProteccionController extends Controller
         return view('forms.medidasProteccion', compact('providencias','ejecutores','victimas'));
     }
 
-    public function addMedidas(Request $request){
+    public function addMedidas(MedidasRequest $request){
         //$idCarpeta = session('carpeta');
         $idCarpeta = 1;
         $providenciaBD = new Providencia;
@@ -61,7 +61,6 @@ class MedidasProteccionController extends Controller
     public function getMedidas(){
         //$idCarpeta = session('carpeta');
         $idCarpeta = 1;
-        //$providencias = Providencia::get()->where('idCarpeta',$idCarpeta);
         $providencias = DB::table('providencias_precautorias')
         ->join('cat_providencia_precautoria', 'providencias_precautorias.idProvidencia', '=', 'cat_providencia_precautoria.id')
         ->join('ejecutor','providencias_precautorias.idEjecutor','=','ejecutor.id')
