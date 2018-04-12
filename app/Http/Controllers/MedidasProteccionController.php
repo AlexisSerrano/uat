@@ -75,6 +75,12 @@ class MedidasProteccionController extends Controller
 
     public function deleteMedida($id){
         $post = Providencia::findOrFail($id);
-        $post->delete();
+        if($post->delete()){
+            Alert::success('Medida de protección eliminada con éxito', 'Hecho')->persistent("Aceptar");
+        }
+        else{
+            Alert::error('Se presento un problema al eliminar su medida de protección', 'Error');
+        }
+        return redirect("medidas");
     }
 }
