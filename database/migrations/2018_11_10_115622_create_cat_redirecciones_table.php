@@ -16,7 +16,7 @@ class CreateCatRedireccionesTable extends Migration
         Schema::create('cat_redirecciones', function (Blueprint $table) {
             $table->increments('id');
             $table->string('titulo',150);
-            $table->boolean('status');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

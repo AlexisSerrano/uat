@@ -11,7 +11,7 @@ use Alert;
 class AtencionController extends Controller
 {
     public function index(){
-        $modulos1[''] = 'Seleccione un Modulo';
+        $modulos1[''] = 'SELECCIONE UN MODULO';
         $modulos2=CatRedireccion::orderBy('titulo', 'ASC')
         ->select('titulo','id')->get();
         foreach($modulos2 as $modulo){
@@ -31,7 +31,7 @@ class AtencionController extends Controller
         $atencion->unidad = 1;
         $atencion->usuario = 1;
         if($atencion->save()){
-            Alert::success('Atención rápida creada con exito', 'Hecho')->persistent("Aceptar");
+            Alert::success('Atención rápida creada con éxito', 'Hecho')->persistent("Aceptar");
         }
         else{
             Alert::error('Se presento un problema al crear su atención rápida', 'Error');

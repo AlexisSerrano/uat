@@ -11,21 +11,20 @@ class ProvidenciasSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('providencia_precautoria')->insert([
-            [ 'nombre' => 'I. Vigilancia en el domicilio de la víctima o el ofendido'],
-            [ 'nombre' => 'II. Protección policial de la víctima o el ofendido'],
-            [ 'nombre' => 'III. Auxilio inmediato por integrantes de instituciones policiales, al domicilio donde se encuentre o se localice la víctima u ofendido en el momento de solicitarlo'],
-            [ 'nombre' => 'IV. Auxilio de la fuerza pública para solicitar la inmediata entrega o devolución de objetos personales o documentos de identificación de la víctima o el ofendido, así como de sus ascendientes, descendientes o dependientes económicos'],
-            [ 'nombre' => '
-            V. Realización del inventario de los bienes muebles e inmuebles de propiedad común, propiedad de la víctima o respecto de los cuales sea titular de derechos, incluyendo los implementos de trabajo de la víctima o el ofendido '],
-            [ 'nombre' => 'VI. Traslado de la víctima o el ofendido y de sus descendientes a refugio, albergue o domicilio temporal'],
-            [ 'nombre' => 'VII. Reingreso de la víctima o el ofendido a su domicilio una vez que se salvaguarde su seguridad'],
-            [ 'nombre' => 'VIII. Registro o inscripción en programas estatales de desarrollo personal, social, educativo o laboral'],
-            [ 'nombre' => 'IX. Prohibición de realizar conductas de intimidación o molestia a la víctima o el ofendido o personas relacionadas con ellos'],
-            [ 'nombre' => 'X. Suspensión temporal al agresor del régimen de visitas y convivencia con sus descendientes'],
-            [ 'nombre' => 'XI. Posesión exclusiva de la víctima sobre el inmueble que sirvió de domicilio'],
-            [ 'nombre' => 'XII. Obligación alimentaria provisional e inmediata'],
-            [ 'nombre' => 'XIII. Las demás que determinen las disposiciones aplicables']
+        DB::table('cat_providencia_precautoria')->insert([
+            [ 'nombre' => 'I. VIGILANCIA EN EL DOMICILIO DE LA VÍCTIMA O EL OFENDIDO'],
+            [ 'nombre' => 'II. PROTECCIÓN POLICIAL DE LA VÍCTIMA O EL OFENDIDO'],
+            [ 'nombre' => 'III. AUXILIO INMEDIATO POR INTEGRANTES DE INSTITUCIONES POLICIALES, AL DOMICILIO DONDE SE ENCUENTRE O SE LOCALICE LA VÍCTIMA U OFENDIDO EN EL MOMENTO DE SOLICITARLO'],
+            [ 'nombre' => 'IV. AUXILIO DE LA FUERZA PÚBLICA PARA SOLICITAR LA INMEDIATA ENTREGA O DEVOLUCIÓN DE OBJETOS PERSONALES O DOCUMENTOS DE IDENTIFICACIÓN DE LA VÍCTIMA O EL OFENDIDO, ASÍ COMO DE SUS ASCENDIENTES, DESCENDIENTES O DEPENDIENTES ECONÓMICOS'],
+            [ 'nombre' => 'V. REALIZACIÓN DEL INVENTARIO DE LOS BIENES MUEBLES E INMUEBLES DE PROPIEDAD COMÚN, PROPIEDAD DE LA VÍCTIMA O RESPECTO DE LOS CUALES SEA TITULAR DE DERECHOS, INCLUYENDO LOS IMPLEMENTOS DE TRABAJO DE LA VÍCTIMA O EL OFENDIDO'],
+            [ 'nombre' => 'VI. TRASLADO DE LA VÍCTIMA O EL OFENDIDO Y DE SUS DESCENDIENTES A REFUGIO, ALBERGUE O DOMICILIO TEMPORAL'],
+            [ 'nombre' => 'VII. REINGRESO DE LA VÍCTIMA O EL OFENDIDO A SU DOMICILIO UNA VEZ QUE SE SALVAGUARDE SU SEGURIDAD'],
+            [ 'nombre' => 'VIII. REGISTRO O INSCRIPCIÓN EN PROGRAMAS ESTATALES DE DESARROLLO PERSONAL, SOCIAL, EDUCATIVO O LABORAL'],
+            [ 'nombre' => 'IX. PROHIBICIÓN DE REALIZAR CONDUCTAS DE INTIMIDACIÓN O MOLESTIA A LA VÍCTIMA O EL OFENDIDO O PERSONAS RELACIONADAS CON ELLOS'],
+            [ 'nombre' => 'X. SUSPENSIÓN TEMPORAL AL AGRESOR DEL RÉGIMEN DE VISITAS Y CONVIVENCIA CON SUS DESCENDIENTES'],
+            [ 'nombre' => 'XI. POSESIÓN EXCLUSIVA DE LA VÍCTIMA SOBRE EL INMUEBLE QUE SIRVIÓ DE DOMICILIO'],
+            [ 'nombre' => 'XII. OBLIGACIÓN ALIMENTARIA PROVISIONAL E INMEDIATA'],
+            [ 'nombre' => 'XIII. LAS DEMÁS QUE DETERMINEN LAS DISPOSICIONES APLICABLES']
         ]);
     }
 }

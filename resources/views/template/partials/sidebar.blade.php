@@ -160,7 +160,7 @@
 							<i class="nav-icon  fa fa-clock-o"></i>
 							<p>
 								Atencion rapida
-								{{-- <i class="fa fa-angle-left right"></i> --}}
+								<span class="badge badge-info right">{{countAtencion()}}</span>
 							</p>
 						</a>
 					</li>

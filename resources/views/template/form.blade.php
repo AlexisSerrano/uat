@@ -52,8 +52,7 @@
     <script src="{{asset('js/preregistro.js')}}"></script> 
     <script src="{{asset('js/selectsDirecciones.js')}}"></script>  
     <script src="{{asset('js/selects.js')}}"></script>
-     <script src="{{asset('js/scriptsform.js')}}"></script>  
-    
+     <script src="{{asset('js/scriptsform.js')}}"></script>
     <script>
     $.validate({
             lang : 'es'

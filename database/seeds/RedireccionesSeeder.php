@@ -12,16 +12,16 @@ class RedireccionesSeeder extends Seeder
     public function run()
     {
         DB::table('cat_redirecciones')->insert([
-            ['titulo' => 'Bufete Jurídico Asistencia UV','status' => '1'],
-            ['titulo' => 'Centro de Atención a Víctimas, Fiscalía General del Estado de Veracruz','status' => '1'],
-            ['titulo' => 'Sistema Nacional para el Desarrollo Integral de la Familia','status' => '1'],
-            ['titulo' => 'Sistema Estatal para el Desarrollo Integral de la Familia','status' => '1'],
-            ['titulo' => 'Defensoría Pública','status' => '1'],
-            ['titulo' => 'Dirección de participación ciudadana','status' => '1'],
-            ['titulo' => 'Centro estatal de justicia alternativa de veracruz','status' => '1'],
-            ['titulo' => 'Fiscalia coordinadora especializada en investigacion de deiltos contra mujeres, niños, niñas, familia y trata de personas','status' => '1'],
-            ['titulo' => 'La Comisión Nacional para la Protección y Defensa de los Usuarios de Servicios Financieros','status' => '1'],
-            ['titulo' => 'Fiscalía Especializada en Investigación de Delitos Ambientales y Contra los Animales','status' => '1'],
+            ['titulo' => 'BUFETE JURÍDICO ASISTENCIA UV'],
+            ['titulo' => 'CENTRO DE ATENCIÓN A VÍCTIMAS, FISCALÍA GENERAL DEL ESTADO DE VERACRUZ'],
+            ['titulo' => 'SISTEMA NACIONAL PARA EL DESARROLLO INTEGRAL DE LA FAMILIA'],
+            ['titulo' => 'SISTEMA ESTATAL PARA EL DESARROLLO INTEGRAL DE LA FAMILIA'],
+            ['titulo' => 'DEFENSORÍA PÚBLICA'],
+            ['titulo' => 'DIRECCIÓN DE PARTICIPACIÓN CIUDADANA'],
+            ['titulo' => 'CENTRO ESTATAL DE JUSTICIA ALTERNATIVA DE VERACRUZ'],
+            ['titulo' => 'FISCALIA COORDINADORA ESPECIALIZADA EN INVESTIGACION DE DEILTOS CONTRA MUJERES, NIÑOS, NIÑAS, FAMILIA Y TRATA DE PERSONAS'],
+            ['titulo' => 'LA COMISIÓN NACIONAL PARA LA PROTECCIÓN Y DEFENSA DE LOS USUARIOS DE SERVICIOS FINANCIEROS'],
+            ['titulo' => 'FISCALÍA ESPECIALIZADA EN INVESTIGACIÓN DE DELITOS AMBIENTALES Y CONTRA LOS ANIMALES'],
         ]);
     }
 }

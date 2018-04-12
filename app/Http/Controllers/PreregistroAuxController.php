@@ -320,7 +320,7 @@ class PreregistroAuxController extends Controller
     }
 
     public function showbymunicipio($id){
-        // dd($id);
+        //dd($id);
         $preregistros = DB::table('preregistros')
         ->join('domicilio', 'preregistros.idDireccion', '=', 'domicilio.id')
         ->where('domicilio.idMunicipio',$id)

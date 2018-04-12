@@ -23,7 +23,7 @@
                     {!! Form::text('segundo_ap', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'data-validation'=>'required']) !!}
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-12">
                 <div class="form-group">
                     {!! Form::label('redireccion', 'Modulo de atención', ['class' => 'col-form-label-sm']) !!}
                     {!! Form::select('redireccion', $modulos, null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}

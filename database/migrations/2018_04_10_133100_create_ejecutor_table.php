@@ -15,7 +15,7 @@ class CreateEjecutorTable extends Migration
     {
         Schema::create('ejecutor', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre', 50)->unique();
+            $table->string('nombre', 150)->unique();
             $table->string('status', 5)->default(1);
         });
     }

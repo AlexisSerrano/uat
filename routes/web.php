@@ -117,3 +117,5 @@ Route::post('addatencion', 'AtencionController@addAtencion')->name('addatencion'
 /*---------Medidas de protección------------*/
 Route::get('medidas', 'MedidasProteccionController@index');
 Route::post('addMedidas', 'MedidasProteccionController@addMedidas')->name('addMedidas');
+Route::get('getMedidas', 'MedidasProteccionController@getMedidas')->name('getMedidas');
+Route::get('deleteMedida/{id}', 'MedidasProteccionController@deleteMedida')->name('deleteMedida');
