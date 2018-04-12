@@ -84,8 +84,8 @@ Route::post('addnarracion', 'NarracionController@addNarracion');
 Route::get('getnarracion/{id}', 'NarracionController@getNarracion');
 Route::get('mostrardoc/{id}', 'NarracionController@mostrarDoc');
 /*---------Rutas denunciado-------------*/
-Route::get('denunciado', 'DenunciadoController@index')->name('carpeta');
-Route::get('adddenunciado', 'DenunciadoController@addDenunciado')->name('adddenunciado');
+Route::get('agregar-denunciado', 'DenunciadoController@showForm')->name('new.denunciado');
+Route::post('storedenunciado', 'DenunciadoController@storeDenunciado')->name('store.denunciado');
 
 /*---------Rutas de preregistro orientador-------------*/
 Route::get('preregistros', 'PreregistroAuxController@orientador');

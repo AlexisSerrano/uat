@@ -10,8 +10,10 @@
 	}else{
 		$registroDenunciante='btn btn-success';
 	}
-	if (!isset($registroDenunciado)){
+	if (count($denunciados)==0){
 		$registroDenunciado='btn btn-secondary';
+	}else{
+		$registroDenunciado='btn btn-success';
 	}
 	if (!isset($registroAbogado)){
 		$registroAbogado='btn btn-secondary';

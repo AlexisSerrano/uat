@@ -22,8 +22,10 @@
 	}else{
 		$registroDenunciante='btn btn-success';
 	}
-	if (!isset($registroDenunciado)){
+	if (count($denunciados)==0){
 		$registroDenunciado='btn btn-secondary';
+	}else{
+		$registroDenunciado='btn btn-success';
 	}
 	if (!isset($registroAbogado)){
 		$registroAbogado='btn btn-secondary';
@@ -50,7 +52,7 @@
 <div class="btn-group col">
 	
 	<a href="{{route('new.denunciante')}}" class="{{$registroDenunciante}} form-control">Denunciante</a>
-	<a  class="{{$registroDenunciado}} form-control">Denunciado</a>
+	<a href="{{route('new.denunciado')}}" class="{{$registroDenunciado}} form-control">Denunciado</a>
 	<a  class="{{$registroAbogado}} form-control">Abogado</a>
 	<a  class="{{$registroAutoridad}} form-control">Autoridad</a>
 	<a  class="{{$registroDelitos}} form-control">Delitos</a>
