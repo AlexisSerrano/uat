@@ -10,8 +10,10 @@
 	}else{
 		$registroDenunciante='btn btn-success';
 	}
-	if (!isset($registroDenunciado)){
+	if (count($denunciados)==0){
 		$registroDenunciado='btn btn-secondary';
+	}else{
+		$registroDenunciado='btn btn-success';
 	}
 	if (!isset($registroAbogado)){
 		$registroAbogado='btn btn-secondary';
@@ -48,7 +50,7 @@
 	<a href="{{route('narracion')}}" class="{{$registroDescripcion}} form-control">Descripción de hechos</a>
 </div>
   
-
+<input type="hidden" name="idCarpeta" value="{{session('carpeta')}}">
 <div id="page-content-wrapper">
 {{--  <span class="datotip" id="{{$tipopersona}}"></span> 	  --}}
 	

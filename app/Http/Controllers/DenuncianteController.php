@@ -67,6 +67,7 @@ public function showForm()
         //dd($idCarpeta);
         if(count($casoNuevo)>0){ 
             $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
+            $denunciados = CarpetaController::getDenunciados($idCarpeta);
             $escolaridades = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -78,6 +79,7 @@ public function showForm()
 
             return view('forms.denunciante')->with('idCarpeta', $idCarpeta)
                 ->with('denunciantes', $denunciantes)
+                ->with('denunciados', $denunciados)
                 ->with('escolaridades', $escolaridades)
                 ->with('estados', $estados)
                 ->with('estadoscivil', $estadoscivil)
@@ -97,6 +99,7 @@ public function showForm()
         $idCarpeta = session('carpeta');
         $carpeta = Carpeta::findOrFail($idCarpeta);
         $carpeta->delete();
+        session()->forget('carpeta');
         Alert::info('El caso a sido cancelado con exito.', 'Hecho')->persistent("Aceptar");
         return redirect(url('registros'));
     }

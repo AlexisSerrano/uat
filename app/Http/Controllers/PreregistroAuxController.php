@@ -152,10 +152,10 @@ class PreregistroAuxController extends Controller
         //dd($idCodigoPostalSelect);                     
         $persona= $preregistro->esEmpresa;//persona fisica o empresa
         if($persona==1){
-            return view('servicios.recepcion.forms.edit-empresa', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP' ));
+            return view('servicios.recepcion.forms.editconrecepcion-empresa', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP' ));
         }
         else{
-            return view('servicios.recepcion.forms.edit-persona', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP' ));
+            return view('servicios.recepcion.forms.editconrecepcion-persona', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP' ));
         }
     }
 
@@ -426,6 +426,7 @@ class PreregistroAuxController extends Controller
         $idCarpeta = $caso->id;
         
         $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
+        $denunciados = CarpetaController::getDenunciados($idCarpeta);
         $escolaridades = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -463,7 +464,8 @@ class PreregistroAuxController extends Controller
         ->with( 'nombreCP',  $nombreCP)
         ->with(  'tipopersona',  $tipopersona)
         ->with('idpreregistro',  $idpreregistro)
-        ->with('denunciantes', $denunciantes);
+        ->with('denunciantes', $denunciantes)
+        ->with('denunciados', $denunciados);
     }
 
     public function Traerturno(){

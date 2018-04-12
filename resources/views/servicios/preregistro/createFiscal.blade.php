@@ -103,9 +103,11 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
 @endsection
 
-@section('scripts')
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
-	<script src="{{ asset('js/scripts.js')}}"></script>
+@push('scripts')
+<script src="{{asset('js/preregistro.js')}}"></script> 
+
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>	
 	<script src="{{ asset('js/validation.js')}}"></script>
 	<script>
 		$(function () {
@@ -127,4 +129,4 @@
 
 
 	</script>
-@endsection
+@endpush

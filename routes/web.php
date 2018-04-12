@@ -56,14 +56,23 @@ Route::get('/devolver/{id}', 'PreregistroAuxController@devolverturno')->name('de
 /*****************************Rutas para modulo recepción****************************************/
 	
 
-Route::resource('/preregistro','PreregistroController');
+//Route::resource('/preregistro','PreregistroController');
+
+Route::get('/preregistro', 'PreregistroController@create')->name('preregistro.create'); //ver formulario
+Route::post('/preregistro/store', 'PreregistroController@store')->name('preregistro.store'); //registar
+
+
+
 Route::post('/showbyfolio', 'PreregistroAuxController@showbyfolio');
 Route::get('/showbyfolio', 'PreregistroAuxController@showbyfolio');
 Route::get('/showbymunicipio/{id}', 'PreregistroAuxController@showbymunicipio');
 Route::get('/encola', 'PreregistroAuxController@encola');
 Route::get('/urgentes', 'PreregistroAuxController@urgentes');
 
-Route::resource('/predenuncias','PreregistroAuxController');
+//Route::resource('/predenuncias','PreregistroAuxController');
+Route::get('/predenuncias', 'PreregistroAuxController@index')->name('predenuncias.index'); //ver formulario
+Route::get('/predenuncias/{id}/edit', 'PreregistroAuxController@edit')->name('predenuncias.edit'); //ver formulario
+Route::post('/predenuncias/{id}/update', 'PreregistroController@update')->name('predenuncias.update'); //registar
 
 
 Route::get('/preregistroWeb/pre-auxiliar', 'PreregistroAuxController@create'); //ver formulario
@@ -75,8 +84,8 @@ Route::post('addnarracion', 'NarracionController@addNarracion');
 Route::get('getnarracion/{id}', 'NarracionController@getNarracion');
 Route::get('mostrardoc/{id}', 'NarracionController@mostrarDoc');
 /*---------Rutas denunciado-------------*/
-Route::get('denunciado', 'DenunciadoController@index')->name('carpeta');
-Route::get('adddenunciado', 'DenunciadoController@addDenunciado')->name('adddenunciado');
+Route::get('agregar-denunciado', 'DenunciadoController@showForm')->name('new.denunciado');
+Route::post('storedenunciado', 'DenunciadoController@storeDenunciado')->name('store.denunciado');
 
 /*---------Rutas de preregistro orientador-------------*/
 Route::get('preregistros', 'PreregistroAuxController@orientador');

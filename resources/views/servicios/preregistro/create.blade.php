@@ -89,11 +89,16 @@
 			<div class="col-12">
 				<div class="col">
 					<label for="narracion" class="col-form-label-sm">Narración</label>
-					<textarea name="narracion" id="narracion" cols="30" rows="10" class="form-control form-control-sm" required=>
+					@if(isset($form['narracion']))
+						{{ Form::textarea('narracion', $form['narracion'], ['class' => 'form-control form-control-sm', 'size' => '30x10', 'required']) }}
+					@else
+						{{ Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'size' => '30x10', 'required']) }}
+					@endif
+					{{-- <textarea name="narracion" id="narracion" cols="30" rows="10" class="form-control form-control-sm" required=>
 						@if(isset($form['narracion']))
 							{{$form['narracion']}}
 						@endif
-					</textarea>
+					</textarea> --}}
 				</div>
 			</div>
 		</div>
@@ -174,9 +179,10 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
 @endsection
 
-@section('scripts')
+@push('scripts')
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
 	<script src="{{ asset('js/scripts.js')}}"></script>
+	<script src="{{asset('js/preregistro.js')}}"></script> 
 	<script>
 		$(function () {
 			$('#fechanac').datetimepicker({
@@ -216,4 +222,4 @@ function validar(){
 }
 
 	</script>
-@endsection
+@endpush
