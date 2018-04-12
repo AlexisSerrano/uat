@@ -97,7 +97,7 @@
 		</div>
 	</div>
 
-
+	<input type="hidden" name="idCarpeta" value="{{session('carpeta')}}">
 
 
 

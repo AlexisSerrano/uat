@@ -50,7 +50,7 @@
 	<a href="{{route('narracion')}}" class="{{$registroDescripcion}} form-control">Descripción de hechos</a>
 </div>
   
-
+<input type="hidden" name="idCarpeta" value="{{session('carpeta')}}">
 <div id="page-content-wrapper">
 {{--  <span class="datotip" id="{{$tipopersona}}"></span> 	  --}}
 	

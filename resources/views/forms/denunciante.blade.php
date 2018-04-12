@@ -66,6 +66,7 @@
 	{{--  <div id="page-content-wrapper">  --}}
 {{--  <span class="datotip" id="{{$tipopersona}}"></span> 	  --}}
 	
+	<input type="hidden" name="idCarpeta" value="{{session('carpeta')}}">
 	<div class="col-md-12">
 		<br>
 		<nav>
