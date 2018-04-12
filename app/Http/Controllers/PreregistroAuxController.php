@@ -424,6 +424,9 @@ class PreregistroAuxController extends Controller
         $caso->fechaDeterminacion = Carbon::now();
         $caso->save();
         $idCarpeta = $caso->id;
+
+        session(['carpeta' => $idCarpeta]);
+            
         
         $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
         $denunciados = CarpetaController::getDenunciados($idCarpeta);

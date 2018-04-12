@@ -13,10 +13,12 @@ class NarracionController extends Controller
     public function index(){
         $carpeta = session('carpeta');
         $denunciantes = CarpetaController::getDenunciantes($carpeta);
+        $denunciados = CarpetaController::getDenunciados($carpeta);
         $narraciones = Narracion::where('idCarpeta',$carpeta)->orderby('created_at','desc')->get();
         $ultimo = Narracion::where('idCarpeta',$carpeta)->where('tipo','0')->orderby('created_at','desc')->first();
-        return view("orientador.hechos-orientador")
+        return view("forms.hechos-orientador")
         ->with("denunciantes",$denunciantes)
+        ->with("denunciados",$denunciados)
         ->with("ultimo",$ultimo)
         ->with('narraciones',$narraciones);
     }
