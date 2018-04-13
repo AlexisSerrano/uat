@@ -60,7 +60,7 @@
 						<a href="#" class="nav-link">
 							<i class="nav-icon fa fa-user-o"></i>
 							<p>
-								Recepcion
+								Recepción
 								<i class="right fa fa-angle-left"></i>
 							</p>
 						</a>
@@ -122,7 +122,7 @@
 						<li class="nav-item has-treeview">
 							<a href="{{url('crear-caso')}}" class="nav-link">
 								<i class="fa fa-folder-open nav-icon"></i>
-								<p>Nuevo Caso</p>
+								<p>Nuevo caso</p>
 							</a>
 						</li>
 						
@@ -135,7 +135,7 @@
 							{{-- <span class="bagde">{{countAtencion()}}</span> --}}
 							<i class="nav-icon  fa fa-clock-o"></i>
 							<p>
-								Atencion rapida
+								Atención rápida
 								<span class="badge badge-info right">{{countAtencion()}}</span>
 							</p>
 						</a>

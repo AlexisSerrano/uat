@@ -16,7 +16,7 @@
 </div>
 <div class="col-4">
 	<div class="form-group">
-		{!! Form::label('idRazon', 'Razon:', ['class' => 'col-form-label-sm']) !!}
+		{!! Form::label('idRazon', 'Razón:', ['class' => 'col-form-label-sm']) !!}
 		{!! Form::select('idRazon', $razones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una razón', 'required']) !!}
 	</div>
 </div>

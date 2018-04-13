@@ -8,6 +8,7 @@
 		padding: 5px;
 		background-color: #eef5ee;
 	}
+		
 	</style>
 @endsection
 @section('title', 'Descripción de los hechos')
@@ -16,10 +17,11 @@
 
 @include('fields.buttons-navegacion')
 
-<div class="card">
+{{-- <div class="card"> --}}
 	@include('fields.errores')
 	<br>
 	<div class="container" >
+		<br>
 		<div class="row">
 			<div class="col 3">
 				<table class="table table-striped table-bordered table-hover text-center">
@@ -63,16 +65,20 @@
 						<textarea name="narracion" id="areaNarracion" cols="30" rows="10" class="form-control form-control-sm">@if($ultimo != null){{ $ultimo->narracion}} @endif</textarea>
 						<div id="divText" style="display:none"></div>
 					</div>
-					<div class="input-group mb-3">
-						<div class="input-group-prepend">
+					{{-- <div class="input-group mb-3"> --}}
+						{{-- <div class="input-group-prepend">
 							<span class="input-group-text">Subir archivo</span>
-						</div>
-						<div class="custom-file">
-							<input type="file" class="custom-file-input" id="inputGroupFile01" name="file">
+						</div> --}}
+						{{-- <div class="custom-file">
+							<input type="file" class="custom-file-input" id="inputGroupFile01" name="file" data-validation-allow = "pdf,docx,xlsx">
+							
 							<label class="custom-file-label" for="inputGroupFile01" value={{'input[type =>file]'}}></label>
-						</div>
-					</div>
-					<div class="form-group text-center">
+
+						</div> --}}
+						<input id="input-id" type="file" class="file" name="file" data-preview-file-type="text">
+					{{-- </div> --}}
+					<br>
+					<div class="form-group text-right">
 						<button type="submit" class="btn btn-primary">Guardar</button>
 					</div>
 				</form>
@@ -82,20 +88,21 @@
 
 		</div>
 	</div>
-</div>
+{{-- </div> --}}
 @endsection
 
 @push('scritps')
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
 
+$.validate({
+  modules : 'file'
+});
 
-	$(document).ready(function(){
-        $('input[type="file"]').change(function(e){
-            var fileName = e.target.files[0].name;
-            alert('The file "' + fileName +  '" has been selected.');
-        });
-    });
+$("#input-id").fileinput();
+$("#input-id").fileinput({'showUpload':false, 'previewFileType':'any'});
+
+
 </script>
 	
 @endpush

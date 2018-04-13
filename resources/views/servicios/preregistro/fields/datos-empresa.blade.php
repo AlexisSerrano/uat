@@ -20,7 +20,7 @@
 	<!--Representante legal-->
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('repLegal', 'Representante Legal', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
+			{!! Form::label('repLegal', 'Representante legal', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
 			{!! Form::text('repLegal', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}
 			<div class="help-block with-errors"></div> 
 		</div>
@@ -61,7 +61,7 @@
 	</div>
 	<div class="col-2">
 		<div class="form-group">
-			{!! Form::label('cp1', 'Código Postal', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::label('cp1', 'Código postal', ['class' => 'col-form-label-sm']) !!}
 			@if(isset($form['catCodigoPostal'],$form['cp1']))
 			{!! Form::select('cp1', $form['catCodigoPostal'], $form['cp1'], ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
 			@else

@@ -15,6 +15,6 @@
                 </label>
             </div>
             <div class="invalid-feedback">
-                Debes seleccionar alguno.
+                Debe seleccionar alguno.
             </div>
         </div>

@@ -70,7 +70,7 @@ class MedidasProteccionController extends Controller
             Alert::success('Medida de protección creada con éxito', 'Hecho')->persistent("Aceptar");
         }
         else{
-            Alert::error('Se presento un problema al crear su medida de protección', 'Error');
+            Alert::error('Se presentó un problema al crear su medida de protección', 'Error');
         }
         return redirect("medidas");
     }
@@ -95,7 +95,7 @@ class MedidasProteccionController extends Controller
             Alert::success('Medida de protección eliminada con éxito', 'Hecho')->persistent("Aceptar");
         }
         else{
-            Alert::error('Se presento un problema al eliminar su medida de protección', 'Error');
+            Alert::error('Se presentó un problema al eliminar su medida de protección', 'Error');
         }
         return redirect("medidas");
     }

@@ -7,6 +7,6 @@
     <title>MENSAJE DE fISCALIA</title>
 </head>
 <body>
-    <h1>Hola desde aqui</h1>
+    <h1>Hola desde aquí</h1>
 </body>
 </html>

@@ -208,7 +208,7 @@ class RegistrosCasoController extends Controller
             $preregistro->save();
             $id = $preregistro->id;   
         }
-        Alert::success('Registro modificado con exito','Hecho');
+        Alert::success('Registro modificado con éxito','Hecho');
         return redirect('registros/'.$id.'/edit');
     }
 

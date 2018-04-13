@@ -6,8 +6,8 @@
                 <table class="table table-striped" id="tablaprovidencias">
                     <thead>
                         <th width="25%">Tipo de medida</th>
-                        <th>Fecha Inicio</th>
-                        <th>Fecha Final</th>
+                        <th>Fecha inicio</th>
+                        <th>Fecha final</th>
                         <th>Ejecuta</th>
                         <th>Persona</th>
                         <th>Observaciones</th>

@@ -9,7 +9,7 @@
 		</div>
 		<div class="col-4">
 			<div class="form-group">
-				{!! Form::label('idMunicipio', 'MuniciLLpio', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::label('idMunicipio', 'Municipio', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::select('idMunicipio', [''=>'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm', 'data-validation'=> 'required']) !!}
 			</div>
 		</div>
@@ -75,7 +75,7 @@
 		</div>
 		<div class="col-2">
 			<div class="form-group">
-				{!! Form::label('cp', 'Código Postal', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::label('cp', 'Código postal', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::select('cp', ['' => 'Seleccione un código postal'], null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
 			</div>
 		</div>
