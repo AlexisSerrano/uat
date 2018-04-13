@@ -72,6 +72,7 @@ Route::get('/showbymunicipio/{id}', 'PreregistroAuxController@showbymunicipio');
 Route::get('/encola', 'PreregistroAuxController@encola');
 Route::get('/urgentes', 'PreregistroAuxController@urgentes');
 Route::get('/estado/{id}/{tipo}', 'PreregistroController@estado');
+Route::post('/estado', 'PreregistroController@estadourgente');
 
 //Route::resource('/predenuncias','PreregistroAuxController');
 Route::get('/predenuncias', 'PreregistroAuxController@index')->name('predenuncias.index'); //ver formulario

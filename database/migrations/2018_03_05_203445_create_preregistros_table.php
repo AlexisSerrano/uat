@@ -31,11 +31,12 @@ class CreatePreregistrosTable extends Migration
             $table->string('numDocIdentificacion',50)->nullable();
             $table->boolean('conViolencia')->default(false);
             $table->string('narracion', 2000);
-            $table->string('folio',20)->unique();
+            $table->string('folio',15)->unique();
             $table->string('representanteLegal',100)->default("SIN INFORMACION");
             $table->integer('statusCancelacion')->default(0);
             $table->boolean('statusOrigen')->default(0);
             $table->integer('statusCola')->nullable();
+            $table->string('nota',255)->nullable();
             $table->dateTime('horaLlegada')->nullable();
             $table->integer('unidad')->nullable();
             $table->integer('zona')->nullable();

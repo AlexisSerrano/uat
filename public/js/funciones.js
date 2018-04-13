@@ -108,4 +108,4 @@ function getRandValue(){
 	});
 }
 
-setInterval(getRandValue, 3000);
+//setInterval(getRandValue, 3000);

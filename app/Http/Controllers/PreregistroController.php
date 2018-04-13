@@ -399,4 +399,21 @@ class PreregistroController extends Controller
         }
       }
 
+      public function estadourgente(Request $request){
+        $justificacion = $request->justificacion;
+        $preregistro = $request->preregistro;
+        $tipo = $request->tipo;
+        $estado = Preregistro::find($preregistro);
+        $estado->statusCancelacion = 1;
+        $estado->statusCola = $tipo;
+        $estado->nota = $justificacion;
+        $estado->horaLlegada = now();
+        if($estado->save()){
+            echo 1;
+        }
+        else{
+            echo 0;
+        }
+    }
+
 }
