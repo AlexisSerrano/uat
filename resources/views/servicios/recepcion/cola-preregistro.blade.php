@@ -9,7 +9,7 @@
 			    <span class="navbar-toggler-icon"></span>
 			  	</button>
 			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			    	<ul class="navbar-nav mr-auto">
+			    	{{-- <ul class="navbar-nav mr-auto">
 			      		<li class="nav-item active">
 			        	<a class="nav-link" href="{{url('predenuncias')}}">
 			        		<button class="btn btn-outline-secondary">Todos</button>
@@ -25,7 +25,7 @@
 			        			<button class="btn btn-outline-secondary">Urgentes</button>
 			        		</a>
 			      		</li>
-			    	</ul>
+			    	</ul> --}}
 			    	<form class="form-inline my-2 my-lg-0" method="POST" action="{{ url('showbyfolio') }}">
 			    		@csrf
 			      		<input class="form-control mr-sm-2" type="text" name="folio" id="folio" placeholder="Buscar" aria-label="Buscar">
