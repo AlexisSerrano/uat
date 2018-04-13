@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(NacionalidadSeeder::class);
         $this->call(EtniaSeeder::class);
         $this->call(LenguaSeeder::class);
+        $this->call(ModalidadSeeder::class);
+        $this->call(DelitosSeeder::class);
          
         
         $this->call(EstadoSeeder::class);
@@ -66,7 +68,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PruebaSeeder::class);
         $this->call(GroupSeeder::class);
         $this->call(RedireccionesSeeder::class);
-		$this->call(DelitosSeeder::class);
         $this->call(LugarSeeder::class);
 
         $this->call(ProvidenciasSeeder::class);
