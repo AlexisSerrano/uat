@@ -287,6 +287,15 @@ class PreregistroController extends Controller
             $preregistro->save();
             $id = $preregistro->id;
             
+            if (!is_null($request->correo2)) {
+                $correo2 = $request->correo2;
+                session(['idpreregistro' => $id]);
+                Mail::to($correo2)->send(new sendMail());
+                // Mail::to($correo)->send(new EnviarCorreo($id));
+                // Mail::to($correo)->send('FormatoRegistro/'.$id);
+
+            }   
+            
         }elseif($request->esEmpresa==1){
             $domicilio = new Domicilio();
             if (!is_null($request->idMunicipio1)){
@@ -329,7 +338,16 @@ class PreregistroController extends Controller
             $id = $preregistro->id;
             
             
-            
+            // return view('Email.emailmodel');
+        if (!is_null($request->correo)) {
+            $correo = $request->correo;
+            session(['idpreregistro' => $id]);
+            Mail::to($correo)->send(new sendMail());
+            // Mail::to($correo)->send(new EnviarCorreo($id));
+            // Mail::to($correo)->send('FormatoRegistro/'.$id);
+                
+        }
+        
         }
        
         return redirect('FormatoRegistro/'.$id);
