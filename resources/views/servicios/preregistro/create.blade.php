@@ -109,59 +109,7 @@
 				<div class="col">   
 					<div class="text-right">
 							<a href="http://fiscaliaveracruz.gob.mx/" title="" class="btn  button button1">Cancelar</a>
-
-						<!--   Empieza el modal -->
-						
-{{-- <div class="container">
-	{{-- <h2>Modal Example</h2>
-	<!-- Button to Open the Modal --> --}} 
-	<button type="button" class="btn  button button1" data-toggle="modal" data-target="#myModal">
-	 Guardar
-	</button>
-  
-	<!-- The Modal -->
-	<div class="modal fade" id="myModal">
-	  <div class="modal-dialog">
-		<div class="modal-content">
-		
-		  <!-- Modal Header -->
-		 
-		  <div class="modal-header">
-			<h4 class="modal-title">Formulario de Contacto</h4>
-			<button type="button" class="close" data-dismiss="modal">&times;</button>
-		  </div>
-		  
-		  <!-- Modal body -->
-		  <div class="modal-body">
-			  <div class="form-group">
-		<label for="usr">Escribe tu correo:</label>
-		{!! Form::email('correo', null, ['class' => 'form-control form-control-sm emailc', 'placeholder' => 'Ingrese un correo' , 'onkeyup'=>'validar()']) !!}
-		</div>
-		{{-- , 'onkeyup'=>'validar()', 'disabled'=>'true' --}}
-			
-		  </div>
-		  <!-- Modal footer -->
-			
-		  <div class="modal-footer">
-				{!!Form::submit('Prefiero que no me envien nada',array('class' => 'btn  button button1'))!!}
-
-				{!!Form::submit('Enviar',array('class' => 'btn  button button1 botonvalidar' ))!!}
-
-				
-			
-				{{-- <button type="button" class="btn btn-default" data-dismiss="modal">Prefiero que no me envien nada</button> --}}
-				
-		  </div>
-		  
-		</div>
-	  </div>
-	</div>
-	
-  {{-- </div> --}}
-  		<!--   termina el modal -->
-
-
-
+							{!!Form::submit('Guardar',array('class' => 'btn  button button1'))!!}
 
 						
 					

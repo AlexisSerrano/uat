@@ -168,7 +168,12 @@
 				{!! Form::select('idRazon2', $razones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una razón','data-validation'=>'required']) !!}
 		</div>
 	</div>
-
+	<div class="col-4">
+		<div class="form-group">
+			 {!! Form::label('correo2', 'Correo:', ['class' => 'col-form-label-sm']) !!}
+			 {!! Form::email('correo2', null, ['class' => 'form-control form-control-sm emailc', 'placeholder' => 'Si desea recibir su folio por email' ]) !!}
+		 </div>
+	 </div>
 
 </div>
 
