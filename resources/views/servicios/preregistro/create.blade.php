@@ -108,14 +108,14 @@
 				
 				<div class="col">   
 					<div class="text-right">
-							<a href="http://fiscaliaveracruz.gob.mx/" title="" class="btn  button button1">Cancelar</a>
+							<a href="http://fiscaliaveracruz.gob.mx/" title="" class="btn btn-primary">Cancelar</a>
 
 						<!--   Empieza el modal -->
 						
 {{-- <div class="container">
 	{{-- <h2>Modal Example</h2>
 	<!-- Button to Open the Modal --> --}} 
-	<button type="button" class="btn  button button1" data-toggle="modal" data-target="#myModal">
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
 	 Guardar
 	</button>
   
@@ -143,9 +143,9 @@
 		  <!-- Modal footer -->
 			
 		  <div class="modal-footer">
-				{!!Form::submit('Prefiero que no me envíen nada',array('class' => 'btn  button button1'))!!}
+				{!!Form::submit('Prefiero que no me envíen nada',array('class' => 'btn btn-primary'))!!}
 
-				{!!Form::submit('Enviar',array('class' => 'btn  button button1 botonvalidar' ))!!}
+				{!!Form::submit('Enviar',array('class' => 'btn btn-primary botonvalidar' ))!!}
 
 				
 			

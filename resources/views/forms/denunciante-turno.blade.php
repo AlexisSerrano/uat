@@ -15,17 +15,17 @@
 			
 			<div class="nav nav-tabs color-nav-tab" id="nav-tab" role="tablist">
 				{{--  datos personales  --}}
-				<a class="nav-item nav-link active color-nav-tab" id="personales-tab" data-toggle="tab" href="#personales" role="tab" aria-controls="nav-personales" aria-selected="true">Datos personales <span><i class="fa fa-address-card-o"></i></span></a>
+				<a class="nav-item nav-link active color-nav-tab" id="personales-tab" data-toggle="tab" href="#personales" role="tab" aria-controls="nav-personales" aria-selected="true">Datos personales <span><i class="fa fa-angle-down"></i></span></a>
 				{{--  Datos del Direccion particular--}}
-				<a class="nav-item nav-link color-nav-tab" id="direccion-tab" data-toggle="tab" href="#direccion" role="tab" aria-controls="nav-direccion" aria-selected="false">Domicilio <span><i class="fa fa-check-circle"></i></span> </a>
+				<a class="nav-item nav-link color-nav-tab" id="direccion-tab" data-toggle="tab" href="#direccion" role="tab" aria-controls="nav-direccion" aria-selected="false">Domicilio <span><i class="fa fa-angle-down"></i></i></span> </a>
 				{{--  Direccion Trabajo del trabajo--}}
 				@if ($tipopersona==0)	
-					<a class="nav-item nav-link color-nav-tab" id="dirTrabajo-tab" data-toggle="tab" href="#dirTrabajo" role="tab" aria-controls="dirTrabajo" aria-selected="false">Datos del trabajo <span><i class="fa fa-check-circle"></i></span> </a>
+					<a class="nav-item nav-link color-nav-tab" id="dirTrabajo-tab" data-toggle="tab" href="#dirTrabajo" role="tab" aria-controls="dirTrabajo" aria-selected="false">Datos del trabajo <span><i class="fa fa-angle-down"></i></i></span> </a>
 				@endif
 				{{-- Domicilio Notificaciones--}}
-				<a class="nav-item nav-link" id="dirNotificaciones-tab" data-toggle="tab" href="#dirNotificaciones" role="tab" aria-controls="dirNotificaciones" aria-selected="false">Domicilio para notificaciones <span><i class="fa fa-home"></i></span></a>
+				<a class="nav-item nav-link" id="dirNotificaciones-tab" data-toggle="tab" href="#dirNotificaciones" role="tab" aria-controls="dirNotificaciones" aria-selected="false">Domicilio para notificaciones <span><i class="fa fa-angle-down"></i></span></a>
 				{{-- Informacion deninciante  --}}
-				<a class="nav-item nav-link" id="dirDenunciante-tab" data-toggle="tab" href="#dirDenunciante" role="tab" aria-controls="dirDenunciante" aria-selected="false">Datos del denunciante <span><i class="fa fa-archive"></i></span></a>	 	
+				<a class="nav-item nav-link" id="dirDenunciante-tab" data-toggle="tab" href="#dirDenunciante" role="tab" aria-controls="dirDenunciante" aria-selected="false">Datos del denunciante <span><i class="fa fa-angle-down"></i></span></a>	 	
 			</div>
 		</nav>
 		{{-- personales-orientador --}}
@@ -45,10 +45,10 @@
 				<div>
 					<div class="row">
 						<div class="col text-left">
-							<a href="{{route('devolver', $idpreregistro)}}" class="btn button button1">Devolver turno</a>
+							<a href="{{route('devolver', $idpreregistro)}}" class="btn btn-primary">Devolver turno</a>
 						</div>
 						<div class="col text-right">
-							<a id=Adireccion  class="btn button button1">Siguiente</a>
+							<a id=Adireccion  class="btn btn-primary">Siguiente</a>
 						</div>
 					</div>
 				</div>
@@ -59,16 +59,16 @@
 				<div>
 					<div class="row">
 						<div class="col text-left">
-							<a href="{{route('devolver', $idpreregistro)}}" class="btn button button1">Devolver turno</a>
+							<a href="{{route('devolver', $idpreregistro)}}" class="btn btn-primary">Devolver turno</a>
 						</div>
 			
 						@if ($tipopersona==0)
 							<div class="col text-right">
-								<a id=Atrabajo class="btn button button1">Siguiente</a>
+								<a id=Atrabajo class="btn btn-primary">Siguiente</a>
 							</div>
 						@else
 							<div class="col text-right">
-								<a id="ANotificaciones2" class="btn button button1">Siguiente</a>
+								<a id="ANotificaciones2" class="btn btn-primary">Siguiente</a>
 							</div>
 						@endif
 
@@ -81,10 +81,10 @@
 					@include('fields.lugartrabajo')
 					<div class="row menu">
 						<div class="col text-left">
-							<a href="{{route('devolver', $idpreregistro)}}" class="btn button button1">Devolver turno</a>
+							<a href="{{route('devolver', $idpreregistro)}}" class="btn btn-primary">Devolver turno</a>
 						</div>
 						<div class="col text-right">
-							<a id="ANotificaciones" class="btn button button1">Siguiente</a>
+							<a id="ANotificaciones" class="btn btn-primary">Siguiente</a>
 						</div>
 					</div>
 				</div>
@@ -94,10 +94,10 @@
 				@include('fields.notificaciones')
 				<div class="row menu">
 					<div class="col text-left">
-						<a href="{{route('devolver', $idpreregistro)}}" class="btn button button1">Devolver turno</a>
+						<a href="{{route('devolver', $idpreregistro)}}" class="btn btn-primary">Devolver turno</a>
 					</div>
 					<div class="col text-right">
-						<a id="Adenunciante" class="btn button button1">Siguiente</a>
+						<a id="Adenunciante" class="btn btn-primary">Siguiente</a>
 					</div>
 				</div>
 			</div>
@@ -107,10 +107,10 @@
 				<div>
 					<div class="row menu">
 						<div class="col text-left">
-							<a href="{{url('devolver/'.$idpreregistro)}}" class="btn button button1">Devolver turno</a>
+							<a href="{{url('devolver/'.$idpreregistro)}}" class="btn btn-primary">Devolver turno</a>
 						</div>
 						<div class="col text-right">
-							{!!Form::submit('Guardar',array('class' => 'btn  button button1','id'=>'guardarDenunciante'))!!}
+							{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!}
 						</div>
 					</div>
 				</div>
@@ -193,7 +193,6 @@
 		$('#dirNotificaciones').addClass("active");
 		$('#dirNotificaciones').addClass("show");
 	});
-
 	$('#Adenunciante').click(function(){
 		//toastr.info('3');
 		//Quito la clase active al tab actual

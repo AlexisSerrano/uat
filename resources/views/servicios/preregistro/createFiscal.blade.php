@@ -86,8 +86,8 @@
 				
 				<div class="col">   
 					<div class="text-right">
-							<a href="http://fiscaliaveracruz.gob.mx/" title="" class="btn  button button1">Cancelar</a>
-							{!!Form::submit('Guardar',array('class' => 'btn  button button1'))!!}
+							<a href="http://fiscaliaveracruz.gob.mx/" title="" class="btn btn-primary">Cancelar</a>
+							{!!Form::submit('Guardar',array('class' => 'btn btn-primary'))!!}
 					
 					</div>
 				</div>
