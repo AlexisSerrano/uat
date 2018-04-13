@@ -59,7 +59,7 @@
          <body>
 
             <div class="row">    
-                <div class="col-sm-1"><img src="{{ url('/img/FGE-icon.png') }}"  class="item" alt="">
+                <div class="col-sm-1"><img src="{{ url('http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png') }}"  class="item" alt="">
                 </div>
             </div>  
            
