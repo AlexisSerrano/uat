@@ -65,10 +65,10 @@ public function showForm()
 
         $idCarpeta=session('carpeta');
         //dd($idCarpeta);
-        if (is_null($idCarpeta)) {
-            Alert::error('No puede acceder a este modulo sin un caso en especifico', 'Error')->persistent("Aceptar");
-            return redirect('registros');
-        }
+        // if (is_null($idCarpeta)) {
+        //     Alert::error('No puede acceder a este modulo sin un caso en especifico', 'Error')->persistent("Aceptar");
+        //     return redirect('registros');
+        // }
         $casoNuevo = Carpeta::where('id', $idCarpeta)->get();
         //dd($idCarpeta);
         if(count($casoNuevo)>0){ 
