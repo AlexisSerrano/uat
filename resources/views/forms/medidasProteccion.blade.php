@@ -1,6 +1,6 @@
 @extends('template.form')
 @section('content') 
-@section('title','Medidas de Protección')
+@section('title','Medidas de protección')
 @include('fields.errores')
 {!!Form::open(['route' => 'addMedidas'])!!}
 
@@ -31,7 +31,7 @@
 
             <div class="col-6">
             <div class="form-group">
-                {!! Form::label('fechaInicio', 'Fecha Inicial', ['class' => 'col-form-label-sm']) !!}
+                {!! Form::label('fechaInicio', 'Fecha inicial', ['class' => 'col-form-label-sm']) !!}
                     <div class="input-group date" id="fechaInicio" data-target-input="nearest">
                         {{-- {!! Form::text('fechaInicio', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaInicio','data-validation'=>'required', 'placeholder' => 'DD/MM/AAAA']) !!} --}}
 
@@ -42,7 +42,7 @@
                 </div>
             <div class="col-6">
                 <div class="form-group">
-                {!! Form::label('fechaFinal', 'Fecha Final', ['class' => 'col-form-label-sm']) !!}
+                {!! Form::label('fechaFinal', 'Fecha final', ['class' => 'col-form-label-sm']) !!}
                     <div class="input-group date" id="fechaFinal" data-target-input="nearest">
                         {{-- {!! Form::text('fechaFinal', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaFinal','data-validation'=>'required', 'placeholder' => 'DD/MM/AAAA']) !!} --}}
                     

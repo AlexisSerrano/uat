@@ -45,7 +45,7 @@
 				<div>
 					<div class="row">
 						<div class="col text-left">
-							<a href="{{route('devolver', $idpreregistro)}}" class="btn button button1">Devolver Turno</a>
+							<a href="{{route('devolver', $idpreregistro)}}" class="btn button button1">Devolver turno</a>
 						</div>
 						<div class="col text-right">
 							<a id=Adireccion  class="btn button button1">Siguiente</a>
@@ -59,7 +59,7 @@
 				<div>
 					<div class="row">
 						<div class="col text-left">
-							<a href="{{route('devolver', $idpreregistro)}}" class="btn button button1">Devolver Turno</a>
+							<a href="{{route('devolver', $idpreregistro)}}" class="btn button button1">Devolver turno</a>
 						</div>
 			
 						@if ($tipopersona==0)
@@ -81,7 +81,7 @@
 					@include('fields.lugartrabajo')
 					<div class="row menu">
 						<div class="col text-left">
-							<a href="{{route('devolver', $idpreregistro)}}" class="btn button button1">Devolver Turno</a>
+							<a href="{{route('devolver', $idpreregistro)}}" class="btn button button1">Devolver turno</a>
 						</div>
 						<div class="col text-right">
 							<a id="ANotificaciones" class="btn button button1">Siguiente</a>
@@ -94,7 +94,7 @@
 				@include('fields.notificaciones')
 				<div class="row menu">
 					<div class="col text-left">
-						<a href="{{route('devolver', $idpreregistro)}}" class="btn button button1">Devolver Turno</a>
+						<a href="{{route('devolver', $idpreregistro)}}" class="btn button button1">Devolver turno</a>
 					</div>
 					<div class="col text-right">
 						<a id="Adenunciante" class="btn button button1">Siguiente</a>
@@ -107,7 +107,7 @@
 				<div>
 					<div class="row menu">
 						<div class="col text-left">
-							<a href="{{url('devolver/'.$idpreregistro)}}" class="btn button button1">Devolver Turno</a>
+							<a href="{{url('devolver/'.$idpreregistro)}}" class="btn button button1">Devolver turno</a>
 						</div>
 						<div class="col text-right">
 							{!!Form::submit('Guardar',array('class' => 'btn  button button1','id'=>'guardarDenunciante'))!!}

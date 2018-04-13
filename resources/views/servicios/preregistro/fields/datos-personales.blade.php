@@ -110,7 +110,7 @@
     </div>
     <div class="col-2">
         <div class="form-group">
-			{!! Form::label('cp2', 'Código Postal', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::label('cp2', 'Código postal', ['class' => 'col-form-label-sm']) !!}
 			@if(isset($form['catCodigoPostal'],$form['cp2']))
             {!! Form::select('cp2', $form['catCodigoPostal'], $form['cp2'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
 			@else
@@ -150,7 +150,7 @@
     <div class="col-4">
         <div class="form-group">
             {!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
-            {!! Form::text('docIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificacion','data-validation'=>'required']) !!}
+            {!! Form::text('docIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificación','data-validation'=>'required']) !!}
             <div class="help-block with-errors"></div>
         </div>
     </div>

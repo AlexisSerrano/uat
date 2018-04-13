@@ -40,7 +40,7 @@ class DenuncianteController extends Controller
             Alert::success('Caso iniciado con éxito', 'Hecho')->persistent("Aceptar");
             return redirect()->route('new.denunciante');
         } else {
-            Alert::warning('Tienen un caso en curso debe de terninarlo o cancelarlo para iniciar un nuevo caso', 'Advertencia')->persistent("Aceptar");
+            Alert::warning('Tiene un caso en curso debe terminarlo o cancelarlo para iniciar uno nuevo', 'Advertencia')->persistent("Aceptar");
             return redirect()->back()->withInput();
         }
         
@@ -106,13 +106,13 @@ public function showForm()
     public function cancelarCaso(){
         $idCarpeta = session('carpeta');
         if(is_null($idCarpeta)){
-            Alert::info('No tiene ningun caso en proceso.', 'Advertiencia')->persistent("Aceptar");
+            Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia')->persistent("Aceptar");
             return redirect(url('registros'));    
         }
         $carpeta = Carpeta::find($idCarpeta);
         $carpeta->delete();
         session()->forget('carpeta');
-        Alert::info('El caso a sido cancelado con exito.', 'Hecho')->persistent("Aceptar");
+        Alert::info('El caso ha sido cancelado con éxito.', 'Hecho')->persistent("Aceptar");
         return redirect(url('registros'));
     }
 

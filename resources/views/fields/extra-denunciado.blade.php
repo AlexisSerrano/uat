@@ -19,8 +19,8 @@
 			</div>
 			<div class="col-3">
 				<div class="form-group">
-					{!! Form::label('personasBajoSuGuarda', 'Personas bajo su guarda', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::number('personasBajoSuGuarda', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de personas bajo su guarda', 'min' => 0, 'required']) !!}
+					{!! Form::label('personasBajoSuGuarda', 'Personas bajo su guardia', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::number('personasBajoSuGuarda', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de personas bajo su guardia', 'min' => 0, 'required']) !!}
 				</div>
 			</div>
 			<div class="col-3">

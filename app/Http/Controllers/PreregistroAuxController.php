@@ -254,7 +254,7 @@ class PreregistroAuxController extends Controller
             $preregistro->save();
             $id = $preregistro->id;   
         }
-        Alert::success('Registro modificado con exito','Hecho');
+        Alert::success('Registro modificado con éxito','Hecho');
         return redirect('predenuncias/'.$id.'/edit');
     }
 

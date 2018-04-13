@@ -143,7 +143,7 @@
 		  <!-- Modal footer -->
 			
 		  <div class="modal-footer">
-				{!!Form::submit('Prefiero que no me envien nada',array('class' => 'btn  button button1'))!!}
+				{!!Form::submit('Prefiero que no me envíen nada',array('class' => 'btn  button button1'))!!}
 
 				{!!Form::submit('Enviar',array('class' => 'btn  button button1 botonvalidar' ))!!}
 

@@ -25,7 +25,7 @@
             </div>
         </div>
     </div>
-    <div><p style="color:blue">NOTA:Todas las etiquetas que se encuentran arriba pueden ser editadas dando click en el texto</p></div>
+    <div><p style="color:blue">NOTA:Todas las etiquetas que se encuentran arriba pueden ser editadas dando clic en el texto</p></div>
     
     <div class="row">
         <div class="text-left col">
