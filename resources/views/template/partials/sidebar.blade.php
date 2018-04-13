@@ -108,20 +108,26 @@
 							</p>
 						</a>
 					</li>
-					<li class="nav-item has-treeview">
+					@if (!is_null(session('carpeta')))
+						<li class="nav-item has-treeview">
+							<a href='{{route("cancelar.caso")}}' class="nav-link">
+								<i class="nav-icon fa fa-ban"></i>
+								<p>
+									Cancelar registro
+								</p>
+							</a>
+						</li>
+						
+					@else
+						<li class="nav-item has-treeview">
 							<a href="{{url('crear-caso')}}" class="nav-link">
 								<i class="fa fa-folder-open nav-icon"></i>
 								<p>Nuevo Caso</p>
 							</a>
 						</li>
-					<li class="nav-item has-treeview">
-						<a href='{{route("cancelar.caso")}}' class="nav-link">
-							<i class="nav-icon fa fa-ban"></i>
-							<p>
-								Cancelar registro
-							</p>
-						</a>
-					</li>
+						
+					@endif
+					
 					
 		<!--termina recepcion-->
 					<li class="nav-item has-treeview">
