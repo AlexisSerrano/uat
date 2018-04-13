@@ -20,13 +20,13 @@ class CreateTipifDelitoTable extends Migration
             $table->boolean('conViolencia')->default(false);
             // $table->integer('idArma')->unsigned()->default(1);//Default sin información
             // $table->integer('idPosibleCausa')->unsigned()->default(1);
-            // $table->integer('idModalidad')->unsigned();
+            $table->integer('idModalidad')->unsigned();
             // $table->string('formaComision',50);
             // $table->string('consumacion',50);
             $table->date('fecha');
             $table->time('hora');
-            $table->integer('idZona')->unsigned();
             $table->integer('idLugar')->unsigned()->default(24);
+            $table->integer('idZona')->unsigned();
             $table->integer('idDomicilio')->unsigned()->default(1);
             $table->string('entreCalle',100)->default("SIN INFORMACION");
             $table->string('yCalle',100)->default("SIN INFORMACION");
@@ -36,12 +36,13 @@ class CreateTipifDelitoTable extends Migration
             $table->softDeletes();
 
             $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
-            $table->foreign('idDelito')->references('id')->on('cat_delitos')->onDelete('cascade');
+            $table->foreign('idDelito')->references('id')->on('cat_delito')->onDelete('cascade');
             // $table->foreign('idArma')->references('id')->on('cat_arma')->onDelete('cascade');
             // $table->foreign('idPosibleCausa')->references('id')->on('cat_posible_causa')->onDelete('cascade');
-            // $table->foreign('idModalidad')->references('id')->on('cat_modalidad')->onDelete('cascade');
-            $table->foreign('idZona')->references('id')->on('cat_zona')->onDelete('cascade');
+            $table->foreign('idModalidad')->references('id')->on('cat_modalidad')->onDelete('cascade');
+          
             $table->foreign('idLugar')->references('id')->on('cat_lugar')->onDelete('cascade');
+            $table->foreign('idZona')->references('id')->on('cat_zona')->onDelete('cascade');
             $table->foreign('idDomicilio')->references('id')->on('domicilio')->onDelete('cascade');
             
         });

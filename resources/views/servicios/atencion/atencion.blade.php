@@ -30,10 +30,10 @@
                 </div>
             </div>	
             <div class="col-6 text-right">
-                <a href="{{url('registros')}}" class="btn btn-secondary">Cancelar</a>
+                <a href="{{url('registros')}}" class="btn btn-primary">Cancelar</a>
             </div>
             <div class="col-6 text-left">
-                {!!Form::submit('Guardar',array('class' => 'btn btn-secondary','id'=>'guardarDenunciante'))!!}
+                {!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!}
             </div>
               
         </div>

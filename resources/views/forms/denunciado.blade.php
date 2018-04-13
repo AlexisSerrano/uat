@@ -70,13 +70,13 @@
 					<div class="col text-left">
 							
 					
-						<a href="{{route('cancelar.caso')}}" class="btn button1">Cancelar</a>
+						<a href="{{route('cancelar.caso')}}" class="btn btn-primary ">Cancelar</a>
 						
 					</div>
 					
 					<div class="col text-right">
 						
-						{!!Form::submit('Guardar',array('class' => 'btn button1','id'=>'guardarDenunciante'))!!}
+						{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!}
 					</div>
 				</div>
 			</div>
@@ -89,11 +89,11 @@
 			<div>
 				<div class="row menu">
 					<div class="col text-left">
-						<a href="{{route('cancelar.caso')}}" class="btn button1">Cancelar</a>
+						<a href="{{route('cancelar.caso')}}" class="btn btn-primary">Cancelar</a>
 					</div>
 					
 					<div class="col text-right">
-						{!!Form::submit('Guardar',array('class' => 'btn button1','id'=>'guardarDenunciante'))!!}
+						{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!}
 					</div>
 				</div>
 			</div>
@@ -140,10 +140,10 @@
 				<div>
 					<div class="row">
 						<div class="col text-left">
-							<a href="{{route('cancelar.caso')}}" class="btn button1">Cancelar</a>
+							<a href="{{route('cancelar.caso')}}" class="btn btn-primary">Cancelar</a>
 						</div>
 						<div class="col text-right">
-							<a id=Adireccion  class="btn button1">Siguiente</a>
+							<a id=Adireccion  class="btn btn-primary">Siguiente</a>
 						</div>
 					</div>
 				</div>
@@ -154,12 +154,12 @@
 				<div>
 					<div class="row">
 						<div class="col text-left">
-							<a href="{{route('cancelar.caso')}}" class="btn button1">Cancelar</a>
+							<a href="{{route('cancelar.caso')}}" class="btn btn-primary">Cancelar</a>
 						</div>
 			
 						<div class="col text-right">
-							<a id=Atrabajo class="btn button button1">Siguiente</a>
-							<a id="ANotificaciones2" class="btn button button1">Siguiente</a>
+							<a id=Atrabajo class="btn btn-primary">Siguiente</a>
+							<a id="ANotificaciones2" class="btn btn-primary">Siguiente</a>
 						</div>
 					</div>
 				
@@ -170,10 +170,10 @@
 				@include('fields.lugartrabajo')
 				<div class="row menu">
 					<div class="col text-left">
-						<a href="{{route('cancelar.caso')}}" class="btn button1">Cancelar</a>
+						<a href="{{route('cancelar.caso')}}" class="btn btn-primary">Cancelar</a>
 					</div>
 					<div class="col text-right">
-						<a id="ANotificaciones" class="btn button1">Siguiente</a>
+						<a id="ANotificaciones" class="btn btn-primary">Siguiente</a>
 					</div>
 				</div>
 			</div>	
@@ -182,10 +182,10 @@
 				@include('fields.notificaciones')
 				<div class="row menu">
 					<div class="col text-left">
-						<a href="{{route('cancelar.caso')}}" class="btn button1">Cancelar</a>
+						<a href="{{route('cancelar.caso')}}" class="btn btn-primary">Cancelar</a>
 					</div>
 					<div class="col text-right">
-						<a id="Adenunciante" class="btn button1">Siguiente</a>
+						<a id="Adenunciante" class="btn btn-primary">Siguiente</a>
 					</div>
 				</div>
 			</div>
@@ -198,13 +198,13 @@
 						<div class="col text-left">
 								
 						
-							<a href="{{route('cancelar.caso')}}" class="btn button1">Cancelar</a>
+							<a href="{{route('cancelar.caso')}}" class="btn btn-primary">Cancelar</a>
 							
 						</div>
 						
 						<div class="col text-right">
 							
-							{!!Form::submit('Guardar',array('class' => 'btn button1','id'=>'guardarDenunciante'))!!}
+							{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!}
 						</div>
 					</div>
 				</div>

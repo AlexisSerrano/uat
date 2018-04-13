@@ -109,7 +109,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('telefono', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'required']) !!}
+					{!! Form::text('telefono', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'required', 'data-validation-regexp'=>'^([0-9]{10,15}|(SIN NUMERO)|(SN))$']) !!}
 				</div>
 			</div>
 			<div class="col-3">

@@ -14,9 +14,6 @@ use Alert;
 class MedidasProteccionController extends Controller
 {
     public function index(){
-        //$idCarpeta = session('carpeta');
-       // $idCarpeta = 1;
-       {
         $idCarpeta = session('carpeta');
         $casoNuevo = Carpeta::where('id', $idCarpeta)->get();
         //dd($idCarpeta);
@@ -24,40 +21,36 @@ class MedidasProteccionController extends Controller
             $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
             $denunciados = CarpetaController::getDenunciados($idCarpeta);
             $medidasP= CarpetaController::getMedidasP($idCarpeta);
-
-        $providencias[''] = 'SELECCIONE UNA PROVIDENCIA PRECAUTORIA';
-        $ejecutores[''] = 'SELECCIONE UN EJECUTOR';
-        $victimas[''] = 'SELECCIONE UNA VÍCTIMA';
-        $providencias2 = CatProvidencias::get();
-        $ejecutores2 = Ejecutor::get();
-        $victimas2 = DB::table('variables_persona')
-        ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
-        ->join('extra_denunciante', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-        ->where('variables_persona.idCarpeta',$idCarpeta)
-        ->select('persona.nombres','persona.primerAp','persona.segundoAp', 'persona.id')
-        ->get();
-        foreach($providencias2 as $providencia){
-            $providencias[$providencia->id] = $providencia->nombre;
-        }
-        foreach($ejecutores2 as $ejecutor){
-            $ejecutores[$ejecutor->id] = $ejecutor->nombre;
-        }
-        foreach($victimas2 as $victima){
-            $victimas[$victima->id] = $victima->nombres.' '.$victima->primerAp.' '.$victima->segundoAp;
-        }
-        return view('forms.medidasProteccion', compact('providencias','ejecutores','victimas','denunciantes','denunciados','idCarpeta'));
+            $providencias[''] = 'SELECCIONE UNA PROVIDENCIA PRECAUTORIA';
+            $ejecutores[''] = 'SELECCIONE UN EJECUTOR';
+            $victimas[''] = 'SELECCIONE UNA VÍCTIMA';
+            $providencias2 = CatProvidencias::get();
+            $ejecutores2 = Ejecutor::get();
+            $victimas2 = DB::table('variables_persona')
+            ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
+            ->join('extra_denunciante', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->where('variables_persona.idCarpeta',$idCarpeta)
+            ->select('persona.nombres','persona.primerAp','persona.segundoAp', 'persona.id')
+            ->get();
+            foreach($providencias2 as $providencia){
+                $providencias[$providencia->id] = $providencia->nombre;
+            }
+            foreach($ejecutores2 as $ejecutor){
+                $ejecutores[$ejecutor->id] = $ejecutor->nombre;
+            }
+            foreach($victimas2 as $victima){
+                $victimas[$victima->id] = $victima->nombres.' '.$victima->primerAp.' '.$victima->segundoAp;
+            }
+            return view('forms.medidasProteccion', compact('providencias','ejecutores','victimas','denunciantes','denunciados','idCarpeta'));
         }
         else{
-        return redirect(url('registros'));
+            return redirect(url('registros'));
         }
-
-// return view('orientador.modulo-orientador')->with('estados',$estados)->with('razones',$razones);
-}
     }
 
     public function addMedidas(MedidasRequest $request){
-        //$idCarpeta = session('carpeta');
-        $idCarpeta = 1;
+        $idCarpeta = session('carpeta');
+        //$idCarpeta = 1;
         $providenciaBD = new Providencia;
         $providenciaBD->idProvidencia = $request->tipoProvidencia;
         $providenciaBD->idEjecutor = $request->quienEjecuta;
@@ -76,8 +69,8 @@ class MedidasProteccionController extends Controller
     }
 
     public function getMedidas(){
-        //$idCarpeta = session('carpeta');
-        $idCarpeta = 1;
+        $idCarpeta = session('carpeta');
+        //$idCarpeta = 1;
         $providencias = DB::table('providencias_precautorias')
         ->join('cat_providencia_precautoria', 'providencias_precautorias.idProvidencia', '=', 'cat_providencia_precautoria.id')
         ->join('ejecutor','providencias_precautorias.idEjecutor','=','ejecutor.id')

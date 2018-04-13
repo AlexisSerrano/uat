@@ -12,7 +12,7 @@ class DelitosSeeder extends Seeder
     ////BASADO EN EL SISTEMA NACIONAL
     public function run()
     {
-        DB::table('cat_delitos')->insert([
+        DB::table('cat_delito')->insert([
             ['id' =>1,'nombre' => 'LESIONES'],
             ['id' =>2,'nombre' => 'ASALTO'],
             ['id' =>3,'nombre' => 'VIOLENCIA FAMILIAR'],
