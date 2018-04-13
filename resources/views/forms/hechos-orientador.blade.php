@@ -10,66 +10,14 @@
 	}
 	</style>
 @endsection
+@section('title', 'Descripción de los hechos')
 @section('content')
 
 
-@php
-	if (count($denunciantes)==0){
-		$registroDenunciante='btn btn-secondary';
-	}else{
-		$registroDenunciante='btn btn-success';
-	}
-	if (!isset($registroDenunciado)){
-		$registroDenunciado='btn btn-secondary';
-	}
-	if (!isset($registroAbogado)){
-		$registroAbogado='btn btn-secondary';
-	}
-	if (!isset($registroAutoridad)){
-		$registroAutoridad='btn btn-secondary';
-	}
-	if (!isset($registroAcusaciones)){
-		$registroAcusaciones='btn btn-secondary';
-	}
-	if (!isset($registroDelitos)){
-		$registroDelitos='btn btn-secondary';
-	}
-	if (!isset($registroDefenza)){
-		$registroDefenza='btn btn-secondary';
-	}
-	if (!isset($registroDescripcion)){
-		$registroDescripcion='btn btn-secondary';
-	}
-	
-	@endphp
-	<br><br>
-<div class="btn-group col">
-	<div class="btn-group" role="group" aria-label="Basic example">
-		<button type="button" class="btn btn-secondary" href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars"></i></button>   
-	</div>
-	<a href="{{route('new.denunciante')}}" class="{{$registroDenunciante}} form-control">Denunciante</a>
-	<a  class="{{$registroDenunciado}} form-control">Denunciado</a>
-	<a  class="{{$registroAbogado}} form-control">Abogado</a>
-	<a  class="{{$registroAutoridad}} form-control">Autoridad</a>
-	<a  class="{{$registroDelitos}} form-control">Delitos</a>
-	<a  class="{{$registroAcusaciones}} form-control">Acusaciones</a>
-	<a  class="{{$registroDefenza}} form-control">Defensa</a>
-	<a href="{{route('narracion')}}" class="{{$registroDescripcion}} form-control">Descripcion de hechos</a>
-</div>
+@include('fields.buttons-navegacion')
 
 <div class="card">
-    <div class="card-header" style="text-align: center;">
-        <p class="lead">Narración <span><i class="fa fa-comment"></i></span></p>
-	 </div>
-	 @if ($errors->any())
-		<div class="alert alert-danger">
-			<ul>
-				@foreach ($errors->all() as $error)
-					<li>{{ $error }}</li>
-				@endforeach
-			</ul>
-		</div>
-	@endif
+	@include('fields.errores')
 	<br>
 	<div class="container" >
 		<div class="row">
@@ -77,12 +25,9 @@
 				<table class="table table-striped table-bordered table-hover text-center">
 					<thead class="thead-active">
 						<tr>
-							<th>Narraciones</th>
+							<th>Descripción de hechos</th>
 							<th>Tipo</th>
-						</tr>
-						
-							
-						
+						</tr>					
 					</thead>
 					<tbody >
 						@forelse($narraciones as $narracion)

@@ -430,6 +430,7 @@ class PreregistroAuxController extends Controller
         
         $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
         $denunciados = CarpetaController::getDenunciados($idCarpeta);
+        $medidasP= CarpetaController::getMedidasP($idCarpeta);
         $escolaridades = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -468,7 +469,8 @@ class PreregistroAuxController extends Controller
         ->with(  'tipopersona',  $tipopersona)
         ->with('idpreregistro',  $idpreregistro)
         ->with('denunciantes', $denunciantes)
-        ->with('denunciados', $denunciados);
+        ->with('denunciados', $denunciados)
+        ->with('medidasP', $medidasP);
     }
 
     public function Traerturno(){

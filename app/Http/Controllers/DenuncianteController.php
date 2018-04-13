@@ -62,12 +62,19 @@ class DenuncianteController extends Controller
 
 public function showForm()
     {
-        $idCarpeta = session('carpeta');
+
+        $idCarpeta=session('carpeta');
+        //dd($idCarpeta);
+        if (is_null($idCarpeta)) {
+            Alert::error('No puede acceder a este modulo sin un caso en especifico', 'Error')->persistent("Aceptar");
+            return redirect('registros');
+        }
         $casoNuevo = Carpeta::where('id', $idCarpeta)->get();
         //dd($idCarpeta);
         if(count($casoNuevo)>0){ 
             $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
             $denunciados = CarpetaController::getDenunciados($idCarpeta);
+            $medidasP= CarpetaController::getMedidasP($idCarpeta);
             $escolaridades = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -80,6 +87,7 @@ public function showForm()
             return view('forms.denunciante')->with('idCarpeta', $idCarpeta)
                 ->with('denunciantes', $denunciantes)
                 ->with('denunciados', $denunciados)
+                ->with('medidasP', $medidasP)
                 ->with('escolaridades', $escolaridades)
                 ->with('estados', $estados)
                 ->with('estadoscivil', $estadoscivil)
@@ -97,7 +105,11 @@ public function showForm()
 
     public function cancelarCaso(){
         $idCarpeta = session('carpeta');
-        $carpeta = Carpeta::findOrFail($idCarpeta);
+        if(is_null($idCarpeta)){
+            Alert::info('No tiene ningun caso en proceso.', 'Advertiencia')->persistent("Aceptar");
+            return redirect(url('registros'));    
+        }
+        $carpeta = Carpeta::find($idCarpeta);
         $carpeta->delete();
         session()->forget('carpeta');
         Alert::info('El caso a sido cancelado con exito.', 'Hecho')->persistent("Aceptar");
@@ -108,6 +120,9 @@ public function showForm()
     public function storeDenunciante(Request $request){
         //dd($request->all());
         $idCarpeta = session('carpeta');
+        if(is_null($idCarpeta)){
+            $idCarpeta = $request->idCarpeta;
+        }
 
         if($request->esEmpresa==0){
             $comprobarPersona=Persona::where('curp',$request->curp)->get();

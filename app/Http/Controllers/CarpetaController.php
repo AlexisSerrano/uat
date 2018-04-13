@@ -148,26 +148,29 @@ class CarpetaController extends Controller
         return $denunciantes;
     }
 
-    public static function getMedidasP($id){
-        $medidasP = DB::table('extra_denunciado')
-        
-           ->select('id_Providencia','idEjecutor','idPersona','observacion','fechaInicio','fechaFin')
-            ->where('idCarpeta', '=', $id)
-            ->get();
-        return $medidasP;
-
-    }
 
     public static function getMedidasP($id){
         $medidasP = DB::table('providencias_precautorias')
-            ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_abogado.cedulaProf', 'extra_abogado.sector', 'extra_abogado.tipo')
-            ->where('variables_persona.idCarpeta', '=', $id)
-            ->get();
-        return $abogados;
+        ->join('cat_providencia_precautoria', 'providencias_precautorias.idProvidencia', '=', 'cat_providencia_precautoria.id')
+        ->join('ejecutor','providencias_precautorias.idEjecutor','=','ejecutor.id')
+        ->join('persona','providencias_precautorias.idPersona','=','persona.id')
+        ->where('providencias_precautorias.idCarpeta',$id)
+        ->where('providencias_precautorias.deleted_at',null)
+        ->select('providencias_precautorias.id as id','cat_providencia_precautoria.nombre as providencia', 'ejecutor.nombre as ejecutor', 'providencias_precautorias.fechaInicio as fechaInicio', 'providencias_precautorias.fechaFin as fechaFin', 'providencias_precautorias.observacion as observacion', DB::raw("CONCAT(`persona`.`nombres`,' ',CASE WHEN `persona`.`primerAp` IS NULL  THEN '' ELSE `persona`.`primerAp` END,' ',CASE WHEN `persona`.`segundoAp` IS NULL  THEN '' ELSE `persona`.`segundoAp` END) as nombre"))->get();
+        
+        
+        return $medidasP;
     }
 
+    public static function getDenunciados($id){
+        $denunciados = DB::table('extra_denunciado')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'persona.esEmpresa', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
+            ->where('variables_persona.idCarpeta', '=', $id)
+            ->get();
+        return $denunciados;
+    }
 
     public static function getAbogados($id){
         $abogados = DB::table('extra_abogado')

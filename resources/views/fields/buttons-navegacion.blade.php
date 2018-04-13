@@ -44,5 +44,4 @@
     <a href="{{route('narracion')}}" class="{{$registroDescripcion}} form-control">Descripción de hechos</a>
     <a href="{{url('medidas')}}" class="{{$medidasProteccion}} form-control">Medidas de protección</a>
 </div>
-  
-<input type="hidden" name="idCarpeta" value="{{$idCarpeta}}"> 
+ 

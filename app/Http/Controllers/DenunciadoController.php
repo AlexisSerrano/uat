@@ -77,12 +77,13 @@ class DenunciadoController extends Controller
         $idCarpeta=session('carpeta');
         if (is_null($idCarpeta)) {
             Alert::error('No puede acceder a este modulo sin un caso en especifico', 'Error')->persistent("Aceptar");
-            return redirect()->route('home');
+            return redirect('registros');
         }
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();
         if(count($carpetaNueva)>0){ 
             $denunciados = CarpetaController::getDenunciados($idCarpeta);
             $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
+            $medidasP= CarpetaController::getMedidasP($idCarpeta);
             $escolaridades = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -95,6 +96,7 @@ class DenunciadoController extends Controller
             return view('forms.denunciado')->with('idCarpeta', $idCarpeta)
                 ->with('denunciados', $denunciados)
                 ->with('denunciantes', $denunciantes)
+                ->with('medidasP', $medidasP)
                 ->with('escolaridades', $escolaridades)
                 ->with('estados', $estados)
                 ->with('estadoscivil', $estadoscivil)
