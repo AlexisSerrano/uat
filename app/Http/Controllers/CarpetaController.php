@@ -87,6 +87,7 @@ class CarpetaController extends Controller
             $defensas = CarpetaController::getDefensas($id);
             $familiares = CarpetaController::getFamiliares($id);
             $delitos = CarpetaController::getDelitos($id);
+            $medidasP=CarpetaController::getMedidasP($id);
             $acusaciones = CarpetaController::getAcusaciones($id);
             $vehiculos = CarpetaController::getVehiculos($id);
             $delits = CarpetaController::hayDelitosVeh($id);
@@ -147,15 +148,26 @@ class CarpetaController extends Controller
         return $denunciantes;
     }
 
-    public static function getDenunciados($id){
-        $denunciados = DB::table('extra_denunciado')
-            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+    public static function getMedidasP($id){
+        $medidasP = DB::table('extra_denunciado')
+        
+           ->select('id_Providencia','idEjecutor','idPersona','observacion','fechaInicio','fechaFin')
+            ->where('idCarpeta', '=', $id)
+            ->get();
+        return $medidasP;
+
+    }
+
+    public static function getMedidasP($id){
+        $medidasP = DB::table('providencias_precautorias')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'persona.esEmpresa', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
+            ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_abogado.cedulaProf', 'extra_abogado.sector', 'extra_abogado.tipo')
             ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
-        return $denunciados;
+        return $abogados;
     }
+
 
     public static function getAbogados($id){
         $abogados = DB::table('extra_abogado')
@@ -166,6 +178,7 @@ class CarpetaController extends Controller
             ->get();
         return $abogados;
     }
+
 
     public static function getDefensas($id){
         $defensas1 = DB::table('extra_abogado')

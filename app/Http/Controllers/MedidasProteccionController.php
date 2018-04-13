@@ -7,6 +7,7 @@ use App\Models\Ejecutor;
 use App\Models\Providencia;
 use App\Models\CatProvidencias;
 use Yajra\DataTables\Datatables;
+use App\Models\Carpeta;
 use DB;
 use Alert;
 
@@ -14,7 +15,16 @@ class MedidasProteccionController extends Controller
 {
     public function index(){
         //$idCarpeta = session('carpeta');
-        $idCarpeta = 1;
+       // $idCarpeta = 1;
+       {
+        $idCarpeta = session('carpeta');
+        $casoNuevo = Carpeta::where('id', $idCarpeta)->get();
+        //dd($idCarpeta);
+        if(count($casoNuevo)>0){ 
+            $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
+            $denunciados = CarpetaController::getDenunciados($idCarpeta);
+            $medidasP= CarpetaController::getMedidasP($idCarpeta);
+
         $providencias[''] = 'SELECCIONE UNA PROVIDENCIA PRECAUTORIA';
         $ejecutores[''] = 'SELECCIONE UN EJECUTOR';
         $victimas[''] = 'SELECCIONE UNA VÍCTIMA';
@@ -35,7 +45,14 @@ class MedidasProteccionController extends Controller
         foreach($victimas2 as $victima){
             $victimas[$victima->id] = $victima->nombres.' '.$victima->primerAp.' '.$victima->segundoAp;
         }
-        return view('forms.medidasProteccion', compact('providencias','ejecutores','victimas'));
+        return view('forms.medidasProteccion', compact('providencias','ejecutores','victimas','denunciantes','denunciados','idCarpeta'));
+        }
+        else{
+        return redirect(url('registros'));
+        }
+
+// return view('orientador.modulo-orientador')->with('estados',$estados)->with('razones',$razones);
+}
     }
 
     public function addMedidas(MedidasRequest $request){
