@@ -38,8 +38,8 @@
 	<a href="{{route('new.denunciado')}}" class="{{$registroDenunciado}} form-control">Denunciado</a>
 	<a  class="{{$registroAbogado}} form-control">Abogado</a>
 	<a  class="{{$registroAutoridad}} form-control">Autoridad</a>
-	<a  class="{{$registroDelitos}} form-control">Delitos</a>
-	<a  class="{{$registroAcusaciones}} form-control">Acusaciones</a>
+	<a href="{{route('new.delito')}}" class="{{$registroDelitos}} form-control">Delitos</a>
+	<a href="{{route('new.acusacion')}}" class="{{$registroAcusaciones}} form-control">Acusaciones</a>
 	<a  class="{{$registroDefenza}} form-control">Defensa</a>
     <a href="{{route('narracion')}}" class="{{$registroDescripcion}} form-control">Descripción de hechos</a>
     <a href="{{url('medidas')}}" class="{{$medidasProteccion}} form-control">Medidas de protección</a>

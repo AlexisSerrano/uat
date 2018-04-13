@@ -75,7 +75,7 @@
 							<label class="custom-file-label" for="inputGroupFile01" value={{'input[type =>file]'}}></label>
 
 						</div> --}}
-						<input id="input-id" type="file" class="file" name="file" data-preview-file-type="text">
+						<input id="input-id" type="file" class="file" name="file"  data-preview-file-type="text">
 					{{-- </div> --}}
 					<br>
 					<div class="form-group text-right">
@@ -99,8 +99,18 @@ $.validate({
   modules : 'file'
 });
 
-$("#input-id").fileinput();
-$("#input-id").fileinput({'showUpload':false, 'previewFileType':'any'});
+// $("#input-id").fileinput();
+// $("#input-id").fileinput({'showUpload':false, 'previewFileType':'any'});
+
+$("#input-id").fileinput({
+       language:'es',
+       theme: 'fa',
+       browseClass: 'btn btn-info btn-block',
+       showCaption: true,
+       showRemove: true,
+       showUpload: false,
+       allowedFileExtensions: ['jpg','jpeg','png','gif','pdf']
+   });
 
 
 </script>

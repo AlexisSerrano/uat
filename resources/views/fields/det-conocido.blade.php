@@ -2,19 +2,19 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('nombresC', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('nombresC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'required']) !!}
+			{!! Form::text('nombresC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'data-validation'=> 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('primerApC', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('primerApC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido', 'required']) !!}
+			{!! Form::text('primerApC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido', 'data-validation'=> 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('aliasC', 'Alias', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('aliasC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el alias', 'required']) !!}
+			{!! Form::text('aliasC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el alias', 'data-validation'=> 'required']) !!}
 		</div>
 	</div>
 </div>
@@ -23,7 +23,7 @@
 	<div class="col-12">
 		<div class="form-group">
 			{!! Form::label('senasParticC', 'Señas particulares', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('senasParticC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3', 'required']) !!}
+			{!! Form::textarea('senasParticC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3', 'data-validation'=> 'required']) !!}
 		</div>
 	</div>
 </div>

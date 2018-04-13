@@ -133,3 +133,9 @@ Route::get('medidas', 'MedidasProteccionController@index')->name('medidas');
 Route::post('addMedidas', 'MedidasProteccionController@addMedidas')->name('addMedidas');
 Route::get('getMedidas', 'MedidasProteccionController@getMedidas')->name('getMedidas');
 Route::get('deleteMedida/{id}', 'MedidasProteccionController@deleteMedida')->name('deleteMedida');
+
+/*---------Rutas  Delitos Controller------------*/
+Route::get('agregar-delito', 'DelitoController@showForm')->name('new.delito');
+Route::post('storedelito', 'DelitoController@storeDelito')->name('store.delito');
+Route::get('acusacion', 'AcusacionController@showForm')->name('new.acusacion');
+Route::post('storeacusacion', 'AcusacionController@storeAcusacion')->name('store.acusacion');

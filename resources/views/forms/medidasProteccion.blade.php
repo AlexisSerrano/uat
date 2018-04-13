@@ -35,7 +35,7 @@
                     <div class="input-group date" id="fechaInicio" data-target-input="nearest">
                         {{-- {!! Form::text('fechaInicio', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaInicio','data-validation'=>'required', 'placeholder' => 'DD/MM/AAAA']) !!} --}}
 
-                                <input type="date" id="fechaInicio" name="fechaInicio" class="form-control form-control-sm">
+                                <input type="date" id="fechaInicio" name="fechaInicio" class="form-control form-control-sm", data-validation= "required">
                             {{-- <div class="group-text"><i class="fa fa-calendar"></i></div> --}}
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                     <div class="input-group date" id="fechaFinal" data-target-input="nearest">
                         {{-- {!! Form::text('fechaFinal', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaFinal','data-validation'=>'required', 'placeholder' => 'DD/MM/AAAA']) !!} --}}
                     
-                                <input type="date" id="fechaFinal" name="fechaFin" class="form-control form-control-sm">
+                                <input type="date" id="fechaFinal" name="fechaFin" class="form-control form-control-sm", data-validation= "required" >
                             {{-- <div class="group-text"><i class="fa fa-calendar"></i></div> --}}
                         
                     </div>
@@ -55,10 +55,10 @@
             <div class="col-12">
             <div class="form-group">
                     {!! Form::label('ObservacionesM', 'Observaciones', ['class' => 'col-form-label-sm']) !!}		
-                    <textarea name="ObservacionesM" id="ObservacionesM" cols="15" rows="5" class="form-control form-control-sm"></textarea>
+                    <textarea name="ObservacionesM" id="ObservacionesM" cols="15" rows="5" class="form-control form-control-sm", data-validation= "required"></textarea>
                 
                 <div class="col text-right">
-                        {!!Form::submit('Guardar',array('class' => 'btn button1','id'=>'guardarMedidas'))!!}
+                        {!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarMedidas'))!!}
                 </div>
             </div>
         </div>
