@@ -3,6 +3,11 @@
 @section('title','Medidas de Protección')
 @include('fields.errores')
 {!!Form::open(['route' => 'addMedidas'])!!}
+
+ @include('fields.buttons-navegacion')
+
+
+
 <div class="card-body boxone">
         <DIV class="row">
             <div class="col-12">
