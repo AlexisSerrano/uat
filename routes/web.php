@@ -11,6 +11,9 @@
 |
 */
 /*******************Rutas para probar vistas*************************** */
+Route::get('/', function () {
+    return redirect('home');
+});
 Route::get('/prueba', function () {
     return view('welcome');
 });
