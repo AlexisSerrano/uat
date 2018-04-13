@@ -75,10 +75,10 @@ class DenunciadoController extends Controller
     public function showForm()
     {
         $idCarpeta=session('carpeta');
-        if (is_null($idCarpeta)) {
-            Alert::error('No puede acceder a este modulo sin un caso en especifico', 'Error')->persistent("Aceptar");
-            return redirect('registros');
-        }
+        // if (is_null($idCarpeta)) {
+        //     Alert::error('No puede acceder a este modulo sin un caso en especifico', 'Error')->persistent("Aceptar");
+        //     return redirect('registros');
+        // }
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();
         if(count($carpetaNueva)>0){ 
             $denunciados = CarpetaController::getDenunciados($idCarpeta);
