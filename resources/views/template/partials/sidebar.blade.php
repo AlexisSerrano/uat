@@ -56,6 +56,49 @@
 							</li>
 						</ul>
 					</li>
+					<li class="nav-item has-treeview">
+						<a href="#" class="nav-link">
+							<i class="nav-icon fa fa-user-o"></i>
+							<p>
+								Recepcion
+								<i class="right fa fa-angle-left"></i>
+							</p>
+						</a>
+						<ul class="nav nav-treeview">
+							<li class="nav-item has-treeview">
+								<a href="{{url('predenuncias')}}" class="nav-link">
+									{{-- <i class="nav-icon fa fa-user-times"></i> --}}
+									<p>
+										Todos los registros
+									</p>
+								</a>
+							</li>
+							<li class="nav-item has-treeview">
+								<a href="{{url('encola')}}" class="nav-link">
+									{{-- <i class="nav-icon fa fa-user-times"></i> --}}
+									<p>
+										Registros en cola
+									</p>
+								</a>
+							</li>
+							<li class="nav-item has-treeview">
+								<a href="{{url('urgentes')}}" class="nav-link">
+									{{-- <i class="nav-icon fa fa-user-times"></i> --}}
+									<p>
+										Urgentes
+									</p>
+								</a>
+							</li>
+							<li class="nav-item has-treeview">
+								<a href="{{url('recepcionista')}}" class="nav-link">
+									{{-- <i class="nav-icon fa fa-user-times"></i> --}}
+									<p>
+										Agregar
+									</p>
+								</a>
+							</li>
+						</ul>
+					</li>
 					{{-- menu-open --}}
 					<li class="nav-item has-treeview ">
 						<a href="{{url('Traerturno')}}" class="nav-link active">
@@ -79,72 +122,8 @@
 							</p>
 						</a>
 					</li>
-					<li class="nav-item has-treeview">
-						<a href="#" class="nav-link">
-							<i class="nav-icon fa fa-user-times"></i>
-							<p>
-								Ausente
-							</p>
-						</a>
-						{{-- <ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Simple Tables</p>
-								</a>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Data Tables</p>
-								</a>
-							</li>
-						</ul> --}}
-	<!---botones solo para recepcion-->
-					</li>
-					<li class="nav-item has-treeview">
-						<a href="{{url('predenuncias')}}" class="nav-link">
-							{{-- <i class="nav-icon fa fa-user-times"></i> --}}
-							<p>
-								Todos los registros
-							</p>
-						</a>
-					</li>
-					<li class="nav-item has-treeview">
-						<a href="{{url('encola')}}" class="nav-link">
-							{{-- <i class="nav-icon fa fa-user-times"></i> --}}
-							<p>
-								Registros en cola
-							</p>
-						</a>
-					</li>
-					<li class="nav-item has-treeview">
-						<a href="{{url('urgentes')}}" class="nav-link">
-							{{-- <i class="nav-icon fa fa-user-times"></i> --}}
-							<p>
-								Urgentes
-							</p>
-						</a>
-					</li>
-					<li class="nav-item has-treeview">
-						<a href="{{url('recepcionista')}}" class="nav-link">
-							{{-- <i class="nav-icon fa fa-user-times"></i> --}}
-							<p>
-								Agregar
-							</p>
-						</a>
-					</li>
+					
 		<!--termina recepcion-->
-				<li class="nav-item has-treeview">
-						<a href="#" class="nav-link">
-							{{-- <span class="bagde">{{countAtencion()}}</span> --}}
-							<i class="nav-icon  fa fa-list-ul"></i>
-							<p>
-								Medidas de protección
-								{{-- <i class="fa fa-angle-left right"></i> --}}
-							</p>
-						</a>
-					</li>
 					<li class="nav-item has-treeview">
 						<a href="{{url('atencion')}}" class="nav-link">
 							{{-- <span class="bagde">{{countAtencion()}}</span> --}}
@@ -156,18 +135,9 @@
 						</a>
 					</li>
 
-
 					
 					<li class="nav-header">EXTRAS</li>
-					<li class="nav-item">
-						<a href="pages/calendar.html" class="nav-link">
-							<i class="nav-icon fa fa-calendar"></i>
-							<p>
-								Agenda 
-								<span class="badge badge-info right">2</span>
-							</p>
-						</a>
-					</li>
+			
 					{{-- <li class="nav-item has-treeview">
 						<a href="#" class="nav-link">
 							<i class="nav-icon fa fa-envelope-o"></i>

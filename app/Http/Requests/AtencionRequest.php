@@ -24,24 +24,20 @@ class AtencionRequest extends FormRequest
     public function rules()
     {
         return [
-            'tipoProvidencia' => 'required',
-            'quienEjecuta' => 'required',
-            'victima' => 'required',
-            'fechaInicio' => 'required',
-            'fechaFinal' => 'required',
-            'ObservacionesM' => 'required',
+            'nombre' => 'required',
+            'primer_ap' => 'required',
+            'segundo_ap' => 'required',
+            'redireccion' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'tipoProvidencia.required' => 'Introduzca el campo Providencia precautoria',
-            'quienEjecuta.required' => 'Introduzca el campo Ejecutor',
-            'victima.required' => 'Introduzca el campo Victima',
-            'fechaInicio.required' => 'Introduzca el campo Fecha Incial',
-            'fechaFinal.required' => 'Introduzca el campo Fecha final',
-            'ObservacionesM.required' => 'Introduzca el campo Observaciones',
+            'nombre.required' => 'Introduzca el campo Nombre',
+            'primer_ap.required' => 'Introduzca el campo Primer Apellido',
+            'segundo_ap.required' => 'Introduzca el campo Segundo Apellido',
+            'redireccion.required' => 'Introduzca el campo Modulo de atención',
         ];
     }
 }

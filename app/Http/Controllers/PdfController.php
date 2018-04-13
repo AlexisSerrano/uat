@@ -18,7 +18,7 @@ class PDFcontroller extends Controller
 
 		//dd($DatosRegistros);
 		$data = ['DatosRegistros' => $DatosRegistros];
-		$pdf = PDF::loadView('pdf-preregistro', $data);
+		$pdf = PDF::loadView('servicios.pdf.pdf-preregistro', $data);
 		//return $pdf->stream('pruebapdf.pdf');
 		return $pdf->stream($DatosRegistros[0]->folio.'.pdf');
 		
