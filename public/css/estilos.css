@@ -204,7 +204,7 @@ html{
 	box-shadow: 3 3 6px rgba(112, 112, 112, 0.938) !important;
 }
 .btn-primary.disabled, .btn-primary:disabled {
-	color: #ffffff;
+	color: #ffffff;	
 	background-color: #1b1b1b;
 	border-color: #6b6b6b !important;
 	box-shadow: 3 3 6px rgba(112, 112, 112, 0.938) !important;
@@ -216,6 +216,16 @@ html{
   border-color: #6b6b6b !important;
   box-shadow: 3 3 6px rgba(112, 112, 112, 0.938) !important;
 }
+a:not([href]):not([tabindex]):hover
+{
+	color:white;
+}
+a:not([href]):not([tabindex])
+{
+	color:white;
+}
+
+
 .main-footer{
 	padding: 15px 15px 25px;
     color: #42424246;

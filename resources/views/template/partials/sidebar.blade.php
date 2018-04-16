@@ -101,7 +101,7 @@
 					</li>
 					{{-- menu-open --}}
 					<li class="nav-item has-treeview ">
-						<a href="{{url('Traerturno')}}" class="nav-link active">
+						<a href="{{url('Traerturno')}}" class="nav-link">
 							<i class="nav-icon fa fa-check-circle-o"></i>
 							<p>
 								Tomar turno

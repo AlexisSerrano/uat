@@ -118,7 +118,7 @@
 			</div>
 
 		</div>
-		
+		<br>
 		<div>
 			@include('tables.denunciantes')
 		</div>
