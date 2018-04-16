@@ -20,7 +20,9 @@ class MedidasProteccionController extends Controller
         if(count($casoNuevo)>0){ 
             $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
             $denunciados = CarpetaController::getDenunciados($idCarpeta);
+            $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
             $medidasP= CarpetaController::getMedidasP($idCarpeta);
+            $delitos = CarpetaController::getDelitos($idCarpeta);
             $providencias[''] = 'SELECCIONE UNA PROVIDENCIA PRECAUTORIA';
             $ejecutores[''] = 'SELECCIONE UN EJECUTOR';
             $victimas[''] = 'SELECCIONE UNA VÍCTIMA';
@@ -41,7 +43,7 @@ class MedidasProteccionController extends Controller
             foreach($victimas2 as $victima){
                 $victimas[$victima->id] = $victima->nombres.' '.$victima->primerAp.' '.$victima->segundoAp;
             }
-            return view('forms.medidasProteccion', compact('providencias','ejecutores','victimas','denunciantes','denunciados','idCarpeta'));
+            return view('forms.medidasProteccion', compact('providencias','ejecutores','victimas','denunciantes','denunciados','idCarpeta','acusaciones','delitos'));
         }
         else{
             return redirect(url('registros'));

@@ -14,14 +14,17 @@ class NarracionController extends Controller
         $carpeta = session('carpeta');
         $denunciantes = CarpetaController::getDenunciantes($carpeta);
         $denunciados = CarpetaController::getDenunciados($carpeta);
+        $acusaciones = CarpetaController::getAcusaciones($carpeta);
         $medidasP= CarpetaController::getMedidasP($carpeta);
-            
+        $delitos = CarpetaController::getDelitos($carpeta);   
         $narraciones = Narracion::where('idCarpeta',$carpeta)->orderby('created_at','desc')->get();
         $ultimo = Narracion::where('idCarpeta',$carpeta)->where('tipo','0')->orderby('created_at','desc')->first();
         return view("forms.hechos-orientador")
         ->with("denunciantes",$denunciantes)
         ->with("denunciados",$denunciados)
+        ->with('delitos', $delitos)
         ->with("medidasP",$medidasP)
+        ->with('acusaciones', $acusaciones)
         ->with("ultimo",$ultimo)
         ->with('narraciones',$narraciones);
     }
