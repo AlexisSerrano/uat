@@ -18,7 +18,7 @@ class CreateNarracionesTable extends Migration
             $table->integer('idCarpeta')->unsigned();
             $table->Text('narracion');
             $table->tinyInteger('tipo');
-            $table->foreign('idCarpeta')->references('id')->on('carpeta');
+            $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
             $table->timestamps();
         });
     }

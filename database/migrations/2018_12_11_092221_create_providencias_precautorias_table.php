@@ -22,7 +22,7 @@ class CreateProvidenciasPrecautoriasTable extends Migration
             $table->Text('observacion');
             $table->date('fechaInicio');
             $table->date('fechaFin');
-            $table->foreign('idCarpeta')->references('id')->on('carpeta');
+            $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
             $table->foreign('idProvidencia')->references('id')->on('cat_providencia_precautoria');
             $table->foreign('idEjecutor')->references('id')->on('ejecutor');
             $table->foreign('idPersona')->references('id')->on('persona');
