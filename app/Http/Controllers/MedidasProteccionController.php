@@ -10,6 +10,7 @@ use Yajra\DataTables\Datatables;
 use App\Models\Carpeta;
 use DB;
 use Alert;
+use App\Http\Requests\MedidasRequest;
 
 class MedidasProteccionController extends Controller
 {
@@ -58,7 +59,7 @@ class MedidasProteccionController extends Controller
         $providenciaBD->idEjecutor = $request->quienEjecuta;
         $providenciaBD->idPersona = $request->victima;
         $providenciaBD->fechaInicio = $request->fechaInicio;
-        $providenciaBD->fechaFin = $request->fechaFin;
+        $providenciaBD->fechaFin = $request->fechaFinal;
         $providenciaBD->observacion = $request->ObservacionesM;
         $providenciaBD->idCarpeta = $idCarpeta;
         if($providenciaBD->save()){

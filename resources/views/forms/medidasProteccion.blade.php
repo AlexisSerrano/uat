@@ -46,7 +46,7 @@
                     <div class="input-group date" id="fechaFinal" data-target-input="nearest">
                         {{-- {!! Form::text('fechaFinal', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaFinal','data-validation'=>'required', 'placeholder' => 'DD/MM/AAAA']) !!} --}}
                     
-                                <input type="date" id="fechaFinal" name="fechaFin" class="form-control form-control-sm", data-validation= "required" >
+                                <input type="date" id="fechaFinal" name="fechaFinal" class="form-control form-control-sm", data-validation= "required" >
                             {{-- <div class="group-text"><i class="fa fa-calendar"></i></div> --}}
                         
                     </div>
@@ -96,7 +96,7 @@
                     { data: 'nombre' , name: 'nombre'},
                     { data: 'observacion' , name: 'observacion'},
                     { data: null, "orderable": false,  render: function ( data, type, row ) {
-                        return "<a href='{{ url('deleteMedida') }}/"+ data.id +"' class='btn btn-xs btn-primary' >Ver</button>"  }  
+                        return "<a href='{{ url('deleteMedida') }}/"+ data.id +"' class='btn btn-xs btn-primary' >Eliminar</button>"  }  
                     }
                 ]
             });
