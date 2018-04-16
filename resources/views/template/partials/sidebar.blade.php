@@ -43,7 +43,7 @@
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-									<a href="{{url('recepcionista')}}" class="nav-link">
+									<a href="{{url('preregistro')}}" class="nav-link">
 										<i class="fa fa-user-plus nav-icon"></i>
 										<p>Nuevo pre-registro</p>
 									</a>
