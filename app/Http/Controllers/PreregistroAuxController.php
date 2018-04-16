@@ -307,7 +307,7 @@ class PreregistroAuxController extends Controller
         ->where('conViolencia', 0)
         ->orderBy('horaLlegada','asc')
         ->paginate(10);
-        return view('servicios.recepcion.cola-preregistro')->with('registros',$preregistros);
+        return view('servicios.recepcion.cola-preregistro')->with('registros',$preregistros)->with('status',0);
     }
 
     public function urgentes()
@@ -316,7 +316,7 @@ class PreregistroAuxController extends Controller
         ->where('conViolencia', 0)
         ->orderBy('horaLlegada','asc')
         ->paginate(10);
-        return view('servicios.recepcion.cola-preregistro')->with('registros',$preregistros);
+        return view('servicios.recepcion.cola-preregistro')->with('registros',$preregistros)->with('status',1);
     }
 
     public function showbymunicipio($id){
