@@ -62,7 +62,7 @@
 							<a href="{{route('cancelar.caso')}}" class="btn btn-primary">Cancelar</a>
 						</div>
 						<div class="col text-right">
-							<a href="" id=Adireccion  class="btn btn-primary">Siguiente</a>
+							<a  id=Adireccion  class="btn btn-primary">Siguiente</a>
 						</div>
 					</div>
 				</div>
@@ -78,7 +78,7 @@
 			
 						<div class="col text-right">
 							<a id=Atrabajo class="btn btn-primary">Siguiente</a>
-							<a  href="" id="ANotificaciones2" class="btn btn-primary">Siguiente</a>
+							<a id="ANotificaciones2" class="btn btn-primary">Siguiente</a>
 						</div>
 					</div>
 				
@@ -92,7 +92,7 @@
 						<a href="{{route('cancelar.caso')}}" class="btn btn-primary">Cancelar</a>
 					</div>
 					<div class="col text-right">
-						<a href="" id="ANotificaciones" class="btn btn-primary">Siguiente</a>
+						<a id="ANotificaciones" class="btn btn-primary">Siguiente</a>
 					</div>
 				</div>
 			</div>	
@@ -104,7 +104,7 @@
 						<a href="{{route('cancelar.caso')}}" class="btn btn-primary">Cancelar</a>
 					</div>
 					<div class="col text-right">
-						<a href="" id="Adenunciante" class="btn btn-primary">Siguiente</a>
+						<a id="Adenunciante" class="btn btn-primary">Siguiente</a>
 					</div>
 				</div>
 			</div>
