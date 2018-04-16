@@ -1,4 +1,5 @@
 @extends('template.form')
+@section('title', 'Agregar denunciante')
 @section('content')
 @include('fields.errores')
 
@@ -64,7 +65,7 @@
 			
 						@if ($tipopersona==0)
 							<div class="col text-right">
-								<a id=Atrabajo class="btn btn-primary">Siguiente</a>
+								<a  id=Atrabajo class="btn btn-primary">Siguiente</a>
 							</div>
 						@else
 							<div class="col text-right">
@@ -84,7 +85,7 @@
 							<a href="{{route('devolver', $idpreregistro)}}" class="btn btn-primary">Devolver turno</a>
 						</div>
 						<div class="col text-right">
-							<a id="ANotificaciones" class="btn btn-primary">Siguiente</a>
+							<a  id="ANotificaciones" class="btn btn-primary">Siguiente</a>
 						</div>
 					</div>
 				</div>
@@ -97,7 +98,7 @@
 						<a href="{{route('devolver', $idpreregistro)}}" class="btn btn-primary">Devolver turno</a>
 					</div>
 					<div class="col text-right">
-						<a id="Adenunciante" class="btn btn-primary">Siguiente</a>
+						<a  id="Adenunciante" class="btn btn-primary">Siguiente</a>
 					</div>
 				</div>
 			</div>

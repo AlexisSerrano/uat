@@ -12,7 +12,7 @@
 					<div class="col text-left">				
 					</div>
 					<div class="col text-right">
-						{!!Form::submit('Guardar',array('class' => 'btn button1','id'=>'guardarDenunciante'))!!}
+						{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!}
 					</div>
 				</div>
 			</div>

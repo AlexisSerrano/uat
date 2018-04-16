@@ -62,7 +62,7 @@
 							<a href="{{route('cancelar.caso')}}" class="btn btn-primary">Cancelar</a>
 						</div>
 						<div class="col text-right">
-							<a id=Adireccion  class="btn btn-primary">Siguiente</a>
+							<a  id=Adireccion  class="btn btn-primary">Siguiente</a>
 						</div>
 					</div>
 				</div>
@@ -78,7 +78,7 @@
 			
 						<div class="col text-right">
 							<a id=Atrabajo class="btn btn-primary">Siguiente</a>
-							<a id="ANotificaciones2" class="btn button button1">Siguiente</a>
+							<a id="ANotificaciones2" class="btn btn-primary">Siguiente</a>
 						</div>
 					</div>
 				
