@@ -86,7 +86,7 @@ class DenunciadoController extends Controller
             $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
             $medidasP= CarpetaController::getMedidasP($idCarpeta);
             $delitos = CarpetaController::getDelitos($idCarpeta);
-            $escolaridades = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $etnias = CatEtnia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');

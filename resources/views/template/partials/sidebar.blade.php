@@ -43,7 +43,7 @@
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-									<a href="{{url('recepcionista')}}" class="nav-link">
+									<a href="{{url('preregistro')}}" class="nav-link">
 										<i class="fa fa-user-plus nav-icon"></i>
 										<p>Nuevo pre-registro</p>
 									</a>
@@ -109,6 +109,17 @@
 						</a>
 					</li>
 					@if (!is_null(session('carpeta')))
+
+						@isset($idpreregistro)
+						<li class="nav-item has-treeview">
+							<a href="{{route('devolver', $idpreregistro)}}" class="nav-link">
+								<i class="nav-icon fa fa-reply"></i>
+								<p>
+									Devolver turno
+								</p>
+							</a>
+						</li>
+						@else	
 						<li class="nav-item has-treeview">
 							<a href='{{route("cancelar.caso")}}' class="nav-link">
 								<i class="nav-icon fa fa-ban"></i>
@@ -117,6 +128,7 @@
 								</p>
 							</a>
 						</li>
+						@endisset
 						
 					@else
 						<li class="nav-item has-treeview">
