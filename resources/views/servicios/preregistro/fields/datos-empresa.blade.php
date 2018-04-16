@@ -29,7 +29,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('telefono1', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('telefono1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'required']) !!}
+			{!! Form::text('telefono1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'number']) !!}
 			<div class="help-block with-errors"></div>
 		</div>
 	</div>
