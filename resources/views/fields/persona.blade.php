@@ -68,14 +68,14 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idEtnia', 'Etnia', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idEtnia', $etnias, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la etnia']) !!}
+					{!! Form::select('idEtnia', $etnias, 1, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la etnia']) !!}
 				</div>
 			</div>
 			
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idLengua', 'Lengua', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idLengua', $lenguas, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la lengua']) !!}
+					{!! Form::select('idLengua', $lenguas, 70, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la lengua']) !!}
 				</div>
 			</div>
 			
@@ -103,7 +103,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('motivoEstancia', 'Motivo de estancia', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('motivoEstancia', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el motivo de estancia']) !!}
+					{!! Form::text('motivoEstancia', 'SIN INFORMACION', ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el motivo de estancia']) !!}
 				</div>
 			</div>
 			
@@ -124,14 +124,14 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idReligion', 'Religión', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idReligion', $religiones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la religión']) !!}
+					{!! Form::select('idReligion', $religiones, 29, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la religión']) !!}
 				</div>
 			</div>
 			
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idEscolaridad', 'Escolaridad', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idEscolaridad', $escolaridades, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la escoalridad','data-validation'=>'required']) !!}
+					{!! Form::select('idEscolaridad', $escolaridades, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la escolaridad','data-validation'=>'required']) !!}
 				</div>
 			</div>
 			
