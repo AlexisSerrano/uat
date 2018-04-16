@@ -35,7 +35,7 @@
                     <div class="input-group date" id="fechaInicio" data-target-input="nearest">
                         {{-- {!! Form::text('fechaInicio', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaInicio','data-validation'=>'required', 'placeholder' => 'DD/MM/AAAA']) !!} --}}
 
-                                <input type="date" id="fechaInicio" name="fechaInicio" class="form-control form-control-sm", data-validation= "required">
+                                <input type="date" id="fechaInicio" name="fechaInicio" class="form-control form-control-sm", data-validation="birthdate">
                             {{-- <div class="group-text"><i class="fa fa-calendar"></i></div> --}}
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                     <div class="input-group date" id="fechaFinal" data-target-input="nearest">
                         {{-- {!! Form::text('fechaFinal', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaFinal','data-validation'=>'required', 'placeholder' => 'DD/MM/AAAA']) !!} --}}
                     
-                                <input type="date" id="fechaFinal" name="fechaFinal" class="form-control form-control-sm", data-validation= "required" >
+                                <input type="date" id="fechaFinal" name="fechaFinal" class="form-control form-control-sm", data-validation="birthdate" >
                             {{-- <div class="group-text"><i class="fa fa-calendar"></i></div> --}}
                         
                     </div>
