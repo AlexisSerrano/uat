@@ -25,7 +25,6 @@
             </div>
         </div>
     </div>
-<label for="">{{session('carpeta')}}</label>
     <div class="row">
         <div class="text-left col">
             <a href="{{url('registros')}}" title="" class="btn   button3">Regresar</a>
