@@ -137,7 +137,7 @@
 							<a href="{{route('cancelar.caso')}}" class="btn btn-primary">Cancelar</a>
 						</div>
 						<div class="col text-right">
-							<a id=Adireccion  class="btn btn-primary">Siguiente</a>
+							<a id=Adireccion href="#" class="btn btn-primary">Siguiente</a>
 						</div>
 					</div>
 				</div>

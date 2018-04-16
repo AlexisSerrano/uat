@@ -1,5 +1,5 @@
 @extends('template.form')
-
+@section('title', 'Registros en cola')
 @section('content')
 <div class="container">
 	<div class="row">
@@ -54,7 +54,7 @@
 			      		<td>{{($registro->esEmpresa==0)?'Fisica':'Moral'}}</td>
 			      		<td>{{($registro->esEmpresa==0)?$registro->nombre.' '.$registro->primerAp.' '.$registro->segundoAp:$registro->representanteLegal}}</td>
 			      		<td>{{$registro->docIdentificacion}}</td>
-			      		<td><a href="{{url("predenuncias/".$registro->id."/edit")}}"><img src="{{asset('img/check3.png')}}" alt=""></a></td>
+			      		<td><a href="{{url("predenuncias/".$registro->id."/edit")}}"><i class="fa fa-check-square-o" aria-hidden="true"></i></a></td>
 			    	</tr>
 					@empty
 

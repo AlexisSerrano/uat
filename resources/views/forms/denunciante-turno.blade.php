@@ -1,4 +1,5 @@
 @extends('template.form')
+@section('title', 'Agregar denunciante')
 @section('content')
 @include('fields.errores')
 
