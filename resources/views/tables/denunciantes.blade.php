@@ -1,4 +1,10 @@
-<h6>Denunciantes</h6>
+<br>
+<div class="card">
+    <div class="cad-header" style="text-align:center">
+            <h5>Denunciantes</h5>
+    </div>
+</div>
+
 <div class="table">
     <table class="table table-striped">
         <thead>
