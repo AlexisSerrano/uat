@@ -238,8 +238,7 @@ class CarpetaController extends Controller
     public static function getDelitos($id){
         $delitos = DB::table('tipif_delito')
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
-            ->join('cat_modalidad', 'cat_modalidad.id', '=', 'tipif_delito.idModalidad')
-            ->select('tipif_delito.id', 'cat_delito.id as idDelito', 'cat_delito.nombre as delito', 'cat_modalidad.nombre as modalidad', 'tipif_delito.fecha', 'tipif_delito.hora')
+            ->select('tipif_delito.id', 'cat_delito.id as idDelito', 'cat_delito.nombre as delito', 'tipif_delito.formaComision as modalidad', 'tipif_delito.fecha', 'tipif_delito.hora')
             ->where('tipif_delito.idCarpeta', '=', $id)
             ->get();
         return $delitos;

@@ -8,6 +8,8 @@
 {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">   --}}
 <link rel="stylesheet" href="{{ asset('css/theme-jquery-validation.min.css') }}">
 {{-- <link rel="stylesheet" href="https://rawcdn.githack.com/Romaincks/assets/master/dist/css/bootstrap.css"><!---bootstrap modificado--> --}}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha18/css/tempusdominus-bootstrap-4.min.css" />
 @yield('css')
 @endsection
 
@@ -18,15 +20,15 @@
             <div class="container">
                 {{-- <div class="container"> --}}
                     @yield('content')
-                {{-- </div> --}}
+                    {{-- </div> --}}
+                </div>
             </div>
         </div>
     </div>
-</div>
-{{-- 
-@if(isset($acusaciones))
-@else
-    @isset($idCarpeta)
+    {{-- 
+        @if(isset($acusaciones))
+        @else
+        @isset($idCarpeta)
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -37,34 +39,36 @@
                 </div>
             </div>
         </div>
-    @endif
-@endif
- --}}
-
-@endsection
-
-@section('pilaScripts')
-    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-    <script src="{{ asset('js/jquery.form-validator.min.js')}}" ></script>
-    <script src="{{ asset('plugins/fileinput/js/fileinput.min.js')}}" ></script>
-    <script src="{{ asset('plugins/fileinput/themes/fa/theme.min.js')}}" ></script>
-    <script src="{{ asset('plugins/fileinput/js/locales/es.js')}}" ></script>
-    <script src="{{asset('js/semaforos.js')}}"></script>  
-    {{-- <script src="{{asset('js/selectsDirecciones.js')}}"></script>   --}}
-    <script src="{{asset('js/selects.js')}}"></script>
-    <script src="{{asset('js/es.js')}}"></script>
-    <script src="{{asset('js/funciones.js')}}"></script>
-
-    
-    <script>
+        @endif
+        @endif
+        --}}
+        
+        @endsection
+        
+        @section('pilaScripts')
+        {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha18/js/tempusdominus-bootstrap-4.min.js"></script>
+        <script src="{{ asset('js/jquery.form-validator.min.js')}}" ></script>
+        <script src="{{ asset('plugins/fileinput/js/fileinput.min.js')}}" ></script>
+        <script src="{{ asset('plugins/fileinput/themes/fa/theme.min.js')}}" ></script>
+        <script src="{{ asset('plugins/fileinput/js/locales/es.js')}}" ></script>
+        <script src="{{asset('js/semaforos.js')}}"></script>  
+        {{-- <script src="{{asset('js/selectsDirecciones.js')}}"></script>   --}}
+        <script src="{{asset('js/selects.js')}}"></script>
+        <script src="{{asset('js/es.js')}}"></script>
+        <script src="{{asset('js/funciones.js')}}"></script>
+        
+        
+        <script>
     $.validate({
             lang : 'es'
         });
         
     </script>
 
-    @stack('scripts')
+@stack('scripts')
 @endsection

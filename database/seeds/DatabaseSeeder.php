@@ -69,6 +69,7 @@ class DatabaseSeeder extends Seeder
         $this->call(GroupSeeder::class);
         $this->call(RedireccionesSeeder::class);
         $this->call(LugarSeeder::class);
+        $this->call(ZonaSeeder::class);
 
         $this->call(ProvidenciasSeeder::class);
         $this->call(EjecutorSeeder::class);

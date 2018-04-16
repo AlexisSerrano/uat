@@ -20,8 +20,8 @@ class CreateTipifDelitoTable extends Migration
             $table->boolean('conViolencia')->default(false);
             // $table->integer('idArma')->unsigned()->default(1);//Default sin información
             // $table->integer('idPosibleCausa')->unsigned()->default(1);
-            $table->integer('idModalidad')->unsigned();
-            // $table->string('formaComision',50);
+            //$table->integer('idModalidad')->unsigned();
+            $table->string('formaComision',50);
             // $table->string('consumacion',50);
             $table->date('fecha');
             $table->time('hora');
@@ -39,7 +39,7 @@ class CreateTipifDelitoTable extends Migration
             $table->foreign('idDelito')->references('id')->on('cat_delito')->onDelete('cascade');
             // $table->foreign('idArma')->references('id')->on('cat_arma')->onDelete('cascade');
             // $table->foreign('idPosibleCausa')->references('id')->on('cat_posible_causa')->onDelete('cascade');
-            $table->foreign('idModalidad')->references('id')->on('cat_modalidad')->onDelete('cascade');
+            //$table->foreign('idModalidad')->references('id')->on('cat_modalidad')->onDelete('cascade');
           
             $table->foreign('idLugar')->references('id')->on('cat_lugar')->onDelete('cascade');
             $table->foreign('idZona')->references('id')->on('cat_zona')->onDelete('cascade');

@@ -430,6 +430,8 @@ class PreregistroAuxController extends Controller
         
         $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
         $denunciados = CarpetaController::getDenunciados($idCarpeta);
+        $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
+        $delitos = CarpetaController::getDelitos($idCarpeta);
         $medidasP= CarpetaController::getMedidasP($idCarpeta);
         $escolaridades = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -470,6 +472,8 @@ class PreregistroAuxController extends Controller
         ->with('idpreregistro',  $idpreregistro)
         ->with('denunciantes', $denunciantes)
         ->with('denunciados', $denunciados)
+        ->with('acusaciones', $acusaciones)
+        ->with('delitos', $delitos)
         ->with('medidasP', $medidasP);
     }
 

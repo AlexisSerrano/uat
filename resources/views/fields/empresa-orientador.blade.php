@@ -27,7 +27,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('telefono1', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('telefono1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=> 'required', 'data-validation-regexp'=>'^([0-9]{10,15}|(SIN NUMERO)|(SN))$']) !!}
+			{!! Form::number('telefono1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=> 'required', 'data-validation-regexp'=>'^([0-9]{10,15}|(SIN NUMERO)|(SN))$']) !!}
 			<div class="help-block with-errors"></div>
 		</div>
 	</div>

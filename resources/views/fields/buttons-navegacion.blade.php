@@ -15,11 +15,15 @@
 	if (!isset($registroAutoridad)){
 		$registroAutoridad='btn btn-secondary';
 	}
-	if (!isset($registroAcusaciones)){
+	if (count($acusaciones)==0){
 		$registroAcusaciones='btn btn-secondary';
+	}else{
+		$registroAcusaciones='btn btn-success';
 	}
-	if (!isset($registroDelitos)){
+	if (count($delitos)==0){
 		$registroDelitos='btn btn-secondary';
+	}else{
+		$registroDelitos='btn btn-success';
 	}
 	if (!isset($registroDefenza)){
 		$registroDefenza='btn btn-secondary';

@@ -17,6 +17,8 @@ class AcusacionController extends Controller
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();
         if(count($carpetaNueva)>0){ 
             $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
+            $medidasP= CarpetaController::getMedidasP($idCarpeta);
+            $delitos = CarpetaController::getDelitos($idCarpeta);
             $denunciantes = DB::table('extra_denunciante')
                 ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
                 ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
@@ -38,6 +40,8 @@ class AcusacionController extends Controller
                 ->orderBy('cat_delito.nombre', 'ASC')
                 ->get();
             return view('forms.acusacion')->with('idCarpeta', $idCarpeta)
+                ->with('medidasP', $medidasP)
+                ->with('delitos', $delitos)
                 ->with('acusaciones', $acusaciones)
                 ->with('denunciantes', $denunciantes)
                 ->with('denunciados', $denunciados)
@@ -49,8 +53,9 @@ class AcusacionController extends Controller
 
     public function storeAcusacion(Request $request){
         //dd($request->all());
+        $idCarpeta=session('carpeta');
         $acusacion = new Acusacion();
-        $acusacion->idCarpeta = $request->idCarpeta;
+        $acusacion->idCarpeta = $idCarpeta;
         $acusacion->idDenunciante = $request->idDenunciante;
         $acusacion->idTipifDelito = $request->idTipifDelito;
         $acusacion->idDenunciado = $request->idDenunciado;

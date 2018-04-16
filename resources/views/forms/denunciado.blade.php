@@ -66,16 +66,10 @@
 			</div>
 			<div>
 				<div class="row menu">
-					
-					<div class="col text-left">
-							
-					
+					<div class="col text-left">	
 						<a href="{{route('cancelar.caso')}}" class="btn btn-primary ">Cancelar</a>
-						
 					</div>
-					
 					<div class="col text-right">
-						
 						{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!}
 					</div>
 				</div>
@@ -194,16 +188,10 @@
 				@include('fields.extra-denunciado')
 				<div>
 					<div class="row menu">
-						
 						<div class="col text-left">
-								
-						
 							<a href="{{route('cancelar.caso')}}" class="btn btn-primary">Cancelar</a>
-							
 						</div>
-						
 						<div class="col text-right">
-							
 							{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!}
 						</div>
 					</div>
@@ -309,7 +297,7 @@
 	// 	if
 	// 	toastr.info('Se ha terminado el registro del denunciante');
 	// 	});
-
+	$(document).ready(function(){
 		$(function () {
 			$('#fechanac').datetimepicker({
 				format: 'YYYY-MM-DD',
@@ -317,29 +305,27 @@
 				maxDate: moment().subtract(18, 'years').format('YYYY-MM-DD')
 			});
 		});
-
 		$("#fechanac").on("change.datetimepicker", function (e) {
 			$('#edad').val(moment().diff(e.date,'years'));
 		});
-
-	$("#fechanac").on("change.datetimepicker", function (e) {
-		$('#edad').val(moment().diff(e.date,'years'));
+		$( "#edad" ).change(function() {
+			var anios = $('#edad').val();
+			$('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
+		});
 	});
+		
 
-	$( "#edad" ).change(function() {
-		var anios = $('#edad').val();
-		$('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
-	});
+		
 
-	id = $(".datotip").attr("id");
-	
-	if(id==0){
-		$("#esEmpresa1").prop("checked", true);
-		console.log("entro");
-	}
-	else{
-		console.log(id);
-	}
+		id = $(".datotip").attr("id");
+		
+		if(id==0){
+			$("#esEmpresa1").prop("checked", true);
+			console.log("entro");
+		}
+		else{
+			console.log(id);
+		}
 	
 	
 	

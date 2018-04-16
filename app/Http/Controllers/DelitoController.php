@@ -31,14 +31,13 @@ class DelitoController extends Controller
         //$idCarpeta='2';
        
         $idCarpeta=session('carpeta');
-
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();//->where('idFiscal', Auth::user()->id)->get();
         if(count($carpetaNueva)>0){ 
             $denunciados = CarpetaController::getDenunciados($idCarpeta);
             $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
-            $medidasP= CarpetaController::getMedidasP($idCarpeta);
-            
+            $medidasP= CarpetaController::getMedidasP($idCarpeta);      
             $delitos = CarpetaController::getDelitos($idCarpeta);
+            $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
             $delits = CatDelito::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             // $posiblescausas = CatPosibleCausa::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -46,26 +45,22 @@ class DelitoController extends Controller
             // $marcas = CatMarca::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             // $modalidades = CatModalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             // $tiposarma = CatTipoArma::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $zonas = CatZona::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-
-
-
-            
-            
-   // dd($delitos);
+            $zonas = CatZona::orderBy('nombre', 'ASC')->pluck('nombre', 'id');   
+            // dd($delitos);
             return view('forms.delitos')->with('idCarpeta', $idCarpeta)
                 ->with('denunciados', $denunciados)
                 ->with('denunciantes', $denunciantes)
+                ->with('acusaciones', $acusaciones)
                 ->with('medidasP', $medidasP)
                 ->with('delitos', $delitos)
                 ->with('delits', $delits)
-                // ->with('posiblescausas', $posiblescausas)
                 ->with('estados', $estados)
-                 ->with('lugares', $lugares)
+                ->with('lugares', $lugares)
+                ->with('zonas', $zonas);
+                // ->with('posiblescausas', $posiblescausas)
                 // ->with('marcas', $marcas)
                 // ->with('modalidades', $modalidades)
                 // ->with('tiposarma', $tiposarma)
-                ->with('zonas', $zonas);
         }else{
             return redirect()->route('new.delito');
         }
@@ -74,8 +69,8 @@ class DelitoController extends Controller
 
  public function storeDelito(StoreDelito $request){
         //dd($request->all());
-       // $idCarpeta=session('carpeta');
-       $idCarpeta='2';
+        $idCarpeta=session('carpeta');
+       //$idCarpeta='2';
         $domicilio = new Domicilio();
         $domicilio->idMunicipio = $request->idMunicipio;
         $domicilio->idLocalidad = $request->idLocalidad;
@@ -102,17 +97,17 @@ class DelitoController extends Controller
         //     $tipifDelito->idPosibleCausa = $request->idPosibleCausa;
         // }
         // $tipifDelito->idModalidad = $request->idModalidad;
-        // $tipifDelito->formaComision = $request->formaComision;
+        $tipifDelito->formaComision = $request->formaComision;
         // $tipifDelito->consumacion = $request->consumacion;
         $tipifDelito->fecha = $request->fecha;
         $tipifDelito->hora = $request->hora;
         $tipifDelito->idLugar = $request->idLugar;
         $tipifDelito->idZona = $request->idZona;
         $tipifDelito->idDomicilio = $idD1;
-        // $tipifDelito->entreCalle = $request->entreCalle;
-        // $tipifDelito->yCalle = $request->yCalle;
-        // $tipifDelito->calleTrasera = $request->calleTrasera;
-        // $tipifDelito->puntoReferencia = $request->puntoReferencia;
+        $tipifDelito->entreCalle = $request->entreCalle;
+        $tipifDelito->yCalle = $request->yCalle;
+        $tipifDelito->calleTrasera = $request->calleTrasera;
+        $tipifDelito->puntoReferencia = $request->puntoReferencia;
         $tipifDelito->save();
         /*
         Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();

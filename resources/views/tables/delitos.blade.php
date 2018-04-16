@@ -3,7 +3,7 @@
     <table class="table table-striped">
         <thead>
             <th>Delito</th>
-            <th>Modalidad</th>
+            <th>Forma de Comisión</th>
             <th>Fecha</th>
             <th>Hora</th>
         </thead>
