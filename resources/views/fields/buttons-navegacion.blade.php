@@ -36,7 +36,6 @@
 	}
 	
 	@endphp
-	<br><br>
 <div class="btn-group col">
 	<a href="{{route('new.denunciante')}}" class="{{$registroDenunciante}} form-control">Denunciante</a>
 	<a href="{{route('new.denunciado')}}" class="{{$registroDenunciado}} form-control">Denunciado</a>
