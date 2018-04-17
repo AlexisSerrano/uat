@@ -485,7 +485,7 @@ class PreregistroAuxController extends Controller
         ->where('conViolencia', 0)
         ->orderBy('horaLlegada','asc')->first();
         if(!$urgente&&!$cola){
-            Alert::warning('No hay Elemento en Cola', 'Hecho')->persistent("Aceptar");
+            Alert::warning('', 'No hay elemento en cola')->persistent("Aceptar");
             return back();
         }
         else{

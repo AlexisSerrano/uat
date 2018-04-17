@@ -118,7 +118,7 @@ class DelitoController extends Controller
             Alert::success('Delito registrado con éxito', 'Hecho')->persistent("Aceptar");
         }
         else{
-            Alert::error('Se presento un problema al agregar el delito', 'Error')->persistent("Aceptar");
+            Alert::error('Se presentó un problema al agregar el delito', 'Error')->persistent("Aceptar");
         }
     
         $delitos = DB::table('tipif_delito')
