@@ -1,0 +1,59 @@
+@extends('template.form')
+
+@section('title', 'Turnar carpeta')
+@section('css')
+<style>
+	.btn-success{
+		background: black;
+	}	
+</style>
+	
+@endsection
+@section('content')
+@include('fields.errores')
+
+<div id="page-content-wrapper">
+        <div class="row">
+                <div class="col-12">
+{!!Form::open([''])!!}
+<div class="row">
+<div class="col-6">
+    <div class="form-group">
+        {!! Form::label('estatusCarpeta', 'Estatus de la carpeta:', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::text('estatusCarpeta', 'SIN INFORMACION', ['class' => 'form-control form-control-sm']) !!}
+    </div>
+</div>
+<div class="col-6">
+    <div class="form-group">
+        {!! Form::label('cambioEstatus', 'Cambiar a:', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::select('cambioEstatus', ['' => 'Seleccione un estatus'], null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+    </div>
+</div>
+<div class="col-12">
+        <div class="form-group">
+            {!! Form::label('asignarFiscal', 'Asignar a fiscal:', ['class' => 'col-form-label-sm']) !!}
+            {!! Form::text('asignarFiscal', 'SIN INFORMACION', ['class' => 'form-control form-control-sm']) !!}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <label for="narracion" class="col-form-label-sm">Observaciones</label>
+        {{ Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'size' => '30x10']) }}
+    </div>
+</div>
+<div class="form-group">
+<div class="col-12">   
+    <br>
+        <div class="text-center">
+                <a href="http://fiscaliaveracruz.gob.mx/" title="" class="btn btn-primary">Cancelar</a>
+                {!!Form::submit('Guardar',array('class' => 'btn btn-primary'))!!}
+        </div>
+    </div>
+</div>
+
+{!!Form::close()!!}
+</div>
+</div>
+@endsection

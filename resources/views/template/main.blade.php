@@ -141,8 +141,12 @@
         $(this).val($(this).val().toUpperCase());
 	    });
 	$("textarea").keyup(function() {
-		$(this).val($(this).val().toUpperCase());
+		$(this).val($(this).val().toUpperCase());S
 	});
+
+
+	$('select').select2();
+
 </script>
 @yield('pilaScripts')
 @include('sweet::alert')
