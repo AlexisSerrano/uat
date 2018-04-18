@@ -143,3 +143,12 @@ Route::get('agregar-delito', 'DelitoController@showForm')->name('new.delito');
 Route::post('storedelito', 'DelitoController@storeDelito')->name('store.delito');
 Route::get('acusacion', 'AcusacionController@showForm')->name('new.acusacion');
 Route::post('storeacusacion', 'AcusacionController@storeAcusacion')->name('store.acusacion');
+
+/* --------Rutas para abogado----------- */
+Route::get('agregar-abogado', 'AbogadoController@showForm')->name('new.abogado');
+Route::post('storeabogado', 'AbogadoController@storeAbogado')->name('store.abogado');
+/* --------Rutas para defensa----------- */
+Route::get('agregar-defensa', 'AbogadoController@showForm2')->name('new.defensa');
+Route::post('storedefensa', 'AbogadoController@storeDefensa')->name('store.defensa');
+Route::get('involucrados/{idCarpeta}/{idAbogado}', 'AbogadoController@getInvolucrados');
+

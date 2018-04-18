@@ -109,9 +109,16 @@ public function showForm()
 
     public function cancelarCaso(){
         $idCarpeta = session('carpeta');
+        $comprobar= Carpeta::where('id',$idCarpeta)->get();
+        //dd(count($comprobar));
         if(is_null($idCarpeta)){
             Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia')->persistent("Aceptar");
             return redirect(url('registros'));    
+        }
+        if (count($comprobar)==0) {
+            session()->forget('carpeta');
+            Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia')->persistent("Aceptar");
+            return redirect(url('registros'));
         }
         $carpeta = Carpeta::find($idCarpeta);
         $carpeta->delete();
