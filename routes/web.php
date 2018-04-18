@@ -30,6 +30,10 @@ return view('prueba-index');
 Route::get('/pruebaMedidas', function () {
     return view('forms.medidasProteccion');
 });
+Route::get('/pruebasturnar', function(){
+    return view('forms.turnar-carpeta');
+    
+    });
 /**************************************************************/
 // -------------------------------------------------------------------
 
