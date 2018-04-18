@@ -35,6 +35,11 @@ class EnviarCorreo extends Mailable
 		->get();
 
          return $this->view('servicios.pdf.pdf-preregistro')->with('DatosRegistros',$DatosRegistros);
+
+        // return $this->loadFile('E:\NUEVO.pdf');
+        //  $pdf = PDF::loadView('servicios.pdf.pdf-preregistro', $data)->save('E:\NUEVO.pdf');
+        //  $pdf = PDF::loadView('servicios.pdf.pdf-preregistro', $data)->save('E:\NUEVO.pdf');;
+		// return $pdf->stream($DatosRegistros[0]->folio.'.pdf');
         // // return redirect('FormatoRegistro/');
     
     }
