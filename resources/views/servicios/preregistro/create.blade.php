@@ -107,9 +107,9 @@
 			<div class="row">
 				
 				<div class="col">   
-					<div class="text-right">
-							<a href="http://fiscaliaveracruz.gob.mx/" title="" class="btn  button button1">Cancelar</a>
-							{!!Form::submit('Guardar',array('class' => 'btn  button button1'))!!}
+					<div class="text-center">
+							<a href="http://fiscaliaveracruz.gob.mx/" title="" class="btn btn-primary">Cancelar</a>
+							{!!Form::submit('Guardar',array('class' => 'btn btn-primary'))!!}
 
 						
 					
@@ -132,6 +132,8 @@
 	<script src="{{ asset('js/scripts.js')}}"></script>
 	<script src="{{asset('js/preregistro.js')}}"></script> 
 	<script>
+
+
 		$(function () {
 			$('#fechanac').datetimepicker({
 				format: 'YYYY-MM-DD',

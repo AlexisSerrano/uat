@@ -11,7 +11,9 @@ $(document).ready(function(){
         if ($('#esEmpresa1').is(':checked') ) {
             $('#collapsePersonales2').show();
             $('#collapsePersonales1').hide();
+            $('#tipodeActa1').hide();
             mostrarmoral();
+            paraActadeHechos1();
         }
     });
 
@@ -21,13 +23,71 @@ $(document).ready(function(){
         if ($('#esEmpresa2').is(':checked') ) {
             $('#collapsePersonales1').show();
             $('#collapsePersonales2').hide();
+            $('#tipodeActa').hide();
             mostrarpersonal()
+            paraActadeHechos2();
         }
     });
 
 
 
 });
+//empresa
+function paraActadeHechos1(){
+    var select = document.getElementById('idRazon1');
+    select.addEventListener('change',function(){
+        
+        var selectedOption1 = this.options[select.selectedIndex];
+    	console.log(selectedOption1.value);
+        
+    	if(selectedOption1.value==4){
+    		console.log('es 4');
+    		$('#tipodeActa1').show();
+    		$('#tipoActa1').prop('disabled', false);
+    		$('#tipoActa1').prop('disabled', false);
+    		$('#estadoCivilActa1').prop('disabled', false);
+    		$('#escActa1').prop('disabled', false);
+    		$('#ocupActa1').prop('disabled', false);
+    	}
+    	else{
+    		$('#tipodeActa1').hide();
+    		$('#tipoActa1').prop('disabled', true);
+    		$('#estadoCivilActa1').prop('disabled', true);
+    		$('#escActa1').prop('disabled', true);
+    		$('#ocupActa1').prop('disabled', true);
+    	}
+      
+    
+    }); 
+}
+//persona
+function paraActadeHechos2(){
+    var select = document.getElementById('idRazon2');
+    select.addEventListener('change',function(){
+        
+        var selectedOption = this.options[select.selectedIndex];
+        console.log(selectedOption.value);
+        
+        if(selectedOption.value==4){
+            console.log('es 4');
+            $('#tipodeActa').show();
+            $('#tipoActa').prop('disabled', false);
+            $('#tipoActa').prop('disabled', false);
+            $('#estadoCivilActa').prop('disabled', false);
+            $('#escActa').prop('disabled', false);
+            $('#ocupActa').prop('disabled', false);
+        }
+        else{
+            $('#tipodeActa').hide();
+            $('#tipoActa').prop('disabled', true);
+            $('#estadoCivilActa').prop('disabled', true);
+            $('#escActa').prop('disabled', true);
+            $('#ocupActa').prop('disabled', true);
+        }
+      
+    
+    }); 
+}
 
 function mostrar(){
     if ($('#esEmpresa2').is(':checked') ) {
