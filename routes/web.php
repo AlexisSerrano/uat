@@ -34,6 +34,10 @@ Route::get('/pruebasturnar', function(){
     return view('forms.turnar-carpeta');
     
     });
+    Route::get('/pruebaslibro', function(){
+        return view('forms.libro-gobierno');
+        });
+
 /**************************************************************/
 // -------------------------------------------------------------------
 
