@@ -15,15 +15,21 @@ class PDFcontroller extends Controller
 		->where ('preregistros.id', '=', $id)
 		->get();
 
-
+		
 		//dd($DatosRegistros);
 		$data = ['DatosRegistros' => $DatosRegistros];
-		$pdf = PDF::loadView('servicios.pdf.pdf-preregistro', $data);
+		$pdf = PDF::loadView('servicios.pdf.pdf-preregistro', $data)->save('E:\NUEVO.pdf');
+		
 		//return $pdf->stream('pruebapdf.pdf');
 		return $pdf->stream($DatosRegistros[0]->folio.'.pdf');
 		
+		
+		
 		//return $pdf->download('gol.pdf');
 		
+
+
+
 
 	}
 
