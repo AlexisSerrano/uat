@@ -61,16 +61,17 @@
         
         
         <script>
-    $.validate({
-            lang : 'es'
-        });
-
-    $(document).on('focus', '.select2', function (e) {
+            $(document).on('focus', '.select2', function (e) {
             if (e.originalEvent) {
                 $(this).siblings('select').select2('open');
             }
         });
-        
+
+    $.validate({
+            lang : 'es'
+        });
+
+   
     </script>
 
 @stack('scripts')

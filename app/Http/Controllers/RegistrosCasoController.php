@@ -28,7 +28,7 @@ class RegistrosCasoController extends Controller
 
     
     public function lista(){
-        $preregistros = Preregistro::where('statusCola', null)
+        $registros = Preregistro::where('statusCola', null)
         ->where('conViolencia', 0)
         ->orderBy('id','desc')
         ->paginate(10);
@@ -37,7 +37,7 @@ class RegistrosCasoController extends Controller
         ->orderBy('nombre','asc')
         ->get();
         // return view('orientador.denunciante.fields-denunciante.filtroBusqueda')
-        return view('servicios.recepcion.fiscalSinRecepcion')->with('registros',$preregistros)->with('municipios', $municipios);
+        return view('servicios.recepcion.fiscalSinRecepcion')->with('registros',$registros)->with('municipios', $municipios);
         
        }
 

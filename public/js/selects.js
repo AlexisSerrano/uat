@@ -1,6 +1,6 @@
 
-
-$("#idEstado1").focusout(function(event){
+jQuery.ajaxSetup({async:false});
+$("#idEstado1").change(function(event){
 	if(event.target.value!=""){
 		$.get("../municipios/"+event.target.value+"", function(response, estado){
 			$("#idMunicipio1").empty();
@@ -14,7 +14,7 @@ $("#idEstado1").focusout(function(event){
 	}
 });
 
-$("#idMunicipio1").focusout(function(event){
+$("#idMunicipio1").change(function(event){
 	if(event.target.value!=""){
 		$.get("../localidades/"+event.target.value+"", function(response, municipio){
 			$("#idLocalidad1").empty();
@@ -35,7 +35,7 @@ $("#idMunicipio1").focusout(function(event){
 	}
 });
 
-$("#cp1").focusout(function(event){
+$("#cp1").change(function(event){
 	if(event.target.value!=""){
 		$.get("../colonias/"+$('#cp1 option:selected').html()+"", function(response, cp){
 			$("#idColonia1").empty();
@@ -58,7 +58,7 @@ $("#cp1").focusout(function(event){
 
 //selects persona fisica 
 
-$("#idEstado2").focusout(function(event){
+$("#idEstado2").change(function(event){
 	if(event.target.value!=""){
 		
 		$.get("../municipios/"+event.target.value+"", function(response, estado){
@@ -72,7 +72,7 @@ $("#idEstado2").focusout(function(event){
 	}
 });
 
-$("#idMunicipio2").focusout(function(event){
+$("#idMunicipio2").change(function(event){
 	if(event.target.value!=""){
 		$.get("../localidades/"+event.target.value+"", function(response, municipio){
 			$("#idLocalidad2").empty();
@@ -92,7 +92,7 @@ $("#idMunicipio2").focusout(function(event){
 	}
 });
 
-$("#cp2").focusout(function(event){
+$("#cp2").change(function(event){
 	if(event.target.value!=""){
 		$.get("../colonias/"+$('#cp2 option:selected').html()+"", function(response, cp){
 			$("#idColonia2").empty();

@@ -20,6 +20,7 @@
 
 	{{-- SweetAlert --}}
 	<link rel="stylesheet" href="{{asset ('css/sweetalert.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/select2/select2.css') }}">
 		
 
 	<!-- TimePicker style -->
@@ -128,7 +129,7 @@
 
 {{-- SweetAlert --}}
 <script src="{{asset ('js/sweetalert.min.js')}}"></script>
-
+<script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
 
 {{-- TimePicker --}}
 {{-- <script src="{{asset ('js/bootstrap-datepicker.min.js')}}"></script> --}}
