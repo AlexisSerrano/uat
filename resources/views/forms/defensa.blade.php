@@ -1,7 +1,7 @@
 @extends('template.form')
 
 @section('title', 'Agregar Defensa')
-@section('contenido')
+@section('content')
 	@include('fields.buttons-navegacion')
     
 	{!! Form::open(['route' => 'store.defensa', 'method' => 'POST'])  !!}

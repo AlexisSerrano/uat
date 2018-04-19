@@ -1,7 +1,7 @@
 @extends('template.form')
 
 @section('title', 'Agregar Abogado')
-@section('contenido')
+@section('content')
 	@include('fields.buttons-navegacion')
 	@include('fields.errores')
 	

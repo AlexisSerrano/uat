@@ -2,7 +2,7 @@
 
 @section('title', 'Agregar delito')
 
-@section('contenido')
+@section('content')
 @include('fields.errores')
 	@include('fields.buttons-navegacion')
     {!! Form::open(['route' => 'store.delito', 'method' => 'POST'])  !!}

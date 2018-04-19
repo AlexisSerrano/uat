@@ -1,7 +1,7 @@
 @extends('template.form')
 
 @section('title', 'Agregar Autoridad')
-@section('contenido')
+@section('content')
 @include('fields.buttons-navegacion')
 @include('fields.errores')
 {!! Form::open(['route' => 'store.autoridad', 'method' => 'POST'])  !!}
