@@ -155,4 +155,7 @@ Route::post('storeabogado', 'AbogadoController@storeAbogado')->name('store.aboga
 Route::get('agregar-defensa', 'AbogadoController@showForm2')->name('new.defensa');
 Route::post('storedefensa', 'AbogadoController@storeDefensa')->name('store.defensa');
 Route::get('involucrados/{idCarpeta}/{idAbogado}', 'AbogadoController@getInvolucrados');
+/* --------Rutas para Autoridad----------- */
+Route::get('agregar-autoridad', 'AutoridadController@showForm')->name('new.autoridad');
+Route::post('storeautoridad', 'AutoridadController@storeAutoridad')->name('store.autoridad');
 
