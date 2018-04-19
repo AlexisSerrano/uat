@@ -464,6 +464,26 @@ class DenunciadoController extends Controller
         return redirect()->route('new.denunciado', $request->idCarpeta);
     }
 
+    public function delete($id){
+        //     $persona =  Persona::find($id);
+        //    $persona->delete();
+
+        //     $domicilio = Domicilio::find($id);
+        //    $domicilio->delete();
+
+        //     $vpersona = VariablesPersona::find($id);
+        //     $vpersona->delete();
+
+        //     $notificacion = DirNotificacion::find($id);
+        //     $notificacion ->delete();
+
+            $ExtraDenunciado =  ExtraDenunciado::find($id);
+            $ExtraDenunciado->delete();
+            Alert::success('Registrado eliminado con éxito', 'Hecho')->persistent("Aceptar");
+            return back();
+
+
+        }
 
 
 

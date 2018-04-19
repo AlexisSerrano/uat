@@ -21,7 +21,7 @@ class CreateCarpetasTable extends Migration
             $table->date('fechaInicio');
             $table->boolean('conDetenido')->default(false);
             $table->boolean('esRelevante')->default(false);
-            $table->string('estadoCarpeta',50)->default("INICIO");
+            $table->integer('idEstadoCarpeta')->unsigned()->default(1); // $table->string('estadoCarpeta',50)->default("INICIO");
             $table->time('horaIntervencion')->nullable();
             $table->string('npd',50)->default("SIN INFORMACION");
             $table->string('numIph',50)->default("SIN INFORMACION");
@@ -29,12 +29,14 @@ class CreateCarpetasTable extends Migration
             $table->string('narracionIph',2000)->default("SIN INFORMACION");
             $table->integer('idTipoDeterminacion')->unsigned()->nullable();//->default(5); en vez del nullable
             $table->date('fechaDeterminacion')->nullable();
+            $table->string('observacionesEstatus',2000)->default("SIN OBSERVACIONES");
             $table->timestamps();
             $table->softDeletes();
             
             // $table->foreign('idUnidad')->references('id')->on('unidad')->onDelete('cascade');
             // $table->foreign('idFiscal')->references('id')->on('users')->onDelete('cascade');
             // $table->foreign('idTipoDeterminacion')->references('id')->on('cat_tipo_determinacion')->onDelete('cascade');
+            $table->foreign('idEstadoCarpeta')->references('id')->on('cat_estatus_casos')->onDelete('cascade');
         });
     }
 

@@ -40,7 +40,7 @@
 	<a href="{{route('new.denunciante')}}" class="{{$registroDenunciante}} form-control">Denunciante</a>
 	<a href="{{route('new.denunciado')}}" class="{{$registroDenunciado}} form-control">Denunciado</a>
 	<a href="{{route('new.abogado')}}" class="{{$registroAbogado}} form-control">Abogado</a>
-	{{-- <a  class="{{$registroAutoridad}} form-control">Autoridad</a> --}}
+	<a href="{{route('new.autoridad')}}"  class="{{$registroAutoridad}} form-control">Autoridad</a>
 	<a href="{{route('new.delito')}}" class="{{$registroDelitos}} form-control">Delitos</a>
 	<a href="{{route('new.acusacion')}}" class="{{$registroAcusaciones}} form-control">Acusaciones</a>
 	<a href="{{route('new.defensa')}}"  class="{{$registroDefenza}} form-control">Defensa</a>

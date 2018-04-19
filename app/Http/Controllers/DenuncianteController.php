@@ -31,7 +31,7 @@ class DenuncianteController extends Controller
             $caso = new Carpeta();
             $caso->numCarpeta = "UAT/D"."1"."/"."X"."/"."XX"."/".Carbon::now()->year;
             $caso->fechaInicio = Carbon::now();
-            $caso->estadoCarpeta = "INICIO";
+            $caso->idEstadoCarpeta = 1;
             $caso->horaIntervencion = Carbon::now();
             $caso->fechaDeterminacion = Carbon::now();
             $caso->save();

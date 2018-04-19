@@ -65,7 +65,7 @@ Route::get('/turno/{id}', 'PreregistroAuxController@turno');
 Route::get('/Traerturno', 'PreregistroAuxController@Traerturno')->name('turno.denunciante');
 Route::get('/devolver/{id}', 'PreregistroAuxController@devolverturno')->name('devolver');
 /*****************************Rutas para modulo recepción****************************************/
-	
+
 
 //Route::resource('/preregistro','PreregistroController');
 
@@ -99,6 +99,7 @@ Route::get('mostrardoc/{id}', 'NarracionController@mostrarDoc');
 /*---------Rutas denunciado-------------*/
 Route::get('agregar-denunciado', 'DenunciadoController@showForm')->name('new.denunciado');
 Route::post('storedenunciado', 'DenunciadoController@storeDenunciado')->name('store.denunciado');
+Route::get('agregar-denunciado/{id}/eliminar', 'DenunciadoController@delete');
 
 /*---------Rutas de preregistro orientador-------------*/
 Route::get('preregistros', 'PreregistroAuxController@orientador');
@@ -155,4 +156,10 @@ Route::post('storeabogado', 'AbogadoController@storeAbogado')->name('store.aboga
 Route::get('agregar-defensa', 'AbogadoController@showForm2')->name('new.defensa');
 Route::post('storedefensa', 'AbogadoController@storeDefensa')->name('store.defensa');
 Route::get('involucrados/{idCarpeta}/{idAbogado}', 'AbogadoController@getInvolucrados');
+/* --------Rutas para Autoridad----------- */
+Route::get('agregar-autoridad', 'AutoridadController@showForm')->name('new.autoridad');
+Route::post('storeautoridad', 'AutoridadController@storeAutoridad')->name('store.autoridad');
 
+/* --------Rutas para Turnar----------- */
+Route::get('cestado','EstadoController@index');
+Route::put('/cestado/actualizar','EstadoController@editar')->name('Estado.edit');

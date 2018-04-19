@@ -53,6 +53,12 @@ class Carpeta extends Model
        return $this->hasMany('app/Models/TipifDelito');
     }
 
+    public function Cat_estatus_caso(){
+        return $this->belongsTo('app/Models/CatEstatusCaso');
+        
+    }
+
+
     // public function unidad()
     // {
     //     return $this->belongsTo('app/Models/Unidad');

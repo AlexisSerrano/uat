@@ -8,10 +8,11 @@
             <th>Sexo</th>
             <th>Teléfono</th>
             <th>Persona moral</th>
+            <th>Opciones</th>
         </thead>
         <tbody>
             @if(count($denunciados)==0)
-                <tr><td colspan="6" class="text-center">Sin registros</td></tr>
+                <tr><td colspan="7" class="text-center">Sin registros</td></tr>
             @else
                 @foreach($denunciados as $denunciado)
                     <tr>
@@ -24,7 +25,10 @@
                             <td>SI</td>
                         @else
                             <td>NO</td>
-                        @endif
+                        @endif  
+                        <th>  <a href="{{ url('agregar-denunciado/'.$denunciado->id.'/eliminar')}}" type="button" rel="tooltip" title="Eliminar Registro" class="btn btn-success btn-simple btn-xs">
+                            <i class="fa fa-edit"></i>
+                        </a></th>
                     </tr>
                 @endforeach
             @endif
