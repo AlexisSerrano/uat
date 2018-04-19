@@ -5,26 +5,25 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<title>FGE-UAT | @yield('title', 'Inicio')</title>
-	{{-- estilos --}}
-	<link rel="stylesheet" href="{{asset ('css/cssfonts.css')}}">
-	<link rel="stylesheet" href="{{asset ('css/estilos.css')}}">
 	<link rel="icon" href="{{ asset('img/logo.png') }}">
-	<!-- CSRF Token -->
-	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<!-- Font Awesome Icons -->
-	<link rel="stylesheet" href="{{ asset('admin/plugins/font-awesome/css/font-awesome.min.css') }}">
+		<!-- CSRF Token -->
+		<meta name="csrf-token" content="{{ csrf_token() }}">
+	
+	{{-- estilos --}}
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/font-awesome/css/font-awesome.css') }}">
 	<!-- Theme style -->
 	<link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
 	<!-- Google Font: Source Sans Pro -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
-	{{-- SweetAlert --}}
 	<link rel="stylesheet" href="{{asset ('css/sweetalert.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/select2/select2.css') }}">
-		
+	<link rel="stylesheet" href="{{asset ('css/cssfonts.css')}}">
+	<link rel="stylesheet" href="{{asset ('css/estilos.css')}}">
+	<link rel="stylesheet" href="{{ asset('css/theme-jquery-validation.min.css') }}">
+	
 
-	<!-- TimePicker style -->
-	{{-- <link rel="stylesheet" href="{{ asset('CSS/bootstrap-datepicker.min.css') }}"> --}}
+
 
 	@yield('csss')
 </head>
@@ -102,17 +101,22 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
+
 <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-<!-- Bootstrap -->
+<script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ asset('js/popper.min.js')}}" ></script>
+<script src="{{ asset('js/bootstrap.min.js')}}" ></script>
+<script src="{{asset ('js/sweetalert.min.js')}}"></script>
+<script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
+<script src="{{ asset('js/jquery.form-validator.min.js')}}" ></script>
+
+<!-- REQUIRED SCRIPTS -->
 <script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
 <!-- AdminLTE App -->
 <script src="{{ asset('admin/dist/js/adminlte.js') }}"></script>
-
 <!-- OPTIONAL SCRIPTS -->
-{{-- <script src="{{ asset('admin/dist/js/demo.js') }}"></script> --}}
-
+<script src="{{ asset('admin/dist/js/demo.js') }}"></script>
 <!-- PAGE PLUGINS -->
 <!-- SparkLine -->
 <script src="{{ asset('admin/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
@@ -125,15 +129,12 @@
 <script src="{{ asset('admin/plugins/chartjs/Chart.min.js') }}"></script>
 
 <!-- PAGE SCRIPTS -->
-<script src="{{ asset('admin/dist/js/pages/dashboard2.js') }}"></script>
+{{-- <script src="{{ asset('admin/dist/js/pages/dashboard2.js') }}"></script> --}}
 
-{{-- SweetAlert --}}
-<script src="{{asset ('js/sweetalert.min.js')}}"></script>
-<script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
+
 
 {{-- TimePicker --}}
 {{-- <script src="{{asset ('js/bootstrap-datepicker.min.js')}}"></script> --}}
-
 {{-- Google Maps --}}
 {{-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEg9FTRwRH0bfUVa_bP5QUOe-hHJM6LHM&libraries=places&sensor=false"></script> --}}
 
