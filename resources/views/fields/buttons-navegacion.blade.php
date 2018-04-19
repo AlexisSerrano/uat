@@ -2,12 +2,12 @@
 	if (count($denunciantes)==0){
 		$registroDenunciante='btn btn-secondary';
 	}else{
-		$registroDenunciante='btn btn-success';
+		$registroDenunciante='btn btn-primary';
 	}
 	if (count($denunciados)==0){
 		$registroDenunciado='btn btn-secondary';
 	}else{
-		$registroDenunciado='btn btn-success';
+		$registroDenunciado='btn btn-primary';
 	}
 	if (!isset($registroAbogado)){
 		$registroAbogado='btn btn-secondary';
@@ -18,12 +18,12 @@
 	if (count($acusaciones)==0){
 		$registroAcusaciones='btn btn-secondary';
 	}else{
-		$registroAcusaciones='btn btn-success';
+		$registroAcusaciones='btn btn-primary';
 	}
 	if (count($delitos)==0){
 		$registroDelitos='btn btn-secondary';
 	}else{
-		$registroDelitos='btn btn-success';
+		$registroDelitos='btn btn-primary';
 	}
 	if (!isset($registroDefenza)){
 		$registroDefenza='btn btn-secondary';
