@@ -163,3 +163,7 @@ Route::post('storeautoridad', 'AutoridadController@storeAutoridad')->name('store
 /* --------Rutas para Turnar----------- */
 Route::get('cestado','EstadoController@index');
 Route::put('/cestado/actualizar','EstadoController@editar')->name('Estado.edit');
+
+/* --------Rutas para Actas de hechos----------- */
+Route::get('actas','ActasHechosController@index');
+Route::post('addactas','ActasHechosController@addActas')->name('addactas');
