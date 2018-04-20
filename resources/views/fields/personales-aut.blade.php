@@ -2,25 +2,25 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('nombres', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('nombres', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'required']) !!}
+			{!! Form::text('nombres', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('primerAp', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido', 'required']) !!}
+			{!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'required']) !!}
+			{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}
+			{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
@@ -39,7 +39,7 @@
 			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('edad', 'Edad', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 0, 'max' => 150, 'required']) !!}
+					{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 0, 'max' => 150, 'data-validation'=>'required']) !!}
 				</div>
 			</div>
 			<div class="col-6">
@@ -53,7 +53,7 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.', 'required']) !!}
+			{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
@@ -89,13 +89,13 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('telefono', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'required', 'required']) !!}
+			{!! Form::text('telefono', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('motivoEstancia', 'Motivo de estancia', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('motivoEstancia', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el motivo de estancia', 'required']) !!}
+			{!! Form::text('motivoEstancia', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el motivo de estancia','data-validation-optional'=>'true']) !!}
 		</div>
 	</div>
 	<div class="col-3">
@@ -125,13 +125,13 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('docIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificacion', 'required']) !!}
+			{!! Form::text('docIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificacion', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación', 'required']) !!}
+			{!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
 </div>

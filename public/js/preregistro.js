@@ -34,9 +34,13 @@ $(document).ready(function(){
 });
 //empresa
 function paraActadeHechos1(){
+
+    
+
+
     var select = document.getElementById('idRazon1');
     select.addEventListener('change',function(){
-        
+        //$("#idRazon1").change(function(event){ 
         var selectedOption1 = this.options[select.selectedIndex];
     	console.log(selectedOption1.value);
         

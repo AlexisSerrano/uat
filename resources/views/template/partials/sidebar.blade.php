@@ -128,6 +128,14 @@
 								</p>
 							</a>
 						</li>
+						<li class="nav-item has-treeview">
+							<a href='{{route("new.denunciante")}}' class="nav-link">
+								<i class="nav-icon fa fa-share"></i>
+								<p>
+									Reanudar registro
+								</p>
+							</a>
+						</li>
 						@endisset
 						
 					@else

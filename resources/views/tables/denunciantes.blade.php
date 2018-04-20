@@ -1,9 +1,6 @@
 <br>
-<div class="card">
-    <div class="cad-header" style="text-align:center">
-            <h5>Denunciantes</h5>
-    </div>
-</div>
+<h5>Denunciantes</h5>
+
 
 <div class="table">
     <table class="table table-striped">
