@@ -1,12 +1,5 @@
 $(document).ready(function(){
-    $("input:text").keyup(function() {
-        $(this).val($(this).val().toUpperCase());
-    });
-    $("textarea").keyup(function() {
-        $(this).val($(this).val().toUpperCase());
-    });
     
-
     //Para el inicio de carpeta
     $("#conDetenido").prop("checked", false);
     $('#conDet1').css('display', 'none');
@@ -367,9 +360,9 @@ $(document).ready(function(){
     $('#extra-fis').hide();
     $('#Atrabajo').hide();
     $('#direccion-tab').hide();
-    $('#dirTrabajo-tab').hide();
-    $('#dirNotificaciones-tab').hide();
-    $('#dirDenunciante-tab').hide();
+    $('#trabajo-tab').hide();
+    $('#dirnotificacion-tab').hide();
+    $('#denunciante-tab').hide();
     $('#ANotificaciones2').hide();
     $('#Adireccion').hide();
     //Si es empresa
@@ -391,12 +384,14 @@ $(document).ready(function(){
             $('#ANotificaciones2').show();
 
             //ocultar tab hasta que seleccione
-            $('#dirTrabajo-tab').hide();
+            $('#trabajo-tab').hide();
             $('#direccion-tab').show();
-            $('#dirNotificaciones-tab').show();
-            $('#dirDenunciante-tab').show();
+            $('#dirnotificacion-tab').show();
+            $('#denunciante-tab').show();
             $('#Adireccion').show();
-
+            $('#atrabajo2').hide();
+            $('#adireccion2').show();
+            
 
             //Datos personales requeridos de Persona Moral o Empresa
             $('#nombres2').prop('disabled', false);
@@ -467,13 +462,15 @@ $(document).ready(function(){
 
             $('#Atrabajo').show();
             $('#ANotificaciones2').hide();
-
+            $('#atrabajo2').show();
+            $('#adireccion2').hide();
+            
 
             //ocultar tab hasta que seleccione
-            $('#dirTrabajo-tab').show();
+            $('#trabajo-tab').show();
             $('#direccion-tab').show();
-            $('#dirNotificaciones-tab').show();
-            $('#dirDenunciante-tab').show();
+            $('#dirnotificacion-tab').show();
+            $('#denunciante-tab').show();
             $('#Adireccion').show();
 
             //Datos personales no requeridos de Persona Moral o Empresa

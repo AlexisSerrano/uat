@@ -30,13 +30,14 @@
 				<div class="form-group">
 					{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 					<div class="input-group date" id="fechanac" data-target-input="nearest">
-		                {!! Form::text('fechaNacimiento',  $preregistro->fechaNac, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'placeholder' => 'DD/MM/AAAA', 'data-validation'=>'required']) !!}
-		                <span class="input-group-addon" data-target="#fechanac" data-toggle="datetimepicker">
-		                    <i class="fa fa-calendar" aria-hidden="true"></i>
-		                </span>
-		            </div>
+						{!! Form::text('fechaNacimiento', $preregistro->fechaNac, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'required', 'placeholder' => 'AAAA/MM/DD']) !!}
+						<div class="input-group-addon" data-target="#fechanac" data-toggle="datetimepicker">
+							<div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+						</div>
+					</div>
 				</div>
 			</div>
+
 			<div class="col-1">
 				<div class="form-group">
 					{!! Form::label('edad', 'Edad', ['class' => 'col-form-label-sm']) !!}
@@ -47,7 +48,7 @@
 			<div class="col-2">
 				<div class="form-group">
 					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo','data-validation'=>'required']) !!}
+					{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], $preregistro->sexo, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo','data-validation'=>'required']) !!}
 				</div>
 			</div>
 			
@@ -61,7 +62,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idNacionalidad', 'Nacionalidad', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idNacionalidad', $nacionalidades, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la nacionalidad']) !!}
+					{!! Form::select('idNacionalidad', $nacionalidades, 1, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la nacionalidad']) !!}
 				</div>
 			</div>
 			
@@ -138,14 +139,14 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('docIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificación','data-validation'=>'required']) !!}
+					{!! Form::text('docIdentificacion', $preregistro->docIdentificacion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificación','data-validation'=>'required']) !!}
 				</div>
 			</div>
 			
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación']) !!}
+					{!! Form::text('numDocIdentificacion', $preregistro->numDocIdentificacion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación']) !!}
 				</div>
 			</div>
 		</div>

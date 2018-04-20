@@ -12,10 +12,9 @@
 @section('content')
 @include('fields.errores')
 
-<div id="page-content-wrapper">
+		@include('fields.buttons-navegacion')
 
 {!!Form::open(['route' => 'store.denunciado' , 'method' => 'POST'])!!}
-@include('fields.buttons-navegacion')
   
 {{--  <div class="container">  --}}
 	{{--  <div id="page-content-wrapper">  --}}
@@ -205,7 +204,6 @@
 	<div>
 		@include('tables.denunciados')
 	</div>
-</div>
 
 {!!Form::close()!!}
 

@@ -149,6 +149,7 @@
 
 	$('select').select2();
 
+
 </script>
 @yield('pilaScripts')
 @include('sweet::alert')
