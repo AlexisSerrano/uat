@@ -90,9 +90,9 @@
 				<div class="col">
 					<label for="narracion" class="col-form-label-sm">Narración</label>
 					@if(isset($form['narracion']))
-						{{ Form::textarea('narracion', $form['narracion'], ['class' => 'form-control form-control-sm', 'size' => '30x10', 'data-validation'=>'required']) }}
+						{{ Form::textarea('narracion', $form['narracion'], ['class' => 'form-control form-control-sm', 'size' => '30x10', 'data-validation'=>'length', 'data-validation-length'=>'min20']) }}
 					@else
-						{{ Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'size' => '30x10', 'data-validation'=>'required']) }}
+						{{ Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'size' => '30x10', 'data-validation'=>'length', 'data-validation-length'=>'min20']) }}
 					@endif
 					{{-- <textarea name="narracion" id="narracion" cols="30" rows="10" class="form-control form-control-sm" required=>
 						@if(isset($form['narracion']))
