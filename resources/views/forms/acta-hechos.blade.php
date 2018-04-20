@@ -48,20 +48,3 @@
 	
 @endsection
 
-
-@push('scripts')
-<script src="{{ asset('js/moment.min.js') }}"></script>
-<script src="{{ asset('js/tempusdominus-bootstrap-4.min.js') }}"></script>
-<script>
-$(document).ready(function(){
-    $(function () {
-			$('#fechanac').datetimepicker({
-				format: 'YYYY-MM-DD',
-            	minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
-            	maxDate: moment().subtract(18, 'years').format('YYYY-MM-DD')
-			});
-		});
-
-
-});
-</script>
