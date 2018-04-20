@@ -35,6 +35,18 @@ class MedidasProteccionController extends Controller
             ->where('variables_persona.idCarpeta',$idCarpeta)
             ->select('persona.nombres','persona.primerAp','persona.segundoAp', 'persona.id')
             ->get();
+
+            $TablaProvidencia = DB::table('providencias_precautorias')
+            ->join('cat_providencia_precautoria', 'cat_providencia_precautoria.id', '=', 'providencias_precautorias.idProvidencia')
+            ->join('ejecutor', 'ejecutor.id', '=', 'providencias_precautorias.idEjecutor')
+            ->join('persona', 'persona.id', '=', 'providencias_precautorias.idPersona')
+            ->select('cat_providencia_precautoria.nombre as providencia', 'providencias_precautorias.id as id',  'ejecutor.nombre as ejecutor', 'persona.nombres as persona', 'providencias_precautorias.observacion as observacion','providencias_precautorias.fechaInicio as fechainicio', 'providencias_precautorias.fechaFin as fechafin' )
+            ->get();
+            
+
+
+
+
             foreach($providencias2 as $providencia){
                 $providencias[$providencia->id] = $providencia->nombre;
             }
@@ -44,7 +56,7 @@ class MedidasProteccionController extends Controller
             foreach($victimas2 as $victima){
                 $victimas[$victima->id] = $victima->nombres.' '.$victima->primerAp.' '.$victima->segundoAp;
             }
-            return view('forms.medidasProteccion', compact('providencias','ejecutores','victimas','denunciantes','denunciados','idCarpeta','acusaciones','delitos'));
+            return view('forms.medidasProteccion', compact('TablaProvidencia','providencias','ejecutores','victimas','denunciantes','denunciados','idCarpeta','acusaciones','delitos'));
         }
         else{
             return redirect(url('registros'));
@@ -85,14 +97,29 @@ class MedidasProteccionController extends Controller
         return Datatables::of($providencias)->make(true);
     }
 
-    public function deleteMedida($id){
-        $post = Providencia::findOrFail($id);
-        if($post->delete()){
-            Alert::success('Medida de protección eliminada con éxito', 'Hecho')->persistent("Aceptar");
-        }
-        else{
-            Alert::error('Se presentó un problema al eliminar su medida de protección', 'Error');
-        }
-        return redirect("medidas");
+    // public function deleteMedida($id){
+    //     $post = Providencia::findOrFail($id);
+    //     if($post->delete()){
+    //         Alert::success('Medida de protección eliminada con éxito', 'Hecho')->persistent("Aceptar");
+    //     }
+    //     else{
+    //         Alert::error('Se presentó un problema al eliminar su medida de protección', 'Error');
+    //     }
+    //     return redirect("medidas");
+    // }
+
+
+    public function delete($id){
+
+        $Providencia =Providencia::find($id);
+        $Providencia->delete();
+        Alert::success('Registrado eliminado con éxito', 'Hecho')->persistent("Aceptar");
+        return back();
+
+  
+
     }
+
+
+
 }

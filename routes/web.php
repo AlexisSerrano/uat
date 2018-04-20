@@ -60,6 +60,7 @@ Route::get('/crear-caso', 'DenuncianteController@crearCaso')->name('inicio');
 Route::get('agregar-denunciante', 'DenuncianteController@showForm')->name('new.denunciante');
 Route::get('cancelar-caso', 'DenuncianteController@cancelarCaso')->name('cancelar.caso');
 Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name('store.denunciante');
+Route::get('agregar-denunciante/{id}/eliminar', 'DenuncianteController@delete');
 Route::get('/atender/{id}', 'PreregistroAuxController@atender');
 Route::get('/turno/{id}', 'PreregistroAuxController@turno');
 Route::get('/Traerturno', 'PreregistroAuxController@Traerturno')->name('turno.denunciante');
@@ -141,24 +142,36 @@ Route::post('addatencion', 'AtencionController@addAtencion')->name('addatencion'
 Route::get('medidas', 'MedidasProteccionController@index')->name('medidas');
 Route::post('addMedidas', 'MedidasProteccionController@addMedidas')->name('addMedidas');
 Route::get('getMedidas', 'MedidasProteccionController@getMedidas')->name('getMedidas');
-Route::get('deleteMedida/{id}', 'MedidasProteccionController@deleteMedida')->name('deleteMedida');
+// Route::get('deleteMedida/{id}', 'MedidasProteccionController@deleteMedida')->name('deleteMedida');
+Route::get('agregar-medidas/{id}/eliminar', 'MedidasProteccionController@delete');
+
 
 /*---------Rutas  Delitos Controller------------*/
 Route::get('agregar-delito', 'DelitoController@showForm')->name('new.delito');
 Route::post('storedelito', 'DelitoController@storeDelito')->name('store.delito');
+Route::get('agregar-delito/{id}/eliminar', 'DelitoController@delete');
+
 Route::get('acusacion', 'AcusacionController@showForm')->name('new.acusacion');
 Route::post('storeacusacion', 'AcusacionController@storeAcusacion')->name('store.acusacion');
+Route::get('agregar-acusacion/{id}/eliminar', 'AcusacionController@delete');
 
 /* --------Rutas para abogado----------- */
 Route::get('agregar-abogado', 'AbogadoController@showForm')->name('new.abogado');
 Route::post('storeabogado', 'AbogadoController@storeAbogado')->name('store.abogado');
+Route::get('agregar-abogado/{id}/eliminar', 'AbogadoController@delete');
+
+
 /* --------Rutas para defensa----------- */
 Route::get('agregar-defensa', 'AbogadoController@showForm2')->name('new.defensa');
 Route::post('storedefensa', 'AbogadoController@storeDefensa')->name('store.defensa');
+// Route::get('agregar-defensa/{id}/eliminar', 'AbogadoController@delete');
+
+
 Route::get('involucrados/{idCarpeta}/{idAbogado}', 'AbogadoController@getInvolucrados');
 /* --------Rutas para Autoridad----------- */
 Route::get('agregar-autoridad', 'AutoridadController@showForm')->name('new.autoridad');
 Route::post('storeautoridad', 'AutoridadController@storeAutoridad')->name('store.autoridad');
+Route::get('agregar-autoridad/{id}/eliminar', 'AutoridadController@delete');
 
 /* --------Rutas para Turnar----------- */
 Route::get('cestado','EstadoController@index');

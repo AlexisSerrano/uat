@@ -140,5 +140,15 @@ class AutoridadController extends Controller
         return redirect()->route('new.autoridad', $request->idCarpeta);
     }
 
+
+    public function delete($id){
+
+        $ExtraAutoridad =  ExtraAutoridad::find($id);
+        $ExtraAutoridad->delete();
+        Alert::success('Registro eliminado con éxito', 'Hecho')->persistent("Aceptar");
+        return back();
+
+
+    }
     
 }
