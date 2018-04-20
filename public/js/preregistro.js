@@ -42,17 +42,11 @@ function paraActadeHechos1(){
             console.log('es 4');
             $('#tipodeActa1').show();
             $('#tipoActa1').prop('disabled', false);
-            $('#tipoActa1').prop('disabled', false);
-            $('#estadoCivilActa1').prop('disabled', false);
-            $('#escActa1').prop('disabled', false);
-            $('#ocupActa1').prop('disabled', false);
+           
         }
         else{
             $('#tipodeActa1').hide();
             $('#tipoActa1').prop('disabled', true);
-            $('#estadoCivilActa1').prop('disabled', true);
-            $('#escActa1').prop('disabled', true);
-            $('#ocupActa1').prop('disabled', true);
         }
     })
     // select.addEventListener('change',function(){
@@ -81,13 +75,10 @@ function paraActadeHechos1(){
 }
 //persona
 function paraActadeHechos2(){
-    var select = document.getElementById('idRazon2');
-    select.addEventListener('change',function(){
-        
-        var selectedOption = this.options[select.selectedIndex];
-        console.log(selectedOption.value);
-        
-        if(selectedOption.value==4){
+
+        $("#idRazon2").change(function(){
+            valor = $(this).val();
+        if(valor==4){
             console.log('es 4');
             $('#tipodeActa').show();
             $('#tipoActa').prop('disabled', false);

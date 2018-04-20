@@ -114,28 +114,10 @@
 		<div class="row" id="tipodeActa1">
 				<div class="col-12"  >
 					<div class="form-group" >
-							{!! Form::label('tipoActa1', 'Seleccione el tipo de acta de hechos que requiere:', ['class' => 'col-form-label-sm']) !!}
+							{!! Form::label('tipoActa', 'Seleccione el tipo de acta de hechos que requiere:', ['class' => 'col-form-label-sm']) !!}
 							{!! Form::select('tipoActa1', $razones, null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
 					</div>
 				</div>
-				<div class="col-4">
-						<div class="form-group" >
-								{!! Form::label('estadoCivilActa1', 'Estado Civil', ['class' => 'col-form-label-sm']) !!}
-								{!! Form::select('estadoCivilActa1', $estadocivil, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione su estado civil','data-validation'=>'required']) !!}
-						</div>
-					</div>		
-					<div class="col-4">
-							<div class="form-group" >
-									{!! Form::label('escActa1', 'Escolaridad', ['class' => 'col-form-label-sm']) !!}
-									{!! Form::select('escActa1', $escolaridades, null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
-							</div>
-						</div>
-						<div class="col-4">
-								<div class="form-group" >
-										{!! Form::label('ocupActa1', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
-										{!! Form::select('ocupActa1', $ocupaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una ocupación','data-validation'=>'required']) !!}
-								</div>
-							</div>
 				</div>
 </div>
 
