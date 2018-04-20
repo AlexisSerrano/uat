@@ -97,7 +97,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::number('telefono',$preregistro->telefono,['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'required']) !!}
+					{!! Form::number('telefono',$preregistro->telefono,['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'number']) !!}
 				</div>
 			</div>
 			
