@@ -1,14 +1,7 @@
 @extends('template.form')
 
 @section('title', 'Agregar denunciante')
-@section('css')
-<style>
-	.btn-success{
-		background: black;
-	}	
-</style>
-	
-@endsection
+
 @section('content')
 @include('fields.errores')
 
@@ -17,10 +10,7 @@
 {!!Form::open(['route' => 'store.denunciante'])!!}
 
 @include('fields.buttons-navegacion')
-{{--  <div class="container">  --}}
-	{{--  <div id="page-content-wrapper">  --}}
-{{--  <span class="datotip" id="{{$tipopersona}}"></span> 	  --}}
-	
+
 	<input type="hidden" name="idCarpeta" value="{{session('carpeta')}}">
 	<div class="col-md-12">
 		<br>
@@ -31,98 +21,85 @@
 				{{--  Datos del Direccion particular--}}
 				<a class="nav-item nav-link color-nav-tab" id="direccion-tab" data-toggle="tab" href="#direccion" role="tab" aria-controls="nav-direccion" aria-selected="false">Domicilio <span><i class="fa fa-angle-down"></i></span> </a>
 				{{--  Direccion Trabajo del trabajo--}}
-				<a class="nav-item nav-link color-nav-tab" id="dirTrabajo-tab" data-toggle="tab" href="#dirTrabajo" role="tab" aria-controls="dirTrabajo" aria-selected="false">Datos del trabajo <span><i class="fa fa-angle-down"></i></span> </a>
+				<a class="nav-item nav-link color-nav-tab" id="trabajo-tab" data-toggle="tab" href="#trabajo" role="tab" aria-controls="trabajo" aria-selected="false">Datos del trabajo <span><i class="fa fa-angle-down"></i></span> </a>
 				{{-- Domicilio Notificaciones--}}
-				<a class="nav-item nav-link" id="dirNotificaciones-tab" data-toggle="tab" href="#dirNotificaciones" role="tab" aria-controls="dirNotificaciones" aria-selected="false">Domicilio para notificaciones <span><i class="fa fa-angle-down"></i></span></a>
+				<a class="nav-item nav-link" id="dirnotificacion-tab" data-toggle="tab" href="#dirnotificacion" role="tab" aria-controls="dirnotificacion" aria-selected="false">Domicilio para notificaciones <span><i class="fa fa-angle-down"></i></span></a>
 				{{-- Informacion deninciante  --}}
-				<a class="nav-item nav-link" id="dirDenunciante-tab" data-toggle="tab" href="#dirDenunciante" role="tab" aria-controls="dirDenunciante" aria-selected="false">Datos del denunciante <span><i class="fa fa-angle-down"></i></span></a>	 	
+				<a class="nav-item nav-link" id="denunciante-tab" data-toggle="tab" href="#denunciante" role="tab" aria-controls="denunciante" aria-selected="false">Datos del denunciante <span><i class="fa fa-angle-down"></i></span></a>	 	
 			
 			</div>
 		</nav>
-		{{-- personales-orientador --}}
 		
 		<div class="tab-content" id="nav-tabContent">
 			{{--  datos de la persona  --}}
 			<div class="tab-pane fade show active" id="personales" role="tabpanel" aria-labelledby="personales-tab">
-				
-					
 				<div class="boxtwo">
 					<div class="row">
 						@include('fields.tipo-persona')
 					</div>
-				</div>
-			
-				<div class="boxtwo">
 					@include('fields.personales')
-				</div>
-			
-				<div>
 					<div class="row">
 						<div class="col text-left">
-							{{-- <a href="{{route('cancelar.caso')}}" class="btn btn-primary">Cancelar</a> --}}
 						</div>
 						<div class="col text-right">
-							<a  id=Adireccion  class="btn btn-primary">Siguiente</a>
+							<a  id=Adireccion  class="btn btn-primary irdireccion">Siguiente</a>
 						</div>
 					</div>
 				</div>
 			</div>
 			{{--  direccion particular  --}}
 			<div class="tab-pane fade" id="direccion" role="tabpanel" aria-labelledby="direccion-tab">
-				@include('fields.direcciones')
-				<div>
+				<div class="boxtwo">
+					@include('fields.direcciones')
 					<div class="row">
 						<div class="col text-left">
-							{{-- <a href="{{route('cancelar.caso')}}" class="btn btn-primary">Cancelar</a> --}}
+							<a class="btn btn-primary irpersonales">Atras</a>
 						</div>
-			
 						<div class="col text-right">
-							<a id=Atrabajo class="btn btn-primary">Siguiente</a>
-							<a id="ANotificaciones2" class="btn btn-primary">Siguiente</a>
+							<a id=Atrabajo class="btn btn-primary irtrabajo">Siguiente</a>
+							<a id="ANotificaciones2" class="btn btn-primary irdirnotificacion">Siguiente</a>
 						</div>
 					</div>
-				
 				</div>
 			</div>
 			{{--  direccion de trabajo  --}}
-			<div class="tab-pane fade" id="dirTrabajo" role="tabpanel" aria-labelledby="dirTrabajo-tab">
-				@include('fields.lugartrabajo')
-				<div class="row menu">
-					<div class="col text-left">
-						{{-- <a href="{{route('cancelar.caso')}}" class="btn btn-primary">Cancelar</a> --}}
-					</div>
-					<div class="col text-right">
-						<a id="ANotificaciones" class="btn btn-primary">Siguiente</a>
+			<div class="tab-pane fade" id="trabajo" role="tabpanel" aria-labelledby="trabajo-tab">
+				<div class="boxtwo">
+					@include('fields.lugartrabajo')
+					<div class="row menu">
+						<div class="col text-left">
+							<a class="btn btn-primary irdireccion">Atras</a>
+						</div>
+						<div class="col text-right">
+							<a id="ANotificaciones" class="btn btn-primary irdirnotificacion">Siguiente</a>
+						</div>
 					</div>
 				</div>
 			</div>	
 			{{--  direccion de Notificaciones  --}}
-			<div class="tab-pane fade" id="dirNotificaciones" role="tabpanel" aria-labelledby="dirNotificaciones-tab">
-				@include('fields.notificaciones')
-				<div class="row menu">
-					<div class="col text-left">
-						{{-- <a href="{{route('cancelar.caso')}}" class="btn btn-primary">Cancelar</a> --}}
-					</div>
-					<div class="col text-right">
-						<a id="Adenunciante" class="btn btn-primary">Siguiente</a>
+			<div class="tab-pane fade" id="dirnotificacion" role="tabpanel" aria-labelledby="dirnotificacion-tab">
+				<div class="boxtwo">
+					@include('fields.notificaciones')
+					<div class="row menu">
+						<div class="col text-left">
+							<a id="atrabajo2" class="btn btn-primary irtrabajo">Atras</a>
+							<a id="adireccion2" class="btn btn-primary irdireccion">Atras</a>
+						</div>
+						<div class="col text-right">
+							<a id="Adenunciante" class="btn btn-primary irdenunciante">Siguiente</a>
+						</div>
 					</div>
 				</div>
 			</div>
 			{{--  informacion denunciante  --}}
-			<div class="tab-pane fade" id="dirDenunciante" role="tabpanel" aria-labelledby="dirDenunciante-tab">
-				@include('fields.extra-denunciante')
-				<div>
+			<div class="tab-pane fade" id="denunciante" role="tabpanel" aria-labelledby="denunciante-tab">
+				<div class="boxtwo">
+					@include('fields.extra-denunciante')				
 					<div class="row menu">
-						
 						<div class="col text-left">
-								
-						
-							{{-- <a href="{{route('cancelar.caso')}}" class="btn btn-primary">Cancelar</a> --}}
-							
+							<a class="btn btn-primary irdirnotificacion">Atras</a>
 						</div>
-						
 						<div class="col text-right">
-							
 							{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!}
 						</div>
 					</div>
@@ -152,81 +129,53 @@
 	{{-- <script src="{{ asset('js/validation.js')}}"></script>
 	<script src="{{ asset('js/validation-orientador.js')}}"></script> --}}
 	<script>
+		
+		$('.irtrabajo').click(function(){
+			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
+			$('#trabajo-tab').addClass("active");//Agrego la clase active al tab actual
+			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+			$('.tab-pane').removeClass("show");
+			$('#trabajo').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+			$('#trabajo').addClass("show");
+		});
 
-	$('#dirTrabajo-tab').hide();
+		$('.irdireccion').click(function(){
+			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
+			$('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
+			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+			$('.tab-pane').removeClass("show");
+			$('#direccion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+			$('#direccion').addClass("show");
+		});
 
-	$('#Adireccion').click(function(){
-		//Quito la clase active al tab actual
-		$('.nav-item').removeClass("active");
-		//Agrego la clase active al tab actual
-		$('#direccion-tab').addClass("active");
-		//quito las clases del div contenedor personas para ocultar la info
-		$('#personales').removeClass("active");
-		$('#personales').removeClass("show");
-		//agrego las clases del div contenedor direcciones para mostrar la info
-		$('#direccion').addClass("active");
-		$('#direccion').addClass("show");
-	});
+		
+		$('.irpersonales').click(function(){
+			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
+			$('#personales-tab').addClass("active");//Agrego la clase active al tab actual
+			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+			$('.tab-pane').removeClass("show");
+			$('#personales').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+			$('#personales').addClass("show");
+		});
 
-	$('#Atrabajo').click(function(){	
-		//Quito la clase active al tab actual
-		$('.nav-item').removeClass("active");
-		//Agrego la clase active al tab actual
-		$('#dirTrabajo-tab').addClass("active");
-		//quito las clases del div contenedor personas para ocultar la info
-		$('#direccion').removeClass("active");
-		$('#direccion').removeClass("show");
-		//agrego las clases del div contenedor direcciones para mostrar la info
-		$('#dirTrabajo').addClass("active");
-		$('#dirTrabajo').addClass("show");
-	});
+		$('.irdirnotificacion').click(function(){
+			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
+			$('#dirnotificacion-tab').addClass("active");//Agrego la clase active al tab actual
+			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+			$('.tab-pane').removeClass("show");
+			$('#dirnotificacion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+			$('#dirnotificacion').addClass("show");
+		});
 
-	$('#ANotificaciones').click(function(){
-		//toastr.info('2');
-		// //Quito la clase active al tab actual
-		$('.nav-item').removeClass("active");
-		// //Agrego la clase active al tab actual
-		$('#dirNotificaciones-tab').addClass("active");
-		// //quito las clases del div contenedor personas para ocultar la info
-		$('#dirTrabajo').removeClass("active");
-		$('#dirTrabajo').removeClass("show");
-		// //agrego las clases del div contenedor direcciones para mostrar la info
-		$('#dirNotificaciones').addClass("active");
-		$('#dirNotificaciones').addClass("show");
-	});
+		$('.irdenunciante').click(function(){
+			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
+			$('#denunciante-tab').addClass("active");//Agrego la clase active al tab actual
+			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+			$('.tab-pane').removeClass("show");
+			$('#denunciante').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+			$('#denunciante').addClass("show");
+		});
 
-	$('#ANotificaciones2').click(function(){
-		//toastr.info('EMPRESA->');
-		// //Quito la clase active al tab actual
-		$('.nav-item').removeClass("active");
-		// //Agrego la clase active al tab actual
-		$('#dirNotificaciones-tab').addClass("active");
-		// //quito las clases del div contenedor personas para ocultar la info
-		$('#direccion').removeClass("active");
-		$('#direccion').removeClass("show");
-		//agrego las clases del div contenedor direcciones para mostrar la info
-		$('#dirNotificaciones').addClass("active");
-		$('#dirNotificaciones').addClass("show");
-	});
-
-	$('#Adenunciante').click(function(){
-		//toastr.info('3');
-		//Quito la clase active al tab actual
-		$('.nav-item').removeClass("active");
-		//Agrego la clase active al tab actual
-		$('#dirDenunciante-tab').addClass("active");
-		//quito las clases del div contenedor personas para ocultar la info
-		$('#dirNotificaciones').removeClass("active");
-		$('#dirNotificaciones').removeClass("show");
-		//agrego las clases del div contenedor direcciones para mostrar la info
-		$('#dirDenunciante').addClass("active");
-		$('#dirDenunciante').addClass("show");
-	});
-
-	// $('#guardarDenunciante').click(function(){
-	// 	if
-	// 	toastr.info('Se ha terminado el registro del denunciante');
-	// 	});
 
 		$(function () {
 			$('#fechanac').datetimepicker({
