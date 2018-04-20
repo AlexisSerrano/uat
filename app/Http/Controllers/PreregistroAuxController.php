@@ -124,6 +124,12 @@ class PreregistroAuxController extends Controller
         ->get();
         $nombreLocalidad=$nombreLocalidad[0]->nombre;
 
+        $razones=Razon::orderBy('nombre', 'ASC')
+        ->pluck('nombre','id');
+        
+        $razon=Razon::select('nombre')->where('id',$preregistro->idRazon)->get();
+        $razon=$razon[0]->nombre;
+        
         //nombre del colonia
         $Colonia=DB::table('cat_colonia')
         ->where('cat_colonia.id','=',$direccionTB[0]->idColonia)
@@ -152,10 +158,10 @@ class PreregistroAuxController extends Controller
         //dd($idCodigoPostalSelect);                     
         $persona= $preregistro->esEmpresa;//persona fisica o empresa
         if($persona==1){
-            return view('servicios.recepcion.forms.editconrecepcion-empresa', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP' ));
+            return view('servicios.recepcion.forms.editconrecepcion-empresa', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon' ));
         }
         else{
-            return view('servicios.recepcion.forms.editconrecepcion-persona', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP' ));
+            return view('servicios.recepcion.forms.editconrecepcion-persona', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon' ));
         }
     }
 
@@ -303,11 +309,21 @@ class PreregistroAuxController extends Controller
 
     public function encola()
     {
-        $preregistros = Preregistro::where('statusCola', 0)
+        // $preregistros = Preregistro::where('statusCola', 0)
+        // ->where('conViolencia', 0)
+        // ->orderBy('horaLlegada','asc')
+        // ->paginate(10);
+        $registros = DB::table('preregistros')->where('statusCola', 0)
+        ->join('razones','razones.id','=','preregistros.idRazon')
         ->where('conViolencia', 0)
         ->orderBy('horaLlegada','asc')
+        ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
+        'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
+        'docIdentificacion','numDocIdentificacion','conViolencia','narracion','folio','representanteLegal',
+        'statusCancelacion','statusOrigen','statusCola','horaLlegada','unidad','zona','razones.nombre as razon')
         ->paginate(10);
-        return view('servicios.recepcion.cola-preregistro')->with('registros',$preregistros)->with('status',0);
+        // dd($registros);
+        return view('servicios.recepcion.cola-preregistro')->with('registros',$registros)->with('status',0);
     }
 
     public function urgentes()

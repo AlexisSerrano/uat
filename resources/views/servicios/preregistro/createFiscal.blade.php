@@ -76,7 +76,7 @@
 			<div class="col-12">
 				<div class="col">
 					<label for="narracion" class="col-form-label-sm">Narración</label>
-					<textarea name="narracion" id="narracion" cols="30" rows="10" class="form-control form-control-sm" data-validation="length" data-validation-length= "min15"></textarea>
+					<textarea name="narracion" id="narracion" cols="30" rows="10" class="form-control form-control-sm" data-validation="length" data-validation-length= "min20"></textarea>
 				</div>
 			</div>
 		</div>

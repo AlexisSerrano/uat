@@ -1,6 +1,19 @@
 @extends('template.form')
 @section('content')
 @include('fields.errores')
+ <style>
+ .alert-info{
+    background-color: #0e0e0e!important;
+    border-color: #f5f8f905;
+ }
+ 
+ </style>
+
+        
+        <div class="alert alert-info">
+          <strong>Nota:</strong> Todas las etiquetas que se encuentran abajo pueden ser editadas dando clic en el texto
+        </div>
+
 
 {!!Form::model($preregistro, array('route' => array('predenuncias.update', $preregistro->id), 'method' => 'PUT' )) !!}
     <div>
@@ -26,8 +39,7 @@
 				</div>
             </div>
         </div>
-        <div><p style="color:blue">NOTA:Todas las etiquetas que se encuentran arriba pueden ser editadas dando clic en el texto</p></div>
-    
+        
         <div class="boxtwo">
             <div class="row">
                 <div class="text-left col">

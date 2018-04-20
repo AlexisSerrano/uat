@@ -1,6 +1,20 @@
 @extends('template.form')
 @section('content')
 @include('fields.errores')
+
+<style>
+        .alert-info{
+           background-color: #0e0e0e!important;
+           border-color: #f5f8f905;
+        }
+        
+        </style>
+       
+               
+               <div class="alert alert-info">
+                 <strong>Nota:</strong> Todas las etiquetas que se encuentran abajo pueden ser editadas dando clic en el texto
+               </div>
+       
        
 {!!Form::model($preregistro, array('route' => array('predenuncias.update', $preregistro->id), 'method' => 'PUT')) !!}
 <input type="hidden" name="esEmpresa" value="0">
@@ -25,7 +39,7 @@
             </div>
         </div>
     </div>
-    <div><p style="color:blue">NOTA:Todas las etiquetas que se encuentran arriba pueden ser editadas dando clic en el texto</p></div>
+
     
     <div class="row">
         <div class="text-left col">
@@ -234,6 +248,17 @@
         $("#botonCambioDocIden").click(function(){
             $('.labelCambioDocIden').show();
             $('#inputDocIden').hide();
+        });
+        
+        //editar el campo al dar clic en el label de Numero Externo
+        $(".labelCambioRazon").click(function(){
+            $('.labelCambioRazon').hide();
+            $('#inputRazon').show().css('display', 'flex');
+        });
+        //ocultar el campo y mostrar el label anterior
+        $("#botonCambioRazon").click(function(){
+            $('.labelCambioRazon').show();
+            $('#inputRazon').hide();
         });
 
 

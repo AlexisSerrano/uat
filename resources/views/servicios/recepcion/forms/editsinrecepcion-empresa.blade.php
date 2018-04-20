@@ -1,6 +1,8 @@
 @extends('template.form')
 @section('content')
 @include('fields.errores')
+
+
        
 {!!Form::model($preregistro, array('route' => array('put.registro', $preregistro->id), 'method' => 'PUT')) !!}
 <input type="hidden" name="esEmpresa" value="0">
