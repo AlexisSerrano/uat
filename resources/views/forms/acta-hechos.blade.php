@@ -7,12 +7,6 @@
     <div class="col-12">
         <div class="boxtwo">
             <div class="row" id="actas">
-                <div class="col-12"  >
-                    <div class="form-group" >
-                            {!! Form::label('tipoActa1', 'Seleccione el tipo de acta de hechos que requiere:', ['class' => 'col-form-label-sm']) !!}
-                            {!! Form::select('tipoActa1',  ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
-                    </div>
-                </div>
                 {{-- DATOS DE TODO TIPO DE ACTAS --}}
                 @include('fields.actas')
             </div>

@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ActasHechos;
 use App\Models\Domicilio;
+use App\Models\CatEscolaridad;
+use App\Models\CatEstado;
+use App\Models\CatEstadoCivil;
+use App\Models\CatOcupacion;
+use App\Models\CatNacionalidad;
 use DB;
 use Alert;
 use Carbon\Carbon;
@@ -12,7 +17,22 @@ use Carbon\Carbon;
 class ActasHechosController extends Controller
 {
     public function index(){
-        return view();
+        $estados=CatEstado::orderBy('nombre', 'ASC')
+        ->pluck('nombre','id');
+        $ocupaciones=CatOcupacion::orderBy('nombre', 'ASC')
+        ->pluck('nombre', 'id');
+        $estadocivil = CatEstadoCivil::orderBy('nombre', 'ASC')
+        ->pluck('nombre', 'id');
+        $escolaridades = CatEscolaridad::orderBy('id', 'ASC')
+        ->pluck('nombre', 'id');
+        $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')
+        ->pluck('nombre', 'id');
+        return view('forms.acta-hechos')
+        ->with('ocupaciones',$ocupaciones)
+        ->with('escolaridades',$escolaridades)
+        ->with('estadocivil',$estadocivil)
+        ->with('nacionalidades', $nacionalidades)
+        ->with('estados',$estados);
     }
 
     public function addActas(Request $request){
@@ -46,7 +66,7 @@ class ActasHechosController extends Controller
                 $acta->save();
             }
             catch (\PDOException $e){
-               
+                Alert::error('Se presentó un problema al guardar su acta de hecho, intente de nuevo', 'Error');
             }
         });
     }
