@@ -391,5 +391,17 @@ public function showForm()
         //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('new.denunciante');
     }
+
+
+    public function delete($id){
+
+        $ExtraDenunciante =  ExtraDenunciante::find($id);
+        $ExtraDenunciante->delete();
+        Alert::success('Registrado eliminado con éxito', 'Hecho')->persistent("Aceptar");
+        return back();
+
+
+    }
+
     
 }

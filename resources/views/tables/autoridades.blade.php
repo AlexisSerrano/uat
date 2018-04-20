@@ -8,10 +8,11 @@
             <th>Horario laboral</th>
             <th>Documento</th>
             <th>Num. documento</th>
+            <th>Opciones</th>
         </thead>
         <tbody>
             @if(count($autoridades)==0)
-                <tr><td colspan="6" class="text-center">Sin registros</td></tr>
+                <tr><td colspan="7" class="text-center">Sin registros</td></tr>
             @else
                 @foreach($autoridades as $autoridad)
                     <tr>
@@ -21,6 +22,10 @@
                         <td>{{ $autoridad->horarioLaboral }}</td>
                         <td>{{ $autoridad->docIdentificacion }}</td>
                         <td>{{ $autoridad->numDocIdentificacion }}</td>
+                        <td>
+                        <a href="{{ url('agregar-autoridad/'.$autoridad->id.'/eliminar')}}" type="button" rel="tooltip" title="Eliminar Registro" class="btn btn-success btn-simple btn-xs">
+                        <i class="fa fa-edit"></i>
+                        </td>
                     </tr>
                 @endforeach
             @endif

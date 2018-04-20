@@ -1,30 +1,30 @@
 $(document).ready(function(){
     
     //Para el inicio de carpeta
-    $("#conDetenido").prop("checked", false);
-    $('#conDet1').css('display', 'none');
-    $("#horaIntervencion").prop('disabled', true);
-    $("#npd").prop('disabled', true);
-    $("#numIph").prop('disabled', true);
-    $("#fechaIph").prop('disabled', true);
-    $("#narracionIph").prop('disabled', true);
-    $("#conDetenido").change(function(event){
-        if ($('#conDetenido').is(':checked') ) {
-            $('#conDet1').css('display', 'block');
-            $("#horaIntervencion").prop('disabled', false);
-            $("#npd").prop('disabled', false);
-            $("#numIph").prop('disabled', false);
-            $("#fechaIph").prop('disabled', false);
-            $("#narracionIph").prop('disabled', false);
-        }else{
-            $('#conDet1').css('display', 'none');
-            $("#horaIntervencion").prop('disabled', true);
-            $("#npd").prop('disabled', true);
-            $("#numIph").prop('disabled', true);
-            $("#fechaIph").prop('disabled', true);
-            $("#narracionIph").prop('disabled', true);
-        }
-    });
+    // $("#conDetenido").prop("checked", false);
+    // $('#conDet1').css('display', 'none');
+    // $("#horaIntervencion").prop('disabled', true);
+    // $("#npd").prop('disabled', true);
+    // $("#numIph").prop('disabled', true);
+    // $("#fechaIph").prop('disabled', true);
+    // $("#narracionIph").prop('disabled', true);
+    // $("#conDetenido").change(function(event){
+    //     if ($('#conDetenido').is(':checked') ) {
+    //         $('#conDet1').css('display', 'block');
+    //         $("#horaIntervencion").prop('disabled', false);
+    //         $("#npd").prop('disabled', false);
+    //         $("#numIph").prop('disabled', false);
+    //         $("#fechaIph").prop('disabled', false);
+    //         $("#narracionIph").prop('disabled', false);
+    //     }else{
+    //         $('#conDet1').css('display', 'none');
+    //         $("#horaIntervencion").prop('disabled', true);
+    //         $("#npd").prop('disabled', true);
+    //         $("#numIph").prop('disabled', true);
+    //         $("#fechaIph").prop('disabled', true);
+    //         $("#narracionIph").prop('disabled', true);
+    //     }
+    // });
 
     //Para el tipo de denunciado
     $("#tipoDenunciado1").prop("checked", false);
@@ -363,6 +363,7 @@ $(document).ready(function(){
     $('#trabajo-tab').hide();
     $('#dirnotificacion-tab').hide();
     $('#denunciante-tab').hide();
+    $('#denunciado-tab').hide();
     $('#ANotificaciones2').hide();
     $('#Adireccion').hide();
     //Si es empresa
@@ -377,8 +378,6 @@ $(document).ready(function(){
             $('#datosNotif').show();
             $('#datosExtra').show();
             $('#extra-fis').hide();
-            
-           
 
             $('#Atrabajo').hide();
             $('#ANotificaciones2').show();
@@ -388,6 +387,7 @@ $(document).ready(function(){
             $('#direccion-tab').show();
             $('#dirnotificacion-tab').show();
             $('#denunciante-tab').show();
+            $('#denunciado-tab').show();
             $('#Adireccion').show();
             $('#atrabajo2').hide();
             $('#adireccion2').show();
@@ -471,6 +471,7 @@ $(document).ready(function(){
             $('#direccion-tab').show();
             $('#dirnotificacion-tab').show();
             $('#denunciante-tab').show();
+            $('#denunciado-tab').show();
             $('#Adireccion').show();
 
             //Datos personales no requeridos de Persona Moral o Empresa

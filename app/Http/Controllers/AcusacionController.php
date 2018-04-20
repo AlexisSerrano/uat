@@ -70,6 +70,16 @@ class AcusacionController extends Controller
         return redirect()->route('new.acusacion');
     }
     
+    public function delete($id){
+
+        $Acusacion =  Acusacion::find($id);
+        $Acusacion->delete();
+        Alert::success('Registro eliminado con éxito', 'Hecho')->persistent("Aceptar");
+        return back();
+
+
+    }
+
     /**
      * Display a listing of the resource.
      *

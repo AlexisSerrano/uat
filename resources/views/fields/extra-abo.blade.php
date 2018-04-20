@@ -17,7 +17,7 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('cedulaProf', 'Cédula profesional', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('cedulaProf', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la cédula profesional', 'data-validation'=>'required']) !!}
+			{!! Form::text('cedulaProf', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la cédula profesional', 'data-validation'=>'length', 'data-validation-length'=>'min8']) !!}
 		</div>
 	</div>
 	<div class="col-3">

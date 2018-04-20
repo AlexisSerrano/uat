@@ -465,21 +465,10 @@ class DenunciadoController extends Controller
     }
 
     public function delete($id){
-        //     $persona =  Persona::find($id);
-        //    $persona->delete();
-
-        //     $domicilio = Domicilio::find($id);
-        //    $domicilio->delete();
-
-        //     $vpersona = VariablesPersona::find($id);
-        //     $vpersona->delete();
-
-        //     $notificacion = DirNotificacion::find($id);
-        //     $notificacion ->delete();
 
             $ExtraDenunciado =  ExtraDenunciado::find($id);
             $ExtraDenunciado->delete();
-            Alert::success('Registrado eliminado con éxito', 'Hecho')->persistent("Aceptar");
+            Alert::success('Registro eliminado con éxito', 'Hecho')->persistent("Aceptar");
             return back();
 
 

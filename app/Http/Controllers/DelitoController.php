@@ -133,5 +133,17 @@ class DelitoController extends Controller
 
 
     }
+
+
+    public function delete($id){
+
+        $TipifDelito =  TipifDelito::find($id);
+        $TipifDelito->delete();
+        Alert::success('Registro eliminado con éxito', 'Hecho')->persistent("Aceptar");
+        return back();
+
+
+    }
+    
       
 }

@@ -23,7 +23,7 @@
 	<div class="col-12">
 		<div class="form-group">
 			{!! Form::label('senasParticC', 'Señas particulares', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('senasParticC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3', 'data-validation'=> 'required']) !!}
+			{!! Form::textarea('senasParticC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3', 'data-validation'=>'length', 'data-validation-length'=>'min10']) !!}
 		</div>
 	</div>
 </div>

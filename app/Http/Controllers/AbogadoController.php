@@ -195,4 +195,26 @@ class AbogadoController extends Controller
             return response()->json($involucrados);
         }
     }
+
+
+    public function delete($id){
+
+        $ExtraAbogado =  ExtraAbogado::find($id);
+        $ExtraAbogado->delete();
+        Alert::success('Registro eliminado con éxito', 'Hecho')->persistent("Aceptar");
+        return back();
+
+
+    }
+
+
+    // public function delete($id){
+
+    //     $ExtraAbogado =  ExtraAbogado::find($id);
+    //     $ExtraAbogado->delete();
+    //     Alert::success('Registro eliminado con éxito', 'Hecho')->persistent("Aceptar");
+    //     return back();
+
+
+    // }
 }
