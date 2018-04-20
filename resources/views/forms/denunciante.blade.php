@@ -11,7 +11,6 @@
 
 @include('fields.buttons-navegacion')
 
-	<input type="hidden" name="idCarpeta" value="{{session('carpeta')}}">
 	<div class="col-md-12">
 		<br>
 		<nav>
