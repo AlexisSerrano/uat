@@ -42,7 +42,8 @@
 			      		<th scope="col">Folio</th>
 			      		<th scope="col">Tipo</th>
 			      		<th scope="col">Nombre</th>
-			      		<th scope="col">Identificación</th>
+						  <th scope="col">Identificación</th>
+						  <th scope="col">Razón</th>
 			      		<th scope="col">Validar</th>
 			    	</tr>
 			  	</thead>
@@ -53,7 +54,8 @@
 			      		<td>{{$registro->folio}}</th>
 			      		<td>{{($registro->esEmpresa==0)?'FISICA':'MORAL'}}</td>
 			      		<td>{{($registro->esEmpresa==0)?$registro->nombre.' '.$registro->primerAp.' '.$registro->segundoAp:$registro->representanteLegal}}</td>
-			      		<td>{{$registro->docIdentificacion}}</td>
+						  <td>{{$registro->docIdentificacion}}</td>
+						  <td>{{$registro->razon}}</td>
 			      		<td><a href="{{url("predenuncias/".$registro->id."/edit")}}"><i class="fa fa-check-square-o" aria-hidden="true"></i></a></td>
 			    	</tr>
 					@empty
