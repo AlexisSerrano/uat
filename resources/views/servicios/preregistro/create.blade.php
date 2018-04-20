@@ -133,6 +133,8 @@
 	<script src="{{asset('js/preregistro.js')}}"></script> 
 	<script>
 
+		
+
 
 		$(function () {
 			$('#fechanac').datetimepicker({
@@ -152,24 +154,7 @@
 		});
 
 
-		$(".botonvalidar").prop("disabled", true);
-function validar(){
-  var validado = true;
-  elementos = document.getElementsByClassName("emailc");
-  for(i=0;i<elementos.length;i++){
-    if(elementos[i].value == "" || elementos[i].value == null){
-    validado = false
-    }
-  }
-  if(validado){
-	$(".botonvalidar").prop("disabled", false);
-	// $('.botonvalidar').show();
-  
-  }else{
-	$(".botonvalidar").prop("disabled", true);
-    // $('.botonvalidar').hide(); 
-  }
-}
+		
 
 	</script>
 @endpush

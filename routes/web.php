@@ -37,7 +37,9 @@ Route::get('/pruebasturnar', function(){
     Route::get('/pruebaslibro', function(){
         return view('forms.libro-gobierno');
         });
-
+        Route::get('/pruebasactas','PruebasController@actas');
+        
+    
 /**************************************************************/
 // -------------------------------------------------------------------
 

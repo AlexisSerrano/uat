@@ -45,6 +45,9 @@
     <script src="{{asset('js/selects.js')}}"></script>
     <script src="{{asset('js/funciones.js')}}"></script>
     <script>
+        
+
+
         $(document).on('focus', '.select2', function (e) {
         if (e.originalEvent) {
             $(this).siblings('select').select2('open');
@@ -54,6 +57,8 @@
     $.validate({
         lang : 'es'
     });
+
+
     </script>
 
 @stack('scripts')

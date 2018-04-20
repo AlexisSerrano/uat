@@ -81,6 +81,35 @@ public function denunciado()
         ->with('estados',$estados);
 }
 
+public function actas()
+    {
+
+        $razones=Razon::orderBy('nombre', 'ASC')
+        ->pluck('nombre','id');
+        $estados=CatEstado::orderBy('nombre', 'ASC')
+        ->pluck('nombre','id');
+        $ocupaciones=CatOcupacion::orderBy('nombre', 'ASC')
+        ->pluck('nombre', 'id');
+        $estadocivil = CatEstadoCivil::orderBy('nombre', 'ASC')
+        ->pluck('nombre', 'id');
+        $escolaridades = CatEscolaridad::orderBy('id', 'ASC')
+        ->pluck('nombre', 'id');
+        $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')
+        ->pluck('nombre', 'id');
+       
+
+
+    //dd($delitos);
+         
+        return view('forms.acta-hechos')
+        ->with('ocupaciones',$ocupaciones)
+        ->with('escolaridades',$escolaridades)
+        ->with('estadocivil',$estadocivil)
+        ->with('razones',$razones)
+        ->with('nacionalidades', $nacionalidades)
+        ->with('estados',$estados);
+}
+
 
 
 
