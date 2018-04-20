@@ -37,14 +37,19 @@
 </div>
 
 <div class="col-4">
-        <div class="form-group">
-            {!! Form::label('fechaActas', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
-                <div class="input-group date" id="fechaActas" data-target-input="nearest">
-                         <input type="date" id="fechaActas" name="fechaActas" class="form-control form-control-sm", data-validation="birthdate">
-                    </div>
-                </div>
-            </div>
-	
+    <div class="form-group">
+    {!! Form::label('fecha_nac', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
+        <div class="input-group date" id="fecha_nac" data-target-input="nearest">
+            <input type="date" id="fecha_nac" name="fecha_nac" class="form-control form-control-sm", data-validation="birthdate">
+        </div>
+    </div>
+</div>
+<div class="col-4">
+    <div class="form-group">
+        {!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::text('telefono', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono','data-validation'=>'required']) !!}
+    </div>
+</div>
 
 <div class="col-4">
     <div class="form-group">

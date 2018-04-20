@@ -2,7 +2,7 @@
 
 @section('title', 'Actas de hechos')
 @section('content')
-    {!! Form::open([])  !!}
+{!! Form::open(['route' => 'addactas', 'method' => 'POST'])  !!}
 <div class="row no-gutters">
     <div class="col-12">
         <div class="boxtwo">
