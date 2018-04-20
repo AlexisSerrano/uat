@@ -65,7 +65,7 @@ $form = oldFormDelitos();
 		<div class="col-2">
 			<div class="form-group">
 				{!! Form::label('numInterno', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('numInterno', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior', 'data-validation'=>'required']) !!}
+				{!! Form::text('numInterno', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior']) !!}
 			</div>
 		</div>
 	</div>
