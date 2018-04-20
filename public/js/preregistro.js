@@ -34,35 +34,50 @@ $(document).ready(function(){
 });
 //empresa
 function paraActadeHechos1(){
-
-    
-
-
-    var select = document.getElementById('idRazon1');
-    select.addEventListener('change',function(){
-        //$("#idRazon1").change(function(event){ 
-        var selectedOption1 = this.options[select.selectedIndex];
-    	console.log(selectedOption1.value);
+    //var select = document.getElementById('idRazon1');
+    //var select = $("#idRazon1");
+    $("#idRazon1").change(function(){
+        valor = $(this).val();
+        if(valor==4){
+            console.log('es 4');
+            $('#tipodeActa1').show();
+            $('#tipoActa1').prop('disabled', false);
+            $('#tipoActa1').prop('disabled', false);
+            $('#estadoCivilActa1').prop('disabled', false);
+            $('#escActa1').prop('disabled', false);
+            $('#ocupActa1').prop('disabled', false);
+        }
+        else{
+            $('#tipodeActa1').hide();
+            $('#tipoActa1').prop('disabled', true);
+            $('#estadoCivilActa1').prop('disabled', true);
+            $('#escActa1').prop('disabled', true);
+            $('#ocupActa1').prop('disabled', true);
+        }
+    })
+    // select.addEventListener('change',function(){
+    //     //$("#idRazon1").change(function(event){ 
+    //     var selectedOption1 = this.options[select.selectedIndex];
         
-    	if(selectedOption1.value==4){
-    		console.log('es 4');
-    		$('#tipodeActa1').show();
-    		$('#tipoActa1').prop('disabled', false);
-    		$('#tipoActa1').prop('disabled', false);
-    		$('#estadoCivilActa1').prop('disabled', false);
-    		$('#escActa1').prop('disabled', false);
-    		$('#ocupActa1').prop('disabled', false);
-    	}
-    	else{
-    		$('#tipodeActa1').hide();
-    		$('#tipoActa1').prop('disabled', true);
-    		$('#estadoCivilActa1').prop('disabled', true);
-    		$('#escActa1').prop('disabled', true);
-    		$('#ocupActa1').prop('disabled', true);
-    	}
+    // 	if(selectedOption1.value==4){
+    // 		console.log('es 4');
+    // 		$('#tipodeActa1').show();
+    // 		$('#tipoActa1').prop('disabled', false);
+    // 		$('#tipoActa1').prop('disabled', false);
+    // 		$('#estadoCivilActa1').prop('disabled', false);
+    // 		$('#escActa1').prop('disabled', false);
+    // 		$('#ocupActa1').prop('disabled', false);
+    // 	}
+    // 	else{
+    // 		$('#tipodeActa1').hide();
+    // 		$('#tipoActa1').prop('disabled', true);
+    // 		$('#estadoCivilActa1').prop('disabled', true);
+    // 		$('#escActa1').prop('disabled', true);
+    // 		$('#ocupActa1').prop('disabled', true);
+    // 	}
       
     
-    }); 
+    // }); 
 }
 //persona
 function paraActadeHechos2(){

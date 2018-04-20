@@ -27,12 +27,7 @@ class ActasHechosController extends Controller
         ->pluck('nombre', 'id');
         $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')
         ->pluck('nombre', 'id');
-        return view('forms.acta-hechos')
-        ->with('ocupaciones',$ocupaciones)
-        ->with('escolaridades',$escolaridades)
-        ->with('estadocivil',$estadocivil)
-        ->with('nacionalidades', $nacionalidades)
-        ->with('estados',$estados);
+        return view('forms.acta-hechos',compact('ocupaciones','escolaridades','estadocivil','nacionalidades','estados'));
     }
 
     public function addActas(Request $request){
