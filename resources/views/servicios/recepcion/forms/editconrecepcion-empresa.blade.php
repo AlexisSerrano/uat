@@ -20,26 +20,26 @@
         {{-- @include('recepcion.tipo-p-edit') --}}
         <input type="hidden" name="esEmpresa" value="1">
     </div>
-        <div class="card-header">
-            <p class="lead" align="center">Datos personales</p>
+        <div class="card-header lead" align="center">
+            Datos personales
         </div>
             <div class="boxtwo">
                 <div class="col">
                 @include('servicios.recepcion.fields.empresa-edit')
                 </div>
+                <div class="form-group">
+                    <div class="col-12">
+                        <label for="narracion" class="col-form-label-sm">Narración: </label>
+                        {!!Form::label('nombre',$preregistro->narracion ,['class'=> 'col-form-label-sm labelCambioNarracion'])!!}
+                        <div class="input-group inputOculto" id="inputNarracion">
+                            {{ Form::textarea('narracion', $preregistro->narracion, ['class'=>'form-control form-control-sm','size' => '30x5']) }}
+                            <!--textarea name="narracion" id="" cols="30" rows="10" class="form-control form-control-sm" ></textarea-->
+                            <input type="button" id="botonCambioNarracion" value="Cancelar" class="btn btn-sm btn-danger">
+                        </div>
+                    </div>
+                </div>
             </div>
-        <div class="form-group">
-            <div class="col-12">
-                <label for="narracion" class="col-form-label-sm">Narración: </label>
-                {!!Form::label('nombre',$preregistro->narracion ,['class'=> 'col-form-label-sm labelCambioNarracion'])!!}
-				<div class="input-group inputOculto" id="inputNarracion">
-					{{ Form::textarea('narracion', $preregistro->narracion, ['class'=>'form-control form-control-sm','size' => '30x5']) }}
-                    <!--textarea name="narracion" id="" cols="30" rows="10" class="form-control form-control-sm" ></textarea-->
-                    <input type="button" id="botonCambioNarracion" value="Cancelar" class="btn btn-sm btn-danger">
-				</div>
-            </div>
-        </div>
-        
+                
         <div class="boxtwo">
             <div class="row">
                 <div class="text-left col">

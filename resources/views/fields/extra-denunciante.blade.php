@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-6">
-		@if(!empty($idCarpeta))
+		{{-- @if(!empty($idCarpeta))
 		{!! Form::hidden('idCarpeta', $idCarpeta) !!}
 		@endif
 		<div class="form-group">
@@ -16,6 +16,10 @@
 					<input class="form-check-input" type="radio" id="conoceAlDenunciado2" name="conoceAlDenunciado" value="0"> No
 				</label>
 			</div>
+		</div> --}}
+		<div class="form-group">
+			{!! Form::label('reguardarIdentidad', 'Identidad Resguardad', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('reguardarIdentidad', [ 0 => 'No',1 => 'Si'], 0, ['class' => 'form-control form-control-sm', 'data-validation'=> 'required']) !!}
 		</div>
 	</div>
 	<div class="col-6">
@@ -27,7 +31,11 @@
 	<div class="col-12">
 		<div class="form-group">
 			{!! Form::label('narracion', 'Narración', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración de los hechos', 'rows' => '5', 'data-validation'=> 'required']) !!}
+			@isset($preregistro)
+				{!! Form::textarea('narracion', $preregistro->narracion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración de los hechos', 'rows' => '5', 'data-validation'=> 'required']) !!}
+			@else	
+				{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración de los hechos', 'rows' => '5', 'data-validation'=> 'required']) !!}
+			@endisset
 		</div>
 	</div>
 </div>
