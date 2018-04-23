@@ -97,16 +97,16 @@ class MedidasProteccionController extends Controller
         return Datatables::of($providencias)->make(true);
     }
 
-    // public function deleteMedida($id){
-    //     $post = Providencia::findOrFail($id);
-    //     if($post->delete()){
-    //         Alert::success('Medida de protección eliminada con éxito', 'Hecho')->persistent("Aceptar");
-    //     }
-    //     else{
-    //         Alert::error('Se presentó un problema al eliminar su medida de protección', 'Error');
-    //     }
-    //     return redirect("medidas");
-    // }
+    public function deleteMedida($id){
+        $post = Providencia::findOrFail($id);
+        if($post->delete()){
+            Alert::success('Medida de protección eliminada con éxito', 'Hecho')->persistent("Aceptar");
+        }
+        else{
+            Alert::error('Se presentó un problema al eliminar su medida de protección', 'Error');
+        }
+        return redirect("medidas");
+    }
 
 
     public function delete($id){
@@ -116,7 +116,19 @@ class MedidasProteccionController extends Controller
         Alert::success('Registrado eliminado con éxito', 'Hecho')->persistent("Aceptar");
         return back();
 
-  
+   
+
+
+    }
+
+    
+
+    public function editar($id){
+
+    
+      
+   
+
 
     }
 

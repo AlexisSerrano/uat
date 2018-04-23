@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+// use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Providencia extends Model
 {
-    use SoftDeletes;
+    // use SoftDeletes;
     protected $table = 'providencias_precautorias';
     protected $fillable = [
         'id',
@@ -19,5 +19,9 @@ class Providencia extends Model
         'fechaInicio',
         'fechaFin'
     ];
-    protected $dates = ['deleted_at'];
+    // protected $dates = ['deleted_at'];
+
+
+
+
 }
