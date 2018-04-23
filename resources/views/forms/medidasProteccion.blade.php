@@ -54,12 +54,11 @@
             </div>
             <div class="col-12">
             <div class="form-group">
-                    {!! Form::label('ObservacionesM', 'Observaciones', ['class' => 'col-form-label-sm']) !!}		
-                    <textarea name="ObservacionesM" id="ObservacionesM" cols="15" rows="5" class="form-control form-control-sm", data-validation= "required"></textarea>
-                
-                <div class="col text-right">
-                        {!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarMedidas'))!!}
-                </div>
+                {!! Form::label('ObservacionesM', 'Observaciones', ['class' => 'col-form-label-sm']) !!}		
+                <textarea name="ObservacionesM" id="ObservacionesM" cols="15" rows="5" class="form-control form-control-sm", data-validation= "required"></textarea>    
+            </div>
+            <div class="col text-right">
+                    {!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarMedidas'))!!}
             </div>
         </div>
     </div>
