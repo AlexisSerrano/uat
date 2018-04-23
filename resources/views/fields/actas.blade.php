@@ -38,9 +38,21 @@
 
 <div class="col-4">
     <div class="form-group">
+        {!! Form::label('expedido', 'Expedido por:', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::text('expedido', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Expedido por:','data-validation'=>'required' ]) !!}
+        <div class="help-block with-errors"></div>
+    </div>
+</div>
+
+<div class="col-4">
+    <div class="form-group">
     {!! Form::label('fecha_nac', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
         <div class="input-group date" id="fecha_nac" data-target-input="nearest">
+            @if(isset($form['fecha_nac']))
+            <input type="date" id="fecha_nac" name="fecha_nac" value="{{ $form['fecha_nac'] }}" class="form-control form-control-sm", data-validation="birthdate">
+            @else
             <input type="date" id="fecha_nac" name="fecha_nac" class="form-control form-control-sm", data-validation="birthdate">
+            @endif
         </div>
     </div>
 </div>

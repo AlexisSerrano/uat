@@ -2,6 +2,10 @@
 
 @section('title', 'Actas de hechos')
 @section('content')
+@include('fields.errores')
+@php
+$form = oldFormActas();
+@endphp
 {!! Form::open(['route' => 'addactas', 'method' => 'POST'])  !!}
 <div class="row no-gutters">
     <div class="col-12">
