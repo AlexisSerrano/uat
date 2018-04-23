@@ -17,6 +17,9 @@ class CreatePreregistrosTable extends Migration
             $table->increments('id');
             $table->integer('idDireccion')->unsigned();
             $table->integer('idRazon')->unsigned()->default(1);
+            $table->integer('idEstadoCivil')->unsigned()->nullable();
+            $table->integer('idEscolaridad')->unsigned()->nullable();
+            $table->integer('idOcupacion')->unsigned()->nullable();
             $table->boolean('esEmpresa')->default(false);
             $table->string('nombre', 200);
             $table->string('primerAp', 50)->nullable();
@@ -43,6 +46,9 @@ class CreatePreregistrosTable extends Migration
             
             $table->foreign('idDireccion')->references('id')->on('domicilio')->onDelete('cascade');
             $table->foreign('idRazon')->references('id')->on('razones')->onDelete('cascade');
+            $table->foreign('idEstadoCivil')->references('id')->on('cat_escolaridad')->onDelete('cascade');
+            $table->foreign('idEscolaridad')->references('id')->on('cat_estado_civil')->onDelete('cascade');
+            $table->foreign('idOcupacion')->references('id')->on('cat_ocupacion')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes();

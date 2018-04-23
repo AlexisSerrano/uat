@@ -127,6 +127,9 @@ class PreregistroController extends Controller
             $preregistro->idRazon = $request->idRazon2;
             $preregistro->fechaNac = $request->fechaNacimiento;
             $preregistro->edad = $request->edad;
+            $preregistro->idEstadoCivil = $request->estadoCivil;
+            $preregistro->idEscolaridad = $request->escolaridad;
+            $preregistro->idOcupacion = $request->ocupacion;
             if (!is_null($request->rfc2)){
                 $preregistro->rfc = $request->rfc2;
             }
@@ -295,7 +298,7 @@ class PreregistroController extends Controller
             $preregistro->telefono = $request->telefono2;
             $preregistro->narracion = $request->narracion;
             $preregistro->folio = $folio;
-            $preregistro->statusCancelacion = 0;
+            $preregistro->statusCancelacion = 1;
             $preregistro->idDireccion = $idD1;
             $preregistro->idRazon = $request->idRazon2;
             $preregistro->fechaNac = $request->fechaNacimiento;
