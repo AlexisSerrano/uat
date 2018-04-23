@@ -77,5 +77,6 @@
   </script>
  @yield('pilaScripts')
  @include('sweet::alert')
+ @include('template.partials.footer2')
  </body>
 </html>
