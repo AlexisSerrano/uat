@@ -52,7 +52,7 @@
 					@include('fields.direcciones')
 					<div class="row">
 						<div class="col text-left">
-							<a class="btn btn-primary irpersonales">Atras</a>
+							<a class="btn btn-primary irpersonales"><span><i class="fa fa-arrow-left"></i></span></a>
 						</div>
 						<div class="col text-right">
 							<a id=Atrabajo class="btn btn-primary irtrabajo">Siguiente</a>
@@ -67,7 +67,7 @@
 					@include('fields.lugartrabajo')
 					<div class="row menu">
 						<div class="col text-left">
-							<a class="btn btn-primary irdireccion">Atras</a>
+							<a class="btn btn-primary irdireccion"><i class="fa fa-arrow-left"></i></a>
 						</div>
 						<div class="col text-right">
 							<a id="ANotificaciones" class="btn btn-primary irdirnotificacion">Siguiente</a>
@@ -81,8 +81,8 @@
 					@include('fields.notificaciones')
 					<div class="row menu">
 						<div class="col text-left">
-							<a id="atrabajo2" class="btn btn-primary irtrabajo">Atras</a>
-							<a id="adireccion2" class="btn btn-primary irdireccion">Atras</a>
+							<a id="atrabajo2" class="btn btn-primary irtrabajo"><i class="fa fa-arrow-left"></i></a>
+							<a id="adireccion2" class="btn btn-primary irdireccion"><i class="fa fa-arrow-left"></i></a>
 						</div>
 						<div class="col text-right">
 							<a id="Adenunciante" class="btn btn-primary irdenunciante">Siguiente</a>
@@ -96,7 +96,7 @@
 					@include('fields.extra-denunciante')				
 					<div class="row menu">
 						<div class="col text-left">
-							<a class="btn btn-primary irdirnotificacion">Atras</a>
+							<a class="btn btn-primary irdirnotificacion"><i class="fa fa-arrow-left"></i></a>
 						</div>
 						<div class="col text-right">
 							{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!}

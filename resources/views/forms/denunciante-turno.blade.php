@@ -64,7 +64,7 @@
 					@include('fields.direcciones')
 					<div class="row">
 						<div class="col text-left">
-							<a class="btn btn-primary irpersonales">Atras</a>
+							<a class="btn btn-primary irpersonales"><i class="fa fa-arrow-left"></i></a>
 						</div>
 			
 						@if ($tipopersona==0)
@@ -87,7 +87,7 @@
 						@include('fields.lugartrabajo')
 						<div class="row menu">
 							<div class="col text-left">
-								<a class="btn btn-primary irdireccion">Atras</a>
+								<a class="btn btn-primary irdireccion"><i class="fa fa-arrow-left"></i></a>
 							</div>
 							<div class="col text-right">
 								<a class="btn btn-primary irdirnotificacion">Siguiente</a>
@@ -102,7 +102,7 @@
 					@include('fields.notificaciones')
 					<div class="row menu">
 						<div class="col text-left">
-							<a class="btn btn-primary {{$botonatras}}">Atras</a>
+							<a class="btn btn-primary {{$botonatras}}"><i class="fa fa-arrow-left"></i></a>
 						</div>
 						<div class="col text-right">
 							<a class="btn btn-primary irdenunciante">Siguiente</a>
@@ -117,7 +117,7 @@
 					<div>
 						<div class="row menu">
 							<div class="col text-left">
-								<a class="btn btn-primary irdirnotificacion">Atras</a>
+								<a class="btn btn-primary irdirnotificacion"><i class="fa fa-arrow-left"></i></a>
 							</div>
 							<div class="col text-right">
 								{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!}
