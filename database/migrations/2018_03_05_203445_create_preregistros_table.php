@@ -46,8 +46,8 @@ class CreatePreregistrosTable extends Migration
             
             $table->foreign('idDireccion')->references('id')->on('domicilio')->onDelete('cascade');
             $table->foreign('idRazon')->references('id')->on('razones')->onDelete('cascade');
-            $table->foreign('idEstadoCivil')->references('id')->on('cat_escolaridad')->onDelete('cascade');
-            $table->foreign('idEscolaridad')->references('id')->on('cat_estado_civil')->onDelete('cascade');
+            $table->foreign('idEstadoCivil')->references('id')->on('cat_estado_civil')->onDelete('cascade');
+            $table->foreign('idEscolaridad')->references('id')->on('cat_escolaridad')->onDelete('cascade');
             $table->foreign('idOcupacion')->references('id')->on('cat_ocupacion')->onDelete('cascade');
 
             $table->timestamps();
