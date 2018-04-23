@@ -88,7 +88,7 @@ Route::post('/estado', 'PreregistroController@estadourgente');
 //Route::resource('/predenuncias','PreregistroAuxController');
 Route::get('/predenuncias', 'PreregistroAuxController@index')->name('predenuncias.index'); //ver formulario
 Route::get('/predenuncias/{id}/edit', 'PreregistroAuxController@edit')->name('predenuncias.edit'); //ver formulario
-Route::post('/predenuncias/{id}/update', 'PreregistroController@update')->name('predenuncias.update'); //registar
+Route::post('/predenuncias/{id}/update', 'PreregistroAuxController@update')->name('predenuncias.update'); //registar
 
 
 Route::get('/preregistroWeb/pre-auxiliar', 'PreregistroAuxController@create'); //ver formulario

@@ -250,7 +250,7 @@
             $('#inputDocIden').hide();
         });
         
-        //editar el campo al dar clic en el label de Numero Externo
+        //editar el campo al dar clic en el label de Razon
         $(".labelCambioRazon").click(function(){
             $('.labelCambioRazon').hide();
             $('#inputRazon').show().css('display', 'flex');

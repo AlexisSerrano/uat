@@ -159,6 +159,17 @@
             $('#inputNarracion').hide();
         });
 
+        //editar el campo al dar clic en el label de Razon
+        $(".labelCambioRazon").click(function(){
+            $('.labelCambioRazon').hide();
+            $('#inputRazon').show().css('display', 'flex');
+        });
+        //ocultar el campo y mostrar el label anterior
+        $("#botonCambioRazon").click(function(){
+            $('.labelCambioRazon').show();
+            $('#inputRazon').hide();
+        });
+
 
         //mostrar los select de direccion al dar clic en algun label que pertenece a un select
         $(".labelCambioDireccion").click(function(){
