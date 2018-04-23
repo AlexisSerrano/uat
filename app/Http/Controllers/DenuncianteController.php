@@ -285,6 +285,7 @@ public function showForm()
             $ExtraDenunciante->idVariablesPersona = $idVariablesPersona;
             $ExtraDenunciante->idNotificacion = $idNotificacion;
             $ExtraDenunciante->idAbogado = null;
+            $ExtraDenunciante->victima = $reques->victima;
             if ($request->conoceAlDenunciado===1){
                 $ExtraDenunciante->conoceAlDenunciado = 1;
             }
@@ -373,6 +374,7 @@ public function showForm()
             $ExtraDenunciante->idVariablesPersona = $idVariablesPersona;
             $ExtraDenunciante->idNotificacion = $idNotificacion;
             $ExtraDenunciante->idAbogado = null;
+            $ExtraDenunciante->victima = $reques->victima;            
             if ($request->conoceAlDenunciado==1){
                 $ExtraDenunciante->conoceAlDenunciado = 1;
             }
