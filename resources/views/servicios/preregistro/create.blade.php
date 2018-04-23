@@ -29,30 +29,26 @@
 		@include('servicios.preregistro.fields.tipo-persona')
 	</div>
 	<div class="card" id="datosPer">
-		<div class="card-header">
-			<p class="lead" align="center">
-
+		<div class="card-header lead" align="center">
 				Datos personales
-
-			</p>
 		</div>
-		<div id="collapsePersonales1" class="collapse show boxcollapse" >
+		<div id="collapsePersonales1">
 			<div class="boxtwo">
-				<div class="col">
+				<div class="">
 				@include('servicios.preregistro.fields.datos-personales')
 				</div>
 			</div>
 		</div>
 
-		<div id="collapsePersonales2" class="collapse show boxcollapse" >
+		<div id="collapsePersonales2">
 			<div class="boxtwo">
 				<div class="col">
 				@include('servicios.preregistro.fields.datos-empresa')
 				</div>
 			</div>
 		</div>
+	</div>	
 
-</div>
 	<div class="card" id="datosPer">
 		<div class="card-header">
 		<div class="boxtwo">

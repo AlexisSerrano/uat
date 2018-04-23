@@ -88,7 +88,7 @@ Route::post('/estado', 'PreregistroController@estadourgente');
 //Route::resource('/predenuncias','PreregistroAuxController');
 Route::get('/predenuncias', 'PreregistroAuxController@index')->name('predenuncias.index'); //ver formulario
 Route::get('/predenuncias/{id}/edit', 'PreregistroAuxController@edit')->name('predenuncias.edit'); //ver formulario
-Route::post('/predenuncias/{id}/update', 'PreregistroController@update')->name('predenuncias.update'); //registar
+Route::post('/predenuncias/{id}/update', 'PreregistroAuxController@update')->name('predenuncias.update'); //registar
 
 
 Route::get('/preregistroWeb/pre-auxiliar', 'PreregistroAuxController@create'); //ver formulario
@@ -182,3 +182,9 @@ Route::put('/cestado/actualizar','EstadoController@editar')->name('Estado.edit')
 /* --------Rutas para Actas de hechos----------- */
 Route::get('actas','ActasHechosController@index');
 Route::post('addactas','ActasHechosController@addActas')->name('addactas');
+
+/* --------Rutas para Libro de gobierno----------- */
+Route::get('libro','libroGobController@terminadas');
+Route::get('getCarpetas','libroGobController@getCarpetas');
+Route::get('carpetas','libroGobController@index');
+Route::get('buscarcarpeta','libroGobController@buscar');

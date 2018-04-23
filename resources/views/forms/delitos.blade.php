@@ -35,7 +35,7 @@
 				
 				<div class="row">
 					<div class="col text-left">
-						<a class="btn btn-primary irdelito">Atras</a>
+						<a class="btn btn-primary irdelito"><i class="fa fa-arrow-left"></i></a>
 					</div>
 					<div class="col text-right">	
 						{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!}

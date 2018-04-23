@@ -18,6 +18,9 @@ class Preregistro extends Model
         'segundoAp',
         'rfc',
         'fechaNac',
+        'idEscolaridad',
+        'idEstadoCivil',
+        'idOcupacion',
         'edad',
         'sexo',
         'curp',
@@ -38,6 +41,18 @@ class Preregistro extends Model
 
     public function direcciones(){
         return $this->belongsTo('App\Models\Domicilio');
+    }
+    
+    public function ocupacion(){
+        return $this->belongsTo('App\Models\CatOcupacion');
+    }
+    
+    public function escolaridad(){
+        return $this->belongsTo('App\Models\CatEscolaridad');
+    }
+    
+    public function estadoCivil(){
+        return $this->belongsTo('App\Models\CatEstadoCivil');
     }
 
     public static function buscarfolio($folio){

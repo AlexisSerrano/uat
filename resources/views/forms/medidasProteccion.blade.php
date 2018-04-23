@@ -64,6 +64,10 @@
         </div>
     </div>
 </div>  
+
+
+
+
     <!--tabla providencias precautorias y/o protección-->
         {{-- @include('tables.medidasP') --}}
          @include('tables.medidas')

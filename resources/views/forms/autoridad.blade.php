@@ -41,7 +41,7 @@
 			{{-- botones --}}
 			<div class="row menu">	
 				<div class="col text-left">				
-					<a class="btn btn-primary irpersonales">Atras</a>
+					<a class="btn btn-primary irpersonales"><i class="fa-arrow-left"></i></a>
 				</div>
 				<div class="col text-right">
 					<a class="btn btn-primary irtrabajo">Siguiente</a>							
@@ -55,7 +55,7 @@
 			{{-- botones --}}
 			<div class="row menu">	
 				<div class="col text-left">				
-					<a class="btn btn-primary irdireccion">Atras</a>
+					<a class="btn btn-primary irdireccion"><i class="fa-arrow-left"></i></a>
 				</div>
 				<div class="col text-right">
 					<a class="btn btn-primary irextraautoridad">Siguiente</a>							
@@ -69,7 +69,7 @@
 			{{-- botones --}}
 			<div class="row menu">	
 				<div class="col text-left">
-					<a class="btn btn-primary irtrabajo">Atras</a>				
+					<a class="btn btn-primary irtrabajo"><i class="fa fa-arrow-left"></i></a>				
 				</div>
 				<div class="col text-right">
 					{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!}

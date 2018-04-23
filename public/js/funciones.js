@@ -108,4 +108,21 @@ function getRandValue(){
 	});
 }
 
+
+$("#myModal1").on("submit", ".modalForm", function(){
+    var parametros= {
+        "txt_nombre" : $("input#txt_nombre").val(),
+        "txt_costo" : $("input#txt_nombre").val()
+    };
+    $.ajax({
+        type: "POST",
+        url: "agregarModal_validacion.php",
+        data: params,
+        success: function(data) {
+        },
+        error: function() {
+        }
+    })
+    return false; // Esto para evitar que envíe el formulario.
+})
 //setInterval(getRandValue, 3000);

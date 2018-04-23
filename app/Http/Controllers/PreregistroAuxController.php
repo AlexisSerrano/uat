@@ -231,7 +231,9 @@ class PreregistroAuxController extends Controller
             }
             $preregistro->docIdentificacion = $request->docIdentificacion;
             $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
-            
+            if (!is_null($request->idRazon)){
+                $domicilio->idRazon = $request->idRazon;
+            }
             $preregistro->save();
             $id = $preregistro->id;
             
@@ -254,6 +256,9 @@ class PreregistroAuxController extends Controller
             }
             if (!is_null($request->numInterno)){
                 $domicilio->numInterno = $request->numInterno;
+            }
+            if (!is_null($request->idRazon)){
+                $domicilio->idRazon = $request->idRazon;
             }
             
             $domicilio->save();

@@ -20,7 +20,7 @@ class ExtraDenunciante extends Model
         'idNotificaciones',
         'idAbogado',
         'victima',
-        'conoceAlDenunciado',
+        'reguardarIdentidad',
         'narracion'
     ];
     

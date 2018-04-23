@@ -138,5 +138,15 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-6">
+			<div class="form-group">
+				{!! Form::label('idRazon', 'Razón:', ['class' => 'col-form-label-sm labelCambioRazon']) !!}
+				{!!Form::label('nombre',$razon ,['class'=> 'col-form-label-sm labelCambioRazon'])!!}
+				<div class="input-group inputOculto" id="inputRazon">
+					{!! Form::select('idRazon', $razones, $preregistro->idRazon, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una razón', 'data-validation'=> 'required']) !!}
+					<input type="button" id="botonCambioRazon" value="Cancelar" class="btn btn-sm btn-danger">
+				</div>
+			</div>
+		</div>
 	</div>
 </div>

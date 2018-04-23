@@ -8,6 +8,8 @@ use DB;
 use Alert;
 use App\Models\Carpeta;
 use App\Models\Acusacion;
+use App\Http\Requests\AcusacionRequest;
+
 
 class AcusacionController extends Controller
 {
@@ -51,7 +53,7 @@ class AcusacionController extends Controller
         }
     }
 
-    public function storeAcusacion(Request $request){
+    public function storeAcusacion(AcusacionRequest $request){
         //dd($request->all());
         $idCarpeta=session('carpeta');
         $acusacion = new Acusacion();

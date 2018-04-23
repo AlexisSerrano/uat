@@ -127,6 +127,9 @@ class PreregistroController extends Controller
             $preregistro->idRazon = $request->idRazon2;
             $preregistro->fechaNac = $request->fechaNacimiento;
             $preregistro->edad = $request->edad;
+            $preregistro->idEstadoCivil = $request->estadoCivil;
+            $preregistro->idEscolaridad = $request->escolaridad;
+            $preregistro->idOcupacion = $request->ocupacion;
             if (!is_null($request->rfc2)){
                 $preregistro->rfc = $request->rfc2;
             }
@@ -295,7 +298,7 @@ class PreregistroController extends Controller
             $preregistro->telefono = $request->telefono2;
             $preregistro->narracion = $request->narracion;
             $preregistro->folio = $folio;
-            $preregistro->statusCancelacion = 0;
+            $preregistro->statusCancelacion = 1;
             $preregistro->idDireccion = $idD1;
             $preregistro->idRazon = $request->idRazon2;
             $preregistro->fechaNac = $request->fechaNacimiento;
@@ -381,51 +384,6 @@ class PreregistroController extends Controller
     
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function estado($id,$tipo)
     {
         //dd($id);
@@ -442,9 +400,9 @@ class PreregistroController extends Controller
         if ($tipo==1) {
             return redirect('urgentes');
         }
-      }
+    }
 
-      public function estadourgente(Request $request){
+    public function estadourgente(Request $request){
         $justificacion = $request->justificacion;
         $preregistro = $request->preregistro;
         $tipo = $request->tipo;

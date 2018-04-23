@@ -12,6 +12,7 @@
             <th>Teléfono</th>
             <th>Tipo de persona</th>
             <th>Tipo de solicitante</th>
+            <th>Resguardar identidad</th>
             <th>Opciones</th>
             {{--  <th>Opciones</th>  --}}
         </thead>
@@ -35,6 +36,11 @@
                             <td>Victima</td>
                         @else
                             <td>Ofendido</td>
+                        @endif
+                        @if($denunciante->reguardarIdentidad==1)
+                            <td>Si</td>
+                        @else
+                            <td>No</td>
                         @endif
                        
                        <td> <a href="{{ url('agregar-denunciante/'.$denunciante->id.'/eliminar')}}" type="button" rel="tooltip" title="Eliminar Registro" class="btn btn-success btn-simple btn-xs">
