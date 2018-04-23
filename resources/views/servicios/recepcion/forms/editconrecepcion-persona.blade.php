@@ -16,7 +16,7 @@
         </div>
 
        
-{!!Form::model($preregistro, array('route' => array('predenuncias.update', $preregistro->id), 'method' => 'PUT')) !!}
+{!!Form::model($preregistro, array('route' => array('predenuncias.update', $preregistro->id), 'method' => 'POST')) !!}
 <input type="hidden" name="esEmpresa" value="0">
 <div class="card container-create" id="datosPersona">
     <div class="card-header lead" align="center">
