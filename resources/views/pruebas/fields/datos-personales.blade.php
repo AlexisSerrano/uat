@@ -44,6 +44,8 @@
 		</div>
 	</div>
 	
+
+
 	<div class="col-4">
 		
 		<div class="row">
@@ -68,35 +70,14 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.','data-validation'=>'required, alphanumeric']) !!}
-		</div>
-	</div>
-
-	<div class="col-4">
-		<div class="form-group" >
-				{!! Form::label('estadoCivil', 'Estado Civil', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('estadoCivil', $estadocivil, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione su estado civil','data-validation'=>'required']) !!}
-		</div>
-	</div>		
-	
-	<div class="col-4">
-		<div class="form-group" >
-				{!! Form::label('escolaridad', 'Escolaridad (Nivel de estudios)', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('escolaridad', $escolaridades, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione su escolaridad','data-validation'=>'required']) !!}
-		</div>
-	</div>
-
-	<div class="col-4">
-		<div class="form-group" >
-				{!! Form::label('ocupacion', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('ocupacion', $ocupaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una ocupación','data-validation'=>'required']) !!}
+			{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.','data-validation'=>'required']) !!}
 		</div>
 	</div>
 
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('telefono2', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('telefono2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono','data-validation'=>'number, length', 'data-validation-length'=>'8-10']) !!}
+			{!! Form::text('telefono2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono','data-validation'=>'number']) !!}
 			<div class="help-block with-errors"></div>
 		</div>
 	</div>
@@ -177,7 +158,7 @@
     <div class="col-4">
         <div class="form-group">
             {!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
-            {!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación', 'data-validation'=>'required']) !!}
+            {!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación']) !!}
             <div class="help-block with-errors"></div>
         </div>
     </div>
@@ -187,26 +168,49 @@
 			 {!! Form::label('correo2', 'Correo:', ['class' => 'col-form-label-sm']) !!}
 			 {!! Form::email('correo2', null, ['class' => 'form-control form-control-sm emailc', 'placeholder' => 'Si desea recibir su folio por email' ]) !!}
 		 </div>
-	</div>
-	<div class="col-4">
-		<div class="form-group">
-				{!! Form::label('idRazon2', 'Razón:', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('idRazon2', $razones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una razón','data-validation'=>'required']) !!}
+	 </div>
+	 <div class="col-4">
+			<div class="form-group">
+					{!! Form::label('idRazon2', 'Razón:', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idRazon2', $razones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una razón','data-validation'=>'required']) !!}
+			</div>
 		</div>
-	</div>
-	<!--solo si es solicitud de hechos-->
-	<div id="tipodeActa">
+		<!--solo si es solicitud de hechos-->
+		<div class="row" id="tipodeActa">
 		<div class="col-12"  >
 			<div class="form-group" >
 					{!! Form::label('tipoActa', 'Seleccione el tipo de acta de hechos que requiere:', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::select('tipoActa', $razones, null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
 			</div>
-		</div>	
-	</div>
+		</div>
+		<div class="col-4">
+				<div class="form-group" >
+						{!! Form::label('estadoCivilActa', 'Estado Civil', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::select('estadoCivilActa', $estadocivil, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione su estado civil','data-validation'=>'required']) !!}
+				</div>
+			</div>		
+			<div class="col-4">
+					<div class="form-group" >
+							{!! Form::label('escActa', 'Escolaridad', ['class' => 'col-form-label-sm']) !!}
+							{!! Form::select('escActa', $escolaridades, null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+					</div>
+				</div>
+				<div class="col-4">
+						<div class="form-group" >
+								{!! Form::label('ocupActa', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
+								{!! Form::select('ocupActa', $ocupaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una ocupación','data-validation'=>'required']) !!}
+						</div>
+					</div>
+		</div>
+
+
 
 </div>
+
 <script>
-	$('#correo2').onfocus(function(){
-			toastr.info("Info Message", "Title");
-		}
+
+
+
+//
+
 </script>

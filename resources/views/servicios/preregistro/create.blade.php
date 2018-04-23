@@ -1,5 +1,5 @@
 
-@extends('template.form')
+@extends('template.form2')
 
 @section('content')
 @if ($errors->any())
@@ -34,7 +34,7 @@
 		</div>
 		<div id="collapsePersonales1">
 			<div class="boxtwo">
-				<div class="">
+				<div class="col">
 				@include('servicios.preregistro.fields.datos-personales')
 				</div>
 			</div>
@@ -129,9 +129,7 @@
 	<script src="{{asset('js/preregistro.js')}}"></script> 
 	<script>
 
-		
-
-
+	
 		$(function () {
 			$('#fechanac').datetimepicker({
 				format: 'YYYY-MM-DD',
