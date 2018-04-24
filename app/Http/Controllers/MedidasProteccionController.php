@@ -24,9 +24,9 @@ class MedidasProteccionController extends Controller
             $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
             $medidasP= CarpetaController::getMedidasP($idCarpeta);
             $delitos = CarpetaController::getDelitos($idCarpeta);
-            $providencias[''] = 'SELECCIONE UNA PROVIDENCIA PRECAUTORIA';
-            $ejecutores[''] = 'SELECCIONE UN EJECUTOR';
-            $victimas[''] = 'SELECCIONE UNA VÍCTIMA';
+            $providencias[''] = 'Seleccione una providencia precautoria';
+            $ejecutores[''] = 'Seleccione un ejecutor';
+            $victimas[''] = 'Seleccione una víctima';
             $providencias2 = CatProvidencias::get();
             $ejecutores2 = Ejecutor::get();
             $victimas2 = DB::table('variables_persona')
@@ -42,10 +42,6 @@ class MedidasProteccionController extends Controller
             ->join('persona', 'persona.id', '=', 'providencias_precautorias.idPersona')
             ->select('cat_providencia_precautoria.nombre as providencia', 'providencias_precautorias.id as id',  'ejecutor.nombre as ejecutor', 'persona.nombres as persona', 'providencias_precautorias.observacion as observacion','providencias_precautorias.fechaInicio as fechainicio', 'providencias_precautorias.fechaFin as fechafin' )
             ->get();
-            
-
-
-
 
             foreach($providencias2 as $providencia){
                 $providencias[$providencia->id] = $providencia->nombre;
