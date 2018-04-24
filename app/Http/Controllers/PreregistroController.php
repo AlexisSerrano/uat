@@ -240,13 +240,16 @@ class PreregistroController extends Controller
         ->pluck('nombre', 'id');
         $escolaridades = CatEscolaridad::orderBy('id', 'ASC')
         ->pluck('nombre', 'id');
+        $identificaciones = CatIdentificacion::orderBy('id', 'ASC')
+        ->pluck('documento', 'id');
 
         return view('servicios.preregistro.createFiscal')
         ->with('estados',$estados)
         ->with('ocupaciones',$ocupaciones)
         ->with('escolaridades',$escolaridades)
         ->with('estadocivil',$estadocivil)
-        ->with('razones',$razones);
+        ->with('razones',$razones)
+        ->with('identificaciones',$identificaciones);
     }
 
     public function fiscalcreate(StorePreregistro $request)

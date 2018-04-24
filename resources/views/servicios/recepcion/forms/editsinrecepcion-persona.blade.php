@@ -27,11 +27,11 @@
         </div>
     <div class="row">
         <div class="text-left col">
-            <a href="{{url('registros')}}" title="" class="btn   button3">Regresar</a>
+            <a href="{{url('registros')}}" title="" class="btn btn-secondary">Regresar</a>
         </div>   
         <div class="text-right col">
-            <a href="{{ url('atender/'.$preregistro->id)}}" title="" class="btn   button1">Atender</a>
-            {!!Form::submit('Guardar',array('class' => 'btn  button4'))!!}
+            <a href="{{ url('atender/'.$preregistro->id)}}" title="" class="btn btn-secondary">Atender</a>
+            {!!Form::submit('Guardar',array('class' => 'btn btn-primary'))!!}
         
         </div>
     </div>
