@@ -53,7 +53,7 @@
 <div class="col-12">   
     <br>
         <div class="text-center">
-                <a href="http://fiscaliaveracruz.gob.mx/" title="" class="btn btn-primary">Cancelar</a>
+                <a href="http://fiscaliaveracruz.gob.mx/" title="" class="btn btn-secondary">Cancelar</a>
                 {!!Form::submit('Guardar',array('class' => 'btn btn-primary'))!!}
         </div>
     </div>

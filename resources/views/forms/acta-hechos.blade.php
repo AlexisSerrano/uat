@@ -16,7 +16,7 @@ $form = oldFormActas();
             </div>
             <div class="row menu">	
                 <div class="col text-left">
-                    <a href="" class="btn btn-primary">Atras</a>
+                    <a href="" class="btn btn-secondary"><i class="fa fa-arrow-left"></i></a>
                 </div>
                 <div class="col text-right">
                     {!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarActa'))!!}
