@@ -57,7 +57,7 @@
                   <div class="form-group">
                     <div class="col-xm-6">
                             {!! Form::label('tipoProvidencia', 'Tipo de providencia precautoria', ['class' => 'col-form-label-sm']) !!}
-                            {!! Form::select('tipoProvidencia', $providencias ,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required', 'id'=>'tipoProvidencia']) !!}
+                            {!! Form::select('tipoProvidencia', $providencias ,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required', 'id'=>'tipoProvidencia1']) !!}
                     {{-- <input class="form-control" type="text" id="tipo_medida" name="tipo_medida" placeholder="Tipo de medida" > --}}
                     </div>
 
@@ -71,7 +71,7 @@
                             <div class="input-group date" id="fechaInicio" data-target-input="nearest">
                                 {{-- {!! Form::text('fechaInicio', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaInicio','data-validation'=>'required', 'placeholder' => 'DD/MM/AAAA']) !!} --}}
         
-                                        <input type="date" id="fechaInicio" name="fechaInicio" class="form-control form-control-sm", data-validation="birthdate">
+                                        <input type="date" id="fechaInicio1" name="fechaInicio" class="form-control form-control-sm", data-validation="birthdate">
                     {{-- <input class="form-control " type="text" id="fecha_inicio" name="fecha_inicio" placeholder="Fecha Inicio"> --}}
                     </div>
                   </div>
@@ -81,21 +81,21 @@
                                 <div class="input-group date" id="fechaFinal" data-target-input="nearest">
                                     {{-- {!! Form::text('fechaFinal', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaFinal','data-validation'=>'required', 'placeholder' => 'DD/MM/AAAA']) !!} --}}
                                 
-                                            <input type="date" id="fechaFinal" name="fechaFinal" class="form-control form-control-sm", data-validation="birthdate" >
+                                            <input type="date" id="fechaFinal1" name="fechaFinal" class="form-control form-control-sm", data-validation="birthdate" >
                         </div>
                       </div>
           
                       <div class="form-group">
                         <div class="col-xm-6">
                                 {!! Form::label('quienEjecuta', 'Quién ejecuta', ['class' => 'col-form-label-sm']) !!}
-                                {!! Form::select('quienEjecuta', $ejecutores ,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required' ,'id'=>"quienEjecuta"]) !!}
+                                {!! Form::select('quienEjecuta', $ejecutores ,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required' ,'id'=>"quienEjecuta1"]) !!}
                         {{-- <input class="form-control " type="text" id="ejecuta" name="ejecuta" placeholder="Ejecuta"> --}}
                         </div>
                       </div>
                       <div class="form-group">
                             <div class="col-xm-6">
                                     {!! Form::label('victima', 'Victima', ['class' => 'col-form-label-sm']) !!}
-                                    {!! Form::select('victima', $victimas,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required' ,'id'=>"victima"]) !!}
+                                    {!! Form::select('victima', $victimas,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required' ,'id'=>"victima1"]) !!}
                             {{-- <input class="form-control" type="text" id="persona" name="Persona" placeholder="Persona" > --}}
                             </div>
                           </div>
@@ -104,7 +104,7 @@
                             <div class="col-xm-6">
                                     {!! Form::label('ObservacionesM', 'Observaciones', ['class' => 'col-form-label-sm']) !!}		
                                     {{-- <textarea name="ObservacionesM" id="ObservacionesM" cols="15" rows="5" class="form-control form-control-sm", data-validation= "required"></textarea>     --}}
-                            <input class="form-control " type="text" id="observaciones" name="observaciones" placeholder="Observaciones">
+                            <input class="form-control " type="text" id="observaciones1" cols="15" rows="5" name="observaciones" placeholder="Observaciones">
                             </div>
                           </div>
                 </div> 

@@ -116,25 +116,65 @@ $('.btn-modal').bind('click', function(){
 	var idr = $(this).val();
 	console.log(idr);
 	$('#idr').val(idr);
-	$('#tipoProvidencia').val($('tr#'+idr+' td.providencia').text());
-	$('#fecha_inicio').val($('tr#'+idr+' td.fechainicio').text());
-	$('#fecha_final').val($('tr#'+idr+' td.fechafin').text());
-	$('#ejecuta').val($('tr#'+idr+' td.ejecutor').text());
-	$('#persona').val($('tr#'+idr+' td.persona').text());
-	$('#observaciones').val($('tr#'+idr+' td.observacion').text());
+	$('#tipoProvidencia1').val($('tr#'+idr+' td.providencia').text());
+	$('#fechaInicio1').val($('tr#'+idr+' td.fechainicio').text());
+	$('#fechaFinal1').val($('tr#'+idr+' td.fechafin').text());
+	$('#quienEjecuta1').val($('tr#'+idr+' td.ejecutor').text());
+	$('#victima1').val($('tr#'+idr+' td.persona').text());
+	$('#observaciones1').val($('tr#'+idr+' td.observacion').text());
     
 	});
 	
 
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//para mandar los datos ala base de datos 
+
 	$('#guardar').bind('click', function(){
 		var datos = {
 			'idr' : $('#idr').val(),
-			'tipoProvidencia'  : $('#tipoProvidencia').select2('val'),
-			'fechaInicio' : $('#fechaInicio').val(),
-			'fechaFinal' : $('#fechaFinal').val(),
-			'quienEjecuta'  : $('#quienEjecuta').select2('val'),
-			'victima'  : $('#victima').select2('val'),
-			'observaciones' : $('#observaciones').val(),
+			'tipoProvidencia1'  : $('#tipoProvidencia1').select2('val'),
+			'fechaInicio1' : $('#fechaInicio1').val(),
+			'fechaFinal1' : $('#fechaFinal1').val(),
+			'quienEjecuta1'  : $('#quienEjecuta1').select2('val'),
+			'victima1'  : $('#victima1').select2('val'),
+			'observaciones1' : $('#observaciones1').val(),
 		}
 		console.log(datos);
 		//console.log($("#tipoProvidencia").val());
@@ -153,7 +193,7 @@ $('.btn-modal').bind('click', function(){
 				if(json){
 						
 				swal("Hecho", "Registro guardado con exito", "success");
-				location.reload();
+				// location.reload();
 				}else{
 					swal("Hecho", "Error", "success");
 				}

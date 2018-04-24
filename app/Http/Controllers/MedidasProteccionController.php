@@ -126,12 +126,12 @@ class MedidasProteccionController extends Controller
       
      $providencia = Providencia::find($request->input('idr')); 
   
-     $providencia->idProvidencia = $request->tipoProvidencia;
-     $providencia->fechaInicio = $request->fechaInicio;
-     $providencia->fechaFin = $request->fechaFinal;
-     $providencia->idEjecutor = $request->quienEjecuta;
-     $providencia->idPersona = $request->victima;
-     $providencia->observacion = $request->observaciones;
+     $providencia->idProvidencia = $request->tipoProvidencia1;
+     $providencia->fechaInicio = $request->fechaInicio1;
+     $providencia->fechaFin = $request->fechaFinal1;
+     $providencia->idEjecutor = $request->quienEjecuta1;
+     $providencia->idPersona = $request->victima1;
+     $providencia->observacion = $request->observaciones1;
         //  $providencia=$request->tipoProvidencia;
         // $nombre=$request->tipoProvidencia;
    // echo $request->tipoProvidencia;
