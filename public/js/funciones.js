@@ -116,7 +116,7 @@ $('.btn-modal').bind('click', function(){
 	var idr = $(this).val();
 	console.log(idr);
 	$('#idr').val(idr);
-	$('#tipo_medida').val($('tr#'+idr+' td.providencia').text());
+	$('#tipoProvidencia').val($('tr#'+idr+' td.providencia').text());
 	$('#fecha_inicio').val($('tr#'+idr+' td.fechainicio').text());
 	$('#fecha_final').val($('tr#'+idr+' td.fechafin').text());
 	$('#ejecuta').val($('tr#'+idr+' td.ejecutor').text());
@@ -129,10 +129,15 @@ $('.btn-modal').bind('click', function(){
 	$('#guardar').bind('click', function(){
 		var datos = {
 			'idr' : $('#idr').val(),
+			'tipoProvidencia'  : $('#tipoProvidencia').select2('val'),
+			'fechaInicio' : $('#fechaInicio').val(),
+			'fechaFinal' : $('#fechaFinal').val(),
+			'quienEjecuta'  : $('#quienEjecuta').select2('val'),
+			'victima'  : $('#victima').select2('val'),
 			'observaciones' : $('#observaciones').val(),
-			'tipo_medida'  : $('#tipo_medida').val(),
 		}
-		//console.log(datos);
+		console.log(datos);
+		//console.log($("#tipoProvidencia").val());
 		
 		$.ajax({
 			headers: {
@@ -153,11 +158,11 @@ $('.btn-modal').bind('click', function(){
 					swal("Hecho", "Error", "success");
 				}
 
-				console.log('Se agrego un vehiculo');
+				//console.log('Se agrego un vehiculo');
 
 				console.log(json); 
 
-				console.log('actualizar');
+				//console.log('actualizar');
 
 				//$('#form_registro).find('input, textarea, button, select').attr('disabled','disabled');
 

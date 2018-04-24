@@ -128,33 +128,44 @@ class MedidasProteccionController extends Controller
 
     
       
-// $providencia = Providencia::find($request->input('idr'));
-//          $providencia->observacion = $request->input('observaciones');
+     $providencia = Providencia::find($request->input('idr')); 
+  
+     $providencia->idProvidencia = $request->tipoProvidencia;
+     $providencia->fechaInicio = $request->fechaInicio;
+     $providencia->fechaFin = $request->fechaFinal;
+     $providencia->idEjecutor = $request->quienEjecuta;
+     $providencia->idPersona = $request->victima;
+     $providencia->observacion = $request->observaciones;
+        //  $providencia=$request->tipoProvidencia;
+        // $nombre=$request->tipoProvidencia;
+   // echo $request->tipoProvidencia;
+     
+        // $idtipomedida = DB::table('cat_providencia_precautoria')
+        // ->where('nombre', '=',$nombre)
+        // ->select('id')->get();
+
+        // echo $idtipomedida;
+        // $providencia->idProvidencia = $idtipomedida;
        
-        
-        $idtipomedida = DB::table('cat_providencia_precautoria')
-        ->where('nombre','=',$request->input('tipo_medida'))
-        ->select('id')
-        ->get();
-  
-        dd( $idtipomedia);
-        $providencia->idProvidencia = $idtipomedida;
  
-
-  
-
-
-        // echo $request->input('observaciones'); 
-
-//     $providencia->save();
-
-  
-// if ($providencia->save()){
-//     return 1;
     
-// }else{
-//     return 0;
-// }
+        // $providencia->observacion = $request->input('observaciones');
+         $providencia->save();
+
+  
+
+
+   
+
+
+
+  
+if ($providencia->save()){
+    return 1;
+    
+}else{
+    return 0;
+}
 
 
 

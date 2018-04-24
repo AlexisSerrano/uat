@@ -23,7 +23,7 @@
                         <td class="persona">{{ $provide->persona }}</td>  
                         <td class="observacion">{{ $provide->observacion }}</td>  
                         <td>
-                                <a href="{{ url('agregar-medidas/'.$provide->id.'/eliminar')}}" type="button" rel="tooltip" title="Eliminar Registro" class="btn btn-success btn-simple btn-xs">
+                                <a href="{{ url('agregar-medidas/'.$provide->id.'/eliminar')}}" title="Eliminar Registro" class="btn btn-success btn-simple btn-xs">
                                 <i class="fa fa-remove"></i></a>
                                 <button type="button" class="btn btn-success btn-simple btn-xs btn-modal" value={{$provide->id}} ><i class="fa fa-edit"></i></button>
                                     
@@ -38,13 +38,14 @@
 
 
 <div id="myModal1" class="modal fade" role="dialog">
-        <div class="modal-dialog modal-sm">
+    <div class="col-12">
+        <div class="modal-dialog">
           <!-- Modal content-->
           <div class="modal-content"> 
             <!--Cabecera del modal-->
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Actualizar</h4>
+                <h4 class="modal-title">Actualizar</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div> 
       
               <!-- FORMULARIO -->
@@ -55,34 +56,54 @@
                         <input class="form-control" type="text" id="idr" name="idr" hidden>
                   <div class="form-group">
                     <div class="col-xm-6">
-                    <input class="form-control" type="text" id="tipo_medida" name="tipo_medida" placeholder="Tipo de medida" >
+                            {!! Form::label('tipoProvidencia', 'Tipo de providencia precautoria', ['class' => 'col-form-label-sm']) !!}
+                            {!! Form::select('tipoProvidencia', $providencias ,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required', 'id'=>'tipoProvidencia']) !!}
+                    {{-- <input class="form-control" type="text" id="tipo_medida" name="tipo_medida" placeholder="Tipo de medida" > --}}
                     </div>
+
+
+
                   </div>
       
                   <div class="form-group">
                     <div class="col-xm-6">
-                    <input class="form-control " type="text" id="fecha_inicio" name="fecha_inicio" placeholder="Fecha Inicio">
+                            {!! Form::label('fechaInicio', 'Fecha inicial', ['class' => 'col-form-label-sm']) !!}
+                            <div class="input-group date" id="fechaInicio" data-target-input="nearest">
+                                {{-- {!! Form::text('fechaInicio', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaInicio','data-validation'=>'required', 'placeholder' => 'DD/MM/AAAA']) !!} --}}
+        
+                                        <input type="date" id="fechaInicio" name="fechaInicio" class="form-control form-control-sm", data-validation="birthdate">
+                    {{-- <input class="form-control " type="text" id="fecha_inicio" name="fecha_inicio" placeholder="Fecha Inicio"> --}}
                     </div>
                   </div>
                   <div class="form-group">
                         <div class="col-xm-6">
-                        <input class="form-control" type="text" id="fecha_final" name="fecha_final" placeholder="Fecha Final" >
+                                {!! Form::label('fechaFinal', 'Fecha final', ['class' => 'col-form-label-sm']) !!}
+                                <div class="input-group date" id="fechaFinal" data-target-input="nearest">
+                                    {{-- {!! Form::text('fechaFinal', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechaFinal','data-validation'=>'required', 'placeholder' => 'DD/MM/AAAA']) !!} --}}
+                                
+                                            <input type="date" id="fechaFinal" name="fechaFinal" class="form-control form-control-sm", data-validation="birthdate" >
                         </div>
                       </div>
           
                       <div class="form-group">
                         <div class="col-xm-6">
-                        <input class="form-control " type="text" id="ejecuta" name="ejecuta" placeholder="Ejecuta">
+                                {!! Form::label('quienEjecuta', 'Quién ejecuta', ['class' => 'col-form-label-sm']) !!}
+                                {!! Form::select('quienEjecuta', $ejecutores ,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required' ,'id'=>"quienEjecuta"]) !!}
+                        {{-- <input class="form-control " type="text" id="ejecuta" name="ejecuta" placeholder="Ejecuta"> --}}
                         </div>
                       </div>
                       <div class="form-group">
                             <div class="col-xm-6">
-                            <input class="form-control" type="text" id="persona" name="Persona" placeholder="Persona" >
+                                    {!! Form::label('victima', 'Victima', ['class' => 'col-form-label-sm']) !!}
+                                    {!! Form::select('victima', $victimas,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required' ,'id'=>"victima"]) !!}
+                            {{-- <input class="form-control" type="text" id="persona" name="Persona" placeholder="Persona" > --}}
                             </div>
                           </div>
               
                           <div class="form-group">
                             <div class="col-xm-6">
+                                    {!! Form::label('ObservacionesM', 'Observaciones', ['class' => 'col-form-label-sm']) !!}		
+                                    {{-- <textarea name="ObservacionesM" id="ObservacionesM" cols="15" rows="5" class="form-control form-control-sm", data-validation= "required"></textarea>     --}}
                             <input class="form-control " type="text" id="observaciones" name="observaciones" placeholder="Observaciones">
                             </div>
                           </div>
@@ -98,7 +119,7 @@
           </div>
         </div>
       </div>
-
+    </div>
 <script>
  
 </script>

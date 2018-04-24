@@ -43,7 +43,7 @@
                             <td>No</td>
                         @endif
                        
-                       <td> <a href="{{ url('agregar-denunciante/'.$denunciante->id.'/eliminar')}}" type="button" rel="tooltip" title="Eliminar Registro" class="btn btn-success btn-simple btn-xs">
+                       <td> <a href="{{ url('agregar-denunciante/'.$denunciante->id.'/eliminar')}}" title="Eliminar Registro" class="btn btn-success btn-simple btn-xs">
                         <i class="fa fa-edit"></i></td>
                         {{--  <td><a href="{{ route('constancia.hechos', $denunciante->id) }}" class="btn btn-secondary text-right">Descargar constancia de hechos</a></td>  --}}
                     </tr>
