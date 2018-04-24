@@ -10,6 +10,7 @@ use App\Models\CatEstado;
 use App\Models\CatEstadoCivil;
 use App\Models\CatOcupacion;
 use App\Models\CatNacionalidad;
+use App\Models\Preregistro;
 use App\Http\Requests\ActaRequest;
 use DB;
 use Alert;
@@ -19,7 +20,12 @@ use Jenssegers\Date\Date;
 class ActasHechosController extends Controller
 {
 
-    public function index(){
+    public function actasPendientes(){
+        $actas=Preregistro::where('tipoActa','!=',null)->get();
+        return view('tables.actas-hechos')->with('actas',$actas);
+    }
+    
+    public function showform(){
         $estados=CatEstado::orderBy('nombre', 'ASC')
         ->pluck('nombre','id');
         $ocupaciones=CatOcupacion::orderBy('nombre', 'ASC')

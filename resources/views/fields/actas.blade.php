@@ -20,6 +20,7 @@
         {!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'required']) !!}
     </div>
 </div>
+
 <div class="col-4">
     <div class="form-group">
         {!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
@@ -80,6 +81,7 @@
         @endif
     </div>
 </div>
+
 <div class="col-4">
     <div class="form-group">
         {!! Form::label('idLocalidad2', 'Localidad', ['class' => 'col-form-label-sm']) !!}
@@ -90,6 +92,7 @@
         @endif
     </div>
 </div>
+
 <div class="col-2">
     <div class="form-group">
         {!! Form::label('cp2', 'Código postal', ['class' => 'col-form-label-sm']) !!}
@@ -100,6 +103,7 @@
         @endif
     </div>
 </div>
+
 <div class="col-2">
     <div class="form-group">
         {!! Form::label('idColonia2', 'Colonia', ['class' => 'col-form-label-sm']) !!}
@@ -110,40 +114,61 @@
         @endif
     </div>
 </div>
+
 <div class="col-4">
     <div class="form-group">
         {!! Form::label('calle2', 'Calle', ['class' => 'col-form-label-sm']) !!}
         {!! Form::text('calle2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle', 'data-validation'=>'required']) !!}
     </div>
 </div>
+
 <div class="col-2">
     <div class="form-group">
         {!! Form::label('numExterno2', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
         {!! Form::text('numExterno2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Exterior', 'data-validation'=>'required']) !!}
     </div>
 </div>
+
 <div class="col-2">
     <div class="form-group">
         {!! Form::label('numInterno2', 'Número interior', ['class' => 'col-form-label-sm']) !!}
         {!! Form::text('numInterno2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Interior', 'data-validation'=>'required']) !!}
     </div>
 </div>
+
 <div class="col-4">
-        <div class="form-group" >
-                {!! Form::label('estadoCivilActa1', 'Estado Civil', ['class' => 'col-form-label-sm']) !!}
-                {!! Form::select('estadoCivilActa1',$estadocivil,null ,['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione su estado civil','data-validation'=>'required']) !!}
-        </div>
-    </div>		
-    <div class="col-4">
-            <div class="form-group" >
-                    {!! Form::label('escActa1', 'Escolaridad', ['class' => 'col-form-label-sm']) !!}
-                    {!! Form::select('escActa1', $escolaridades,null,['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
-            </div>
-        </div>
-        <div class="col-4">
-                <div class="form-group" >
-                        {!! Form::label('ocupActa1', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
-                        {!! Form::select('ocupActa1',$ocupaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una ocupación','data-validation'=>'required']) !!}
-                </div>
-            </div>
-            
+    <div class="form-group" >
+        {!! Form::label('estadoCivilActa1', 'Estado Civil', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::select('estadoCivilActa1',$estadocivil,null ,['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione su estado civil','data-validation'=>'required']) !!}
+    </div>
+</div>		
+
+<div class="col-4">
+    <div class="form-group" >
+        {!! Form::label('escActa1', 'Escolaridad', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::select('escActa1', $escolaridades,null,['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+    </div>
+</div>
+
+<div class="col-4">
+    <div class="form-group" >
+            {!! Form::label('ocupActa1', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
+            {!! Form::select('ocupActa1',$ocupaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una ocupación','data-validation'=>'required']) !!}
+    </div>
+</div>
+        
+<div class="col-12">
+    <div class="form-group">        
+        <label for="narracion" class="col-form-label-sm">Narración</label>
+        @if(isset($form['narracion']))
+        {{ Form::textarea('narracion', $form['narracion'], ['class' => 'form-control form-control-sm', 'size' => '30x10', 'required']) }}
+        @else
+        {{ Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'size' => '30x10', 'required']) }}
+        @endif
+        {{-- <textarea name="narracion" id="narracion" cols="30" rows="10" class="form-control form-control-sm" required=>
+            @if(isset($form['narracion']))
+            {{$form['narracion']}}
+            @endif
+        </textarea> --}}
+    </div>
+</div>

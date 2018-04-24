@@ -181,8 +181,9 @@ Route::get('cestado','EstadoController@index');
 Route::put('/cestado/actualizar','EstadoController@editar')->name('Estado.edit');
 
 /* --------Rutas para Actas de hechos----------- */
-Route::get('actas','ActasHechosController@index');
+Route::get('actas','ActasHechosController@showform')->name('new.actahechos');
 Route::post('addactas','ActasHechosController@addActas')->name('addactas');
+Route::get('actas-pendientes','ActasHechosController@actasPendientes')->name('actaspendientes');
 
 /* --------Rutas para Libro de gobierno----------- */
 Route::get('libro','libroGobController@terminadas');
