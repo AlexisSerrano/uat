@@ -144,6 +144,9 @@ class PreregistroController extends Controller
             $preregistro->docIdentificacion = $request->docIdentificacion;
             $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
             $preregistro->conViolencia = $request->Violencia;
+            if (!is_null($request->tipoActa)){
+                $preregistro->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa;
+            }
             
             $preregistro->save();
             $id = $preregistro->id;
