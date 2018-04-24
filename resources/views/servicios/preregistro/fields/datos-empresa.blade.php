@@ -111,7 +111,7 @@
 		</div>
 		
 		<!--solo si es solicitud de hechos-->
-		<div class="row" id="tipodeActa1">
+		<div  id="tipodeActa1">
 				<div class="col-12"  >
 					<div class="form-group" >
 							{!! Form::label('tipoActa', 'Seleccione el tipo de acta de hechos que requiere:', ['class' => 'col-form-label-sm']) !!}

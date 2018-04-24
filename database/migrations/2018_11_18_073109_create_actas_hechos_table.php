@@ -24,6 +24,7 @@ class CreateActasHechosTable extends Migration
             $table->string('segundo_ap');
             $table->string('identificacion');
             $table->string('num_identificacion');
+            $table->string('expedido');
             $table->date('fecha_nac');
             $table->integer('idDomicilio')->unsigned()->default(1);
             $table->integer('idOcupacion')->unsigned();

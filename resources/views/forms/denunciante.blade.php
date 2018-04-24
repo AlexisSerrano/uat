@@ -41,7 +41,7 @@
 						<div class="col text-left">
 						</div>
 						<div class="col text-right">
-							<a  id=Adireccion  class="btn btn-primary irdireccion">Siguiente</a>
+							<a  id=Adireccion  class="btn btn-secondary irdireccion">Siguiente</a>
 						</div>
 					</div>
 				</div>
@@ -52,11 +52,11 @@
 					@include('fields.direcciones')
 					<div class="row">
 						<div class="col text-left">
-							<a class="btn btn-primary irpersonales">Atras</a>
+							<a class="btn btn-secondary irpersonales"><span><i class="fa fa-arrow-left"></i></span></a>
 						</div>
 						<div class="col text-right">
-							<a id=Atrabajo class="btn btn-primary irtrabajo">Siguiente</a>
-							<a id="ANotificaciones2" class="btn btn-primary irdirnotificacion">Siguiente</a>
+							<a id=Atrabajo class="btn btn-secondary irtrabajo">Siguiente</a>
+							<a id="ANotificaciones2" class="btn btn-secondary irdirnotificacion">Siguiente</a>
 						</div>
 					</div>
 				</div>
@@ -67,10 +67,10 @@
 					@include('fields.lugartrabajo')
 					<div class="row menu">
 						<div class="col text-left">
-							<a class="btn btn-primary irdireccion">Atras</a>
+							<a class="btn btn-secondary irdireccion"><i class="fa fa-arrow-left"></i></a>
 						</div>
 						<div class="col text-right">
-							<a id="ANotificaciones" class="btn btn-primary irdirnotificacion">Siguiente</a>
+							<a id="ANotificaciones" class="btn btn-secondary irdirnotificacion">Siguiente</a>
 						</div>
 					</div>
 				</div>
@@ -81,11 +81,11 @@
 					@include('fields.notificaciones')
 					<div class="row menu">
 						<div class="col text-left">
-							<a id="atrabajo2" class="btn btn-primary irtrabajo">Atras</a>
-							<a id="adireccion2" class="btn btn-primary irdireccion">Atras</a>
+							<a id="atrabajo2" class="btn btn-secondary irtrabajo"><i class="fa fa-arrow-left"></i></a>
+							<a id="adireccion2" class="btn btn-secondary irdireccion"><i class="fa fa-arrow-left"></i></a>
 						</div>
 						<div class="col text-right">
-							<a id="Adenunciante" class="btn btn-primary irdenunciante">Siguiente</a>
+							<a id="Adenunciante" class="btn btn-secondary irdenunciante">Siguiente</a>
 						</div>
 					</div>
 				</div>
@@ -96,7 +96,7 @@
 					@include('fields.extra-denunciante')				
 					<div class="row menu">
 						<div class="col text-left">
-							<a class="btn btn-primary irdirnotificacion">Atras</a>
+							<a class="btn btn-secondary irdirnotificacion"><i class="fa fa-arrow-left"></i></a>
 						</div>
 						<div class="col text-right">
 							{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!}

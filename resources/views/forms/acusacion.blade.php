@@ -1,8 +1,8 @@
 @extends('template.form')
-
 @section('title', 'Agregar acusación')
 @section('content')
-	@include('fields.buttons-navegacion')
+@include('fields.buttons-navegacion')
+@include('fields.errores')
     {!! Form::open(['route' => 'store.acusacion', 'method' => 'POST'])  !!}
 	<div class="row no-gutters">
 		<div class="col-12">

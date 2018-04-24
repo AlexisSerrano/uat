@@ -10,35 +10,35 @@
         
         </style>
        
-               
-               <div class="alert alert-info">
-                 <strong>Nota:</strong> Todas las etiquetas que se encuentran abajo pueden ser editadas dando clic en el texto
-               </div>
+        
+        <div class="alert alert-info">
+            <strong>Nota:</strong> Todas las etiquetas que se encuentran abajo pueden ser editadas dando clic en el texto
+        </div>
+
        
-       
-{!!Form::model($preregistro, array('route' => array('predenuncias.update', $preregistro->id), 'method' => 'PUT')) !!}
+{!!Form::model($preregistro, array('route' => array('predenuncias.update', $preregistro->id), 'method' => 'POST')) !!}
 <input type="hidden" name="esEmpresa" value="0">
 <div class="card container-create" id="datosPersona">
-    <div class="card-header">
-        <p class="lead" align="center">Datos personales</p>
+    <div class="card-header lead" align="center">
+        Datos personales
     </div>
         <div class="boxtwo">
             <div class="col">
                 @include('servicios.recepcion.fields.personales-edit')
             </div>
-        </div>
-        
-    <div class="form-group">
-        <div class="col-12">
-            <label for="narracion" class="col-form-label-sm">Narración: </label>
-            {!!Form::label('nombre',$preregistro->narracion ,['class'=> 'col-form-label-sm labelCambioNarracion'])!!}
-            <div class="input-group inputOculto" id="inputNarracion">
-                {{ Form::textarea('narracion', $preregistro->narracion, ['class'=>'form-control form-control-sm','size' => '30x5']) }}
-                <!--textarea name="narracion" id="" cols="30" rows="10" class="form-control form-control-sm" ></textarea-->
-                <input type="button" id="botonCambioNarracion" value="Cancelar" class="btn btn-sm btn-danger">
+            
+            <div class="form-group">
+                <div class="col-12">
+                    <label for="narracion" class="col-form-label-sm">Narración: </label>
+                    {!!Form::label('nombre',$preregistro->narracion ,['class'=> 'col-form-label-sm labelCambioNarracion'])!!}
+                    <div class="input-group inputOculto" id="inputNarracion">
+                        {{ Form::textarea('narracion', $preregistro->narracion, ['class'=>'form-control form-control-sm','size' => '30x5']) }}
+                        <!--textarea name="narracion" id="" cols="30" rows="10" class="form-control form-control-sm" ></textarea-->
+                        <input type="button" id="botonCambioNarracion" value="Cancelar" class="btn btn-sm btn-danger">
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
     
     <div class="row">
@@ -250,7 +250,7 @@
             $('#inputDocIden').hide();
         });
         
-        //editar el campo al dar clic en el label de Numero Externo
+        //editar el campo al dar clic en el label de Razon
         $(".labelCambioRazon").click(function(){
             $('.labelCambioRazon').hide();
             $('#inputRazon').show().css('display', 'flex');

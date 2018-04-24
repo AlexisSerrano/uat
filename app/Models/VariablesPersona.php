@@ -88,6 +88,9 @@ class VariablesPersona extends Model
     {
         return $this->belongsTo('app/Models/Domicilio');
     }
-
+    public function identificacion()
+    {
+        return $this->belongsTo('app/Models/catIdentificacion');
+    }
     
 }

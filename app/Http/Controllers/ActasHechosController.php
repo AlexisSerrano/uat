@@ -10,12 +10,15 @@ use App\Models\CatEstado;
 use App\Models\CatEstadoCivil;
 use App\Models\CatOcupacion;
 use App\Models\CatNacionalidad;
+use App\Http\Requests\ActaRequest;
 use DB;
 use Alert;
 use Carbon\Carbon;
+use Jenssegers\Date\Date;
 
 class ActasHechosController extends Controller
 {
+
     public function index(){
         $estados=CatEstado::orderBy('nombre', 'ASC')
         ->pluck('nombre','id');
@@ -30,22 +33,31 @@ class ActasHechosController extends Controller
         return view('forms.acta-hechos',compact('ocupaciones','escolaridades','estadocivil','nacionalidades','estados'));
     }
 
-    public function addActas(Request $request){
+    public function addActas(ActaRequest $request){
+        //dd(Date::now()->format('l j F Y H:i:s'));
         DB::beginTransaction();
             try{
-                $date = Carbon::now();
                 $acta = new ActasHechos;
                 $direccion = new Domicilio;
                 $direccion->idMunicipio = $request->idMunicipio2;
                 $direccion->idLocalidad = $request->idLocalidad2;
                 $direccion->idColonia = $request->idColonia2;
-                $direccion->calle = $request->calle2;
+                $direccion->calle = $request->calle2;   
+                if($request->numInterno2!=''){
+                    $direccion->numInterno = $request->numInterno2;
+                }
                 $direccion->numExterno = $request->numExterno2;
-                $direccion->numInterno = $request->numInterno2;
                 $direccion->save();
-                $acta->folio = "yyyyy";
-                $acta->hora = $date->toTimeString();
-                $acta->fecha = $date->format('Y-m-d');
+                $ultimo = ActasHechos::latest()->first();
+                if($ultimo){
+                    $new = $ultimo->folio+1;
+                }
+                else{
+                    $new = 1;
+                }
+                $acta->folio = $new;
+                $acta->hora = Date::now()->format('H:i:s');
+                $acta->fecha = Date::now()->format('Y-m-d');
                 $acta->fiscal = "xxxxxx";
                 $acta->nombre = $request->nombre2;
                 $acta->primer_ap = $request->primerAp;
@@ -59,12 +71,72 @@ class ActasHechosController extends Controller
                 $acta->idEscolaridad = $request->escActa1;
                 $acta->telefono = $request->telefono;
                 $acta->narracion = $request->narracion;
+                $acta->expedido = $request->expedido;
                 $acta->save();
                 DB::commit();
+                
+                $catalogos = DB::table('actas_hechos')->where('actas_hechos.id', $acta->id)
+                ->join('cat_ocupacion','actas_hechos.idOcupacion','=','cat_ocupacion.id')
+                ->join('cat_estado_civil','actas_hechos.idEstadoCivil','=','cat_estado_civil.id')
+                ->join('cat_escolaridad','actas_hechos.idEscolaridad','=','cat_escolaridad.id')
+                ->join('domicilio','actas_hechos.idDomicilio','=','domicilio.id')
+                ->join('cat_municipio','domicilio.idMunicipio','=','cat_municipio.id')
+                ->join('cat_localidad','domicilio.idLocalidad','=','cat_localidad.id')
+                ->join('cat_colonia','domicilio.idColonia','=','cat_colonia.id')
+                ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')
+                ->select('cat_ocupacion.nombre as nombreOcupacion',
+                'cat_estado_civil.nombre as nombreEstadoCivil',
+                'cat_escolaridad.nombre as nombreEscolaridad',
+                'cat_municipio.nombre as nombreMunicipio',
+                'cat_localidad.nombre as nombreLocalidad',
+                'cat_colonia.nombre as nombreColonia',
+                'cat_estado.nombre as nombreEstado')
+                ->first();
+                //dd($catalogos);
+                
+                $word = new \PhpOffice\PhpWord\TemplateProcessor('formatos/plantillaAH.docx');
+                $word->setValue('estado', $catalogos->nombreEstado);
+                $word->setValue('municipio', $catalogos->nombreMunicipio);
+                $word->setValue('localidad', $catalogos->nombreLocalidad);
+                $word->setValue('colonia', $catalogos->nombreColonia);
+                $word->setValue('calle', $direccion->calle);
+                $word->setValue('cp', $request->cp2);
+                if($request->numInterno2==''){
+                    $word->setValue('numExterno', $direccion->numExterno);
+                }
+                else{
+                    $numeros = $direccion->numExterno.' interior '.$direccion->numInterno;
+                    $word->setValue('numExterno', $numeros);
+                }
+                $word->setValue('folio', $new);
+                $word->setValue('hora', Date::now()->format('H:i:'));
+                $fechahum = Date::now()->format('l j').' de '.Date::now()->format('F').' del año '.Date::now()->format('Y');
+                $word->setValue('fecha',$fechahum);
+                $word->setValue('fiscal', $acta->fiscal);
+                $word->setValue('nombre', $acta->nombre.' '.$acta->primer_ap.' '.$acta->segundo_ap);
+                $word->setValue('identificacion', $acta->identificacion);
+                $word->setValue('numIdentificacion', $acta->num_identificacion);
+                $date = new Date($acta->fecha_nac);
+                $fechanachum = $date->format('j').' de '.$date->format('F').' del año '.$date->format('Y');
+                $word->setValue('fechaNacimiento', $fechanachum);
+                $word->setValue('ocupacion', $catalogos->nombreOcupacion);
+                $word->setValue('estadoCivil', $catalogos->nombreEstadoCivil);
+                $word->setValue('escolaridad', $catalogos->nombreEscolaridad);
+                $word->setValue('telefono', $acta->telefono);
+                $word->setValue('narracion', $acta->narracion);
+                $word->setValue('expedido', $acta->expedido);
+
+                $fechasep = explode("-", $request->fecha_nac);
+                $edad = Date::createFromDate($fechasep[0],$fechasep[1],$fechasep[2])->age;
+                $word->setValue('edad', $edad);
+        
+                $word->saveAs('../storage/oficios/ActasHechos'.$acta->id.'.docx');
+                return response()->download('../storage/oficios/ActasHechos'.$acta->id.'.docx');
             }
             catch (\PDOException $e){
-                Alert::error('Se presentó un problema al guardar su acta de hecho, intente de nuevo', 'Error');
                 DB::rollBack();
+                Alert::error('Se presentó un problema al guardar su acta de hecho, intente de nuevo', 'Error');
+                return redirect('actas');
             }
     }
 }

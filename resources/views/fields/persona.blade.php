@@ -111,14 +111,14 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idOcupacion', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idOcupacion', $ocupaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la ocupación','data-validation'=>'required']) !!}
+					{!! Form::select('idOcupacion', $ocupaciones, $preregistro->idOcupacion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la ocupación','data-validation'=>'required']) !!}
 				</div>
 			</div>
 			
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idEstadoCivil', 'Estado civil', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idEstadoCivil', $estadoscivil, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el estado civil','data-validation'=>'required']) !!}
+					{!! Form::select('idEstadoCivil', $estadoscivil, $preregistro->idEstadoCivil, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el estado civil','data-validation'=>'required']) !!}
 				</div>
 			</div>
 			
@@ -132,7 +132,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idEscolaridad', 'Escolaridad', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idEscolaridad', $escolaridades, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la escolaridad','data-validation'=>'required']) !!}
+					{!! Form::select('idEscolaridad', $escolaridades, $preregistro->idEscolaridad, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione la escolaridad','data-validation'=>'required']) !!}
 				</div>
 			</div>
 			

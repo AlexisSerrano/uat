@@ -699,9 +699,23 @@ if (campo.length < 1 || campo.length > 200){
     $(this).css({"border-color":"yellow"});
 }else{
     $(this).css({"border-color":"green"});
+    toastr.info("Su folio se enviará al correo que ha ingresado");
     
 }
 });
+$('#correo2').focusout(function(){
+
+    var campo = $(this).val();
+    if (campo.length < 1 || campo.length > 200){
+        $(this).css({"border-color":"yellow"});
+        
+    }else{
+        $(this).css({"border-color":"green"});
+        toastr.info("Su folio se enviará al correo que ha ingresado");
+        
+    }
+    });
+
 $('#telefonoN').focusout(function(){
 
 var campo = $(this).val();

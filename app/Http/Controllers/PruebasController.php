@@ -23,20 +23,37 @@ class PruebasController extends Controller
     public function create()
     {
 
-$razones=Razon::orderBy('nombre', 'ASC')
-->pluck('nombre','id');
-$estados=CatEstado::orderBy('nombre', 'ASC')
-->pluck('nombre','id');
-// $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')
-// ->pluck('nombre', 'id');
+        {
 
-    	//dd(2);
-         
-        return view('orientador.modulo-orientador')->with('estados',$estados)->with('razones',$razones);
+            $razones=Razon::orderBy('nombre', 'ASC')
+            ->pluck('nombre','id');
+            $estados=CatEstado::orderBy('nombre', 'ASC')
+            ->pluck('nombre','id');
+            $ocupaciones=CatOcupacion::orderBy('nombre', 'ASC')
+            ->pluck('nombre', 'id');
+            $estadocivil = CatEstadoCivil::orderBy('nombre', 'ASC')
+            ->pluck('nombre', 'id');
+            $escolaridades = CatEscolaridad::orderBy('id', 'ASC')
+            ->pluck('nombre', 'id');
+            $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')
+            ->pluck('nombre', 'id');
+           
+    
+    
+        //dd($delitos);
+             
+        return view('pruebas.pruebas-Web')
+            ->with('ocupaciones',$ocupaciones)
+            ->with('escolaridades',$escolaridades)
+            ->with('estadocivil',$estadocivil)
+            ->with('razones',$razones)
+            ->with('nacionalidades', $nacionalidades)
+            ->with('estados',$estados);
+    }
+    
+        
 
-}
-
-
+    }
 
     public function hechos()
     {

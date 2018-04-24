@@ -1,5 +1,5 @@
 
-@extends('template.form')
+@extends('template.form2')
 
 @section('content')
 @if ($errors->any())
@@ -29,14 +29,10 @@
 		@include('servicios.preregistro.fields.tipo-persona')
 	</div>
 	<div class="card" id="datosPer">
-		<div class="card-header">
-			<p class="lead" align="center">
-
+		<div class="card-header lead" align="center">
 				Datos personales
-
-			</p>
 		</div>
-		<div id="collapsePersonales1" class="collapse show boxcollapse" >
+		<div id="collapsePersonales1">
 			<div class="boxtwo">
 				<div class="col">
 				@include('servicios.preregistro.fields.datos-personales')
@@ -44,15 +40,15 @@
 			</div>
 		</div>
 
-		<div id="collapsePersonales2" class="collapse show boxcollapse" >
+		<div id="collapsePersonales2">
 			<div class="boxtwo">
 				<div class="col">
 				@include('servicios.preregistro.fields.datos-empresa')
 				</div>
 			</div>
 		</div>
+	</div>	
 
-</div>
 	<div class="card" id="datosPer">
 		<div class="card-header">
 		<div class="boxtwo">
@@ -101,22 +97,24 @@
 					</textarea> --}}
 				</div>
 			</div>
-		</div>
-
-		<div class="boxtwo">
-			<div class="row">
-				
-				<div class="col">   
-					<div class="text-center">
-							<a href="http://fiscaliaveracruz.gob.mx/" title="" class="btn btn-primary">Cancelar</a>
-							{!!Form::submit('Guardar',array('class' => 'btn btn-primary'))!!}
-
+			<div class="boxtwo">
+					<div class="row">
 						
-					
+						<div class="col">   
+							<div class="text-center">
+								<br>
+									<a href="http://fiscaliaveracruz.gob.mx/" title="" class="btn btn-primary">Cancelar</a>
+									{!!Form::submit('Guardar',array('class' => 'btn btn-primary'))!!}
+		
+								<br>
+							
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
 		</div>
+
+		
 
 
 	</div>
@@ -133,9 +131,7 @@
 	<script src="{{asset('js/preregistro.js')}}"></script> 
 	<script>
 
-		
-
-
+	
 		$(function () {
 			$('#fechanac').datetimepicker({
 				format: 'YYYY-MM-DD',
