@@ -207,7 +207,7 @@
 			{!! Form::label('docIdentificacion', 'Documento de identificación: ', ['class' => 'col-form-label-sm labelCambioDoc']) !!}
 			{!!Form::label('nombre',$preregistro->docIdentificacion ,['class'=> 'col-form-label-sm labelCambioDoc'])!!}
 			<div class="input-group inputOculto" id="inputDoc">
-				{!! Form::text('docIdentificacion', $preregistro->docIdentificacion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificación','required']) !!}
+				{!! Form::select('docIdentificacion',$identificaciones,null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificación','required']) !!}
 				<input type="button" id="botonCambioDoc" value="Cancelar" class="btn btn-sm btn-danger">
 			</div>
 			<div class="help-block with-errors"></div>

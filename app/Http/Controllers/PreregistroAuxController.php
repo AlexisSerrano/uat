@@ -24,6 +24,7 @@ use App\Models\CatLengua;
 use App\Models\CatNacionalidad;
 use App\Models\CatOcupacion;
 use App\Models\CatReligion;
+use App\Models\CatIdentificacion;
 
 use Illuminate\Support\Facades\Session;
 class PreregistroAuxController extends Controller
@@ -167,13 +168,15 @@ class PreregistroAuxController extends Controller
         ->orderBy('codigoPostal','asc')
         ->groupBy('codigoPostal')
         ->pluck('codigoPostal','codigopostal');
+        $identificaciones = CatIdentificacion::orderBy('id', 'ASC')
+        ->pluck('documento', 'id');
         //dd($idCodigoPostalSelect);                     
         $persona= $preregistro->esEmpresa;//persona fisica o empresa
         if($persona==1){
-            return view('servicios.recepcion.forms.editconrecepcion-empresa', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon' ));
+            return view('servicios.recepcion.forms.editconrecepcion-empresa', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon','identificaciones' ));
         }
         else{
-            return view('servicios.recepcion.forms.editconrecepcion-persona', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon' ));
+            return view('servicios.recepcion.forms.editconrecepcion-persona', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon','identificaciones'));
         }
     }
 
