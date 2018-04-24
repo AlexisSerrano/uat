@@ -12,7 +12,7 @@ use App\Models\CatColonia;
 use App\Models\CatOcupacion;
 use App\Models\CatEstadoCivil;
 use App\Models\CatEscolaridad;
-use App\Models\catIdentificacion;
+use App\Models\CatIdentificacion;
 use App\Mail\EnviarCorreo as sendMail;
 use DB;
 use Alert;
