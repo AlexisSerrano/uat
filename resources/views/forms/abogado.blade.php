@@ -28,7 +28,7 @@
 						<div class="col text-left">				
 						</div>
 						<div class="col text-right">
-							<a class="btn btn-secondary irtrabajo">Siguiente</a>
+							<a class="btn btn-secondary irtrabajo"><i class="fa fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>	
@@ -44,7 +44,7 @@
 							<a class="btn btn-secondary irpersonales"><i class="fa fa-arrow-left"></i></a>
 						</div>
 						<div class="col text-right">
-							<a class="btn btn-secondary irextraabogado">Siguiente</a>							
+							<a class="btn btn-secondary irextraabogado"><i class="fa fa-arrow-right"></i></a>							
 						</div>
 					</div>
 				</div>

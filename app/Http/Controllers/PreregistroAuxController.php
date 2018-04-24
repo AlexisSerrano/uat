@@ -437,7 +437,39 @@ class PreregistroAuxController extends Controller
         // $tipopersona=$preregistros->esEmpresa;
         $estados=CatEstado::orderBy('nombre', 'ASC')
         ->pluck('nombre','id');
-        $preregistro = Preregistro::find($id);
+        //$preregistro = Preregistro::find($id);
+        $preregistro = DB::table('preregistros')
+        ->join('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')
+        ->select('preregistros.id as id',
+        'idDireccion',
+        'idRazon',
+        'esEmpresa',
+        'nombre',
+        'primerAp',
+        'segundoAp',
+        'rfc',
+        'fechaNac',
+        'idEscolaridad',
+        'idEstadoCivil',
+        'idOcupacion',
+        'edad',
+        'sexo',
+        'curp',
+        'telefono',
+        'cat_identificacion.documento as docIdentificacion',
+        'numDocIdentificacion',
+        'conViolencia',
+        'narracion',
+        'folio',
+        'tipoActa',
+        'representanteLegal',
+        'statusCancelacion',
+        'statusOrigen',
+        'statusCola',
+        'horaLlegada'
+        )
+        ->where('preregistros.id',$id)->get();
+        $preregistro=$preregistro[0];
         $tipopersona=$preregistro->esEmpresa;
         $idDireccionPregistro =$preregistro->idDireccion;//id direccion
         $idpreregistro =$preregistro->id;
@@ -499,6 +531,7 @@ class PreregistroAuxController extends Controller
         ->groupBy('codigoPostal')
         ->pluck('codigoPostal','codigopostal');
 
+       
         $caso = new Carpeta();
         $caso->numCarpeta = "UAT/D"."1"."/"."X"."/"."XX"."/".Carbon::now()->year;
         $caso->fechaInicio = Carbon::now();
@@ -557,7 +590,9 @@ class PreregistroAuxController extends Controller
         ->with('denunciados', $denunciados)
         ->with('acusaciones', $acusaciones)
         ->with('delitos', $delitos)
-        ->with('medidasP', $medidasP);
+        ->with('medidasP', $medidasP)
+        ->with('identificaciones', $identificaciones);
+        
     }
 
     public function Traerturno(){
