@@ -30,7 +30,7 @@ class CreatePreregistrosTable extends Migration
             $table->string('sexo',20)->default('SIN INFORMACION');
             $table->string('curp',20)->nullable();
             $table->string('telefono',15);
-            $table->string('docIdentificacion',50)->nullable();
+            $table->integer('docIdentificacion')->unsigned()->nullable();
             $table->string('numDocIdentificacion',50)->nullable();
             $table->string('tipoActa',300)->nullable();
             $table->boolean('conViolencia')->default(false);
@@ -50,6 +50,7 @@ class CreatePreregistrosTable extends Migration
             $table->foreign('idEstadoCivil')->references('id')->on('cat_estado_civil')->onDelete('cascade');
             $table->foreign('idEscolaridad')->references('id')->on('cat_escolaridad')->onDelete('cascade');
             $table->foreign('idOcupacion')->references('id')->on('cat_ocupacion')->onDelete('cascade');
+            $table->foreign('docIdentificacion')->references('id')->on('cat_identificacion')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes();

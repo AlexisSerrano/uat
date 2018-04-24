@@ -69,16 +69,16 @@ class DatabaseSeeder extends Seeder
         $this->call(LocalidadesTlaxcalaSeeder::class);
         
         $this->call(RazonSeeder::class);
-        $this->call(PruebaSeeder::class);
         $this->call(GroupSeeder::class);
         $this->call(RedireccionesSeeder::class);
         $this->call(LugarSeeder::class);
         $this->call(ZonaSeeder::class);
-
+        
         $this->call(ProvidenciasSeeder::class);
         $this->call(EjecutorSeeder::class);
         $this->call(EstatusCasoSeeder::class);
         $this->call(IdentificacionSeeder::class);
-       
+        
+        $this->call(PruebaSeeder::class);
     }
 }
