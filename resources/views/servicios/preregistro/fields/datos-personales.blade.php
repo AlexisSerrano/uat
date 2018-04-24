@@ -199,7 +199,20 @@
 		<div class="col-12"  >
 			<div class="form-group" >
 					{!! Form::label('tipoActa', 'Seleccione el tipo de acta de hechos que requiere:', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('tipoActa', $razones, null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+					{!! Form::select('tipoActa', array('Pasaporte' => 'Pasaporte', 
+					'Credencial de trabajo/gaffete' => 'Credencial de trabajo/gaffete',
+					'Tarjeta de crédito/débito' => 'Tarjeta de crédito/débito',
+					'Teléfono celular' => 'Teléfono celular',
+					'Equipo de trabajo(celulares,radios,etc)' => 'Equipo de trabajo(celulares,radios,etc)',
+					'Permiso de tránsito para emplacamiento de taxis' => 'Permiso de tránsito para emplacamiento de taxis',
+					'Factura de vehiculo/motocicleta' => 'Factura de vehiculo/motocicleta',
+					'Tarjeta de circulación' => 'Tarjeta de circulación',
+					'Placas de circulación' => 'Placas de circulación',
+					'Licencia de conducir estatal' => 'Licencia de conducir estatal',
+					'Licencia de conducir federal' => 'Licencia de conducir federal',
+					'Documento/bien extraviado o robado' => 'Documento/bien extraviado o robado',
+					'Certificado de alumbramiento' => 'Certificado de alumbramiento',
+					'Otros documentos' => 'Otros documentos'), null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
 			</div>
 		</div>	
 	</div>
