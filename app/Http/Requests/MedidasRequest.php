@@ -38,8 +38,8 @@ class MedidasRequest extends FormRequest
         return [
             'tipoProvidencia.required' => 'Introduzca el campo Providencia precautoria',
             'quienEjecuta.required' => 'Introduzca el campo Ejecutor',
-            'victima.required' => 'Introduzca el campo Victima',
-            'fechaInicio.required' => 'Introduzca el campo Fecha Incial',
+            'victima.required' => 'Introduzca el campo Víctima',
+            'fechaInicio.required' => 'Introduzca el campo Fecha Inicial',
             'fechaFinal.required' => 'Introduzca el campo Fecha final',
             'ObservacionesM.required' => 'Introduzca el campo Observaciones',
         ];

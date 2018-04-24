@@ -30,6 +30,7 @@ class Preregistro extends Model
         'conViolencia',
         'narracion',
         'folio',
+        'tipoActa',
         'representanteLegal',
         'statusCancelacion',
         'statusOrigen',

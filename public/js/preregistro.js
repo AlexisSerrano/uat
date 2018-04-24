@@ -1,6 +1,12 @@
 
 $(document).ready(function(){
     mostrar();
+    if($("#tipoActa").val() == 'OTROS DOCUMENTOS'){
+        $(".otros").show();
+    }
+    else{
+        $(".otros").hide();
+    }
     //Para el tipo de persona(Moral/Física)
     // $("#esEmpresa1").prop("checked", false);
     // $("#esEmpresa2").prop("checked", false);
@@ -75,9 +81,19 @@ function paraActadeHechos1(){
 }
 //persona
 function paraActadeHechos2(){
-
-        $("#idRazon2").change(function(){
-            valor = $(this).val();
+    $(".otros").hide();
+    $("#tipoActa").change(function(){
+        valor = $(this).val();
+        if(valor == 'OTROS DOCUMENTOS'){
+            $(".otros").show();
+        }
+        else{
+            $("#otro").val('');
+            $(".otros").hide();
+        }
+    });
+    $("#idRazon2").change(function(){
+        valor = $(this).val();
         if(valor==4){
             console.log('es 4');
             $('#tipodeActa').show();
@@ -94,8 +110,6 @@ function paraActadeHechos2(){
             $('#escActa').prop('disabled', true);
             $('#ocupActa').prop('disabled', true);
         }
-      
-    
     }); 
 }
 

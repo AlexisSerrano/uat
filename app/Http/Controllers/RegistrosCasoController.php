@@ -34,11 +34,12 @@ class RegistrosCasoController extends Controller
         // ->paginate(10);
         $registros = DB::table('preregistros')->where('statusCola', null)
         ->join('razones','razones.id','=','preregistros.idRazon')
+        ->join('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')        
         ->where('conViolencia', 0)
         ->orderBy('horaLlegada','asc')
         ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
         'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
-        'docIdentificacion','numDocIdentificacion','conViolencia','narracion','folio','representanteLegal',
+        'cat_identificacion.documento as docIdentificacion','numDocIdentificacion','conViolencia','narracion','folio','representanteLegal',
         'statusCancelacion','statusOrigen','statusCola','horaLlegada','unidad','zona','razones.nombre as razon')
         ->paginate(10);
         $municipios = CatMunicipio::where('idEstado',30)
@@ -238,11 +239,12 @@ class RegistrosCasoController extends Controller
         // dd($id);
         $preregistros = DB::table('preregistros')
         ->join('domicilio', 'preregistros.idDireccion', '=', 'domicilio.id')
+        ->join('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')        
         ->where('domicilio.idMunicipio',$id)
         ->where('statusCola', null)
         ->where('conViolencia', 0)
         ->orderBy('id','desc')
-        ->select('preregistros.id', 'preregistros.folio', 'preregistros.esEmpresa', 'preregistros.nombre', 'preregistros.primerAp', 'preregistros.segundoAp', 'preregistros.representanteLegal', 'preregistros.docIdentificacion')
+        ->select('preregistros.id', 'preregistros.folio', 'preregistros.esEmpresa', 'preregistros.nombre', 'preregistros.primerAp', 'preregistros.segundoAp', 'preregistros.representanteLegal', 'cat_identificacion.documento as preregistros.docIdentificacion')
         ->paginate(10);
 
          $municipios = CatMunicipio::where('idEstado',30)

@@ -12,6 +12,7 @@ use App\Models\CatColonia;
 use App\Models\CatOcupacion;
 use App\Models\CatEstadoCivil;
 use App\Models\CatEscolaridad;
+use App\Models\CatIdentificacion;
 use App\Mail\EnviarCorreo as sendMail;
 use DB;
 use Alert;
@@ -52,13 +53,16 @@ class PreregistroController extends Controller
         ->pluck('nombre', 'id');
         $escolaridades = CatEscolaridad::orderBy('id', 'ASC')
         ->pluck('nombre', 'id');
+        $identificaciones = CatIdentificacion::orderBy('id', 'ASC')
+        ->pluck('documento', 'id');
 
         return view('servicios.preregistro.create')
         ->with('estados',$estados)
         ->with('ocupaciones',$ocupaciones)
         ->with('escolaridades',$escolaridades)
         ->with('estadocivil',$estadocivil)
-        ->with('razones',$razones);
+        ->with('razones',$razones)
+        ->with('identificaciones',$identificaciones);
 
     }
 
@@ -140,6 +144,9 @@ class PreregistroController extends Controller
             $preregistro->docIdentificacion = $request->docIdentificacion;
             $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
             $preregistro->conViolencia = $request->Violencia;
+            if (!is_null($request->tipoActa)){
+                $preregistro->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa;
+            }
             
             $preregistro->save();
             $id = $preregistro->id;
@@ -236,13 +243,16 @@ class PreregistroController extends Controller
         ->pluck('nombre', 'id');
         $escolaridades = CatEscolaridad::orderBy('id', 'ASC')
         ->pluck('nombre', 'id');
+        $identificaciones = CatIdentificacion::orderBy('id', 'ASC')
+        ->pluck('documento', 'id');
 
         return view('servicios.preregistro.createFiscal')
         ->with('estados',$estados)
         ->with('ocupaciones',$ocupaciones)
         ->with('escolaridades',$escolaridades)
         ->with('estadocivil',$estadocivil)
-        ->with('razones',$razones);
+        ->with('razones',$razones)
+        ->with('identificaciones',$identificaciones);
     }
 
     public function fiscalcreate(StorePreregistro $request)
