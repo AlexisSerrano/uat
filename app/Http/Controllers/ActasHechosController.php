@@ -25,6 +25,37 @@ class ActasHechosController extends Controller
         return view('tables.actas-hechos')->with('actas',$actas);
     }
     
+    public function actasPreregistro($id){
+        //$acta=Preregistro::find($id);
+        $acta=DB::table('preregistros')
+        ->join('domicilio','preregistros.idDireccion','=','domicilio.id')
+        ->join('cat_municipio','domicilio.idMunicipio','=','cat_municipio.id')
+        ->join('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')
+        ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa',
+        'preregistros.nombre as nombre','primerAp','segundoAp','rfc','fechaNac',
+        'idEscolaridad','idEstadoCivil','idOcupacion','edad','sexo','curp','telefono',
+        'cat_identificacion.documento as docIdentificacion','numDocIdentificacion',
+        'conViolencia','narracion','folio','tipoActa','representanteLegal',
+        'statusCancelacion','statusOrigen','statusCola','cat_municipio.id as municipio',
+        'idColonia','idEstado','horaLlegada','domicilio.calle as calle',
+        'domicilio.numInterno as numInterno','domicilio.numExterno as numExterno' )
+        ->where('preregistros.id',$id)->where('preregistros.idRazon',4)->get();
+        $acta=$acta[0];
+        //dd($acta);
+        $estados=CatEstado::orderBy('nombre', 'ASC')
+        ->pluck('nombre','id');
+        $ocupaciones=CatOcupacion::orderBy('nombre', 'ASC')
+        ->pluck('nombre', 'id');
+        $estadocivil = CatEstadoCivil::orderBy('nombre', 'ASC')
+        ->pluck('nombre', 'id');
+        $escolaridades = CatEscolaridad::orderBy('id', 'ASC')
+        ->pluck('nombre', 'id');
+        $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')
+        ->pluck('nombre', 'id');
+        return view('forms.acta-hechos',compact('ocupaciones','escolaridades','estadocivil','nacionalidades','estados','acta'));
+    }
+    
+
     public function showform(){
         $estados=CatEstado::orderBy('nombre', 'ASC')
         ->pluck('nombre','id');
@@ -78,6 +109,7 @@ class ActasHechosController extends Controller
                 $acta->telefono = $request->telefono;
                 $acta->narracion = $request->narracion;
                 $acta->expedido = $request->expedido;
+                $acta->tipoActa = $request->tipoActa;
                 $acta->save();
                 DB::commit();
                 

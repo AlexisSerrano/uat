@@ -25,6 +25,7 @@ class ActasHechos extends Model
         'idEstadoCivil',
         'idEscolaridad',
         'telefono',
+        'tipoActa',
         'narracion',
         'created_at',
         'updated_at',

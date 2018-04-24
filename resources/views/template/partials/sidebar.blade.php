@@ -164,7 +164,7 @@
 					<li class="nav-item has-treeview">
 						<a href="{{route('actaspendientes')}}" class="nav-link">
 							<i class="nav-icon  fa fa-file-text-o"></i>
-							Actas de hechos
+							<p>Actas de hechos</p>
 						</a>
 					</li>
 
