@@ -43,12 +43,12 @@
         <div class="boxtwo">
             <div class="row">
                 <div class="text-left col">
-                    <a href="{{url('predenuncias')}}" title="" class="btn  button button3 ">Regresar</a>
+                    <a href="{{url('predenuncias')}}" title="" class="btn btn-secondary ">Regresar</a>
                 </div>       
                 <div class="text-right col">
-                    <a href="{{url('estado/'.$preregistro->id.'/0')}}" title="button1" class="btn  button button1 ">En cola</a>
-                    <a href="#" title="" class="btn button button2 btnEnUrgente" id="{{$preregistro->id}}">Urgente</a>
-                    {!!Form::submit('Guardar',array('class' => 'btn  button button4'))!!}
+                    <a href="{{url('estado/'.$preregistro->id.'/0')}}" title="button1" class="btn  btn-secondary ">En cola</a>
+                    <a href="#" title="" class="btn btn-secondary btnEnUrgente" id="{{$preregistro->id}}">Urgente</a>
+                    {!!Form::submit('Guardar',array('class' => 'btn  btn-primary'))!!}
                 </div>
                 <meta name="csrf-token" content="{{ csrf_token() }}">
             </div>
