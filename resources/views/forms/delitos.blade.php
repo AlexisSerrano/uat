@@ -23,7 +23,7 @@
 					<div class="col text-left">
 					</div>
 					<div class="col text-right">	
-						<a class="btn btn-primary irdirdelito">Siguiente</a>
+						<a class="btn btn-primary irdirdelito"><i class="fa fa-arrow-right"></i></a>
 					</div>
 				</div>
 			</div>

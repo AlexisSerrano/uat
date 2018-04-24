@@ -30,7 +30,7 @@
 				<div class="col text-left">				
 				</div>
 				<div class="col text-right">
-					<a class="btn btn-primary irdireccion">Siguiente</a>
+					<a class="btn btn-secondary irdireccion"><i class="fa fa-arrow-right"></i></a>
 				</div>
 			</div>
 		</div>
@@ -41,10 +41,10 @@
 			{{-- botones --}}
 			<div class="row menu">	
 				<div class="col text-left">				
-					<a class="btn btn-primary irpersonales"><i class="fa-arrow-left"></i></a>
+					<a class="btn btn-secondary irpersonales"><i class="fa fa-arrow-left"></i></a>
 				</div>
 				<div class="col text-right">
-					<a class="btn btn-secondary irtrabajo">Siguiente</a>							
+					<a class="btn btn-secondary irtrabajo"><i class="fa fa-arrow-right"></i></a>							
 				</div>
 			</div>
 		</div>
@@ -55,10 +55,10 @@
 			{{-- botones --}}
 			<div class="row menu">	
 				<div class="col text-left">				
-					<a class="btn btn-secondary irdireccion"><i class="fa-arrow-left"></i></a>
+					<a class="btn btn-secondary irdireccion"><i class="fa fa-arrow-left"></i></a>
 				</div>
 				<div class="col text-right">
-					<a class="btn btn-secondary irextraautoridad">Siguiente</a>							
+					<a class="btn btn-secondary irextraautoridad"><i class="fa fa-arrow-right"></i></a>							
 				</div>
 			</div>
 		</div>

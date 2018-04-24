@@ -51,7 +51,7 @@
 						<div class="col text-left">
 						</div>
 						<div class="col text-right">
-							<a class="btn btn-secondary irdireccion">Siguiente</a>
+							<a class="btn btn-secondary irdireccion"><i class="fa fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -69,11 +69,11 @@
 			
 						@if ($tipopersona==0)
 							<div class="col text-right">
-								<a class="btn btn-secondary irtrabajo">Siguiente</a>
+								<a class="btn btn-secondary irtrabajo"><i class="fa fa-arrow-right"></i></a>
 							</div>
 						@else
 							<div class="col text-right">
-								<a class="btn btn-secondary irdirnotificacion">Siguiente</a>
+								<a class="btn btn-secondary irdirnotificacion"><i class="fa fa-arrow-right"></i></a>
 							</div>
 						@endif
 
@@ -90,7 +90,7 @@
 								<a class="btn btn-secondary irdireccion"><i class="fa fa-arrow-left"></i></a>
 							</div>
 							<div class="col text-right">
-								<a class="btn btn-secondary irdirnotificacion">Siguiente</a>
+								<a class="btn btn-secondary irdirnotificacion"><i class="fa fa-arrow-right"></i></a>
 							</div>
 						</div>
 					</div>
@@ -105,7 +105,7 @@
 							<a class="btn btn-secondary {{$botonatras}}"><i class="fa fa-arrow-left"></i></a>
 						</div>
 						<div class="col text-right">
-							<a class="btn btn-secondary irdenunciante">Siguiente</a>
+							<a class="btn btn-secondary irdenunciante"><i class="fa fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>

@@ -119,7 +119,7 @@
 						<div class="col text-left">
 						</div>
 						<div class="col text-right">
-							<a  id=Adireccion  class="btn btn-secondary irdireccion">Siguiente</a>
+							<a  id=Adireccion  class="btn btn-secondary irdireccion"><i class="fa fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -133,8 +133,8 @@
 							<a class="btn btn-secondary irpersonales"><i class="fa fa-arrow-left"></i></a>
 						</div>
 						<div class="col text-right">
-							<a id=Atrabajo class="btn btn-secondary irtrabajo">Siguiente</a>
-							<a id="ANotificaciones2" class="btn btn-secondary irdirnotificacion">Siguiente</a>
+							<a id=Atrabajo class="btn btn-secondary irtrabajo"><i class="fa fa-arrow-right"></i></a>
+							<a id="ANotificaciones2" class="btn btn-secondary irdirnotificacion"><i class="fa fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -148,7 +148,7 @@
 							<a class="btn btn-secondary irdireccion"><i class="fa fa-arrow-left"></i></a>
 						</div>
 						<div class="col text-right">
-							<a id="ANotificaciones" class="btn btn-secondary irdirnotificacion">Siguiente</a>
+							<a id="ANotificaciones" class="btn btn-secondary irdirnotificacion"><i class="fa fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -163,7 +163,7 @@
 							<a id="adireccion2" class="btn btn-secondary irdireccion"><i class="fa fa-arrow-left"></i></a>
 						</div>
 						<div class="col text-right">
-							<a id="Adenunciante" class="btn btn-secondary irdenunciado">Siguiente</a>
+							<a id="Adenunciante" class="btn btn-secondary irdenunciado"><i class="fa fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
