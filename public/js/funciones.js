@@ -39,6 +39,7 @@ $(".btnEnUrgente").click(function(){
 		if (inputValue === false) return false;
 		if (inputValue === "") {
 		  swal.showInputError("Introduzca una justificación");
+		
 		  return false
 		}
 		miajax(id,inputValue);
@@ -109,20 +110,84 @@ function getRandValue(){
 }
 
 
-$("#myModal1").on("submit", ".modalForm", function(){
-    var parametros= {
-        "txt_nombre" : $("input#txt_nombre").val(),
-        "txt_costo" : $("input#txt_nombre").val()
-    };
-    $.ajax({
-        type: "POST",
-        url: "agregarModal_validacion.php",
-        data: params,
-        success: function(data) {
-        },
-        error: function() {
-        }
-    })
-    return false; // Esto para evitar que envíe el formulario.
-})
-//setInterval(getRandValue, 3000);
+
+$('.btn-modal').bind('click', function(){
+	$ ('#myModal1').modal('show');
+	var idr = $(this).val();
+	console.log(idr);
+	$('#idr').val(idr);
+	$('#tipo_medida').val($('tr#'+idr+' td.providencia').text());
+	$('#fecha_inicio').val($('tr#'+idr+' td.fechainicio').text());
+	$('#fecha_final').val($('tr#'+idr+' td.fechafin').text());
+	$('#ejecuta').val($('tr#'+idr+' td.ejecutor').text());
+	$('#persona').val($('tr#'+idr+' td.persona').text());
+	$('#observaciones').val($('tr#'+idr+' td.observacion').text());
+    
+	});
+	
+
+	$('#guardar').bind('click', function(){
+		var datos = {
+			'idr' : $('#idr').val(),
+			'observaciones' : $('#observaciones').val(),
+			'tipo_medida'  : $('#tipo_medida').val(),
+		}
+		//console.log(datos);
+		
+		$.ajax({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
+			url : "agregar-medidas/editar",
+
+			data : datos,
+
+			type : 'POST',
+
+			success : function(json) {
+				if(json){
+						
+				swal("Hecho", "Registro guardado con exito", "success");
+				location.reload();
+				}else{
+					swal("Hecho", "Error", "success");
+				}
+
+				console.log('Se agrego un vehiculo');
+
+				console.log(json); 
+
+				console.log('actualizar');
+
+				//$('#form_registro).find('input, textarea, button, select').attr('disabled','disabled');
+
+				//$('#guardar_cambios').attr('disabled','disabled');                        
+			},
+
+			error : function(xhr, status) {
+
+				console.log('Disculpe, existió un problema');
+
+				console.log(xhr);
+
+				swal({
+
+					title: "Error al guardar cambios",
+
+					icon: "error",
+
+				});
+
+			},
+
+			complete : function(xhr, status) {
+
+				console.log('Petición realizada');
+
+			}
+
+		});
+
+		
+		});
+		

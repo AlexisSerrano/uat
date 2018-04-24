@@ -123,12 +123,43 @@ class MedidasProteccionController extends Controller
 
     
 
-    public function editar($id){
+    public function editar(Request $request ){
+       
 
     
       
-   
+// $providencia = Providencia::find($request->input('idr'));
+//          $providencia->observacion = $request->input('observaciones');
+       
+        
+        $idtipomedida = DB::table('cat_providencia_precautoria')
+        ->where('nombre','=',$request->input('tipo_medida'))
+        ->select('id')
+        ->get();
+  
+        dd( $idtipomedia);
+        $providencia->idProvidencia = $idtipomedida;
+ 
 
+  
+
+
+        // echo $request->input('observaciones'); 
+
+//     $providencia->save();
+
+  
+// if ($providencia->save()){
+//     return 1;
+    
+// }else{
+//     return 0;
+// }
+
+
+
+     
+    
 
     }
 

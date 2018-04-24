@@ -146,6 +146,7 @@ Route::post('addMedidas', 'MedidasProteccionController@addMedidas')->name('addMe
 Route::get('getMedidas', 'MedidasProteccionController@getMedidas')->name('getMedidas');
 // Route::get('deleteMedida/{id}', 'MedidasProteccionController@deleteMedida')->name('deleteMedida');
 Route::get('agregar-medidas/{id}/eliminar', 'MedidasProteccionController@delete');
+Route::post('agregar-medidas/editar', 'MedidasProteccionController@editar');
 
 
 /*---------Rutas  Delitos Controller------------*/
