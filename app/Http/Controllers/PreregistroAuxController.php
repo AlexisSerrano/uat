@@ -24,6 +24,7 @@ use App\Models\CatLengua;
 use App\Models\CatNacionalidad;
 use App\Models\CatOcupacion;
 use App\Models\CatReligion;
+
 use Illuminate\Support\Facades\Session;
 class PreregistroAuxController extends Controller
 {
