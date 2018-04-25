@@ -116,7 +116,8 @@ $('.btn-modal').bind('click', function(){
 	var idr = $(this).val();
 	console.log(idr);
 	$('#idr').val(idr);
-	$('#tipoProvidencia1').val($('tr#'+idr+' td.providencia').text());
+	// $('#idClaseVehiculo').val(nuevoValor).trigger('change');
+	// $('#tipoProvidencia1').val($('tr#'+idr+' td.providencia').text());
 	$('#fechaInicio1').val($('tr#'+idr+' td.fechainicio').text());
 	$('#fechaFinal1').val($('tr#'+idr+' td.fechafin').text());
 	$('#quienEjecuta1').val($('tr#'+idr+' td.ejecutor').text());
@@ -125,45 +126,6 @@ $('.btn-modal').bind('click', function(){
     
 	});
 	
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //para mandar los datos ala base de datos 
 
 	$('#guardar').bind('click', function(){
@@ -193,7 +155,7 @@ $('.btn-modal').bind('click', function(){
 				if(json){
 						
 				swal("Hecho", "Registro guardado con exito", "success");
-				// location.reload();
+				 location.reload();
 				}else{
 					swal("Hecho", "Error", "success");
 				}
