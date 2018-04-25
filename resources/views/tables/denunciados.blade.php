@@ -26,7 +26,7 @@
                         @else
                             <td>NO</td>
                         @endif  
-                        <th>  <a href="{{ url('agregar-denunciado/'.$denunciado->id.'/eliminar')}}" type="button" rel="tooltip" title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
+                        <th>  <a href="{{ url('agregar-denunciado/'.$denunciado->id.'/eliminar')}}" rel="tooltip" title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
                             <i class="fa fa-times"></i>
                         </a></th>
                     </tr>

@@ -19,8 +19,8 @@
                         <td>{{ $abogado->sector }}</td>
                         <td>{{ $abogado->tipo }}</td>  
                         <td>
-                        <a href="{{ url('agregar-abogado/'.$abogado->id.'/eliminar')}}" type="button" rel="tooltip" title="Eliminar Registro" class="btn btn-success btn-simple btn-xs">
-                        <i class="fa fa-edit"></i></td>
+                        <a href="{{ url('agregar-abogado/'.$abogado->id.'/eliminar')}}" title="Eliminar Registro" class="btn btn-secondary ">
+                        <i class="fa fa-times"></i></td> 
                         </td>                                  
                     </tr>
                 @endforeach
