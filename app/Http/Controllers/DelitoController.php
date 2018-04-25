@@ -69,8 +69,8 @@ class DelitoController extends Controller
 
  public function storeDelito(StoreDelito $request){
         //dd($request->all());
-       // $idCarpeta=session('carpeta');
-       $idCarpeta='1';
+        $idCarpeta=session('carpeta');
+       //$idCarpeta='1';
         $domicilio = new Domicilio();
         $domicilio->idMunicipio = $request->idMunicipio;
         $domicilio->idLocalidad = $request->idLocalidad;
