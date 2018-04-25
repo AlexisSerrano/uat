@@ -25,7 +25,7 @@
                         <td>
                                 <a href="{{ url('agregar-medidas/'.$provide->id.'/eliminar')}}" title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
                                 <i class="fa fa-times"></i></a>
-                                <button type="button" class="btn btn-secundary btn-simple btn-xs  btn-modal" value={{$provide->id}} ><i class="fa fa-edit"></i></button>
+                                <button type="button" class="btn btn-secondary  btn-xs  btn-modal" value={{$provide->id}} ><i class="fa fa-edit"></i></button>
                                     
                         </td>                           
                     </tr>
