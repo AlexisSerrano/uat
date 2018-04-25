@@ -18,6 +18,7 @@ use App\Models\VariablesPersona;
 use App\Models\ExtraDenunciado;
 use App\Models\DirNotificacion;
 use App\Models\Domicilio;
+use App\Http\Requests\StoreDenunciado;
 use Alert;
 
 class DenunciadoController extends Controller
@@ -116,7 +117,7 @@ class DenunciadoController extends Controller
     }
 
     //public function storeDenunciado(StoreDenunciado $request){
-    public function storeDenunciado(Request $request){
+    public function storeDenunciado(StoreDenunciado $request){
         //dd($request->all());
         if ($request->tipoDenunciado==1){
             $persona = new Persona();
