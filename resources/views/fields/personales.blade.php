@@ -97,7 +97,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('motivoEstancia', 'Motivo de estancia', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('motivoEstancia', 'SIN INFORMACION', ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el motivo de estancia']) !!}
+					{!! Form::text('motivoEstancia', 'SIN INFORMACION', ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el motivo de estancia', 'data-validation'=>'required']) !!}
 				</div>
 			</div>
 			<div class="col-3">

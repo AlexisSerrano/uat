@@ -20,14 +20,15 @@
                 @else
                 @foreach($actas as $acta)
                 <tr>
-                    <td>{{ $acta->nombres." ".$acta->primerAp." ".$acta->segundoAp }}</td>
+                    <td>{{ $acta->nombre." ".$acta->primerAp." ".$acta->segundoAp }}</td>
                     <td>{{ $acta->tipoActa }}</td>
                     <td>{{ $acta->sector }}</td>
                     <td>{{ $acta->tipo }}</td>  
                     <td>
-                        <a href="{{ url('agregar-acta/'.$acta->id.'/eliminar')}}" type="button" rel="tooltip" title="Eliminar Registro" class="btn btn-success btn-simple btn-xs">
-                            <i class="fa fa-edit"></i></td>
-                        </td>                                  
+                        <a href="{{ url('atender-acta/'.$acta->id.'')}}" title="Atender" class="btn btn-success">
+                            <i class="fa fa-edit"></i> Atender
+                        </a>
+                    </td>                                  
                     </tr>
                     @endforeach
                     @endif

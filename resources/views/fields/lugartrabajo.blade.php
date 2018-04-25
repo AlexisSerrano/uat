@@ -2,7 +2,7 @@
 	<div class="col-8">
 		<div class="form-group">
 			{!! Form::label('lugarTrabajo', 'Lugar de trabajo', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('lugarTrabajo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el lugar de trabajo','data-validation'=> 'custom']) !!}
+			{!! Form::text('lugarTrabajo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el lugar de trabajo','data-validation'=> 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">

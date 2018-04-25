@@ -31,6 +31,7 @@ class CreateActasHechosTable extends Migration
             $table->integer('idEstadoCivil')->unsigned();
             $table->integer('idEscolaridad')->unsigned();
             $table->string('telefono');
+            $table->string('tipoActa');
             $table->Text('narracion');
             $table->timestamps();
             $table->softDeletes();

@@ -12,11 +12,15 @@ $form = oldFormActas();
         <div class="boxtwo">
             <div class="row" id="actas">
                 {{-- DATOS DE TODO TIPO DE ACTAS --}}
-                @include('fields.actas')
+                @isset($acta)
+                    @include('fields.actas-atender')
+                @else
+                    @include('fields.actas')
+                @endisset
             </div>
             <div class="row menu">	
                 <div class="col text-left">
-                    <a href="" class="btn btn-secondary"><i class="fa fa-arrow-left"></i></a>
+                    <a href="{{route('actaspendientes')}}" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Atras</a>
                 </div>
                 <div class="col text-right">
                     {!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarActa'))!!}
