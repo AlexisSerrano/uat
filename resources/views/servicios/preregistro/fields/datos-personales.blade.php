@@ -3,7 +3,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('nombre2', 'Nombre', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
-			{!! Form::text('nombre2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}
+			{!! Form::text('nombre2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' , 'data-validation-regexp'=>'^([A-Z]+)$']) !!}
 			<div class="help-block with-errors"></div> 
 		</div>
 	</div>
@@ -11,7 +11,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('primerAp', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','data-validation'=>'required']) !!}
+			{!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','data-validation'=>'custom' , 'data-validation-regexp'=>'^([A-Z]+)$']) !!}
 			<div class="help-block with-errors"></div>
 		</div>
 	</div>
@@ -19,7 +19,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'required']) !!}
+			{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom' , 'data-validation-regexp'=>'^([A-Z]+)$']) !!}
 		</div>
 	</div>
 	

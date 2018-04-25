@@ -402,7 +402,7 @@ class PreregistroController extends Controller
         $estado->statusCola = $tipo;
         $estado->horaLlegada = now();
         $estado->save();
-        Alert::success('Registro puesto en cola con éxito', 'Hecho')->persistent("Aceptar");
+        Alert::success('Registro puesto en cola con éxito', 'Hecho');
         //return 'archivo cambiado con exito';
         if ($tipo==0) {
             return redirect('encola');

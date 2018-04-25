@@ -112,7 +112,9 @@ Route::get('municipios/{id}', 'RegisterController@getMunicipios');
 Route::get('localidades/{id}', 'RegisterController@getLocalidades');
 Route::get('codigos/{id}', 'RegisterController@getCodigos');
 Route::get('colonias/{cp}', 'RegisterController@getColonias');
-
+Route::get('colonias2/{id}', 'RegisterController@getColonias2');
+Route::get('codigos2/{id}', 'RegisterController@getCodigos2');
+	
 /*---------Rutas para las notificaciones-------------*/
 Route::get('notificaciones', 'NotificacionesController@getNotificacionesCola');
 
