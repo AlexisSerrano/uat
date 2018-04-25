@@ -71,7 +71,6 @@ class ActasHechosController extends Controller
     }
 
     public function addActas(ActaRequest $request){
-        //dd(Date::now()->format('l j F Y H:i:s'));
         DB::beginTransaction();
             try{
                 $acta = new ActasHechos;
@@ -109,7 +108,9 @@ class ActasHechosController extends Controller
                 $acta->telefono = $request->telefono;
                 $acta->narracion = $request->narracion;
                 $acta->expedido = $request->expedido;
-                $acta->tipoActa = $request->tipoActa;
+                if (!is_null($request->tipoActa)){
+                    $acta->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa;
+                }
                 $acta->save();
                 DB::commit();
                 

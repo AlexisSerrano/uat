@@ -42,6 +42,7 @@ class ActaRequest extends FormRequest
             'estadoCivilActa1' => 'required',
             'escActa1' => 'required',
             'ocupActa1' => 'required',
+            'tipoActa' => 'required',
         ];
     }
 
@@ -66,6 +67,7 @@ class ActaRequest extends FormRequest
             'estadoCivilActa1.required' => 'Introduzca el campo Estado civil',
             'escActa1.required' => 'Introduzca el campo Escolaridad',
             'ocupActa1.required' => 'Introduzca el campo Ocupación',
+            'tipoActa.required' => 'Introduzca el campo Tipo acta'
         ];
     }
 }
