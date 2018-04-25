@@ -28,9 +28,9 @@ class DelitoController extends Controller
 
  public function showForm()
     {
-        //$idCarpeta='2';
+        $idCarpeta='1';
        
-        $idCarpeta=session('carpeta');
+       // $idCarpeta=session('carpeta');
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();//->where('idFiscal', Auth::user()->id)->get();
         if(count($carpetaNueva)>0){ 
             $denunciados = CarpetaController::getDenunciados($idCarpeta);
@@ -69,8 +69,8 @@ class DelitoController extends Controller
 
  public function storeDelito(StoreDelito $request){
         //dd($request->all());
-        $idCarpeta=session('carpeta');
-       //$idCarpeta='2';
+       // $idCarpeta=session('carpeta');
+       $idCarpeta='1';
         $domicilio = new Domicilio();
         $domicilio->idMunicipio = $request->idMunicipio;
         $domicilio->idLocalidad = $request->idLocalidad;
@@ -142,8 +142,103 @@ class DelitoController extends Controller
         Alert::success('Registro eliminado con éxito', 'Hecho')->persistent("Aceptar");
         return back();
 
+    }
 
+    public function editar($id){
+
+        $TipifDelito =  TipifDelito::find($id);
+       
+        $delitos = CarpetaController::getDelitos($id);
+         $idDireccionTipifD =$TipifDelito->idDomicilio;
+         $direccionTB=DB::table('domicilio') //id's de domicilios (municipio,localidad)
+        ->where('domicilio.id','=',$idDireccionTipifD)
+        ->get();//id direccion
+        $municipio=DB::table('cat_municipio')//nombre municipio
+        ->where('cat_municipio.id','=',$direccionTB[0]->idMunicipio)
+        ->get();
+        $colonia=DB::table('cat_colonia')//nombre municipio
+        ->where('cat_colonia.id','=',$direccionTB[0]->idColonia)
+        ->get();
+        $idMunicipioSelect = $direccionTB[0]->idMunicipio;
+        $idEstadoSelect = $municipio[0]->idEstado; 
+        $idLocalidadSelect = $direccionTB[0]->idLocalidad;
+        $idColoniaSelect = $direccionTB[0]->idColonia;
+        $idCodigoPostalSelect = $colonia[0]->codigoPostal;
+
+        $catMunicipios=DB::table('cat_municipio')
+        ->where('cat_municipio.idEstado','=',$idEstadoSelect)
+        ->orderBy('nombre','asc')
+        ->pluck('nombre','id');
+        $catLocalidades=DB::table('cat_localidad')
+        ->where('cat_localidad.idMunicipio','=',$idMunicipioSelect)
+        ->orderBy('nombre','asc')
+        ->pluck('nombre','id');
+        $catColonias=DB::table('cat_colonia')
+        ->where('cat_colonia.codigoPostal','=',$idCodigoPostalSelect)
+        ->orderBy('nombre','asc')
+        ->pluck('nombre','id');
+        $catCodigoPostal=DB::table('cat_colonia')
+        ->where('cat_colonia.idMunicipio','=',$idMunicipioSelect)
+        ->where('cat_colonia.codigoPostal','!=',0)
+        ->orderBy('codigoPostal','asc')
+        ->groupBy('codigoPostal')
+        ->pluck('codigoPostal','codigopostal');
+        
+       
+       
+       
+        $delits = CatDelito::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $lugares = CatLugar::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $zonas = CatZona::orderBy('nombre', 'ASC')->pluck('nombre', 'id');  
+        
+      return view ('forms.modalDelitosEdit', compact ('TipifDelito','delits','delitos','estados','lugares','zonas','domicilio','direccionTB','municipio','coloniaRow','idMunicipioSelect','idEstadoSelect','idLocalidadSelect','idCodigoPostalSelect','idColoniaSelect','catMunicipios','catLocalidades','catColonias','catCodigoPostal'));
+    }
+
+    public function actualizar(Request $request, $id)
+    {
+      
+      
+        $domicilio = domicilio::find($id);
+        $domicilio->idMunicipio=$request->idMunicipio;
+        $domicilio->idLocalidad=$request->idLocalidad;
+        $domicilio->idColonia=$request->idColonia;
+        $domicilio->calle=$request->calle;
+        $domicilio->numExterno=$request->numExterno;
+        $domicilio->numInterno=$request->numInterno;
+        $domicilio->save();
+
+        $tipifDelito = TipifDelito::find($id);
+        $tipifDelito->idDelito = $request->idDelito;
+        if ($request->conViolencia==="1") {
+            # code...
+            $tipifDelito->conViolencia = 1;
+        } else {
+            $tipifDelito->conViolencia = 0;
+        }
+        $tipifDelito->formaComision = $request->formaComision;
+        $tipifDelito->fecha = $request->fecha;
+        $tipifDelito->hora = $request->hora;
+        $tipifDelito->idLugar = $request->idLugar;
+        $tipifDelito->idZona = $request->idZona;
+       // $tipifDelito->idDomicilio = $idD1;
+        $tipifDelito->entreCalle = $request->entreCalle;
+        $tipifDelito->yCalle = $request->yCalle;
+        $tipifDelito->calleTrasera = $request->calleTrasera;
+        $tipifDelito->puntoReferencia = $request->puntoReferencia;
+        $tipifDelito->save();
+
+//dd($domicilio,$tipifDelito);
+
+
+        Alert::success('Delito modificado con exito','Hecho');
+       
+
+        return redirect()->route('new.delito', $id);
+       // return back();
+        //return view('forms.editdelitos'); 
     }
     
       
 }
+
