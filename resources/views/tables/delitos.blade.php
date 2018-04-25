@@ -19,12 +19,10 @@
                         <td>{{ $delito->fecha }}</td>
                         <td>{{ $delito->hora }}</td>
                         <td>
-                        <a href="{{ url('delito/'.$delito->id.'/eliminar')}}" type="button" rel="tooltip" title="Eliminar Registro" class="btn btn-success btn-simple btn-xs">
-                        <i class="fa fa-edit"></i></td>
-                        </td>  
-                        <td>
-                            <a href="{{ url('delito/'.$delito->id.'/editar')}}" type="button" rel="tooltip" title="Editar Registro" class="btn btn-success btn-simple btn-xs">
-                            <i class="fa fa-edit"></i></td>
+                        <a href="{{ url('delito/'.$delito->id.'/eliminar')}}"  rel="tooltip" title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
+                        <i class="fa fa-times"></i></a>
+                            <a href="{{ url('delito/'.$delito->id.'/editar')}}"  rel="tooltip" title="Editar Registro" class="btn btn-secondary btn-simple btn-xs">
+                            <i class="fa fa-edit"></i></a>
                             </td>  
                     </tr>
                 @endforeach

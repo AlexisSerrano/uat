@@ -42,9 +42,9 @@
                         @else
                             <td>No</td>
                         @endif
-                       
-                       <td> <a href="{{ url('agregar-denunciante/'.$denunciante->id.'/eliminar')}}" title="Eliminar Registro" class="btn btn-success btn-simple btn-xs">
-                        <i class="fa fa-edit"></i></td>
+              
+                       <td> <a href="{{ url('agregar-denunciante/'.$denunciante->id.'/eliminar')}}" title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
+                        <i class="fa fa-times"></i></td>
                         {{--  <td><a href="{{ route('constancia.hechos', $denunciante->id) }}" class="btn btn-secondary text-right">Descargar constancia de hechos</a></td>  --}}
                     </tr>
                 @endforeach

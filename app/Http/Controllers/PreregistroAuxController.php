@@ -590,8 +590,8 @@ class PreregistroAuxController extends Controller
         ->with('denunciados', $denunciados)
         ->with('acusaciones', $acusaciones)
         ->with('delitos', $delitos)
-        ->with('medidasP', $medidasP)
-        ->with('identificaciones', $identificaciones);
+        ->with('medidasP', $medidasP);
+        // ->with('identificaciones', $identificaciones);
         
     }
 
