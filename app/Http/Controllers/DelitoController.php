@@ -28,9 +28,9 @@ class DelitoController extends Controller
 
  public function showForm()
     {
-        $idCarpeta='1';
+        //$idCarpeta='1';
        
-       // $idCarpeta=session('carpeta');
+       $idCarpeta=session('carpeta');
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();//->where('idFiscal', Auth::user()->id)->get();
         if(count($carpetaNueva)>0){ 
             $denunciados = CarpetaController::getDenunciados($idCarpeta);
@@ -115,10 +115,10 @@ class DelitoController extends Controller
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
         if($tipifDelito->save()){
-            Alert::success('Delito registrado con éxito', 'Hecho')->persistent("Aceptar");
+            Alert::success('Delito registrado con éxito', 'Hecho');
         }
         else{
-            Alert::error('Se presentó un problema al agregar el delito', 'Error')->persistent("Aceptar");
+            Alert::error('Se presentó un problema al agregar el delito', 'Error');
         }
     
         $delitos = DB::table('tipif_delito')
@@ -129,7 +129,7 @@ class DelitoController extends Controller
         ->get();
 
        // dd($delitos);
-        return redirect()->route('new.delito', $idCarpeta)->with('delitos', $delitos);
+        return redirect()->route('new.delito')->with('delitos', $delitos);
 
 
     }
@@ -139,8 +139,8 @@ class DelitoController extends Controller
 
         $TipifDelito =  TipifDelito::find($id);
         $TipifDelito->delete();
-        Alert::success('Registro eliminado con éxito', 'Hecho')->persistent("Aceptar");
-        return back();
+        Alert::success('Registro eliminado con éxito', 'Hecho');
+        return redirect()->route('new.delito');
 
     }
 

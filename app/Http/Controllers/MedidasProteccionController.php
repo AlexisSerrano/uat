@@ -71,7 +71,7 @@ class MedidasProteccionController extends Controller
         $providenciaBD->observacion = $request->ObservacionesM;
         $providenciaBD->idCarpeta = $idCarpeta;
         if($providenciaBD->save()){
-            Alert::success('Medida de protección creada con éxito', 'Hecho')->persistent("Aceptar");
+            Alert::success('Medida de protección creada con éxito', 'Hecho');
         }
         else{
             Alert::error('Se presentó un problema al crear su medida de protección', 'Error');
@@ -96,7 +96,7 @@ class MedidasProteccionController extends Controller
     public function deleteMedida($id){
         $post = Providencia::findOrFail($id);
         if($post->delete()){
-            Alert::success('Medida de protección eliminada con éxito', 'Hecho')->persistent("Aceptar");
+            Alert::success('Medida de protección eliminada con éxito', 'Hecho');
         }
         else{
             Alert::error('Se presentó un problema al eliminar su medida de protección', 'Error');
@@ -109,7 +109,7 @@ class MedidasProteccionController extends Controller
 
         $Providencia =Providencia::find($id);
         $Providencia->delete();
-        Alert::success('Registrado eliminado con éxito', 'Hecho')->persistent("Aceptar");
+        Alert::success('Registrado eliminado con éxito', 'Hecho');
         return back();
 
    

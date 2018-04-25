@@ -557,7 +557,7 @@ class PreregistroAuxController extends Controller
         $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $religiones = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        Alert::success('Turno Tomado', 'Hecho')->persistent("Aceptar");
+        Alert::success('Turno Tomado', 'Hecho');
         return view('forms.denunciante-turno')->with('idCarpeta', $idCarpeta)
         ->with('escolaridades', $escolaridades)
         ->with('estados', $estados)
@@ -603,7 +603,7 @@ class PreregistroAuxController extends Controller
         ->where('conViolencia', 0)
         ->orderBy('horaLlegada','asc')->first();
         if(!$urgente&&!$cola){
-            Alert::warning('', 'No hay elemento en cola')->persistent("Aceptar");
+            Alert::warning('', 'No hay elemento en cola');
             return back();
         }
         else{
@@ -681,7 +681,7 @@ class PreregistroAuxController extends Controller
          //dd($idCarpeta);
         //dd(session('carpeta'));
         
-        Alert::info('Los datos del caso que inicio han sido borrados y el turno fue devuelto a la cola ', 'Turno devuelto')->persistent("Aceptar");
+        Alert::info('Los datos del caso que inicio han sido borrados y el turno fue devuelto a la cola ', 'Turno devuelto');
         return redirect('registros');
        }
 
@@ -694,7 +694,7 @@ class PreregistroAuxController extends Controller
     public function enviar(){
         $correo = 'championsjvd95@hotmail.com';
         Mail::to($correo)->send(new sendMail());
-        Alert::success('correo enviado', 'Salir')->persistent("Aceptar");
+        Alert::success('correo enviado', 'Salir');
         return redirect('correo');
     }
 

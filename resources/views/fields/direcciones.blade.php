@@ -102,21 +102,21 @@ $form = oldFormDelitos();
 		</div>
 		<div class="col-2">
 			<div class="form-group">
-				{!! Form::label('cp', 'Código postal', ['class' => 'col-form-label-sm']) !!}
-				@if(isset($form['catCodigoPostal'],$form['cp']))
-				{!! Form::select('cp', $form['catCodigoPostal'], $form['cp'], ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
-				@else
-				{!! Form::select('cp', ['' => 'Seleccione un CP'], null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
-				@endif
-			</div>
-		</div>
-		<div class="col-2">
-			<div class="form-group">
 				{!! Form::label('idColonia', 'Colonia', ['class' => 'col-form-label-sm']) !!}
 				@if(isset($form['catColonias'],$form['idColonia']))
 				{!! Form::select('idColonia', $form['catColonias'], $form['idColonia'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
 				@else
 				{!! Form::select('idColonia', ['' => 'Colonia'], null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+				@endif
+			</div>
+		</div>
+		<div class="col-2">
+			<div class="form-group">
+				{!! Form::label('cp', 'Código postal', ['class' => 'col-form-label-sm']) !!}
+				@if(isset($form['catCodigoPostal'],$form['cp']))
+				{!! Form::select('cp', $form['catCodigoPostal'], $form['cp'], ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+				@else
+				{!! Form::select('cp', ['' => 'Seleccione un CP'], null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
 				@endif
 			</div>
 		</div>

@@ -38,7 +38,7 @@ class NarracionController extends Controller
             $narracionM->narracion = $path;
             $narracionM->tipo = 1;
             if($narracionM->save()){
-                Alert::success('Narración creada con éxito', 'Hecho')->persistent("Aceptar");
+                Alert::success('Narración creada con éxito', 'Hecho');
             }
             else{
                 Alert::error('Se presentó un problema al crear su narración', 'Error');
@@ -48,7 +48,7 @@ class NarracionController extends Controller
             $narracionM->narracion = $narracion;
             $narracionM->tipo = 0;
             if($narracionM->save()){
-                Alert::success('Narración creada con éxito', 'Hecho')->persistent("Aceptar");
+                Alert::success('Narración creada con éxito', 'Hecho');
             }
             else{
                 Alert::error('Se presentó un problema al crear su narración', 'Error');

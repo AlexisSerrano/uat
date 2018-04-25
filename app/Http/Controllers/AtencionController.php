@@ -31,7 +31,7 @@ class AtencionController extends Controller
         $atencion->unidad = 1;
         $atencion->usuario = 1;
         if($atencion->save()){
-            Alert::success('Atención rápida creada con éxito', 'Hecho')->persistent("Aceptar");
+            Alert::success('Atención rápida creada con éxito', 'Hecho');
         }
         else{
             Alert::error('Se presento un problema al crear su atención rápida', 'Error');

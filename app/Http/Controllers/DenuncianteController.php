@@ -37,10 +37,10 @@ class DenuncianteController extends Controller
             $caso->save();
             session(['carpeta' => $caso->id]);
             //dd($idCarpeta);
-            Alert::success('Caso iniciado con éxito', 'Hecho')->persistent("Aceptar");
+            Alert::success('Caso iniciado con éxito', 'Hecho');
             return redirect()->route('new.denunciante');
         } else {
-            Alert::warning('Tiene un caso en curso debe terminarlo o cancelarlo para iniciar uno nuevo', 'Advertencia')->persistent("Aceptar");
+            Alert::warning('Tiene un caso en curso debe terminarlo o cancelarlo para iniciar uno nuevo', 'Advertencia');
             return redirect()->back()->withInput();
         }
         
@@ -66,7 +66,7 @@ public function showForm()
         $idCarpeta=session('carpeta');
         //dd($idCarpeta);
         // if (is_null($idCarpeta)) {
-        //     Alert::error('No puede acceder a este modulo sin un caso en especifico', 'Error')->persistent("Aceptar");
+        //     Alert::error('No puede acceder a este modulo sin un caso en especifico', 'Error');
         //     return redirect('registros');
         // }
         $casoNuevo = Carpeta::where('id', $idCarpeta)->get();
@@ -112,18 +112,18 @@ public function showForm()
         $comprobar= Carpeta::where('id',$idCarpeta)->get();
         //dd(count($comprobar));
         if(is_null($idCarpeta)){
-            Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia')->persistent("Aceptar");
+            Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia');
             return redirect(url('registros'));    
         }
         if (count($comprobar)==0) {
             session()->forget('carpeta');
-            Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia')->persistent("Aceptar");
+            Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia');
             return redirect(url('registros'));
         }
         $carpeta = Carpeta::find($idCarpeta);
         $carpeta->delete();
         session()->forget('carpeta');
-        Alert::info('El caso ha sido cancelado con éxito.', 'Hecho')->persistent("Aceptar");
+        Alert::info('El caso ha sido cancelado con éxito.', 'Hecho');
         return redirect(url('registros'));
     }
 
@@ -389,7 +389,7 @@ public function showForm()
         //Para mostrar modal
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
-        Alert::success('Denunciante registrado con éxito', 'Hecho')->persistent("Aceptar");
+        Alert::success('Denunciante registrado con éxito', 'Hecho');
         //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('new.denunciante');
     }
@@ -399,7 +399,7 @@ public function showForm()
 
         $ExtraDenunciante =  ExtraDenunciante::find($id);
         $ExtraDenunciante->delete();
-        Alert::success('Registrado eliminado con éxito', 'Hecho')->persistent("Aceptar");
+        Alert::success('Registrado eliminado con éxito', 'Hecho');
         return back();
 
 

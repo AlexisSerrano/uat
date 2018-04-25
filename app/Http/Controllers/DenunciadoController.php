@@ -76,7 +76,7 @@ class DenunciadoController extends Controller
     {
         $idCarpeta=session('carpeta');
         // if (is_null($idCarpeta)) {
-        //     Alert::error('No puede acceder a este modulo sin un caso en especifico', 'Error')->persistent("Aceptar");
+        //     Alert::error('No puede acceder a este modulo sin un caso en especifico', 'Error');
         //     return redirect('registros');
         // }
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();
@@ -459,7 +459,7 @@ class DenunciadoController extends Controller
         //Para mostrar modal
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
-        Alert::success('Denunciado registrado con éxito', 'Hecho')->persistent("Aceptar");
+        Alert::success('Denunciado registrado con éxito', 'Hecho');
         //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('new.denunciado', $request->idCarpeta);
     }
@@ -468,7 +468,7 @@ class DenunciadoController extends Controller
 
             $ExtraDenunciado =  ExtraDenunciado::find($id);
             $ExtraDenunciado->delete();
-            Alert::success('Registro eliminado con éxito', 'Hecho')->persistent("Aceptar");
+            Alert::success('Registro eliminado con éxito', 'Hecho');
             return back();
 
 

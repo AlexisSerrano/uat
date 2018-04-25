@@ -138,7 +138,7 @@ class AutoridadController extends Controller
         //Para mostrar modal
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
-        Alert::success('Autoridad registrada con éxito', 'Hecho')->persistent("Aceptar");
+        Alert::success('Autoridad registrada con éxito', 'Hecho');
         //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('new.autoridad', $request->idCarpeta);
     }
@@ -148,7 +148,7 @@ class AutoridadController extends Controller
 
         $ExtraAutoridad =  ExtraAutoridad::find($id);
         $ExtraAutoridad->delete();
-        Alert::success('Registro eliminado con éxito', 'Hecho')->persistent("Aceptar");
+        Alert::success('Registro eliminado con éxito', 'Hecho');
         return back();
 
 

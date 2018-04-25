@@ -106,7 +106,7 @@ class AbogadoController extends Controller
         //Para mostrar modal
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
-        Alert::success('Abogado registrado con éxito', 'Hecho')->persistent("Aceptar");
+        Alert::success('Abogado registrado con éxito', 'Hecho');
         //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('new.abogado', $request->idCarpeta);
     }
@@ -161,7 +161,7 @@ class AbogadoController extends Controller
         //Para mostrar modal
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
-        Alert::success('Defensa asignada con éxito', 'Hecho')->persistent("Aceptar");
+        Alert::success('Defensa asignada con éxito', 'Hecho');
         //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('new.defensa', $request->idCarpeta);
     }
@@ -201,7 +201,7 @@ class AbogadoController extends Controller
 
         $ExtraAbogado =  ExtraAbogado::find($id);
         $ExtraAbogado->delete();
-        Alert::success('Registro eliminado con éxito', 'Hecho')->persistent("Aceptar");
+        Alert::success('Registro eliminado con éxito', 'Hecho');
         return back();
 
 
