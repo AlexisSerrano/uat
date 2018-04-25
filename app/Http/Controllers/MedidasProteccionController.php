@@ -132,44 +132,29 @@ class MedidasProteccionController extends Controller
      $providencia->idEjecutor = $request->quienEjecuta1;
      $providencia->idPersona = $request->victima1;
      $providencia->observacion = $request->observaciones1;
-        //  $providencia=$request->tipoProvidencia;
-        // $nombre=$request->tipoProvidencia;
-   // echo $request->tipoProvidencia;
-     
-        // $idtipomedida = DB::table('cat_providencia_precautoria')
-        // ->where('nombre', '=',$nombre)
-        // ->select('id')->get();
-
-        // echo $idtipomedida;
-        // $providencia->idProvidencia = $idtipomedida;
-       
- 
-    
-        // $providencia->observacion = $request->input('observaciones');
-         $providencia->save();
-
-  
-
-
-   
-
-
-
-  
-if ($providencia->save()){
+     $providencia->save(); 
+    if ($providencia->save()){
     return 1;
     
-}else{
+    }else{
     return 0;
-}
-
-
-
-     
-    
-
     }
+  }
 
+
+
+
+    // public function consultaAJAX(Request $request ){
+
+    //     $TablaProvidencia = DB::table('providencias_precautorias')
+    //     ->join('cat_providencia_precautoria', 'cat_providencia_precautoria.id', '=', 'providencias_precautorias.idProvidencia')
+    //     ->join('ejecutor', 'ejecutor.id', '=', 'providencias_precautorias.idEjecutor')
+    //     ->join('persona', 'persona.id', '=', 'providencias_precautorias.idPersona')
+    //     ->select('cat_providencia_precautoria.nombre as providencia', 'providencias_precautorias.id as id',  'ejecutor.nombre as ejecutor', 'persona.nombres as persona', 'providencias_precautorias.observacion as observacion','providencias_precautorias.fechaInicio as fechainicio', 'providencias_precautorias.fechaFin as fechafin' )
+    //     ->get();
+
+
+    // }
 
 
 }
