@@ -148,13 +148,13 @@ Route::get('getMedidas', 'MedidasProteccionController@getMedidas')->name('getMed
 Route::get('agregar-medidas/{id}/eliminar', 'MedidasProteccionController@delete');
 Route::post('agregar-medidas/editar', 'MedidasProteccionController@editar');
 
-// Route::post('agregar-medidas/consulta', 'MedidasProteccionController@consultaAJAX');
-
 
 /*---------Rutas  Delitos Controller------------*/
 Route::get('agregar-delito', 'DelitoController@showForm')->name('new.delito');
 Route::post('storedelito', 'DelitoController@storeDelito')->name('store.delito');
 Route::get('agregar-delito/{id}/eliminar', 'DelitoController@delete');
+Route::get('delito/{id}/editar', 'DelitoController@editar');
+Route::put('delito/{id}/actualizar', 'DelitoController@actualizar')->name('actualizar.delito');
 
 Route::get('acusacion', 'AcusacionController@showForm')->name('new.acusacion');
 Route::post('storeacusacion', 'AcusacionController@storeAcusacion')->name('store.acusacion');
@@ -186,6 +186,9 @@ Route::put('/cestado/actualizar','EstadoController@editar')->name('Estado.edit')
 Route::get('actas','ActasHechosController@showform')->name('new.actahechos');
 Route::post('addactas','ActasHechosController@addActas')->name('addactas');
 Route::get('actas-pendientes','ActasHechosController@actasPendientes')->name('actaspendientes');
+Route::get('listaActas', 'ActasHechosController@showActas');
+Route::get('atender-acta/{id}','ActasHechosController@actasPreregistro')->name('actaspreregistro');
+
 
 /* --------Rutas para Libro de gobierno----------- */
 Route::get('libro','libroGobController@terminadas');

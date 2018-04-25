@@ -166,7 +166,33 @@
         <div class="help-block with-errors"></div> 
     </div>
 </div>
-    
+<div class="col-6">
+    <div class="form-group" >
+            {!! Form::label('tipoActa', 'Seleccione el tipo de acta de hechos que requiere:', ['class' => 'col-form-label-sm']) !!}
+            {!! Form::select('tipoActa', array('PASAPORTE' => 'PASAPORTE', 
+            'CREDENCIAL DE TRABAJO/GAFFETE' => 'CREDENCIAL DE TRABAJO/GAFFETE',
+            'TARJETA DE CRÉDITO/DÉBITO' => 'TARJETA DE CRÉDITO/DÉBITO',
+            'TELÉFONO CELULAR' => 'TELÉFONO CELULAR',
+            'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)' => 'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)',
+            'PERMISO DE TRÁNSITO PARA EMPLACAMIENTO DE TAXIS' => 'PERMISO DE TRÁNSITO PARA EMPLACAMIENTO DE TAXIS',
+            'FACTURA DE VEHICULO/MOTOCICLETA' => 'FACTURA DE VEHICULO/MOTOCICLETA',
+            'TARJETA DE CIRCULACIÓN' => 'TARJETA DE CIRCULACIÓN',
+            'PLACAS DE CIRCULACIÓN' => 'PLACAS DE CIRCULACIÓN',
+            'LICENCIA DE CONDUCIR ESTATAL' => 'LICENCIA DE CONDUCIR ESTATAL',
+            'LICENCIA DE CONDUCIR FEDERAL' => 'LICENCIA DE CONDUCIR FEDERAL',
+            'DOCUMENTO/BIEN EXTRAVIADO O ROBADO' => 'DOCUMENTO/BIEN EXTRAVIADO O ROBADO',
+            'CERTIFICADO DE ALUMBRAMIENTO' => 'CERTIFICADO DE ALUMBRAMIENTO',
+            'OTROS DOCUMENTOS' => 'OTROS DOCUMENTOS'), null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+    </div>
+</div>
+<div class="col-6 otros">
+    <div class="form-group">
+        {!! Form::label('otro', 'Especifique', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::text('otro', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Especifique', 'data-validation'=>'required']) !!}
+        <div class="help-block with-errors"></div>
+    </div>
+</div>	
+
         
 <div class="col-12">
     <div class="form-group">        
