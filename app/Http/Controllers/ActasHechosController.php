@@ -145,4 +145,9 @@ class ActasHechosController extends Controller
                 return redirect('actas');
             }
     }
+
+    public function showActas(){
+        $actas = ActasHechos::orderBy('id','desc')->paginate('15');
+        return view('tables.consulta-actas', compact('actas'));
+    }
 }
