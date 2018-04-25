@@ -25,9 +25,23 @@ class RegisterController extends Controller
         }
     }
 
+    public function getColonias2(Request $request, $id){
+        if($request->ajax()){
+            $colonias = CatColonia::colonias2($id);
+            return response()->json($colonias);
+        }
+    }
+
     public function getCodigos(Request $request, $id){
         if($request->ajax()){
             $codigos = CatColonia::codigos($id);
+            return response()->json($codigos);
+        }
+    }
+
+    public function getCodigos2(Request $request, $id){
+        if($request->ajax()){
+            $codigos = CatColonia::codigos2($id);
             return response()->json($codigos);
         }
     }
