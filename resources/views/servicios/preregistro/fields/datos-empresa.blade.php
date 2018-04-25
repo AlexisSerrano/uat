@@ -5,7 +5,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('nombre1', 'Nombre', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
-			{!! Form::text('nombre1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}
+			{!! Form::text('nombre1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras']) !!}
 			<div class="help-block with-errors"></div> 
 		</div>
 	</div>
@@ -13,7 +13,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('rfc1', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('rfc1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'data-validation'=>'required']) !!}
+			{!! Form::text('rfc1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'data-validation'=>'requiredx','data-validation-error-msg'=>'RFC inválido']) !!}
 			<div class="help-block with-errors"></div>
 		</div>
 	</div>
@@ -100,7 +100,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			 {!! Form::label('correo', 'Correo:', ['class' => 'col-form-label-sm']) !!}
-			 {!! Form::email('correo', null, ['class' => 'form-control form-control-sm emailc', 'placeholder' => 'Si desea recibir su folio por email']) !!}
+			 {!! Form::email('correo', null, ['class' => 'form-control form-control-sm emailc', 'placeholder' => 'Si desea recibir su folio por email','data-validation'=>'custom','data-validation-optional'=>'true','data-validation'=>'email','data-validation-error-msg'=>'Proporcione un correo válido. Ejemplo: algo@gmail.com']) !!}
 		 </div>
 	 </div>
 	 <div class="col-4">
