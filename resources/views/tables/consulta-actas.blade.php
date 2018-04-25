@@ -24,29 +24,26 @@
 			    		<th scope="col">Id</th>
 			      		<th scope="col">Folio</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Tipo de acta</th>
-                        <th scope="col">Municipio</th>
-                        <th scope="col">Localidad</th>
-			      		<th scope="col">Expedido por</th>
+						<th scope="col">Fiscal</th>
+						<th scope="col">Editar</th>
 			    	</tr>
 			  	</thead>
 			  	<tbody>
-			  		
-			  		<tr>
-			  			<th></th>
-			      		<td></th>
-			      		<td></td>
-			      		<td></td>
-						<td></td>
-                        <td></td>
-                        <td></td>
-			      		
-					
+				@forelse($actas as $acta)
+				<tr>
+					<td>{{$acta->id}}</td>
+					<td>UAT-XI/AH-{{$acta->folio}}/2018</td>
+					<td>{{$acta->nombre}} {{$acta->primer_ap}} {{$acta->segundo_ap}}</td>
+					<td>{{$acta->fiscal}}</td>
+					<td>Editar</td>
+				</tr>
+				@empty
+				@endforelse
 			  	</tbody>
 			</table>
 		</div>
 		<div class="mt-2 mx-auto">
-			
+				{{ $actas->links() }}
 		</div>	
 	</div>
 </div>
