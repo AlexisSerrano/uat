@@ -33,4 +33,6 @@ $form = oldFormActas();
 	{!! Form::close() !!}
 	
 @endsection
-
+@push('scripts')
+<script src="{{ asset('js/actas.js') }}"></script>
+@endpush
