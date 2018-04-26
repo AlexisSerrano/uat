@@ -2,6 +2,7 @@
 <div class="table">
     <table class="table table-striped">
         <thead>
+               
                 <th width="25%">Tipo de medida</th>
                 <th>Fecha inicio</th>
                 <th>Fecha final</th>
@@ -12,20 +13,21 @@
         </thead>
         <tbody>
             @if(count($TablaProvidencia)==0)
-                <tr><td colspan="7" class="text-center">Sin registros</td></tr>
+                <tr><td colspan="6" class="text-center">Sin registros</td></tr>
             @else
                 @foreach($TablaProvidencia as $provide)
                     <tr id="{{$provide->id}}">
+                        
                         <td class="providencia">{{ $provide->providencia}}</td>
                         <td class="fechainicio">{{ $provide->fechainicio }}</td>  
-                        <td class="fechafin">{{ $provide->fechafin }}</td>  
+                        <td class="fechafin">{{ $provide->fechafin }}</td>
                         <td class="ejecutor">{{ $provide->ejecutor }}</td>  
                         <td class="persona">{{ $provide->persona }}</td>  
                         <td class="observacion">{{ $provide->observacion }}</td>  
                         <td>
                                 <a href="{{ url('agregar-medidas/'.$provide->id.'/eliminar')}}" title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
                                 <i class="fa fa-times"></i></a>
-                                <button type="button" class="btn btn-secondary  btn-xs  btn-modal" value={{$provide->id}} ><i class="fa fa-edit"></i></button>
+                                <button type="button" class="btn btn-secondary  btn-xs  btn-modal"  value={{$provide->id}} ><i class="fa fa-edit"></i></button>
                                     
                         </td>                           
                     </tr>
@@ -56,9 +58,10 @@
                         <input class="form-control" type="text" id="idr" name="idr" hidden>
                   <div class="form-group">
                     <div class="col-xm-6">
-                            {!! Form::label('tipoProvidencia1', 'Tipo de providencia precautoria', ['class' => 'col-form-label-sm']) !!}
-                            {!! Form::select('tipoProvidencia1', $providencias,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required', 'id'=>'tipoProvidencia1']) !!}
-                    {{-- <input class="form-control" type="text" id="tipo_medida" name="tipo_medida" placeholder="Tipo de medida" > --}}
+                            {{-- {!! Form::label('tipoProvidencia1', 'Tipo de providencia precautoria', ['class' => 'col-form-label-sm']) !!}  --}}
+                            {{-- {!! Form::select('tipoProvidencia1', $providencias,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required', 'id'=>'tipoProvidencia1']) !!} --}}
+                    <input class="form-control" type="text" id="tipo_medida2" readonly name="tipo_medi" placeholder="Tipo de medida" >
+                   
                     </div>
 
 
@@ -88,14 +91,14 @@
                       <div class="form-group">
                         <div class="col-xm-6">
                                 {!! Form::label('quienEjecuta1', 'Quién ejecuta', ['class' => 'col-form-label-sm']) !!}
-                                {!! Form::select('quienEjecuta1', $ejecutores ,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required' ,'id'=>"quienEjecuta1"]) !!}
+                                {!! Form::select('quienEjecuta1', $ejecutores,2,['class' => 'form-control form-control-sm', 'data-validation'=>'required' ,'id'=>"quienEjecuta1"]) !!}
                         {{-- <input class="form-control " type="text" id="ejecuta" name="ejecuta" placeholder="Ejecuta"> --}}
                         </div>
                       </div>
                       <div class="form-group">
                             <div class="col-xm-6">
                                     {!! Form::label('victima1', 'Victima', ['class' => 'col-form-label-sm']) !!}
-                                    {!! Form::select('victima1', $victimas,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required' ,'id'=>"victima1"]) !!}
+                                    {!! Form::select('victima1', $victimas,1,['class' => 'form-control form-control-sm', 'data-validation'=>'required' ,'id'=>"victima1"]) !!}
                             {{-- <input class="form-control" type="text" id="persona" name="Persona" placeholder="Persona" > --}}
                             </div>
                           </div>
@@ -121,5 +124,9 @@
       </div>
     </div>
 <script>
- 
+
+
+
+
+
 </script>

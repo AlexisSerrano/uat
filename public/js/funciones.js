@@ -114,13 +114,11 @@ function getRandValue(){
 $('.btn-modal').bind('click', function(){
 	$ ('#myModal1').modal('show');
 	var idr = $(this).val();
-	console.log(idr);
 	$('#idr').val(idr);
-	// $('#idClaseVehiculo').val(nuevoValor).trigger('change');
-	// $('#tipoProvidencia1').val($('tr#'+idr+' td.providencia').text());
+	$('#tipo_medida2').val($('tr#'+idr+' td.providencia').text());
 	$('#fechaInicio1').val($('tr#'+idr+' td.fechainicio').text());
 	$('#fechaFinal1').val($('tr#'+idr+' td.fechafin').text());
-	$('#quienEjecuta1').val($('tr#'+idr+' td.ejecutor').text());
+	$('#quienEjecuta1').val($('tr#'+idr+'td.idejecutor').text());
 	$('#victima1').val($('tr#'+idr+' td.persona').text());
 	$('#observaciones1').val($('tr#'+idr+' td.observacion').text());
     
@@ -131,7 +129,7 @@ $('.btn-modal').bind('click', function(){
 	$('#guardar').bind('click', function(){
 		var datos = {
 			'idr' : $('#idr').val(),
-			'tipoProvidencia1'  : $('#tipoProvidencia1').select2('val'),
+			// 'tipo_medida2'  : $('#tipoProvidencia1').select2('val'),
 			'fechaInicio1' : $('#fechaInicio1').val(),
 			'fechaFinal1' : $('#fechaFinal1').val(),
 			'quienEjecuta1'  : $('#quienEjecuta1').select2('val'),
@@ -160,15 +158,11 @@ $('.btn-modal').bind('click', function(){
 					swal("Hecho", "Error", "success");
 				}
 
-				//console.log('Se agrego un vehiculo');
+				
 
 				console.log(json); 
 
-				//console.log('actualizar');
-
-				//$('#form_registro).find('input, textarea, button, select').attr('disabled','disabled');
-
-				//$('#guardar_cambios').attr('disabled','disabled');                        
+			                 
 			},
 
 			error : function(xhr, status) {
@@ -197,4 +191,6 @@ $('.btn-modal').bind('click', function(){
 
 		
 		});
+		
+
 		

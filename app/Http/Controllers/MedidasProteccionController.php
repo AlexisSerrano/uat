@@ -40,7 +40,7 @@ class MedidasProteccionController extends Controller
             ->join('cat_providencia_precautoria', 'cat_providencia_precautoria.id', '=', 'providencias_precautorias.idProvidencia')
             ->join('ejecutor', 'ejecutor.id', '=', 'providencias_precautorias.idEjecutor')
             ->join('persona', 'persona.id', '=', 'providencias_precautorias.idPersona')
-            ->select('cat_providencia_precautoria.nombre as providencia', 'providencias_precautorias.id as id',  'ejecutor.nombre as ejecutor', 'persona.nombres as persona', 'providencias_precautorias.observacion as observacion','providencias_precautorias.fechaInicio as fechainicio', 'providencias_precautorias.fechaFin as fechafin' )
+            ->select('cat_providencia_precautoria.nombre as providencia', 'cat_providencia_precautoria.id as idprovidencia', 'providencias_precautorias.id as id',  'ejecutor.nombre as ejecutor','ejecutor.id as idejecutor', 'persona.nombres as persona', 'providencias_precautorias.observacion as observacion','providencias_precautorias.fechaInicio as fechainicio', 'providencias_precautorias.fechaFin as fechafin' )
             ->get();
 
             foreach($providencias2 as $providencia){
@@ -88,7 +88,7 @@ class MedidasProteccionController extends Controller
         ->join('persona','providencias_precautorias.idPersona','=','persona.id')
         ->where('providencias_precautorias.idCarpeta',$idCarpeta)
         ->where('providencias_precautorias.deleted_at',null)
-        ->select('providencias_precautorias.id as id','cat_providencia_precautoria.nombre as providencia', 'ejecutor.nombre as ejecutor', 'providencias_precautorias.fechaInicio as fechaInicio', 'providencias_precautorias.fechaFin as fechaFin', 'providencias_precautorias.observacion as observacion', DB::raw("CONCAT(`persona`.`nombres`,' ',CASE WHEN `persona`.`primerAp` IS NULL  THEN '' ELSE `persona`.`primerAp` END,' ',CASE WHEN `persona`.`segundoAp` IS NULL  THEN '' ELSE `persona`.`segundoAp` END) as nombre"))->get();
+        ->select('providencias_precautorias.id as id',  'cat_providencia_precautoria.nombre as providencia', 'ejecutor.nombre as ejecutor', 'providencias_precautorias.fechaInicio as fechaInicio', 'providencias_precautorias.fechaFin as fechaFin', 'providencias_precautorias.observacion as observacion', DB::raw("CONCAT(`persona`.`nombres`,' ',CASE WHEN `persona`.`primerAp` IS NULL  THEN '' ELSE `persona`.`primerAp` END,' ',CASE WHEN `persona`.`segundoAp` IS NULL  THEN '' ELSE `persona`.`segundoAp` END) as nombre"))->get();
         //dd($providencias);
         return Datatables::of($providencias)->make(true);
     }
@@ -126,7 +126,7 @@ class MedidasProteccionController extends Controller
       
      $providencia = Providencia::find($request->input('idr')); 
   
-     $providencia->idProvidencia = $request->tipoProvidencia1;
+    //  $providencia->idProvidencia = $request->tipoProvidencia1;
      $providencia->fechaInicio = $request->fechaInicio1;
      $providencia->fechaFin = $request->fechaFinal1;
      $providencia->idEjecutor = $request->quienEjecuta1;
