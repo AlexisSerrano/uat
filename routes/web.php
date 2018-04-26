@@ -154,7 +154,7 @@ Route::post('agregar-medidas/editar', 'MedidasProteccionController@editar');
 /*---------Rutas  Delitos Controller------------*/
 Route::get('agregar-delito', 'DelitoController@showForm')->name('new.delito');
 Route::post('storedelito', 'DelitoController@storeDelito')->name('store.delito');
-Route::get('agregar-delito/{id}/eliminar', 'DelitoController@delete');
+Route::get('delito/{id}/eliminar', 'DelitoController@delete');
 Route::get('delito/{id}/editar', 'DelitoController@editar');
 Route::put('delito/{id}/actualizar', 'DelitoController@actualizar')->name('actualizar.delito');
 
