@@ -2,7 +2,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('nombresC', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('nombresC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'data-validation'=> 'required']) !!}
+			{!! Form::text('nombresC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras']) !!}
 		</div>
 	</div>
 	<div class="col-4">
