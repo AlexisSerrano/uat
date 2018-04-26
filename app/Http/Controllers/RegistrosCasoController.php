@@ -35,7 +35,7 @@ class RegistrosCasoController extends Controller
         // ->paginate(10);
         $registros = DB::table('preregistros')->where('statusCola', null)
         ->join('razones','razones.id','=','preregistros.idRazon')
-        ->join('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')        
+        ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')        
         ->orderBy('horaLlegada','asc')
         ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
         'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',

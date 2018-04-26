@@ -176,7 +176,9 @@ class PreregistroAuxController extends Controller
         ->where('cat_identificacion.id','=',$preregistro->docIdentificacion)
         ->orderBy('id', 'ASC')
         ->get();
-        $docIdent=$docIdent[0]->documento;
+        if(count($docIdent)>0){
+            $docIdent=$docIdent[0]->documento;
+        }
     
         //dd($docIdent);                     
         $persona= $preregistro->esEmpresa;//persona fisica o empresa
@@ -359,7 +361,7 @@ class PreregistroAuxController extends Controller
         // ->paginate(10);
         $registros = DB::table('preregistros')->where('statusCola', 0)
         ->join('razones','razones.id','=','preregistros.idRazon')
-        ->join('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')        
+        ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')        
         ->orderBy('horaLlegada','asc')
         ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
         'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
@@ -380,7 +382,7 @@ class PreregistroAuxController extends Controller
 
         $registros = DB::table('preregistros')->where('statusCola', 1)
         ->join('razones','razones.id','=','preregistros.idRazon')
-        ->join('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')
+        ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')
         ->orderBy('horaLlegada','asc')
         ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
         'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
@@ -444,7 +446,7 @@ class PreregistroAuxController extends Controller
         ->pluck('nombre','id');
         //$preregistro = Preregistro::find($id);
         $preregistro = DB::table('preregistros')
-        ->join('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')
+        ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')
         ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','nombre','primerAp',
         'segundoAp','rfc','fechaNac','idEscolaridad','idEstadoCivil','idOcupacion','edad',
         'sexo','curp','telefono','cat_identificacion.documento as docIdentificacion',
