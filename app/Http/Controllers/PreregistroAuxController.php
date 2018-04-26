@@ -412,6 +412,7 @@ class PreregistroAuxController extends Controller
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion') 
         ->join('razones','razones.id','=','preregistros.idRazon')
         ->join('domicilio', 'preregistros.idDireccion', '=', 'domicilio.id')
+        ->where('domicilio.idMunicipio',$id)
         ->where('statusCola', null)
         ->where('conViolencia', 0)
         ->orderBy('id','desc')
@@ -419,7 +420,7 @@ class PreregistroAuxController extends Controller
         'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
         'cat_identificacion.documento as docIdentificacion','numDocIdentificacion','conViolencia','narracion','folio','representanteLegal',
         'statusCancelacion','statusOrigen','statusCola','horaLlegada','unidad','zona','razones.nombre as razon')
-        ->paginate(10);
+        ->paginate('15');
 
          $municipios = CatMunicipio::where('idEstado',30)
         ->where('nombre', '!=', 'SIN INFORMACION')

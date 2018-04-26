@@ -1,3 +1,6 @@
+@php
+$form = oldFormActas();
+@endphp
 <div class="col-4">
     <div class="form-group">
         {!! Form::label('nombre2', 'Nombre', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
@@ -69,7 +72,7 @@
 <div class="col-4">
     <div class="form-group">
         {!! Form::label('idEstado2', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::select('idEstado2', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required']) !!}
+        {!! Form::select('idEstado2', $estados, $acta->idEstado, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required']) !!}
     </div>
 </div>
 
@@ -79,7 +82,7 @@
         @if(isset($form['catMunicipios'], $form['idMunicipio2']))
         {!! Form::select('idMunicipio2',  $form['catMunicipios'], $form['idMunicipio2'], ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
         @else
-        {!! Form::select('idMunicipio2', [''=>'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+        {!! Form::select('idMunicipio2', $catMunicipios, $acta->idMunicipio, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
         @endif
     </div>
 </div>
@@ -90,7 +93,7 @@
         @if(isset($form['catLocalidades'],$form['idLocalidad2']))
         {!! Form::select('idLocalidad2',  $form['catLocalidades'], $form['idLocalidad2'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
         @else
-        {!! Form::select('idLocalidad2', [ '' => 'Seleccione una localidad'], null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+        {!! Form::select('idLocalidad2', $catLocalidades, $acta->idLocalidad, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
         @endif
     </div>
 </div>
@@ -101,7 +104,7 @@
         @if(isset($form['catCodigoPostal'],$form['cp2']))
         {!! Form::select('cp2', $form['catCodigoPostal'], $form['cp2'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
         @else
-        {!! Form::select('cp2', ['' => 'Seleccione CP'], null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+        {!! Form::select('cp2', $catCodigoPostal, $acta->codigoPostal, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
         @endif
     </div>
 </div>
@@ -112,7 +115,7 @@
         @if(isset($form['catColonias'],$form['idColonia2']))
         {!! Form::select('idColonia2', $form['catColonias'], $form['idColonia2'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
         @else
-        {!! Form::select('idColonia2', ['' => 'colonia'], null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+        {!! Form::select('idColonia2', $catColonias, null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
         @endif
     </div>
 </div>
