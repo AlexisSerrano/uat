@@ -29,12 +29,9 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
-					<div class="input-group date" id="fechanac" data-target-input="nearest">
-						{!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'required', 'placeholder' => 'AAAA-MM-DD']) !!}
-						<div class="input-group-addon" data-target="#fechanac" data-toggle="datetimepicker">
-							<div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
-						</div>
-					</div>
+					<input type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-control form-control-sm", data-validation="birthdate">
+						{{-- {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'required', 'placeholder' => 'AAAA-MM-DD']) !!} --}}
+						
 				</div>
 			</div>
 
