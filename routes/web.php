@@ -190,6 +190,9 @@ Route::post('addactas','ActasHechosController@addActas')->name('addactas');
 Route::get('actas-pendientes','ActasHechosController@actasPendientes')->name('actaspendientes');
 Route::get('listaActas', 'ActasHechosController@showActas');
 Route::get('atender-acta/{id}','ActasHechosController@actasPreregistro')->name('actaspreregistro');
+Route::post('/filtroactas', 'ActasHechosController@filtroactas');
+Route::get('/filtroactas', 'ActasHechosController@filtroactas');
+Route::get('/descActas/{id}', 'ActasHechosController@descActas');
 
 
 /* --------Rutas para Libro de gobierno----------- */

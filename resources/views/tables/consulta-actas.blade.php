@@ -9,10 +9,11 @@
 			    <span class="navbar-toggler-icon"></span>
 			  	</button>
 			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			    	<form class="form-inline my-2 my-lg-0" method="POST" action="{{ url('showbyfolio') }}">
+			    	<form class="form-inline my-2 my-lg-0" method="POST" action="{{ url('filtroactas') }}">
 			    		@csrf
-			      		<input class="form-control mr-sm-2" type="text" name="folio" id="folio" placeholder="Buscar" aria-label="Buscar">
-			      		<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Buscar</button>
+			      		<input class="form-control mr-sm-2" type="text" name="filtro" id="filtro" placeholder="Buscar" aria-label="Buscar">
+						  <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Buscar</button>
+						  <a href="{{url('listaActas')}}"><button class="btn btn-outline-secondary my-2 my-sm-0" type="button">Todos</button></a>
 			    	</form>
 			  	</div>
 			</nav>
@@ -21,21 +22,19 @@
 			<table class="table table-striped table-bordered table-hover">
 			 	<thead class="thead-active">
 			    	<tr>
-			    		<th scope="col">Id</th>
 			      		<th scope="col">Folio</th>
                         <th scope="col">Nombre</th>
 						<th scope="col">Fiscal</th>
-						<th scope="col">Editar</th>
+						<th scope="col">Descargar</th>
 			    	</tr>
 			  	</thead>
 			  	<tbody>
 				@forelse($actas as $acta)
 				<tr>
-					<td>{{$acta->id}}</td>
-					<td>UAT-XI/AH-{{$acta->folio}}/2018</td>
+					<td>UAT-XI/AH-{{$acta->folio}}/{{$year}}</td>
 					<td>{{$acta->nombre}} {{$acta->primer_ap}} {{$acta->segundo_ap}}</td>
 					<td>{{$acta->fiscal}}</td>
-					<td>Editar</td>
+					<td><a href='{{url("descActas/$acta->id")}}'>Descargar</a></td>
 				</tr>
 				@empty
 				@endforelse
