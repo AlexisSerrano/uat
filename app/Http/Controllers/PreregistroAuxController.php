@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Contracts\Pagination\Paginator;
+
 use DB;
 use Mail;
 //use App\Http\Controllers\sendMail;
@@ -36,22 +39,39 @@ class PreregistroAuxController extends Controller
      */
     public function index()
     {
-        // $preregistros = Preregistro::where('statusCola', null)
-        // ->where('conViolencia', 0)
-        // ->orderBy('id','desc')
-        // ->paginate(10);
-
-        $registros = DB::table('preregistros')->where('statusCola', null)
+    
+        // codigo de paginacion manual
+        $page = Input::get('page', 1);
+        $paginate = 10;
+        // consultas para union
+        $registrosPersonas = DB::table('preregistros')->where('statusCola', null)
         ->join('razones','razones.id','=','preregistros.idRazon')
         ->join('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')
         ->where('conViolencia', 0)
+        ->where('esEmpresa', 0)
         ->orderBy('id','desc')
         ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
         'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
         'cat_identificacion.documento as docIdentificacion','numDocIdentificacion','conViolencia','narracion','folio','representanteLegal',
+        'statusCancelacion','statusOrigen','statusCola','horaLlegada','unidad','zona','razones.nombre as razon');
+        // dd($registrosPersonas);        
+        $registrosEmpresas = DB::table('preregistros')->where('statusCola', null)
+        ->join('razones','razones.id','=','preregistros.idRazon')
+        ->where('conViolencia', 0)
+        ->where('esEmpresa', 1)
+        ->orderBy('id','desc')
+        ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
+        'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
+        'docIdentificacion','numDocIdentificacion','conViolencia','narracion','folio','representanteLegal',
         'statusCancelacion','statusOrigen','statusCola','horaLlegada','unidad','zona','razones.nombre as razon')
-        ->paginate(10);
-       
+        ->union($registrosPersonas)
+        // ->paginate(10)
+        ->get()->toArray();
+        $registro=$registrosEmpresas;
+        // dd($registro);
+        $slice = array_slice($registro, $paginate * ($page - 1), $paginate);
+        $registros = Paginator::make($slice, count($registro), $paginate);
+        
         $municipios = CatMunicipio::where('idEstado',30)
         ->where('nombre', '!=', 'SIN INFORMACION')
         ->orderBy('nombre','asc')
@@ -59,44 +79,7 @@ class PreregistroAuxController extends Controller
         return view('servicios.recepcion.preregistros')->with('registros',$registros)->with('municipios', $municipios);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         $estados=CatEstado::orderBy('nombre', 'ASC')
@@ -440,34 +423,11 @@ class PreregistroAuxController extends Controller
         //$preregistro = Preregistro::find($id);
         $preregistro = DB::table('preregistros')
         ->join('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')
-        ->select('preregistros.id as id',
-        'idDireccion',
-        'idRazon',
-        'esEmpresa',
-        'nombre',
-        'primerAp',
-        'segundoAp',
-        'rfc',
-        'fechaNac',
-        'idEscolaridad',
-        'idEstadoCivil',
-        'idOcupacion',
-        'edad',
-        'sexo',
-        'curp',
-        'telefono',
-        'cat_identificacion.documento as docIdentificacion',
-        'numDocIdentificacion',
-        'conViolencia',
-        'narracion',
-        'folio',
-        'tipoActa',
-        'representanteLegal',
-        'statusCancelacion',
-        'statusOrigen',
-        'statusCola',
-        'horaLlegada'
-        )
+        ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','nombre','primerAp',
+        'segundoAp','rfc','fechaNac','idEscolaridad','idEstadoCivil','idOcupacion','edad',
+        'sexo','curp','telefono','cat_identificacion.documento as docIdentificacion',
+        'numDocIdentificacion','conViolencia','narracion','folio','tipoActa','representanteLegal',
+        'statusCancelacion','statusOrigen','statusCola','horaLlegada')
         ->where('preregistros.id',$id)->get();
         $preregistro=$preregistro[0];
         $tipopersona=$preregistro->esEmpresa;
