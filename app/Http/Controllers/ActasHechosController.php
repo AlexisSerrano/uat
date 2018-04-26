@@ -233,6 +233,27 @@ class ActasHechosController extends Controller
         }
     }
 
+    public function filtroActasPendientes(Request $request){
+        if($request->input("folio")){
+            $folio = $request->input("folio");
+            $request->session()->flash('folio', $folio);
+        }
+        else{
+            $folio = $request->session()->get('folio');
+            $request->session()->flash('folio', $folio);
+        }
+
+        $actas = Preregistro::where('folio', $folio)
+        ->where('tipoActa','!=',null)
+        ->where('statusCola',null)
+        ->orWhere(DB::raw("CONCAT(preregistros.nombre,' ',primerAp,' ',segundoAp)"), 'LIKE', '%' . $folio . '%')
+        ->orWhere('representanteLegal', 'like', '%' . $folio . '%')
+        ->orderBy('id','desc')
+        ->paginate(10);
+        return view('tables.actas-hechos', compact('actas'));
+    }
+
+
     public function descActas($id){
         return response()->download('../storage/oficios/ActasHechos'.$id.'.docx');
     }

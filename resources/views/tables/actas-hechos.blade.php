@@ -4,14 +4,28 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <a href="{{route('new.actahechos')}}" class="btn btn-primary"> Crear nueva acta</a>
+        {!! Form::open(['route' => 'filtroactapendiente', 'method' => 'POST'])  !!}
+        <div class="row">
+            <div class="col text-left">
+                <a href="{{route('new.actahechos')}}" class="btn btn-primary"> Crear nueva acta</a>
+            </div>
+	
+            <div class="col-4 text-right">
+                <div class="input-group">
+                    <input type="text" id="folio" name="folio" class="form-control" placeholder="buscar">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-secondary"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        {!!Form::close()!!}
         <hr>
         <table class="table table-striped">
             <thead>
+                <th>fecha</th>
                 <th>Nombre</th>
                 <th>Tipo de acta</th>
-                <th>fecha</th>
-                <th>Tipo</th> 
                 <th>Opciones</th>                               
             </thead>
             <tbody>
@@ -20,10 +34,9 @@
                 @else
                 @foreach($actas as $acta)
                 <tr>
+                    <td>{{ $acta->folio }}</td>
                     <td>{{ $acta->nombre." ".$acta->primerAp." ".$acta->segundoAp }}</td>
                     <td>{{ $acta->tipoActa }}</td>
-                    <td>{{ $acta->sector }}</td>
-                    <td>{{ $acta->tipo }}</td>  
                     <td>
                         <a href="{{ url('atender-acta/'.$acta->id.'')}}" title="Atender" class="btn btn-success">
                             <i class="fa fa-edit"></i> Atender

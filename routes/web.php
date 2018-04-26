@@ -194,6 +194,8 @@ Route::post('/filtroactas', 'ActasHechosController@filtroactas');
 Route::get('/filtroactas', 'ActasHechosController@filtroactas');
 Route::get('/descActas/{id}', 'ActasHechosController@descActas');
 
+Route::post('/folioActa', 'ActasHechosController@filtroActasPendientes')->name('filtroactapendiente');
+
 
 /* --------Rutas para Libro de gobierno----------- */
 Route::get('libro','libroGobController@terminadas');
