@@ -26,23 +26,18 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
-			<div class="input-group date" id="fechanac" data-target-input="nearest">
+			<input type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-control form-control-sm", data-validation="birthdate">
+			{{-- <div class="input-group date" id="fechanac" data-target-input="nearest">
                 {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'required', 'placeholder' => 'AAAA/MM/DD']) !!}
                 <span class="input-group-addon" data-target="#fechanac" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
                 </span>
-            </div>
+            </div> --}}
 		</div>
 	</div>
 	<div class="col-3">
-		<div class="row">
-			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('edad', 'Edad', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 0, 'max' => 150, 'data-validation'=>'required']) !!}
-				</div>
-			</div>
-			<div class="col-6">
+		<div class="row">	
+			<div class="col">
 				<div class="form-group">
 					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'required']) !!}
