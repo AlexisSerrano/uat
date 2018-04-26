@@ -26,7 +26,7 @@ class MedidasProteccionController extends Controller
             $delitos = CarpetaController::getDelitos($idCarpeta);
             $providencias[''] = 'Seleccione una providencia precautoria';
             $ejecutores[''] = 'Seleccione un ejecutor';
-            $victimas[''] = 'Seleccione una víctima';
+            $victimas[''] = 'Seleccione una víctima/ofendido';
             $providencias2 = CatProvidencias::get();
             $ejecutores2 = Ejecutor::get();
             $victimas2 = DB::table('variables_persona')

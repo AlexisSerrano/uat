@@ -41,8 +41,8 @@
     {{-- fileinput --}}
     
     <script src="{{asset('js/semaforos.js')}}"></script>  
-    {{-- <script src="{{asset('js/selectsDirecciones.js')}}"></script>   --}}
-    <script src="{{asset('js/selects.js')}}"></script>
+    <script src="{{asset('js/selectsDirecciones.js')}}"></script>  
+    {{-- <script src="{{asset('js/selects.js')}}"></script> --}}
     <script src="{{asset('js/funciones.js')}}"></script>
     <script>
         

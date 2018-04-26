@@ -20,7 +20,7 @@ function miajax(id,inputValue){
 		data:  parametros,
 		success: function(data) {
 			if(data){
-				swal("Hecho", "Registro puesto en cola con exito", "success");
+				swal("Hecho", "Registro puesto en cola con éxito", "success");
 				setTimeout("redireccionarPagina()", 3000);
 			}			
 		}
@@ -30,7 +30,7 @@ $(".btnEnUrgente").click(function(){
 	id = $(this).attr("id");
 	swal({
 		title: "Puesto en urgente",
-		text: "¿Por qué razon se pondra en urgente?",
+		text: "¿Por qué razón se pondra en urgente?",
 		type: "input",
 		showCancelButton: true,
 		closeOnConfirm: false,

@@ -35,7 +35,7 @@
 			    	<form class="form-inline my-2 my-lg-0" method="POST" action="{{ url('buscarfolio') }}" id="busquedafolio">
 			    		@csrf
 			      		<input class="form-control mr-sm-2 col-8" type="text" name="folio" id="folio" placeholder="Buscar" aria-label="Buscar">
-			      		<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Buscar</button>
+			      		<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
 			    	</form>
 			  	</div>
 			</nav>

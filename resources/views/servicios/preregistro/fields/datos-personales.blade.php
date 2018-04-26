@@ -22,84 +22,40 @@
 			{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom' , 'data-validation-regexp'=>'^([A-Z]+)$']) !!}
 		</div>
 	</div>
-	
 	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('rfc2', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('rfc2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'data-validation'=>'required']) !!}
-			<div class="help-block with-errors"></div>
-		</div>
-	</div>
-	
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
-			<div class="input-group date" id="fechanac" data-target-input="nearest">
-				{!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac','data-validation'=>'birthdate', 'data-validation-format'=>'dd/mm/yyyy', 'data-validation'=>'required', 'placeholder' => 'DD/MM/AAAA']) !!}
-				<div class="input-group-append" data-target="#fechanac" data-toggle="datetimepicker">
-					<div class="input-group-text"><i class="fa fa-calendar"></i></div>
-				</div>
+			<div class="form-group">
+				{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
+				<input type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-control form-control-sm", data-validation="birthdate">
+					{{-- {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac','data-validation'=>'birthdate', 'data-validation-format'=>'dd/mm/yyyy', 'data-validation'=>'required', 'placeholder' => 'DD/MM/AAAA']) !!} --}}
+				<div class="help-block with-errors"></div>	
 			</div>
-			<div class="help-block with-errors"></div>	
 		</div>
-	</div>
-	
-	<div class="col-4">
-		
-		<div class="row">
-			<div class="col-6">
-				<div class="form-group">
-					{!! Form::label('edad', 'Edad', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 0, 'max' => 150, 'data-validation'=>'required']) !!}
-					<div class="help-block with-errors"></div>
-				</div>
-
-			</div>
-			<div class="col-6">
+		<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'data-validation'=>'required']) !!}
 					<div class="help-block with-errors"></div>
 				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.','data-validation'=>'required, alphanumeric']) !!}
-		</div>
-	</div>
-
-	<div class="col-4">
-		<div class="form-group" >
-				{!! Form::label('estadoCivil', 'Estado Civil', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('estadoCivil', $estadocivil, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione su estado civil','data-validation'=>'required']) !!}
-		</div>
-	</div>		
+			</div>	
 	
 	<div class="col-4">
-		<div class="form-group" >
-				{!! Form::label('escolaridad', 'Escolaridad (Nivel de estudios)', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('escolaridad', $escolaridades, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione su escolaridad','data-validation'=>'required']) !!}
-		</div>
-	</div>
-
-	<div class="col-4">
-		<div class="form-group" >
-				{!! Form::label('ocupacion', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('ocupacion', $ocupaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una ocupación','data-validation'=>'required']) !!}
-		</div>
-	</div>
-
-	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('telefono2', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('telefono2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono','data-validation'=>'number, length', 'data-validation-length'=>'8-10']) !!}
+			{!! Form::label('rfc2', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('rfc2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido']) !!}
 			<div class="help-block with-errors"></div>
 		</div>
 	</div>
+
+	<div class="col-4">
+			<div class="form-group">
+				{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$','data-validation-error-msg'=>'CURP inválido']) !!}
+			</div>
+		</div>
+	
+	
+	
+
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('idEstado2', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
@@ -126,7 +82,17 @@
 			{!! Form::select('idLocalidad2', [ '' => 'Seleccione una localidad'], null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
 			@endif
 		</div>
-    </div>
+	</div>
+	<div class="col-4">
+			<div class="form-group">
+				{!! Form::label('idColonia2', 'Colonia', ['class' => 'col-form-label-sm']) !!}
+				@if(isset($form['catColonias'],$form['idColonia2']))
+				{!! Form::select('idColonia2', $form['catColonias'], $form['idColonia2'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+				@else
+				{!! Form::select('idColonia2', ['' => 'colonia'], null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+				@endif
+			</div>
+		</div>
     <div class="col-2">
         <div class="form-group">
 			{!! Form::label('cp2', 'Código postal', ['class' => 'col-form-label-sm']) !!}
@@ -136,17 +102,16 @@
 			{!! Form::select('cp2', ['' => 'Seleccione CP'], null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
 			@endif
 		</div>
-    </div>
-    <div class="col-2">
-        <div class="form-group">
-			{!! Form::label('idColonia2', 'Colonia', ['class' => 'col-form-label-sm']) !!}
-			@if(isset($form['catColonias'],$form['idColonia2']))
-            {!! Form::select('idColonia2', $form['catColonias'], $form['idColonia2'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
-			@else
-			{!! Form::select('idColonia2', ['' => 'colonia'], null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
-			@endif
+	</div>
+
+	<div class="col-2">
+			<div class="form-group">
+				{!! Form::label('telefono2', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::text('telefono2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono','data-validation'=>'number, length', 'data-validation-length'=>'8-10']) !!}
+				<div class="help-block with-errors"></div>
+			</div>
 		</div>
-    </div>
+    
     <div class="col-4">
         <div class="form-group">
             {!! Form::label('calle2', 'Calle', ['class' => 'col-form-label-sm']) !!}
@@ -162,9 +127,29 @@
     <div class="col-2">
         <div class="form-group">
             {!! Form::label('numInterno2', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-            {!! Form::text('numInterno2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Interior', 'data-validation'=>'required']) !!}
+            {!! Form::text('numInterno2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Interior', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
         </div>
-    </div>
+	</div>
+	<div class="col-4">
+			<div class="form-group" >
+					{!! Form::label('estadoCivil', 'Estado Civil', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('estadoCivil', $estadocivil, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione su estado civil','data-validation'=>'required']) !!}
+			</div>
+		</div>		
+		
+		<div class="col-4">
+			<div class="form-group" >
+					{!! Form::label('escolaridad', 'Escolaridad (Nivel de estudios)', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('escolaridad', $escolaridades, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione su escolaridad','data-validation'=>'required']) !!}
+			</div>
+		</div>
+	
+		<div class="col-4">
+			<div class="form-group" >
+					{!! Form::label('ocupacion', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('ocupacion', $ocupaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una ocupación','data-validation'=>'required']) !!}
+			</div>
+		</div>
 
     <div class="col-4">
         <div class="form-group">
@@ -177,7 +162,7 @@
     <div class="col-4">
         <div class="form-group">
             {!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
-            {!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación', 'data-validation'=>'required']) !!}
+            {!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
             <div class="help-block with-errors"></div>
         </div>
     </div>
@@ -185,7 +170,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			 {!! Form::label('correo2', 'Correo:', ['class' => 'col-form-label-sm']) !!}
-			 {!! Form::email('correo2', null, ['class' => 'form-control form-control-sm emailc', 'placeholder' => 'Si desea recibir su folio por email' ]) !!}
+			 {!! Form::email('correo2', null, ['class' => 'form-control form-control-sm emailc', 'placeholder' => 'Si desea recibir su folio por email','data-validation'=>'custom','data-validation-optional'=>'true','data-validation'=>'email','data-validation-error-msg'=>'Proporcione un correo válido. Ejemplo: nombre@gmail.com' ]) !!}
 		 </div>
 	</div>
 	<div class="col-4">
