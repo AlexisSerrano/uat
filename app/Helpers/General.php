@@ -90,83 +90,109 @@ function formato_fecha($old){
 
 function oldForm(){
 	$valoresOld = session('_old_input');
-	if($valoresOld['esEmpresa']==1){
-		$form['esEmpresa'] = $valoresOld['esEmpresa'];
-		$form['idEstado1'] = $valoresOld['idEstado1'];
-		$form['idMunicipio1'] = $valoresOld['idMunicipio1'];
-		$form['idLocalidad1'] = $valoresOld['idLocalidad1'];
-		$form['idColonia1'] = $valoresOld['idColonia1'];
-		$form['Violencia'] = $valoresOld['Violencia'];
-		$form['narracion'] = $valoresOld['narracion'];
-		$form['cp1'] = $valoresOld['cp1'];
-		$catMunicipios=DB::table('cat_municipio')
-        ->where('cat_municipio.idEstado','=',$form['idEstado1'])
-        ->orderBy('nombre','asc')
-		->pluck('nombre','id');
-		$catLocalidades=DB::table('cat_localidad')
-		->where('cat_localidad.idMunicipio','=',$form['idMunicipio1'])
-		->orderBy('nombre','asc')
-		->pluck('nombre','id');
-		$catColonias=DB::table('cat_colonia')
-		->where('cat_colonia.codigoPostal','=',$form['cp1'])
-		->orderBy('nombre','asc')
-		->pluck('nombre','id');
-		$catCodigoPostal=DB::table('cat_colonia')
-		->where('cat_colonia.idMunicipio','=',$form['idMunicipio1'])
-		->where('cat_colonia.codigoPostal','!=',0)
-		->orderBy('codigoPostal','asc')
-		->groupBy('codigoPostal')
-		->pluck('codigoPostal','codigopostal');
+	if(isset($valoresOld['esEmpresa'])){
+		if($valoresOld['esEmpresa']==1){
+			if(isset($valoresOld['esEmpresa'],$valoresOld['idEstado1'], $valoresOld['idMunicipio1'],$valoresOld['idLocalidad1'], $valoresOld['idColonia1'], $valoresOld['cp1'], $valoresOld['Violencia'], $valoresOld['narracion'])){
+				$form['esEmpresa'] = $valoresOld['esEmpresa'];
+				$form['idEstado1'] = $valoresOld['idEstado1'];
+				$form['idMunicipio1'] = $valoresOld['idMunicipio1'];
+				$form['idLocalidad1'] = $valoresOld['idLocalidad1'];
+				$form['idColonia1'] = $valoresOld['idColonia1'];
+				$form['Violencia'] = $valoresOld['Violencia'];
+				$form['narracion'] = $valoresOld['narracion'];
+				$form['cp1'] = $valoresOld['cp1'];
+				$catMunicipios=DB::table('cat_municipio')
+				->where('cat_municipio.idEstado','=',$form['idEstado1'])
+				->orderBy('nombre','asc')
+				->pluck('nombre','id');
+				$catLocalidades=DB::table('cat_localidad')
+				->where('cat_localidad.idMunicipio','=',$form['idMunicipio1'])
+				->orderBy('nombre','asc')
+				->pluck('nombre','id');
+				$catColonias=DB::table('cat_colonia')
+				->where('cat_colonia.codigoPostal','=',$form['cp1'])
+				->orderBy('nombre','asc')
+				->pluck('nombre','id');
+				$catCodigoPostal=DB::table('cat_colonia')
+				->where('cat_colonia.idMunicipio','=',$form['idMunicipio1'])
+				->where('cat_colonia.codigoPostal','!=',0)
+				->orderBy('codigoPostal','asc')
+				->groupBy('codigoPostal')
+				->pluck('codigoPostal','codigopostal');
+				$form['catMunicipios'] = $catMunicipios;
+				$form['catLocalidades'] = $catLocalidades;
+				$form['catColonias'] = $catColonias;
+				$form['catCodigoPostal'] = $catCodigoPostal;
+				if($form['Violencia'] == 1){
+					$form['violencia1'] = 'checked';
+					$form['violencia2'] = '';
+				}
+				else{
+					$form['violencia1'] = '';
+					$form['violencia2'] = 'checked';
+				}
+				if($form['esEmpresa'] == 1){
+					$form['esEmpresa1'] = 'checked';
+					$form['esEmpresa2'] = '';
+				}
+				else{
+					$form['esEmpresa1'] = '';
+					$form['esEmpresa2'] = 'checked';
+				}
+			}
+		}
+		else{
+			if(isset($valoresOld['esEmpresa'],$valoresOld['idEstado2'], $valoresOld['idMunicipio2'],$valoresOld['idLocalidad2'], $valoresOld['idColonia2'], $valoresOld['cp2'], $valoresOld['Violencia'], $valoresOld['narracion'])){
+				$form['esEmpresa'] = $valoresOld['esEmpresa'];
+				$form['idEstado2'] = $valoresOld['idEstado2'];
+				$form['idMunicipio2'] = $valoresOld['idMunicipio2'];
+				$form['idLocalidad2'] = $valoresOld['idLocalidad2'];
+				$form['idColonia2'] = $valoresOld['idColonia2'];
+				$form['Violencia'] = $valoresOld['Violencia'];
+				$form['narracion'] = $valoresOld['narracion'];
+				$form['cp2'] = $valoresOld['cp2'];
+				$catMunicipios=DB::table('cat_municipio')
+				->where('cat_municipio.idEstado','=',$form['idEstado2'])
+				->orderBy('nombre','asc')
+				->pluck('nombre','id');
+				$catLocalidades=DB::table('cat_localidad')
+				->where('cat_localidad.idMunicipio','=',$form['idMunicipio2'])
+				->orderBy('nombre','asc')
+				->pluck('nombre','id');
+				$catColonias=DB::table('cat_colonia')
+				->where('cat_colonia.codigoPostal','=',$form['cp2'])
+				->orderBy('nombre','asc')
+				->pluck('nombre','id');
+				$catCodigoPostal=DB::table('cat_colonia')
+				->where('cat_colonia.idMunicipio','=',$form['idMunicipio2'])
+				->where('cat_colonia.codigoPostal','!=',0)
+				->orderBy('codigoPostal','asc')
+				->groupBy('codigoPostal')
+				->pluck('codigoPostal','codigopostal');
+				$form['catMunicipios'] = $catMunicipios;
+				$form['catLocalidades'] = $catLocalidades;
+				$form['catColonias'] = $catColonias;
+				$form['catCodigoPostal'] = $catCodigoPostal;
+				if($form['Violencia'] == 1){
+					$form['violencia1'] = 'checked';
+					$form['violencia2'] = '';
+				}
+				else{
+					$form['violencia1'] = '';
+					$form['violencia2'] = 'checked';
+				}
+				if($form['esEmpresa'] == 1){
+					$form['esEmpresa1'] = 'checked';
+					$form['esEmpresa2'] = '';
+				}
+				else{
+					$form['esEmpresa1'] = '';
+					$form['esEmpresa2'] = 'checked';
+				}
+			}
+		}
+		return $form;
 	}
-	else{
-		$form['esEmpresa'] = $valoresOld['esEmpresa'];
-		$form['idEstado2'] = $valoresOld['idEstado2'];
-		$form['idMunicipio2'] = $valoresOld['idMunicipio2'];
-		$form['idLocalidad2'] = $valoresOld['idLocalidad2'];
-		$form['idColonia2'] = $valoresOld['idColonia2'];
-		$form['Violencia'] = $valoresOld['Violencia'];
-		$form['narracion'] = $valoresOld['narracion'];
-		$form['cp2'] = $valoresOld['cp2'];
-		$catMunicipios=DB::table('cat_municipio')
-        ->where('cat_municipio.idEstado','=',$form['idEstado2'])
-        ->orderBy('nombre','asc')
-		->pluck('nombre','id');
-		$catLocalidades=DB::table('cat_localidad')
-		->where('cat_localidad.idMunicipio','=',$form['idMunicipio2'])
-		->orderBy('nombre','asc')
-		->pluck('nombre','id');
-		$catColonias=DB::table('cat_colonia')
-		->where('cat_colonia.codigoPostal','=',$form['cp2'])
-		->orderBy('nombre','asc')
-		->pluck('nombre','id');
-		$catCodigoPostal=DB::table('cat_colonia')
-		->where('cat_colonia.idMunicipio','=',$form['idMunicipio2'])
-		->where('cat_colonia.codigoPostal','!=',0)
-		->orderBy('codigoPostal','asc')
-		->groupBy('codigoPostal')
-		->pluck('codigoPostal','codigopostal');
-	}
-	$form['catMunicipios'] = $catMunicipios;
-	$form['catLocalidades'] = $catLocalidades;
-	$form['catColonias'] = $catColonias;
-	$form['catCodigoPostal'] = $catCodigoPostal;
-	if($form['Violencia'] == 1){
-		$form['violencia1'] = 'checked';
-		$form['violencia2'] = '';
-	}
-	else{
-		$form['violencia1'] = '';
-		$form['violencia2'] = 'checked';
-	}
-	if($form['esEmpresa'] == 1){
-		$form['esEmpresa1'] = 'checked';
-		$form['esEmpresa2'] = '';
-	}
-	else{
-		$form['esEmpresa1'] = '';
-		$form['esEmpresa2'] = 'checked';
-	}
-	return $form;
 }
 
 function oldFormDelitos(){
@@ -205,35 +231,37 @@ function oldFormDelitos(){
 
 function oldFormActas(){
 	$valoresOld = session('_old_input');
-	$form['idEstado2'] = $valoresOld['idEstado2'];
-	$form['idMunicipio2'] = $valoresOld['idMunicipio2'];
-	$form['idLocalidad2'] = $valoresOld['idLocalidad2'];
-	$form['idColonia2'] = $valoresOld['idColonia2'];
-	$form['cp2'] = $valoresOld['cp2'];
-	$form['fecha_nac'] = $valoresOld['fecha_nac'];
-	$catMunicipios=DB::table('cat_municipio')
-	->where('cat_municipio.idEstado','=',$form['idEstado2'])
-	->orderBy('nombre','asc')
-	->pluck('nombre','id');
-	$catLocalidades=DB::table('cat_localidad')
-	->where('cat_localidad.idMunicipio','=',$form['idMunicipio2'])
-	->orderBy('nombre','asc')
-	->pluck('nombre','id');
-	$catColonias=DB::table('cat_colonia')
-	->where('cat_colonia.codigoPostal','=',$form['cp2'])
-	->orderBy('nombre','asc')
-	->pluck('nombre','id');
-	$catCodigoPostal=DB::table('cat_colonia')
-	->where('cat_colonia.idMunicipio','=',$form['idMunicipio2'])
-	->where('cat_colonia.codigoPostal','!=',0)
-	->orderBy('codigoPostal','asc')
-	->groupBy('codigoPostal')
-	->pluck('codigoPostal','codigopostal');
-	$form['catMunicipios'] = $catMunicipios;
-	$form['catLocalidades'] = $catLocalidades;
-	$form['catColonias'] = $catColonias;
-	$form['catCodigoPostal'] = $catCodigoPostal;
-	return $form;
+	if(isset($valoresOld['idEstado2'], $valoresOld['idMunicipio2'],$valoresOld['idLocalidad2'], $valoresOld['idColonia2'], $valoresOld['cp2'], $valoresOld['fecha_nac'] )){
+		$form['idEstado2'] = $valoresOld['idEstado2'];
+		$form['idMunicipio2'] = $valoresOld['idMunicipio2'];
+		$form['idLocalidad2'] = $valoresOld['idLocalidad2'];
+		$form['idColonia2'] = $valoresOld['idColonia2'];
+		$form['cp2'] = $valoresOld['cp2'];
+		$form['fecha_nac'] = $valoresOld['fecha_nac'];
+		$catMunicipios=DB::table('cat_municipio')
+		->where('cat_municipio.idEstado','=',$form['idEstado2'])
+		->orderBy('nombre','asc')
+		->pluck('nombre','id');
+		$catLocalidades=DB::table('cat_localidad')
+		->where('cat_localidad.idMunicipio','=',$form['idMunicipio2'])
+		->orderBy('nombre','asc')
+		->pluck('nombre','id');
+		$catColonias=DB::table('cat_colonia')
+		->where('cat_colonia.codigoPostal','=',$form['cp2'])
+		->orderBy('nombre','asc')
+		->pluck('nombre','id');
+		$catCodigoPostal=DB::table('cat_colonia')
+		->where('cat_colonia.idMunicipio','=',$form['idMunicipio2'])
+		->where('cat_colonia.codigoPostal','!=',0)
+		->orderBy('codigoPostal','asc')
+		->groupBy('codigoPostal')
+		->pluck('codigoPostal','codigopostal');
+		$form['catMunicipios'] = $catMunicipios;
+		$form['catLocalidades'] = $catLocalidades;
+		$form['catColonias'] = $catColonias;
+		$form['catCodigoPostal'] = $catCodigoPostal;
+		return $form;
+	}
 }
 
 function oldFormConocido(){
