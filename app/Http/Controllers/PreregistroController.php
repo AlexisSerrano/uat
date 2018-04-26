@@ -304,6 +304,7 @@ class PreregistroController extends Controller
             $domicilio->save();
             $idD1 = $domicilio->id;
             
+            $edad= Carbon::parse($request->fechaNacimiento)->age;
             $preregistro = new Preregistro();
             $preregistro->nombre = $request->nombre2;
             $preregistro->primerAp = $request->primerAp;
@@ -315,7 +316,7 @@ class PreregistroController extends Controller
             $preregistro->idDireccion = $idD1;
             $preregistro->idRazon = $request->idRazon2;
             $preregistro->fechaNac = $request->fechaNacimiento;
-            $preregistro->edad = $request->edad;
+            $preregistro->edad = $edad;
             if (!is_null($request->rfc2)){
                 $preregistro->rfc = $request->rfc2;
             }

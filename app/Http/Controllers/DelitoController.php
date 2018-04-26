@@ -33,9 +33,6 @@ class DelitoController extends Controller
        $idCarpeta=session('carpeta');
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();//->where('idFiscal', Auth::user()->id)->get();
         if(count($carpetaNueva)>0){ 
-            $denunciados = CarpetaController::getDenunciados($idCarpeta);
-            $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
-            $medidasP= CarpetaController::getMedidasP($idCarpeta);      
             $delitos = CarpetaController::getDelitos($idCarpeta);
             $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
             $delits = CatDelito::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -48,10 +45,6 @@ class DelitoController extends Controller
             $zonas = CatZona::orderBy('nombre', 'ASC')->pluck('nombre', 'id');   
             // dd($delitos);
             return view('forms.delitos')->with('idCarpeta', $idCarpeta)
-                ->with('denunciados', $denunciados)
-                ->with('denunciantes', $denunciantes)
-                ->with('acusaciones', $acusaciones)
-                ->with('medidasP', $medidasP)
                 ->with('delitos', $delitos)
                 ->with('delits', $delits)
                 ->with('estados', $estados)

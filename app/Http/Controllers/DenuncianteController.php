@@ -241,10 +241,12 @@ public function showForm()
             $notificacion->save();
             $idNotificacion = $notificacion->id;
 
+            $edad= Carbon::parse($request->fechaNacimiento)->age;
+
             $VariablesPersona = new VariablesPersona();
             $VariablesPersona->idCarpeta = $idCarpeta;
             $VariablesPersona->idPersona = $idPersona;
-            $VariablesPersona->edad = $request->edad;
+            $VariablesPersona->edad = $edad;
             if (!is_null($request->telefono)){
                 $VariablesPersona->telefono = $request->telefono;
             }

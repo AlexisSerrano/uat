@@ -203,6 +203,7 @@ class DenunciadoController extends Controller
         }
         elseif ($request->tipoDenunciado==3){
             if ($request->esEmpresa==0){
+                
                 $persona = new Persona();
                 $persona->nombres = $request->nombres;
                 $persona->primerAp = $request->primerAp;
@@ -303,10 +304,11 @@ class DenunciadoController extends Controller
                 $notificacion->save();
                 $idNotificacion = $notificacion->id;
 
+                $edad= Carbon::parse($request->fechaNacimiento)->age;
                 $VariablesPersona = new VariablesPersona();
                 $VariablesPersona->idCarpeta = $request->idCarpeta;
                 $VariablesPersona->idPersona = $idPersona;
-                $VariablesPersona->edad = $request->edad;
+                $VariablesPersona->edad = $edad;
                 if (!is_null($request->telefono)){
                     $VariablesPersona->telefono = $request->telefono;
                 }
