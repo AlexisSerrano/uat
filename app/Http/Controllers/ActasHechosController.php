@@ -181,6 +181,34 @@ class ActasHechosController extends Controller
 
     public function showActas(){
         $actas = ActasHechos::orderBy('id','desc')->paginate('15');
-        return view('tables.consulta-actas', compact('actas'));
+        $year = Date::now()->format('Y');
+        return view('tables.consulta-actas', compact('actas','year'));
+    }
+
+    public function filtroActas(Request $request){
+        if($request->input("filtro")!=''){
+            if($request->input("filtro")){
+                $filtro = $request->input("filtro");
+                $request->session()->flash('filtro', $filtro);
+            }
+            else{
+                $filtro = $request->session()->get('filtro');
+                $request->session()->flash('filtro', $filtro);
+    
+            }
+            $year = Date::now()->format('Y');
+            $actas = ActasHechos::
+            where(DB::raw("CONCAT(nombre,' ',primer_ap,' ',segundo_ap)"), 'LIKE', '%' . $filtro . '%')
+            ->orWhere('folio', 'like', '%' . $filtro . '%')
+            ->paginate('15');
+            return view('tables.consulta-actas', compact('actas','year'));
+        }
+        else{
+            return redirect('listaActas');
+        }
+    }
+
+    public function descActas($id){
+        return response()->download('../storage/oficios/ActasHechos'.$id.'.docx');
     }
 }
