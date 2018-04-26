@@ -37,46 +37,65 @@ class PreregistroAuxController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function index()
+    // {
+    
+    //     // codigo de paginacion manual
+    //     $page = Input::get('page', 1);
+    //     $paginate = 10;
+    //     // consultas para union
+    //     $registrosPersonas = DB::table('preregistros')->where('statusCola', null)
+    //     ->join('razones','razones.id','=','preregistros.idRazon')
+    //     ->join('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')
+    //     ->where('conViolencia', 0)
+    //     ->where('esEmpresa', 0)
+    //     ->orderBy('id','desc')
+    //     ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
+    //     'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
+    //     'cat_identificacion.documento as docIdentificacion','numDocIdentificacion','conViolencia','narracion','folio','representanteLegal',
+    //     'statusCancelacion','statusOrigen','statusCola','horaLlegada','unidad','zona','razones.nombre as razon');
+    //     // dd($registrosPersonas);        
+    //     $registrosEmpresas = DB::table('preregistros')->where('statusCola', null)
+    //     ->join('razones','razones.id','=','preregistros.idRazon')
+    //     ->where('conViolencia', 0)
+    //     ->where('esEmpresa', 1)
+    //     ->orderBy('id','desc')
+    //     ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
+    //     'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
+    //     'docIdentificacion','numDocIdentificacion','conViolencia','narracion','folio','representanteLegal',
+    //     'statusCancelacion','statusOrigen','statusCola','horaLlegada','unidad','zona','razones.nombre as razon')
+    //     ->union($registrosPersonas)
+    //     // ->paginate(10)
+    //     ->get()->toArray();
+    //     $registro=$registrosEmpresas;
+    //     // dd($registro);
+    //     $slice = array_slice($registro, $paginate * ($page - 1), $paginate);
+    //     $registros = Paginator::make($slice, count($registro), $paginate);
+        
+    //     $municipios = CatMunicipio::where('idEstado',30)
+    //     ->where('nombre', '!=', 'SIN INFORMACION')
+    //     ->orderBy('nombre','asc')
+    //     ->get();
+    //     return view('servicios.recepcion.preregistros')->with('registros',$registros)->with('municipios', $municipios);
+    // }
+
     public function index()
     {
-    
-        // codigo de paginacion manual
-        $page = Input::get('page', 1);
-        $paginate = 10;
-        // consultas para union
-        $registrosPersonas = DB::table('preregistros')->where('statusCola', null)
-        ->join('razones','razones.id','=','preregistros.idRazon')
-        ->join('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')
+        $registros = DB::table('preregistros')->where('statusCola', null)
+        ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')
+        ->join('razones','razones.id','=','preregistros.idRazon')    
         ->where('conViolencia', 0)
-        ->where('esEmpresa', 0)
         ->orderBy('id','desc')
         ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
         'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
         'cat_identificacion.documento as docIdentificacion','numDocIdentificacion','conViolencia','narracion','folio','representanteLegal',
-        'statusCancelacion','statusOrigen','statusCola','horaLlegada','unidad','zona','razones.nombre as razon');
-        // dd($registrosPersonas);        
-        $registrosEmpresas = DB::table('preregistros')->where('statusCola', null)
-        ->join('razones','razones.id','=','preregistros.idRazon')
-        ->where('conViolencia', 0)
-        ->where('esEmpresa', 1)
-        ->orderBy('id','desc')
-        ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
-        'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
-        'docIdentificacion','numDocIdentificacion','conViolencia','narracion','folio','representanteLegal',
         'statusCancelacion','statusOrigen','statusCola','horaLlegada','unidad','zona','razones.nombre as razon')
-        ->union($registrosPersonas)
-        // ->paginate(10)
-        ->get()->toArray();
-        $registro=$registrosEmpresas;
-        // dd($registro);
-        $slice = array_slice($registro, $paginate * ($page - 1), $paginate);
-        $registros = Paginator::make($slice, count($registro), $paginate);
-        
+        ->paginate('15');
         $municipios = CatMunicipio::where('idEstado',30)
         ->where('nombre', '!=', 'SIN INFORMACION')
         ->orderBy('nombre','asc')
         ->get();
-        return view('servicios.recepcion.preregistros')->with('registros',$registros)->with('municipios', $municipios);
+        return view('servicios.recepcion.preregistros',compact('registros','municipios'));
     }
 
     
@@ -301,8 +320,8 @@ class PreregistroAuxController extends Controller
         }
 
         $registros = DB::table('preregistros')->where('folio', $folio)
+        ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion') 
         ->join('razones','razones.id','=','preregistros.idRazon')
-        ->join('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')        
         ->where('conViolencia', 0)
         ->orWhere(DB::raw("CONCAT(preregistros.nombre,' ',primerAp,' ',segundoAp)"), 'LIKE', '%' . $folio . '%')
         ->orWhere('representanteLegal', 'like', '%' . $folio . '%')
@@ -390,8 +409,8 @@ class PreregistroAuxController extends Controller
         // ->paginate(10);
 
         $registros = DB::table('preregistros')
+        ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion') 
         ->join('razones','razones.id','=','preregistros.idRazon')
-        ->join('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')        
         ->join('domicilio', 'preregistros.idDireccion', '=', 'domicilio.id')
         ->where('statusCola', null)
         ->where('conViolencia', 0)
