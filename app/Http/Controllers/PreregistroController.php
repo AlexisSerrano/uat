@@ -13,6 +13,7 @@ use App\Models\CatOcupacion;
 use App\Models\CatEstadoCivil;
 use App\Models\CatEscolaridad;
 use App\Models\CatIdentificacion;
+use Carbon\Carbon;
 use App\Mail\EnviarCorreo as sendMail;
 use DB;
 use Alert;
@@ -97,6 +98,8 @@ class PreregistroController extends Controller
         //dd($folio);
         //dd($request);
         if ($request->esEmpresa==0){
+            $edad= Carbon::parse($request->fechaNacimiento)->age;
+            // dd($edad);
             $domicilio = new Domicilio();
             if (!is_null($request->idMunicipio2)){
                 $domicilio->idMunicipio = $request->idMunicipio2;
@@ -130,7 +133,7 @@ class PreregistroController extends Controller
             $preregistro->idDireccion = $idD1;
             $preregistro->idRazon = $request->idRazon2;
             $preregistro->fechaNac = $request->fechaNacimiento;
-            $preregistro->edad = $request->edad;
+            $preregistro->edad = $edad;
             $preregistro->idEstadoCivil = $request->estadoCivil;
             $preregistro->idEscolaridad = $request->escolaridad;
             $preregistro->idOcupacion = $request->ocupacion;
