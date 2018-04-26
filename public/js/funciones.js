@@ -114,14 +114,21 @@ function getRandValue(){
 $('.btn-modal').bind('click', function(){
 	$ ('#myModal1').modal('show');
 	var idr = $(this).val();
-	$('#idr').val(idr);
-	$('#tipo_medida2').val($('tr#'+idr+' td.providencia').text());
-	$('#fechaInicio1').val($('tr#'+idr+' td.fechainicio').text());
-	$('#fechaFinal1').val($('tr#'+idr+' td.fechafin').text());
-	$('#quienEjecuta1').val($('tr#'+idr+'td.idejecutor').text());
-	$('#victima1').val($('tr#'+idr+' td.persona').text());
-	$('#observaciones1').val($('tr#'+idr+' td.observacion').text());
-    
+	$.ajax({
+		url : "getMedidasAjax/"+idr,
+		type : 'GET',
+		success : function(json) {
+			$("#observaciones1").val(json.observacion);
+			$("#fechaInicio1").val(json.fechaInicio);
+			$("#fechaFinal1").val(json.fechaFin);
+			$("#tipo_medida2").val(json.nombre);
+			$('#quienEjecuta1').val(json.idEjecutor).trigger('change.select2');
+			$('#victima1').val(json.idPersona).trigger('change.select2');
+			$('#idr').val(json.id);           
+		},
+		error : function(xhr, status) {
+		}
+	});
 	});
 	
 //para mandar los datos ala base de datos 
@@ -136,61 +143,31 @@ $('.btn-modal').bind('click', function(){
 			'victima1'  : $('#victima1').select2('val'),
 			'observaciones1' : $('#observaciones1').val(),
 		}
-		console.log(datos);
-		//console.log($("#tipoProvidencia").val());
-		
 		$.ajax({
 			headers: {
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			},
 			url : "agregar-medidas/editar",
-
 			data : datos,
-
 			type : 'POST',
-
 			success : function(json) {
-				if(json){
-						
+				if(json){	
 				swal("Hecho", "Registro guardado con exito", "success");
-				 location.reload();
+					location.reload();
 				}else{
 					swal("Hecho", "Error", "success");
-				}
-
-				
-
-				console.log(json); 
-
-			                 
+				}            
 			},
-
 			error : function(xhr, status) {
-
-				console.log('Disculpe, existió un problema');
-
-				console.log(xhr);
-
 				swal({
-
 					title: "Error al guardar cambios",
-
 					icon: "error",
-
 				});
-
 			},
-
 			complete : function(xhr, status) {
-
-				console.log('Petición realizada');
-
 			}
-
 		});
-
-		
-		});
+	});
 		
 
 		

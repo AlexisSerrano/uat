@@ -91,14 +91,14 @@
                       <div class="form-group">
                         <div class="col-xm-6">
                                 {!! Form::label('quienEjecuta1', 'Quién ejecuta', ['class' => 'col-form-label-sm']) !!}
-                                {!! Form::select('quienEjecuta1', $ejecutores,2,['class' => 'form-control form-control-sm', 'data-validation'=>'required' ,'id'=>"quienEjecuta1"]) !!}
+                                {!! Form::select('quienEjecuta1', $ejecutores,['class' => 'form-control form-control-sm', 'data-validation'=>'required' ,'id'=>"quienEjecuta1"]) !!}
                         {{-- <input class="form-control " type="text" id="ejecuta" name="ejecuta" placeholder="Ejecuta"> --}}
                         </div>
                       </div>
                       <div class="form-group">
                             <div class="col-xm-6">
                                     {!! Form::label('victima1', 'Victima', ['class' => 'col-form-label-sm']) !!}
-                                    {!! Form::select('victima1', $victimas,1,['class' => 'form-control form-control-sm', 'data-validation'=>'required' ,'id'=>"victima1"]) !!}
+                                    {!! Form::select('victima1', $victimas,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required' ,'id'=>"victima1"]) !!}
                             {{-- <input class="form-control" type="text" id="persona" name="Persona" placeholder="Persona" > --}}
                             </div>
                           </div>
@@ -113,7 +113,7 @@
                 </div> 
                 <!--Final del modal-->
                 <div class="modal-footer">
-                  <button type="button" id="guardar" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Guar</button>
+                  <button type="button" id="guardar" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Editar</button>
                 </div>
       
              </form>

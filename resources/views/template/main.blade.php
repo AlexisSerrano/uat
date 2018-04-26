@@ -140,10 +140,12 @@
 
 <script>
 	$("input:text").keyup(function() {
+		//$(this).addClass( "upper" );
         $(this).val($(this).val().toUpperCase());
 	    });
 	$("textarea").keyup(function() {
-		$(this).val($(this).val().toUpperCase());S
+		//$(this).addClass( "upper" );
+		$(this).val($(this).val().toUpperCase());
 	});
 
 

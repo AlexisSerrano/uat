@@ -149,6 +149,8 @@ Route::get('getMedidas', 'MedidasProteccionController@getMedidas')->name('getMed
 // Route::get('deleteMedida/{id}', 'MedidasProteccionController@deleteMedida')->name('deleteMedida');
 Route::get('agregar-medidas/{id}/eliminar', 'MedidasProteccionController@delete');
 Route::post('agregar-medidas/editar', 'MedidasProteccionController@editar');
+Route::get('getMedidasAjax/{id}', 'MedidasProteccionController@getMedidasAjax');
+
 
 
 /*---------Rutas  Delitos Controller------------*/

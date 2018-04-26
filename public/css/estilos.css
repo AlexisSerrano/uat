@@ -274,5 +274,9 @@ form .form-control:focus {
 	width:200px;
   }
 
+  .upper{
+	text-transform:uppercase; 
+  }
+
 
    
