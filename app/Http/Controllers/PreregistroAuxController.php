@@ -83,8 +83,7 @@ class PreregistroAuxController extends Controller
     {
         $registros = DB::table('preregistros')->where('statusCola', null)
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')
-        ->join('razones','razones.id','=','preregistros.idRazon')    
-        ->where('conViolencia', 0)
+        ->join('razones','razones.id','=','preregistros.idRazon')
         ->orderBy('id','desc')
         ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
         'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
@@ -322,7 +321,6 @@ class PreregistroAuxController extends Controller
         $registros = DB::table('preregistros')->where('folio', $folio)
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion') 
         ->join('razones','razones.id','=','preregistros.idRazon')
-        ->where('conViolencia', 0)
         ->orWhere(DB::raw("CONCAT(preregistros.nombre,' ',primerAp,' ',segundoAp)"), 'LIKE', '%' . $folio . '%')
         ->orWhere('representanteLegal', 'like', '%' . $folio . '%')
         ->orderBy('id','desc')
@@ -362,7 +360,6 @@ class PreregistroAuxController extends Controller
         $registros = DB::table('preregistros')->where('statusCola', 0)
         ->join('razones','razones.id','=','preregistros.idRazon')
         ->join('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')        
-        ->where('conViolencia', 0)
         ->orderBy('horaLlegada','asc')
         ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
         'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
@@ -383,8 +380,7 @@ class PreregistroAuxController extends Controller
 
         $registros = DB::table('preregistros')->where('statusCola', 1)
         ->join('razones','razones.id','=','preregistros.idRazon')
-        ->join('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')        
-        ->where('conViolencia', 0)
+        ->join('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')
         ->orderBy('horaLlegada','asc')
         ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
         'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
@@ -414,7 +410,7 @@ class PreregistroAuxController extends Controller
         ->join('domicilio', 'preregistros.idDireccion', '=', 'domicilio.id')
         ->where('domicilio.idMunicipio',$id)
         ->where('statusCola', null)
-        ->where('conViolencia', 0)
+        ->where('idMunicipio',$id)
         ->orderBy('id','desc')
         ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
         'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
@@ -583,10 +579,8 @@ class PreregistroAuxController extends Controller
 
     public function Traerturno(){
         $cola = Preregistro::where('statusCola', 0)
-        ->where('conViolencia', 0)
         ->orderBy('horaLlegada','asc')->first();
         $urgente = Preregistro::where('statusCola', 1)
-        ->where('conViolencia', 0)
         ->orderBy('horaLlegada','asc')->first();
         if(!$urgente&&!$cola){
             Alert::warning('', 'No hay elemento en cola');

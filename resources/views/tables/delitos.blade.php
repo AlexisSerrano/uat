@@ -1,4 +1,5 @@
-<h6>Delitos</h6>
+
+
 <div class="table">
     <table class="table table-striped">
         <thead>
@@ -19,14 +20,29 @@
                         <td>{{ $delito->fecha }}</td>
                         <td>{{ $delito->hora }}</td>
                         <td>
-                        <a href="{{ url('delito/'.$delito->id.'/eliminar')}}"  rel="tooltip" title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
+                       <a href="{{ url('delito/'.$delito->id.'/eliminar')}}"  rel="tooltip" title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
                         <i class="fa fa-times"></i></a>
                             <a href="{{ url('delito/'.$delito->id.'/editar')}}"  rel="tooltip" title="Editar Registro" class="btn btn-secondary btn-simple btn-xs">
                             <i class="fa fa-edit"></i></a>
-                            </td>  
+
+                            
+                          
+                            </td> 
+                          
                     </tr>
+
+                    {{-- <button 
+                    type="button" 
+                    class="btn btn-primary" 
+                    data-toggle="modal"
+                    data-id="{{ $delito->id }}"
+                   
+                    data-target="#myModal">
+                   Add to Favorites
+                 </button> --}}
                 @endforeach
             @endif
         </tbody>
     </table>
 </div>
+
