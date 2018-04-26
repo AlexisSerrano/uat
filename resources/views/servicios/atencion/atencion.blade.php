@@ -1,5 +1,5 @@
 @extends('template.form')
-@section('title','Atención Rápida')
+@section('title','Atención rápida')
 @section('content')
 <div id="page-content-wrapper">
     @include('fields.errores')
