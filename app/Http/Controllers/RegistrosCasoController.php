@@ -33,7 +33,7 @@ class RegistrosCasoController extends Controller
         // 
         // ->orderBy('id','desc')
         // ->paginate(10);
-        $registros = DB::table('preregistros')->where('statusCola', null)
+        $registros = DB::table('preregistros')->where('statusCola', null)->where('tipoActa', null)
         ->join('razones','razones.id','=','preregistros.idRazon')
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')        
         ->orderBy('horaLlegada','asc')
@@ -246,7 +246,7 @@ class RegistrosCasoController extends Controller
 
 
        public function buscarmunicipio($id){
-        $registros = DB::table('preregistros')
+        $registros = DB::table('preregistros')->where('tipoActa', null)
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion') 
         ->join('razones','razones.id','=','preregistros.idRazon')
         ->join('domicilio', 'preregistros.idDireccion', '=', 'domicilio.id')
@@ -278,7 +278,7 @@ class RegistrosCasoController extends Controller
 
         }
 
-        $registros = DB::table('preregistros')->where('folio', $folio)
+        $registros = DB::table('preregistros')->where('folio', $folio)->where('tipoActa', null)
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion') 
         ->join('razones','razones.id','=','preregistros.idRazon')
         ->orWhere(DB::raw("CONCAT(preregistros.nombre,' ',primerAp,' ',segundoAp)"), 'LIKE', '%' . $folio . '%')

@@ -129,7 +129,7 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
 	{{-- <script src="{{ asset('js/scripts.js')}}"></script> --}}
 	<script src="{{asset('js/preregistro.js')}}"></script> 
-	<script>
+	{{-- <script>
 
 	
 		$(function () {
@@ -152,5 +152,5 @@
 
 		
 
-	</script>
+	</script> --}}
 @endpush

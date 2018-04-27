@@ -36,14 +36,14 @@
 			</div>
 
 		
-			<div class="col-1">
+			{{-- <div class="col-1">
 				<div class="form-group">
 					{!! Form::label('edad', 'Edad', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 18, 'max' => 150,'data-validation'=>'required']) !!}
 				</div>
-			</div>
+			</div> --}}
 				
-			<div class="col-2">
+			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo','data-validation'=>'required']) !!}

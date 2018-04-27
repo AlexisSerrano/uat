@@ -81,7 +81,7 @@ class PreregistroAuxController extends Controller
 
     public function index()
     {
-        $registros = DB::table('preregistros')->where('statusCola', null)
+        $registros = DB::table('preregistros')->where('tipoActa', null)->where('statusCola', null)
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')
         ->join('razones','razones.id','=','preregistros.idRazon')
         ->orderBy('id','desc')
@@ -182,6 +182,9 @@ class PreregistroAuxController extends Controller
     
         //dd($docIdent);                     
         $persona= $preregistro->esEmpresa;//persona fisica o empresa
+
+        $tipoActa= $preregistro->tipoActa;
+
         if($persona==1){
             return view('servicios.recepcion.forms.editconrecepcion-empresa', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon','identificaciones','docIdent' ));
         }
@@ -321,7 +324,7 @@ class PreregistroAuxController extends Controller
 
         }
 
-        $registros = DB::table('preregistros')->where('folio', $folio)
+        $registros = DB::table('preregistros')->where('folio', $folio)->where('tipoActa', null)
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion') 
         ->join('razones','razones.id','=','preregistros.idRazon')
         ->orWhere(DB::raw("CONCAT(preregistros.nombre,' ',primerAp,' ',segundoAp)"), 'LIKE', '%' . $folio . '%')
@@ -407,7 +410,7 @@ class PreregistroAuxController extends Controller
         // ->select('preregistros.id', 'preregistros.folio', 'preregistros.esEmpresa', 'preregistros.nombre', 'preregistros.primerAp', 'preregistros.segundoAp', 'preregistros.representanteLegal', 'preregistros.docIdentificacion')
         // ->paginate(10);
 
-        $registros = DB::table('preregistros')
+        $registros = DB::table('preregistros')->where('tipoActa', null)
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion') 
         ->join('razones','razones.id','=','preregistros.idRazon')
         ->join('domicilio', 'preregistros.idDireccion', '=', 'domicilio.id')

@@ -23,7 +23,7 @@
         <hr>
         <table class="table table-striped">
             <thead>
-                <th>fecha</th>
+                <th>Folio</th>
                 <th>Nombre</th>
                 <th>Tipo de acta</th>
                 <th>Opciones</th>                               

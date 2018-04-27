@@ -52,31 +52,31 @@
 			{!! Form::label('fechaNacimiento', 'Fecha de nacimiento: ', ['class' => 'col-form-label-sm labelCambioFechaNac']) !!}
 			{!!Form::label('nombre',$preregistro->fechaNac ,['class'=> 'col-form-label-sm labelCambioFechaNac'])!!}
 			<div class="input-group inputOculto" id="inputFechaNac">
-				<div class="input-group date" id="fechanac" data-target-input="nearest">
-					{!! Form::text('fechaNacimiento', $preregistro->fechaNac, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'required']) !!}
-					<div class="input-group-append" data-target="#fechanac" data-toggle="datetimepicker">
+				{{-- <div class="input-group date" id="fechanac" data-target-input="nearest"> --}}
+					{!! Form::date('fechaNacimiento', $preregistro->fechaNac, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'required']) !!}
+					<input type="button" id="botonCambioEdad" value="Cancelar" class="btn btn-sm btn-danger">
+					{{-- <div class="input-group-append" data-target="#fechanac" data-toggle="datetimepicker">
 						<div class="input-group-text"><i class="fa fa-calendar"></i></div>
-					</div>
+					</div> --}}
 					
-				</div>
+				{{-- </div> --}}
 			</div>
 			<div class="help-block with-errors"></div>	
 		</div>
 	</div>
-	<div class="col-2">
+	{{-- <div class="col-2">
 		<div class="form-group">
 			{!! Form::label('edad', 'Edad: ', ['class' => 'col-form-label-sm labelCambioEdad']) !!}
 			{!!Form::label('nombre',$preregistro->edad ,['class'=> 'col-form-label-sm labelCambioEdad'])!!}
 			<div class="input-group inputOculto" id="inputEdad">
 				{!! Form::number('edad', $preregistro->edad, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 0, 'max' => 150, 'required']) !!}
-				<input type="button" id="botonCambioEdad" value="Cancelar" class="btn btn-sm btn-danger">
 			</div>
 			<div class="help-block with-errors"></div>
 		</div>
 		
 	</div>
-	
-	<div class="col-2">
+	 --}}
+	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('sexo', 'Sexo: ', ['class' => 'col-form-label-sm labelCambioSexo']) !!}
 			{!!Form::label('nombre',$preregistro->sexo ,['class'=> 'col-form-label-sm labelCambioSexo'])!!}
