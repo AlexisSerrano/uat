@@ -38,8 +38,8 @@
                     <td>{{ $acta->nombre." ".$acta->primerAp." ".$acta->segundoAp }}</td>
                     <td>{{ $acta->tipoActa }}</td>
                     <td>
-                        <a href="{{ url('atender-acta/'.$acta->id.'')}}" title="Atender" class="btn btn-success">
-                            <i class="fa fa-edit"></i> Atender
+                        <a href="{{ url('atender-acta/'.$acta->id.'')}}" title="Atender" class="btn btn-primary">
+                            <i class="fa fa-file-text-o"></i> Atender
                         </a>
                     </td>                                  
                     </tr>
