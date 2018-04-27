@@ -2,16 +2,10 @@
 @section('title', 'Libro de gobierno')
 
 @section('content')
-<div id="page-content-wrapper">
-    <div class="col-md-12">
-        <h6 style="text-align:center">UNIDAD DE ATENCIÓN TEMPRANA DEL DISTRITO JUDICIAL</h6>
-        <div class="table table-hover table-responsive">
-            <div class="">
-             
-                
-                <table id="tablacarpetas">
-                    <br>
-                    <thead class="table-active">
+<div class="table">
+        <table class="table table-hover table-striped" id="tablacarpetas">
+               
+                <thead class="table-active">
                         {{-- <th >N.</th> --}}
                         <th >ID</th>
                         <th >Fecha</th>
@@ -29,38 +23,33 @@
                         <th >Nuevo numero de carpeta UIPJ</th> --}}
                         <th>Ver detalles</th>
                     </thead>
-                    <tbody>
-                        @if(count($carpetas)==0)
-                        <tr><td colspan="4" class="text-center">Sin Registros</td></tr>
-                    @else
-                        @foreach($carpetas as $carpeta)
-                            <tr>
-                                <td>{{ $carpeta->id}}</td> 
-                                <td>{{ $carpeta->fechaInicio}}</td>
-                                <td>{{ $carpeta->horaIntervencion}}</td>
-                                {{-- <td>{{ $acusacion->denunciante }}</td>
-                                <td>{{ $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2 }}</td>  --}}
-                                <td>{{ $carpeta->numCarpeta }}</td>
-                                {{-- <td>{{ $acusacion->delito }}</td> --}}
-                                {{-- <td>{{ $acusacion->formaComision }}</td>  --}}
-                                <td>{{ $carpeta->idEstadoCarpeta}}</td>
-                                <td>
-                                    <a href="{{ url('buscarcarpeta/'.$carpeta->id)}}"   rel="tooltip" title="Editar Registro" class="btn btn-secondary btn-simple btn-xs">
-                                        <i class="fa fa-edit"></i></a>
-                                       </td> 
-                                    
-                                    </tr>
-                                    @endforeach
-                            @endif
-                        </tbody>
+                    @if(count($carpetas)==0)
+                    <tr><td colspan="4" class="text-center">Sin Registros</td></tr>
+                @else
+                    @foreach($carpetas as $carpeta)
+                        <tr>
+                            <td>{{ $carpeta->id}}</td> 
+                            <td>{{ $carpeta->fechaInicio}}</td>
+                            <td>{{ $carpeta->horaIntervencion}}</td>
+                            {{-- <td>{{ $acusacion->denunciante }}</td>
+                            <td>{{ $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2 }}</td>  --}}
+                            <td>{{ $carpeta->numCarpeta }}</td>
+                            {{-- <td>{{ $acusacion->delito }}</td> --}}
+                            {{-- <td>{{ $acusacion->formaComision }}</td>  --}}
+                            <td>{{ $carpeta->idEstadoCarpeta}}</td>
+                            <td>
+                                <a href="{{ url('buscarcarpeta/'.$carpeta->id)}}"   rel="tooltip" title="Editar Registro" class="btn btn-secondary btn-simple btn-xs">
+                                    <i class="fa fa-edit"></i></a>
+                                   </td> 
+                                
+                                </tr>
+                                @endforeach
+                        @endif
                     </table>
                     <div class="mt-2 mx-auto">
                             {{ $carpetas->links() }}
                     </div>
                 <br>
-            </div>
-            </div>
-    </div>
 </div>
 @endsection
     

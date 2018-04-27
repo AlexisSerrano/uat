@@ -6,7 +6,7 @@
 <div id="page-content-wrapper">
     <div class="col-md-12">
         <h6 style="text-align:center">UNIDAD DE ATENCIÓN TEMPRANA DEL DISTRITO JUDICIAL</h6>
-            <div class="table table-hover table-responsive">
+            <div class="table  table-hover table-responsive">
                 <div class="">
                     <table id="tablaprovidencias" class="table-sm">
                         <br>
