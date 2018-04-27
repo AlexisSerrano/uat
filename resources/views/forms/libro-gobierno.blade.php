@@ -33,14 +33,14 @@
                                 <tr>
                                   <td>{{ $carpterminada->id}}</td> 
                                   <td>{{ $carpterminada->fechaInicio}}</td>
-                                  <td>{{ $carpterminada->denunciante }}</td>
+                                  <td>{{ $carpterminada->nombres." ".$carpterminada->primerAp." ".$carpterminada->segundoAp}}</td>
                                   <td>{{ $carpterminada->nombres2." ".$carpterminada->primerAp2." ".$carpterminada->segundoAp2 }}</td> 
-                                  <td>{{ $carpterminada->numCarpeta }}</td>
-                                  <td>{{ $carpterminada->delito }}</td>
-                                  <td>{{ $carpterminada->formaComision }}</td> 
+                                  <td>{{ $carpterminada->numCarpeta}}</td>
+                                  <td>{{ $carpterminada->delito}}</td>
+                                  <td>{{ $carpterminada->formaComision}}</td> 
                                   <td>sin datos</td>
                                   <td>sin datos</td>
-                                  <td>{{ $carpterminada->estadoCarpeta}}</td>
+                                  <td>{{ $carpterminada->idEstadoCarpeta}}</td>
                                   <td>sin datos</td>
                                   <td>sin datos</td>
                                   <td>sin datos</td>
