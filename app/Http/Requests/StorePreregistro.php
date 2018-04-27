@@ -25,7 +25,7 @@ class StorePreregistro extends FormRequest
     {
         return [
             /*validacion de empresa*/
-            'nombre1' => 'string|min:3|max:200',
+            'nombre1' => 'string|min:2|max:200',
             'rfc1' => 'alpha_num|rfc|min:10|max:20',
             'representanteLegal' => 'string|min:4|max:100',
             'calle1' => 'string|min:4|max:100',
@@ -36,9 +36,9 @@ class StorePreregistro extends FormRequest
 
             /*validacion de persona*/
 
-            'nombre2' => 'string|min:3|max:200',
-            'primerAp' => 'string|min:3|max:50',
-            'segundoAp' => 'string|min:3|max:50',
+            'nombre2' => 'string|min:2|max:200',
+            'primerAp' => 'string|min:2|max:50',
+            'segundoAp' => 'string|min:2|max:50',
             'rfc2' => 'alpha_num|rfc|min:10|max:20',
             'curp' => 'string|min:18|max:20',
             'telefono2' => 'numeric',
@@ -55,7 +55,7 @@ class StorePreregistro extends FormRequest
     {
         return [
             'nombresQ.boolean' => 'A title is required',
-            'nombre1.min' => 'El  NOMBRE debe de contener al menos 3 caracteres.',
+            'nombre1.min' => 'El  NOMBRE debe de contener al menos 2 caracteres.',
             'nombre1.max' => 'El  NOMBRE no debe de contener mas 200 caracteres.',
             'rfc1.min' => 'El  RFC debe de contener al menos 10 caracteres.',
             'rfc1.max' => 'El  RFC no debe de contener al menos 20 caracteres.',
@@ -80,12 +80,12 @@ class StorePreregistro extends FormRequest
             /*validacion de persona*/
         
 
-            'nombre2.min' => 'El  NOMBRE debe de contener al menos 3 caracteres.',
+            'nombre2.min' => 'El  NOMBRE debe de contener al menos 2 caracteres.',
             'nombre2.max' => 'El  NOMBRE no de contener mas de 200 caracteres.',
-            'primerAp.min' => 'El APELLIDO PATERNO debe contener al menos 3 caracteres.',
-            'primerAp.min' => 'El APELLIDO PATERNO no debe contener mas de 50 caracteres.',
-            'SegundoAp.min' => 'El APELLIDO MATERNO debe contener al menos 3 caracteres.',
-            'SegundoAp.min' => 'El APELLIDO MATERNO no debe contener mas de 50 caracteres.',
+            'primerAp.min' => 'El primer apellido debe contener al menos 2 caracteres.',
+            'primerAp.max' => 'El primer apellido no debe contener mas de 50 caracteres.',
+            'SegundoAp.min' => 'El segundo apellido debe contener al menos 3 caracteres.',
+            'SegundoAp.max' => 'El segundo apellido no debe contener mas de 50 caracteres.',
             'rfc2.min' => 'El  RFC debe de contener al menos 10 caracteres.',
             'rfc2.max' => 'El  RFC no debe de contener al menos 20 caracteres.',
             'rfc2.rfc' => 'El RFC no es valido.',
