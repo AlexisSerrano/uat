@@ -1,5 +1,5 @@
 @extends('template.form')
-@section('title', 'Libro de gobierno')
+@section('title', 'Carpetas')
 
 @section('content')
 <div class="table">
