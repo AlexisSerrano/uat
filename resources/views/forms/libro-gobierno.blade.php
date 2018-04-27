@@ -27,7 +27,7 @@
                         </thead>
                         <tbody>
                                 @if(count($carpterminadas)==0)
-                                <tr><td colspan="4" class="text-center">Sin Registros</td></tr>
+                                <tr><td colspan="13" class="text-center">Sin Registros</td></tr>
                             @else
                                 @foreach($carpterminadas as $carpterminada)
                                 <tr>

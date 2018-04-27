@@ -24,7 +24,7 @@
                         <th>Ver detalles</th>
                     </thead>
                     @if(count($carpetas)==0)
-                    <tr><td colspan="4" class="text-center">Sin Registros</td></tr>
+                    <tr><td colspan="6" class="text-center">Sin Registros</td></tr>
                 @else
                     @foreach($carpetas as $carpeta)
                         <tr>
