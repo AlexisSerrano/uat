@@ -72,7 +72,7 @@
 			      		<td><a href="{{url("registros/".$registro->id."/edit")}}"><i class="fa fa-check-square-o" aria-hidden="true"></i></a></td>
 			    	</tr>
 					@empty
-
+					<tr><td colspan="7" class="text-center">Sin registros</td></tr>					
 			  		@endforelse
 			  	</tbody>
 			</table>
