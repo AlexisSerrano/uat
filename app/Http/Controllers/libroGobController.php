@@ -29,7 +29,8 @@ class libroGobController extends Controller
     public function showForm($id)
     {
        
-        $idCarpeta='1';
+        session(['carpeta' => $id]);
+        $idCarpeta=$id;
        // $idCarpeta=session('carpeta');
         //dd($idCarpeta);
         // if (is_null($idCarpeta)) {
