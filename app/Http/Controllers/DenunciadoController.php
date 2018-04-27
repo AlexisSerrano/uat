@@ -83,10 +83,6 @@ class DenunciadoController extends Controller
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();
         if(count($carpetaNueva)>0){ 
             $denunciados = CarpetaController::getDenunciados($idCarpeta);
-            $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
-            $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
-            $medidasP= CarpetaController::getMedidasP($idCarpeta);
-            $delitos = CarpetaController::getDelitos($idCarpeta);
             $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -98,10 +94,6 @@ class DenunciadoController extends Controller
             $religiones = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             return view('forms.denunciado')->with('idCarpeta', $idCarpeta)
                 ->with('denunciados', $denunciados)
-                ->with('denunciantes', $denunciantes)
-                ->with('medidasP', $medidasP)
-                ->with('acusaciones', $acusaciones)
-                ->with('delitos', $delitos)
                 ->with('escolaridades', $escolaridades)
                 ->with('estados', $estados)
                 ->with('estadoscivil', $estadoscivil)

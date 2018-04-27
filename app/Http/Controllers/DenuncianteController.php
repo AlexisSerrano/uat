@@ -73,10 +73,6 @@ public function showForm()
         //dd($idCarpeta);
         if(count($casoNuevo)>0){ 
             $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
-            $denunciados = CarpetaController::getDenunciados($idCarpeta);
-            $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
-            $medidasP= CarpetaController::getMedidasP($idCarpeta);
-            $delitos = CarpetaController::getDelitos($idCarpeta);
             $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -88,10 +84,6 @@ public function showForm()
 
             return view('forms.denunciante')->with('idCarpeta', $idCarpeta)
                 ->with('denunciantes', $denunciantes)
-                ->with('denunciados', $denunciados)
-                ->with('acusaciones', $acusaciones)
-                ->with('medidasP', $medidasP)
-                ->with('delitos', $delitos)
                 ->with('escolaridades', $escolaridades)
                 ->with('estados', $estados)
                 ->with('estadoscivil', $estadoscivil)
