@@ -27,29 +27,36 @@
                         {{-- <th>Resultado final</th>
                         <th>Oficio turno a fiscal de distrito</th>
                         <th >Nuevo numero de carpeta UIPJ</th> --}}
+                        <th>Ver detalles</th>
                     </thead>
-                    {{-- <tbody>
-                        @if(count($acusaciones)==0)
+                    <tbody>
+                        @if(count($carpetas)==0)
                         <tr><td colspan="4" class="text-center">Sin Registros</td></tr>
                     @else
-                        @foreach($acusaciones as $acusacion)
+                        @foreach($carpetas as $carpeta)
                             <tr>
-                                <td>{{ $acusacion->id}}</td> 
-                                <td>{{ $acusacion->fechaInicio}}</td>
-                                <td>{{ $acusacion->horaIntervencion}}</td>
-                                <td>{{ $acusacion->denunciante }}</td>
-                                <td>{{ $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2 }}</td> 
-                                <td>{{ $acusacion->numCarpeta }}</td>
-                                <td>{{ $acusacion->delito }}</td>
-                                <td>{{ $acusacion->formaComision }}</td> 
-                                <td>{{ $acusacion->estadoCarpeta}}</td>
+                                <td>{{ $carpeta->id}}</td> 
+                                <td>{{ $carpeta->fechaInicio}}</td>
+                                <td>{{ $carpeta->horaIntervencion}}</td>
+                                {{-- <td>{{ $acusacion->denunciante }}</td>
+                                <td>{{ $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2 }}</td>  --}}
+                                <td>{{ $carpeta->numCarpeta }}</td>
+                                {{-- <td>{{ $acusacion->delito }}</td> --}}
+                                {{-- <td>{{ $acusacion->formaComision }}</td>  --}}
+                                <td>{{ $carpeta->idEstadoCarpeta}}</td>
+                                <td>
+                                    <a href="{{ url('buscarcarpeta/'.$carpeta->id)}}"   rel="tooltip" title="Editar Registro" class="btn btn-secondary btn-simple btn-xs">
+                                        <i class="fa fa-edit"></i></a>
+                                       </td> 
                                     
                                     </tr>
                                     @endforeach
                             @endif
-                        </tbody> --}}
+                        </tbody>
                     </table>
-                
+                    <div class="mt-2 mx-auto">
+                            {{ $carpetas->links() }}
+                    </div>
                 <br>
             </div>
             </div>
@@ -57,15 +64,16 @@
 </div>
 @endsection
     
+{{-- SECCION --}}
 
 
-@section('css')
-	{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" /> --}}
+{{-- @section('css')
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
     <link rel="stylesheet" href="{{ asset('css/dataTables.min.css') }}">
 @endsection
 
 @push('scripts')
-	{{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script> --}}
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="{{ asset('js/dataTables.min.js') }}"></script>
     <script>
         $(document).ready(function(){
@@ -85,12 +93,12 @@
                     { data: 'numCarpeta' , name: 'numCarpeta'},
                     { data: 'estadoCarpeta' , name: 'estadoCarpeta'},
                  
-                    // { data: null, "orderable": false,  render: function ( data, type, row ) {
-                    //     return "<a href='{{ url('deleteMedida') }}/"+ data.id +"' class='btn btn-xs btn-primary' >Eliminar</button>"  }  
-                    // }
+                    { data: null, "orderable": false,  render: function ( data, type, row ) {
+                        return "<a href='{{ url('deleteMedida') }}/"+ data.id +"' class='btn btn-xs btn-primary' >Eliminar</button>"  }  
+                    }
                 ]
             });
         });
     </script>
   
-@endpush
+@endpush --}}
