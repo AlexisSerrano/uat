@@ -167,9 +167,22 @@
 							<p>Actas de hechos</p>
 						</a>
 					</li>
+					<li class="nav-item has-treeview">
+						<a href="{{url('carpetas')}}" class="nav-link">
+							<i class="nav-icon  fa fa-archive"></i>
+							<p>Carpetas</p>
+						</a>
+					</li>
+					<li class="nav-item has-treeview">
+						<a href="{{url('libro')}}" class="nav-link">
+							<i class="nav-icon  fa fa-book"></i>
+							<p>Libro de gobierno</p>
+						</a>
+					</li>
+
 
 					
-					<li class="nav-header">EXTRAS</li>
+					{{-- <li class="nav-header">EXTRAS</li> --}}
 			
 					{{-- <li class="nav-item has-treeview">
 						<a href="#" class="nav-link">
