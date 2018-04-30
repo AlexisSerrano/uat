@@ -4,24 +4,24 @@
 		{!! Form::hidden('idCarpeta', $idCarpeta) !!}
 		@endif
 		<div class="form-group">
-			{!! Form::label('idDelito', 'Delito', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idDelito', $delits, $TipifDelito->idDelito, ['class' => 'form-control form-control-sm select2', 'placeholder' => 'Seleccione un delito', 'required']) !!}
+			{!! Form::label('idDelito2', 'Delito', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idDelito2', $delits, null, ['class' => 'form-control form-control-sm select2', 'placeholder' => 'Seleccione un delito', 'required', 'id'=>'idDelito2']) !!}
 		</div>
 	</div>
 
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('formaComision', 'Forma de comisión', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('formaComision', ['CULPOSO' => 'CULPOSO', 'DOLOSO' => 'DOLOSO'],  $TipifDelito->formaComision, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una forma de comisión', 'required']) !!}
+			{!! Form::label('formaComision2', 'Forma de comisión', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('formaComision2', ['CULPOSO' => 'CULPOSO', 'DOLOSO' => 'DOLOSO'],  '$TipifDelito->formaComision', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una forma de comisión', 'required', 'id'=>'formaComision2']) !!}
 		</div>
 	</div>
 
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('fecha', 'Fecha', ['class' => 'col-form-label-sm']) !!}
-			<div class="input-group date" id="fechadelit" data-target-input="nearest">
-				{!! Form::text('fecha', $TipifDelito->fecha , ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadelit', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
-				<span class="input-group-addon" data-target="#fechadelit" data-toggle="datetimepicker">
+			{!! Form::label('fecha2', 'Fecha', ['class' => 'col-form-label-sm']) !!}
+			<div class="input-group date" id="fechadeli" data-target-input="nearest">
+				{!! Form::text('fecha2', null , ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadeli', 'required', 'placeholder' => 'DD/MM/AAAA', 'id'=>'fecha2']) !!}
+				<span class="input-group-addon" data-target="#fechadeli" data-toggle="datetimepicker">
 					<div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
 				</span>
 			</div>
@@ -29,10 +29,10 @@
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('hora', 'Hora', ['class' => 'col-form-label-sm']) !!}
-			<div class="input-group date" id="horadelit" data-target-input="nearest">
-				{!! Form::text('hora',  $TipifDelito->hora, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#horadelit', 'required', 'placeholder' => '00:00']) !!}
-				<div class="input-group-addon" data-target="#horadelit" data-toggle="datetimepicker">
+			{!! Form::label('hora2', 'Hora', ['class' => 'col-form-label-sm']) !!}
+			<div class="input-group date" id="horadeli" data-target-input="nearest">
+				{!! Form::text('hora2',  'hora', ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#horadeli', 'required', 'placeholder' => '00:00', 'id'=>'hora2']) !!}
+				<div class="input-group-addon" data-target="#horadeli" data-toggle="datetimepicker">
 					<div class="input-group-text"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
 				</div>
 			</div>

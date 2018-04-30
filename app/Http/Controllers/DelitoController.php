@@ -47,6 +47,7 @@ class DelitoController extends Controller
             // $tiposarma = CatTipoArma::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $zonas = CatZona::orderBy('nombre', 'ASC')->pluck('nombre', 'id');   
             // dd($delitos);
+           
             return view('forms.delitos')->with('idCarpeta', $idCarpeta)
                 ->with('denunciados', $denunciados)
                 ->with('denunciantes', $denunciantes)
@@ -135,6 +136,8 @@ class DelitoController extends Controller
     }
 
 
+
+
     public function delete($id){
 
         $TipifDelito =  TipifDelito::find($id);
@@ -144,55 +147,28 @@ class DelitoController extends Controller
 
     }
 
+
+
+
+
     public function editar($id){
-
-        $TipifDelito =  TipifDelito::find($id);
-       
-        $delitos = CarpetaController::getDelitos($id);
-         $idDireccionTipifD =$TipifDelito->idDomicilio;
-         $direccionTB=DB::table('domicilio') //id's de domicilios (municipio,localidad)
-        ->where('domicilio.id','=',$idDireccionTipifD)
-        ->get();//id direccion
-        $municipio=DB::table('cat_municipio')//nombre municipio
-        ->where('cat_municipio.id','=',$direccionTB[0]->idMunicipio)
-        ->get();
-        $colonia=DB::table('cat_colonia')//nombre municipio
-        ->where('cat_colonia.id','=',$direccionTB[0]->idColonia)
-        ->get();
-        $idMunicipioSelect = $direccionTB[0]->idMunicipio;
-        $idEstadoSelect = $municipio[0]->idEstado; 
-        $idLocalidadSelect = $direccionTB[0]->idLocalidad;
-        $idColoniaSelect = $direccionTB[0]->idColonia;
-        $idCodigoPostalSelect = $colonia[0]->codigoPostal;
-
-        $catMunicipios=DB::table('cat_municipio')
-        ->where('cat_municipio.idEstado','=',$idEstadoSelect)
-        ->orderBy('nombre','asc')
-        ->pluck('nombre','id');
-        $catLocalidades=DB::table('cat_localidad')
-        ->where('cat_localidad.idMunicipio','=',$idMunicipioSelect)
-        ->orderBy('nombre','asc')
-        ->pluck('nombre','id');
-        $catColonias=DB::table('cat_colonia')
-        ->where('cat_colonia.codigoPostal','=',$idCodigoPostalSelect)
-        ->orderBy('nombre','asc')
-        ->pluck('nombre','id');
-        $catCodigoPostal=DB::table('cat_colonia')
-        ->where('cat_colonia.idMunicipio','=',$idMunicipioSelect)
-        ->where('cat_colonia.codigoPostal','!=',0)
-        ->orderBy('codigoPostal','asc')
-        ->groupBy('codigoPostal')
-        ->pluck('codigoPostal','codigopostal');
+        
         
        
-       
-       
-        $delits = CatDelito::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        $lugares = CatLugar::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        $zonas = CatZona::orderBy('nombre', 'ASC')->pluck('nombre', 'id');  
-        
-      return view ('forms.modalDelitosEdit', compact ('TipifDelito','delits','delitos','estados','lugares','zonas','domicilio','direccionTB','municipio','coloniaRow','idMunicipioSelect','idEstadoSelect','idLocalidadSelect','idCodigoPostalSelect','idColoniaSelect','catMunicipios','catLocalidades','catColonias','catCodigoPostal'));
+
+
+
+        $delito = DB::table('tipif_delito')
+        ->join('cat_delito', 'tipif_delito.idDelito','=','cat_delito.id') 
+        ->where('tipif_delito.id',$id)
+        ->select('tipif_delito.idDelito','tipif_delito.formaComision','tipif_delito.fecha', 'tipif_delito.hora',  'tipif_delito.conViolencia')
+        ->first();
+
+     
+        return response()->json($delito);
+
+
+    //   return view ('forms.modalDelitosEdit', compact ('TipifDelito','delits','delitos','estados','lugares','zonas','domicilio','direccionTB','municipio','coloniaRow','idMunicipioSelect','idEstadoSelect','idLocalidadSelect','idCodigoPostalSelect','idColoniaSelect','catMunicipios','catLocalidades','catColonias','catCodigoPostal'));
     }
 
     public function actualizar(Request $request, $id)
