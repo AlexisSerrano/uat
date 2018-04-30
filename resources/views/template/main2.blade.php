@@ -41,10 +41,10 @@
 <script src="{{ asset('js/jquery.form-validator.min.js')}}" ></script>
 <script src="{{ asset('js/toastr.min.js')}}"></script>
 <script>
-    $("input:text").keyup(function() {
+    $("input:text").focusout(function() {
           $(this).val($(this).val().toUpperCase());
         });
-    $("textarea").keyup(function() {
+    $("textarea").focusout(function() {
       $(this).val($(this).val().toUpperCase());S
     });
 

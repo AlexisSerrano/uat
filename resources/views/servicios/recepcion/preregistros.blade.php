@@ -8,7 +8,16 @@
 			    <span class="navbar-toggler-icon"></span>
 			  	</button>
 			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			    	<ul class="navbar-nav mr-auto" style="margin-left: -20px;">
+			    	<ul class="navbar-nav mr-auto" style="margin-left: -8px;">
+						<LI>
+								<form class="form-inline my-2 my-lg-0" method="POST" action="{{ url('showbyfolio') }}" id="busquedafolio">
+										@csrf
+										  <input class="form-control mr-sm-2 col-8" type="text" name="folio" id="folio" placeholder="Buscar" aria-label="Buscar">
+										  <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+									</form>
+						</LI>
+					</ul>
+					<ul class="navbar-nav mr-auto" style="margin-left: 440px;">
 			      		<li class="nav-item" style="margin-left: 30px;">
 			        		<select class="form-control" id="filmunicipio" name="filmunicipio">
                                 @forelse($municipios as $municipio)
@@ -25,12 +34,8 @@
                                 @endforelse
                             </select>
 			      		</li>
-			    	</ul>
-			    	<form class="form-inline my-2 my-lg-0" method="POST" action="{{ url('showbyfolio') }}" id="busquedafolio">
-			    		@csrf
-			      		<input class="form-control mr-sm-2 col-8" type="text" name="folio" id="folio" placeholder="Buscar" aria-label="Buscar">
-			      		<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-			    	</form>
+					
+			    	
 			  	</div>
 			</nav>
 		</div>
@@ -48,7 +53,8 @@
 			    	</tr>
 			  	</thead>
 			  	<tbody>
-			  		@forelse($registros as $registro)
+					  
+					@forelse($registros as $registro)
 			  		<tr>
 			  			<th scope="row">{{$registro->id}}</th>
 			      		<td>{{$registro->folio}}</th>
@@ -59,7 +65,8 @@
 			      		<td><a href="{{url("predenuncias/".$registro->id."/edit")}}"><i class="fa fa-check-square-o" aria-hidden="true"></i></a></td>
 			    	</tr>
 					@empty
-
+					<tr><td colspan="7" class="text-center">Sin registros</td></tr>
+					
 			  		@endforelse
 			  	</tbody>
 			</table>

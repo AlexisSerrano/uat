@@ -55,20 +55,20 @@
 @push('scripts')
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
 <script>
-    $(function () {
-        $('#fechanac').datetimepicker({
-            format: 'YYYY-MM-DD'
-        });
-    });
+    // $(function () {
+    //     $('#fechanac').datetimepicker({
+    //         format: 'YYYY-MM-DD'
+    //     });
+    // });
 
-    $("#fechanac").on("change.datetimepicker", function (e) {
-        $('#edad').val(moment().diff(e.date,'years'));
-    });
+    // $("#fechanac").on("change.datetimepicker", function (e) {
+    //     $('#edad').val(moment().diff(e.date,'years'));
+    // });
 
-    $( "#edad" ).change(function() {
-        var anios = $('#edad').val();
-        $('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
-    });
+    // $( "#edad" ).change(function() {
+    //     var anios = $('#edad').val();
+    //     $('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
+    // });
 
     $(document).ready(function(){
         //editar el campo al dar clic en el label de nombre

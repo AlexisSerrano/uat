@@ -20,7 +20,7 @@ $form = oldFormActas();
             </div>
             <div class="row menu">	
                 <div class="col text-left">
-                    <a href="{{route('actaspendientes')}}" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Atras</a>
+                    <a href="{{route('actaspendientes')}}" class="btn btn-secondary"><i class="fa fa-arrow-left"></i></a>
                 </div>
                 <div class="col text-right">
                     {!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarActa'))!!}

@@ -83,10 +83,6 @@ class DenunciadoController extends Controller
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();
         if(count($carpetaNueva)>0){ 
             $denunciados = CarpetaController::getDenunciados($idCarpeta);
-            $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
-            $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
-            $medidasP= CarpetaController::getMedidasP($idCarpeta);
-            $delitos = CarpetaController::getDelitos($idCarpeta);
             $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -98,10 +94,6 @@ class DenunciadoController extends Controller
             $religiones = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             return view('forms.denunciado')->with('idCarpeta', $idCarpeta)
                 ->with('denunciados', $denunciados)
-                ->with('denunciantes', $denunciantes)
-                ->with('medidasP', $medidasP)
-                ->with('acusaciones', $acusaciones)
-                ->with('delitos', $delitos)
                 ->with('escolaridades', $escolaridades)
                 ->with('estados', $estados)
                 ->with('estadoscivil', $estadoscivil)
@@ -203,6 +195,7 @@ class DenunciadoController extends Controller
         }
         elseif ($request->tipoDenunciado==3){
             if ($request->esEmpresa==0){
+                
                 $persona = new Persona();
                 $persona->nombres = $request->nombres;
                 $persona->primerAp = $request->primerAp;
@@ -303,10 +296,11 @@ class DenunciadoController extends Controller
                 $notificacion->save();
                 $idNotificacion = $notificacion->id;
 
+                $edad= Carbon::parse($request->fechaNacimiento)->age;
                 $VariablesPersona = new VariablesPersona();
                 $VariablesPersona->idCarpeta = $request->idCarpeta;
                 $VariablesPersona->idPersona = $idPersona;
-                $VariablesPersona->edad = $request->edad;
+                $VariablesPersona->edad = $edad;
                 if (!is_null($request->telefono)){
                     $VariablesPersona->telefono = $request->telefono;
                 }

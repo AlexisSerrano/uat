@@ -6,7 +6,7 @@
 <div id="page-content-wrapper">
     <div class="col-md-12">
         <h6 style="text-align:center">UNIDAD DE ATENCIÓN TEMPRANA DEL DISTRITO JUDICIAL</h6>
-            <div class="table table-hover table-responsive">
+            <div class="table  table-hover table-responsive">
                 <div class="">
                     <table id="tablaprovidencias" class="table-sm">
                         <br>
@@ -27,20 +27,20 @@
                         </thead>
                         <tbody>
                                 @if(count($carpterminadas)==0)
-                                <tr><td colspan="4" class="text-center">Sin Registros</td></tr>
+                                <tr><td colspan="13" class="text-center">Sin Registros</td></tr>
                             @else
                                 @foreach($carpterminadas as $carpterminada)
                                 <tr>
                                   <td>{{ $carpterminada->id}}</td> 
                                   <td>{{ $carpterminada->fechaInicio}}</td>
-                                  <td>{{ $carpterminada->denunciante }}</td>
+                                  <td>{{ $carpterminada->nombres." ".$carpterminada->primerAp." ".$carpterminada->segundoAp}}</td>
                                   <td>{{ $carpterminada->nombres2." ".$carpterminada->primerAp2." ".$carpterminada->segundoAp2 }}</td> 
-                                  <td>{{ $carpterminada->numCarpeta }}</td>
-                                  <td>{{ $carpterminada->delito }}</td>
-                                  <td>{{ $carpterminada->formaComision }}</td> 
+                                  <td>{{ $carpterminada->numCarpeta}}</td>
+                                  <td>{{ $carpterminada->delito}}</td>
+                                  <td>{{ $carpterminada->formaComision}}</td> 
                                   <td>sin datos</td>
                                   <td>sin datos</td>
-                                  <td>{{ $carpterminada->estadoCarpeta}}</td>
+                                  <td>{{ $carpterminada->idEstadoCarpeta}}</td>
                                   <td>sin datos</td>
                                   <td>sin datos</td>
                                   <td>sin datos</td>

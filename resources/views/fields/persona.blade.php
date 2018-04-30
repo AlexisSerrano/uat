@@ -4,13 +4,13 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('nombres', 'Nombre', ['class' => 'necesario col-form-label-sm']) !!}
-					{!! Form::text('nombres',$preregistro->nombre, ['class' => ' necesario form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras']) !!}
+					{!! Form::text('nombres',$preregistro->nombre, ['class' => ' necesario form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' ,'data-validation' =>'length','data-validation-length' =>'min2', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras']) !!}
 				</div>
 			</div>
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('primerAp', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('primerAp', $preregistro->primerAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','data-validation'=>'required']) !!}
+					{!! Form::text('primerAp', $preregistro->primerAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','data-validation'=>'custom' ,'data-validation' =>'length','data-validation-length' =>'min2', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras']) !!}
 				</div>
 			</div>
 			<div class="col-3">
@@ -25,39 +25,42 @@
 					{!! Form::text('rfc',  $preregistro->rfc,  ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'data-validation'=>'required']) !!}
 				</div>
 			</div>
+
+			<div class="col-3">
+					<div class="form-group">
+						{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::text('curp',  $preregistro->curp,['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.','data-validation'=>'required']) !!}
+					</div>
+				</div>
 	
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
-					<div class="input-group date" id="fechanac" data-target-input="nearest">
-						{!! Form::text('fechaNacimiento', $preregistro->fechaNac, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'required', 'placeholder' => 'AAAA/MM/DD']) !!}
-						<div class="input-group-addon" data-target="#fechanac" data-toggle="datetimepicker">
+					{{-- <div class="input-group date" id="fechanac" data-target-input="nearest"> --}}
+					 {{-- <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="{{$preregistro->fechaNac}}"class="form-control form-control-sm", data-validation="birthdate"> --}}
+						{!! Form::date('fechaNacimiento',$preregistro->fechaNac , ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'required', 'placeholder' => 'AAAA/MM/DD']) !!} 
+						 {{-- <div class="input-group-addon" data-target="#fechanac" data-toggle="datetimepicker">
 							<div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
-						</div>
-					</div>
+						</div> --}}
+					{{-- </div> --}}
 				</div>
 			</div>
 
-			<div class="col-1">
+			{{-- <div class="col-1">
 				<div class="form-group">
 					{!! Form::label('edad', 'Edad', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::number('edad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la edad', 'min' => 18, 'max' => 150, 'data-validation'=>'required']) !!}
 				</div>
-			</div>
+			</div> --}}
 				
-			<div class="col-2">
+			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], $preregistro->sexo, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo','data-validation'=>'required']) !!}
 				</div>
 			</div>
 			
-			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('curp',  $preregistro->curp,['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.','data-validation'=>'required']) !!}
-				</div>
-			</div>
+			
 			
 			<div class="col-3">
 				<div class="form-group">
@@ -101,12 +104,12 @@
 				</div>
 			</div>
 			
-			<div class="col-3">
+			{{-- <div class="col-3">
 				<div class="form-group">
 					{!! Form::label('motivoEstancia', 'Motivo de estancia', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('motivoEstancia', 'SIN INFORMACION', ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el motivo de estancia']) !!}
 				</div>
-			</div>
+			</div> --}}
 			
 			<div class="col-3">
 				<div class="form-group">
@@ -136,7 +139,7 @@
 				</div>
 			</div>
 			
-			<div class="col-3">
+			<div class="col-6">
 				<div class="form-group">
 					{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('docIdentificacion',$preregistro->docIdentificacion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificación','data-validation'=>'required']) !!}

@@ -139,12 +139,10 @@
 {{-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEg9FTRwRH0bfUVa_bP5QUOe-hHJM6LHM&libraries=places&sensor=false"></script> --}}
 
 <script>
-	$("input:text").keyup(function() {
-		//$(this).addClass( "upper" );
+	$("input:text").focusout(function() {
         $(this).val($(this).val().toUpperCase());
 	    });
-	$("textarea").keyup(function() {
-		//$(this).addClass( "upper" );
+	$("textarea").focusout(function() {
 		$(this).val($(this).val().toUpperCase());
 	});
 

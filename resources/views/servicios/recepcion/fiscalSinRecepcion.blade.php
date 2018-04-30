@@ -8,35 +8,42 @@
 			    <span class="navbar-toggler-icon"></span>
 			  	</button>
 			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			    	<ul class="navbar-nav mr-auto" style="margin-left: 10px;">
-							<li class=" nav-item active">
-									<a class="nav-link" href="{{url('registros')}}">
-										<button class="btn btn-outline-secondary">Todos</button>
-									</a>
-									  </li>
-			      		<li class="nav-item">
-			        		<select class="form-control" id="filfiscal" name="filfiscal">
-                                @forelse($municipios as $municipio)
-                                	@if(isset($idMunicipioSelect))
-	                                	@if($municipio->id==$idMunicipioSelect)
-	                                	<option value="{{$municipio->id}}" selected>{{$municipio->nombre}}</option>
-	                                	@else
-	                                	<option value="{{$municipio->id}}">{{$municipio->nombre}}</option>
-	                                	@endif
-	                                @else
-	                                	<option value="{{$municipio->id}}">{{$municipio->nombre}}</option>
-	                                @endif	
-                                @empty
-                                @endforelse
-                            </select>
-						  </li>
-					
-			    	</ul>
-			    	<form class="form-inline my-2 my-lg-0" method="POST" action="{{ url('buscarfolio') }}" id="busquedafolio">
-			    		@csrf
-			      		<input class="form-control mr-sm-2 col-8" type="text" name="folio" id="folio" placeholder="Buscar" aria-label="Buscar">
-			      		<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-			    	</form>
+						<ul class="navbar-nav mr-auto" style="margin-left: -8px;">
+							<li>
+								<form class="form-inline my-2 my-lg-0" method="POST" action="{{ url('buscarfolio') }}" id="busquedafolio">
+										@csrf
+											<input class="form-control mr-sm-2 col-8" type="text" name="folio" id="folio" placeholder="Buscar" aria-label="Buscar">
+											<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+								</form>		
+							</li>
+							
+									
+						</ul>
+						<ul class="navbar-nav mr-auto" style="margin-left: 440px;">
+								<li class="nav-item" style="margin-left: 30px;">
+									<select class="form-control" id="filfiscal" name="filfiscal">
+										@forelse($municipios as $municipio)
+											@if(isset($idMunicipioSelect))
+												@if($municipio->id==$idMunicipioSelect)
+												<option value="{{$municipio->id}}" selected>{{$municipio->nombre}}</option>
+												@else
+												<option value="{{$municipio->id}}">{{$municipio->nombre}}</option>
+												@endif
+											@else
+												<option value="{{$municipio->id}}">{{$municipio->nombre}}</option>
+											@endif	
+										@empty
+										@endforelse
+									</select>
+								</li>						
+					</ul>
+				</ul>
+				<ul class="navbar-nav mr-auto">
+						<a class="nav-link" href="{{url('registros')}}">
+								<button class="btn btn-secondary">Todos</button>
+						</a>
+				</ul>
+			    	
 			  	</div>
 			</nav>
 		</div>
@@ -65,7 +72,7 @@
 			      		<td><a href="{{url("registros/".$registro->id."/edit")}}"><i class="fa fa-check-square-o" aria-hidden="true"></i></a></td>
 			    	</tr>
 					@empty
-
+					<tr><td colspan="7" class="text-center">Sin registros</td></tr>					
 			  		@endforelse
 			  	</tbody>
 			</table>

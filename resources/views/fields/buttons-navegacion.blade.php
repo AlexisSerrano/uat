@@ -1,39 +1,39 @@
 @php
-	if (count($denunciantes)==0){
+	// if (count($denunciantes)==0){
 		$registroDenunciante='btn btn-secondary';
-	}else{
-		$registroDenunciante='btn btn-primary';
-	}
-	if (count($denunciados)==0){
+	// }else{
+	// 	$registroDenunciante='btn btn-primary';
+	// }
+	// if (count($denunciados)==0){
 		$registroDenunciado='btn btn-secondary';
-	}else{
-		$registroDenunciado='btn btn-primary';
-	}
-	if (!isset($registroAbogado)){
+	// }else{
+	// 	$registroDenunciado='btn btn-primary';
+	// }
+	// if (!isset($registroAbogado)){
 		$registroAbogado='btn btn-secondary';
-	}
-	if (!isset($registroAutoridad)){
+	// }
+	// if (!isset($registroAutoridad)){
 		$registroAutoridad='btn btn-secondary';
-	}
-	if (count($acusaciones)==0){
+	// }
+	// if (count($acusaciones)==0){
 		$registroAcusaciones='btn btn-secondary';
-	}else{
-		$registroAcusaciones='btn btn-primary';
-	}
-	if (count($delitos)==0){
+	// }else{
+	// 	$registroAcusaciones='btn btn-primary';
+	// }
+	// if (count($delitos)==0){
 		$registroDelitos='btn btn-secondary';
-	}else{
-		$registroDelitos='btn btn-primary';
-	}
-	if (!isset($registroDefenza)){
+	// }else{
+	// 	$registroDelitos='btn btn-primary';
+	// }
+	// if (!isset($registroDefenza)){
 		$registroDefenza='btn btn-secondary';
-	}
-	if (!isset($registroDescripcion)){
+	// }
+	// if (!isset($registroDescripcion)){
 		$registroDescripcion='btn btn-secondary';
-    }
-    if (!isset($medidasProteccion)){
+    // }
+    // if (!isset($medidasProteccion)){
 		$medidasProteccion='btn btn-secondary';
-	}
+	// }
 	
 	@endphp
 <div class="btn-group col">

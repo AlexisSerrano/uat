@@ -12,7 +12,7 @@
             <th>Teléfono</th>
             <th>Tipo de persona</th>
             <th>Tipo de solicitante</th>
-            <th>Resguardar identidad</th>
+            <th>Identidad resguardada</th>
             <th>Opciones</th>
             {{--  <th>Opciones</th>  --}}
         </thead>

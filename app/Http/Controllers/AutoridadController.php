@@ -31,12 +31,6 @@ class AutoridadController extends Controller
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();//->where('idFiscal', Auth::user()->id)->get();
         if(count($carpetaNueva)>0){ 
             $autoridades = CarpetaController::getAutoridades($idCarpeta);
-            $denunciados = CarpetaController::getDenunciados($idCarpeta);
-            $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
-            $medidasP= CarpetaController::getMedidasP($idCarpeta);      
-            $delitos = CarpetaController::getDelitos($idCarpeta);
-            $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
-            $abogados = CarpetaController::getAbogados($idCarpeta);
             $escolaridades = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -49,12 +43,6 @@ class AutoridadController extends Controller
             //dd($ocupaciones);
             return view('forms.autoridad')->with('idCarpeta', $idCarpeta)
                 ->with('autoridades', $autoridades)
-                ->with('abogados', $abogados)
-                ->with('denunciados', $denunciados)
-                ->with('denunciantes', $denunciantes)
-                ->with('acusaciones', $acusaciones)
-                ->with('medidasP', $medidasP)
-                ->with('delitos', $delitos)
                 ->with('escolaridades', $escolaridades)
                 ->with('estados', $estados)
                 ->with('estadoscivil', $estadoscivil)

@@ -44,8 +44,8 @@ $form = oldFormActas();
 
 <div class="col-4">
     <div class="form-group">
-        {!! Form::label('expedido', 'Expedido por:', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('expedido', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Expedido por:','data-validation'=>'required' ]) !!}
+        {!! Form::label('expedido', 'Expedido por', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::text('expedido', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Expedido por','data-validation'=>'required' ]) !!}
         <div class="help-block with-errors"></div>
     </div>
 </div>
