@@ -462,7 +462,29 @@ class DenunciadoController extends Controller
     public function delete($id){
 
             $ExtraDenunciado =  ExtraDenunciado::find($id);
-            $ExtraDenunciado->delete();
+             $idVPersona = $ExtraDenunciado->idVariablesPersona; 
+             $idNotificacion = $ExtraDenunciado->idNotificacion;
+
+             $VariablesPersona = VariablesPersona::find($idVPersona);
+             $idPersona = $VariablesPersona->idPersona ;
+             $idDomicilio = $VariablesPersona->idDomicilio;
+             $idDomicilioT = $VariablesPersona->idDomicilioTrabajo;
+
+            $Domicilio =  Domicilio::find($idDomicilio);
+            $DomicilioT =  Domicilio::find($idDomicilioTrabajo);
+
+             $personas = Persona::find($idPersona);
+
+             $notificacion =  DirNotificacion::find($idNotificacion);
+
+             $ExtraDenunciado->delete();
+             $VariablesPersona->delete();
+             $Domicilio->delete();
+             $DomicilioT->delete();
+             $personas->delete();
+             $notificacion->delete();
+           
+
             Alert::success('Registro eliminado con éxito', 'Hecho');
             return back();
 

@@ -392,7 +392,28 @@ public function showForm()
     public function delete($id){
 
         $ExtraDenunciante =  ExtraDenunciante::find($id);
+        $idVPersona = $ExtraDenunciante->idVariablesPersona; 
+        $idNotificacion = $ExtraDenunciante->idNotificacion;
+
+        $VariablesPersona = VariablesPersona::find($idVPersona);
+        $idPersona = $VariablesPersona->idPersona ;
+        $idDomicilio = $VariablesPersona->idDomicilio;
+        $idDomicilioT = $VariablesPersona->idDomicilioTrabajo;
+
+        $Domicilio =  Domicilio::find($idDomicilio);
+        $DomicilioT =  Domicilio::find($idDomicilioTrabajo);
+        $personas = Persona::find($idPersona);
+        $notificacion =  DirNotificacion::find($idNotificacion);
+      
+
         $ExtraDenunciante->delete();
+        $VariablesPersona->delete();
+        $Domicilio->delete();
+        $DomicilioT->delete();
+        $personas->delete();
+        $notificacion->delete();
+
+
         Alert::success('Registrado eliminado con éxito', 'Hecho');
         return back();
 
