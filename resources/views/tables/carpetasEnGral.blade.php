@@ -9,7 +9,7 @@
                         {{-- <th >N.</th> --}}
                         <th >ID</th>
                         <th >Fecha</th>
-                        <th >Hora de intervencion</th>
+                        <th >Hora de intervención</th>
                         {{-- <th >Victima/Querellante</th>
                         <th >Ofensor/Q.R.R</th> --}}
                         <th >Carpeta de investigación</th> 
