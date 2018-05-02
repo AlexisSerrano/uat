@@ -25,16 +25,16 @@ class StoreAbogado extends FormRequest
     {
         return [
                       
-            'nombres' => 'nombre|min:3|max:50',
-            'primerAp' => 'nombre|min:3|max:50',
-            'primerAp' => 'nombre|min:3|max:50',
+            'nombres' => 'string|min:3|max:50',
+            'primerAp' => 'string|min:3|max:50',
+            'primerAp' => 'string|min:3|max:50',
             'rfc' => 'rfc|min:10|max:20',
             'telefono' => 'numeric',
             'lugarTrabajo' => 'string',
             'telefonoTrabajo' => 'numeric',
             'calle2' => 'string|min:4|max:100',
-            'numExterno2' => 'alfanumdiag|min:1|max:10',
-            'numInterno2' => 'alfanumdiag|min:1|max:10',
+            'numExterno2' => 'string|min:1|max:10',
+            'numInterno2' => 'nullable|string|min:1|max:10',
             'cedulaProf' => 'string|min:1|max:50',
             'correo' => 'email',
 

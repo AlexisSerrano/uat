@@ -21,6 +21,7 @@ use App\Models\Domicilio;
 use App\Http\Requests\StoreDenunciado;
 use App\Models\BitacoraNavCaso;
 use Alert;
+use DB;
 use Carbon\Carbon;
 
 class DenunciadoController extends Controller
@@ -124,7 +125,11 @@ class DenunciadoController extends Controller
             $domicilio->idColonia = $request->idColoniaC;
             $domicilio->calle = $request->calleC;
             $domicilio->numExterno = $request->numExternoC;
-            $domicilio->numInterno = $request->numInternoC;
+            if($request->numInternoC==null){
+                $domicilio->numInterno = 'S/N';
+            }else{
+                $domicilio->numInterno = $request->numInternoC;
+            }
             $domicilio->save();
             $idD1 = $domicilio->id;
 
@@ -416,7 +421,7 @@ class DenunciadoController extends Controller
             }      
         }
         Alert::success('Denunciado registrado con éxito', 'Hecho');
-        return redirect()->route('new.denunciado', $request->idCarpeta);
+        return redirect()->route('new.denunciado');
     }
 
     public function delete($id){
