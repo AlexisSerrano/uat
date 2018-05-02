@@ -127,7 +127,15 @@ class ActasHechosController extends Controller
             $acta->idEscolaridad = $request->escActa1;
             $acta->telefono = $request->telefono;
             $acta->narracion = $request->narracion;
-            $acta->expedido = $request->expedido;
+            switch ($request->docIdentificacion) {
+                case 'CURP':
+                $acta->expedido = "INSTITUCION";
+                    break;
+                
+                default:
+                    $acta->expedido = $request->expedido;
+                    break;
+            }
             if (!is_null($request->tipoActa)){
                 $acta->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa;
             }
