@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreDenunciante;
 use DB;
 use Alert;
 use Carbon\Carbon;
@@ -120,7 +121,7 @@ public function showForm()
     }
 
 
-    public function storeDenunciante(Request $request){
+    public function storeDenunciante(StoreDenunciante $request){
         //dd($request->all());
         $idCarpeta = session('carpeta');
         if(is_null($idCarpeta)){
