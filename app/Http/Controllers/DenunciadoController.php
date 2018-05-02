@@ -57,43 +57,59 @@ class DenunciadoController extends Controller
     }
 
     public function storeDenunciado(StoreDenunciado $request){
+        //dd($request->all());
+        $idCarpeta=session('carpeta');
         if ($request->tipoDenunciado==1){
-            $persona = new Persona();
-            $persona->nombres = $request->nombresQ;
-            $persona->save();
-            $idPersona = $persona->id;
-
-            $domicilio = new Domicilio();
-            $domicilio->save();
-            $idD1 = $domicilio->id;
-
-            $domicilio2 = new Domicilio();
-            $domicilio2->save();
-            $idD2 = $domicilio2->id;
-
-            $domicilio3 = new Domicilio();
-            $domicilio3->save();
-            $idD3 = $domicilio3->id;
-
-            $VariablesPersona = new VariablesPersona();
-            $VariablesPersona->idCarpeta = $request->idCarpeta;
-            $VariablesPersona->idPersona = $idPersona;
-            $VariablesPersona->idDomicilio = $idD1;
-            $VariablesPersona->idDomicilioTrabajo = $idD2;
-            $VariablesPersona->save();
-            $idVariablesPersona = $VariablesPersona->id;
-
-            $notificacion = new DirNotificacion();
-            $notificacion->idDomicilio = $idD3;
-            $notificacion->save();
-            $idNotificacion = $notificacion->id;
-
-            $ExtraDenunciado = new ExtraDenunciado();
-            $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
-            $ExtraDenunciado->idNotificacion = $idNotificacion;
-            $ExtraDenunciado->save();
-            $this->addbitacora();
+            
+           $sql=DB::table('variables_persona')
+           ->join('persona','persona.id','=','variables_persona.idPersona')
+           ->where('variables_persona.idCarpeta', $idCarpeta)
+           ->where('persona.nombres','QUIEN  O QUIENES RESULTEN RESPONSABLES')
+           ->select('persona.nombres')
+            ->first();
+            if($sql){
+                Alert::warning('','Solo puedes agregar un Q.R.R');
+                return redirect()->route('new.denunciado');
+            }else{
+                $persona = new Persona();
+                $persona->nombres = $request->nombresQ;
+                $persona->save();
+                $idPersona = $persona->id;
+             
+                    
+    
+                $domicilio = new Domicilio();
+                $domicilio->save();
+                $idD1 = $domicilio->id;
+    
+                $domicilio2 = new Domicilio();
+                $domicilio2->save();
+                $idD2 = $domicilio2->id;
+    
+                $domicilio3 = new Domicilio();
+                $domicilio3->save();
+                $idD3 = $domicilio3->id;
+    
+                $VariablesPersona = new VariablesPersona();
+                $VariablesPersona->idCarpeta = $request->idCarpeta;
+                $VariablesPersona->idPersona = $idPersona;
+                $VariablesPersona->idDomicilio = $idD1;
+                $VariablesPersona->idDomicilioTrabajo = $idD2;
+                $VariablesPersona->save();
+                $idVariablesPersona = $VariablesPersona->id;
+    
+                $notificacion = new DirNotificacion();
+                $notificacion->idDomicilio = $idD3;
+                $notificacion->save();
+                $idNotificacion = $notificacion->id;
+    
+                $ExtraDenunciado = new ExtraDenunciado();
+                $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
+                $ExtraDenunciado->idNotificacion = $idNotificacion;
+                $ExtraDenunciado->save();
+                 $this->addbitacora();
         }
+    }
         elseif ($request->tipoDenunciado==2){
             $persona = new Persona();
             $persona->nombres = $request->nombresC;

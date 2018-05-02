@@ -5,7 +5,7 @@
 
 {!!Form::open(['route' => 'store.denunciante'])!!}
 
-@include('fields.buttons-navegacion')
+{{-- @include('fields.buttons-navegacion') --}}
   
 <div id="page-content-wrapper">
 {{--  <span class="datotip" id="{{$tipopersona}}"></span> 	  --}}
