@@ -97,15 +97,15 @@
 		<nav>
 			<div class="nav nav-tabs color-nav-tab" id="nav-tab" role="tablist">
 				{{--  datos personales  --}}
-				<a class="nav-item nav-link active color-nav-tab" id="personales-tab" data-toggle="tab" href="#personales" role="tab" aria-controls="nav-personales" aria-selected="true">Datos personales <span><i class="fa fa-angle-down"></i></span></a>
+				<a class="nav-item nav-link active color-nav-tab disabled" id="personales-tab" data-toggle="tab" href="#personales" role="tab" aria-controls="nav-personales" aria-selected="true">Datos personales <span><i class="fa fa-angle-down"></i></span></a>
 				{{--  Datos del Direccion particular--}}
-				<a class="nav-item nav-link color-nav-tab" id="direccion-tab" data-toggle="tab" href="#direccion" role="tab" aria-controls="nav-direccion" aria-selected="false">Domicilio <span><i class="fa fa-angle-down"></i></span> </a>
+				<a class="nav-item nav-link color-nav-tab disabled" id="direccion-tab" data-toggle="tab" href="#direccion" role="tab" aria-controls="nav-direccion" aria-selected="false">Domicilio <span><i class="fa fa-angle-down"></i></span> </a>
 				{{--  Direccion Trabajo del trabajo--}}
-				<a class="nav-item nav-link color-nav-tab" id="trabajo-tab" data-toggle="tab" href="#trabajo" role="tab" aria-controls="trabajo" aria-selected="false">Datos del trabajo <span><i class="fa fa-angle-down"></i></span> </a>
+				<a class="nav-item nav-link color-nav-tab disabled" id="trabajo-tab" data-toggle="tab" href="#trabajo" role="tab" aria-controls="trabajo" aria-selected="false">Datos del trabajo <span><i class="fa fa-angle-down"></i></span> </a>
 				{{-- Domicilio Notificaciones--}}
-				<a class="nav-item nav-link" id="dirnotificacion-tab" data-toggle="tab" href="#dirnotificacion" role="tab" aria-controls="dirnotificacion" aria-selected="false">Domicilio para notificaciones <span><i class="fa fa-angle-down"></i></span></a>
+				<a class="nav-item nav-link disabled" id="dirnotificacion-tab" data-toggle="tab" href="#dirnotificacion" role="tab" aria-controls="dirnotificacion" aria-selected="false">Domicilio para notificaciones <span><i class="fa fa-angle-down"></i></span></a>
 				{{-- Informacion deninciante  --}}
-				<a class="nav-item nav-link" id="denunciado-tab" data-toggle="tab" href="#denunciado" role="tab" aria-controls="denunciado" aria-selected="false">Datos del denunciado <span><i class="fa fa-angle-down"></i></span></a>	 	
+				<a class="nav-item nav-link disabled" id="denunciado-tab" data-toggle="tab" href="#denunciado" role="tab" aria-controls="denunciado" aria-selected="false">Datos del denunciado <span><i class="fa fa-angle-down"></i></span></a>	 	
 			
 			</div>
 		</nav>
@@ -163,7 +163,7 @@
 							<a id="adireccion2" class="btn btn-secondary irdireccion"><i class="fa fa-arrow-left"></i></a>
 						</div>
 						<div class="col text-right">
-							<a id="Adenunciante" class="btn btn-secondary irdenunciado"><i class="fa fa-arrow-right"></i></a>
+							<a id="Adenunciado" class="btn btn-secondary irdenunciado"><i class="fa fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -207,51 +207,6 @@
 	{{-- <script src="{{ asset('js/validation.js')}}"></script>
 	<script src="{{ asset('js/validation-orientador.js')}}"></script> --}}
 	<script>
-		// $('.irtrabajo').click(function(){
-		// 	$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-		// 	$('#trabajo-tab').addClass("active");//Agrego la clase active al tab actual
-		// 	$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-		// 	$('.tab-pane').removeClass("show");
-		// 	$('#trabajo').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-		// 	$('#trabajo').addClass("show");
-		// });
-
-		// $('.irdireccion').click(function(){
-		// 	$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-		// 	$('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
-		// 	$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-		// 	$('.tab-pane').removeClass("show");
-		// 	$('#direccion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-		// 	$('#direccion').addClass("show");
-		// });
-
-		
-		// $('.irpersonales').click(function(){
-		// 	$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-		// 	$('#personales-tab').addClass("active");//Agrego la clase active al tab actual
-		// 	$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-		// 	$('.tab-pane').removeClass("show");
-		// 	$('#personales').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-		// 	$('#personales').addClass("show");
-		// });
-
-		// $('.irdirnotificacion').click(function(){
-		// 	$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-		// 	$('#dirnotificacion-tab').addClass("active");//Agrego la clase active al tab actual
-		// 	$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-		// 	$('.tab-pane').removeClass("show");
-		// 	$('#dirnotificacion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-		// 	$('#dirnotificacion').addClass("show");
-		// });
-
-		// $('.irdenunciado').click(function(){
-		// 	$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-		// 	$('#denunciado-tab').addClass("active");//Agrego la clase active al tab actual
-		// 	$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-		// 	$('.tab-pane').removeClass("show");
-		// 	$('#denunciado').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-		// 	$('#denunciado').addClass("show");
-		// });
 
 	$(document).ready(function(){
 		$(function () {

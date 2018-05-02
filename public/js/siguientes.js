@@ -1,10 +1,26 @@
 //agregar denunciante
+// $(document).ready(function(){
+
+    // if ($('#esEmpresa1').is(':checked') ) {
+
+    //     $('.nav-link').removeClass("active");//quitamos clases de activo
+    //         $('#direccion-tab').addClass("disabled");
+    //         $('#trabajo-tab').addClass("disabled");
+    //         $('#dirnotificacion-tab').addClass("disabled");
+    //         $('#denunciante-tab').addClass("disabled");
+    //         $('#personales-tab').addClass("active");
+
+    
+
+
+
 //Datos personales-direccion
 $('#Adireccion').click(function(){
     //es para empresa
     if ($('#esEmpresa1').is(':checked') ) {
         console.log('entra empresa')
         validarEmpresa();
+        
     }
     else{
         console.log('entra persona')
@@ -14,22 +30,27 @@ $('#Adireccion').click(function(){
 function validarEmpresa(){
 
     var completo=0;
+    
     if ($('.empresa').val().length == 0){
-        completo=1;
+       completo=1;
     }
     else{
-    $('.nav-link').removeClass("active");//Quito la clase active al tab actual
+        
+    $('.nav-link').removeClass("active");
     $('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
     $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
     $('.tab-pane').removeClass("show");
     $('#direccion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
     $('#direccion').addClass("show");
+    completo=2;
     console.log("todo bien!")
     }
 
     if (completo==1) {
+        
     toastr.error("Complete los campos faltantes para poder avanzar");
     }
+    
 }   
     function validarPersona(){
 
@@ -220,6 +241,55 @@ function validarNotificaciones(){
         }
     }
 
+    $('#Adenunciado').click(function(){
+        validarNotificaciones();
+    });
+
+    function validarNotDenunciado(){
+        var notificaciones=0;
+    
+            if ($('#idEstado3').val().length == 0){
+                notificaciones=1;
+                }
+            if ($('#idMunicipio3').val().length == 0){
+                notificaciones=1;
+                }
+            if ($('#idLocalidad3').val().length == 0){
+                notificaciones=1;
+                }
+            if ($('#idColonia3').val().length == 0){
+                notificaciones=1;
+                }
+            if ($('#cp3').val().length == 0){
+                notificaciones=1;
+                }
+            if ($('#calle3').val().length == 0){
+                notificaciones=1;
+                }
+            if ($('#numExterno3').val().length == 0){
+                notificaciones=1;
+                }
+            if ($('#correo').val().length == 0){
+            notificaciones=1;
+            }
+            if ($('#telefonoN').val().length == 0){
+            notificaciones=1;
+            
+            }
+            else{
+            $('.nav-link').removeClass("active");//Quito la clase active al tab actual
+            $('#denunciado-tab').addClass("active");//Agrego la clase active al tab actual
+            $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+            $('.tab-pane').removeClass("show");
+            $('#denunciado').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+            $('#denunciado').addClass("show");
+            console.log('nan')
+            }
+            if (notificaciones==1) {
+                toastr.error("Complete los campos faltantes para poder avanzar");
+            }
+        }
+
     $('#guardarDenunciante').click(function(){
         validarDatosDenunciante();
     });
@@ -252,6 +322,33 @@ function validarNotificaciones(){
             $('#aAbogado').click(function(){
                 validarTrabajo();
             });
+
+        // });
+
+//tabs
+
+// if ($('#esEmpresa1').is(':checked') ) {
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // function valDomEmpresa(){
 

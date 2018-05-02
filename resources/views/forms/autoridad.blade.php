@@ -8,16 +8,16 @@
 <br>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
 	<li class="nav-item">
-	  <a class="nav-link active" id="personales-tab" data-toggle="tab" href="#personales" role="tab" aria-controls="personales" aria-selected="true">Datos personales</a>
+	  <a class="nav-link active disabled" id="personales-tab" data-toggle="tab" href="#personales" role="tab" aria-controls="personales" aria-selected="true">Datos personales</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" id="direccion-tab" data-toggle="tab" href="#direccion" role="tab" aria-controls="direccion" aria-selected="false">Dirección</a>
+		<a class="nav-link disabled" id="direccion-tab" data-toggle="tab" href="#direccion" role="tab" aria-controls="direccion" aria-selected="false">Dirección</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" id="trabajo-tab" data-toggle="tab" href="#trabajo" role="tab" aria-controls="trabajo" aria-selected="false">Dirección de trabajo</a>
+		<a class="nav-link disabled" id="trabajo-tab" data-toggle="tab" href="#trabajo" role="tab" aria-controls="trabajo" aria-selected="false">Dirección de trabajo</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" id="autoridad-tab" data-toggle="tab" href="#autoridad" role="tab" aria-controls="autoridad" aria-selected="false">Datos de autoridad</a>
+		<a class="nav-link disabled" id="autoridad-tab" data-toggle="tab" href="#autoridad" role="tab" aria-controls="autoridad" aria-selected="false">Datos de autoridad</a>
 	</li>
 </ul>
 

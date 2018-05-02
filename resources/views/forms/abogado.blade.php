@@ -9,17 +9,17 @@
 	<br>
 	<ul class="nav nav-tabs" id="myTab" role="tablist">
 		<li class="nav-item">
-		  	<a class="nav-link active" id="personales-tab" data-toggle="tab" href="#personales" role="tab" aria-controls="personales" aria-selected="true">Datos personales</a>
+		  	<a class="nav-link active disabled" id="personales-tab" data-toggle="tab" href="#personales" role="tab" aria-controls="personales" aria-selected="true">Datos personales</a>
 		</li>
 		<li class="nav-item">
-		  	<a class="nav-link" id="trabajo-tab" data-toggle="tab" href="#trabajo" role="tab" aria-controls="trabajo" aria-selected="false">Datos del trabajo</a>
+		  	<a class="nav-link disabled" id="trabajo-tab" data-toggle="tab" href="#trabajo" role="tab" aria-controls="trabajo" aria-selected="false">Datos del trabajo</a>
 		</li>
 		<li class="nav-item">
-		  	<a class="nav-link" id="abogado-tab" data-toggle="tab" href="#abogado" role="tab" aria-controls="abogado" aria-selected="false">Datos del abogado</a>
+		  	<a class="nav-link disabled" id="abogado-tab" data-toggle="tab" href="#abogado" role="tab" aria-controls="abogado" aria-selected="false">Datos del abogado</a>
 		</li>
 	  </ul>
 	  <div class="tab-content" id="myTabContent">
-		<div class="tab-pane fade show active" id="personales" role="tabpanel" aria-labelledby="personales-tab">
+		<div class="tab-pane fade show active " id="personales" role="tabpanel" aria-labelledby="personales-tab">
 			
 				<div class="boxtwo">
 					@include('fields.personales-abo')
