@@ -54,6 +54,21 @@ return [
             'engine' => null,
         ],
 
+        'uipj' => [
+            'driver' => env('DB_CONNECTION_UIPJ'),
+            'host' => env('DB_HOST_UIPJ'),
+            'port' => env('DB_PORT_UIPJ'),
+            'database' => env('DB_DATABASE_UIPJ'),
+            'username' => env('DB_USERNAME_UIPJ'),
+            'password' => env('DB_PASSWORD_UIPJ'),
+            'unix_socket' => env('DB_SOCKET'),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),

@@ -18,18 +18,12 @@ use App\Models\CatZona;
 use App\Models\Carpeta;
 use App\Models\CatDelito;
 use App\Http\Requests\StoreDelito;
-
+use App\Models\BitacoraNavCaso; 
 
 class DelitoController extends Controller
 {
-    
-   
-
-
  public function showForm()
     {
-        //$idCarpeta='1';
-       
        $idCarpeta=session('carpeta');
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();//->where('idFiscal', Auth::user()->id)->get();
         if(count($carpetaNueva)>0){ 
@@ -103,13 +97,11 @@ class DelitoController extends Controller
         $tipifDelito->calleTrasera = $request->calleTrasera;
         $tipifDelito->puntoReferencia = $request->puntoReferencia;
         $tipifDelito->save();
-        /*
-        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
-        //Para mostrar modal
-        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
-        */
         if($tipifDelito->save()){
             Alert::success('Delito registrado con éxito', 'Hecho');
+            $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+            $bdbitacora->delitos = $bdbitacora->delitos+1;
+            $bdbitacora->save();
         }
         else{
             Alert::error('Se presentó un problema al agregar el delito', 'Error');
@@ -135,6 +127,9 @@ class DelitoController extends Controller
 
         $TipifDelito =  TipifDelito::find($id);
         $TipifDelito->delete();
+        $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+        $bdbitacora->delitos = $bdbitacora->delitos-1;
+        $bdbitacora->save();
         Alert::success('Registro eliminado con éxito', 'Hecho');
         return redirect()->route('new.delito');
 

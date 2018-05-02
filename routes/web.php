@@ -55,7 +55,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('FormatoRegistro/{id}', 'PdfController@datos');
 
 /************Rutas para formulario de solicitante/victima/denunciante*************/
-Route::get('/crear-caso', 'DenuncianteController@crearCaso')->name('inicio');
+Route::get('/crear-caso', 'CarpetaController@crearCaso')->name('inicio');
 //Route::post('storecarpeta', 'CarpetaController@storeCarpeta')->name('store.carpeta');
 //Route::get('/carpeta-inicial/{id}', 'CarpetaController@index')->name('carpeta');
 

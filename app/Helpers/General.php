@@ -373,3 +373,28 @@ function countAtencion(){
 		->count();
 	return $atenciones;
 }
+
+function getNavCaso(){
+	$navCaso=DB::table('bitacora_navcaso')
+		->where('idCaso',session('carpeta'))
+		->first();
+	$barra['denunciante'] = ($navCaso->denunciante>0)?'btn btn-primary':'btn btn-secondary';
+	$barra['cdenunciante'] = ($navCaso->denunciante>0)?$navCaso->denunciante:'';
+	$barra['denunciado'] = ($navCaso->denunciado>0)?'btn btn-primary':'btn btn-secondary';
+	$barra['cdenunciado'] = ($navCaso->denunciado>0)?$navCaso->denunciado:'';
+	$barra['abogado'] = ($navCaso->abogado>0)?'btn btn-primary':'btn btn-secondary';
+	$barra['cabogado'] = ($navCaso->abogado>0)?$navCaso->abogado:'';
+	$barra['autoridad'] = ($navCaso->autoridad>0)?'btn btn-primary':'btn btn-secondary';
+	$barra['cautoridad'] = ($navCaso->autoridad>0)?$navCaso->autoridad:'';     
+	$barra['delitos'] = ($navCaso->delitos>0)?'btn btn-primary':'btn btn-secondary';
+	$barra['cdelitos'] = ($navCaso->delitos>0)?$navCaso->delitos:'';  
+	$barra['acusaciones'] = ($navCaso->acusaciones>0)?'btn btn-primary':'btn btn-secondary';
+	$barra['cacusaciones'] = ($navCaso->acusaciones>0)?$navCaso->acusaciones:'';
+	$barra['defensa'] = ($navCaso->defensa>0)?'btn btn-primary':'btn btn-secondary';
+	$barra['cdefensa'] = ($navCaso->defensa>0)?$navCaso->defensa:'';
+	$barra['hechos'] = ($navCaso->hechos>0)?'btn btn-primary':'btn btn-secondary';
+	$barra['chechos'] = ($navCaso->hechos>0)?$navCaso->hechos:'';
+	$barra['medidas'] = ($navCaso->medidas>0)?'btn btn-primary':'btn btn-secondary';
+	$barra['cmedidas'] = ($navCaso->medidas>0)?$navCaso->medidas:'';       
+	return $barra;
+}
