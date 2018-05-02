@@ -19,67 +19,15 @@ use App\Models\ExtraDenunciado;
 use App\Models\DirNotificacion;
 use App\Models\Domicilio;
 use App\Http\Requests\StoreDenunciado;
+use App\Models\BitacoraNavCaso;
 use Alert;
+use Carbon\Carbon;
 
 class DenunciadoController extends Controller
 {
-    // public function index(){
-    //     //session(['carpeta' => 1]);
-    //     $idCarpeta = session('carpeta');
-    //     $casoNuevo = Carpeta::where('id', $idCarpeta)->get();
-    //     //$casoNuevo=$casoNuevo->esEmpresa;
-    //     if(count($casoNuevo)>0){ 
-    //         //$denunciantes = CarpetaController::getDenunciantes($idCarpeta);
-    //         $escolaridades = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-    //         $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-    //         $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-    //         $etnias = CatEtnia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-    //         $lenguas = CatLengua::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-    //         $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-    //         $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-    //         $religiones = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-    //         return view('forms.denunciado')->with('idCarpeta', $idCarpeta)
-    //             ->with('escolaridades', $escolaridades)
-    //             ->with('estados', $estados)
-    //             ->with('estadoscivil', $estadoscivil)
-    //             ->with('etnias', $etnias)
-    //             ->with('lenguas', $lenguas)
-    //             ->with('nacionalidades', $nacionalidades)
-    //             ->with('ocupaciones', $ocupaciones)
-    //             ->with('religiones', $religiones);
-    //     }else{
-    //         return redirect()->route('home');
-    //     }
-    // }
-
-    // public function addDenunciado(Request $request){
-    //     $escolaridades = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-    //         $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-    //         $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-    //         $etnias = CatEtnia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-    //         $lenguas = CatLengua::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-    //         $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-    //         $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-    //         $religiones = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-    //         return view('orientador.denunciado.denunciado')//->with('idCarpeta', $idCarpeta)
-    //             ->with('escolaridades', $escolaridades)
-    //             ->with('estados', $estados)
-    //             ->with('estadoscivil', $estadoscivil)
-    //             ->with('etnias', $etnias)
-    //             ->with('lenguas', $lenguas)
-    //             ->with('nacionalidades', $nacionalidades)
-    //             ->with('ocupaciones', $ocupaciones)
-    //             ->with('religiones', $religiones);
-
-    // }
-
     public function showForm()
     {
         $idCarpeta=session('carpeta');
-        // if (is_null($idCarpeta)) {
-        //     Alert::error('No puede acceder a este modulo sin un caso en especifico', 'Error');
-        //     return redirect('registros');
-        // }
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();
         if(count($carpetaNueva)>0){ 
             $denunciados = CarpetaController::getDenunciados($idCarpeta);
@@ -108,9 +56,7 @@ class DenunciadoController extends Controller
         }
     }
 
-    //public function storeDenunciado(StoreDenunciado $request){
     public function storeDenunciado(StoreDenunciado $request){
-        //dd($request->all());
         if ($request->tipoDenunciado==1){
             $persona = new Persona();
             $persona->nombres = $request->nombresQ;
@@ -146,6 +92,7 @@ class DenunciadoController extends Controller
             $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
             $ExtraDenunciado->idNotificacion = $idNotificacion;
             $ExtraDenunciado->save();
+            $this->addbitacora();
         }
         elseif ($request->tipoDenunciado==2){
             $persona = new Persona();
@@ -192,6 +139,7 @@ class DenunciadoController extends Controller
             $ExtraDenunciado->alias = $request->aliasC;
             $ExtraDenunciado->senasPartic = $request->senasParticC;
             $ExtraDenunciado->save();
+            $this->addbitacora();
         }
         elseif ($request->tipoDenunciado==3){
             if ($request->esEmpresa==0){
@@ -372,6 +320,7 @@ class DenunciadoController extends Controller
                     $ExtraDenunciado->narracion = $request->narracion;
                 }
                 $ExtraDenunciado->save();
+                $this->addbitacora();
             }elseif($request->esEmpresa==1){
                 $persona = new Persona();
                 $persona->nombres = $request->nombres2;
@@ -447,28 +396,27 @@ class DenunciadoController extends Controller
                 $ExtraDenunciado->senasPartic = $request->senasPartic;
                 $ExtraDenunciado->narracion = $request->narracion;
                 $ExtraDenunciado->save();
+                $this->addbitacora();
             }      
         }
-        /*
-        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
-        //Para mostrar modal
-        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
-        */
         Alert::success('Denunciado registrado con éxito', 'Hecho');
-        //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('new.denunciado', $request->idCarpeta);
     }
 
     public function delete($id){
-
             $ExtraDenunciado =  ExtraDenunciado::find($id);
             $ExtraDenunciado->delete();
+            $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+            $bdbitacora->denunciado = $bdbitacora->denunciado-1;
+            $bdbitacora->save();
             Alert::success('Registro eliminado con éxito', 'Hecho');
             return back();
-
-
         }
 
-
+    public function addbitacora(){
+        $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+            $bdbitacora->denunciado = $bdbitacora->denunciado+1;
+            $bdbitacora->save();
+    }
 
 }

@@ -21,56 +21,15 @@ use App\Models\DirNotificacion;
 use App\Models\Persona;
 use App\Models\VariablesPersona;
 use App\Models\ExtraDenunciante;
+use App\Models\BitacoraNavCaso;
 
 class DenuncianteController extends Controller
 {
-    public function crearCaso(){
-        $caso=session('carpeta');
-        //dd($caso);
-        if (is_null($caso)){
-            $caso = new Carpeta();
-            $caso->numCarpeta = "UAT/D"."1"."/"."X"."/"."XX"."/".Carbon::now()->year;
-            $caso->fechaInicio = Carbon::now();
-            $caso->idEstadoCarpeta = 1;
-            $caso->horaIntervencion = Carbon::now();
-            $caso->fechaDeterminacion = Carbon::now();
-            $caso->save();
-            session(['carpeta' => $caso->id]);
-            //dd($idCarpeta);
-            Alert::success('Caso iniciado con éxito', 'Hecho');
-            return redirect()->route('new.denunciante');
-        } else {
-            Alert::warning('Tiene un caso en curso debe terminarlo o cancelarlo para iniciar uno nuevo', 'Advertencia');
-            return redirect()->back()->withInput();
-        }
-        
-
-    }
-
-//  public function create()
-//     {
-
-//     $razones=Razon::orderBy('nombre', 'ASC')
-//         ->pluck('nombre','id');
-//     $estados=CatEstado::orderBy('nombre', 'ASC')
-//         ->pluck('nombre','id');
-//         // $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')
-//         // ->pluck('nombre', 'id');
-         
-//         // return view('orientador.denunciante.denunciante-orientador')->with('estados',$estados)->with('razones',$razones);
-// }
 
 public function showForm()
     {
-
         $idCarpeta=session('carpeta');
-        //dd($idCarpeta);
-        // if (is_null($idCarpeta)) {
-        //     Alert::error('No puede acceder a este modulo sin un caso en especifico', 'Error');
-        //     return redirect('registros');
-        // }
         $casoNuevo = Carpeta::where('id', $idCarpeta)->get();
-        //dd($idCarpeta);
         if(count($casoNuevo)>0){ 
             $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
             $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
@@ -81,7 +40,6 @@ public function showForm()
             $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $religiones = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-
             return view('forms.denunciante')->with('idCarpeta', $idCarpeta)
                 ->with('denunciantes', $denunciantes)
                 ->with('escolaridades', $escolaridades)
@@ -92,17 +50,15 @@ public function showForm()
                 ->with('nacionalidades', $nacionalidades)
                 ->with('ocupaciones', $ocupaciones)
                 ->with('religiones', $religiones);
-        }else{
+        }
+        else{
             return redirect(url('registros'));
-         }
-        
-        // return view('orientador.modulo-orientador')->with('estados',$estados)->with('razones',$razones);
+        }
     }
 
     public function cancelarCaso(){
         $idCarpeta = session('carpeta');
         $comprobar= Carpeta::where('id',$idCarpeta)->get();
-        //dd(count($comprobar));
         if(is_null($idCarpeta)){
             Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia');
             return redirect(url('registros'));    
@@ -121,7 +77,6 @@ public function showForm()
 
 
     public function storeDenunciante(Request $request){
-        //dd($request->all());
         $idCarpeta = session('carpeta');
         if(is_null($idCarpeta)){
             $idCarpeta = $request->idCarpeta;
@@ -285,6 +240,7 @@ public function showForm()
             }
             $ExtraDenunciante->narracion = $request->narracion;
             $ExtraDenunciante->save();
+            $this->addbitacora();
         }elseif($request->esEmpresa==1){
             $comprobarPersona=Persona::where('nombres',$request->nombre2)->get();
             if(count($comprobarPersona)>0){
@@ -377,27 +333,26 @@ public function showForm()
             }
             $ExtraDenunciante->narracion = $request->narracion;
             $ExtraDenunciante->save();
+            $this->addbitacora();
         }
-        /*
-        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
-        //Para mostrar modal
-        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
-        */
         Alert::success('Denunciante registrado con éxito', 'Hecho');
-        //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('new.denunciante');
     }
-
 
     public function delete($id){
 
         $ExtraDenunciante =  ExtraDenunciante::find($id);
         $ExtraDenunciante->delete();
+        $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+            $bdbitacora->denunciante = $bdbitacora->denunciante-1;
+            $bdbitacora->save();
         Alert::success('Registrado eliminado con éxito', 'Hecho');
         return back();
-
-
     }
 
-    
+    public function addbitacora(){
+        $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+            $bdbitacora->denunciante = $bdbitacora->denunciante+1;
+            $bdbitacora->save();
+    }
 }
