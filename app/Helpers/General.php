@@ -378,23 +378,33 @@ function getNavCaso(){
 	$navCaso=DB::table('bitacora_navcaso')
 		->where('idCaso',session('carpeta'))
 		->first();
+	$url = Request::path();
 	$barra['denunciante'] = ($navCaso->denunciante>0)?'btn btn-primary':'btn btn-secondary';
+	$barra['denunciante'] = ($url=="agregar-denunciante")?$barra['denunciante']." active":$barra['denunciante'];
 	$barra['cdenunciante'] = ($navCaso->denunciante>0)?$navCaso->denunciante:'';
 	$barra['denunciado'] = ($navCaso->denunciado>0)?'btn btn-primary':'btn btn-secondary';
+	$barra['denunciado'] = ($url=="agregar-denunciado")?$barra['denunciado']." active":$barra['denunciado'];
 	$barra['cdenunciado'] = ($navCaso->denunciado>0)?$navCaso->denunciado:'';
 	$barra['abogado'] = ($navCaso->abogado>0)?'btn btn-primary':'btn btn-secondary';
+	$barra['abogado'] = ($url=="agregar-abogado")?$barra['abogado']." active":$barra['abogado'];
 	$barra['cabogado'] = ($navCaso->abogado>0)?$navCaso->abogado:'';
 	$barra['autoridad'] = ($navCaso->autoridad>0)?'btn btn-primary':'btn btn-secondary';
+	$barra['autoridad'] = ($url=="agregar-autoridad")?$barra['autoridad']." active":$barra['autoridad'];
 	$barra['cautoridad'] = ($navCaso->autoridad>0)?$navCaso->autoridad:'';     
 	$barra['delitos'] = ($navCaso->delitos>0)?'btn btn-primary':'btn btn-secondary';
+	$barra['delitos'] = ($url=="agregar-delito")?$barra['delitos']." active":$barra['delitos'];
 	$barra['cdelitos'] = ($navCaso->delitos>0)?$navCaso->delitos:'';  
 	$barra['acusaciones'] = ($navCaso->acusaciones>0)?'btn btn-primary':'btn btn-secondary';
+	$barra['acusaciones'] = ($url=="acusacion")?$barra['acusaciones']." active":$barra['acusaciones'];
 	$barra['cacusaciones'] = ($navCaso->acusaciones>0)?$navCaso->acusaciones:'';
 	$barra['defensa'] = ($navCaso->defensa>0)?'btn btn-primary':'btn btn-secondary';
+	$barra['defensa'] = ($url=="agregar-defensa")?$barra['defensa']." active":$barra['defensa'];
 	$barra['cdefensa'] = ($navCaso->defensa>0)?$navCaso->defensa:'';
 	$barra['hechos'] = ($navCaso->hechos>0)?'btn btn-primary':'btn btn-secondary';
+	$barra['hechos'] = ($url=="narracion")?$barra['hechos']." active":$barra['hechos'];
 	$barra['chechos'] = ($navCaso->hechos>0)?$navCaso->hechos:'';
 	$barra['medidas'] = ($navCaso->medidas>0)?'btn btn-primary':'btn btn-secondary';
+	$barra['medidas'] = ($url=="medidas")?$barra['medidas']." active":$barra['medidas'];
 	$barra['cmedidas'] = ($navCaso->medidas>0)?$navCaso->medidas:'';       
 	return $barra;
 }
