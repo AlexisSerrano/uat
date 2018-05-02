@@ -65,7 +65,7 @@ class DenunciadoController extends Controller
            $sql=DB::table('variables_persona')
            ->join('persona','persona.id','=','variables_persona.idPersona')
            ->where('variables_persona.idCarpeta', $idCarpeta)
-           ->where('persona.nombres','QUIEN  O QUIENES RESULTEN RESPONSABLES')
+           ->where('persona.nombres','QUIEN O QUIENES RESULTEN RESPONSABLES')
            ->select('persona.nombres')
             ->first();
             if($sql){
@@ -108,9 +108,12 @@ class DenunciadoController extends Controller
                 $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
                 $ExtraDenunciado->idNotificacion = $idNotificacion;
                 $ExtraDenunciado->save();
-                 $this->addbitacora();
+             
+                $this->addbitacora();
+            }
+           
+           
         }
-    }
         elseif ($request->tipoDenunciado==2){
             $persona = new Persona();
             $persona->nombres = $request->nombresC;
