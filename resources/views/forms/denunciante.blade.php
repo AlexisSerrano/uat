@@ -52,7 +52,7 @@
 					@include('fields.direcciones')
 					<div class="row">
 						<div class="col text-left">
-							<a class="btn btn-secondary irpersonales"><span><i class="fa fa-arrow-left"></i></span></a>
+							<a id="aPersonales" class="btn btn-secondary irpersonales"><span><i class="fa fa-arrow-left"></i></span></a>
 						</div>
 						<div class="col text-right">
 							<a id=Atrabajo class="btn btn-secondary irtrabajo"><i class="fa fa-arrow-right"></i></a>
@@ -96,7 +96,7 @@
 					@include('fields.extra-denunciante')				
 					<div class="row menu">
 						<div class="col text-left">
-							<a class="btn btn-secondary irdirnotificacion"><i class="fa fa-arrow-left"></i></a>
+							<a id="irdirnotificacion" class="btn btn-secondary irdirnotificacion"><i class="fa fa-arrow-left"></i></a>
 						</div>
 						<div class="col text-right">
 							{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!}
@@ -129,6 +129,8 @@
 	{{-- <script src="{{ asset('js/validation.js')}}"></script>
 	<script src="{{ asset('js/validation-orientador.js')}}"></script> --}}
 	<script>
+		
+
 		$(function () {
 			$('#fechanac').datetimepicker({
 				format: 'YYYY-MM-DD',
@@ -160,7 +162,24 @@
 		console.log(id);
 	}
 	
-	
+	$('#aPersonales').click(function(){
+		$('.nav-link').removeClass("active");
+        $('#personales-tab').addClass("active");//Agrego la clase active al tab actual
+        $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+        $('.tab-pane').removeClass("show");
+        $('#personales').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		$('#personales').addClass("show");
+		console.log('boton atrás')
+		});
+	$('#irdirnotificacion').click(function(){
+		$('.nav-link').removeClass("active");
+        $('#dirnotificacion-tab').addClass("active");//Agrego la clase active al tab actual
+        $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+        $('.tab-pane').removeClass("show");
+        $('#dirnotificacion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		$('#dirnotificacion').addClass("show");
+		console.log('boton atrás')
+		});
 	
 	
 </script>
