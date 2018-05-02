@@ -29,7 +29,6 @@ class ActaRequest extends FormRequest
             'segundoAp' => 'required',
             'docIdentificacion' => 'required',
             'numDocIdentificacion' => 'required',
-            'expedido' => 'required',
             'fecha_nac' => 'required',
             'telefono' => 'required',
             'idEstado2' => 'required',

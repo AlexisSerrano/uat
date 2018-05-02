@@ -41,14 +41,16 @@ $form = oldFormActas();
         <div class="help-block with-errors"></div>
     </div>
 </div>
-
+@if ($acta->docIdentificacion=='CREDENCIAL DE TRABAJO')
 <div class="col-4">
     <div class="form-group">
         {!! Form::label('expedido', 'Expedido por', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('expedido', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Expedido por' ]) !!}
+        {!! Form::text('expedido', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Expedido por']) !!}
         <div class="help-block with-errors"></div>
     </div>
 </div>
+    
+@endif
 
 <div class="col-4">
     <div class="form-group">
