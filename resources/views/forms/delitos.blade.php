@@ -9,10 +9,10 @@
 	<br>
 	<ul class="nav nav-tabs" id="myTab" role="tablist">
 		<li class="nav-item">
-			<a class="nav-link active" id="delito-tab" data-toggle="tab" href="#delito" role="tab" aria-controls="delito" aria-selected="true">Información sobre el delito</a>
+			<a class="nav-link active disabled" id="delito-tab" data-toggle="tab" href="#delito" role="tab" aria-controls="delito" aria-selected="true">Información sobre el delito</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" id="dirdelito-tab" data-toggle="tab" href="#dirdelito" role="tab" aria-controls="dirdelito" aria-selected="false">Información sobre el lugar de los hechos</a>
+			<a class="nav-link disabled" id="dirdelito-tab" data-toggle="tab" href="#dirdelito" role="tab" aria-controls="dirdelito" aria-selected="false">Información sobre el lugar de los hechos</a>
 		</li>
 	</ul>
 	<div class="tab-content" id="myTabContent">
@@ -23,7 +23,7 @@
 					<div class="col text-left">
 					</div>
 					<div class="col text-right">	
-						<a class="btn btn-primary irdirdelito"><i class="fa fa-arrow-right"></i></a>
+						<a id="aDelito"class="btn btn-primary irdirdelito"><i class="fa fa-arrow-right"></i></a>
 					</div>
 				</div>
 			</div>
@@ -35,7 +35,7 @@
 				
 				<div class="row">
 					<div class="col text-left">
-						<a class="btn btn-primary irdelito"><i class="fa fa-arrow-left"></i></a>
+						<a id="aDelito2" class="btn btn-primary irdelito"><i class="fa fa-arrow-left"></i></a>
 					</div>
 					<div class="col text-right">	
 						{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!}
@@ -53,15 +53,11 @@
 
 @push('scripts')
 	<script src="{{ asset('js/selectsDirecciones.js') }}"></script>
+	<script src="{{ asset('js/siguientes.js') }}"></script>
 	<script>
-		$('.irdirdelito').click(function(){
-			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-			$('#dirdelito-tab').addClass("active");//Agrego la clase active al tab actual
-			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-			$('.tab-pane').removeClass("show");
-			$('#dirdelito').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-			$('#dirdelito').addClass("show");
-		});
+		// $('.irdirdelito').click(function(){
+			
+		// });
 
 		$('.irdelito').click(function(){
 			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
