@@ -128,9 +128,46 @@ class ActasHechosController extends Controller
             $acta->telefono = $request->telefono;
             $acta->narracion = $request->narracion;
             switch ($request->docIdentificacion) {
+                case 'CREDENCIAL PARA VOTAR':
+                $acta->expedido ="POR EL INEW";
+
+                case 'PASAPORTE':
+                $acta->expedido ="INSTITUCION";
+                
+                case 'CEDULA PROFESIONAL':
+                $acta->expedido ="POR EL INEW";
+
+                case 'CARTILLA DEL SERVICIO MILITAR NACIONAL':
+                $acta->expedido ="INSTITUCION";
+                
+                case 'TARJETA UNICA DE IDENTIDAD MILITAR':
+                $acta->expedido ="POR EL INEW";
+            
+                case 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES':
+                $acta->expedido ="INSTITUCION";
+                
+                case 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL':
+                $acta->expedido ="POR EL INEW";
+
+                case 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR':
+                $acta->expedido ="INSTITUCION";
+                
+                case 'LICENCIA DE CONDUCIR':
+                $acta->expedido ="DDSDD";
+                
+                case 'CERTIFICADO DE MATRICULA CONSULAR':
+                $acta->expedido ="POR EL INEW";
+
+                case 'ACTA DE NACIMIENTO':
+                $acta->expedido ="INSTITUCION";
+
                 case 'CURP':
-                $acta->expedido = "INSTITUCION";
-                    break;
+                $acta->expedido ="INSTITUCION";
+
+                case 'CONSTANCIA DE RESIDENCIA':
+                $acta->expedido ="INSTITUCION";
+                
+                break;
                 
                 default:
                     $acta->expedido = $request->expedido;
