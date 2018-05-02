@@ -203,54 +203,55 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
 	<script src="{{ asset('js/selectsDirecciones.js') }}"></script>
 	<script src="{{ asset('js/scriptsform.js') }}"></script>
+	<script src="{{ asset('js/siguientes.js') }}"></script>
 	{{-- <script src="{{ asset('js/validation.js')}}"></script>
 	<script src="{{ asset('js/validation-orientador.js')}}"></script> --}}
 	<script>
-		$('.irtrabajo').click(function(){
-			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-			$('#trabajo-tab').addClass("active");//Agrego la clase active al tab actual
-			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-			$('.tab-pane').removeClass("show");
-			$('#trabajo').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-			$('#trabajo').addClass("show");
-		});
+		// $('.irtrabajo').click(function(){
+		// 	$('.nav-link').removeClass("active");//Quito la clase active al tab actual
+		// 	$('#trabajo-tab').addClass("active");//Agrego la clase active al tab actual
+		// 	$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+		// 	$('.tab-pane').removeClass("show");
+		// 	$('#trabajo').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		// 	$('#trabajo').addClass("show");
+		// });
 
-		$('.irdireccion').click(function(){
-			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-			$('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
-			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-			$('.tab-pane').removeClass("show");
-			$('#direccion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-			$('#direccion').addClass("show");
-		});
+		// $('.irdireccion').click(function(){
+		// 	$('.nav-link').removeClass("active");//Quito la clase active al tab actual
+		// 	$('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
+		// 	$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+		// 	$('.tab-pane').removeClass("show");
+		// 	$('#direccion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		// 	$('#direccion').addClass("show");
+		// });
 
 		
-		$('.irpersonales').click(function(){
-			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-			$('#personales-tab').addClass("active");//Agrego la clase active al tab actual
-			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-			$('.tab-pane').removeClass("show");
-			$('#personales').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-			$('#personales').addClass("show");
-		});
+		// $('.irpersonales').click(function(){
+		// 	$('.nav-link').removeClass("active");//Quito la clase active al tab actual
+		// 	$('#personales-tab').addClass("active");//Agrego la clase active al tab actual
+		// 	$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+		// 	$('.tab-pane').removeClass("show");
+		// 	$('#personales').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		// 	$('#personales').addClass("show");
+		// });
 
-		$('.irdirnotificacion').click(function(){
-			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-			$('#dirnotificacion-tab').addClass("active");//Agrego la clase active al tab actual
-			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-			$('.tab-pane').removeClass("show");
-			$('#dirnotificacion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-			$('#dirnotificacion').addClass("show");
-		});
+		// $('.irdirnotificacion').click(function(){
+		// 	$('.nav-link').removeClass("active");//Quito la clase active al tab actual
+		// 	$('#dirnotificacion-tab').addClass("active");//Agrego la clase active al tab actual
+		// 	$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+		// 	$('.tab-pane').removeClass("show");
+		// 	$('#dirnotificacion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		// 	$('#dirnotificacion').addClass("show");
+		// });
 
-		$('.irdenunciado').click(function(){
-			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-			$('#denunciado-tab').addClass("active");//Agrego la clase active al tab actual
-			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-			$('.tab-pane').removeClass("show");
-			$('#denunciado').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-			$('#denunciado').addClass("show");
-		});
+		// $('.irdenunciado').click(function(){
+		// 	$('.nav-link').removeClass("active");//Quito la clase active al tab actual
+		// 	$('#denunciado-tab').addClass("active");//Agrego la clase active al tab actual
+		// 	$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+		// 	$('.tab-pane').removeClass("show");
+		// 	$('#denunciado').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		// 	$('#denunciado').addClass("show");
+		// });
 
 	$(document).ready(function(){
 		$(function () {

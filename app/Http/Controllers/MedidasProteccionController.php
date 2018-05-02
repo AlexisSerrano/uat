@@ -8,6 +8,7 @@ use App\Models\Providencia;
 use App\Models\CatProvidencias;
 use Yajra\DataTables\Datatables;
 use App\Models\Carpeta;
+use App\Models\BitacoraNavCaso;
 use DB;
 use Alert;
 use App\Http\Requests\MedidasRequest;
@@ -17,7 +18,6 @@ class MedidasProteccionController extends Controller
     public function index(){
         $idCarpeta = session('carpeta');
         $casoNuevo = Carpeta::where('id', $idCarpeta)->get();
-        //dd($idCarpeta);
         if(count($casoNuevo)>0){ 
             $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
             $denunciados = CarpetaController::getDenunciados($idCarpeta);
@@ -61,7 +61,6 @@ class MedidasProteccionController extends Controller
 
     public function addMedidas(MedidasRequest $request){
         $idCarpeta = session('carpeta');
-        //$idCarpeta = 1;
         $providenciaBD = new Providencia;
         $providenciaBD->idProvidencia = $request->tipoProvidencia;
         $providenciaBD->idEjecutor = $request->quienEjecuta;
@@ -72,6 +71,9 @@ class MedidasProteccionController extends Controller
         $providenciaBD->idCarpeta = $idCarpeta;
         if($providenciaBD->save()){
             Alert::success('Medida de protección creada con éxito', 'Hecho');
+            $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+            $bdbitacora->medidas = $bdbitacora->medidas+1;
+            $bdbitacora->save();
         }
         else{
             Alert::error('Se presentó un problema al crear su medida de protección', 'Error');
@@ -81,7 +83,6 @@ class MedidasProteccionController extends Controller
 
     public function getMedidas(){
         $idCarpeta = session('carpeta');
-        //$idCarpeta = 1;
         $providencias = DB::table('providencias_precautorias')
         ->join('cat_providencia_precautoria', 'providencias_precautorias.idProvidencia', '=', 'cat_providencia_precautoria.id')
         ->join('ejecutor','providencias_precautorias.idEjecutor','=','ejecutor.id')
@@ -89,7 +90,6 @@ class MedidasProteccionController extends Controller
         ->where('providencias_precautorias.idCarpeta',$idCarpeta)
         ->where('providencias_precautorias.deleted_at',null)
         ->select('providencias_precautorias.id as id',  'cat_providencia_precautoria.nombre as providencia', 'ejecutor.nombre as ejecutor', 'providencias_precautorias.fechaInicio as fechaInicio', 'providencias_precautorias.fechaFin as fechaFin', 'providencias_precautorias.observacion as observacion', DB::raw("CONCAT(`persona`.`nombres`,' ',CASE WHEN `persona`.`primerAp` IS NULL  THEN '' ELSE `persona`.`primerAp` END,' ',CASE WHEN `persona`.`segundoAp` IS NULL  THEN '' ELSE `persona`.`segundoAp` END) as nombre"))->get();
-        //dd($providencias);
         return Datatables::of($providencias)->make(true);
     }
 
@@ -106,27 +106,19 @@ class MedidasProteccionController extends Controller
 
 
     public function delete($id){
-
         $Providencia =Providencia::find($id);
         $Providencia->delete();
         Alert::success('Registrado eliminado con éxito', 'Hecho');
+        $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+            $bdbitacora->medidas = $bdbitacora->medidas-1;
+            $bdbitacora->save();
         return back();
-
-   
-
-
     }
 
     
 
     public function editar(Request $request ){
-       
-
-    
-      
      $providencia = Providencia::find($request->input('idr')); 
-  
-    //  $providencia->idProvidencia = $request->tipoProvidencia1;
      $providencia->fechaInicio = $request->fechaInicio1;
      $providencia->fechaFin = $request->fechaFinal1;
      $providencia->idEjecutor = $request->quienEjecuta1;
@@ -134,19 +126,19 @@ class MedidasProteccionController extends Controller
      $providencia->observacion = $request->observaciones1;
      $providencia->save(); 
     if ($providencia->save()){
-    return 1;
-    
-    }else{
-    return 0;
+        return 1;
+    }
+    else{
+        return 0;
     }
   }
 
-  public function getMedidasAjax($id){
-    $providencia = DB::table('providencias_precautorias')
-    ->join('cat_providencia_precautoria','providencias_precautorias.idProvidencia','=','cat_providencia_precautoria.id')
-    ->where('providencias_precautorias.id',$id)
-    ->select('cat_providencia_precautoria.nombre','providencias_precautorias.id','providencias_precautorias.idEjecutor','providencias_precautorias.idPersona','providencias_precautorias.observacion','providencias_precautorias.fechaInicio','providencias_precautorias.fechaFin')
-    ->first();
-    return response()->json($providencia);
-  }
+    public function getMedidasAjax($id){
+        $providencia = DB::table('providencias_precautorias')
+        ->join('cat_providencia_precautoria','providencias_precautorias.idProvidencia','=','cat_providencia_precautoria.id')
+        ->where('providencias_precautorias.id',$id)
+        ->select('cat_providencia_precautoria.nombre','providencias_precautorias.id','providencias_precautorias.idEjecutor','providencias_precautorias.idPersona','providencias_precautorias.observacion','providencias_precautorias.fechaInicio','providencias_precautorias.fechaFin')
+        ->first();
+        return response()->json($providencia);
+    }
 }

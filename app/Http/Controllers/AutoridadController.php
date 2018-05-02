@@ -22,6 +22,7 @@ use App\Models\CatIdentificacion;
 use App\Models\Domicilio;
 use App\Models\VariablesPersona;
 use App\Models\ExtraAutoridad;
+use App\Models\BitacoraNavCaso;
 
 class AutoridadController extends Controller
 {
@@ -127,6 +128,9 @@ class AutoridadController extends Controller
         //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
         */
         Alert::success('Autoridad registrada con éxito', 'Hecho');
+        $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+            $bdbitacora->autoridad = $bdbitacora->autoridad+1;
+            $bdbitacora->save();
         //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('new.autoridad', $request->idCarpeta);
     }
@@ -136,6 +140,9 @@ class AutoridadController extends Controller
 
         $ExtraAutoridad =  ExtraAutoridad::find($id);
         $ExtraAutoridad->delete();
+        $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+        $bdbitacora->autoridad = $bdbitacora->autoridad-1;
+        $bdbitacora->save();
         Alert::success('Registro eliminado con éxito', 'Hecho');
         return back();
 

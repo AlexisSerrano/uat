@@ -30,7 +30,7 @@ function validarEmpresa(){
     if (completo==1) {
     toastr.error("Complete los campos faltantes para poder avanzar");
     }
-}
+}   
     function validarPersona(){
 
     var completoP=0;
@@ -219,6 +219,40 @@ function validarNotificaciones(){
             toastr.error("Complete los campos faltantes para poder avanzar");
         }
     }
+
+    $('#guardarDenunciante').click(function(){
+        validarDatosDenunciante();
+    });
+
+    function validarDatosDenunciante(){
+        var datosDenunciante=0;
+    
+            if ($('#reguardarIdentidad').val().length == 0){
+                datosDenunciante=1;
+                }
+            if ($('#narracion').val().length == 0){
+                datosDenunciante=1;
+                }
+                if ($('#victima').val().length == 0){
+                    datosDenunciante=1;
+                    }
+            if (datosDenunciante==1) {
+                toastr.error("Complete los campos faltantes para poder guardar");
+            }
+        }
+
+        $('#Aautoridad').click(function(){
+            validarTrabajo();
+        });
+
+        $('#Atrabajo2').click(function(){
+            validarPersona();
+            });
+
+            $('#aAbogado').click(function(){
+                validarTrabajo();
+            });
+
 // function valDomEmpresa(){
 
 //     var completoDE=0;

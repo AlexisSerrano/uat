@@ -9,6 +9,7 @@ use Alert;
 use App\Models\Carpeta;
 use App\Models\Acusacion;
 use App\Http\Requests\AcusacionRequest;
+use App\Models\BitacoraNavCaso;
 
 
 class AcusacionController extends Controller
@@ -50,7 +51,6 @@ class AcusacionController extends Controller
     }
 
     public function storeAcusacion(AcusacionRequest $request){
-        //dd($request->all());
         $idCarpeta=session('carpeta');
         $acusacion = new Acusacion();
         $acusacion->idCarpeta = $idCarpeta;
@@ -58,13 +58,10 @@ class AcusacionController extends Controller
         $acusacion->idTipifDelito = $request->idTipifDelito;
         $acusacion->idDenunciado = $request->idDenunciado;
         $acusacion->save();
-        /*
-        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
-        //Para mostrar modal
-        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
-        */
+        $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+            $bdbitacora->acusaciones = $bdbitacora->acusaciones+1;
+            $bdbitacora->save();
         Alert::success('Acusación registrada con éxito', 'Hecho');
-        //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('new.acusacion');
     }
     
@@ -72,6 +69,9 @@ class AcusacionController extends Controller
 
         $Acusacion =  Acusacion::find($id);
         $Acusacion->delete();
+        $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+            $bdbitacora->acusaciones = $bdbitacora->acusaciones-1;
+            $bdbitacora->save();
         Alert::success('Registro eliminado con éxito', 'Hecho');
         return back();
 

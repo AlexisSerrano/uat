@@ -17,6 +17,7 @@ use App\Models\Persona;
 use App\Models\VariablesPersona;
 use App\Models\ExtraAbogado;
 use App\Models\Domicilio;
+use App\Models\BitacoraNavCaso;
 
 class AbogadoController extends Controller
 {
@@ -91,13 +92,10 @@ class AbogadoController extends Controller
         $ExtraAbogado->tipo = $request->tipo;
         $ExtraAbogado->save();
         $idAbogado = $ExtraAbogado->id;
-        /*
-        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
-        //Para mostrar modal
-        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
-        */
+        $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+        $bdbitacora->abogado = $bdbitacora->abogado+1;
+        $bdbitacora->save();
         Alert::success('Abogado registrado con éxito', 'Hecho');
-        //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('new.abogado', $request->idCarpeta);
     }
 
@@ -125,24 +123,22 @@ class AbogadoController extends Controller
 
     public function storeDefensa(Request $request)
     {
-        //dd($request->all());
         $idAbogado = $request->idAbogado;
         $tipo = $request->tipo;
         $idInvolucrado = $request->idInvolucrado;
         $xd = DB::table('extra_denunciante')->select('id')->where('idVariablesPersona', $idInvolucrado)->get();
-        //dd(count($xd));
         if(count($xd)>0){
             DB::table('extra_denunciante')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);
+            $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+            $bdbitacora->defensa = $bdbitacora->defensa+1;
+            $bdbitacora->save();
         }else{
             DB::table('extra_denunciado')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);
+            $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+            $bdbitacora->defensa = $bdbitacora->defensa+1;
+            $bdbitacora->save();
         }
-        /*
-        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
-        //Para mostrar modal
-        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
-        */
         Alert::success('Defensa asignada con éxito', 'Hecho');
-        //return redirect()->route('carpeta', $request->idCarpeta);
         return redirect()->route('new.defensa', $request->idCarpeta);
     }
     
@@ -178,23 +174,12 @@ class AbogadoController extends Controller
 
 
     public function delete($id){
-
         $ExtraAbogado =  ExtraAbogado::find($id);
         $ExtraAbogado->delete();
+        $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+        $bdbitacora->abogado = $bdbitacora->abogado-1;
+        $bdbitacora->save();
         Alert::success('Registro eliminado con éxito', 'Hecho');
         return back();
-
-
     }
-
-
-    // public function delete($id){
-
-    //     $ExtraAbogado =  ExtraAbogado::find($id);
-    //     $ExtraAbogado->delete();
-    //     Alert::success('Registro eliminado con éxito', 'Hecho')->persistent("Aceptar");
-    //     return back();
-
-
-    // }
 }

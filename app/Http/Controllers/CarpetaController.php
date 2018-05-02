@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\Models\Carpeta;
 use App\Models\Unidad;
 use App\Models\CatTipoDeterminacion;
+use App\Models\BitacoraNavCaso;
 
 class CarpetaController extends Controller
 {
@@ -352,5 +353,31 @@ class CarpetaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function crearCaso(){
+        $caso=session('carpeta');
+        //dd($caso);
+        if (is_null($caso)){
+            $caso = new Carpeta();
+            $caso->numCarpeta = "UAT/D"."1"."/"."X"."/"."XX"."/".Carbon::now()->year;
+            $caso->fechaInicio = Carbon::now();
+            $caso->idEstadoCarpeta = 1;
+            $caso->horaIntervencion = Carbon::now();
+            $caso->fechaDeterminacion = Carbon::now();
+            $caso->save();
+            session(['carpeta' => $caso->id]);
+            $bdbitacora = new BitacoraNavCaso;
+            $bdbitacora->idCaso = $caso->id;
+            $bdbitacora->save();
+            //dd($idCarpeta);
+            Alert::success('Caso iniciado con éxito', 'Hecho');
+            return redirect()->route('new.denunciante');
+        } else {
+            Alert::warning('Tiene un caso en curso debe terminarlo o cancelarlo para iniciar uno nuevo', 'Advertencia');
+            return redirect()->back()->withInput();
+        }
+        
+
     }
 }

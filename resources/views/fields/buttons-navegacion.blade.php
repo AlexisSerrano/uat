@@ -1,50 +1,15 @@
 @php
-	// if (count($denunciantes)==0){
-		$registroDenunciante='btn btn-secondary';
-	// }else{
-	// 	$registroDenunciante='btn btn-primary';
-	// }
-	// if (count($denunciados)==0){
-		$registroDenunciado='btn btn-secondary';
-	// }else{
-	// 	$registroDenunciado='btn btn-primary';
-	// }
-	// if (!isset($registroAbogado)){
-		$registroAbogado='btn btn-secondary';
-	// }
-	// if (!isset($registroAutoridad)){
-		$registroAutoridad='btn btn-secondary';
-	// }
-	// if (count($acusaciones)==0){
-		$registroAcusaciones='btn btn-secondary';
-	// }else{
-	// 	$registroAcusaciones='btn btn-primary';
-	// }
-	// if (count($delitos)==0){
-		$registroDelitos='btn btn-secondary';
-	// }else{
-	// 	$registroDelitos='btn btn-primary';
-	// }
-	// if (!isset($registroDefenza)){
-		$registroDefenza='btn btn-secondary';
-	// }
-	// if (!isset($registroDescripcion)){
-		$registroDescripcion='btn btn-secondary';
-    // }
-    // if (!isset($medidasProteccion)){
-		$medidasProteccion='btn btn-secondary';
-	// }
-	
-	@endphp
+$barra = getNavCaso();
+@endphp
 <div class="btn-group col">
-	<a href="{{route('new.denunciante')}}" class="{{$registroDenunciante}} form-control">Denunciante</a>
-	<a href="{{route('new.denunciado')}}" class="{{$registroDenunciado}} form-control">Denunciado</a>
-	<a href="{{route('new.abogado')}}" class="{{$registroAbogado}} form-control">Abogado</a>
-	<a href="{{route('new.autoridad')}}"  class="{{$registroAutoridad}} form-control">Autoridad</a>
-	<a href="{{route('new.delito')}}" class="{{$registroDelitos}} form-control">Delitos</a>
-	<a href="{{route('new.acusacion')}}" class="{{$registroAcusaciones}} form-control">Acusaciones</a>
-	<a href="{{route('new.defensa')}}"  class="{{$registroDefenza}} form-control">Defensa</a>
-    <a href="{{route('narracion')}}" class="{{$registroDescripcion}} form-control">Descripción de hechos</a>
-    <a href="{{url('medidas')}}" class="{{$medidasProteccion}} form-control">Medidas de protección</a>
+	<a href="{{route('new.denunciante')}}" class="{{$barra['denunciante']}} form-control">Denunciante {{$barra['cdenunciante']}}</a>
+	<a href="{{route('new.denunciado')}}" class="{{$barra['denunciado']}} form-control">Denunciado {{$barra['cdenunciado']}}</a>
+	<a href="{{route('new.abogado')}}" class="{{$barra['abogado']}} form-control">Abogado {{$barra['cabogado']}}</a>
+	<a href="{{route('new.autoridad')}}"  class="{{$barra['autoridad']}} form-control">Autoridad {{$barra['cautoridad']}}</a>
+	<a href="{{route('new.delito')}}" class="{{$barra['delitos']}} form-control">Delitos {{$barra['cdelitos']}}</a>
+	<a href="{{route('new.acusacion')}}" class="{{$barra['acusaciones']}} form-control">Acusaciones {{$barra['cacusaciones']}}</a>
+	<a href="{{route('new.defensa')}}"  class="{{$barra['defensa']}} form-control">Defensa {{$barra['cdefensa']}}</a>
+    <a href="{{route('narracion')}}" class="{{$barra['hechos']}} form-control">Descripción de hechos {{$barra['chechos']}}</a>
+    <a href="{{url('medidas')}}" class="{{$barra['medidas']}} form-control">Medidas de protección {{$barra['cmedidas']}}</a>
 </div>
  

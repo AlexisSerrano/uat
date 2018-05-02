@@ -28,6 +28,7 @@ use App\Models\CatNacionalidad;
 use App\Models\CatOcupacion;
 use App\Models\CatReligion;
 use App\Models\CatIdentificacion;
+use App\Models\BitacoraNavCaso;
 
 use Illuminate\Support\Facades\Session;
 class PreregistroAuxController extends Controller
@@ -530,6 +531,9 @@ class PreregistroAuxController extends Controller
         $idCarpeta = $caso->id;
 
         session(['carpeta' => $idCarpeta]);
+        $bdbitacora = new BitacoraNavCaso;
+        $bdbitacora->idCaso = $caso->id;
+        $bdbitacora->save();
             
         
         $denunciantes = CarpetaController::getDenunciantes($idCarpeta);

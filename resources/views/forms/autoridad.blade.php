@@ -30,7 +30,7 @@
 				<div class="col text-left">				
 				</div>
 				<div class="col text-right">
-					<a class="btn btn-secondary irdireccion"><i class="fa fa-arrow-right"></i></a>
+					<a id="Adireccion" class="btn btn-secondary irdireccion"><i class="fa fa-arrow-right"></i></a>
 				</div>
 			</div>
 		</div>
@@ -44,7 +44,7 @@
 					<a class="btn btn-secondary irpersonales"><i class="fa fa-arrow-left"></i></a>
 				</div>
 				<div class="col text-right">
-					<a class="btn btn-secondary irtrabajo"><i class="fa fa-arrow-right"></i></a>							
+					<a id="Atrabajo" class="btn btn-secondary irtrabajo"><i class="fa fa-arrow-right"></i></a>							
 				</div>
 			</div>
 		</div>
@@ -55,10 +55,10 @@
 			{{-- botones --}}
 			<div class="row menu">	
 				<div class="col text-left">				
-					<a class="btn btn-secondary irdireccion"><i class="fa fa-arrow-left"></i></a>
+					<a id="Adireccion" class="btn btn-secondary irdireccion"><i class="fa fa-arrow-left"></i></a>
 				</div>
 				<div class="col text-right">
-					<a class="btn btn-secondary irextraautoridad"><i class="fa fa-arrow-right"></i></a>							
+					<a id="Aautoridad"class="btn btn-secondary irextraautoridad"><i class="fa fa-arrow-right"></i></a>							
 				</div>
 			</div>
 		</div>
@@ -91,42 +91,43 @@
 
 @push('scripts')
 	<script src="{{ asset('js/selectsDirecciones.js') }}"></script>
+	<script src="{{ asset('js/siguientes.js') }}"></script>
 	<script>
-		$('.irdireccion').click(function(){
-			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-			$('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
-			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-			$('.tab-pane').removeClass("show");
-			$('#direccion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-			$('#direccion').addClass("show");
-		});
+		// $('.irdireccion').click(function(){
+		// 	$('.nav-link').removeClass("active");//Quito la clase active al tab actual
+		// 	$('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
+		// 	$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+		// 	$('.tab-pane').removeClass("show");
+		// 	$('#direccion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		// 	$('#direccion').addClass("show");
+		// });
 		
-		$('.irtrabajo').click(function(){
-			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-			$('#trabajo-tab').addClass("active");//Agrego la clase active al tab actual
-			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-			$('.tab-pane').removeClass("show");
-			$('#trabajo').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-			$('#trabajo').addClass("show");
+		// $('.irtrabajo').click(function(){
+		// 	$('.nav-link').removeClass("active");//Quito la clase active al tab actual
+		// 	$('#trabajo-tab').addClass("active");//Agrego la clase active al tab actual
+		// 	$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+		// 	$('.tab-pane').removeClass("show");
+		// 	$('#trabajo').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		// 	$('#trabajo').addClass("show");
 		});
 
-		$('.irpersonales').click(function(){
-			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-			$('#personales-tab').addClass("active");//Agrego la clase active al tab actual
-			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-			$('.tab-pane').removeClass("show");
-			$('#personales').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-			$('#personales').addClass("show");
-		});
+		// $('.irpersonales').click(function(){
+		// 	$('.nav-link').removeClass("active");//Quito la clase active al tab actual
+		// 	$('#personales-tab').addClass("active");//Agrego la clase active al tab actual
+		// 	$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+		// 	$('.tab-pane').removeClass("show");
+		// 	$('#personales').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		// 	$('#personales').addClass("show");
+		// });
 
-		$('.irextraautoridad').click(function(){
-			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-			$('#autoridad-tab').addClass("active");//Agrego la clase active al tab actual
-			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-			$('.tab-pane').removeClass("show");
-			$('#autoridad').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-			$('#autoridad').addClass("show");
-		});
+		// $('.irextraautoridad').click(function(){
+		// 	$('.nav-link').removeClass("active");//Quito la clase active al tab actual
+		// 	$('#autoridad-tab').addClass("active");//Agrego la clase active al tab actual
+		// 	$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+		// 	$('.tab-pane').removeClass("show");
+		// 	$('#autoridad').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		// 	$('#autoridad').addClass("show");
+		// });
 
 
 		$(function () {
