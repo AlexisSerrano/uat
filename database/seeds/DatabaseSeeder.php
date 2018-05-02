@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(LenguaSeeder::class);
         $this->call(ModalidadSeeder::class);
         $this->call(DelitosSeeder::class);
+        $this->call(UnidadSeeder::class);
          
         
         $this->call(EstadoSeeder::class);
