@@ -203,4 +203,7 @@ Route::post('/folioActa', 'ActasHechosController@filtroActasPendientes')->name('
 Route::get('libro','libroGobController@terminadas');
 Route::get('getCarpetas','libroGobController@getCarpetas');
 Route::get('carpetas','libroGobController@buscar');
-route::get('buscarcarpeta/{id}','libroGobController@showForm');
+route::get('buscarcarpeta','libroGobController@buscarRegistros');
+
+/* --------Rutas para Caratula de carpeta de investigacion----------- */
+Route::get('caratula','CaratulaCarpetaController@crearCaratula');
