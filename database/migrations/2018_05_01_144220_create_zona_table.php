@@ -15,8 +15,8 @@ class CreateZonaTable extends Migration
     {
         Schema::create('zona', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Descripcion', 100);
-            $table->boolean('Activo');
+            $table->string('descripcion', 100);
+            $table->boolean('activo');
             $table->timestamps();
         });
     }

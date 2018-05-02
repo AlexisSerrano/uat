@@ -15,12 +15,12 @@ class CreateUnidadTable extends Migration
     {
         Schema::create('unidad', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Descripcion', 100);
-            $table->integer('ZonaId')->unsigned();;
-            $table->boolean('Activo');
+            $table->string('descripcion', 100);
+            $table->integer('idZona')->unsigned();
+            $table->boolean('activo');
             $table->timestamps();
 
-            $table->foreign('ZonaId')->references('id')->on('zona')->onDelete('cascade');
+            $table->foreign('idZona')->references('id')->on('zona')->onDelete('cascade');
         });
     }
 
