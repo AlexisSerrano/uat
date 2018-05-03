@@ -357,8 +357,51 @@
     }
 
             $('#Aautoridad').click(function(){
-            validarTrabajo();
+            validarTrabajo3();
             });
+            function validarTrabajo3(){
+                var trabajo=0;
+                if ($('#lugarTrabajo').val().length == 0){
+                trabajo=1;
+                }
+                if ($('#telefonoTrabajo').val().length == 0){
+                trabajo=1;
+                }
+                if ($('#idEstado2').val().length == 0){
+                trabajo=1;
+                }
+                if ($('#idMunicipio2').val().length == 0){
+                trabajo=1;
+                }
+                if ($('#idLocalidad2').val().length == 0){
+                trabajo=1;
+                }
+                if ($('#idColonia2').val().length == 0){
+                trabajo=1;
+                }
+                if ($('#cp2').val().length == 0){
+                trabajo=1;
+                }
+                if ($('#calle2').val().length == 0){
+                trabajo=1;
+                }
+                if ($('#numExterno2').val().length == 0){
+                trabajo=1;
+                }
+                else{
+                $('.nav-link').removeClass("active");//Quito la clase active al tab actual
+                $('#autoridad-tab').addClass("active");//Agrego la clase active al tab actual
+                $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+                $('.tab-pane').removeClass("show");
+                $('#autoridad').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+                $('#autoridad').addClass("show");
+                console.log('a notificaciones')
+                }
+                if (trabajo==1) {
+                toastr.error("Complete los campos faltantes para poder avanzar");
+                }
+                }
+
         //ABOGADO
             $('#Atrabajo2').click(function(){
             validarPersona2();
