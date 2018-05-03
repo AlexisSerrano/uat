@@ -40,7 +40,7 @@
                         @endif
                         @if($denunciante->reguardarIdentidad!=NULL)
                             <td>Si</td>
-                            <td>$denunciante->reguardarIdentidad</td>
+                            <td>{{$denunciante->reguardarIdentidad}}</td>
                         @else
                             <td colspan="2" style="text-align:center">No</td>
                         @endif
