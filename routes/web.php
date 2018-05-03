@@ -160,6 +160,9 @@ Route::post('storedelito', 'DelitoController@storeDelito')->name('store.delito')
 Route::get('delito/{id}/eliminar', 'DelitoController@delete');
 Route::get('editar/{id}', 'DelitoController@editar');
 Route::put('delito/{id}/actualizar', 'DelitoController@actualizar')->name('actualizar.delito');
+/*---------Rutas para obtener delitos y desagregaciones------------*/
+Route::get('agrupaciones1/{id}', 'DelitoController@getAgrupaciones1');
+Route::get('agrupaciones2/{id}', 'DelitoController@getAgrupaciones2');
 
 Route::get('acusacion', 'AcusacionController@showForm')->name('new.acusacion');
 Route::post('storeacusacion', 'AcusacionController@storeAcusacion')->name('store.acusacion');
@@ -205,7 +208,7 @@ Route::post('/folioActa', 'ActasHechosController@filtroActasPendientes')->name('
 Route::get('libro','libroGobController@terminadas');
 Route::get('getCarpetas','libroGobController@getCarpetas');
 Route::get('carpetas','libroGobController@buscar');
-route::get('buscarcarpeta','libroGobController@buscarRegistros');
+route::get('buscarcarpeta/{id}','libroGobController@showForm');
 
 /* --------Rutas para Caratula de carpeta de investigacion----------- */
 Route::get('caratula','CaratulaCarpetaController@crearCaratula');

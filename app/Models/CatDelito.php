@@ -17,10 +17,14 @@ class CatDelito extends Model
     public $fillable = [
         'id',
         'nombre',
-        'snVeh'
+        //'snVeh' se quito la columna, le corresponde al sist. de vehiculos
     ];
 
     public function tipifDelitos(){
         return $this->hasMany('App\Models\TipifDelito');
+    }
+
+     public function agrupaciones1(){
+        return $this->hasMany('App\Models\CatAgrupacion1');
     }
 }

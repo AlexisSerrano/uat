@@ -20,7 +20,7 @@
 		<div class="form-group">
 			{!! Form::label('fecha2', 'Fecha', ['class' => 'col-form-label-sm']) !!}
 			<div class="input-group date" id="fechadeli" data-target-input="nearest">
-				{!! Form::text('fecha2', null , ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadeli', 'required', 'placeholder' => 'DD/MM/AAAA', 'id'=>'fecha2']) !!}
+				{!! Form::date('fecha2', null , ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadeli', 'required', 'placeholder' => 'DD/MM/AAAA', 'id'=>'fecha2']) !!}
 				<span class="input-group-addon" data-target="#fechadeli" data-toggle="datetimepicker">
 					<div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
 				</span>
