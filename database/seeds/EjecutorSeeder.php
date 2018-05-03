@@ -12,11 +12,12 @@ class EjecutorSeeder extends Seeder
     public function run()
     {
         DB::table('ejecutor')->insert([
-            [ 'nombre' => 'SSP'],
+            [ 'nombre' => 'SECRETARIA DE SEGURIDAD PUBLICA'],
             [ 'nombre' => 'POLICIA MINISTERIAL'],
             [ 'nombre' => 'POLICIA FEDERAL'],
-            [ 'nombre' => 'MARINA'],
-            [ 'nombre' => 'EJERCITO'],
+            [ 'nombre' => 'POLICIA MUNICIPAL'],
+            [ 'nombre' => 'SECRETARIA DE MARINA'],
+            [ 'nombre' => 'SECRETARIA DE DEFENSA NACIONAL'],
         ]);
     }
 }

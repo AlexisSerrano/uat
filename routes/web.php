@@ -183,8 +183,8 @@ Route::post('storeautoridad', 'AutoridadController@storeAutoridad')->name('store
 Route::get('agregar-autoridad/{id}/eliminar', 'AutoridadController@delete');
 
 /* --------Rutas para Turnar----------- */
-Route::get('cestado','EstadoController@index');
-Route::put('/cestado/actualizar','EstadoController@editar')->name('Estado.edit');
+Route::get('turnar/{id}','EstadoController@index');
+Route::put('/turnar/actualizar','EstadoController@editar')->name('Estado.edit');
 
 /* --------Rutas para Actas de hechos----------- */
 Route::get('actas','ActasHechosController@showform')->name('new.actahechos');
