@@ -130,6 +130,7 @@
 <script src="{{ asset('admin/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
 <!-- ChartJS 1.0.1 -->
 <script src="{{ asset('admin/plugins/chartjs/Chart.min.js') }}"></script>
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 
 <!-- PAGE SCRIPTS -->
 {{-- <script src="{{ asset('admin/dist/js/pages/dashboard2.js') }}"></script> --}}

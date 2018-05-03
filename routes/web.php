@@ -21,6 +21,7 @@ Route::get('/prueba', function () {
 Route::get('/pruebas/caso','PruebasController@create');
 Route::get('/pruebas/hechos','PruebasController@hechos');
 Route::get('/pruebas/delitos','PruebasController@delitos');
+Route::get('/pruebas/impresion','PruebasController@impresion');
 
 Route::get('/pruebasIndex', function(){
 return view('prueba-index');
@@ -189,6 +190,7 @@ Route::put('/cestado/actualizar','EstadoController@editar')->name('Estado.edit')
 /* --------Rutas para Actas de hechos----------- */
 Route::get('actas','ActasHechosController@showform')->name('new.actahechos');
 Route::post('addactas','ActasHechosController@addActas')->name('addactas');
+Route::post('addactas2','ActasHechosController@addActas2')->name('addactas2');
 Route::get('actas-pendientes','ActasHechosController@actasPendientes')->name('actaspendientes');
 Route::get('listaActas', 'ActasHechosController@showActas');
 Route::get('atender-acta/{id}','ActasHechosController@actasPreregistro')->name('actaspreregistro');

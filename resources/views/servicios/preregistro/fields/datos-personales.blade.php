@@ -210,8 +210,3 @@
 	</div>
 
 </div>
-<script>
-	$('#correo2').onfocus(function(){
-			toastr.info("Info Message", "Title");
-		}
-</script>

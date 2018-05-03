@@ -6,7 +6,7 @@
 @php
 $form = oldFormActas();
 @endphp
-{!! Form::open(['route' => 'addactas', 'method' => 'POST'])  !!}
+{!! Form::open(['route' => 'addactas2', 'method' => 'POST'])  !!}
 <div class="row no-gutters">
     <div class="col-12">
         <div class="boxtwo">
@@ -24,6 +24,7 @@ $form = oldFormActas();
                 </div>
                 <div class="col text-right">
                     {!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarActa'))!!}
+                    <input type="button" value="Imprime esta pagina" onclick="window.print()"> 
                 </div>
             </div>
             

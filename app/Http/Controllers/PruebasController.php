@@ -127,6 +127,10 @@ public function actas()
         ->with('estados',$estados);
 }
 
+public function impresion(){
+    return view('impresion');
+}
+
 
 
 

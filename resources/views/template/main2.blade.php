@@ -55,6 +55,7 @@
      $.validate({
         lang:'es'
     });
+    
 
     toastr.options = {
       "closeButton": true,
@@ -73,7 +74,7 @@
       "showMethod": "fadeIn",
       "hideMethod": "fadeOut"
     }
-
+    
   </script>
  @yield('pilaScripts')
  @include('sweet::alert')

@@ -139,6 +139,7 @@ function oldForm(){
 					$form['esEmpresa1'] = '';
 					$form['esEmpresa2'] = 'checked';
 				}
+				return $form;
 			}
 		}
 		else{
@@ -189,9 +190,9 @@ function oldForm(){
 					$form['esEmpresa1'] = '';
 					$form['esEmpresa2'] = 'checked';
 				}
+				return $form;
 			}
 		}
-		return $form;
 	}
 }
 
