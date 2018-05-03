@@ -193,7 +193,7 @@ public function showForm()
             
             $edad= Carbon::parse($request->fechaNacimiento)->age;
             $alias= substr($request->nombres,0,1).substr($request->primerAp,-1,1).substr($request->nombres,-1,1).rand(1000,9999).substr($request->primerAp,0,1);
-            dd($alias);
+            
             $VariablesPersona = new VariablesPersona();
             $VariablesPersona->idCarpeta = $idCarpeta;
             $VariablesPersona->idPersona = $idPersona;
