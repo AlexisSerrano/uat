@@ -242,8 +242,53 @@
         }
 
         $('#Adenunciado').click(function(){
-        validarNotificaciones();
+        validarNotificaciones2();
         });
+
+        function validarNotificaciones2(){
+            var notificaciones=0;
+    
+            if ($('#idEstado3').val().length == 0){
+            notificaciones=1;
+            }
+            if ($('#idMunicipio3').val().length == 0){
+            notificaciones=1;
+            }
+            if ($('#idLocalidad3').val().length == 0){
+            notificaciones=1;
+            }
+            if ($('#idColonia3').val().length == 0){
+            notificaciones=1;
+            }
+            if ($('#cp3').val().length == 0){
+            notificaciones=1;
+            }
+            if ($('#calle3').val().length == 0){
+            notificaciones=1;
+            }
+            if ($('#numExterno3').val().length == 0){
+            notificaciones=1;
+            }
+            if ($('#correo').val().length == 0){
+            notificaciones=1;
+            }
+            if ($('#telefonoN').val().length == 0){
+            notificaciones=1;
+    
+            }
+            else{
+            $('.nav-link').removeClass("active");//Quito la clase active al tab actual
+            $('#denunciado-tab').addClass("active");//Agrego la clase active al tab actual
+            $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+            $('.tab-pane').removeClass("show");
+            $('#denunciado').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+            $('#denunciado').addClass("show");
+            console.log('na')
+            }
+            if (notificaciones==1) {
+            toastr.error("Complete los campos faltantes para poder avanzar");
+            }
+            }
 
         function validarNotDenunciado(){
         var notificaciones=0;
@@ -377,7 +422,7 @@
                 $('.tab-pane').removeClass("show");
                 $('#abogado').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
                 $('#abogado').addClass("show");
-                
+
                 console.log('a notificaciones')
                 }
                 if (trabajo==1) {
