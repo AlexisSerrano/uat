@@ -129,9 +129,9 @@
 
 		</div>
 		<br>
-		<div>
+		{{-- <div>
 			@include('tables.denunciantes')
-		</div>
+		</div> --}}
 	</div>
 </div>
 {!!Form::close()!!}

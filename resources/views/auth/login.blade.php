@@ -74,10 +74,10 @@
 {{-- @extends('template.main') --}}
 <script src="{{ asset('plugins/cookie/js.cookie.min.js')}}" ></script>
 <script type="text/javascript">
-Cookies.remove('isLiveC');
-//localStorage.clear();
-localStorage.removeItem('isLiveLocal');
-sessionStorage.removeItem('isLive');
+// Cookies.remove('isLiveC');
+// //localStorage.clear();
+// localStorage.removeItem('isLiveLocal');
+// sessionStorage.removeItem('isLive');
 </script>
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
@@ -181,11 +181,11 @@ sessionStorage.removeItem('isLive');
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 
 	<script type="text/javascript">
-	function borrarlsc(){
-		Cookies.remove('isLiveC');
-		localStorage.clear();
-		sessionStorage.removeItem('isLive');
-	}
+	// function borrarlsc(){
+	// 	Cookies.remove('isLiveC');
+	// 	localStorage.clear();
+	// 	sessionStorage.removeItem('isLive');
+	// }
 
 	$(document).ready(function() {
 		$("#name").focusout(function() {
