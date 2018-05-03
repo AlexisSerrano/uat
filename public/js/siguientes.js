@@ -377,6 +377,7 @@
                 $('.tab-pane').removeClass("show");
                 $('#abogado').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
                 $('#abogado').addClass("show");
+                
                 console.log('a notificaciones')
                 }
                 if (trabajo==1) {

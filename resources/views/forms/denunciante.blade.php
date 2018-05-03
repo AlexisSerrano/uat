@@ -67,7 +67,7 @@
 					@include('fields.lugartrabajo')
 					<div class="row menu">
 						<div class="col text-left">
-							<a class="btn btn-secondary irdireccion"><i class="fa fa-arrow-left"></i></a>
+							<a id="irdireccion" class="btn btn-secondary "><i class="fa fa-arrow-left"></i></a>
 						</div>
 						<div class="col text-right">
 							<a id="ANotificaciones" class="btn btn-secondary"><i class="fa fa-arrow-right"></i></a>
@@ -178,6 +178,15 @@
         $('.tab-pane').removeClass("show");
         $('#dirnotificacion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
 		$('#dirnotificacion').addClass("show");
+		console.log('boton atrás')
+		});
+	$('#irdireccion').click(function(){
+		$('.nav-link').removeClass("active");
+        $('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
+        $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+        $('.tab-pane').removeClass("show");
+        $('#direccion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		$('#direccion').addClass("show");
 		console.log('boton atrás')
 		});
 	
