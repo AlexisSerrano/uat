@@ -175,10 +175,46 @@ class AbogadoController extends Controller
 
     public function delete($id){
         $ExtraAbogado =  ExtraAbogado::find($id);
+        $tipo=$ExtraAbogado->tipo;
+        
+        if ($tipo=="ASESOR JURIDICO") {
+            
+            $denunciantes = DB::table('extra_denunciante')
+            ->where('idAbogado', '=', $id)
+            ->get();
+            // dd($denunciantes);
+            foreach ($denunciantes as $denunciante) {
+                $asesor= ExtraDenunciante::find($denunciante->id);
+                $asesor->idAbogado = null;
+                $asesor->save();
+            }
+
+        } else {
+            $denunciados = DB::table('extra_denunciado')
+            ->where('idAbogado', '=', $id)
+            ->get();
+            // dd($denunciantes);
+            foreach ($denunciados as $denunciado) {
+                $abogado= ExtraDenunciado::find($denunciado->id);
+                $abogado->idAbogado = null;
+                $abogado->save();
+            }
+
+        }
+        
+
+
+
+
+
         $ExtraAbogado->delete();
         $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
         $bdbitacora->abogado = $bdbitacora->abogado-1;
+
+                
         $bdbitacora->save();
+
+
         Alert::success('Registro eliminado con éxito', 'Hecho');
         return back();
     }

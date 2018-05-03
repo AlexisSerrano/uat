@@ -15,6 +15,7 @@ class CreatePreregistrosTable extends Migration
     {
         Schema::create('preregistros', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('idCarpeta')->unsigned()->nullable();
             $table->integer('idDireccion')->unsigned();
             $table->integer('idRazon')->unsigned()->default(1);
             $table->integer('idEstadoCivil')->unsigned()->nullable();
@@ -45,6 +46,7 @@ class CreatePreregistrosTable extends Migration
             $table->integer('unidad')->nullable();
             $table->integer('zona')->nullable();
             
+            $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
             $table->foreign('idDireccion')->references('id')->on('domicilio')->onDelete('cascade');
             $table->foreign('idRazon')->references('id')->on('razones')->onDelete('cascade');
             $table->foreign('idEstadoCivil')->references('id')->on('cat_estado_civil')->onDelete('cascade');

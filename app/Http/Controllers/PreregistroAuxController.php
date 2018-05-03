@@ -530,17 +530,17 @@ class PreregistroAuxController extends Controller
         $caso->save();
         $idCarpeta = $caso->id;
 
+        $editpreregistro=Preregistro::find($id);
+        $editpreregistro->idCarpeta= $idCarpeta;
+        $editpreregistro->save();
+
+
         session(['carpeta' => $idCarpeta]);
         $bdbitacora = new BitacoraNavCaso;
         $bdbitacora->idCaso = $caso->id;
         $bdbitacora->save();
             
         
-        $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
-        $denunciados = CarpetaController::getDenunciados($idCarpeta);
-        $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
-        $delitos = CarpetaController::getDelitos($idCarpeta);
-        $medidasP= CarpetaController::getMedidasP($idCarpeta);
         $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -571,18 +571,13 @@ class PreregistroAuxController extends Controller
         ->with('direccionTB',  $direccionTB)
         ->with('idCodigoPostalSelect',  $direccionTB)
         ->with('catCodigoPostal',  $catCodigoPostal)
-        ->with( 'nombreEstado',  $nombreEstado)
+        ->with('nombreEstado',  $nombreEstado)
         ->with('nombreMunicipio',  $nombreMunicipio)
-        ->with( 'nombreLocalidad',  $nombreLocalidad)
-        ->with( 'nombreColonia',   $nombreColonia)
-        ->with( 'nombreCP',  $nombreCP)
-        ->with(  'tipopersona',  $tipopersona)
-        ->with('idpreregistro',  $idpreregistro)
-        ->with('denunciantes', $denunciantes)
-        ->with('denunciados', $denunciados)
-        ->with('acusaciones', $acusaciones)
-        ->with('delitos', $delitos)
-        ->with('medidasP', $medidasP);
+        ->with('nombreLocalidad',  $nombreLocalidad)
+        ->with('nombreColonia',   $nombreColonia)
+        ->with('nombreCP',  $nombreCP)
+        ->with('tipopersona',  $tipopersona)
+        ->with('idpreregistro',  $idpreregistro);
         // ->with('identificaciones', $identificaciones);
         
     }
