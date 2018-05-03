@@ -13,6 +13,7 @@
             <th>Tipo de persona</th>
             <th>Tipo de solicitante</th>
             <th>Identidad resguardada</th>
+            <th>Alias</th>
             <th>Opciones</th>
             {{--  <th>Opciones</th>  --}}
         </thead>
@@ -37,10 +38,11 @@
                         @else
                             <td>Ofendido</td>
                         @endif
-                        @if($denunciante->reguardarIdentidad==1)
+                        @if($denunciante->reguardarIdentidad!=NULL)
                             <td>Si</td>
+                            <td>$denunciante->reguardarIdentidad</td>
                         @else
-                            <td>No</td>
+                            <td colspan="2" style="text-align:center">No</td>
                         @endif
               
                        <td> <a href="{{ url('agregar-denunciante/'.$denunciante->id.'/eliminar')}}" title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
