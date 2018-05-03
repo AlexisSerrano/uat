@@ -314,14 +314,75 @@
             $('#Aautoridad').click(function(){
             validarTrabajo();
             });
-
+        //ABOGADO
             $('#Atrabajo2').click(function(){
-            validarPersona();
+            validarPersona2();
             });
+            function validarPersona2(){
+
+                var completoP=0;
+                if ($('.persona').val().length == 0){
+                completoP=1;
+                }
+                else{
+                $('.nav-link').removeClass("active");//Quito la clase active al tab actual
+                $('#trabajo-tab').addClass("active");//Agrego la clase active al tab actual
+                $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+                $('.tab-pane').removeClass("show");
+                $('#trabajo').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+                $('#trabajo').addClass("show");
+                console.log("todo bien")}
+        
+                if (completoP==1) {
+                toastr.error("Complete los campos faltantes para poder avanzar");
+                }
+                }
 
             $('#aAbogado').click(function(){
-            validarTrabajo();
+            validarTrabajo2();
             });
+            function validarTrabajo2(){
+                var trabajo=0;
+                if ($('#lugarTrabajo').val().length == 0){
+                trabajo=1;
+                }
+                if ($('#telefonoTrabajo').val().length == 0){
+                trabajo=1;
+                }
+                if ($('#idEstado2').val().length == 0){
+                trabajo=1;
+                }
+                if ($('#idMunicipio2').val().length == 0){
+                trabajo=1;
+                }
+                if ($('#idLocalidad2').val().length == 0){
+                trabajo=1;
+                }
+                if ($('#idColonia2').val().length == 0){
+                trabajo=1;
+                }
+                if ($('#cp2').val().length == 0){
+                trabajo=1;
+                }
+                if ($('#calle2').val().length == 0){
+                trabajo=1;
+                }
+                if ($('#numExterno2').val().length == 0){
+                trabajo=1;
+                }
+                else{
+                $('.nav-link').removeClass("active");//Quito la clase active al tab actual
+                $('#abogado-tab').addClass("active");//Agrego la clase active al tab actual
+                $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+                $('.tab-pane').removeClass("show");
+                $('#abogado').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+                $('#abogado').addClass("show");
+                console.log('a notificaciones')
+                }
+                if (trabajo==1) {
+                toastr.error("Complete los campos faltantes para poder avanzar");
+                }
+                }
 
             $('#aDelito').click(function(){
             validarDelito();
