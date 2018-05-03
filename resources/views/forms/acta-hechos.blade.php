@@ -23,8 +23,7 @@ $form = oldFormActas();
                     <a href="{{route('actaspendientes')}}" class="btn btn-secondary"><i class="fa fa-arrow-left"></i></a>
                 </div>
                 <div class="col text-right">
-                    {!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarActa'))!!}
-                    <input type="button" value="Imprime esta pagina" onclick="window.print()"> 
+                    {!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarActa'))!!} 
                 </div>
             </div>
             

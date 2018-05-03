@@ -452,8 +452,9 @@ class ActasHechosController extends Controller
         }
         catch (\PDOException $e){
             DB::rollBack();
-            Alert::error('Se presentó un problema al guardar su acta de hecho, intente de nuevo', 'Error');
-            return redirect('actas');
+            echo $e;
+            //Alert::error('Se presentó un problema al guardar su acta de hecho, intente de nuevo', "Error $e");
+            //return redirect('actas');
         }
     }
 }
