@@ -144,7 +144,7 @@
 @push('scripts')
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
 	<script src="{{ asset('js/selectsDirecciones.js') }}"></script>
-	{{-- <script src="{{ asset('js/predenunciacaso.js') }}"></script> --}}
+	<script src="{{ asset('js/rfcMoral-f.js') }}"></script>
 	{{-- <script src="{{ asset('js/validation.js')}}"></script> --}}
 	{{-- <script src="{{ asset('js/validation-orientador.js')}}"></script> --}}
 	<script>	

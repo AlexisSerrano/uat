@@ -29,6 +29,8 @@ use App\Models\CatOcupacion;
 use App\Models\CatReligion;
 use App\Models\CatIdentificacion;
 use App\Models\BitacoraNavCaso;
+use RFC\RfcBuilder;
+
 
 use Illuminate\Support\Facades\Session;
 class PreregistroAuxController extends Controller
@@ -683,4 +685,32 @@ class PreregistroAuxController extends Controller
         return redirect('correo');
     }
 
+    public function rfcMoral(Request $request)
+   {
+       $nombre = $request->nombre;
+       $dia    = $request->dia;
+       $mes    = $request->mes;
+       $ano    = $request->ano;
+
+       $builder = new RfcBuilder();
+
+       $rfc = $builder->legalName($nombre)
+           ->creationDate($dia, $mes, $ano)
+           ->build()
+           ->toString();
+       return ['res' => $rfc];
+   }
+
+   public function rfcFisico(Request $request)
+   {
+       $builder = new RfcBuilder();
+       $rfc     = $builder->name($request->nombre)
+           ->firstLastName($request->apPaterno)
+           ->secondLastName($request->apMaterno)
+           ->birthday($request->dia, $request->mes, $request->año)
+           ->build()
+           ->toString();
+
+       return ['res' => $rfc];
+   }
 }
