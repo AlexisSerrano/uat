@@ -41,62 +41,77 @@ class AbogadoController extends Controller
 
     public function storeAbogado(StoreAbogado $request)
     {
-        //dd($request->all());
-        $persona = new Persona();
-        $persona->nombres = $request->nombres;
-        $persona->primerAp = $request->primerAp;
-        $persona->segundoAp = $request->segundoAp;
-        $persona->fechaNacimiento = $request->fechaNacimiento;
-        $persona->rfc = $request->rfc;
-        $persona->sexo = $request->sexo;
-        $persona->idNacionalidad = 1;
-        $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
-        //$persona->curp = "SIN INFORMACION";
-        $persona->save();
-        $idPersona = $persona->id;
+        $idCarpeta=session('carpeta');
+        DB::beginTransaction();
+        try{
+            //dd($request->all());
+            $comprobarPersona=Persona::where('curp',$request->curp)->get();
+            if(count($comprobarPersona)>0){
+                $comprobarPersona=$comprobarPersona[0];
+                $idPersona = $comprobarPersona->id;
+            }else{
+                $persona = new Persona();
+                $persona->nombres = $request->nombres;
+                $persona->primerAp = $request->primerAp;
+                $persona->segundoAp = $request->segundoAp;
+                $persona->fechaNacimiento = $request->fechaNacimiento;
+                $persona->rfc = $request->rfc;
+                $persona->sexo = $request->sexo;
+                $persona->idNacionalidad = 1;
+                $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
+                
+                $persona->save();
+                $idPersona = $persona->id;
+            }
 
-        $domicilio2 = new Domicilio();
-        $domicilio2->idMunicipio = $request->idMunicipio2;
-        $domicilio2->idLocalidad = $request->idLocalidad2;
-        $domicilio2->idColonia = $request->idColonia2;
-        $domicilio2->calle = $request->calle2;
-        $domicilio2->numExterno = $request->numExterno2;
-        $domicilio2->numInterno = $request->numInterno2;
-        $domicilio2->save();
-        $idD2 = $domicilio2->id;
+            $domicilio2 = new Domicilio();
+            $domicilio2->idMunicipio = $request->idMunicipio2;
+            $domicilio2->idLocalidad = $request->idLocalidad2;
+            $domicilio2->idColonia = $request->idColonia2;
+            $domicilio2->calle = $request->calle2;
+            $domicilio2->numExterno = $request->numExterno2;
+            $domicilio2->numInterno = $request->numInterno2;
+            $domicilio2->save();
+            $idD2 = $domicilio2->id;
 
-        $VariablesPersona = new VariablesPersona();
-        $VariablesPersona->idCarpeta = $request->idCarpeta;
-        $VariablesPersona->idPersona = $idPersona;
-        $VariablesPersona->telefono = $request->telefono;
-        $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
-        $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
-        $VariablesPersona->idDomicilioTrabajo = $idD2;
-        $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
-        $fecha = Carbon::parse($request->fechaNacimiento);
-        $VariablesPersona->edad = Carbon::createFromDate($fecha->year, $fecha->month, $fecha->day)->age;
-        $VariablesPersona->motivoEstancia = "NO APLICA";
-        $VariablesPersona->idOcupacion = 2469;
-        $VariablesPersona->idEscolaridad = 8;
-        $VariablesPersona->docIdentificacion = "NO APLICA";
-        $VariablesPersona->numDocIdentificacion = "NO APLICA";
-        $VariablesPersona->representanteLegal = "NO APLICA";
-        $VariablesPersona->save();
-        $idVariablesPersona = $VariablesPersona->id;
+            $VariablesPersona = new VariablesPersona();
+            $VariablesPersona->idCarpeta = $idCarpeta;
+            $VariablesPersona->idPersona = $idPersona;
+            $VariablesPersona->telefono = $request->telefono;
+            $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
+            $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
+            $VariablesPersona->idDomicilioTrabajo = $idD2;
+            $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
+            $fecha = Carbon::parse($request->fechaNacimiento);
+            $VariablesPersona->edad = Carbon::createFromDate($fecha->year, $fecha->month, $fecha->day)->age;
+            $VariablesPersona->motivoEstancia = "NO APLICA";
+            $VariablesPersona->idOcupacion = 2469;
+            $VariablesPersona->idEscolaridad = 8;
+            $VariablesPersona->docIdentificacion = "NO APLICA";
+            $VariablesPersona->numDocIdentificacion = "NO APLICA";
+            $VariablesPersona->representanteLegal = "NO APLICA";
+            $VariablesPersona->save();
+            $idVariablesPersona = $VariablesPersona->id;
 
-        $ExtraAbogado = new ExtraAbogado();
-        $ExtraAbogado->idVariablesPersona = $idVariablesPersona;
-        $ExtraAbogado->cedulaProf = $request->cedulaProf;
-        $ExtraAbogado->sector = $request->sector;
-        $ExtraAbogado->correo = $request->correo;
-        $ExtraAbogado->tipo = $request->tipo;
-        $ExtraAbogado->save();
-        $idAbogado = $ExtraAbogado->id;
-        $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-        $bdbitacora->abogado = $bdbitacora->abogado+1;
-        $bdbitacora->save();
-        Alert::success('Abogado registrado con éxito', 'Hecho');
-        return redirect()->route('new.abogado', $request->idCarpeta);
+            $ExtraAbogado = new ExtraAbogado();
+            $ExtraAbogado->idVariablesPersona = $idVariablesPersona;
+            $ExtraAbogado->cedulaProf = $request->cedulaProf;
+            $ExtraAbogado->sector = $request->sector;
+            $ExtraAbogado->correo = $request->correo;
+            $ExtraAbogado->tipo = $request->tipo;
+            $ExtraAbogado->save();
+            $idAbogado = $ExtraAbogado->id;
+            $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
+            $bdbitacora->abogado = $bdbitacora->abogado+1;
+            $bdbitacora->save();
+            DB::commit();
+            Alert::success('Abogado registrado con éxito', 'Hecho');
+            return redirect()->route('new.abogado');
+        }catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            return back()->withInput();
+        }
     }
 
     public function showForm2()
@@ -123,23 +138,24 @@ class AbogadoController extends Controller
 
     public function storeDefensa(Request $request)
     {
+        $idCarpeta=session('carpeta');
         $idAbogado = $request->idAbogado;
         $tipo = $request->tipo;
         $idInvolucrado = $request->idInvolucrado;
         $xd = DB::table('extra_denunciante')->select('id')->where('idVariablesPersona', $idInvolucrado)->get();
         if(count($xd)>0){
             DB::table('extra_denunciante')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);
-            $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+            $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
             $bdbitacora->defensa = $bdbitacora->defensa+1;
             $bdbitacora->save();
         }else{
             DB::table('extra_denunciado')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);
-            $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+            $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
             $bdbitacora->defensa = $bdbitacora->defensa+1;
             $bdbitacora->save();
         }
         Alert::success('Defensa asignada con éxito', 'Hecho');
-        return redirect()->route('new.defensa', $request->idCarpeta);
+        return redirect()->route('new.defensa');
     }
     
     public function getInvolucrados(Request $request, $idCarpeta, $idAbogado){
