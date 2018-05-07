@@ -366,4 +366,6 @@ public function showForm()
             $bdbitacora->denunciante = $bdbitacora->denunciante+1;
             $bdbitacora->save();
     }
+
+    
 }

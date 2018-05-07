@@ -218,7 +218,7 @@
         module.exports = generaCurp;
     }
 }(this));
-$("#nombre2").focusout(function() {
+$("#nombres").focusout(function() {
     //toastr.clear();
     obtenerCURP();
     // obtenerRFCFISICA();
@@ -249,7 +249,7 @@ $("#idEstadoOrigen").change(function() {
 });
 
 function obtenerCURP() {
-	nombre = $("#nombre2").val().toUpperCase();
+	nombre = $("#nombres").val().toUpperCase();
 	apellidoPaterno = $("#primerAp").val().toUpperCase();
 	apellidoMaterno = $("#segundoAp").val().toUpperCase();
     fecha = $("#fechaNacimiento").val();

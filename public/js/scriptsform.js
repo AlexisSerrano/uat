@@ -396,6 +396,7 @@ $(document).ready(function(){
             //Datos personales requeridos de Persona Moral o Empresa
             $('#nombres2').prop('disabled', false);
             $('#rfc2').prop('disabled', false);
+            $("#homo2").prop('disabled', false);   
             $('#representanteLegal').prop('disabled', false);
             $("#senasPartic").prop('disabled', false);
             $("#narracion").prop('disabled', false);
@@ -405,6 +406,7 @@ $(document).ready(function(){
             $("#primerAp").prop('disabled', true);   
             $("#segundoAp").prop('disabled', true);   
             $("#rfc").prop('disabled', true);   
+            $("#homo").prop('disabled', true);   
             $("#fechaNacimiento").prop('disabled', true);   
             $("#edad").prop('disabled', true);   
             $("#sexo").prop('disabled', true);   
@@ -477,6 +479,7 @@ $(document).ready(function(){
             //Datos personales no requeridos de Persona Moral o Empresa
             $('#nombres2').prop('disabled', true);
             $('#rfc2').prop('disabled', true);
+            $("#homo2").prop('disabled', true);   
             $('#representanteLegal').prop('disabled', true);
             
             //Datos personales requeridos de Persona Física
@@ -484,6 +487,7 @@ $(document).ready(function(){
             $("#primerAp").prop('disabled', false);   
             $("#segundoAp").prop('disabled', false);   
             $("#rfc").prop('disabled', false);   
+            $("#homo").prop('disabled', false);   
             $("#fechaNacimiento").prop('disabled', false);   
             $("#edad").prop('disabled', false);   
             $("#sexo").prop('disabled', false);   
