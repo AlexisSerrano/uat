@@ -17,7 +17,7 @@ class CreateCarpetasTable extends Migration
             $table->increments('id');
             $table->integer('idUnidad')->unsigned()->nullable();
             $table->integer('idFiscal')->unsigned()->nullable();
-            $table->string('numCarpeta', 30);
+            $table->string('numCarpeta')->nullable();
             $table->date('fechaInicio');
             $table->boolean('conDetenido')->default(false);
             $table->boolean('esRelevante')->default(false);
