@@ -45,6 +45,7 @@ class CreatePreregistrosTable extends Migration
             $table->dateTime('horaLlegada')->nullable();
             $table->integer('unidad')->nullable();
             $table->integer('zona')->nullable();
+            $table->integer('idMunicipioOrigen')->unsigned()->default(2496);
             
             $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
             $table->foreign('idDireccion')->references('id')->on('domicilio')->onDelete('cascade');
@@ -53,6 +54,7 @@ class CreatePreregistrosTable extends Migration
             $table->foreign('idEscolaridad')->references('id')->on('cat_escolaridad')->onDelete('cascade');
             $table->foreign('idOcupacion')->references('id')->on('cat_ocupacion')->onDelete('cascade');
             $table->foreign('docIdentificacion')->references('id')->on('cat_identificacion')->onDelete('cascade');
+            $table->foreign('idMunicipioOrigen')->references('id')->on('cat_municipio')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes();

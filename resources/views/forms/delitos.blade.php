@@ -35,7 +35,7 @@
 				
 				<div class="row">
 					<div class="col text-left">
-						<a id="aDelito2" class="btn btn-primary irdelito"><i class="fa fa-arrow-left"></i></a>
+						<a id="irdelito" class="btn btn-primary "><i class="fa fa-arrow-left"></i></a>
 					</div>
 					<div class="col text-right">	
 						{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!}
@@ -59,7 +59,7 @@
 			
 		// });
 
-		$('.irdelito').click(function(){
+		$('#irdelito').click(function(){
 			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
 			$('#delito-tab').addClass("active");//Agrego la clase active al tab actual
 			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info

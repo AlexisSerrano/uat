@@ -18,6 +18,8 @@ class TipifDelito extends Model
         'id',
         'idCarpeta',
         'idDelito',
+        'idAgrupacion1',
+        'idAgrupacion2',
         'conViolencia',
         // 'idArma',
         // 'idPosibleCausa',
@@ -53,7 +55,15 @@ class TipifDelito extends Model
     {
         return $this->belongsTo('app/Models/CatDelito');
     }
+    public function agrupacion1()
+    {
+        return $this->belongsTo('app/Models/CatAgrupacion1');
+    }
 
+    public function agrupacion2()
+    {
+        return $this->belongsTo('app/Models/CatAgrupacion2');
+    }
     // public function arma()
     // {
     //     return $this->belongsTo('app/Models/CatArma');

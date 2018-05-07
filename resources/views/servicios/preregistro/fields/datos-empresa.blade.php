@@ -9,11 +9,18 @@
 	</div>
 	<!--RFC-->
 	<div class="col-4">
-		<div class="form-group">
+			<div class="form-group">
+					<div class="row">
+				<div class="col">
 			{!! Form::label('rfc1', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('rfc1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'data-validation'=>'requiredx','data-validation-error-msg'=>'RFC inválido','required']) !!}
-			<div class="help-block with-errors"></div>
+			{!! Form::text('rfc1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
+				</div>
+			<div class="col">
+					{!! Form::label('homo1', 'Homo', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::text('homo1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
+			</div>
 		</div>
+	</div>
 	</div>
 	<!--Representante legal-->
 	<div class="col-4">

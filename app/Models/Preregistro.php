@@ -16,6 +16,7 @@ class Preregistro extends Model
         'nombre',
         'primerAp',
         'segundoAp',
+        'idMunicipioOrigen',
         'rfc',
         'fechaNac',
         'idEscolaridad',

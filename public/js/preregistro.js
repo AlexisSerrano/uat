@@ -117,13 +117,17 @@ function mostrarpersonal(){
     $("#numExterno1").prop('disabled', true); 
     $("#idRazon1").prop('disabled',true);  
     
+    
     //Datos personales requeridos de Persona Física
     $("#nombre2").prop('disabled', false);   
     $("#primerAp").prop('disabled', false);   
     $("#segundoAp").prop('disabled', false);   
-    $("#rfc2").prop('disabled', false);   
+    $("#rfc2").prop('disabled', false); 
+    $("#homo2").prop('disabled', false);   
     $("#fechaNacimiento").prop('disabled', false);   
     $("#edad").prop('disabled', false);   
+    $("#idEstadoOrigen").prop('disabled', false);  
+    $("#idMunicipioOrigen").prop('disabled', false);  
     $("#idEstado2").prop('disabled', false);   
     $("#idMunicipio2").prop('disabled', false);   
     $("#idLocalidad2").prop('disabled', false);   
@@ -144,6 +148,7 @@ function mostrarmoral(){
     //Datos personales requeridos de Persona Moral o Empresa
     $('#nombre1').prop('disabled', false);
     $('#rfc1').prop('disabled', false);
+    $('#homo1').prop('disabled', false);
     $('#repLegal').prop('disabled', false);
     $('#telefono1').prop('disabled', false);
     $("#idEstado1").prop('disabled', false);   
@@ -160,9 +165,12 @@ function mostrarmoral(){
     $("#nombre2").prop('disabled', true);   
     $("#primerAp").prop('disabled', true);   
     $("#segundoAp").prop('disabled', true);   
-    $("#rfc2").prop('disabled', true);   
+    $("#rfc2").prop('disabled', true); 
+    $('#homo1').prop('disabled', true);
     $("#fechaNacimiento").prop('disabled', true);   
-    $("#edad").prop('disabled', true);   
+    $("#edad").prop('disabled', true); 
+    $("#idEstadoOrigen").prop('disabled', true);  
+    $("#idMunicipioOrigen").prop('disabled', true);   
     $("#idEstado2").prop('disabled', true);   
     $("#idMunicipio2").prop('disabled', true);   
     $("#idLocalidad2").prop('disabled', true);   

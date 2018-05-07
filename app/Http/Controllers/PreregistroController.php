@@ -75,7 +75,8 @@ class PreregistroController extends Controller
      */
     public function store(StorePreregistro $request)
     {
-        //dd($re);
+       
+       // dd($request);
         $comprobacionFolio=0;
         $folio=$comprobacionFolio;
         while ($comprobacionFolio == $folio) {
@@ -134,6 +135,7 @@ class PreregistroController extends Controller
             $preregistro->idRazon = $request->idRazon2;
             $preregistro->fechaNac = $request->fechaNacimiento;
             $preregistro->edad = $edad;
+            $preregistro->idMunicipioOrigen = $request->idMunicipioOrigen;
             $preregistro->idEstadoCivil = $request->estadoCivil;
             $preregistro->idEscolaridad = $request->escolaridad;
             $preregistro->idOcupacion = $request->ocupacion;
