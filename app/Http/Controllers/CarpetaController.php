@@ -361,9 +361,9 @@ class CarpetaController extends Controller
         if (is_null($caso)){   
             $caso = new Carpeta();
             $caso->fechaInicio = Carbon::now();
-            $caso->idEstadoCarpeta = 1;
             $caso->horaIntervencion = Carbon::now();
             $caso->fechaDeterminacion = Carbon::now();
+            $caso->idEstadoCarpeta = 1;
             $caso->save();
             session(['carpeta' => $caso->id]);
             $bdbitacora = new BitacoraNavCaso;
@@ -397,13 +397,14 @@ class CarpetaController extends Controller
             if($carpterminadas){
                 $carpeta = Carpeta::find($id);
                 $carpeta->numCarpeta = "UAT/D"."1"."/"."X"."/"."XX"."/".Carbon::now()->year;
+                $carpeta->idEstadoCarpeta = 2;
                 $carpeta->save();
                 $request->session()->forget('carpeta');
-                Alert::success('Caso iniciado con éxito', 'Hecho');
+                Alert::success('Caso terminado con éxito', 'Hecho');
                 return redirect('registros');
             }
             else{
-                Alert::warning('No cuenta con los requisitos minimos para terminar la carpeta', 'Advertencia');
+                Alert::warning('No cuenta con los requisitos mínimos (denunciante,denunciado,delito,acusación) para terminar la carpeta', 'Advertencia');
                 return redirect()->back();
             }
         }
