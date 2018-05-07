@@ -23,10 +23,10 @@ class EstadoController extends Controller
 
 
 
-    public function index(){
-     $idCarpeta=session('carpeta');
+    public function index($id){
+    // $idCarpeta=session('carpeta');
      
-    //  $casoNuevo = Carpeta::where('id', $idCarpeta)->get();
+    // $casoNuevo = Carpeta::where($id, $idCarpeta)->get();
     // $carpetaNueva = Carpeta::find($idCarpeta);
 // dd($carpetaNueva);
 
@@ -38,7 +38,7 @@ class EstadoController extends Controller
     $estatus=DB::table('carpeta') //id's de domicilios (municipio,localidad)
        ->join('cat_estatus_casos','cat_estatus_casos.id','=','carpeta.idEstadoCarpeta') 
        ->select('cat_estatus_casos.nombreEstatus as estatus')
-       ->where('carpeta.id','=', $idCarpeta)
+       ->where('carpeta.id','=', $id)
         ->get();
         
 
@@ -57,7 +57,7 @@ class EstadoController extends Controller
         $id->save();   // para guardar el registro
        
         Alert::success('Registro modificado con exito','Hecho');
-        return redirect('/cestado');
+        return back();
     
   
    

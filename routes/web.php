@@ -21,6 +21,7 @@ Route::get('/prueba', function () {
 Route::get('/pruebas/caso','PruebasController@create');
 Route::get('/pruebas/hechos','PruebasController@hechos');
 Route::get('/pruebas/delitos','PruebasController@delitos');
+Route::get('/pruebas/impresion','PruebasController@impresion');
 
 Route::get('/pruebasIndex', function(){
 return view('prueba-index');
@@ -159,6 +160,9 @@ Route::post('storedelito', 'DelitoController@storeDelito')->name('store.delito')
 Route::get('delito/{id}/eliminar', 'DelitoController@delete');
 Route::get('editar/{id}', 'DelitoController@editar');
 Route::put('delito/{id}/actualizar', 'DelitoController@actualizar')->name('actualizar.delito');
+/*---------Rutas para obtener delitos y desagregaciones------------*/
+Route::get('agrupaciones1/{id}', 'DelitoController@getAgrupaciones1');
+Route::get('agrupaciones2/{id}', 'DelitoController@getAgrupaciones2');
 
 Route::get('acusacion', 'AcusacionController@showForm')->name('new.acusacion');
 Route::post('storeacusacion', 'AcusacionController@storeAcusacion')->name('store.acusacion');
@@ -183,12 +187,13 @@ Route::post('storeautoridad', 'AutoridadController@storeAutoridad')->name('store
 Route::get('agregar-autoridad/{id}/eliminar', 'AutoridadController@delete');
 
 /* --------Rutas para Turnar----------- */
-Route::get('cestado','EstadoController@index');
-Route::put('/cestado/actualizar','EstadoController@editar')->name('Estado.edit');
+Route::get('turnar/{id}','EstadoController@index');
+Route::put('/turnar/actualizar','EstadoController@editar')->name('Estado.edit');
 
 /* --------Rutas para Actas de hechos----------- */
 Route::get('actas','ActasHechosController@showform')->name('new.actahechos');
 Route::post('addactas','ActasHechosController@addActas')->name('addactas');
+Route::post('addactas2','ActasHechosController@addActas2')->name('addactas2');
 Route::get('actas-pendientes','ActasHechosController@actasPendientes')->name('actaspendientes');
 Route::get('listaActas', 'ActasHechosController@showActas');
 Route::get('atender-acta/{id}','ActasHechosController@actasPreregistro')->name('actaspreregistro');
@@ -203,7 +208,7 @@ Route::post('/folioActa', 'ActasHechosController@filtroActasPendientes')->name('
 Route::get('libro','libroGobController@terminadas');
 Route::get('getCarpetas','libroGobController@getCarpetas');
 Route::get('carpetas','libroGobController@buscar');
-route::get('buscarcarpeta','libroGobController@buscarRegistros');
+route::get('buscarcarpeta/{id}','libroGobController@showForm');
 
 /* --------Rutas para Caratula de carpeta de investigacion----------- */
 Route::get('caratula','CaratulaCarpetaController@crearCaratula');

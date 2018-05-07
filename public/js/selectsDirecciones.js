@@ -437,3 +437,32 @@ $("#cp2").change(function(event){
 	
 	}
 });
+
+$("#idDelito").change(function(event){
+	if(event.target.value!=""){
+		$.get("../agrupaciones1/"+event.target.value+"", function(response, delito){
+			$("#idAgrupacion1").empty();
+			//console.log(response);
+			$("#idAgrupacion1").append("<option value=''>Seleccione una desagregación</option>");
+			for(i=0; i<response.length; i++){
+				$("#idAgrupacion1").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+			}
+	});
+}
+});
+
+$("#idAgrupacion1").change(function(event){
+	if(event.target.value!=""){
+		$.get("../agrupaciones2/"+event.target.value+"", function(response, agrupacion1){
+			$("#idAgrupacion2").empty();
+			console.log(response);
+			$("#idAgrupacion2").append("<option value=''>Seleccione una desagregación</option>");
+			for(i=0; i<response.length; i++){
+				$("#idAgrupacion2").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+			}
+	});
+}
+});
+$('form').sisyphus({
+	excludeFields: $( 'input[name=_token]' )
+});

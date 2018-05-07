@@ -79,6 +79,7 @@ public function showForm()
 
     public function storeDenunciante(StoreDenunciante $request){
         //dd($request->all());
+        
         $idCarpeta = session('carpeta');
         if(is_null($idCarpeta)){
             $idCarpeta = $request->idCarpeta;
@@ -189,9 +190,10 @@ public function showForm()
             $notificacion->fax = $request->fax;
             $notificacion->save();
             $idNotificacion = $notificacion->id;
-
+            
             $edad= Carbon::parse($request->fechaNacimiento)->age;
-
+            $alias= substr($request->nombres,0,1).substr($request->primerAp,-1,1).substr($request->nombres,-1,1).rand(1000,9999).substr($request->primerAp,0,1);
+            
             $VariablesPersona = new VariablesPersona();
             $VariablesPersona->idCarpeta = $idCarpeta;
             $VariablesPersona->idPersona = $idPersona;
@@ -237,8 +239,11 @@ public function showForm()
             $ExtraDenunciante->idNotificacion = $idNotificacion;
             $ExtraDenunciante->idAbogado = null;
             $ExtraDenunciante->victima = $request->victima;
-            if ($request->conoceAlDenunciado===1){
-                $ExtraDenunciante->conoceAlDenunciado = 1;
+            if ($request->reguardarIdentidad==1){
+                $ExtraDenunciante->reguardarIdentidad = $alias;
+            }
+            if ($request->reguardarIdentidad==0){
+                $ExtraDenunciante->reguardarIdentidad = null;
             }
             $ExtraDenunciante->narracion = $request->narracion;
             $ExtraDenunciante->save();
@@ -327,12 +332,8 @@ public function showForm()
             $ExtraDenunciante->idNotificacion = $idNotificacion;
             $ExtraDenunciante->idAbogado = null;
             $ExtraDenunciante->victima = $request->victima;            
-            if ($request->reguardarIdentidad==1){
-                $ExtraDenunciante->reguardarIdentidad = 1;
-            }
-            if ($request->reguardarIdentidad==0){
-                $ExtraDenunciante->reguardarIdentidad = 0;
-            }
+            $ExtraDenunciante->reguardarIdentidad = null;
+            
             $ExtraDenunciante->narracion = $request->narracion;
             $ExtraDenunciante->save();
             $this->addbitacora();

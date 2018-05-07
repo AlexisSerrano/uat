@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Alert;
-
+use App\Models\CatAgrupacion1;
+use App\Models\CatAgrupacion2;
 use App\Models\Acusaciones;
 use App\Models\TipifDelito;
 use App\Models\CatMunicipio;
@@ -72,6 +73,8 @@ class DelitoController extends Controller
           $tipifDelito = new TipifDelito();
         $tipifDelito->idCarpeta = $idCarpeta;
         $tipifDelito->idDelito = $request->idDelito;
+        $tipifDelito->idAgrupacion1 = $request->idAgrupacion1;
+        $tipifDelito->idAgrupacion2 = $request->idAgrupacion2;
         if ($request->conViolencia==="1") {
             # code...
             $tipifDelito->conViolencia = 1;
@@ -203,6 +206,21 @@ class DelitoController extends Controller
         //return view('forms.editdelitos'); 
     }
     
-      
+    public function getAgrupaciones1(Request $request, $id)
+    {
+        if ($request->ajax()) {
+            $agrupaciones1 = CatAgrupacion1::agrupaciones1($id);
+            return response()->json($agrupaciones1);
+        }
+    }
+
+    public function getAgrupaciones2(Request $request, $id)
+    {
+        if ($request->ajax()) {
+            $agrupaciones2 = CatAgrupacion2::agrupaciones2($id);
+            return response()->json($agrupaciones2);
+        }
+    }
+
 }
 

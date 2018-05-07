@@ -6,7 +6,7 @@
 @php
 $form = oldFormActas();
 @endphp
-{!! Form::open(['route' => 'addactas', 'method' => 'POST'])  !!}
+{!! Form::open(['route' => 'addactas2', 'method' => 'POST'])  !!}
 <div class="row no-gutters">
     <div class="col-12">
         <div class="boxtwo">
@@ -23,7 +23,7 @@ $form = oldFormActas();
                     <a href="{{route('actaspendientes')}}" class="btn btn-secondary"><i class="fa fa-arrow-left"></i></a>
                 </div>
                 <div class="col text-right">
-                    {!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarActa'))!!}
+                    {!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarActa'))!!} 
                 </div>
             </div>
             
