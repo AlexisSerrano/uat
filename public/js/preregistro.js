@@ -1,17 +1,17 @@
-
 $(document).ready(function(){
     mostrar();
-    if($("#tipoActa").val() == 'OTROS DOCUMENTOS'){
+    alert($("#idRazon2").val());
+    if($("#idRazon2").val()==4){
+        if($("#tipoActa").val() == 'OTROS DOCUMENTOS'){
         $(".otros").show();
+        }
+        else{
+            $(".otros").hide();
+        }
     }
     else{
-        $(".otros").hide();
+        $('#tipodeActa').hide();
     }
-    //Para el tipo de persona(Moral/Física)
-    // $("#esEmpresa1").prop("checked", false);
-    // $("#esEmpresa2").prop("checked", false);
-    
-   
     //Si es empresa
     $("#esEmpresa1").change(function(event){
         if ($('#esEmpresa1').is(':checked') ) {
@@ -23,7 +23,6 @@ $(document).ready(function(){
         }
     });
 
-
     //No es empresa
     $("#esEmpresa2").change(function(event){
         if ($('#esEmpresa2').is(':checked') ) {
@@ -34,18 +33,12 @@ $(document).ready(function(){
             paraActadeHechos2();
         }
     });
-
-
-
 });
 //empresa
 function paraActadeHechos1(){
-    //var select = document.getElementById('idRazon1');
-    //var select = $("#idRazon1");
     $("#idRazon1").change(function(){
         valor = $(this).val();
         if(valor==4){
-            console.log('es 4');
             $('#tipodeActa1').show();
             $('#tipoActa1').prop('disabled', false);
            
@@ -54,30 +47,7 @@ function paraActadeHechos1(){
             $('#tipodeActa1').hide();
             $('#tipoActa1').prop('disabled', true);
         }
-    })
-    // select.addEventListener('change',function(){
-    //     //$("#idRazon1").change(function(event){ 
-    //     var selectedOption1 = this.options[select.selectedIndex];
-        
-    // 	if(selectedOption1.value==4){
-    // 		console.log('es 4');
-    // 		$('#tipodeActa1').show();
-    // 		$('#tipoActa1').prop('disabled', false);
-    // 		$('#tipoActa1').prop('disabled', false);
-    // 		$('#estadoCivilActa1').prop('disabled', false);
-    // 		$('#escActa1').prop('disabled', false);
-    // 		$('#ocupActa1').prop('disabled', false);
-    // 	}
-    // 	else{
-    // 		$('#tipodeActa1').hide();
-    // 		$('#tipoActa1').prop('disabled', true);
-    // 		$('#estadoCivilActa1').prop('disabled', true);
-    // 		$('#escActa1').prop('disabled', true);
-    // 		$('#ocupActa1').prop('disabled', true);
-    // 	}
-      
-    
-    // }); 
+    }) 
 }
 //persona
 function paraActadeHechos2(){
@@ -92,7 +62,8 @@ function paraActadeHechos2(){
             $(".otros").hide();
         }
     });
-    $("#idRazon2").change(function(){
+    $("#idRazon2").bind("change",function(){
+        alert("ok");
         valor = $(this).val();
         if(valor==4){
             console.log('es 4');
@@ -184,7 +155,6 @@ function mostrarmoral(){
     $("#calle1").prop('disabled', false);   
     $("#numExterno1").prop('disabled', false); 
      $("#idRazon1").prop('disabled', false); 
-
     
     //Datos personales no requeridos de Persona Física
     $("#nombre2").prop('disabled', true);   
