@@ -17,11 +17,11 @@ class CreateCarpetasTable extends Migration
             $table->increments('id');
             $table->integer('idUnidad')->unsigned()->nullable();
             $table->integer('idFiscal')->unsigned()->nullable();
-            $table->string('numCarpeta', 30);
+            $table->string('numCarpeta')->nullable();
             $table->date('fechaInicio');
             $table->boolean('conDetenido')->default(false);
             $table->boolean('esRelevante')->default(false);
-            $table->integer('idEstadoCarpeta')->unsigned()->default(1); // $table->string('estadoCarpeta',50)->default("INICIO");
+            $table->integer('idEstadoCarpeta')->unsigned()->default(0); // $table->string('estadoCarpeta',50)->default("INICIO");
             $table->time('horaIntervencion')->nullable();
             $table->string('npd',50)->default("SIN INFORMACION");
             $table->string('numIph',50)->default("SIN INFORMACION");

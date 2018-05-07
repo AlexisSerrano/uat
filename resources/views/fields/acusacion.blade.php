@@ -12,15 +12,15 @@
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('idTipifDelito', 'Delito', ['class' => 'col-form-label-sm']) !!}
-			<select name="idTipifDelito" id="idTipifDelito" class="form-control form-control-sm" required>
-				<option value="">Seleccione un delito</option>
-				@foreach($tipifdelitos as $tipifdelito)
-				<option value="{{ $tipifdelito->id }}">{{ $tipifdelito->nombre }}</option>
-				@endforeach
-			</select>
+				{!! Form::label('idTipifDelito', 'Delito', ['class' => 'col-form-label-sm']) !!}
+				<select name="idTipifDelito" id="idTipifDelito" class="form-control form-control-sm" required>
+					<option value="">Seleccione un delito</option>
+					@foreach($tipifdelitos as $tipifdelito)
+					<option value="{{ $tipifdelito->id }}">{{ $tipifdelito->delito." ".$tipifdelito->desagregacion1." ".$tipifdelito->desagregacion2}}</option>
+					@endforeach
+				</select>
+			</div>
 		</div>
-	</div>
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('idDenuciado', 'Denunciado', ['class' => 'col-form-label-sm']) !!}

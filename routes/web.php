@@ -57,6 +57,7 @@ Route::get('FormatoRegistro/{id}', 'PdfController@datos');
 
 /************Rutas para formulario de solicitante/victima/denunciante*************/
 Route::get('/crear-caso', 'CarpetaController@crearCaso')->name('inicio');
+Route::get('terminar', 'CarpetaController@terminar')->name('terminar');
 //Route::post('storecarpeta', 'CarpetaController@storeCarpeta')->name('store.carpeta');
 //Route::get('/carpeta-inicial/{id}', 'CarpetaController@index')->name('carpeta');
 
