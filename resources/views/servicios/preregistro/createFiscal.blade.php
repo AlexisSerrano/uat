@@ -100,15 +100,18 @@
 @endsection
 
 @section('css')
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
+	{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" /> --}}
 @endsection
 
 @push('scripts')
 <script src="{{asset('js/preregistro.js')}}"></script> 
+<script src="{{ asset('js/rfcFisico.js') }}"></script>
+<script src="{{ asset('js/rfcMoral.js') }}"></script>
+<script src="{{ asset('js/curp.js') }}"></script>
 
 
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>	
-	<script src="{{ asset('js/validation.js')}}"></script>
+	{{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>	 --}}
+	{{-- <script src="{{ asset('js/validation.js')}}"></script> --}}
 	{{-- <script>
 		$(function () {
 			$('#fechanac').datetimepicker({

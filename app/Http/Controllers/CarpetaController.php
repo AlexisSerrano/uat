@@ -358,13 +358,12 @@ class CarpetaController extends Controller
     public function crearCaso(){
         $caso=session('carpeta');
         //dd($caso);
-        if (is_null($caso)){
+        if (is_null($caso)){   
             $caso = new Carpeta();
-            $caso->numCarpeta = "UAT/D"."1"."/"."X"."/"."XX"."/".Carbon::now()->year;
             $caso->fechaInicio = Carbon::now();
-            $caso->idEstadoCarpeta = 1;
             $caso->horaIntervencion = Carbon::now();
             $caso->fechaDeterminacion = Carbon::now();
+            $caso->idEstadoCarpeta = 1;
             $caso->save();
             session(['carpeta' => $caso->id]);
             $bdbitacora = new BitacoraNavCaso;
@@ -377,7 +376,37 @@ class CarpetaController extends Controller
             Alert::warning('Tiene un caso en curso debe terminarlo o cancelarlo para iniciar uno nuevo', 'Advertencia');
             return redirect()->back()->withInput();
         }
-        
+    }
 
+    public function terminar(Request $request){
+        if ($request->session()->has('carpeta')) {
+            $id=session('carpeta');
+            $carpterminadas = DB::table('acusacion')
+            ->join('extra_denunciante', 'extra_denunciante.id', '=', 'acusacion.idDenunciante')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->join('extra_denunciado', 'extra_denunciado.id', '=', 'acusacion.idDenunciado')
+            ->join('variables_persona as var', 'var.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->join('persona as per', 'per.id', '=', 'var.idPersona')
+            ->join('tipif_delito', 'tipif_delito.id', '=', 'acusacion.idTipifDelito')
+            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+            ->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta')
+            ->select('carpeta.id')
+            ->where('carpeta.id',$id)
+            ->first();
+            if($carpterminadas){
+                $carpeta = Carpeta::find($id);
+                $carpeta->numCarpeta = "UAT/D"."1"."/"."X"."/"."XX"."/".Carbon::now()->year;
+                $carpeta->idEstadoCarpeta = 2;
+                $carpeta->save();
+                $request->session()->forget('carpeta');
+                Alert::success('Caso terminado con éxito', 'Hecho');
+                return redirect('registros');
+            }
+            else{
+                Alert::warning('No cuenta con los requisitos mínimos (denunciante,denunciado,delito,acusación) para terminar la carpeta', 'Advertencia');
+                return redirect()->back();
+            }
+        }
     }
 }

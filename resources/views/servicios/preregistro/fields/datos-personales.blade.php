@@ -55,21 +55,32 @@
 
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('rfc2', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('rfc2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
-			<div class="help-block with-errors"></div>
+			{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$','data-validation-error-msg'=>'CURP inválido','required']) !!}
 		</div>
 	</div>
 
+	
 	<div class="col-4">
 			<div class="form-group">
-				{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('curp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$','data-validation-error-msg'=>'CURP inválido','required']) !!}
+					<div class="row">
+				<div class="col">
+			{!! Form::label('rfc2', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('rfc2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
+				</div>
+			<div class="col">
+					{!! Form::label('homo2', 'Homo', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::text('homo2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
 			</div>
 		</div>
-	
-	
-	
+	</div>
+	</div>
+	{{-- 
+		<div class="form-group">
+			
+			<div class="help-block with-errors"></div>
+		</div>
+	</div> --}}
 
 	<div class="col-4">
 		<div class="form-group">

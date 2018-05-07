@@ -34,12 +34,23 @@ class AcusacionController extends Controller
                 ->where('variables_persona.idCarpeta', '=', $idCarpeta)
                 ->orderBy('persona.nombres', 'ASC')
                 ->get();
-            $tipifdelitos = DB::table('tipif_delito')
+                $tipifdelitos = DB::table('tipif_delito')
                 ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
-                ->select('tipif_delito.id','cat_delito.nombre')
+                ->join('cat_agrupacion1', 'cat_agrupacion1.id', '=', 'tipif_delito.idAgrupacion1')
+                ->join('cat_agrupacion2', 'cat_agrupacion2.id', '=', 'tipif_delito.idAgrupacion2')
+                ->select('tipif_delito.id', 'cat_delito.nombre as delito', 'cat_agrupacion1.nombre as desagregacion1', 'cat_agrupacion2.nombre as desagregacion2')
                 ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
                 ->orderBy('cat_delito.nombre', 'ASC')
                 ->get();
+            $cont = 0;
+            foreach ($tipifdelitos as $delito => $nombre) {
+                if ($tipifdelitos[$cont]->desagregacion1 == 'SIN AGRUPACION') {
+                    $tipifdelitos[$cont]->desagregacion1 = " ";
+                }if ($tipifdelitos[$cont]->desagregacion2 == 'SIN AGRUPACION') {
+                    $tipifdelitos[$cont]->desagregacion2 = " ";
+                }
+                $cont = $cont + 1;
+            }
             return view('forms.acusacion')->with('idCarpeta', $idCarpeta)
                 ->with('acusaciones', $acusaciones)
                 ->with('denunciantes', $denunciantes)
