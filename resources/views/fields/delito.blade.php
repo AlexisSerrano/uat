@@ -9,6 +9,20 @@
 		</div>
 	</div>
 
+	<div class="col-sm-4">
+			<div class="form-group">
+				{!! Form::label('idAgrupacion1', ' Primera Desagregación', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('idAgrupacion1', ['placeholder'=>'Seleccione una desagregación'], null, ['class' => 'form-control form-control-sm select2', 'required']) !!}
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="form-group">
+				{!! Form::label('idAgrupacion2', ' Segunda Desagregación', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('idAgrupacion2', ['placeholder'=>'Seleccione una desagregación'], null, ['class' => 'form-control form-control-sm select2', 'required']) !!}
+			</div>
+		</div>
+
+
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('formaComision', 'Forma de comisión', ['class' => 'col-form-label-sm']) !!}
@@ -20,10 +34,8 @@
 		<div class="form-group">
 			{!! Form::label('fecha', 'Fecha', ['class' => 'col-form-label-sm']) !!}
 			<div class="input-group date" id="fechadelit" data-target-input="nearest">
-				{!! Form::text('fecha', null, ['class' => 'delito form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadelit', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
-				<span class="input-group-addon" data-target="#fechadelit" data-toggle="datetimepicker">
-					<div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
-				</span>
+				{!! Form::date('fecha', null, ['class' => 'delito form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadelit', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+				
 			</div>
 		</div>
 	</div>
@@ -70,3 +82,4 @@
 		</div>
 	</div> --}}
 </div>
+
