@@ -23,21 +23,36 @@
 		</div>
 	</div>
 	<div class="col-4">
-			<div class="form-group">
-				{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
-				<input type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-control form-control-sm", data-validation="birthdate" required>
-					{{-- {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac','data-validation'=>'birthdate', 'data-validation-format'=>'dd/mm/yyyy', 'data-validation'=>'required', 'placeholder' => 'DD/MM/AAAA']) !!} --}}
-				<div class="help-block with-errors"></div>	
-			</div>
+		<div class="form-group">
+			{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
+			<input type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-control form-control-sm", data-validation="birthdate" required>
+				{{-- {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac','data-validation'=>'birthdate', 'data-validation-format'=>'dd/mm/yyyy', 'data-validation'=>'required', 'placeholder' => 'DD/MM/AAAA']) !!} --}}
+			<div class="help-block with-errors"></div>	
 		</div>
-		<div class="col-4">
-				<div class="form-group">
-					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'data-validation'=>'required','required']) !!}
-					<div class="help-block with-errors"></div>
-				</div>
-			</div>	
+	</div>
 	
+	<div class="col-4">
+		<div class="form-group">
+			{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'data-validation'=>'required','required']) !!}
+			<div class="help-block with-errors"></div>
+		</div>
+	</div>	
+		
+	<div class="col-4">
+		<div class="form-group">
+			{!! Form::label('idEstadoOrigen', 'Estado de origen', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idEstadoOrigen', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required','required']) !!}
+		</div>
+	</div>
+	
+	<div class="col-4">
+		<div class="form-group">
+			{!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('idMunicipioOrigen', [''=>'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required','required']) !!}
+		</div>
+	</div>
+
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('rfc2', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
