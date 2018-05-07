@@ -250,3 +250,12 @@ body{
 	margin:auto;
 }
 /*-------------------- DONT ALLOWED FIN------------------*/
+
+.usuario{
+    padding-left: 10px;
+    width: 260px;
+    padding-right: 7px;
+    background-color: white;
+    margin-right: -14px;
+    padding-bottom: 10px;
+}
