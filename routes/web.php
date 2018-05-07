@@ -212,3 +212,8 @@ route::get('buscarcarpeta/{id}','libroGobController@showForm');
 
 /* --------Rutas para Caratula de carpeta de investigacion----------- */
 Route::get('caratula','CaratulaCarpetaController@crearCaratula');
+
+
+Route::post('rfc-moral', 'PreregistroAuxController@rfcMoral')->name('rfc.moral');
+Route::post('rfc-fisico', 'PreregistroAuxController@rfcFisico')->name('rfc.fisico');
+// Route::get('persona/curp/{curp}', 'PreregistroAuxController@rfcFisico')->name('rfc.fisico');

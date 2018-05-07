@@ -196,7 +196,7 @@ function mostrarmoral(){
     $("#primerAp").prop('disabled', true);   
     $("#segundoAp").prop('disabled', true);   
     $("#rfc2").prop('disabled', true); 
-    $('#homo1').prop('disabled', true);
+    $('#homo2').prop('disabled', true);
     $("#fechaNacimiento").prop('disabled', true);   
     $("#edad").prop('disabled', true); 
     $("#idEstadoOrigen").prop('disabled', true);  
