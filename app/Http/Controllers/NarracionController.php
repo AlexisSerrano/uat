@@ -22,39 +22,48 @@ class NarracionController extends Controller
     }
 
     public function addNarracion(SolicitanteRequest $request){
-        $narracion = $request->narracion;
-        $narracionM = new Narracion;
-        $narracionM->idCarpeta = session('carpeta');
-        $bitacora = false;
-        if($request->file('file')){
-            $path = $request->file('file')->store('narraciones');
-            $narracionM->narracion = $path;
-            $narracionM->tipo = 1;
-            if($narracionM->save()){
-                Alert::success('Narración creada con éxito', 'Hecho');
-                $bitacora = true;
+        
+        DB::beginTransaction();
+        try{
+            $narracion = $request->narracion;
+            $narracionM = new Narracion;
+            $narracionM->idCarpeta = session('carpeta');
+            $bitacora = false;
+            if($request->file('file')){
+                $path = $request->file('file')->store('narraciones');
+                $narracionM->narracion = $path;
+                $narracionM->tipo = 1;
+                if($narracionM->save()){
+                    Alert::success('Narración creada con éxito', 'Hecho');
+                    $bitacora = true;
+                }
+                else{
+                    Alert::error('Se presentó un problema al crear su narración', 'Error');
+                }
             }
-            else{
-                Alert::error('Se presentó un problema al crear su narración', 'Error');
+            else if($narracion!=''){
+                $narracionM->narracion = $narracion;
+                $narracionM->tipo = 0;
+                if($narracionM->save()){
+                    Alert::success('Narración creada con éxito', 'Hecho');
+                    $bitacora = true;
+                }
+                else{
+                    Alert::error('Se presentó un problema al crear su narración', 'Error');
+                }
             }
-        }
-        else if($narracion!=''){
-            $narracionM->narracion = $narracion;
-            $narracionM->tipo = 0;
-            if($narracionM->save()){
-                Alert::success('Narración creada con éxito', 'Hecho');
-                $bitacora = true;
+            if($bitacora){
+                $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+                $bdbitacora->hechos = $bdbitacora->hechos+1;
+                $bdbitacora->save();
             }
-            else{
-                Alert::error('Se presentó un problema al crear su narración', 'Error');
-            }
-        }
-        if($bitacora){
-            $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-            $bdbitacora->hechos = $bdbitacora->hechos+1;
-            $bdbitacora->save();
-        }
-        return redirect("narracion");    
+            DB::commit();
+            return redirect("narracion"); 
+        }catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar los datos, intente de nuevo', 'Error');
+            return back()->withInput();
+        }   
     }
 
     public function getNarracion(Request $request, $id){
