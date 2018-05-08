@@ -64,6 +64,8 @@ $(document).ready(function(){
             //Datos personales no requeridos de Persona Moral o Empresa
             $('#nombres2').prop('disabled', true);
             $('#rfc2').prop('disabled', true);
+            $('#homo').prop('disabled', true);
+            $('#homo2').prop('disabled', true);
             $('#representanteLegal').prop('disabled', true);
             $('#idEstado').prop('disabled', true);
             $('#idMunicipio').prop('disabled', true);
@@ -168,6 +170,8 @@ $(document).ready(function(){
             //Datos personales no requeridos de Persona Moral o Empresa
             $('#nombres2').prop('disabled', true);
             $('#rfc2').prop('disabled', true);
+            $('#homo').prop('disabled', true);
+            $('#homo2').prop('disabled', true);
             $('#representanteLegal').prop('disabled', true);
             $('#idEstado').prop('disabled', true);
             $('#idMunicipio').prop('disabled', true);
