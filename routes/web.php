@@ -58,11 +58,11 @@ Route::get('FormatoRegistro/{id}', 'PdfController@datos');
 /************Rutas para formulario de solicitante/victima/denunciante*************/
 Route::get('/crear-caso', 'CarpetaController@crearCaso')->name('inicio');
 Route::get('terminar', 'CarpetaController@terminar')->name('terminar');
+Route::get('cancelar-caso', 'CarpetaController@cancelarCaso')->name('cancelar.caso');
 //Route::post('storecarpeta', 'CarpetaController@storeCarpeta')->name('store.carpeta');
 //Route::get('/carpeta-inicial/{id}', 'CarpetaController@index')->name('carpeta');
 
 Route::get('agregar-denunciante', 'DenuncianteController@showForm')->name('new.denunciante');
-Route::get('cancelar-caso', 'DenuncianteController@cancelarCaso')->name('cancelar.caso');
 Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name('store.denunciante');
 Route::get('agregar-denunciante/{id}/eliminar', 'DenuncianteController@delete');
 Route::get('/atender/{id}', 'PreregistroAuxController@atender');
