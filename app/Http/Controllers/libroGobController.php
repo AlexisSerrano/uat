@@ -129,9 +129,10 @@ class libroGobController extends Controller
         ->join('tipif_delito', 'tipif_delito.id', '=', 'acusacion.idTipifDelito')
         ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
         ->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta')
-        ->select('carpeta.id','carpeta.fechaInicio','persona.nombres', 'persona.primerAp', 'persona.segundoAp','per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2','carpeta.numCarpeta' ,'cat_delito.nombre as delito','tipif_delito.formaComision','carpeta.idEstadoCarpeta')
+        ->join('cat_estatus_casos','carpeta.idEstadoCarpeta','=','cat_estatus_casos.id')
+        ->select('carpeta.id','carpeta.fechaInicio','persona.nombres', 'persona.primerAp', 'persona.segundoAp','per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2','carpeta.numCarpeta' ,'cat_delito.nombre as delito','tipif_delito.formaComision','cat_estatus_casos.nombreEstatus as idEstadoCarpeta')
       
-        ->get();
+       ->get();
         //dd( $carpterminadas);
         return view('forms.libro-gobierno')->with('carpterminadas',$carpterminadas);
 //dd($carpterminadas);
@@ -153,7 +154,8 @@ class libroGobController extends Controller
         ->join('tipif_delito', 'tipif_delito.id', '=', 'acusacion.idTipifDelito')
         ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
         ->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta')
-        ->select('carpeta.id','carpeta.fechaInicio','persona.nombres','persona.primerAp','persona.segundoAp','per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2','carpeta.numCarpeta' ,'cat_delito.nombre as delito','tipif_delito.formaComision','carpeta.idEstadoCarpeta')
+        ->join('cat_estatus_casos','carpeta.idEstadoCarpeta','=','cat_estatus_casos.id')
+        ->select('carpeta.id','carpeta.fechaInicio','persona.nombres','persona.primerAp','persona.segundoAp','per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2','carpeta.numCarpeta' ,'cat_delito.nombre as delito','tipif_delito.formaComision','cat_estatus_casos.nombreEstatus as idEstadoCarpeta')
         ->orwhere('fechaInicio','like','%'.$carpeta.'%')
         ->orWhere(DB::raw("CONCAT(persona.nombres,' ',persona.primerAp,' ',persona.segundoAp)"), 'LIKE', '%'.$carpeta.'%')
        ->orWhere(DB::raw("CONCAT(per.nombres,' ',per.primerAp)"), 'LIKE', '%'.$carpeta.'%')
@@ -163,7 +165,7 @@ class libroGobController extends Controller
         ->orwhere('formaComision','like','%'.$carpeta.'%')
       ->orWhere('cat_delito.nombre', 'like', '%' . $carpeta . '%')
     
-       ->get();
+      ->paginate('15');
         //dd( $carpta);
        return view('forms.libro-gobierno')->with('carpterminadas',$carpterminadas);
 //dd($carpterminadas);
