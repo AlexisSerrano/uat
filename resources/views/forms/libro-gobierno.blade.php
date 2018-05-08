@@ -10,6 +10,9 @@
                 <div class="">
                     <table id="tablaprovidencias" class="table-sm">
                         <br>
+                        {{ Form::open(['url' => ['carpetaN'], 'method' => 'POST']) }}
+                        <p>{{ Form::text('search', old('search'), array('placeholder'=>'Search')) }}</p>
+                        <p>{{ Form::submit('Search') }}</p>
                         <thead class="table-active">
                             <th >N.</th>
                             <th >Fecha</th>

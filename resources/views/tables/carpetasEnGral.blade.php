@@ -4,7 +4,18 @@
 @section('content')
 <div class="table">
         <table class="table table-hover table-striped" id="tablacarpetas">
+
+                {{-- <form class="navbar-form navbar-left" role="search" action="{{url('carpetaNum')}}">
+                    <div class="form-group">
+                     <input type="text" class="form-control" name='search' placeholder="Buscar ..." />
+                    </div>
+                    <button type="submit" class="btn btn-default">Buscar</button>
+                   </form> --}}
                
+                   {{ Form::open(['url' => ['carpetaNum'], 'method' => 'POST']) }}
+                    <p>{{ Form::text('search', old('search'), array('placeholder'=>'Search')) }}</p>
+                    <p>{{ Form::submit('Search') }}</p>
+                   
                 <thead class="table-active">
                         {{-- <th >N.</th> --}}
                         <th >ID</th>
@@ -42,7 +53,7 @@
                                 <i class="fa fa-edit"></i></a>
                                 <a href="{{ url('turnar/'.$carpeta->id)}}"   rel="tooltip" title="Turnar" class="btn btn-secondary btn-simple btn-xs">
                                 <i class="fa fa-child"></i></a>
-
+                              
                                    </td> 
                                 
                                 </tr>
@@ -55,6 +66,7 @@
                 <br>
 </div>
 @endsection
+{{ Form::close() }}
     
 {{-- SECCION --}}
 
