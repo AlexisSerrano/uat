@@ -23,6 +23,7 @@ use App\Models\Domicilio;
 use App\Models\VariablesPersona;
 use App\Models\ExtraAutoridad;
 use App\Models\BitacoraNavCaso;
+use Carbon\Carbon;
 
 class AutoridadController extends Controller
 {
@@ -61,8 +62,8 @@ class AutoridadController extends Controller
     public function storeAutoridad(StoreAutoridad $request){
         $idCarpeta=session('carpeta');
         // dd($request->all());
-        // DB::beginTransaction();
-        // try{
+        DB::beginTransaction();
+        try{
             $comprobarPersona=Persona::where('curp',$request->curp)->get();
             if(count($comprobarPersona)>0){
                 $comprobarPersona=$comprobarPersona[0];
@@ -166,14 +167,14 @@ class AutoridadController extends Controller
             $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
             $bdbitacora->autoridad = $bdbitacora->autoridad+1;
             $bdbitacora->save();
-            // DB::commit();
+            DB::commit();
             //return redirect()->route('carpeta', $request->idCarpeta);
             return redirect()->route('new.autoridad');
-        // }catch (\PDOException $e){
-        //     DB::rollBack();
-        //     Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
-        //     return back()->withInput();
-        // }
+        }catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            return back()->withInput();
+        }
     }
 
 
