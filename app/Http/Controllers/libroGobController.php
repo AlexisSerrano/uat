@@ -104,14 +104,12 @@ class libroGobController extends Controller
     public function buscar()
        {
         $carpetas = DB::table('carpeta')
-
-        ->select('carpeta.id','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta','carpeta.idEstadoCarpeta' )
-      
-        
+        ->join('cat_estatus_casos','carpeta.idEstadoCarpeta','=','cat_estatus_casos.id')
+        ->select('carpeta.id as id','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta','cat_estatus_casos.nombreEstatus as idEstadoCarpeta' )
       // ->where('carpeta',$id)
       // ->orwhere()
       ->paginate('15');
-        // dd(  $acusaciones);
+        // dd($acusaciones);
         return view('tables.carpetasEnGral')->with('carpetas',$carpetas);
 
        }
