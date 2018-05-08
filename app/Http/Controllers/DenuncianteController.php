@@ -57,26 +57,6 @@ public function showForm()
         }
     }
 
-    public function cancelarCaso(){
-        $idCarpeta = session('carpeta');
-        $comprobar= Carpeta::where('id',$idCarpeta)->get();
-        if(is_null($idCarpeta)){
-            Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia');
-            return redirect(url('registros'));    
-        }
-        if (count($comprobar)==0) {
-            session()->forget('carpeta');
-            Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia');
-            return redirect(url('registros'));
-        }
-        $carpeta = Carpeta::find($idCarpeta);
-        $carpeta->delete();
-        session()->forget('carpeta');
-        Alert::info('El caso ha sido cancelado con éxito.', 'Hecho');
-        return redirect(url('registros'));
-    }
-
-
     public function storeDenunciante(StoreDenunciante $request){
         //dd($request->all());
         

@@ -310,20 +310,6 @@ class PreregistroAuxController extends Controller
     }
 
 
-
-
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function showbyfolio(Request $request){
         if($request->input("folio")){
             $folio = $request->input("folio");
@@ -459,6 +445,7 @@ class PreregistroAuxController extends Controller
     }
 
     public function turno($id){
+        
         // $preregistros = Preregistro::where('statusCola', 2)
         // ->where('conViolencia', 0)
         // ->orderBy('horaLlegada','asc')
@@ -540,9 +527,9 @@ class PreregistroAuxController extends Controller
 
        
         $caso = new Carpeta();
-        $caso->numCarpeta = "UAT/D"."1"."/"."X"."/"."XX"."/".Carbon::now()->year;
+        // $caso->numCarpeta = "UAT/D"."1"."/"."X"."/"."XX"."/".Carbon::now()->year;
         $caso->fechaInicio = Carbon::now();
-        $caso->idEstadoCarpeta = 1;
+        // $caso->idEstadoCarpeta = 1;
         $caso->horaIntervencion = Carbon::now();
         $caso->fechaDeterminacion = Carbon::now();
         $caso->save();
@@ -553,6 +540,7 @@ class PreregistroAuxController extends Controller
         $editpreregistro->save();
 
 
+        session(['preregistro' => $id]);
         session(['carpeta' => $idCarpeta]);
         $bdbitacora = new BitacoraNavCaso;
         $bdbitacora->idCaso = $caso->id;
@@ -674,13 +662,14 @@ class PreregistroAuxController extends Controller
         //dd($idCarpeta);
         
         //$carpeta = Carpeta::find($idCarpeta);
-        Carpeta::destroy($idCarpeta);
+        // Carpeta::destroy($idCarpeta);
         //dd($carpeta);
         //$carpeta->delete();
         
         //$carpeta->delete();
         
         session()->forget('carpeta');
+        session()->forget('preregistro');
          //dd($idCarpeta);
         //dd(session('carpeta'));
         

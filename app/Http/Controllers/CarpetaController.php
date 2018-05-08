@@ -30,8 +30,9 @@ class CarpetaController extends Controller
             Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia');
             return redirect(url('registros'));
         }
-        $carpeta = Carpeta::find($idCarpeta);
-        $carpeta->delete();
+        // $carpeta = Carpeta::find($idCarpeta);
+        // $carpeta->delete();
+        
         session()->forget('carpeta');
         Alert::info('El caso ha sido cancelado con éxito.', 'Hecho');
         return redirect(url('registros'));
@@ -384,7 +385,6 @@ class CarpetaController extends Controller
             $caso->fechaInicio = Carbon::now();
             $caso->horaIntervencion = Carbon::now();
             $caso->fechaDeterminacion = Carbon::now();
-            $caso->idEstadoCarpeta = 1;
             $caso->save();
             session(['carpeta' => $caso->id]);
             $bdbitacora = new BitacoraNavCaso;
