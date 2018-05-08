@@ -83,8 +83,10 @@ class libroGobController extends Controller
 
 
         $carpetas = DB::table('carpeta')
-       ->select('carpeta.id','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta','carpeta.idEstadoCarpeta' )
-        // ->orwhere('idEstadoCarpeta','=',1)
+        ->join('cat_estatus_casos','carpeta.idEstadoCarpeta','=','cat_estatus_casos.id')
+       ->select('carpeta.id','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta','cat_estatus_casos.nombreEstatus as idEstadoCarpeta' )
+         
+       // ->orwhere('idEstadoCarpeta','=',1)
           ->orwhere('numCarpeta','like','%'.$carpeta.'%')
          ->orwhere('horaIntervencion','like','%'.$carpeta.'%')
          ->orwhere('fechaInicio','like','%'.$carpeta.'%')
