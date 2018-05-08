@@ -7,6 +7,15 @@
 			<div class="help-block with-errors"></div> 
 		</div>
 	</div>
+	<div class="col-4">
+			<div class="form-group">
+				{!! Form::label('fechaAltaEmpresa', 'Fecha de alta de la empresa', ['class' => 'col-form-label-sm']) !!}
+				<input type="date" id="fechaAltaEmpresa" name="fechaAltaEmpresa" class="form-control form-control-sm", data-validation="birthdate" required>
+					{{-- {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac','data-validation'=>'birthdate', 'data-validation-format'=>'dd/mm/yyyy', 'data-validation'=>'required', 'placeholder' => 'DD/MM/AAAA']) !!} --}}
+				<div class="help-block with-errors"></div>	
+			</div>
+		</div>
+	
 	<!--RFC-->
 	<div class="col-4">
 			<div class="form-group">

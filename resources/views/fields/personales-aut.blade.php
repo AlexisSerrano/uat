@@ -26,7 +26,7 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
-			<input type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-control form-control-sm", data-validation="birthdate">
+			<input type="date" id="fechaNacimiento" name="fechaNacimiento" class="persona form-control form-control-sm", data-validation="birthdate">
 			{{-- <div class="input-group date" id="fechanac" data-target-input="nearest">
                 {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'required', 'placeholder' => 'AAAA/MM/DD']) !!}
                 <span class="input-group-addon" data-target="#fechanac" data-toggle="datetimepicker">

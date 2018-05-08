@@ -21,21 +21,30 @@ class AtencionController extends Controller
     }
 
     public function addAtencion(AtencionRequest $request){
-        $atencion = new Atencion;
-        $atencion->nombre = $request->nombre." ".$request->primer_ap." ".$request->segundo_ap;
-        $atencion->idRedireccion = $request->redireccion;
-        // $atencion->zona = session('zona');
-        // $atencion->unidad = session('unidad');
-        // $atencion->usuario = session('usuario');
-        $atencion->zona = 1;
-        $atencion->unidad = 1;
-        $atencion->usuario = 1;
-        if($atencion->save()){
-            Alert::success('Atención rápida creada con éxito', 'Hecho');
+        
+        DB::beginTransaction();
+        try{
+            $atencion = new Atencion;
+            $atencion->nombre = $request->nombre." ".$request->primer_ap." ".$request->segundo_ap;
+            $atencion->idRedireccion = $request->redireccion;
+            // $atencion->zona = session('zona');
+            // $atencion->unidad = session('unidad');
+            // $atencion->usuario = session('usuario');
+            $atencion->zona = 1;
+            $atencion->unidad = 1;
+            $atencion->usuario = 1;
+            if($atencion->save()){
+                Alert::success('Atención rápida creada con éxito', 'Hecho');
+            }
+            else{
+                Alert::error('Se presento un problema al crear su atención rápida', 'Error');
+            }
+            DB::commit(); 
+            return redirect("atencion");
+        }catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            return back()->withInput();
         }
-        else{
-            Alert::error('Se presento un problema al crear su atención rápida', 'Error');
-        }
-        return redirect("atencion"); 
     }
 }

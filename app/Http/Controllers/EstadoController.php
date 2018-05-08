@@ -49,15 +49,23 @@ class EstadoController extends Controller
 
 
     public function editar(Request $request ){
-      
-        $nombre= $request->EstadoCarpeta; //Sacar el id del select  //EstadoCarpeta es variable del select
-        $idCarpeta=session('carpeta');  //id de Variable de sesion
-        $id = Carpeta::find($idCarpeta); //seleccinar toda la fila del primer id con  el valor de idCarpeta 
-        $id->idEstadoCarpeta = $nombre;  //cambiar el campo idEstadpCarpeta por el valor $nombre
-        $id->save();   // para guardar el registro
-       
-        Alert::success('Registro modificado con exito','Hecho');
-        return back();
+        
+        DB::beginTransaction();
+        try{
+            $nombre= $request->EstadoCarpeta; //Sacar el id del select  //EstadoCarpeta es variable del select
+            $idCarpeta=session('carpeta');  //id de Variable de sesion
+            $id = Carpeta::find($idCarpeta); //seleccinar toda la fila del primer id con  el valor de idCarpeta 
+            $id->idEstadoCarpeta = $nombre;  //cambiar el campo idEstadpCarpeta por el valor $nombre
+            $id->save();   // para guardar el registro
+            
+            DB::commit();
+            Alert::success('Registro modificado con exito','Hecho');
+            return back();
+        }catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            return back()->withInput();
+        }
     
   
    

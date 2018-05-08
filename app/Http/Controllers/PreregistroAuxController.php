@@ -29,6 +29,8 @@ use App\Models\CatOcupacion;
 use App\Models\CatReligion;
 use App\Models\CatIdentificacion;
 use App\Models\BitacoraNavCaso;
+use RFC\RfcBuilder;
+
 
 use Illuminate\Support\Facades\Session;
 class PreregistroAuxController extends Controller
@@ -208,95 +210,103 @@ class PreregistroAuxController extends Controller
         $idDireccion=$idDireccion[0]->idDireccion;
         //dd($idDireccion);
         
-        if ($request->esEmpresa==0){
-            $domicilio = Domicilio::find($idDireccion);
-            if (!is_null($request->idMunicipio)){
-                $domicilio->idMunicipio = $request->idMunicipio;
+        DB::beginTransaction();
+        try{
+            if ($request->esEmpresa==0){
+                $domicilio = Domicilio::find($idDireccion);
+                if (!is_null($request->idMunicipio)){
+                    $domicilio->idMunicipio = $request->idMunicipio;
+                }
+                if (!is_null($request->idLocalidad)){
+                    $domicilio->idLocalidad = $request->idLocalidad;
+                }
+                if (!is_null($request->idColonia)){
+                    $domicilio->idColonia = $request->idColonia;
+                }
+                if (!is_null($request->calle)){
+                    $domicilio->calle = $request->calle;
+                }
+                if (!is_null($request->numExterno)){
+                    $domicilio->numExterno = $request->numExterno;
+                }
+                if (!is_null($request->numInterno)){
+                    $domicilio->numInterno = $request->numInterno;
+                }
+                $domicilio->save();
+                $idD1 = $domicilio->id;
+                
+                $edad= Carbon::parse($request->fechaNacimiento)->age;
+                $preregistro = Preregistro::find($id);
+                $preregistro->nombre = $request->nombres;
+                $preregistro->primerAp = $request->primerAp;
+                $preregistro->segundoAp = $request->segundoAp;
+                $preregistro->telefono = $request->telefono;
+                $preregistro->narracion = $request->narracion;
+                $preregistro->idDireccion = $idD1;
+                $preregistro->fechaNac = $request->fechaNacimiento;
+                $preregistro->edad = $edad;
+                if (!is_null($request->rfc2)){
+                    $preregistro->rfc = $request->rfc2;
+                }
+                $preregistro->curp = $request->curp;
+                if (!is_null($request->sexo)){
+                    $preregistro->sexo = $request->sexo;
+                }
+                $preregistro->docIdentificacion = $request->docIdentificacion;
+                $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
+                if (!is_null($request->idRazon)){
+                    $domicilio->idRazon = $request->idRazon;
+                }
+                $preregistro->save();
+                $id = $preregistro->id;
+                
+            }elseif($request->esEmpresa==1){
+                $domicilio = Domicilio::find($idDireccion);
+                if (!is_null($request->idMunicipio)){
+                    $domicilio->idMunicipio = $request->idMunicipio;
+                }
+                if (!is_null($request->idLocalidad)){
+                    $domicilio->idLocalidad = $request->idLocalidad;
+                }
+                if (!is_null($request->idColonia)){
+                    $domicilio->idColonia = $request->idColonia;
+                }
+                if (!is_null($request->calle)){
+                    $domicilio->calle = $request->calle;
+                }
+                if (!is_null($request->numExterno)){
+                    $domicilio->numExterno = $request->numExterno;
+                }
+                if (!is_null($request->numInterno)){
+                    $domicilio->numInterno = $request->numInterno;
+                }
+                if (!is_null($request->idRazon)){
+                    $domicilio->idRazon = $request->idRazon;
+                }
+                
+                $domicilio->save();
+                $idD1 = $domicilio->id;
+                
+                $preregistro =Preregistro::find($idDireccion);
+                $preregistro->esEmpresa = 1;    
+                $preregistro->nombre = $request->nombres;
+                $preregistro->idDireccion = $idD1;
+                $preregistro->rfc = $request->rfc;
+                $preregistro->representanteLegal = $request->repLegal;
+                $preregistro->telefono = $request->telefono;
+                $preregistro->conViolencia = $request->conViolencia;
+                $preregistro->narracion = $request->narracion;
+                $preregistro->save();
+                $id = $preregistro->id;   
             }
-            if (!is_null($request->idLocalidad)){
-                $domicilio->idLocalidad = $request->idLocalidad;
-            }
-            if (!is_null($request->idColonia)){
-                $domicilio->idColonia = $request->idColonia;
-            }
-            if (!is_null($request->calle)){
-                $domicilio->calle = $request->calle;
-            }
-            if (!is_null($request->numExterno)){
-                $domicilio->numExterno = $request->numExterno;
-            }
-            if (!is_null($request->numInterno)){
-                $domicilio->numInterno = $request->numInterno;
-            }
-            $domicilio->save();
-            $idD1 = $domicilio->id;
-            
-            $edad= Carbon::parse($request->fechaNacimiento)->age;
-            $preregistro = Preregistro::find($id);
-            $preregistro->nombre = $request->nombres;
-            $preregistro->primerAp = $request->primerAp;
-            $preregistro->segundoAp = $request->segundoAp;
-            $preregistro->telefono = $request->telefono;
-            $preregistro->narracion = $request->narracion;
-            $preregistro->idDireccion = $idD1;
-            $preregistro->fechaNac = $request->fechaNacimiento;
-            $preregistro->edad = $edad;
-            if (!is_null($request->rfc2)){
-                $preregistro->rfc = $request->rfc2;
-            }
-            $preregistro->curp = $request->curp;
-            if (!is_null($request->sexo)){
-                $preregistro->sexo = $request->sexo;
-            }
-            $preregistro->docIdentificacion = $request->docIdentificacion;
-            $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
-            if (!is_null($request->idRazon)){
-                $domicilio->idRazon = $request->idRazon;
-            }
-            $preregistro->save();
-            $id = $preregistro->id;
-            
-        }elseif($request->esEmpresa==1){
-            $domicilio = Domicilio::find($idDireccion);
-            if (!is_null($request->idMunicipio)){
-                $domicilio->idMunicipio = $request->idMunicipio;
-            }
-            if (!is_null($request->idLocalidad)){
-                $domicilio->idLocalidad = $request->idLocalidad;
-            }
-            if (!is_null($request->idColonia)){
-                $domicilio->idColonia = $request->idColonia;
-            }
-            if (!is_null($request->calle)){
-                $domicilio->calle = $request->calle;
-            }
-            if (!is_null($request->numExterno)){
-                $domicilio->numExterno = $request->numExterno;
-            }
-            if (!is_null($request->numInterno)){
-                $domicilio->numInterno = $request->numInterno;
-            }
-            if (!is_null($request->idRazon)){
-                $domicilio->idRazon = $request->idRazon;
-            }
-            
-            $domicilio->save();
-            $idD1 = $domicilio->id;
-            
-            $preregistro =Preregistro::find($idDireccion);
-            $preregistro->esEmpresa = 1;    
-            $preregistro->nombre = $request->nombres;
-            $preregistro->idDireccion = $idD1;
-            $preregistro->rfc = $request->rfc;
-            $preregistro->representanteLegal = $request->repLegal;
-            $preregistro->telefono = $request->telefono;
-            $preregistro->conViolencia = $request->conViolencia;
-            $preregistro->narracion = $request->narracion;
-            $preregistro->save();
-            $id = $preregistro->id;   
+            DB::commit();
+            Alert::success('Registro modificado con éxito','Hecho');
+            return redirect('predenuncias/'.$id.'/edit');
+        }catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            return back()->withInput();
         }
-        Alert::success('Registro modificado con éxito','Hecho');
-        return redirect('predenuncias/'.$id.'/edit');
     }
 
 
@@ -434,10 +444,18 @@ class PreregistroAuxController extends Controller
 
  
     public function atender($id){
-        $estado = Preregistro::find($id);
-        $estado->statusCola = 23;
-        $estado->save();
-        return redirect("turno/$estado->id");
+        DB::beginTransaction();
+        try{
+            $estado = Preregistro::find($id);
+            $estado->statusCola = 23;
+            $estado->save();
+                DB::commit();
+            return redirect("turno/$estado->id");
+        }catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            return back()->withInput();
+        }
     }
 
     public function turno($id){
@@ -683,4 +701,32 @@ class PreregistroAuxController extends Controller
         return redirect('correo');
     }
 
+    public function rfcMoral(Request $request)
+   {
+       $nombre = $request->nombre;
+       $dia    = $request->dia;
+       $mes    = $request->mes;
+       $ano    = $request->ano;
+
+       $builder = new RfcBuilder();
+
+       $rfc = $builder->legalName($nombre)
+           ->creationDate($dia, $mes, $ano)
+           ->build()
+           ->toString();
+       return ['res' => $rfc];
+   }
+
+   public function rfcFisico(Request $request)
+   {
+       $builder = new RfcBuilder();
+       $rfc     = $builder->name($request->nombre)
+           ->firstLastName($request->apPaterno)
+           ->secondLastName($request->apMaterno)
+           ->birthday($request->dia, $request->mes, $request->año)
+           ->build()
+           ->toString();
+
+       return ['res' => $rfc];
+   }
 }

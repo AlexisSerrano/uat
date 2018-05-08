@@ -58,68 +58,75 @@ class DelitoController extends Controller
 
  public function storeDelito(StoreDelito $request){
         //dd($request->all());
-        $idCarpeta=session('carpeta');
-       //$idCarpeta='1';
-        $domicilio = new Domicilio();
-        $domicilio->idMunicipio = $request->idMunicipio;
-        $domicilio->idLocalidad = $request->idLocalidad;
-        $domicilio->idColonia = $request->idColonia;
-        $domicilio->calle = $request->calle;
-        $domicilio->numExterno = $request->numExterno;
-        $domicilio->numInterno = $request->numInterno;
-        $domicilio->save();
-        $idD1 = $domicilio->id;
+        DB::beginTransaction();
+        try{
+            $idCarpeta=session('carpeta');
+            //$idCarpeta='1';
+            $domicilio = new Domicilio();
+            $domicilio->idMunicipio = $request->idMunicipio;
+            $domicilio->idLocalidad = $request->idLocalidad;
+            $domicilio->idColonia = $request->idColonia;
+            $domicilio->calle = $request->calle;
+            $domicilio->numExterno = $request->numExterno;
+            $domicilio->numInterno = $request->numInterno;
+            $domicilio->save();
+            $idD1 = $domicilio->id;
 
-          $tipifDelito = new TipifDelito();
-        $tipifDelito->idCarpeta = $idCarpeta;
-        $tipifDelito->idDelito = $request->idDelito;
-        $tipifDelito->idAgrupacion1 = $request->idAgrupacion1;
-        $tipifDelito->idAgrupacion2 = $request->idAgrupacion2;
-        if ($request->conViolencia==="1") {
-            # code...
-            $tipifDelito->conViolencia = 1;
-        } else {
-            $tipifDelito->conViolencia = 0;
-        }
-        
-        // if ($request->conViolencia==="1"){
-        //     $tipifDelito->conViolencia = 1;
-        //     $tipifDelito->idArma = $request->idArma;
-        //     $tipifDelito->idPosibleCausa = $request->idPosibleCausa;
-        // }
-        // $tipifDelito->idModalidad = $request->idModalidad;
-        $tipifDelito->formaComision = $request->formaComision;
-        // $tipifDelito->consumacion = $request->consumacion;
-        $tipifDelito->fecha = $request->fecha;
-        $tipifDelito->hora = $request->hora;
-        $tipifDelito->idLugar = $request->idLugar;
-        $tipifDelito->idZona = $request->idZona;
-        $tipifDelito->idDomicilio = $idD1;
-        $tipifDelito->entreCalle = $request->entreCalle;
-        $tipifDelito->yCalle = $request->yCalle;
-        $tipifDelito->calleTrasera = $request->calleTrasera;
-        $tipifDelito->puntoReferencia = $request->puntoReferencia;
-        $tipifDelito->save();
-        if($tipifDelito->save()){
-            Alert::success('Delito registrado con éxito', 'Hecho');
-            $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-            $bdbitacora->delitos = $bdbitacora->delitos+1;
-            $bdbitacora->save();
-        }
-        else{
-            Alert::error('Se presentó un problema al agregar el delito', 'Error');
-        }
+            $tipifDelito = new TipifDelito();
+            $tipifDelito->idCarpeta = $idCarpeta;
+            $tipifDelito->idDelito = $request->idDelito;
+            $tipifDelito->idAgrupacion1 = $request->idAgrupacion1;
+            $tipifDelito->idAgrupacion2 = $request->idAgrupacion2;
+            if ($request->conViolencia==="1") {
+                $tipifDelito->conViolencia = 1;
+            } else {
+                $tipifDelito->conViolencia = 0;
+            }
+            
+            // if ($request->conViolencia==="1"){
+            //     $tipifDelito->conViolencia = 1;
+            //     $tipifDelito->idArma = $request->idArma;
+            //     $tipifDelito->idPosibleCausa = $request->idPosibleCausa;
+            // }
+            // $tipifDelito->idModalidad = $request->idModalidad;
+            $tipifDelito->formaComision = $request->formaComision;
+            // $tipifDelito->consumacion = $request->consumacion;
+            $tipifDelito->fecha = $request->fecha;
+            $tipifDelito->hora = $request->hora;
+            $tipifDelito->idLugar = $request->idLugar;
+            $tipifDelito->idZona = $request->idZona;
+            $tipifDelito->idDomicilio = $idD1;
+            $tipifDelito->entreCalle = $request->entreCalle;
+            $tipifDelito->yCalle = $request->yCalle;
+            $tipifDelito->calleTrasera = $request->calleTrasera;
+            $tipifDelito->puntoReferencia = $request->puntoReferencia;
+            $tipifDelito->save();
+            if($tipifDelito->save()){
+                Alert::success('Delito registrado con éxito', 'Hecho');
+                $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+                $bdbitacora->delitos = $bdbitacora->delitos+1;
+                $bdbitacora->save();
+            }
+            else{
+                Alert::error('Se presentó un problema al agregar el delito', 'Error');
+            }
     
-        $delitos = DB::table('tipif_delito')
-        ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
-        ->join('domicilio', 'domicilio.id', '=', 'tipif_delito.idDomicilio')
-        ->select('tipif_delito.id','domicilio.id as idDomicilio','domicilio.calle as domicilio','cat_delito.id as idDelito', 'cat_delito.nombre as delito',  'tipif_delito.fecha', 'tipif_delito.hora')
-       // ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
-        ->get();
+            DB::commit();
+            $delitos = DB::table('tipif_delito')
+            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+            ->join('domicilio', 'domicilio.id', '=', 'tipif_delito.idDomicilio')
+            ->select('tipif_delito.id','domicilio.id as idDomicilio','domicilio.calle as domicilio','cat_delito.id as idDelito', 'cat_delito.nombre as delito',  'tipif_delito.fecha', 'tipif_delito.hora')
+        // ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
+            ->get();
 
-       // dd($delitos);
-        return redirect()->route('new.delito')->with('delitos', $delitos);
+        // dd($delitos);
+            return redirect()->route('new.delito')->with('delitos', $delitos);
 
+        }catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            return back()->withInput();
+        }
 
     }
 

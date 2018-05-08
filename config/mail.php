@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'ingjuliovasquez@gmail.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'fiscalia@veracruz.gob'),
         'name' => env('MAIL_FROM_NAME', 'Julio'),
     ],
 
@@ -119,5 +119,13 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
+    'stream' => [
+        'ssl' => [
+        //    'allow_self_signed' => true,
+           'verify_peer' => false,
+           'verify_peer_name' => false,
+        ],
+     ],
 
 ];
+

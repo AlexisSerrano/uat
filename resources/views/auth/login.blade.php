@@ -74,10 +74,10 @@
 {{-- @extends('template.main') --}}
 <script src="{{ asset('plugins/cookie/js.cookie.min.js')}}" ></script>
 <script type="text/javascript">
-// Cookies.remove('isLiveC');
-// //localStorage.clear();
-// localStorage.removeItem('isLiveLocal');
-// sessionStorage.removeItem('isLive');
+Cookies.remove('isLiveC');
+//localStorage.clear();
+localStorage.removeItem('isLiveLocal');
+sessionStorage.removeItem('isLive');
 </script>
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
@@ -100,7 +100,7 @@
 </head>
 
 <body class="hold-transition login-page">
-	<div class="login-box rounded">
+    <div class="login-box rounded">
 		<div class="card-body arriba rounded-top">
 			<a id="login-logo" ><img src="{{ asset('img/logo-fge-svg.svg') }}" alt=""></a>
 		</div>
@@ -113,26 +113,39 @@
 					<input type="hidden" id="vpassword" name="password" value="">
 
 					<div id="usuario" class="form-row align-items-center">
-						<div class="col form-group has-feedback row{{ $errors->has('password') ? ' has-error' : '' }} inputrow">
-							<input type="text" class="form-control mb-2" id="name" name="name" placeholder="Usuario">
-							<label class="fa fa-user fa-lg" for="name"></label>
-						</div>
-						<div class="col form-group has-feedback">
+                                 {{-- <div class="input-group">
+                                    <div class="input-group-prepend">
+                                      <div class="input-group-text" id="btnGroupAddon">@</div>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon">
+                                  </div>
+                                 --}}
+                        
+                        <div class="col form-group has-feedback input-group row{{ $errors->has('password') ? ' has-error' : '' }} inputrow">
+                                <div class=" input-group-text mb-2" id="btnGroupAddon"><i class="fa fa-user fa-lg"></i></div>
+                                <input type="text" class="form-control mb-2 usuario" id="name" name="name" placeholder="Usuario">
+                           
+						
+                        </div>
+                        
+						{{-- <div class="col form-group has-feedback">
 							<label class="sr-only" for="inlineFormInputGroup" style="white">Username</label>
 							<div class="input-group mb-2">
 								<div class="input-group-prepend">
 									<div id="dominio" class="input-group-text rounded">@fiscaliaveracruz.gob.mx</div>
 								</div>
 							</div>
-						</div>
+                        </div> --}}
+                        
 						@if ($errors->has('email'))
 							<span class="help-block">
 								<strong>{{ $errors->first('email') }}</strong>
 							</span>
 						@endif
-					</div>
+                    </div>
+                    
 					<div class="form-group has-feedback row{{ $errors->has('password') ? ' has-error' : '' }} inputrow">
-						<input id="txtPassword" type="Password" class="form-control password"   placeholder="Contraseña" >
+						<input id="txtPassword" type="text" class="form-control password"   placeholder="Contraseña" >
 						<label class="fa fa-lock fa-lg" for="password" ></label>
 						@if ($errors->has('password'))
 							<span class="help-block">
@@ -148,7 +161,8 @@
 						<!-- /.col -->
 					</div>
 				</form>
-			</div>
+            </div>
+            
 			<div id="cargando" style="display:none;">
 				<div class="text-center">
 					<strong  style="color:#f5f5f5;">Inciando sesión<strong>
@@ -168,7 +182,7 @@
 					<div class="sk-circle12 sk-child"></div>
 				</div>
 			</div>
-		</div>
+	    </div>
 		<!-- /.login-card-body -->
 
 	</div>
@@ -181,11 +195,11 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 
 	<script type="text/javascript">
-	// function borrarlsc(){
-	// 	Cookies.remove('isLiveC');
-	// 	localStorage.clear();
-	// 	sessionStorage.removeItem('isLive');
-	// }
+	function borrarlsc(){
+		Cookies.remove('isLiveC');
+		localStorage.clear();
+		sessionStorage.removeItem('isLive');
+	}
 
 	$(document).ready(function() {
 		$("#name").focusout(function() {
