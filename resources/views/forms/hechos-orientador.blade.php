@@ -7,6 +7,7 @@
 		border: 1px solid #c8cac8;
 		padding: 5px;
 		background-color: #eef5ee;
+		text-decoration:none;
 	}
 		
 	</style>
@@ -36,13 +37,13 @@
 						@php
 						$fecha = formato_fecha($narracion->created_at);
 						@endphp
-						<tr>
+						<tr >
 							@if($narracion->tipo==0)
 								@if($narracion->id==$ultimo->id)
 								<th  id="{{$narracion->id}}" class="rownarraciones ultimo"><a href="#" >{{$fecha}}</a></th>
 								<th><span><i class="fa fa-pencil-square" aria-hidden="true"></i></span></th>
 								@else
-								<th  id="{{$narracion->id}}" class="rownarraciones"><a href="#" >{{$fecha}}</a></th>
+								<th id="{{$narracion->id}}" class="rownarraciones"><a style="text-decoration:none;" href="#" >{{$fecha}}</a></th>
 								<th><span><i class="fa fa-pencil-square" aria-hidden="true"></i></span></th>
 								@endif	
 							@else

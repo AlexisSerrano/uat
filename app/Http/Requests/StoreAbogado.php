@@ -28,7 +28,7 @@ class StoreAbogado extends FormRequest
             'nombres' => 'string|min:3|max:50',
             'primerAp' => 'string|min:3|max:50',
             'primerAp' => 'string|min:3|max:50',
-            'rfc' => 'rfc|min:10|max:20',
+            'rfc' => 'rfc|min:8|max:20',
             'telefono' => 'numeric',
             'lugarTrabajo' => 'string',
             'telefonoTrabajo' => 'numeric',

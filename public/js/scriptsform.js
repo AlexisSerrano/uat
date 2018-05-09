@@ -64,6 +64,7 @@ $(document).ready(function(){
             //Datos personales no requeridos de Persona Moral o Empresa
             $('#nombres2').prop('disabled', true);
             $('#rfc2').prop('disabled', true);
+            $("#fechaAltaEmpresa").prop('disabled', true); 
             $('#representanteLegal').prop('disabled', true);
             $('#idEstado').prop('disabled', true);
             $('#idMunicipio').prop('disabled', true);
@@ -168,6 +169,7 @@ $(document).ready(function(){
             //Datos personales no requeridos de Persona Moral o Empresa
             $('#nombres2').prop('disabled', true);
             $('#rfc2').prop('disabled', true);
+            $("#fechaAltaEmpresa").prop('disabled', true); 
             $('#representanteLegal').prop('disabled', true);
             $('#idEstado').prop('disabled', true);
             $('#idMunicipio').prop('disabled', true);
@@ -400,6 +402,7 @@ $(document).ready(function(){
             $('#representanteLegal').prop('disabled', false);
             $("#senasPartic").prop('disabled', false);
             $("#narracion").prop('disabled', false);
+            $("#fechaAltaEmpresa").prop('disabled', false); 
             
             //Datos personales no requeridos de Persona Física
             $("#nombres").prop('disabled', true);   

@@ -348,7 +348,7 @@ class DenunciadoController extends Controller
             }elseif($request->esEmpresa==1){
                 $persona = new Persona();
                 $persona->nombres = $request->nombres2;
-                $persona->rfc = $request->rfc2;
+                $persona->rfc = $request->rfc2 . $request->homo2;
                 $persona->esEmpresa = 1;
                 $persona->save();
                 $idPersona = $persona->id;

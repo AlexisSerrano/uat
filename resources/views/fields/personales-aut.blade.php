@@ -19,14 +19,8 @@
 	</div>
 	<div class="col-3">
 		<div class="form-group">
-			{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('rfc', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'data-validation'=>'required']) !!}
-		</div>
-	</div>
-	<div class="col-3">
-		<div class="form-group">
 			{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
-			<input type="date" id="fechaNacimiento" name=" persona fechaNacimiento" class="form-control form-control-sm", data-validation="birthdate">
+			<input type="date" id="fechaNacimiento" name=" persona fechaNacimiento" class="form-control form-control-sm">
 			{{-- <div class="input-group date" id="fechanac" data-target-input="nearest">
                 {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'required', 'placeholder' => 'AAAA/MM/DD']) !!}
                 <span class="input-group-addon" data-target="#fechanac" data-toggle="datetimepicker">
@@ -46,11 +40,37 @@
 		</div>
 	</div>
 	<div class="col-3">
+			<div class="form-group">
+				{!! Form::label('idEstadoOrigen', 'Entidad federativa de origen', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('idEstadoOrigen', $estados, null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="form-group">
+				{!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('idMunicipioOrigen', ['' => 'Seleccione un municipio'], null, ['class' => 'persona form-control form-control-sm', 'required']) !!}
+			</div>
+		</div>
+	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::text('curp', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
+	<div class="col-3">
+		<div class="form-group">
+				<div class="row">
+			<div class="col">
+		{!! Form::label('rfc', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
+		{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
+			</div>
+		<div class="col">
+				{!! Form::label('homo', 'Homo', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('homo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
+		</div>
+	</div>
+</div>
+</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idNacionalidad', 'Nacionalidad', ['class' => 'col-form-label-sm']) !!}
@@ -69,18 +89,7 @@
 			{!! Form::select('idLengua', $lenguas, null, ['class' => ' persona form-control form-control-sm', 'placeholder' => 'Seleccione la lengua', 'required']) !!}
 		</div>
 	</div>
-	<div class="col-3">
-		<div class="form-group">
-			{!! Form::label('idEstadoOrigen', 'Entidad federativa de origen', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idEstadoOrigen', $estados, null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
-		</div>
-	</div>
-	<div class="col-3">
-		<div class="form-group">
-			{!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idMunicipioOrigen', ['' => 'Seleccione un municipio'], null, ['class' => 'persona form-control form-control-sm', 'required']) !!}
-		</div>
-	</div>
+	
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}

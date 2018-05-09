@@ -140,7 +140,7 @@ class PreregistroController extends Controller
             $preregistro->idEscolaridad = $request->escolaridad;
             $preregistro->idOcupacion = $request->ocupacion;
             if (!is_null($request->rfc2)){
-                $preregistro->rfc = $request->rfc2;
+                $preregistro->rfc = $request->rfc2 . $request->homo2;
             }
             $preregistro->curp = $request->curp;
             if (!is_null($request->sexo)){
@@ -193,7 +193,7 @@ class PreregistroController extends Controller
             $preregistro->nombre = $request->nombre1;
             $preregistro->idDireccion = $idD1;
             $preregistro->idRazon = $request->idRazon1;
-            $preregistro->rfc = $request->rfc1;
+            $preregistro->rfc = $request->rfc1 . $request->homo1;
             $preregistro->esEmpresa = 1;
             $preregistro->telefono = $request->telefono1;
             $preregistro->narracion = $request->narracion;
@@ -320,7 +320,7 @@ class PreregistroController extends Controller
             $preregistro->fechaNac = $request->fechaNacimiento;
             $preregistro->edad = $edad;
             if (!is_null($request->rfc2)){
-                $preregistro->rfc = $request->rfc2;
+                $preregistro->rfc = $request->rfc2 . $request->homo2;
             }
             $preregistro->curp = $request->curp;
             if (!is_null($request->sexo)){
@@ -371,7 +371,7 @@ class PreregistroController extends Controller
             $preregistro->nombre = $request->nombre1;
             $preregistro->idDireccion = $idD1;
             $preregistro->idRazon = $request->idRazon1;
-            $preregistro->rfc = $request->rfc1;
+            $preregistro->rfc = $request->rfc1 . $request->homo1;
             $preregistro->esEmpresa = 1;
             $preregistro->telefono = $request->telefono1;
             $preregistro->narracion = $request->narracion;
