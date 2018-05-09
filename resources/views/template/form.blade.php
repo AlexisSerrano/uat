@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="{{ asset('plugins/fileinput/css/fileinput.min.css') }}">
 {{-- validator --}}
 <link rel="stylesheet" href="{{ asset('css/theme-jquery-validation.min.css') }}">
+<link rel="stylesheet" href="{{asset ('css/toastr.min.css')}}">
 {{-- para calendarios --}}
 {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha18/css/tempusdominus-bootstrap-4.min.css" /> --}}
 @yield('css')
@@ -42,8 +43,8 @@
     
     <script src="{{asset('js/semaforos.js')}}"></script>  
     <script src="{{asset('js/selectsDirecciones.js')}}"></script>  
-    {{-- <script src="{{asset('js/selects.js')}}"></script> --}}
     <script src="{{asset('js/funciones.js')}}"></script>
+    <script src="{{asset ('js/toastr.min.js')}}"></script>
     <script src="{{ asset('plugins/sisyphus/js/sisyphus.js')}}" ></script>
     <script>
         
@@ -59,9 +60,27 @@
         lang : 'es'
     });
 
-    $('form').sisyphus({
-        excludeFields: $( 'input[name=_token]')
-    });
+    // $('form').sisyphus({
+    //     excludeFields: $( 'input[name=_token]')
+    // });
+
+
+    toastr.options = {
+  "closeButton": false,
+  "debug": false,
+  "progressBar": true,
+  "preventDuplicates": false,
+  "positionClass": "toast-bottom-center",
+  "onclick": null,
+  "showDuration": "3000",
+  "hideDuration": "1000",
+  "timeOut": "7000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
 
     jQuery.ajaxSetup({async:false});
     </script>

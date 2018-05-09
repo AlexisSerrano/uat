@@ -15,12 +15,12 @@
 	<!-- Theme style -->
 	<link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
 	<!-- Google Font: Source Sans Pro -->
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+	{{-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> --}}
 	<link rel="stylesheet" href="{{asset ('css/sweetalert.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/select2/select2.css') }}">
 	<link rel="stylesheet" href="{{asset ('css/cssfonts.css')}}">
 	<link rel="stylesheet" href="{{asset ('css/estilos.css')}}">
-	<link rel="stylesheet" href="{{asset ('css/toastr.min.css')}}">
+	
 	<link rel="stylesheet" href="{{ asset('css/theme-jquery-validation.min.css') }}">
 	
 
@@ -107,7 +107,7 @@
 <script src="{{ asset('js/popper.min.js')}}" ></script>
 <script src="{{ asset('js/bootstrap.min.js')}}" ></script>
 <script src="{{asset ('js/sweetalert.min.js')}}"></script>
-<script src="{{asset ('js/toastr.min.js')}}"></script>
+
 
 <script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
 <script src="{{ asset('js/jquery.form-validator.min.js')}}" ></script>
@@ -131,16 +131,6 @@
 <script src="{{ asset('admin/plugins/chartjs/Chart.min.js') }}"></script>
 {{-- <script src="{{ asset('ckeditor/ckeditor.js') }}"></script> --}}
 
-<!-- PAGE SCRIPTS -->
-{{-- <script src="{{ asset('admin/dist/js/pages/dashboard2.js') }}"></script> --}}
-
-
-
-{{-- TimePicker --}}
-{{-- <script src="{{asset ('js/bootstrap-datepicker.min.js')}}"></script> --}}
-{{-- Google Maps --}}
-{{-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEg9FTRwRH0bfUVa_bP5QUOe-hHJM6LHM&libraries=places&sensor=false"></script> --}}
-
 <script>
 	$("input:text").focusout(function() {
         $(this).val($(this).val().toUpperCase());
@@ -153,22 +143,6 @@
 	$('select').select2();
 
 	
-toastr.options = {
-  "closeButton": false,
-  "debug": false,
-  "progressBar": true,
-  "preventDuplicates": false,
-  "positionClass": "toast-bottom-center",
-  "onclick": null,
-  "showDuration": "3000",
-  "hideDuration": "1000",
-  "timeOut": "7000",
-  "extendedTimeOut": "1000",
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "fadeOut"
-}
 
 
 </script>

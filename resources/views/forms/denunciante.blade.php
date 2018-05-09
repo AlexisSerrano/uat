@@ -128,28 +128,7 @@
 	{{-- <script src="{{ asset('js/validation.js')}}"></script>
 	<script src="{{ asset('js/validation-orientador.js')}}"></script> --}}
 	<script>
-		
 
-		$(function () {
-			$('#fechanac').datetimepicker({
-				format: 'YYYY-MM-DD',
-				minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
-				maxDate: moment().subtract(18, 'years').format('YYYY-MM-DD')
-			});
-		});
-
-		$("#fechanac").on("change.datetimepicker", function (e) {
-			$('#edad').val(moment().diff(e.date,'years'));
-		});
-
-	$("#fechanac").on("change.datetimepicker", function (e) {
-		$('#edad').val(moment().diff(e.date,'years'));
-	});
-
-	$( "#edad" ).change(function() {
-		var anios = $('#edad').val();
-		$('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
-	});
 
 	id = $(".datotip").attr("id");
 	

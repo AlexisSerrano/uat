@@ -1,35 +1,38 @@
 @extends('template.form')
 
-@section('title', 'Agregar Abogado')
+@section('title', 'Periciales')
 @section('content')
-	@include('fields.buttons-navegacion')
+	{{-- @include('fields.buttons-navegacion') --}}
 	@include('fields.errores')
-	
-    {!! Form::open(['route' => 'store.abogado', 'method' => 'POST'])  !!}
-	<br>
+{{-- 	
+    {!! Form::open(['route' => 'store.abogado', 'method' => 'POST'])  !!} --}}
+
 	<ul class="nav nav-tabs" id="myTab" role="tablist">
 		<li class="nav-item">
-		  	<a class="nav-link active disabled" id="personales-tab" data-toggle="tab" href="#personales" role="tab" aria-controls="personales" aria-selected="true">Datos personales</a>
+		  	<a class="nav-link active " id="personales-tab" data-toggle="tab" href="#personales" role="tab" aria-controls="personales" aria-selected="true">Extracción de Mensajes</a>
 		</li>
 		<li class="nav-item">
-		  	<a class="nav-link disabled" id="trabajo-tab" data-toggle="tab" href="#trabajo" role="tab" aria-controls="trabajo" aria-selected="false">Datos del trabajo</a>
+		  	<a class="nav-link " id="trabajo-tab" data-toggle="tab" href="#trabajo" role="tab" aria-controls="trabajo" aria-selected="false">Psicologo</a>
 		</li>
 		<li class="nav-item">
-		  	<a class="nav-link disabled" id="abogado-tab" data-toggle="tab" href="#abogado" role="tab" aria-controls="abogado" aria-selected="false">Datos del abogado</a>
-		</li>
+		  	<a class="nav-link " id="abogado-tab" data-toggle="tab" href="#abogado" role="tab" aria-controls="abogado" aria-selected="false">Vehículos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " id="abogado-tab" data-toggle="tab" href="#abogado" role="tab" aria-controls="abogado" aria-selected="false">Lesiones</a>
+      </li>
 	  </ul>
 	  <div class="tab-content" id="myTabContent">
 		<div class="tab-pane fade show active " id="personales" role="tabpanel" aria-labelledby="personales-tab">
 			
 				<div class="boxtwo">
-					@include('fields.personales-abo')
+					@include('fields.mensajes-per')
 					{{-- botones --}}
 					<div class="row menu">	
 						<div class="col text-left">				
 						</div>
-						<div class="col text-right">
+						{{-- <div class="col text-right">
 							<a id="Atrabajo2" class="btn btn-secondary irtrabajo"><i class="fa fa-arrow-right"></i></a>
-						</div>
+						</div> --}}
 					</div>
 				</div>	
 			
@@ -59,7 +62,7 @@
 							<a id="irtrabajo" class="btn btn-secondary "><i class="fa fa-arrow-left"></i></a>				
 						</div>
 						<div class="col text-right">
-							{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!}
+							{{-- {!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!} --}}
 						</div>
 					</div>
 				</div>
@@ -70,19 +73,18 @@
 	
 
 
-	{!! Form::close() !!}
+	{{-- {!! Form::close() !!} --}}
 	<br>
-	<div class="card">
+	{{-- <div class="card">
 		<div class="boxtwo card-body">
 			@include('tables.abogados')
 		</div>
-	</div>
+	</div> --}}
 @endsection
 
 @push('scripts')
 	<script src="{{ asset('js/selectsDirecciones.js') }}"></script>
 	<script src="{{ asset('js/siguientes.js') }}"></script>
-	<script src="{{ asset('js/rfcFisico-f.js') }}"></script>
 	<script>
 		$('#irtrabajo').click(function(){
 			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
@@ -101,6 +103,16 @@
 			$('#personales').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
 			$('#personales').addClass("show");
 		});
+
+		// $('.irextraabogado').click(function(){
+		// 	$('.nav-link').removeClass("active");//Quito la clase active al tab actual
+		// 	$('#abogado-tab').addClass("active");//Agrego la clase active al tab actual
+		// 	$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+		// 	$('.tab-pane').removeClass("show");
+		// 	$('#abogado').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		// 	$('#abogado').addClass("show");
+		// });
+
 
 		$(function () {
 			$('#fechanac').datetimepicker({

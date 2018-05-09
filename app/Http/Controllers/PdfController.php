@@ -25,7 +25,7 @@ class PDFcontroller extends Controller
 		
 		
 		
-		//return $pdf->download('gol.pdf');
+		//return $pdf->download('PreregistroUAT.pdf');
 		
 
 

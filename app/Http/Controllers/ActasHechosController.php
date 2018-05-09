@@ -288,13 +288,24 @@ class ActasHechosController extends Controller
             $request->session()->flash('folio', $folio);
         }
 
-        $actas = Preregistro::where('folio', $folio)
-        ->where('tipoActa','!=',null)
-        ->where('statusCola',null)
-        ->orWhere(DB::raw("CONCAT(preregistros.nombre,' ',primerAp,' ',segundoAp)"), 'LIKE', '%' . $folio . '%')
-        ->orWhere('representanteLegal', 'like', '%' . $folio . '%')
-        ->orderBy('id','desc')
-        ->paginate(10);
+        // $actas = Preregistro::where('folio', $folio)
+        // ->where('tipoActa','!=',null)
+        // ->where('statusCola',null)
+        // ->orWhere(DB::raw("CONCAT(preregistros.nombre,' ',primerAp,' ',segundoAp)"), 'LIKE', '%' . $folio . '%')
+        // ->orWhere('representanteLegal', 'like', '%' . $folio . '%')
+        // ->orderBy('id','desc')
+        // ->paginate(10);
+
+        $actas = Preregistro::where('tipoActa','!=',null)
+       ->where('statusCola',null)
+       ->where(function($query) use ($folio){
+           $query
+           ->orWhere(DB::raw("CONCAT(preregistros.nombre,' ',primerAp,' ',segundoAp)"), 'LIKE', '%' . $folio . '%')
+           ->orWhere('representanteLegal', 'like', '%' . $folio . '%')
+           ->orWhere('folio', 'like', '%' . $folio . '%');
+       })
+       ->orderBy('id','desc')
+       ->paginate(10);
         return view('tables.actas-hechos', compact('actas'));
     }
 
@@ -340,6 +351,7 @@ class ActasHechosController extends Controller
             $acta->idEscolaridad = $request->escActa1;
             $acta->telefono = $request->telefono;
             $acta->narracion = $request->narracion;
+
             switch ($request->docIdentificacion) {
                 case 'CREDENCIAL PARA VOTAR': $acta->expedido ="POR EL INEW";
                 case 'PASAPORTE':$acta->expedido ="INSTITUCION";
@@ -422,6 +434,8 @@ class ActasHechosController extends Controller
 
             $fechasep = explode("-", $request->fecha_nac);
             $edad = Date::createFromDate($fechasep[0],$fechasep[1],$fechasep[2])->age;
+            $token = $request->nombre2.substr($request->primerAp,0,2).substr($request->segundoAp,0,2);
+            dd($token);
             //$word->setValue('edad', $edad);
             return view('impresion')
             ->with('estado', $catalogos->nombreEstado)
@@ -432,7 +446,7 @@ class ActasHechosController extends Controller
             ->with('cp', $request->cp2)
             ->with('numExterno', $numExterno)
             ->with('folio', $new)
-            ->with('hora', Date::now()->format('H:i:'))
+            ->with('hora', Date::now()->format('H:i'))
             ->with('fecha',$fechahum)
             ->with('fiscal', $acta->fiscal)
             ->with('nombre', $acta->nombre.' '.$acta->primer_ap.' '.$acta->segundo_ap)
