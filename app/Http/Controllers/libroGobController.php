@@ -132,7 +132,7 @@ class libroGobController extends Controller
         ->join('cat_estatus_casos','carpeta.idEstadoCarpeta','=','cat_estatus_casos.id')
         ->select('carpeta.id','carpeta.fechaInicio','persona.nombres', 'persona.primerAp', 'persona.segundoAp','per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2','carpeta.numCarpeta' ,'cat_delito.nombre as delito','tipif_delito.formaComision','cat_estatus_casos.nombreEstatus as idEstadoCarpeta')
       
-       ->get();
+       ->paginate(10);
         //dd( $carpterminadas);
         return view('forms.libro-gobierno')->with('carpterminadas',$carpterminadas);
 //dd($carpterminadas);

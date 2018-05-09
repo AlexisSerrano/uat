@@ -63,6 +63,7 @@
         excludeFields: $( 'input[name=_token]')
     });
 
+    jQuery.ajaxSetup({async:false});
     </script>
 
 @stack('scripts')

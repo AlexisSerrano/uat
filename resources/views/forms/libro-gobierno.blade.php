@@ -8,12 +8,12 @@
         <h6 style="text-align:center">UNIDAD DE ATENCIÓN TEMPRANA DEL DISTRITO JUDICIAL</h6>
             <div class="table  table-hover table-responsive">
                 <div class="">
-                    {{ Form::open(['url' => ['carpetaN'], 'method' => 'POST']) }}
+                    {{ Form::open(['route' => ['libro.filtro'], 'method' => 'POST']) }}
                     {{ Form::text('search', old('search'), array('placeholder'=>'Buscar..')) }}
                     {{ Form::submit('Search') }}
                     {{ Form::close() }}
+                    <br>
                     <table id="tablaprovidencias" class="table-sm">
-                        <br>
                         <thead class="table-active">
                             <th >N.</th>
                             <th >Fecha</th>
@@ -67,7 +67,6 @@
 </div>
 
 @endsection
-{{ Form::close() }}
         
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
