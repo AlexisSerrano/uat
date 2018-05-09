@@ -123,15 +123,6 @@
 			$('#personales').addClass("show");
 		});
 
-		// $('.irextraautoridad').click(function(){
-		// 	$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-		// 	$('#autoridad-tab').addClass("active");//Agrego la clase active al tab actual
-		// 	$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-		// 	$('.tab-pane').removeClass("show");
-		// 	$('#autoridad').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-		// 	$('#autoridad').addClass("show");
-		// });
-
 
 		$(function () {
 			$('#fechanac').datetimepicker({
