@@ -76,150 +76,158 @@ class PreregistroController extends Controller
     public function store(StorePreregistro $request)
     {
        
-       // dd($request);
-        $comprobacionFolio=0;
-        $folio=$comprobacionFolio;
-        while ($comprobacionFolio == $folio) {
-            $longitud=4;
-            $key = '';
-            $f1=date("d");
-            $f2=date("m");
-            $f3=date("y");
-            
-            $cadena = '1234567890';
-            $max = strlen($cadena)-1;
-            
-            for($i=0;$i < $longitud;$i++) $key .=$cadena{mt_rand(0,$max)};
-            $folio= substr($f1,0).$key.substr($f2,0).$key.substr($f3,0);
-            
-            $comprobacionFolio=Preregistro::where('folio','=',$folio);
-            
-            
-        }
-        //dd($folio);
-        //dd($request);
-        if ($request->esEmpresa==0){
-            $edad= Carbon::parse($request->fechaNacimiento)->age;
-            // dd($edad);
-            $domicilio = new Domicilio();
-            if (!is_null($request->idMunicipio2)){
-                $domicilio->idMunicipio = $request->idMunicipio2;
+        DB::beginTransaction();
+        try{
+        // dd($request);
+            $comprobacionFolio=0;
+            $folio=$comprobacionFolio;
+            while ($comprobacionFolio == $folio) {
+                $longitud=4;
+                $key = '';
+                $f1=date("d");
+                $f2=date("m");
+                $f3=date("y");
+                
+                $cadena = '1234567890';
+                $max = strlen($cadena)-1;
+                
+                for($i=0;$i < $longitud;$i++) $key .=$cadena{mt_rand(0,$max)};
+                $folio= substr($f1,0).$key.substr($f2,0).$key.substr($f3,0);
+                
+                $comprobacionFolio=Preregistro::where('folio','=',$folio);
+                
+                
             }
-            if (!is_null($request->idLocalidad2)){
-                $domicilio->idLocalidad = $request->idLocalidad2;
-            }
-            if (!is_null($request->idColonia2)){
-                $domicilio->idColonia = $request->idColonia2;
-            }
-            if (!is_null($request->calle2)){
-                $domicilio->calle = $request->calle2;
-            }
-            if (!is_null($request->numExterno2)){
-                $domicilio->numExterno = $request->numExterno2;
-            }
-            if (!is_null($request->numInterno2)){
-                $domicilio->numInterno = $request->numInterno2;
-            }
-            $domicilio->save();
-            $idD1 = $domicilio->id;
-            
-            $preregistro = new Preregistro();
-            $preregistro->nombre = $request->nombre2;
-            $preregistro->primerAp = $request->primerAp;
-            $preregistro->segundoAp = $request->segundoAp;
-            $preregistro->telefono = $request->telefono2;
-            $preregistro->narracion = $request->narracion;
-            $preregistro->folio = $folio;
-            $preregistro->statusCancelacion = 0;
-            $preregistro->idDireccion = $idD1;
-            $preregistro->idRazon = $request->idRazon2;
-            $preregistro->fechaNac = $request->fechaNacimiento;
-            $preregistro->edad = $edad;
-            $preregistro->idMunicipioOrigen = $request->idMunicipioOrigen;
-            $preregistro->idEstadoCivil = $request->estadoCivil;
-            $preregistro->idEscolaridad = $request->escolaridad;
-            $preregistro->idOcupacion = $request->ocupacion;
-            if (!is_null($request->rfc2)){
-                $preregistro->rfc = $request->rfc2 . $request->homo2;
-            }
-            $preregistro->curp = $request->curp;
-            if (!is_null($request->sexo)){
-                $preregistro->sexo = $request->sexo;
-            }
-            $preregistro->docIdentificacion = $request->docIdentificacion;
-            $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
-            $preregistro->conViolencia = $request->Violencia;
-            if (!is_null($request->tipoActa)){
-                $preregistro->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa;
-            }
-            
-            $preregistro->save();
-            $id = $preregistro->id;
+            //dd($folio);
+            //dd($request);
+            if ($request->esEmpresa==0){
+                $edad= Carbon::parse($request->fechaNacimiento)->age;
+                // dd($edad);
+                $domicilio = new Domicilio();
+                if (!is_null($request->idMunicipio2)){
+                    $domicilio->idMunicipio = $request->idMunicipio2;
+                }
+                if (!is_null($request->idLocalidad2)){
+                    $domicilio->idLocalidad = $request->idLocalidad2;
+                }
+                if (!is_null($request->idColonia2)){
+                    $domicilio->idColonia = $request->idColonia2;
+                }
+                if (!is_null($request->calle2)){
+                    $domicilio->calle = $request->calle2;
+                }
+                if (!is_null($request->numExterno2)){
+                    $domicilio->numExterno = $request->numExterno2;
+                }
+                if (!is_null($request->numInterno2)){
+                    $domicilio->numInterno = $request->numInterno2;
+                }
+                $domicilio->save();
+                $idD1 = $domicilio->id;
+                
+                $preregistro = new Preregistro();
+                $preregistro->nombre = $request->nombre2;
+                $preregistro->primerAp = $request->primerAp;
+                $preregistro->segundoAp = $request->segundoAp;
+                $preregistro->telefono = $request->telefono2;
+                $preregistro->narracion = $request->narracion;
+                $preregistro->folio = $folio;
+                $preregistro->statusCancelacion = 0;
+                $preregistro->idDireccion = $idD1;
+                $preregistro->idRazon = $request->idRazon2;
+                $preregistro->fechaNac = $request->fechaNacimiento;
+                $preregistro->edad = $edad;
+                $preregistro->idMunicipioOrigen = $request->idMunicipioOrigen;
+                $preregistro->idEstadoCivil = $request->estadoCivil;
+                $preregistro->idEscolaridad = $request->escolaridad;
+                $preregistro->idOcupacion = $request->ocupacion;
+                if (!is_null($request->rfc2)){
+                    $preregistro->rfc = $request->rfc2 . $request->homo2;
+                }
+                $preregistro->curp = $request->curp;
+                if (!is_null($request->sexo)){
+                    $preregistro->sexo = $request->sexo;
+                }
+                $preregistro->docIdentificacion = $request->docIdentificacion;
+                $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
+                $preregistro->conViolencia = $request->Violencia;
+                if (!is_null($request->tipoActa)){
+                    $preregistro->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa;
+                }
+                
+                $preregistro->save();
+                $id = $preregistro->id;
 
-            if (!is_null($request->correo2)) {
-                $correo2 = $request->correo2;
+                if (!is_null($request->correo2)) {
+                    $correo2 = $request->correo2;
+                    session(['idpreregistro' => $id]);
+                    Mail::to($correo2)->send(new sendMail());
+                    // Mail::to($correo)->send(new EnviarCorreo($id));
+                    // Mail::to($correo)->send('FormatoRegistro/'.$id);
+
+                }   
+            }elseif($request->esEmpresa==1){
+                $domicilio = new Domicilio();
+                if (!is_null($request->idMunicipio1)){
+                    $domicilio->idMunicipio = $request->idMunicipio1;
+                }
+                if (!is_null($request->idLocalidad1)){
+                    $domicilio->idLocalidad = $request->idLocalidad1;
+                }
+                if (!is_null($request->idColonia1)){
+                    $domicilio->idColonia = $request->idColonia1;
+                }
+                if (!is_null($request->calle1)){
+                    $domicilio->calle = $request->calle1;
+                }
+                if (!is_null($request->numExterno1)){
+                    $domicilio->numExterno = $request->numExterno1;
+                }
+                if (!is_null($request->numInterno1)){
+                    $domicilio->numInterno = $request->numInterno1;
+                }
+                
+                $domicilio->save();
+                $idD1 = $domicilio->id;
+                
+                
+                $preregistro = new Preregistro();
+                $preregistro->nombre = $request->nombre1;
+                $preregistro->idDireccion = $idD1;
+                $preregistro->idRazon = $request->idRazon1;
+                $preregistro->rfc = $request->rfc1 . $request->homo1;
+                $preregistro->esEmpresa = 1;
+                $preregistro->telefono = $request->telefono1;
+                $preregistro->narracion = $request->narracion;
+                $preregistro->folio = $folio;
+                $preregistro->statusCancelacion = 0;
+                $preregistro->representanteLegal = $request->repLegal;
+                $preregistro->conViolencia = $request->Violencia;
+                $preregistro->save();
+                $id = $preregistro->id;
+                
+                
+                
+            }
+            // return redirect('correo');
+            // return view('Email.emailmodel');
+            if (!is_null($request->correo)) {
+                $correo = $request->correo;
                 session(['idpreregistro' => $id]);
-                Mail::to($correo2)->send(new sendMail());
+                Mail::to($correo)->send(new sendMail());
                 // Mail::to($correo)->send(new EnviarCorreo($id));
                 // Mail::to($correo)->send('FormatoRegistro/'.$id);
-
-            }   
-        }elseif($request->esEmpresa==1){
-            $domicilio = new Domicilio();
-            if (!is_null($request->idMunicipio1)){
-                $domicilio->idMunicipio = $request->idMunicipio1;
-            }
-            if (!is_null($request->idLocalidad1)){
-                $domicilio->idLocalidad = $request->idLocalidad1;
-            }
-            if (!is_null($request->idColonia1)){
-                $domicilio->idColonia = $request->idColonia1;
-            }
-            if (!is_null($request->calle1)){
-                $domicilio->calle = $request->calle1;
-            }
-            if (!is_null($request->numExterno1)){
-                $domicilio->numExterno = $request->numExterno1;
-            }
-            if (!is_null($request->numInterno1)){
-                $domicilio->numInterno = $request->numInterno1;
-            }
+                    
             
-            $domicilio->save();
-            $idD1 = $domicilio->id;
-            
-            
-            $preregistro = new Preregistro();
-            $preregistro->nombre = $request->nombre1;
-            $preregistro->idDireccion = $idD1;
-            $preregistro->idRazon = $request->idRazon1;
-            $preregistro->rfc = $request->rfc1 . $request->homo1;
-            $preregistro->esEmpresa = 1;
-            $preregistro->telefono = $request->telefono1;
-            $preregistro->narracion = $request->narracion;
-            $preregistro->folio = $folio;
-            $preregistro->statusCancelacion = 0;
-            $preregistro->representanteLegal = $request->repLegal;
-            $preregistro->conViolencia = $request->Violencia;
-            $preregistro->save();
-            $id = $preregistro->id;
-            
-            
-            
+            }
+            DB::commit();
+            // Alert::success('Registro modificado con exito','Hecho');
+            return redirect('FormatoRegistro/'.$id);
+        }catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            return back()->withInput();
         }
-        // return redirect('correo');
-        // return view('Email.emailmodel');
-        if (!is_null($request->correo)) {
-            $correo = $request->correo;
-            session(['idpreregistro' => $id]);
-            Mail::to($correo)->send(new sendMail());
-            // Mail::to($correo)->send(new EnviarCorreo($id));
-            // Mail::to($correo)->send('FormatoRegistro/'.$id);
-                
-        
-        }
-        // Alert::success('Registro modificado con exito','Hecho');
-        return redirect('FormatoRegistro/'.$id);
     
     }
 
@@ -262,141 +270,149 @@ class PreregistroController extends Controller
 
     public function fiscalcreate(StorePreregistro $request)
     {
-        $comprobacionFolio=0;
-        $folio=$comprobacionFolio;
-        while ($comprobacionFolio == $folio) {
-            $longitud=4;
-            $key = '';
-            $f1=date("d");
-            $f2=date("m");
-            $f3=date("y");
-            
-            $cadena = '1234567890';
-            $max = strlen($cadena)-1;
-            
-            for($i=0;$i < $longitud;$i++) $key .=$cadena{mt_rand(0,$max)};
-            $folio= substr($f1,0).$key.substr($f2,0).$key.substr($f3,0);
-            
-            $comprobacionFolio=Preregistro::where('folio','=',$folio);
-            
-            
-        }
-        //dd($folio);
-        //dd($request);
-        if ($request->esEmpresa==0){
-            $domicilio = new Domicilio();
-            if (!is_null($request->idMunicipio2)){
-                $domicilio->idMunicipio = $request->idMunicipio2;
+        DB::beginTransaction();
+        try{
+            $comprobacionFolio=0;
+            $folio=$comprobacionFolio;
+            while ($comprobacionFolio == $folio) {
+                $longitud=4;
+                $key = '';
+                $f1=date("d");
+                $f2=date("m");
+                $f3=date("y");
+                
+                $cadena = '1234567890';
+                $max = strlen($cadena)-1;
+                
+                for($i=0;$i < $longitud;$i++) $key .=$cadena{mt_rand(0,$max)};
+                $folio= substr($f1,0).$key.substr($f2,0).$key.substr($f3,0);
+                
+                $comprobacionFolio=Preregistro::where('folio','=',$folio);
+                
+                
             }
-            if (!is_null($request->idLocalidad2)){
-                $domicilio->idLocalidad = $request->idLocalidad2;
-            }
-            if (!is_null($request->idColonia2)){
-                $domicilio->idColonia = $request->idColonia2;
-            }
-            if (!is_null($request->calle2)){
-                $domicilio->calle = $request->calle2;
-            }
-            if (!is_null($request->numExterno2)){
-                $domicilio->numExterno = $request->numExterno2;
-            }
-            if (!is_null($request->numInterno2)){
-                $domicilio->numInterno = $request->numInterno2;
-            }
-            $domicilio->save();
-            $idD1 = $domicilio->id;
-            
-            $edad= Carbon::parse($request->fechaNacimiento)->age;
-            $preregistro = new Preregistro();
-            $preregistro->nombre = $request->nombre2;
-            $preregistro->primerAp = $request->primerAp;
-            $preregistro->segundoAp = $request->segundoAp;
-            $preregistro->telefono = $request->telefono2;
-            $preregistro->narracion = $request->narracion;
-            $preregistro->folio = $folio;
-            $preregistro->statusCancelacion = 1;
-            $preregistro->idDireccion = $idD1;
-            $preregistro->idRazon = $request->idRazon2;
-            $preregistro->fechaNac = $request->fechaNacimiento;
-            $preregistro->edad = $edad;
-            if (!is_null($request->rfc2)){
-                $preregistro->rfc = $request->rfc2 . $request->homo2;
-            }
-            $preregistro->curp = $request->curp;
-            if (!is_null($request->sexo)){
-                $preregistro->sexo = $request->sexo;
-            }
-            $preregistro->docIdentificacion = $request->docIdentificacion;
-            $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
-            $preregistro->conViolencia = $request->Violencia;
-            
-            $preregistro->save();
-            $id = $preregistro->id;
-            
-            if (!is_null($request->correo2)) {
-                $correo2 = $request->correo2;
+            //dd($folio);
+            //dd($request);
+            if ($request->esEmpresa==0){
+                $domicilio = new Domicilio();
+                if (!is_null($request->idMunicipio2)){
+                    $domicilio->idMunicipio = $request->idMunicipio2;
+                }
+                if (!is_null($request->idLocalidad2)){
+                    $domicilio->idLocalidad = $request->idLocalidad2;
+                }
+                if (!is_null($request->idColonia2)){
+                    $domicilio->idColonia = $request->idColonia2;
+                }
+                if (!is_null($request->calle2)){
+                    $domicilio->calle = $request->calle2;
+                }
+                if (!is_null($request->numExterno2)){
+                    $domicilio->numExterno = $request->numExterno2;
+                }
+                if (!is_null($request->numInterno2)){
+                    $domicilio->numInterno = $request->numInterno2;
+                }
+                $domicilio->save();
+                $idD1 = $domicilio->id;
+                
+                $edad= Carbon::parse($request->fechaNacimiento)->age;
+                $preregistro = new Preregistro();
+                $preregistro->nombre = $request->nombre2;
+                $preregistro->primerAp = $request->primerAp;
+                $preregistro->segundoAp = $request->segundoAp;
+                $preregistro->telefono = $request->telefono2;
+                $preregistro->narracion = $request->narracion;
+                $preregistro->folio = $folio;
+                $preregistro->statusCancelacion = 1;
+                $preregistro->idDireccion = $idD1;
+                $preregistro->idRazon = $request->idRazon2;
+                $preregistro->fechaNac = $request->fechaNacimiento;
+                $preregistro->edad = $edad;
+                if (!is_null($request->rfc2)){
+                    $preregistro->rfc = $request->rfc2 . $request->homo2;
+                }
+                $preregistro->curp = $request->curp;
+                if (!is_null($request->sexo)){
+                    $preregistro->sexo = $request->sexo;
+                }
+                $preregistro->docIdentificacion = $request->docIdentificacion;
+                $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
+                $preregistro->conViolencia = $request->Violencia;
+                
+                $preregistro->save();
+                $id = $preregistro->id;
+                
+                if (!is_null($request->correo2)) {
+                    $correo2 = $request->correo2;
+                    session(['idpreregistro' => $id]);
+                    Mail::to($correo2)->send(new sendMail());
+                    // Mail::to($correo)->send(new EnviarCorreo($id));
+                    // Mail::to($correo)->send('FormatoRegistro/'.$id);
+
+                }   
+                
+            }elseif($request->esEmpresa==1){
+                $domicilio = new Domicilio();
+                if (!is_null($request->idMunicipio1)){
+                    $domicilio->idMunicipio = $request->idMunicipio1;
+                }
+                if (!is_null($request->idLocalidad1)){
+                    $domicilio->idLocalidad = $request->idLocalidad1;
+                }
+                if (!is_null($request->idColonia1)){
+                    $domicilio->idColonia = $request->idColonia1;
+                }
+                if (!is_null($request->calle1)){
+                    $domicilio->calle = $request->calle1;
+                }
+                if (!is_null($request->numExterno1)){
+                    $domicilio->numExterno = $request->numExterno1;
+                }
+                if (!is_null($request->numInterno1)){
+                    $domicilio->numInterno = $request->numInterno1;
+                }
+                
+                $domicilio->save();
+                $idD1 = $domicilio->id;
+                
+                
+                $preregistro = new Preregistro();
+                $preregistro->nombre = $request->nombre1;
+                $preregistro->idDireccion = $idD1;
+                $preregistro->idRazon = $request->idRazon1;
+                $preregistro->rfc = $request->rfc1 . $request->homo1;
+                $preregistro->esEmpresa = 1;
+                $preregistro->telefono = $request->telefono1;
+                $preregistro->narracion = $request->narracion;
+                $preregistro->folio = $folio;
+                $preregistro->statusCancelacion = 0;
+                $preregistro->statusOrigen = 1;
+                $preregistro->representanteLegal = $request->repLegal;
+                $preregistro->conViolencia = $request->Violencia;
+                $preregistro->save();
+                $id = $preregistro->id;
+                
+                
+                // return view('Email.emailmodel');
+            if (!is_null($request->correo)) {
+                $correo = $request->correo;
                 session(['idpreregistro' => $id]);
-                Mail::to($correo2)->send(new sendMail());
+                Mail::to($correo)->send(new sendMail());
                 // Mail::to($correo)->send(new EnviarCorreo($id));
                 // Mail::to($correo)->send('FormatoRegistro/'.$id);
-
-            }   
-            
-        }elseif($request->esEmpresa==1){
-            $domicilio = new Domicilio();
-            if (!is_null($request->idMunicipio1)){
-                $domicilio->idMunicipio = $request->idMunicipio1;
-            }
-            if (!is_null($request->idLocalidad1)){
-                $domicilio->idLocalidad = $request->idLocalidad1;
-            }
-            if (!is_null($request->idColonia1)){
-                $domicilio->idColonia = $request->idColonia1;
-            }
-            if (!is_null($request->calle1)){
-                $domicilio->calle = $request->calle1;
-            }
-            if (!is_null($request->numExterno1)){
-                $domicilio->numExterno = $request->numExterno1;
-            }
-            if (!is_null($request->numInterno1)){
-                $domicilio->numInterno = $request->numInterno1;
+                    
             }
             
-            $domicilio->save();
-            $idD1 = $domicilio->id;
-            
-            
-            $preregistro = new Preregistro();
-            $preregistro->nombre = $request->nombre1;
-            $preregistro->idDireccion = $idD1;
-            $preregistro->idRazon = $request->idRazon1;
-            $preregistro->rfc = $request->rfc1 . $request->homo1;
-            $preregistro->esEmpresa = 1;
-            $preregistro->telefono = $request->telefono1;
-            $preregistro->narracion = $request->narracion;
-            $preregistro->folio = $folio;
-            $preregistro->statusCancelacion = 0;
-            $preregistro->statusOrigen = 1;
-            $preregistro->representanteLegal = $request->repLegal;
-            $preregistro->conViolencia = $request->Violencia;
-            $preregistro->save();
-            $id = $preregistro->id;
-            
-            
-            // return view('Email.emailmodel');
-        if (!is_null($request->correo)) {
-            $correo = $request->correo;
-            session(['idpreregistro' => $id]);
-            Mail::to($correo)->send(new sendMail());
-            // Mail::to($correo)->send(new EnviarCorreo($id));
-            // Mail::to($correo)->send('FormatoRegistro/'.$id);
-                
-        }
-        
-        }
+            }
        
-        return redirect('FormatoRegistro/'.$id);
+            DB::commit();
+            return redirect('FormatoRegistro/'.$id);
+        }catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            return back()->withInput();
+        }
     
     }
 

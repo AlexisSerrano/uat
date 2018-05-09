@@ -27,7 +27,7 @@ class CaratulaCarpetaController extends Controller
         $word = new \PhpOffice\PhpWord\TemplateProcessor('formatos/CaratulaCarpeta.docx');
         $word->setValue('carpeta',$carpeta->numCarpeta);
         $word->setValue('nombre', $denunciantes->nombres.' '.$denunciantes->primerAp.' '.$denunciantes->segundoAp);
-        $word->setValue('fiscal','Chiquita Brenda');
+        $word->setValue('fiscal','xxxxxxxxxxxxxxxx');
 
         $word->saveAs('../storage/oficios/CaratulaCarpeta'.'avila'.'.docx');
         return response()->download('../storage/oficios/CaratulaCarpeta'.'avila'.'.docx');

@@ -110,9 +110,9 @@
 					</li>
 					@if (!is_null(session('carpeta')))
 
-						@isset($idpreregistro)
+						@if(!is_null(session('preregistro')))
 						<li class="nav-item has-treeview">
-							<a href="{{route('devolver', $idpreregistro)}}" class="nav-link">
+							<a href="{{route('devolver', session('preregistro') )}}" class="nav-link">
 								<i class="nav-icon fa fa-reply"></i>
 								<p>
 									Devolver turno
@@ -128,6 +128,7 @@
 								</p>
 							</a>
 						</li>
+						@endif
 						<li class="nav-item has-treeview">
 							<a href='{{route("new.denunciante")}}' class="nav-link">
 								<i class="nav-icon fa fa-share"></i>
@@ -136,7 +137,6 @@
 								</p>
 							</a>
 						</li>
-						@endisset
 						
 					@else
 						<li class="nav-item has-treeview">

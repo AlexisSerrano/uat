@@ -172,6 +172,7 @@ toastr.options = {
 
 
 </script>
+@routes
 @yield('pilaScripts')
 @include('sweet::alert')
 </body>

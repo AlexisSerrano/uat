@@ -60,25 +60,34 @@ class MedidasProteccionController extends Controller
     }
 
     public function addMedidas(MedidasRequest $request){
-        $idCarpeta = session('carpeta');
-        $providenciaBD = new Providencia;
-        $providenciaBD->idProvidencia = $request->tipoProvidencia;
-        $providenciaBD->idEjecutor = $request->quienEjecuta;
-        $providenciaBD->idPersona = $request->victima;
-        $providenciaBD->fechaInicio = $request->fechaInicio;
-        $providenciaBD->fechaFin = $request->fechaFinal;
-        $providenciaBD->observacion = $request->ObservacionesM;
-        $providenciaBD->idCarpeta = $idCarpeta;
-        if($providenciaBD->save()){
-            Alert::success('Medida de protección creada con éxito', 'Hecho');
-            $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-            $bdbitacora->medidas = $bdbitacora->medidas+1;
-            $bdbitacora->save();
+        
+        DB::beginTransaction();
+        try{
+            $idCarpeta = session('carpeta');
+            $providenciaBD = new Providencia;
+            $providenciaBD->idProvidencia = $request->tipoProvidencia;
+            $providenciaBD->idEjecutor = $request->quienEjecuta;
+            $providenciaBD->idPersona = $request->victima;
+            $providenciaBD->fechaInicio = $request->fechaInicio;
+            $providenciaBD->fechaFin = $request->fechaFinal;
+            $providenciaBD->observacion = $request->ObservacionesM;
+            $providenciaBD->idCarpeta = $idCarpeta;
+            if($providenciaBD->save()){
+                Alert::success('Medida de protección creada con éxito', 'Hecho');
+                $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+                $bdbitacora->medidas = $bdbitacora->medidas+1;
+                $bdbitacora->save();
+            }
+            else{
+                Alert::error('Se presentó un problema al crear su medida de protección', 'Error');
+            }
+            DB::commit();
+            return redirect("medidas");
+        }catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            return back()->withInput();
         }
-        else{
-            Alert::error('Se presentó un problema al crear su medida de protección', 'Error');
-        }
-        return redirect("medidas");
     }
 
     public function getMedidas(){

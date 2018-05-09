@@ -317,7 +317,7 @@ class ActasHechosController extends Controller
             }
             $direccion->numExterno = $request->numExterno2;
             $direccion->save();
-            $ultimo = ActasHechos::latest()->first();
+            $ultimo = ActasHechos::orderBy('id','desc')->first();
             if($ultimo){
                 $new = $ultimo->folio+1;
             }

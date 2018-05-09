@@ -210,111 +210,105 @@ class PreregistroAuxController extends Controller
         $idDireccion=$idDireccion[0]->idDireccion;
         //dd($idDireccion);
         
-        if ($request->esEmpresa==0){
-            $domicilio = Domicilio::find($idDireccion);
-            if (!is_null($request->idMunicipio)){
-                $domicilio->idMunicipio = $request->idMunicipio;
+        DB::beginTransaction();
+        try{
+            if ($request->esEmpresa==0){
+                $domicilio = Domicilio::find($idDireccion);
+                if (!is_null($request->idMunicipio)){
+                    $domicilio->idMunicipio = $request->idMunicipio;
+                }
+                if (!is_null($request->idLocalidad)){
+                    $domicilio->idLocalidad = $request->idLocalidad;
+                }
+                if (!is_null($request->idColonia)){
+                    $domicilio->idColonia = $request->idColonia;
+                }
+                if (!is_null($request->calle)){
+                    $domicilio->calle = $request->calle;
+                }
+                if (!is_null($request->numExterno)){
+                    $domicilio->numExterno = $request->numExterno;
+                }
+                if (!is_null($request->numInterno)){
+                    $domicilio->numInterno = $request->numInterno;
+                }
+                $domicilio->save();
+                $idD1 = $domicilio->id;
+                
+                $edad= Carbon::parse($request->fechaNacimiento)->age;
+                $preregistro = Preregistro::find($id);
+                $preregistro->nombre = $request->nombres;
+                $preregistro->primerAp = $request->primerAp;
+                $preregistro->segundoAp = $request->segundoAp;
+                $preregistro->telefono = $request->telefono;
+                $preregistro->narracion = $request->narracion;
+                $preregistro->idDireccion = $idD1;
+                $preregistro->fechaNac = $request->fechaNacimiento;
+                $preregistro->edad = $edad;
+                if (!is_null($request->rfc2)){
+                    $preregistro->rfc = $request->rfc2;
+                }
+                $preregistro->curp = $request->curp;
+                if (!is_null($request->sexo)){
+                    $preregistro->sexo = $request->sexo;
+                }
+                $preregistro->docIdentificacion = $request->docIdentificacion;
+                $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
+                if (!is_null($request->idRazon)){
+                    $domicilio->idRazon = $request->idRazon;
+                }
+                $preregistro->save();
+                $id = $preregistro->id;
+                
+            }elseif($request->esEmpresa==1){
+                $domicilio = Domicilio::find($idDireccion);
+                if (!is_null($request->idMunicipio)){
+                    $domicilio->idMunicipio = $request->idMunicipio;
+                }
+                if (!is_null($request->idLocalidad)){
+                    $domicilio->idLocalidad = $request->idLocalidad;
+                }
+                if (!is_null($request->idColonia)){
+                    $domicilio->idColonia = $request->idColonia;
+                }
+                if (!is_null($request->calle)){
+                    $domicilio->calle = $request->calle;
+                }
+                if (!is_null($request->numExterno)){
+                    $domicilio->numExterno = $request->numExterno;
+                }
+                if (!is_null($request->numInterno)){
+                    $domicilio->numInterno = $request->numInterno;
+                }
+                if (!is_null($request->idRazon)){
+                    $domicilio->idRazon = $request->idRazon;
+                }
+                
+                $domicilio->save();
+                $idD1 = $domicilio->id;
+                
+                $preregistro =Preregistro::find($idDireccion);
+                $preregistro->esEmpresa = 1;    
+                $preregistro->nombre = $request->nombres;
+                $preregistro->idDireccion = $idD1;
+                $preregistro->rfc = $request->rfc . $request->homo;
+                $preregistro->representanteLegal = $request->repLegal;
+                $preregistro->telefono = $request->telefono;
+                $preregistro->conViolencia = $request->conViolencia;
+                $preregistro->narracion = $request->narracion;
+                $preregistro->save();
+                $id = $preregistro->id;   
             }
-            if (!is_null($request->idLocalidad)){
-                $domicilio->idLocalidad = $request->idLocalidad;
-            }
-            if (!is_null($request->idColonia)){
-                $domicilio->idColonia = $request->idColonia;
-            }
-            if (!is_null($request->calle)){
-                $domicilio->calle = $request->calle;
-            }
-            if (!is_null($request->numExterno)){
-                $domicilio->numExterno = $request->numExterno;
-            }
-            if (!is_null($request->numInterno)){
-                $domicilio->numInterno = $request->numInterno;
-            }
-            $domicilio->save();
-            $idD1 = $domicilio->id;
-            
-            $edad= Carbon::parse($request->fechaNacimiento)->age;
-            $preregistro = Preregistro::find($id);
-            $preregistro->nombre = $request->nombres;
-            $preregistro->primerAp = $request->primerAp;
-            $preregistro->segundoAp = $request->segundoAp;
-            $preregistro->telefono = $request->telefono;
-            $preregistro->narracion = $request->narracion;
-            $preregistro->idDireccion = $idD1;
-            $preregistro->fechaNac = $request->fechaNacimiento;
-            $preregistro->edad = $edad;
-            if (!is_null($request->rfc2)){
-                $preregistro->rfc = $request->rfc2 . $request->homo2;
-            }
-            $preregistro->curp = $request->curp;
-            if (!is_null($request->sexo)){
-                $preregistro->sexo = $request->sexo;
-            }
-            $preregistro->docIdentificacion = $request->docIdentificacion;
-            $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
-            if (!is_null($request->idRazon)){
-                $domicilio->idRazon = $request->idRazon;
-            }
-            $preregistro->save();
-            $id = $preregistro->id;
-            
-        }elseif($request->esEmpresa==1){
-            $domicilio = Domicilio::find($idDireccion);
-            if (!is_null($request->idMunicipio)){
-                $domicilio->idMunicipio = $request->idMunicipio;
-            }
-            if (!is_null($request->idLocalidad)){
-                $domicilio->idLocalidad = $request->idLocalidad;
-            }
-            if (!is_null($request->idColonia)){
-                $domicilio->idColonia = $request->idColonia;
-            }
-            if (!is_null($request->calle)){
-                $domicilio->calle = $request->calle;
-            }
-            if (!is_null($request->numExterno)){
-                $domicilio->numExterno = $request->numExterno;
-            }
-            if (!is_null($request->numInterno)){
-                $domicilio->numInterno = $request->numInterno;
-            }
-            if (!is_null($request->idRazon)){
-                $domicilio->idRazon = $request->idRazon;
-            }
-            
-            $domicilio->save();
-            $idD1 = $domicilio->id;
-            
-            $preregistro =Preregistro::find($idDireccion);
-            $preregistro->esEmpresa = 1;    
-            $preregistro->nombre = $request->nombres;
-            $preregistro->idDireccion = $idD1;
-            $preregistro->rfc = $request->rfc . $request->homo;
-            $preregistro->representanteLegal = $request->repLegal;
-            $preregistro->telefono = $request->telefono;
-            $preregistro->conViolencia = $request->conViolencia;
-            $preregistro->narracion = $request->narracion;
-            $preregistro->save();
-            $id = $preregistro->id;   
+            DB::commit();
+            Alert::success('Registro modificado con éxito','Hecho');
+            return redirect('predenuncias/'.$id.'/edit');
+        }catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            return back()->withInput();
         }
-        Alert::success('Registro modificado con éxito','Hecho');
-        return redirect('predenuncias/'.$id.'/edit');
     }
 
-
-
-
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 
     public function showbyfolio(Request $request){
         if($request->input("folio")){
@@ -436,13 +430,22 @@ class PreregistroAuxController extends Controller
 
  
     public function atender($id){
-        $estado = Preregistro::find($id);
-        $estado->statusCola = 23;
-        $estado->save();
-        return redirect("turno/$estado->id");
+        DB::beginTransaction();
+        try{
+            $estado = Preregistro::find($id);
+            $estado->statusCola = 23;
+            $estado->save();
+                DB::commit();
+            return redirect("turno/$estado->id");
+        }catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            return back()->withInput();
+        }
     }
 
     public function turno($id){
+        
         // $preregistros = Preregistro::where('statusCola', 2)
         // ->where('conViolencia', 0)
         // ->orderBy('horaLlegada','asc')
@@ -524,9 +527,9 @@ class PreregistroAuxController extends Controller
 
        
         $caso = new Carpeta();
-        $caso->numCarpeta = "UAT/D"."1"."/"."X"."/"."XX"."/".Carbon::now()->year;
+        // $caso->numCarpeta = "UAT/D"."1"."/"."X"."/"."XX"."/".Carbon::now()->year;
         $caso->fechaInicio = Carbon::now();
-        $caso->idEstadoCarpeta = 1;
+        // $caso->idEstadoCarpeta = 1;
         $caso->horaIntervencion = Carbon::now();
         $caso->fechaDeterminacion = Carbon::now();
         $caso->save();
@@ -537,6 +540,7 @@ class PreregistroAuxController extends Controller
         $editpreregistro->save();
 
 
+        session(['preregistro' => $id]);
         session(['carpeta' => $idCarpeta]);
         $bdbitacora = new BitacoraNavCaso;
         $bdbitacora->idCaso = $caso->id;
@@ -658,13 +662,14 @@ class PreregistroAuxController extends Controller
         //dd($idCarpeta);
         
         //$carpeta = Carpeta::find($idCarpeta);
-        Carpeta::destroy($idCarpeta);
+        // Carpeta::destroy($idCarpeta);
         //dd($carpeta);
         //$carpeta->delete();
         
         //$carpeta->delete();
         
         session()->forget('carpeta');
+        session()->forget('preregistro');
          //dd($idCarpeta);
         //dd(session('carpeta'));
         

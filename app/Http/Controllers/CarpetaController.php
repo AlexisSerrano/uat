@@ -18,6 +18,28 @@ class CarpetaController extends Controller
         Carbon::setLocale('es');
     }
 
+    public function cancelarCaso(){
+        $idCarpeta = session('carpeta');
+        $comprobar= Carpeta::where('id',$idCarpeta)->get();
+        if(is_null($idCarpeta)){
+            Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia');
+            return redirect(url('registros'));    
+        }
+        if (count($comprobar)==0) {
+            session()->forget('carpeta');
+            Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia');
+            return redirect(url('registros'));
+        }
+        // $carpeta = Carpeta::find($idCarpeta);
+        // $carpeta->delete();
+        
+        session()->forget('carpeta');
+        Alert::info('El caso ha sido cancelado con éxito.', 'Hecho');
+        return redirect(url('registros'));
+    }
+
+
+
      public function showForm()
     {
         $tiposdet = CatTipoDeterminacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -26,51 +48,51 @@ class CarpetaController extends Controller
         return view('forms.inicio')->with('nombreUnidad', $nombreUnidad)->with('tiposdet', $tiposdet);
     }
 
-    public function storeCarpeta(Request $request){
-        //dd($request->all());
-        $datos = DB::table('users')
-            ->join('unidad', 'unidad.id', '=', 'users.idUnidad')
-            ->select('unidad.distrito','users.numFiscal', 'unidad.consecutivo')
-            ->where('users.id', '=', Auth::user()->id)
-            ->get();
-        $num = $datos[0]->consecutivo+1;
-        $carpeta = new Carpeta();
-        $carpeta->idUnidad = Auth::user()->idUnidad;
-        $carpeta->idFiscal = Auth::user()->id;
-        $carpeta->numCarpeta = "UIPJ/D".$datos[0]->distrito."/".$datos[0]->numFiscal."/".$num."/".Carbon::now()->year;
-        $carpeta->fechaInicio = $request->fechaInicio;
-        if (isset($request->conDetenido)) {
-            $carpeta->conDetenido = $request->conDetenido;
-        }
-        if (isset($request->esRelevante)) {
-            $carpeta->esRelevante = $request->esRelevante;
-        }
-        $carpeta->estadoCarpeta = "INICIO";
-        $carpeta->horaIntervencion = $request->horaIntervencion;
-        $carpeta->descripcionHechos = $request->descripcionHechos;
-        if (!is_null($request->npd)){
-            $carpeta->npd = $request->npd;
-        }
-        if (!is_null($request->numIph)){
-            $carpeta->numIph = $request->numIph;
-        }
-        $carpeta->fechaIph = $request->fechaIph;
-        if (!is_null($request->narracionIph)){
-            $carpeta->narracionIph = $request->narracionIph;
-        }
-        $carpeta->fechaDeterminacion = $request->fechaDeterminacion;
-        $carpeta->save();
-        $idCarpeta = $carpeta->id;
-        //dd($idCarpeta);
-        DB::table('unidad')->where('id', Auth::user()->idUnidad)->update(['consecutivo' => $num]);
-        /*
-        Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
-        //Para mostrar modal
-        //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
-        */
-        Alert::success('Carpeta iniciada con éxito', 'Hecho')->persistent("Aceptar");
-        return redirect()->route('carpeta', $idCarpeta);
-    }
+    // public function storeCarpeta(Request $request){
+    //     //dd($request->all());
+    //     $datos = DB::table('users')
+    //         ->join('unidad', 'unidad.id', '=', 'users.idUnidad')
+    //         ->select('unidad.distrito','users.numFiscal', 'unidad.consecutivo')
+    //         ->where('users.id', '=', Auth::user()->id)
+    //         ->get();
+    //     $num = $datos[0]->consecutivo+1;
+    //     $carpeta = new Carpeta();
+    //     $carpeta->idUnidad = Auth::user()->idUnidad;
+    //     $carpeta->idFiscal = Auth::user()->id;
+    //     $carpeta->numCarpeta = "UIPJ/D".$datos[0]->distrito."/".$datos[0]->numFiscal."/".$num."/".Carbon::now()->year;
+    //     $carpeta->fechaInicio = $request->fechaInicio;
+    //     if (isset($request->conDetenido)) {
+    //         $carpeta->conDetenido = $request->conDetenido;
+    //     }
+    //     if (isset($request->esRelevante)) {
+    //         $carpeta->esRelevante = $request->esRelevante;
+    //     }
+    //     $carpeta->estadoCarpeta = "INICIO";
+    //     $carpeta->horaIntervencion = $request->horaIntervencion;
+    //     $carpeta->descripcionHechos = $request->descripcionHechos;
+    //     if (!is_null($request->npd)){
+    //         $carpeta->npd = $request->npd;
+    //     }
+    //     if (!is_null($request->numIph)){
+    //         $carpeta->numIph = $request->numIph;
+    //     }
+    //     $carpeta->fechaIph = $request->fechaIph;
+    //     if (!is_null($request->narracionIph)){
+    //         $carpeta->narracionIph = $request->narracionIph;
+    //     }
+    //     $carpeta->fechaDeterminacion = $request->fechaDeterminacion;
+    //     $carpeta->save();
+    //     $idCarpeta = $carpeta->id;
+    //     //dd($idCarpeta);
+    //     DB::table('unidad')->where('id', Auth::user()->idUnidad)->update(['consecutivo' => $num]);
+    //     /*
+    //     Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
+    //     //Para mostrar modal
+    //     //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
+    //     */
+    //     Alert::success('Carpeta iniciada con éxito', 'Hecho')->persistent("Aceptar");
+    //     return redirect()->route('carpeta', $idCarpeta);
+    // }
 
     /**
      * Display a listing of the resource.
@@ -363,7 +385,6 @@ class CarpetaController extends Controller
             $caso->fechaInicio = Carbon::now();
             $caso->horaIntervencion = Carbon::now();
             $caso->fechaDeterminacion = Carbon::now();
-            $caso->idEstadoCarpeta = 1;
             $caso->save();
             session(['carpeta' => $caso->id]);
             $bdbitacora = new BitacoraNavCaso;
