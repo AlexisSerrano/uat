@@ -82,6 +82,7 @@
   "hideMethod": "fadeOut"
 }
 
+    jQuery.ajaxSetup({async:false});
     </script>
 
 @stack('scripts')

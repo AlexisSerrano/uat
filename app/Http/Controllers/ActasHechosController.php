@@ -23,7 +23,7 @@ class ActasHechosController extends Controller
     public function actasPendientes(){
         $actas=Preregistro::where('tipoActa','!=',null)
         ->where('statusCola',null)
-        ->get();
+        ->paginate(10);
         return view('tables.actas-hechos')->with('actas',$actas);
     }
     
@@ -279,6 +279,9 @@ class ActasHechosController extends Controller
     }
 
     public function filtroActasPendientes(Request $request){
+        if ($request->input("folio")==null||$request->input("folio")=='') {
+            return redirect(route('actaspendientes'));
+        }
         if($request->input("folio")){
             $folio = $request->input("folio");
             $request->session()->flash('folio', $folio);
@@ -302,7 +305,7 @@ class ActasHechosController extends Controller
            $query
            ->orWhere(DB::raw("CONCAT(preregistros.nombre,' ',primerAp,' ',segundoAp)"), 'LIKE', '%' . $folio . '%')
            ->orWhere('representanteLegal', 'like', '%' . $folio . '%')
-           ->orWhere('folio', 'like', '%' . $folio . '%');
+           ->orWhere('tipoActa', 'like', '%' . $folio . '%');
        })
        ->orderBy('id','desc')
        ->paginate(10);
