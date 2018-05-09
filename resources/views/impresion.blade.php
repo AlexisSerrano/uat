@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset ('css/cssfonts.css')}}">    <title>Document</title>
+    <link rel="stylesheet" href="{{asset ('css/cssfonts.css')}}">    
+    <title>Oficio</title>
     <style>
         *{
             font-family: "NeoSans";
@@ -68,17 +69,17 @@
             padding-left: 30px;
             padding-right: 30px;
         }
-    @media print {
-        .impre {display:none}
-        .editable{
-            border: none;
-            width: 100%;
+        @media print {
+            .impre {display:none}
+            .editable{
+                border: none;
+                width: 100%;
+            }
+            }
+        @page 
+        {
+            size:  auto;   /* auto es el valor inicial */
         }
-        }
-    @page 
-    {
-        size:  auto;   /* auto es el valor inicial */
-    }
     </style>
 </head>
 <body>
@@ -94,23 +95,23 @@
         </tr>
         <tr class="font14">
             <td colspan="2" style="padding-bottom:10px; text-align:center;">
-                ACTA DE HECHOS NÚMERO <span class="noeditable">UAT-XI/AH-{{$folio}}/2018</span>
+                ACTA DE HECHOS NÚMERO <span class="noeditable">UAT-XI/AH- <span class="folio">{{$folio}}</span> /2018</span>
             </td>
         </tr>
         <tr class="font14">
             <td colspan="2">
                 <div class="justificado">
-                    En la ciudad de Xalapa, Veracruz, siendo las <span class="noeditable">{{$hora}}</span> horas del día <span class="noeditable">{{$fecha}}</span>
-                    , ante la presencia de la C. licenciada <span class="noeditable">{{$fiscal}}</span>, Fiscal Sexta Orientadora de la Unidad de Atención Temprana del 
-                    XI Distrito Judicial de Xalapa, Veracruz, se presenta el C. <span class="noeditable">{{$nombre}}</span>, identificándose con <span class="noeditable">{{$identificacion}}</span> CON NÚMERO 
-                    DE FOLIO <span class="noeditable">{{$numIdentificacion}}</span>, EXPEDIDA POR <span class="noeditable">{{$expedido}}</span>, a quien en este momento se le pone en conocimiento de las penas con 
+                    En la ciudad de Xalapa, Veracruz, siendo las <span class="noeditable hora">{{$hora}}</span> horas del día <span class="noeditable fecha">{{$fecha}}</span>
+                    , ante la presencia de la C. licenciada <span class="noeditable fiscal">{{$fiscal}}</span>, Fiscal Sexta Orientadora de la Unidad de Atención Temprana del 
+                    XI Distrito Judicial de Xalapa, Veracruz, se presenta el C. <span class="noeditable nombre">{{$nombre}}</span>, identificándose con <span class="noeditable identificacion">{{$identificacion}}</span> CON NÚMERO 
+                    DE FOLIO <span class="noeditable numIdentificacion">{{$numIdentificacion}}</span>, EXPEDIDA POR <span class="noeditable expedido">{{$expedido}}</span>, a quien en este momento se le pone en conocimiento de las penas con 
                     que la ley castiga el declarar con falsedad ante la autoridad, como lo prevé el artículo 333 del Código Penal vigente 
                     para el estado de Veracruz, al cual se le da lectura, y previa la protesta que otorga de decir la verdad, 
-                    bajo su única y exclusiva responsabilidad por sus generales dijo <span class="noeditable">{{$nombre}}</span>, de <span class="noeditable">{{$edad}}</span> años de edad, nació en fecha 
-                    <span class="noeditable">{{$fechaNacimiento}}</span>, originario de <span class="noeditable">{{$localidad}}</span>, <span class="noeditable">{{$estado}}</span>, con domicilio en la calle <span class="noeditable">{{$calle}}</span> NÚMERO <span class="noeditable">{{$numExterno}}</span>
-                    , COLONIA <span class="noeditable">{{$colonia}}</span>, C.P. <span class="noeditable">{{$cp}}</span>, en la ciudad de <span class="noeditable">{{$localidad}}</span>, <span class="noeditable">{{$estado}}</span>; ocupación <span class="noeditable">{{$ocupacion}}</span>, estado civil 
-                    <span class="noeditable">{{$estadoCivil}}</span>, grado de escolaridad <span class="noeditable">{{$escolaridad}}</span>, con número de teléfono <span class="noeditable">{{$telefono}}</span>, identificado como corresponde, 
-                    y considerando el motivo de su comparecencia hacer del conocimiento de esta representación social lo siguiente: "<span class="noeditable">{{$narracion}}</span>" 
+                    bajo su única y exclusiva responsabilidad por sus generales dijo <span class="noeditable nombre">{{$nombre}}</span>, de <span class="noeditable edad">{{$edad}}</span> años de edad, nació en fecha 
+                    <span class="noeditable fechaNacimiento">{{$fechaNacimiento}}</span>, originario de <span class="noeditable localidad">{{$localidad}}</span>, <span class="noeditable estado">{{$estado}}</span>, con domicilio en la calle <span class="noeditable calle">{{$calle}}</span> NÚMERO <span class="noeditable numExterno">{{$numExterno}}</span>
+                    , COLONIA <span class="noeditable colonia">{{$colonia}}</span>, C.P. <span class="noeditable cp">{{$cp}}</span>, en la ciudad de <span class="noeditable localidad">{{$localidad}}</span>, <span class="noeditable estado">{{$estado}}</span>; ocupación <span class="noeditable ocupacion">{{$ocupacion}}</span>, estado civil 
+                    <span class="noeditable estadoCivil">{{$estadoCivil}}</span>, grado de escolaridad <span class="noeditable escolaridad">{{$escolaridad}}</span>, con número de teléfono <span class="noeditable telefono">{{$telefono}}</span>, identificado como corresponde, 
+                    y considerando el motivo de su comparecencia hacer del conocimiento de esta representación social lo siguiente: "<span class="noeditable narracion">{{$narracion}}</span>" 
                     lo cual, en uso de la voz, y bajo responsabilidad explica lo siguiente:  TODO ESTO LO MANIFIESTO POR EL MAL USO QUE SE 
                     LE PUDIERE DAR - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Lo aquí manifestado es responsabilidad de 
                     quien comparece.- en términos de lo dispuesto en los artículos 21 de la Constitución Política de los Estados Unidos Mexicanos, 
@@ -127,13 +128,13 @@
         <tr style="text-align: center;" class="font14">
             <td colspan="2">
                 ______________________________ <br>
-                <span class="negritas">C.</span> <span class="noeditable">{{$nombre}}</span>
+                <span class="negritas">C.</span> <span class="noeditable nombre">{{$nombre}}</span>
             </td>
         </tr>
         <tr style="text-align: center;" class="font14">
             <td colspan="2">
                 __________________________________________ <br>
-                <span class="negritas">LIC.</span> <span class="noeditable">{{$fiscal}}</span><br>
+                <span class="negritas">LIC.</span> <span class="noeditable fiscal">{{$fiscal}}</span><br>
                 Fiscal Sexta Orientadora de la Unidad de Atención Temprana <br>
                 Del XI Distrito Judicial en Xalapa, Veracruz
             </td>
@@ -158,7 +159,7 @@
             </td>
         </tr>
         <tr class="font13">
-            <td colspan="2">
+            <td>
                 <div class="justificado">
                     Circuito Rafael Guízar y <br>
                     Valencia No. 147, <br>
@@ -168,10 +169,13 @@
                     Xalapa-Enríquez, Veracruz
                 </div>
             </td>
+            <td>
+                <div class="num"></div>
+            </td>
         </tr>
     </table>
     <div id="imprimir">
-        <input type="button" value="Imprimir" onclick="window.print()" class="impre btn btn-basic btn-outline-dark"> 
+        <input type="button" value="Imprimir" id="imprimir" class="impre btn btn-basic btn-outline-dark"> 
     </div>
 </body>
 </html>
@@ -189,4 +193,32 @@ $('.editable').click(function () {
 $('.editable').focusout(function(){
     $(this).removeAttr('contenteditable');
 });
+$("#imprimir").click(function(){
+    $(".folio").text("{{$folio}}");
+    $(".hora").text("{{$hora}}");
+    $(".fecha").text("{{$fecha}}");
+    $(".fiscal").text("{{$fiscal}}");
+    $(".nombre").text("{{$nombre}}");
+    $(".identificacion").text("{{$identificacion}}");
+    $(".numIdentificacion").text("{{$numIdentificacion}}");
+    $(".expedido").text("{{$expedido}}");
+    $(".fechaNacimiento").text("{{$fechaNacimiento}}");
+    $(".localidad").text("{{$localidad}}");
+    $(".estado").text("{{$estado}}");
+    $(".calle").text("{{$calle}}");
+    $(".numExterno").text("{{$numExterno}}");
+    $(".colonia").text("{{$colonia}}");
+    $(".cp").text("{{$cp}}");
+    $(".ocupacion").text("{{$ocupacion}}");
+    $(".estadoCivil").text("{{$estadoCivil}}");
+    $(".escolaridad").text("{{$escolaridad}}");
+    $(".telefono").text("{{$telefono}}");
+    $(".narracion").text("{{$narracion}}");
+    $(".edad").text("{{$edad}}");
+
+    $(".num").text("traer de bd");
+    var html = $(".editable").html();
+    window.print()
+    $(".num").text('');
+})
 </script>
