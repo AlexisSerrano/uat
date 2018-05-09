@@ -78,7 +78,7 @@ public function showForm()
                     $persona->primerAp = $request->primerAp;
                     $persona->segundoAp = $request->segundoAp;
                     $persona->fechaNacimiento = $request->fechaNacimiento;
-                    $persona->rfc = $request->rfc;
+                    $persona->rfc = $request->rfc . $request->homo;
                     $persona->curp = $request->curp;
                     if (!is_null($request->sexo)){
                         $persona->sexo = $request->sexo;
@@ -238,7 +238,7 @@ public function showForm()
                 }else{
                     $persona = new Persona();
                     $persona->nombres = $request->nombres2;
-                    $persona->rfc = $request->rfc2;
+                    $persona->rfc = $request->rfc2 . $request->homo2;
                     $persona->esEmpresa = 1;
                     if (isset($request->idMunicipioOrigen)) {
                     }else{

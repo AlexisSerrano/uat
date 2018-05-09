@@ -194,27 +194,6 @@
 			$('#denunciante').addClass("show");
 		});
 
-
-
-		$(function () {
-			$('#fechanac').datetimepicker({
-				format: 'YYYY-MM-DD'
-			});
-		});
-
-		$("#fechanac").on("change.datetimepicker", function (e) {
-			$('#edad').val(moment().diff(e.date,'years'));
-		});
-
-		$("#fechanac").on("change.datetimepicker", function (e) {
-			$('#edad').val(moment().diff(e.date,'years'));
-		});
-
-		$( "#edad" ).change(function() {
-			var anios = $('#edad').val();
-			$('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
-		});
-
 		id = $(".datotip").attr("id");
 		if(id==0){
 			$("#esEmpresa1").prop("checked", true);

@@ -74,7 +74,7 @@ class AutoridadController extends Controller
                 $persona->primerAp = $request->primerAp;
                 $persona->segundoAp = $request->segundoAp;
                 $persona->fechaNacimiento = $request->fechaNacimiento;
-                $persona->rfc = $request->rfc;
+                $persona->rfc = $request->rfc . $request->homo;
                 $persona->curp = $request->curp;
                 if (!is_null($request->sexo)){
                     $persona->sexo = $request->sexo;

@@ -215,10 +215,9 @@ Route::post('carpetaN','libroGobController@mostrarlibro');
 /* --------Rutas para Caratula de carpeta de investigacion----------- */
 Route::get('caratula','CaratulaCarpetaController@crearCaratula');
 
-
+/*--------------------Rutas para generar el RFC----------------------------------*/
 Route::post('rfc-moral', 'PreregistroAuxController@rfcMoral')->name('rfc.moral');
 Route::post('rfc-fisico', 'PreregistroAuxController@rfcFisico')->name('rfc.fisico');
-// Route::get('persona/curp/{curp}', 'PreregistroAuxController@rfcFisico')->name('rfc.fisico');
 
 
 /* --------Rutas para Periciales----------- */

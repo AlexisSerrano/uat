@@ -26,7 +26,7 @@ class StoreDenunciante extends FormRequest
         return [
 
             'nombres2' => 'string|min:3|max:200',
-            'rfc2' => 'alpha_num|min:10|max:13',
+            'rfc2' => 'alpha_num|min:8|max:13',
             'representanteLegal' => 'string|min:4|max:100',
             'calle' => 'string|min:4|max:100',
             'numExterno' => 'string|min:1|max:10',
@@ -42,7 +42,7 @@ class StoreDenunciante extends FormRequest
             'nombres' => 'string|min:3|max:200',
             'primerAp' => 'string|min:3|max:50',
             'segundoAp' => 'string|min:3|max:50',
-            'rfc' => 'alpha_num|min:10|max:13',
+            'rfc' => 'alpha_num|min:8|max:13',
             'curp' => 'alpha_num|min:17|max:18',
             'telefono' => 'numeric|min:7',
             //'motivoEstancia' => 'string|min:4|max:200',
@@ -64,7 +64,7 @@ class StoreDenunciante extends FormRequest
             'nombres2.min'=> 'El nombre de la empresa debe contener como mínimo 2 letras',
             'nombres2.max'=> 'El nombre de la empresa debe contener como máximo 200 letras',
             'rfc2.alpha_num'=> 'El RFC solo contienen números y letras',
-            'rfc2.min'=> 'El RFC debe de tener como mínimo 10 caracteres',
+            'rfc2.min'=> 'El RFC debe de tener como mínimo 8 caracteres',
             'rfc2.max'=> 'El RFC debe de tener como máximo 13 caracteres',
             'representanteLegal.min'=> 'El representante legal debe de tener como mínimo 3 caracteres',
             'representanteLegal.max'=> 'El representante legal debe de tener como máximo 100 caracteres',
@@ -96,7 +96,7 @@ class StoreDenunciante extends FormRequest
             'segundoAp.max'=> 'El segundo apellido debe contener como máximo 200 letras',
             
             'rfc.alpha_num'=> 'El RFC solo contienen números y letras',
-            'rfc.min'=> 'El RFC debe de tener como mínimo 10',
+            'rfc.min'=> 'El RFC debe de tener como mínimo 8',
             'rfc.max'=> 'El RFC debe de tener como máximo 13',
             'curp.alpha_num'=> 'El CURP solo contienen números y letras',
             'curp.min'=> 'El CURP debe de tener como mínimo 17',

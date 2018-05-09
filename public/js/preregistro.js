@@ -1,6 +1,6 @@
 $(document).ready(function(){
     mostrar();
-    alert($("#idRazon2").val());
+    // alert($("#idRazon2").val());
     if($("#idRazon2").val()==4){
         if($("#tipoActa").val() == 'OTROS DOCUMENTOS'){
         $(".otros").show();
@@ -63,7 +63,7 @@ function paraActadeHechos2(){
         }
     });
     $("#idRazon2").bind("change",function(){
-        alert("ok");
+        // alert("ok");
         valor = $(this).val();
         if(valor==4){
             console.log('es 4');
@@ -105,7 +105,9 @@ function mostrarpersonal(){
     //Datos personales no requeridos de Persona Moral o Empresa
     $('#nombre1').prop('disabled', true);
     $('#rfc1').prop('disabled', true);
+    $('#homo1').prop('disabled', true);
     $('#repLegal').prop('disabled', true);
+    $("#fechaAltaEmpresa").prop('disabled', true); 
     $('#telefono1').prop('disabled', true);
     $("#idEstado1").prop('disabled', true);   
     $("#idMunicipio1").prop('disabled', true);   
@@ -149,6 +151,7 @@ function mostrarmoral(){
     $('#nombre1').prop('disabled', false);
     $('#rfc1').prop('disabled', false);
     $('#homo1').prop('disabled', false);
+    $("#fechaAltaEmpresa").prop('disabled', false); 
     $('#repLegal').prop('disabled', false);
     $('#telefono1').prop('disabled', false);
     $("#idEstado1").prop('disabled', false);   

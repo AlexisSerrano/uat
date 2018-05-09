@@ -1,6 +1,6 @@
-@php
+{{-- @php
 $form = oldFormDelitos();
-@endphp
+@endphp --}}
 @if (isset($turnar))
 	{{--  FORMULARIO PARA ALTERAR vvvvvvvvvvvv  --}}
 	<div class="row">
