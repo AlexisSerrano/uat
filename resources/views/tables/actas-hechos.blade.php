@@ -42,11 +42,12 @@
                             <i class="fa fa-file-text-o"></i> Atender
                         </a>
                     </td>                                  
-                    </tr>
-                    @endforeach
-                    @endif
-                </tbody>
-            </table>
+                </tr>
+                @endforeach
+                @endif
+            </tbody>
+        </table>
+        {{$actas->links()}}
     </div>    
 </div>    
 
