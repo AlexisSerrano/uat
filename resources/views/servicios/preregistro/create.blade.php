@@ -123,9 +123,10 @@
 @push('scripts')
 
 	<script src="{{asset('js/preregistro.js')}}"></script> 
+	<script src="{{ asset('js/curp.js') }}"></script> 
 	<script src="{{ asset('js/rfcFisico.js') }}"></script>
 	<script src="{{ asset('js/rfcMoral.js') }}"></script>
-	<script src="{{ asset('js/curp.js') }}"></script> 
+	
 	
 	{{-- <script src="{{ asset('js/rfcMoral.js') }}"></script> --}}
 	<script>	

@@ -8,6 +8,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>@yield('title','Pre-denuncia')</title>
   <link rel="icon" href="{{ asset('img/iconofge.png') }}">
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
   {{-- plantilla web --}}
   {{-- <link href="https://rawcdn.githack.com/Romaincks/assets/master/css/font-neosans.css" rel="stylesheet" --}}
@@ -34,7 +36,7 @@
 
           @include('template.partials.footer2')
   <!-- jQuery -->
-
+@routes
 <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
 <script src="{{ asset('js/popper.min.js')}}" ></script>
 <script src="{{ asset('js/bootstrap.min.js')}}" ></script>
