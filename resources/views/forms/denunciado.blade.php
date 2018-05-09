@@ -204,6 +204,7 @@
 	<script src="{{ asset('js/selectsDirecciones.js') }}"></script>
 	<script src="{{ asset('js/scriptsform.js') }}"></script>
 	<script src="{{ asset('js/siguientes.js') }}"></script>
+	<script src="{{ asset('js/rfcMoral-f.js') }}"></script>
 	{{-- <script src="{{ asset('js/validation.js')}}"></script>
 	<script src="{{ asset('js/validation-orientador.js')}}"></script> --}}
 	<script>

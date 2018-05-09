@@ -92,7 +92,10 @@
 @push('scripts')
 	<script src="{{ asset('js/selectsDirecciones.js') }}"></script>
 	<script src="{{ asset('js/siguientes.js') }}"></script>
+	<script src="{{ asset('js/rfcFisico-f.js') }}"></script>
+	<script src="{{ asset('js/curp-f.js') }}"></script>
 	<script>
+
 		$('#irdireccion').click(function(){
 			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
 			$('#direccion-tab').addClass("active");//Agrego la clase active al tab actual

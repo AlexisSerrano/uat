@@ -120,42 +120,17 @@
 	</div>
  {!!Form::close()!!}
 @endsection
-
-@section('css')
-	{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" /> --}}
-@endsection
-
 @push('scripts')
-	{{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script> --}}
-	{{-- <script src="{{ asset('js/scripts.js')}}"></script> --}}
+
 	<script src="{{asset('js/preregistro.js')}}"></script> 
-	<script src="{{ asset('js/curp.js') }}"></script>
+	<script src="{{ asset('js/curp.js') }}"></script> 
 	<script src="{{ asset('js/rfcFisico.js') }}"></script>
+	<script src="{{ asset('js/rfcMoral.js') }}"></script>
+	
+	
 	{{-- <script src="{{ asset('js/rfcMoral.js') }}"></script> --}}
-	{{--@include('fields.ajaxCurp')--}}
+	<script>	
+
+		</script>
 	
-	{{-- <script>
-
-	
-		$(function () {
-			$('#fechanac').datetimepicker({
-				format: 'YYYY-MM-DD',
-            	minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
-            	maxDate: moment().subtract(18, 'years').format('YYYY-MM-DD')
-			});
-		});
-
-		$("#fechanac").on("change.datetimepicker", function (e) {
-			$('#edad').val(moment().diff(e.date,'years'));
-		});
-
-		$( "#edad" ).change(function() {
-			var anios = $('#edad').val();
-			$('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
-		});
-
-
-		
-
-	</script> --}}
 @endpush

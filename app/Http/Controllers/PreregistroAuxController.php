@@ -291,7 +291,7 @@ class PreregistroAuxController extends Controller
                 $preregistro->esEmpresa = 1;    
                 $preregistro->nombre = $request->nombres;
                 $preregistro->idDireccion = $idD1;
-                $preregistro->rfc = $request->rfc;
+                $preregistro->rfc = $request->rfc . $request->homo;
                 $preregistro->representanteLegal = $request->repLegal;
                 $preregistro->telefono = $request->telefono;
                 $preregistro->conViolencia = $request->conViolencia;
