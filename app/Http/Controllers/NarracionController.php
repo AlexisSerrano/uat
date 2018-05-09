@@ -8,6 +8,7 @@ use App\Models\BitacoraNavCaso;
 use App\Http\Requests\SolicitanteRequest;
 use Illuminate\Support\Facades\Storage;
 use Alert;
+use DB;
 
 
 class NarracionController extends Controller
