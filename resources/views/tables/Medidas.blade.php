@@ -13,7 +13,7 @@
         </thead>
         <tbody>
             @if(count($TablaProvidencia)==0)
-                <tr><td colspan="6" class="text-center">Sin registros</td></tr>
+                <tr><td colspan="7" class="text-center">Sin registros</td></tr>
             @else
                 @foreach($TablaProvidencia as $provide)
                     <tr id="{{$provide->id}}">
@@ -25,9 +25,9 @@
                         <td class="persona">{{ $provide->persona }}</td>  
                         <td class="observacion">{{ $provide->observacion }}</td>  
                         <td>
-                                <a href="{{ url('agregar-medidas/'.$provide->id.'/eliminar')}}" title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
+                                <a href="{{ url('agregar-medidas/'.$provide->id.'/eliminar')}}" title="Eliminar registro" class="btn btn-secondary btn-simple btn-xs">
                                 <i class="fa fa-times"></i></a>
-                                <button type="button" class="btn btn-secondary  btn-xs  btn-modal"  value={{$provide->id}} ><i class="fa fa-edit"></i></button>
+                                <button type="button" class="btn btn-secondary  btn-xs  btn-modal" title="Editar registro"  value={{$provide->id}} ><i class="fa fa-edit"></i></button>
                                     
                         </td>                           
                     </tr>
