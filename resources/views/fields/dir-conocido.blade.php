@@ -1,6 +1,6 @@
-{{-- @php
+@php
 $form = oldFormConocido();
-@endphp --}}
+@endphp
 <div class="row">
 	<div class="col-4">
 		<div class="form-group">

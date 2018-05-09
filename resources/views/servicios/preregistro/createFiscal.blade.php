@@ -34,7 +34,9 @@
 		<div id="collapsePersonales1" class="collapse show boxcollapse" >
 			<div class="boxtwo">
 				<div class="col">
+					
 				@include('servicios.preregistro.fields.datos-personales')
+				
 				</div>
 			</div>
 		</div>
@@ -83,10 +85,15 @@
 
 		<div class="boxtwo">
 			<div class="row">
-				
+				<div class="col">   
+					<div class="text-left">
+							<a href="https://consultas.curp.gob.mx/CurpSP/inicio2_2.jsp" title="" target="_blank"  class="btn btn-secondary"><i class="fa fa-search"></i>CURP</a>
+					</div>
+				</div>
+		
 				<div class="col">   
 					<div class="text-right">
-							<a href="http://fiscaliaveracruz.gob.mx/" title="" class="btn btn-primary">Cancelar</a>
+							<a href="http://fiscaliaveracruz.gob.mx/" title="" class="btn btn-secondary">Cancelar</a>
 							{!!Form::submit('Guardar',array('class' => 'btn btn-primary'))!!}
 					
 					</div>
