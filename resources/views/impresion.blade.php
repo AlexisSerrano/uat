@@ -216,7 +216,7 @@ $("#imprimir").click(function(){
     $(".narracion").text("{{$narracion}}");
     $(".edad").text("{{$edad}}");
 
-    $(".num").text("traer de bd");
+    $(".num").text("{{$token}}");
     var html = $(".editable").html();
     window.print()
     $(".num").text('');
