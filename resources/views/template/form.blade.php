@@ -44,11 +44,12 @@
     <script src="{{asset('js/selectsDirecciones.js')}}"></script>  
     {{-- <script src="{{asset('js/selects.js')}}"></script> --}}
     <script src="{{asset('js/funciones.js')}}"></script>
+    <script src="{{ asset('plugins/sisyphus/js/sisyphus.js')}}" ></script>
     <script>
         
 
 
-        $(document).on('focus', '.select2', function (e) {
+    $(document).on('focus', '.select2', function (e) {
         if (e.originalEvent) {
             $(this).siblings('select').select2('open');
         }
@@ -58,6 +59,9 @@
         lang : 'es'
     });
 
+    $('form').sisyphus({
+        excludeFields: $( 'input[name=_token]')
+    });
 
     </script>
 
