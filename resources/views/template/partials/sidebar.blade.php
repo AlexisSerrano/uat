@@ -179,29 +179,25 @@
 							<p>Libro de gobierno</p>
 						</a>
 					</li>
+					<li class="nav-item has-treeview">
+						 <button class="nav-link btn-reset" ></button>
+							<i class="nav-icon  fa fa-eraser"></i>
+							<p>Limpiar campos</p>
+						</a>
+					</li>
 
 
 					
-					{{-- <li class="nav-header">EXTRAS</li> --}}
+					{{-- <li class="nav-header">EXTRAS</li>
 			
+					{{-- <li class="nav-item has-treeview">--}}
+						{{-- <a href="#" class="nav-link"> --}}
+								{{-- {!! Form::button( array('class' => 'btn btn-secondary borrar ','data-toggle'=>'tooltip','title'=>'Borrar Campos','id' => 'btn-reset')) !!} --}}
+							{{-- <i class="nav-icon fa fa-eraser "></i>
+							
+						</a> 
+					</li> --}} 
 					{{-- <li class="nav-item has-treeview">
-						<a href="#" class="nav-link">
-							<i class="nav-icon fa fa-envelope-o"></i>
-							<p>
-								Mailbox
-								<i class="fa fa-angle-left right"></i>
-							</p>
-						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="pages/mailbox/read-mail.html" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Read</p>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="nav-item has-treeview">
 						<a href="#" class="nav-link">
 							<i class="nav-icon fa fa-book"></i>
 							<p>
