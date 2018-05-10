@@ -1,4 +1,4 @@
-$(".btn-reset").on("click",function(){
+$("#btn-reset").on("click",function(){
     swal({
         title: "¿Estas seguro?",
         text: "Deseas borrar el contenido del formulario y del almacenamiento local",
@@ -21,7 +21,7 @@ $(".btn-reset").on("click",function(){
         }
       });
 
-    $(".btn-reset").html('<i class="fa fa-eraser" aria-hidden="true"></i>');
+    $("#btn-reset").html('<i class="fa fa-eraser" aria-hidden="true"></i>');
 
 });
 
