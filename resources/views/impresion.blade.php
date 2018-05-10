@@ -99,8 +99,8 @@
             </td>
         </tr>
         <tr class="font14">
-            <td colspan="2">
-                <div class="justificado">
+            <td colspan="2" >
+                <div >
                     En la ciudad de Xalapa, Veracruz, siendo las <span class="noeditable hora">{{$hora}}</span> horas del día <span class="noeditable fecha">{{$fecha}}</span>
                     , ante la presencia de la C. licenciada <span class="noeditable fiscal">{{$fiscal}}</span>, Fiscal Sexta Orientadora de la Unidad de Atención Temprana del 
                     XI Distrito Judicial de Xalapa, Veracruz, se presenta el C. <span class="noeditable nombre">{{$nombre}}</span>, identificándose con <span class="noeditable identificacion">{{$identificacion}}</span> CON NÚMERO 
@@ -160,7 +160,7 @@
         </tr>
         <tr class="font13">
             <td>
-                <div class="justificado">
+                <div >
                     Circuito Rafael Guízar y <br>
                     Valencia No. 147, <br>
                     Colonia Reserva Territorial, <br>

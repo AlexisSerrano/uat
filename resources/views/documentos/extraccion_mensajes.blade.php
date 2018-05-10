@@ -6,19 +6,85 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Document</title>
-    <style>
-    @media print {
-        .impre {display:none}
+<style>
+        *{
+            font-family: "NeoSans";
         }
-    @page 
-    {
-        size:  auto;   /* auto es el valor inicial */
-    }
+        body{
+            background-color: #F0F0F0;
+        }
+        .editable{
+            background-color: #ffffff;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid #E3E3E3;
+        }
+        .editable td{
+            padding: 10px;
+        }
+        .font16{
+            font-size: 16px;
+        }
+        .font14{
+            font-size: 14px;
+        }
+        .font13{
+            font-size: 13px;
+        }
+        .font10{
+            font-size: 10px;
+        }
+        .format1{
+            font-weight: bold;
+            font-style: italic;
+        }
+        .format2{
+            font-weight: bold;
+            text-align: center;
+            display: block;
+            margin-bottom: -15px;
+        }
+        .noeditable{
+            font-weight: bold;
+        }
+        .justificado{
+            margin-left: 50px;
+            margin-right: 50px;
+            text-align : justify;
+        }
+        .negritas{
+            font-weight: bold;
+        }
+        .padding td{
+            padding:20px;
+        }
+        #imprimir{
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .impre{
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        @media print {
+            .impre {display:none}
+            .editable{
+                border: none;
+                width: 100%;
+            }
+            }
+        @page 
+        {
+            size:  auto;   /* auto es el valor inicial */
+        }
     </style>
 </head>
 <body>
-    <table style="width:100%" class="editable">
-        <tr style="width:50%;">
+
+    <table  class="editable">
+        <tr style="width:50%;" class="font16 padding">
             <td>
                 <img src="{{asset('img/iconofge.png')}}" alt="" style="height:100px">
             </td>
@@ -29,22 +95,23 @@
         </tr>
         <tr>
             <td colspan="2" style="padding-bottom:10px; text-align:left;">
-                C. DIRECTOR DE SERVICIOS PERICIALES</span>
-             <p>  Zona Centro Xalapa
-                OFICIO:<span class="noeditable">UAT-XI/3-{{$folio}}/2018</span>
+                C. DIRECTOR DE SERVICIOS PERICIALES
+                <br>  Zona Centro Xalapa
+                <p> Presente </p>
+                
+                <p>Xalapa-Enriquez, Veracurz; fecha
+                <br> OFICIO:<span class="noeditable">UAT-XI/3-{{$folio}}/2018</span>
             </td>
-            <td colspan="2">
-               
-            </td>
-                     <td colspan="2" style="padding-bottom:10px; text-align:left;">
-                        CARPETA DE INVESTIGACION:UAT/D-XI<span class="noeditable">{{$folio2}}/2018-6° </span>
-                    </td>
-                    <td colspan="2" style="padding-bottom:10px; text-align:left;">
-                            URGENTE
-                        </td>
         </tr>
         <tr>
-            <td colspan="2">
+                     <td colspan="2" style="padding-bottom:10px; text-align:left;">
+                        <p>CARPETA DE INVESTIGACION:UAT/D-XI<span class="noeditable">{{$folio2}}/2018-6° </span>
+                        <br>URGENTE
+                    </td>
+                
+                    </tr>
+        <tr>
+            <td colspan="2" class="justificado">
                      Para la debida integración de la carpeta de investigación al rubro señalada y con fundamento en lo dispuesto por los artículos 21 de la Constitución 
                      Política de los  Estados Unidos Mexicanos, 259, 260, 261, 272, 273 y aplicables del Código Nacional de Procedimientos Penales Vigente; de la manera más
                       atenta solicito a Usted, tenga a bien designar peritos en materia a fin de que realicen <span class="noeditable">{{$narracion}}</span>, 
@@ -54,19 +121,19 @@
 
 
 
-
+                </div>
            
             </td>
         </tr>
         <tr>
                 <td colspan="2">
                         No omitiendo señalar, que el Dictamen deberá ser rendir en un término de cuarenta y ocho horas,
-                         a fin de darle curso legal correspondiente a la carpeta de investigación al rubro indicada.   
+                         a fin de darle curso legal correspondiente a la carpeta de investigación al rubro indicada. <br><br><br><br><br> 
                
                 </td>
             </tr>
        
-        <tr style="text-align: center;">
+        <tr style="text-align: center;" class="font14">
             <td colspan="2">
                 __________________________________________ <br>
                 LIC. <span class="noeditable">{{$fiscal}}</span>
@@ -75,18 +142,22 @@
             </td>
         </tr>
         
-        <tr>
-            <td colspan="2">
+        <tr class="font13">
+            <td>
+                <div class="justificado">
                 Circuito Rafael Guízar y <br>
                 Valencia No. 147, <br>
                 Colonia Reserva Territorial, <br>
                 C.P. 91096 <br>
                 Teléfono: 01 (228) 8149428, <br>
                 Xalapa-Enríquez, Veracruz
+                </div>
             </td>
         </tr>
     </table>
+    <div ID="imprimir">
     <input type="button" value="Imprime esta pagina" onclick="window.print()" class="impre"> 
+    </div>
 </body>
 </html>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
