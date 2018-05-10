@@ -2,6 +2,8 @@
 @section('title', 'Agregar acusación')
 @section('content')
 @include('fields.buttons-navegacion')
+@include('fields.botonborrar')
+<br>
 @include('fields.errores')
     {!! Form::open(['route' => 'store.acusacion', 'method' => 'POST'])  !!}
 	<div class="row no-gutters">
@@ -23,3 +25,6 @@
 		@include('tables.acusaciones')
 	</div>
 @endsection
+@push('scripts')
+<script src="{{ asset('js/borrar.js') }}"></script>
+@endpush

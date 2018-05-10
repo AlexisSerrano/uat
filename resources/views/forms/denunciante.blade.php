@@ -10,6 +10,7 @@
 {!!Form::open(['route' => 'store.denunciante'])!!}
 
 @include('fields.buttons-navegacion')
+@include('fields.botonborrar')
 
 	<div class="col-md-12">
 		<br>
@@ -124,6 +125,7 @@
 	<script src="{{ asset('js/selectsDirecciones.js') }}"></script>
 	<script src="{{ asset('js/scriptsform.js') }}"></script>
 	<script src="{{ asset('js/siguientes.js') }}"></script>
+	<script src="{{ asset('js/borrar.js') }}"></script>
 	
 	{{-- <script src="{{ asset('js/validation.js')}}"></script>
 	<script src="{{ asset('js/validation-orientador.js')}}"></script> --}}
@@ -168,6 +170,17 @@
 		console.log('boton atrás')
 		});
 	
+		
+
+		$('#adireccion2').click(function(){
+		$('.nav-link').removeClass("active");
+        $('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
+        $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+        $('.tab-pane').removeClass("show");
+        $('#direccion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		$('#direccion').addClass("show");
+		console.log('boton atrás')
+		});
 	
 </script>
 @endpush

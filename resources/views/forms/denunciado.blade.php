@@ -13,6 +13,8 @@
 @include('fields.errores')
 
 		@include('fields.buttons-navegacion')
+		@include('fields.botonborrar')
+		<br>
 
 {!!Form::open(['route' => 'store.denunciado' , 'method' => 'POST'])!!}
   
@@ -202,6 +204,7 @@
 	<script src="{{ asset('js/rfcMoral-f.js') }}"></script>
 	<script src="{{ asset('js/rfcFisico-f.js') }}"></script>
 	<script src="{{ asset('js/curp-f.js') }}"></script>
+	<script src="{{ asset('js/borrar.js') }}"></script>
 	
 	<script>
 

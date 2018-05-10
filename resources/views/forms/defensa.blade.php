@@ -3,6 +3,8 @@
 @section('title', 'Agregar Defensa')
 @section('content')
 	@include('fields.buttons-navegacion')
+	@include('fields.botonborrar')
+	<br>
     
 	{!! Form::open(['route' => 'store.defensa', 'method' => 'POST'])  !!}
 	{{-- @include('forms.idcarpeta') --}}
@@ -29,6 +31,7 @@
 @endsection
 
 @push('scripts')
+<script src="{{ asset('js/borrar.js') }}"></script>
 	<script>
 	
 		$("#idAbogado").change(function(event){

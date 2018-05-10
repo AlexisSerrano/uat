@@ -20,6 +20,8 @@
 
 
 @include('fields.buttons-navegacion')
+@include('fields.botonborrar')
+
 
 {{-- <div class="card"> --}}
 	@include('fields.errores')
@@ -75,6 +77,7 @@
 
 @push('scritps')
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="{{ asset('js/borrar.js') }}"></script>
 <script>
 
 $.validate({

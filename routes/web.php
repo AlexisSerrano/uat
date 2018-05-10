@@ -36,8 +36,11 @@ Route::get('/pruebasconsulta', function(){
     
     });
     Route::get('/pruebaslibro', function(){
-        return view('forms.libro-gobierno');
+        return view('tables.formatos');
         });
+        Route::get('/pruebasformatos', function(){
+            return view('tables.formatos');
+            });
         Route::get('/pruebasactas','PruebasController@actas');
         
     

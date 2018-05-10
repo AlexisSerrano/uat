@@ -8,6 +8,8 @@
 {{-- @include('fields.buttons-navegacion') --}}
   
 <div id="page-content-wrapper">
+
+		@include('fields.botonborrar')
 {{--  <span class="datotip" id="{{$tipopersona}}"></span> 	  --}}
 	
 	<div class="col-md-12">
@@ -102,7 +104,7 @@
 					@include('fields.notificaciones')
 					<div class="row menu">
 						<div class="col text-left">
-							<a class="btn btn-secondary {{$botonatras}}"><i class="fa fa-arrow-left"></i></a>
+							<a id="este" class="btn btn-secondary {{$botonatras}}"><i class="fa fa-arrow-left"></i></a>
 						</div>
 						<div class="col text-right">
 							<a class="btn btn-secondary irdenunciante"><i class="fa fa-arrow-right"></i></a>
@@ -145,6 +147,7 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
 	<script src="{{ asset('js/selectsDirecciones.js') }}"></script>
 	<script src="{{ asset('js/rfcMoral-f.js') }}"></script>
+	<script src="{{ asset('js/borrar.js') }}"></script>
 	{{-- <script src="{{ asset('js/validation.js')}}"></script> --}}
 	{{-- <script src="{{ asset('js/validation-orientador.js')}}"></script> --}}
 	<script>	
