@@ -82,7 +82,6 @@
 @push('scripts')
 	<script src="{{ asset('js/selectsDirecciones.js') }}"></script>
 	<script src="{{ asset('js/siguientes.js') }}"></script>
-	<script src="{{ asset('js/rfcFisico-f.js') }}"></script>
 	<script>
 		$('#irtrabajo').click(function(){
 			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
@@ -101,6 +100,16 @@
 			$('#personales').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
 			$('#personales').addClass("show");
 		});
+
+		// $('.irextraabogado').click(function(){
+		// 	$('.nav-link').removeClass("active");//Quito la clase active al tab actual
+		// 	$('#abogado-tab').addClass("active");//Agrego la clase active al tab actual
+		// 	$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+		// 	$('.tab-pane').removeClass("show");
+		// 	$('#abogado').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		// 	$('#abogado').addClass("show");
+		// });
+
 
 		$(function () {
 			$('#fechanac').datetimepicker({
