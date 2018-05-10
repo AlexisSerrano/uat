@@ -223,3 +223,7 @@ Route::post('rfc-fisico', 'PreregistroAuxController@rfcFisico')->name('rfc.fisic
 /* --------Rutas para Periciales----------- */
 Route::get('periciales','pericialesController@pericialesindex');
 Route::post('periciales/agregar','pericialesController@agregar')->name('store.agregar');
+
+/* --------Ruta para obtener token oficios----------- */
+Route::get('getToken','ActasHechosController@getToken')->name('getToken');
+Route::get('oficioah/{id}','ActasHechosController@getoficioah')->name('oficioah');

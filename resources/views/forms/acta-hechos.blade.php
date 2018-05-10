@@ -7,9 +7,9 @@
 $form = oldFormActas();
 @endphp
 @isset($acta)
-{!! Form::open(['route' => 'addactas2', 'method' => 'POST', 'target'=>'nventana'])  !!}
+{!! Form::open(['route' => 'addactas2', 'method' => 'POST'])  !!}
 @else
-{!! Form::open(['route' => 'addactas2', 'method' => 'POST', 'target'=>'nventana', 'id'=>'form'])  !!}
+{!! Form::open(['route' => 'addactas2', 'method' => 'POST', 'id'=>'form'])  !!}
 @endisset
 <div class="row no-gutters">
     <div class="col-12">
