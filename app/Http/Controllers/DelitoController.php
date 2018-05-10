@@ -67,8 +67,16 @@ class DelitoController extends Controller
             $domicilio->idLocalidad = $request->idLocalidad;
             $domicilio->idColonia = $request->idColonia;
             $domicilio->calle = $request->calle;
-            $domicilio->numExterno = $request->numExterno;
-            $domicilio->numInterno = $request->numInterno;
+            if ($request->numInterno==null) {
+                $domicilio->numExterno = 'S/N';
+            }else{
+                $domicilio->numExterno = $request->numExterno;
+            }
+            if ($request->numInterno==null) {
+                $domicilio->numInterno = 'S/N';
+            }else{
+                $domicilio->numInterno = $request->numInterno;
+            }
             $domicilio->save();
             $idD1 = $domicilio->id;
 

@@ -16,7 +16,7 @@
 		@include('fields.botonborrar')
 		<br>
 
-{!!Form::open(['route' => 'store.denunciado' , 'method' => 'POST'])!!}
+{!!Form::open(['route' => 'store.denunciado' , 'method' => 'POST', 'id'=>'form'])!!}
   
 {{--  <div class="container">  --}}
 	{{--  <div id="page-content-wrapper">  --}}

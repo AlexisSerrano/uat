@@ -6,7 +6,11 @@
 @php
 $form = oldFormActas();
 @endphp
-{!! Form::open(['route' => 'addactas2', 'method' => 'POST', 'target'=>'nventana'])  !!}
+@isset($acta)
+{!! Form::open(['route' => 'addactas2', 'method' => 'POST'])  !!}
+@else
+{!! Form::open(['route' => 'addactas2', 'method' => 'POST', 'id'=>'form'])  !!}
+@endisset
 <div class="row no-gutters">
     <div class="col-12">
         <div class="boxtwo">

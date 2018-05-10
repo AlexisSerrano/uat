@@ -5,7 +5,7 @@
 @include('fields.buttons-navegacion')
 @include('fields.botonborrar')
 @include('fields.errores')
-{!! Form::open(['route' => 'store.autoridad', 'method' => 'POST'])  !!}
+{!! Form::open(['route' => 'store.autoridad', 'method' => 'POST', 'id'=>'form'])  !!}
 <br>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
 	<li class="nav-item">

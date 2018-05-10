@@ -60,7 +60,7 @@
         lang : 'es'
     });
 
-    $('form').sisyphus({
+    $('#form').sisyphus({
         excludeFields: $( 'input[name=_token]')
     });
 
@@ -82,7 +82,7 @@
   "hideMethod": "fadeOut"
 }
 
-    jQuery.ajaxSetup({async:false});
+    
     </script>
 
 @stack('scripts')
