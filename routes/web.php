@@ -189,7 +189,7 @@ Route::get('agregar-autoridad/{id}/eliminar', 'AutoridadController@delete')->nam
 
 /* --------Rutas para Turnar----------- */
 Route::get('turnar/{id}','EstadoController@index');
-Route::put('/turnar/actualizar','EstadoController@editar')->name('Estado.edit');
+Route::post('/turnar/actualizar','EstadoController@editar')->name('estado.edit');
 
 /* --------Rutas para Actas de hechos----------- */
 Route::get('actas','ActasHechosController@showform')->name('new.actahechos');
