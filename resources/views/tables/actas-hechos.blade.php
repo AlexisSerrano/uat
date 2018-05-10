@@ -53,3 +53,13 @@
 
 
 @endsection
+@push('scripts')
+<script>
+    var urloficio = "{{session('redirectoficio')}}";
+	window.onload=function(){
+        if(urloficio!=""){
+            window.open(urloficio,'_blank');
+        }
+	}
+	</script>
+@endpush
