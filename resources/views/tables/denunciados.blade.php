@@ -26,13 +26,13 @@
                         @else
                             <td>NO</td>
                         @endif  
-                        <th>  
+                        
                             {{-- <a href="{{ url('agregar-denunciado/'.$denunciado->id.'/eliminar')}}" rel="tooltip" title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
                             <i class="fa fa-times"></i> --}}
 
                             <td> <a data-denunciado-id={{$denunciado->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
                                 <i class="fa fa-times"></i></a></td>
-                        </a></th>
+                       
                     </tr>
                 @endforeach
             @endif
