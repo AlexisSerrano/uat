@@ -7,7 +7,10 @@
 		border: 1px solid #c8cac8;
 		padding: 5px;
 		background-color: #eef5ee;
-		text-decoration:none;
+		
+	}
+	a {
+    color: #0e0f10;
 	}
 		
 	</style>
@@ -38,9 +41,9 @@
 						@endphp
 						<tr>
 							@if($narracion->id==$ultimo->id)
-							<th  id="{{$narracion->id}}" class="rownarraciones ultimo"><a href="#" >{{$fecha}}</a></th>
+							<th  id="{{$narracion->id}}" class="rownarraciones ultimo"><a class="text" href="#" >{{$fecha}}</a></th>
 							@else
-							<th  id="{{$narracion->id}}" class="rownarraciones"><a href="#" >{{$fecha}}</a></th>
+							<th  id="{{$narracion->id}}" class="rownarraciones"><a class="text" href="#" >{{$fecha}}</a></th>
 							@endif
 						</tr>
 						
