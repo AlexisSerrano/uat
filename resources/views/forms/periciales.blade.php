@@ -18,7 +18,7 @@
 		  	<a class="nav-link " id="abogado-tab" data-toggle="tab" href="#abogado" role="tab" aria-controls="abogado" aria-selected="false">Vehículos</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " id="abogado-tab" data-toggle="tab" href="#abogado" role="tab" aria-controls="abogado" aria-selected="false">Lesiones</a>
+            <a class="nav-link " id="abogado-tab2" data-toggle="tab" href="#abogado2" role="tab" aria-controls="abogado2" aria-selected="false">Lesiones</a>
       </li>
 	  </ul>
 	  <div class="tab-content" id="myTabContent">
@@ -40,7 +40,7 @@
 		<div class="tab-pane fade" id="trabajo" role="tabpanel" aria-labelledby="trabajo-tab">
 			
 				<div class="boxtwo">
-					@include('fields.lugartrabajo')
+					@include('fields.psicologo-per')
 					{{-- botones --}}
 					<div class="row menu">	
 						<div class="col text-left">				
@@ -55,7 +55,22 @@
 		</div>
 		<div class="tab-pane fade" id="abogado" role="tabpanel" aria-labelledby="abogado-tab">
 				<div class="boxtwo">
-					@include('fields.extra-abo')
+					@include('fields.vehiculos-per')
+					{{-- botones --}}
+					<div class="row menu">	
+						<div class="col text-left">
+							<a id="irtrabajo" class="btn btn-secondary "><i class="fa fa-arrow-left"></i></a>				
+						</div>
+						<div class="col text-right">
+							{{-- {!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!} --}}
+						</div>
+					</div>
+				</div>
+			
+		</div>
+		<div class="tab-pane fade" id="abogado2" role="tabpanel" aria-labelledby="abogado-tab2">
+				<div class="boxtwo">
+					@include('fields.lesiones-per')
 					{{-- botones --}}
 					<div class="row menu">	
 						<div class="col text-left">

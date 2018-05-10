@@ -66,16 +66,19 @@ class DenunciadoController extends Controller
                 
             $sql=DB::table('variables_persona')
             ->join('persona','persona.id','=','variables_persona.idPersona')
+            ->join('extra_denunciado','extra_denunciado.idVariablesPersona','=','variables_persona.idPersona')
             ->where('variables_persona.idCarpeta', $idCarpeta)
-            ->where('persona.nombres','QUIEN O QUIENES RESULTEN RESPONSABLES')
-            ->select('persona.nombres')
-                ->first();
+           // ->where('persona.nombres','QUIEN O QUIENES RESULTEN RESPONSABLES')
+           // ->select('persona.nombres')
+            ->first();
+               
                 if($sql){
                     Alert::warning('','Solo puedes agregar un Q.R.R');
                     return redirect()->route('new.denunciado');
                 }else{
                     $persona = new Persona();
                     $persona->nombres = $request->nombresQ;
+                    $persona->rfc = "SIN INFORMACION";
                     $persona->save();
                     $idPersona = $persona->id;
                 

@@ -71,7 +71,16 @@ class pericialesController extends Controller
             // return redirect("periciales");
             return view('documentos.extraccion_mensajes')
       
-            ->with('folio',  $PerMensaje->nombre );
+            ->with('folio',  $PerMensaje->nombre )
+            ->with('folio2',  $PerMensaje->idCarpeta)
+            ->with('narracion',  $PerMensaje->narracion )
+            ->with('marca',  $PerMensaje->marca )
+            ->with('imei',  $PerMensaje->imei )
+            ->with('compania',  $PerMensaje->compania)
+            ->with('numero',  $PerMensaje->telefono )
+            ->with('numero2',  $PerMensaje->telefono_destino )
+            ->with('nombre',  $PerMensaje->nombre )
+            ->with('fiscal',  "XXXXXXXXXXX" );
     
 
         }catch (\PDOException $e){
