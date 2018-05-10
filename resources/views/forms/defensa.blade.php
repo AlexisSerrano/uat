@@ -4,7 +4,7 @@
 @section('content')
 	@include('fields.buttons-navegacion')
     
-	{!! Form::open(['route' => 'store.defensa', 'method' => 'POST'])  !!}
+	{!! Form::open(['route' => 'store.defensa', 'method' => 'POST', 'id'=>'form'])  !!}
 	{{-- @include('forms.idcarpeta') --}}
 	<div class="row no-gutters">
 		<div class="col-12">

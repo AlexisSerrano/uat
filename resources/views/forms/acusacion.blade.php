@@ -3,7 +3,7 @@
 @section('content')
 @include('fields.buttons-navegacion')
 @include('fields.errores')
-    {!! Form::open(['route' => 'store.acusacion', 'method' => 'POST'])  !!}
+    {!! Form::open(['route' => 'store.acusacion', 'method' => 'POST', 'id'=>'form'])  !!}
 	<div class="row no-gutters">
 		<div class="col-12">
 			<div class="boxtwo">

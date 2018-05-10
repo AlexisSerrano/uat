@@ -2,7 +2,7 @@
 @section('content') 
 @section('title','Medidas de protección')
 @include('fields.errores')
-{!!Form::open(['route' => 'addMedidas'])!!}
+{!!Form::open(['route' => 'addMedidas', 'id'=>'form'])!!}
 
  @include('fields.buttons-navegacion')
 

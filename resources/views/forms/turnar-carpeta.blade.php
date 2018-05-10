@@ -16,7 +16,7 @@
         <div class="row">
                 <div class="col-12">
 
-  {!!  Form::open(['route' => 'Estado.edit', 'method' => 'put'])!!}
+  {!!  Form::open(['route' => 'Estado.edit', 'method' => 'put', 'id'=>'form'])!!}
 
 <div class="row">
 <div class="col-6">
@@ -63,3 +63,5 @@
 </div>
 </div>
 @endsection
+
+

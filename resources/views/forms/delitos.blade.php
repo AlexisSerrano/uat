@@ -5,7 +5,7 @@
 @section('content')
 @include('fields.errores')
 	@include('fields.buttons-navegacion')
-    {!! Form::open(['route' => 'store.delito', 'method' => 'POST'])  !!}
+    {!! Form::open(['route' => 'store.delito', 'method' => 'POST', 'id'=>'form'])  !!}
 	<br>
 	<ul class="nav nav-tabs" id="myTab" role="tablist">
 		<li class="nav-item">

@@ -7,7 +7,7 @@
 
 <div id="page-content-wrapper">
 
-{!!Form::open(['route' => 'store.denunciante'])!!}
+{!!Form::open(['route' => 'store.denunciante', 'method' => 'POST', 'id'=>'form'])!!}
 
 @include('fields.buttons-navegacion')
 
