@@ -64,7 +64,7 @@ Route::get('terminar', 'CarpetaController@terminar')->name('terminar');
 Route::get('agregar-denunciante', 'DenuncianteController@showForm')->name('new.denunciante');
 Route::get('cancelar-caso', 'DenuncianteController@cancelarCaso')->name('cancelar.caso');
 Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name('store.denunciante');
-Route::get('agregar-denunciante/{id}/eliminar', 'DenuncianteController@delete');
+Route::get('agregar-denunciante/{id}/eliminar', 'DenuncianteController@delete')->name('delete.denunciante');
 Route::get('/atender/{id}', 'PreregistroAuxController@atender');
 Route::get('/turno/{id}', 'PreregistroAuxController@turno');
 Route::get('/Traerturno', 'PreregistroAuxController@Traerturno')->name('turno.denunciante');
@@ -104,7 +104,7 @@ Route::get('mostrardoc/{id}', 'NarracionController@mostrarDoc');
 /*---------Rutas denunciado-------------*/
 Route::get('agregar-denunciado', 'DenunciadoController@showForm')->name('new.denunciado');
 Route::post('storedenunciado', 'DenunciadoController@storeDenunciado')->name('store.denunciado');
-Route::get('agregar-denunciado/{id}/eliminar', 'DenunciadoController@delete');
+Route::get('agregar-denunciado/{id}/eliminar', 'DenunciadoController@delete')->name('delete.denunciado');
 
 /*---------Rutas de preregistro orientador-------------*/
 Route::get('preregistros', 'PreregistroAuxController@orientador');
@@ -149,7 +149,7 @@ Route::get('medidas', 'MedidasProteccionController@index')->name('medidas');
 Route::post('addMedidas', 'MedidasProteccionController@addMedidas')->name('addMedidas');
 Route::get('getMedidas', 'MedidasProteccionController@getMedidas')->name('getMedidas');
 // Route::get('deleteMedida/{id}', 'MedidasProteccionController@deleteMedida')->name('deleteMedida');
-Route::get('agregar-medidas/{id}/eliminar', 'MedidasProteccionController@delete');
+Route::get('agregar-medidas/{id}/eliminar', 'MedidasProteccionController@delete')->name('delete.medida');
 Route::post('agregar-medidas/editar', 'MedidasProteccionController@editar');
 Route::get('getMedidasAjax/{id}', 'MedidasProteccionController@getMedidasAjax');
 
@@ -158,7 +158,7 @@ Route::get('getMedidasAjax/{id}', 'MedidasProteccionController@getMedidasAjax');
 /*---------Rutas  Delitos Controller------------*/
 Route::get('agregar-delito', 'DelitoController@showForm')->name('new.delito');
 Route::post('storedelito', 'DelitoController@storeDelito')->name('store.delito');
-Route::get('delito/{id}/eliminar', 'DelitoController@delete');
+Route::get('delito/{id}/eliminar', 'DelitoController@delete')->name('delete.delito');
 Route::get('editar/{id}', 'DelitoController@editar');
 Route::put('delito/{id}/actualizar', 'DelitoController@actualizar')->name('actualizar.delito');
 /*---------Rutas para obtener delitos y desagregaciones------------*/
@@ -167,12 +167,12 @@ Route::get('agrupaciones2/{id}', 'DelitoController@getAgrupaciones2');
 
 Route::get('acusacion', 'AcusacionController@showForm')->name('new.acusacion');
 Route::post('storeacusacion', 'AcusacionController@storeAcusacion')->name('store.acusacion');
-Route::get('agregar-acusacion/{id}/eliminar', 'AcusacionController@delete');
+Route::get('agregar-acusacion/{id}/eliminar', 'AcusacionController@delete')->name('delete.acusacion');
 
 /* --------Rutas para abogado----------- */
 Route::get('agregar-abogado', 'AbogadoController@showForm')->name('new.abogado');
 Route::post('storeabogado', 'AbogadoController@storeAbogado')->name('store.abogado');
-Route::get('agregar-abogado/{id}/eliminar', 'AbogadoController@delete');
+Route::get('agregar-abogado/{id}/eliminar', 'AbogadoController@delete')->name('delete.abogado');
 
 
 /* --------Rutas para defensa----------- */
@@ -185,7 +185,7 @@ Route::get('involucrados/{idCarpeta}/{idAbogado}', 'AbogadoController@getInvoluc
 /* --------Rutas para Autoridad----------- */
 Route::get('agregar-autoridad', 'AutoridadController@showForm')->name('new.autoridad');
 Route::post('storeautoridad', 'AutoridadController@storeAutoridad')->name('store.autoridad');
-Route::get('agregar-autoridad/{id}/eliminar', 'AutoridadController@delete');
+Route::get('agregar-autoridad/{id}/eliminar', 'AutoridadController@delete')->name('delete.autoridad');
 
 /* --------Rutas para Turnar----------- */
 Route::get('turnar/{id}','EstadoController@index');

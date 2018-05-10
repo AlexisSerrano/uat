@@ -25,8 +25,8 @@
                         <td class="persona">{{ $provide->persona }}</td>  
                         <td class="observacion">{{ $provide->observacion }}</td>  
                         <td>
-                                <a href="{{ url('agregar-medidas/'.$provide->id.'/eliminar')}}" title="Eliminar registro" class="btn btn-secondary btn-simple btn-xs">
-                                <i class="fa fa-times"></i></a>
+                                <a data-medida-id={{$provide->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
+                                        <i class="fa fa-times"></i></a></td>
                                 <button type="button" class="btn btn-secondary  btn-xs  btn-modal" title="Editar registro"  value={{$provide->id}} ><i class="fa fa-edit"></i></button>
                                     
                         </td>                           
@@ -123,10 +123,33 @@
         </div>
       </div>
     </div>
-<script>
 
-
-
-
-
-</script>
+    @push('scripts')
+    <script> 
+         $(document).ready(function() {
+             
+             //  DenuncianteId = $(this).attr("data-denunciante-id");
+             // alert("ok");
+             $(".deleteBtn").on("click", function(e) {
+             e.preventDefault()
+                 swal({
+                     title: "Está seguro de eliminarlo?",
+                     text: "No podrá recuperar este registro!",
+                     type: "warning",
+                     showCancelButton: true,
+                     confirmButtonColor: "#DD6B55",
+                     confirmButtonText: "si, eliminarlo!",
+                     cancelButtonText: "No, cancelar!",
+                     closeOnConfirm: true,
+                     closeOnCancel: true },
+                     function(isConfirm){
+                 if (isConfirm) {
+                 var id = $(".deleteBtn").data("medida-id");
+                  window.location.href=route('delete.medidas',{id:id});
+                 //  window.location.href=route("agregar-denunciado/'.$denunciante->id.'/eliminar");
+                 }
+         });
+         });
+         });
+   </script>  
+ @endpush

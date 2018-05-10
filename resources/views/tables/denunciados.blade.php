@@ -26,8 +26,12 @@
                         @else
                             <td>NO</td>
                         @endif  
-                        <th>  <a href="{{ url('agregar-denunciado/'.$denunciado->id.'/eliminar')}}" rel="tooltip" title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
-                            <i class="fa fa-times"></i>
+                        <th>  
+                            {{-- <a href="{{ url('agregar-denunciado/'.$denunciado->id.'/eliminar')}}" rel="tooltip" title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
+                            <i class="fa fa-times"></i> --}}
+
+                            <td> <a data-denunciado-id={{$denunciado->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
+                                <i class="fa fa-times"></i></a></td>
                         </a></th>
                     </tr>
                 @endforeach
@@ -35,3 +39,33 @@
         </tbody>
     </table>
 </div>
+
+@push('scripts')
+   <script> 
+        $(document).ready(function() {
+            
+            //  DenuncianteId = $(this).attr("data-denunciante-id");
+            // alert("ok");
+            $(".deleteBtn").on("click", function(e) {
+            e.preventDefault()
+                swal({
+                    title: "Está seguro de eliminarlo?",
+                    text: "No podrá recuperar este registro!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "si, eliminarlo!",
+                    cancelButtonText: "No, cancelar!",
+                    closeOnConfirm: true,
+                    closeOnCancel: true },
+                    function(isConfirm){
+                if (isConfirm) {
+                var id = $(".deleteBtn").data("denunciado-id");
+                 window.location.href=route('delete.denunciado',{id:id});
+                //  window.location.href=route("agregar-denunciado/'.$denunciante->id.'/eliminar");
+                }
+        });
+        });
+        });
+  </script>  
+@endpush

@@ -1,3 +1,4 @@
+
 <br>
 <h5>Denunciantes</h5>
 
@@ -45,12 +46,44 @@
                             <td colspan="2" style="text-align:center">No</td>
                         @endif
               
-                       <td> <a href="{{ url('agregar-denunciante/'.$denunciante->id.'/eliminar')}}" title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
-                        <i class="fa fa-times"></i></td>
-                        {{--  <td><a href="{{ route('constancia.hechos', $denunciante->id) }}" class="btn btn-secondary text-right">Descargar constancia de hechos</a></td>  --}}
+                        {{-- <td> <a id="deleteBtn" href="{{ url('agregar-denunciante/'.$denunciante->id.'/eliminar')}}" title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
+                            <i class="fa fa-times"></i></a></td> --}}
+                       <td> <a data-denunciante-id={{$denunciante->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
+                        <i class="fa fa-times"></i></a></td>
+                      
+                         {{-- <td><a href="{{ route('constancia.hechos', $denunciante->id) }}" class="btn btn-secondary text-right">Descargar constancia de hechos</a></td>  --}}
                     </tr>
                 @endforeach
             @endif
         </tbody>
     </table>
 </div>
+@push('scripts')
+   <script> 
+        $(document).ready(function() {
+            
+            //  DenuncianteId = $(this).attr("data-denunciante-id");
+            // alert("ok");
+            $(".deleteBtn").on("click", function(e) {
+            e.preventDefault()
+                swal({
+                    title: "Está seguro de eliminarlo?",
+                    text: "No podrá recuperar este registro!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "si, eliminarlo!",
+                    cancelButtonText: "No, cancelar!",
+                    closeOnConfirm: true,
+                    closeOnCancel: true },
+                    function(isConfirm){
+                if (isConfirm) {
+                var id = $(".deleteBtn").data("denunciante-id");
+                 window.location.href=route('delete.denunciante',{id:id});
+                //  window.location.href=route("agregar-denunciado/'.$denunciante->id.'/eliminar");
+                }
+        });
+        });
+        });
+  </script>  
+@endpush
