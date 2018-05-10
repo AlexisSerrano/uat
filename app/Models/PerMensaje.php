@@ -11,11 +11,12 @@ class PerMensaje extends Model
     protected $fillable = [
         'id',
         'idCarpeta',
-        'idPersona',
+        'nombre',
         'marca',
         'imei',
         'compania',
         'telefono',
-        'telefono_destino'
+        'telefono_destino',
+        'narracion'
     ];
 }

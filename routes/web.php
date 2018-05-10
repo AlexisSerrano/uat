@@ -222,3 +222,4 @@ Route::post('rfc-fisico', 'PreregistroAuxController@rfcFisico')->name('rfc.fisic
 
 /* --------Rutas para Periciales----------- */
 Route::get('periciales','pericialesController@pericialesindex');
+Route::post('periciales/agregar','pericialesController@agregar')->name('store.agregar');

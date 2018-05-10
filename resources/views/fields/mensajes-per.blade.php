@@ -1,4 +1,6 @@
+{!! Form::open(['route' => 'store.agregar', 'method' => 'POST'])  !!} 
 <div class="row">
+	
 		<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('nombret', 'Nombre', ['class' => 'col-form-label-sm']) !!}
@@ -42,6 +44,8 @@
 		</div>
 	</div>
 	<div class="col text-right">
-		{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarMedidas'))!!}
+		{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarPericiales'))!!}
+		
 </div>
 </div>
+{!! Form::close() !!}

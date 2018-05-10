@@ -45,6 +45,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ColoniasMorelosSeeder::class);
         $this->call(ColoniasQueretaroSeeder::class);
         $this->call(ColoniasMichoacanSeeder::class);
+        $this->call(ColoniasGuanajuatoSeeder::class);
 
 
         //$this->call(LocalidadSeeder::class);

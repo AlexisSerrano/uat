@@ -18,6 +18,7 @@ use App\Models\VariablesPersona;
 use App\Models\ExtraAbogado;
 use App\Models\Domicilio;
 use App\Models\BitacoraNavCaso;
+use App\Models\PerMensaje;
 
 
 class pericialesController extends Controller
@@ -41,6 +42,47 @@ class pericialesController extends Controller
         }
     }
  
+
+    public function agregar(Request $request)
+    {   
+        DB::beginTransaction();
+        try{
+            $idCarpeta = session('carpeta');
+            $PerMensaje = new PerMensaje;
+            $PerMensaje->idCarpeta = 1;
+            $PerMensaje->nombre = $request->nombret;
+            $PerMensaje->marca = $request->marcat;
+            $PerMensaje->imei = $request->imeit;
+            $PerMensaje->compania = $request->compat;
+            $PerMensaje->telefono = $request->numerot;
+            $PerMensaje->telefono_destino = $request->numero2t;
+            $PerMensaje->narracion = $request->narraciont;
+            if($PerMensaje->save()){
+                Alert::success('Registro guardado con éxito', 'Hecho');
+                // $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+                // $bdbitacora->medidas = $bdbitacora->medidas+1;
+                // $bdbitacora->save();
+            }
+            else{
+                Alert::error('Se presentó un problema al guardar el registro', 'Error');
+            }
+            DB::commit();
+
+            // return redirect("periciales");
+            return view('documentos.extraccion_mensajes')
+      
+            ->with('folio',  $PerMensaje->nombre );
+    
+
+        }catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar el registro, intente de nuevo', 'Error');
+            return back()->withInput();
+        }
+
+
  
-    //
+    
+    }
+
 }
