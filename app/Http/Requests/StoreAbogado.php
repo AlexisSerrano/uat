@@ -32,7 +32,7 @@ class StoreAbogado extends FormRequest
             'telefono' => 'numeric',
             'lugarTrabajo' => 'string',
             'telefonoTrabajo' => 'numeric',
-            'calle2' => 'string|min:4|max:100',
+            'calle2' => 'string|min:1|max:100',
             'numExterno2' => 'string|min:1|max:10',
             'numInterno2' => 'nullable|string|min:1|max:10',
             'cedulaProf' => 'string|min:1|max:50',

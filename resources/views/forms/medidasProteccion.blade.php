@@ -9,27 +9,29 @@
 
 
 <div class="card-body boxone">
+        <div class="col">
         <DIV class="row">
+            
             <div class="col-12">
                 <div class="form-group">
                     {!! Form::label('tipoProvidencia', 'Tipo de providencia precautoria', ['class' => 'col-form-label-sm']) !!}
                     {!! Form::select('tipoProvidencia', $providencias ,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col">
                     <div class="form-group">
                         {!! Form::label('quienEjecuta', 'Quién ejecuta', ['class' => 'col-form-label-sm']) !!}
                         {!! Form::select('quienEjecuta', $ejecutores ,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
                     </div>
             </div>
-            <div class="col-6">
+            <div class="col">
                     <div class="form-group">
                         {!! Form::label('victima', 'Víctima/Ofendido', ['class' => 'col-form-label-sm']) !!}
                         {!! Form::select('victima', $victimas,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
                     </div>
             </div>
 
-            <div class="col-6">
+            <div class="col">
             <div class="form-group">
                 {!! Form::label('fechaInicio', 'Fecha inicial', ['class' => 'col-form-label-sm']) !!}
                     <div class="input-group date" id="fechaInicio" data-target-input="nearest">
@@ -40,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-            <div class="col-6">
+            <div class="col">
                 <div class="form-group">
                 {!! Form::label('fechaFinal', 'Fecha final', ['class' => 'col-form-label-sm']) !!}
                     <div class="input-group date" id="fechaFinal" data-target-input="nearest">
@@ -52,6 +54,7 @@
                     </div>
                 </div>
             </div>
+        </div>
             <div class="col-12">
             <div class="form-group">
                 {!! Form::label('ObservacionesM', 'Observaciones', ['class' => 'col-form-label-sm']) !!}		
@@ -73,12 +76,12 @@
 @endsection
 
 @section('css')
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
+	
     <link rel="stylesheet" href="{{ asset('css/dataTables.min.css') }}">
 @endsection
 
 @push('scripts')
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+	{{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script> --}}
     <script src="{{ asset('js/dataTables.min.js') }}"></script>
     <script>
         $(document).ready(function(){

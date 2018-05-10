@@ -418,7 +418,7 @@ class CarpetaController extends Controller
             if($carpterminadas){
                 $carpeta = Carpeta::find($id);
                 $carpeta->numCarpeta = "UAT/D"."1"."/"."X"."/"."XX"."/".Carbon::now()->year;
-                $carpeta->idEstadoCarpeta = 2;
+                $carpeta->idEstadoCarpeta = 1;
                 $carpeta->save();
                 $request->session()->forget('carpeta');
                 Alert::success('Caso terminado con éxito', 'Hecho');

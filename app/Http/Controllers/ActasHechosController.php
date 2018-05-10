@@ -23,7 +23,7 @@ class ActasHechosController extends Controller
     public function actasPendientes(){
         $actas=Preregistro::where('tipoActa','!=',null)
         ->where('statusCola',null)
-        ->get();
+        ->paginate(10);
         return view('tables.actas-hechos')->with('actas',$actas);
     }
     
@@ -279,6 +279,9 @@ class ActasHechosController extends Controller
     }
 
     public function filtroActasPendientes(Request $request){
+        if ($request->input("folio")==null||$request->input("folio")=='') {
+            return redirect(route('actaspendientes'));
+        }
         if($request->input("folio")){
             $folio = $request->input("folio");
             $request->session()->flash('folio', $folio);
@@ -288,13 +291,24 @@ class ActasHechosController extends Controller
             $request->session()->flash('folio', $folio);
         }
 
-        $actas = Preregistro::where('folio', $folio)
-        ->where('tipoActa','!=',null)
-        ->where('statusCola',null)
-        ->orWhere(DB::raw("CONCAT(preregistros.nombre,' ',primerAp,' ',segundoAp)"), 'LIKE', '%' . $folio . '%')
-        ->orWhere('representanteLegal', 'like', '%' . $folio . '%')
-        ->orderBy('id','desc')
-        ->paginate(10);
+        // $actas = Preregistro::where('folio', $folio)
+        // ->where('tipoActa','!=',null)
+        // ->where('statusCola',null)
+        // ->orWhere(DB::raw("CONCAT(preregistros.nombre,' ',primerAp,' ',segundoAp)"), 'LIKE', '%' . $folio . '%')
+        // ->orWhere('representanteLegal', 'like', '%' . $folio . '%')
+        // ->orderBy('id','desc')
+        // ->paginate(10);
+
+        $actas = Preregistro::where('tipoActa','!=',null)
+       ->where('statusCola',null)
+       ->where(function($query) use ($folio){
+           $query
+           ->orWhere(DB::raw("CONCAT(preregistros.nombre,' ',primerAp,' ',segundoAp)"), 'LIKE', '%' . $folio . '%')
+           ->orWhere('representanteLegal', 'like', '%' . $folio . '%')
+           ->orWhere('tipoActa', 'like', '%' . $folio . '%');
+       })
+       ->orderBy('id','desc')
+       ->paginate(10);
         return view('tables.actas-hechos', compact('actas'));
     }
 
@@ -340,6 +354,7 @@ class ActasHechosController extends Controller
             $acta->idEscolaridad = $request->escActa1;
             $acta->telefono = $request->telefono;
             $acta->narracion = $request->narracion;
+
             switch ($request->docIdentificacion) {
                 case 'CREDENCIAL PARA VOTAR': $acta->expedido ="POR EL INEW";
                 case 'PASAPORTE':$acta->expedido ="INSTITUCION";
@@ -386,42 +401,40 @@ class ActasHechosController extends Controller
             'cat_colonia.nombre as nombreColonia',
             'cat_estado.nombre as nombreEstado')
             ->first();
-            //dd($catalogos);
-            
-            // $word = new \PhpOffice\PhpWord\TemplateProcessor('formatos/plantillaAH.docx');
-            // $word->setValue('estado', $catalogos->nombreEstado);
-            // $word->setValue('municipio', $catalogos->nombreMunicipio);
-            // $word->setValue('localidad', $catalogos->nombreLocalidad);
-            // $word->setValue('colonia', $catalogos->nombreColonia);
-            // $word->setValue('calle', $direccion->calle);
-            // $word->setValue('cp', $request->cp2);
             if($request->numInterno2==''){
                 $numExterno = $direccion->numExterno;
             }
             else{
                 $numExterno = $direccion->numExterno.' interior '.$direccion->numInterno;
-                //$word->setValue('numExterno', $numeros);
             }
-            // $word->setValue('folio', $new);
-            // $word->setValue('hora', Date::now()->format('H:i:'));
             $fechahum = Date::now()->format('l j').' de '.Date::now()->format('F').' del año '.Date::now()->format('Y');
-            // $word->setValue('fecha',$fechahum);
-            // $word->setValue('fiscal', $acta->fiscal);
-            // $word->setValue('nombre', $acta->nombre.' '.$acta->primer_ap.' '.$acta->segundo_ap);
-            // $word->setValue('identificacion', $acta->identificacion);
-            // $word->setValue('numIdentificacion', $acta->num_identificacion);
             $date = new Date($acta->fecha_nac);
             $fechanachum = $date->format('j').' de '.$date->format('F').' del año '.$date->format('Y');
-            // $word->setValue('fechaNacimiento', $fechanachum);
-            // $word->setValue('ocupacion', $catalogos->nombreOcupacion);
-            // $word->setValue('estadoCivil', $catalogos->nombreEstadoCivil);
-            // $word->setValue('escolaridad', $catalogos->nombreEscolaridad);
-            // $word->setValue('telefono', $acta->telefono);
-            // $word->setValue('narracion', $acta->narracion);
-            // $word->setValue('expedido', $acta->expedido);
-
             $fechasep = explode("-", $request->fecha_nac);
+            $tiposep = explode(" ", $request->tipoActa);
+            $tipofinal = '';
+            foreach($tiposep as $tipo){
+                $tipofinal = $tipofinal.substr($tipo,0,2);
+            }
             $edad = Date::createFromDate($fechasep[0],$fechasep[1],$fechasep[2])->age;
+            $numLetras = strlen($request->narracion)*2;
+            $random = rand(3, 999);
+            $letrasrandom = $this->getRandom();
+            $token = $request->nombre2."_".
+            substr($request->primerAp,0,2)."_".
+            substr($request->segundoAp,0,2)."_".
+            $fechasep[2].$fechasep[1].substr($fechasep[0],-2)."_".
+            $request->numDocIdentificacion."_".
+            $request->idEstado2."_".
+            $request->idMunicipio2."_".
+            $request->idLocalidad2."_".
+            $tipofinal."_".
+            $numLetras."_".
+            Date::now()->format('Y_m_d_H_i_s')."_".
+            $random."_".
+            $letrasrandom;
+            $token = str_replace(' ', '', $token);
+            dd($token);
             //$word->setValue('edad', $edad);
             return view('impresion')
             ->with('estado', $catalogos->nombreEstado)
@@ -432,7 +445,7 @@ class ActasHechosController extends Controller
             ->with('cp', $request->cp2)
             ->with('numExterno', $numExterno)
             ->with('folio', $new)
-            ->with('hora', Date::now()->format('H:i:'))
+            ->with('hora', Date::now()->format('H:i'))
             ->with('fecha',$fechahum)
             ->with('fiscal', $acta->fiscal)
             ->with('nombre', $acta->nombre.' '.$acta->primer_ap.' '.$acta->segundo_ap)
@@ -445,7 +458,8 @@ class ActasHechosController extends Controller
             ->with('telefono', $acta->telefono)
             ->with('narracion', $acta->narracion)
             ->with('expedido', $acta->expedido)
-            ->with('edad', $edad);
+            ->with('edad', $edad)
+            ->with('token',$token);
     
             // $word->saveAs('../storage/oficios/ActasHechos'.$acta->id.'.docx');
             // return response()->download('../storage/oficios/ActasHechos'.$acta->id.'.docx');
@@ -457,4 +471,8 @@ class ActasHechosController extends Controller
             //return redirect('actas');
         }
     }
+
+    public function getRandom($length = 3) { 
+        return substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length); 
+    } 
 }

@@ -210,8 +210,8 @@ Route::get('libro','libroGobController@terminadas');
 Route::get('getCarpetas','libroGobController@getCarpetas');
 Route::get('carpetas','libroGobController@buscar');
 route::get('buscarcarpeta/{id}','libroGobController@showForm');
-Route::post('carpetaNum','libroGobController@searchNumCarpeta');
-Route::post('carpetaN','libroGobController@mostrarlibro');
+Route::post('carpetaNum','libroGobController@searchNumCarpeta')->name('filtro.carpetas');
+Route::post('libroGobierno','libroGobController@mostrarlibro')->name('libro.filtro');
 /* --------Rutas para Caratula de carpeta de investigacion----------- */
 Route::get('caratula','CaratulaCarpetaController@crearCaratula');
 
