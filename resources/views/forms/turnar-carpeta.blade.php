@@ -16,13 +16,13 @@
         <div class="row">
                 <div class="col-12">
 
-  {!!  Form::open(['route' => 'Estado.edit', 'method' => 'put', 'id'=>'form'])!!}
-
+  {!!  Form::open(['route' => 'estado.edit', 'method' => 'post', 'id'=>'form'])!!}
+    <input type="hidden" name="idCarpeta" value="{{$estatus[0]->id}}">
 <div class="row">
 <div class="col-6">
     <div class="form-group">
         {!! Form::label('estatusCarpeta', 'Estatus de la carpeta:', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('estatusCarpeta', $estatus[0]->estatus, ['class' => 'form-control form-control-sm']) !!}
+        {!! Form::text('estatusCarpeta', $estatus[0]->estatus, ['class' => 'form-control form-control-sm','readonly']) !!}
     </div>
 </div>
 <div class="col-6">

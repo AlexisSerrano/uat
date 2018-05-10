@@ -30,14 +30,13 @@
         <tr>
             <td colspan="2" style="padding-bottom:10px; text-align:left;">
                 C. DIRECTOR DE SERVICIOS PERICIALES</span>
+             <p>  Zona Centro Xalapa
+                OFICIO:<span class="noeditable">UAT-XI/3-{{$folio}}/2018</span>
             </td>
-            <td colspan="2" style="padding-bottom:10px; text-align:left;">
-                Zona Centro Xalapa
+            <td colspan="2">
+               
             </td>
-            <td colspan="2" style="padding-bottom:10px; text-align:left;">
-                    OFICIO:<span class="noeditable">UAT-XI/3-{{$folio}}/2018</span>
-                </td>
-                <td colspan="2" style="padding-bottom:10px; text-align:left;">
+                     <td colspan="2" style="padding-bottom:10px; text-align:left;">
                         CARPETA DE INVESTIGACION:UAT/D-XI<span class="noeditable">{{$folio2}}/2018-6° </span>
                     </td>
                     <td colspan="2" style="padding-bottom:10px; text-align:left;">
@@ -50,7 +49,7 @@
                      Política de los  Estados Unidos Mexicanos, 259, 260, 261, 272, 273 y aplicables del Código Nacional de Procedimientos Penales Vigente; de la manera más
                       atenta solicito a Usted, tenga a bien designar peritos en materia a fin de que realicen <span class="noeditable">{{$narracion}}</span>, 
                        EN EL EQUIPO CELULAR MARCA <span class="noeditable">{{$marca}}</span>, CON NÚMERO DE IMEI-<span class="noeditable">{{$imei}}</span>, de la compañía 
-                       <span class="noeditable">{{$compañia}}</span> con número <span class="noeditable">{{$numero}}</span>, proveniente del número <span class="noeditable">{{$numero2}}</span>; lo anterior con las formalidades de ley,
+                       <span class="noeditable">{{$compania}}</span> con número <span class="noeditable">{{$numero}}</span>, proveniente del número <span class="noeditable">{{$numero2}}</span>; lo anterior con las formalidades de ley,
                         equipo que será puesto a la vista en esas oficinas a su digno cargo por el <span class="noeditable">{{$nombre}}</span>.
 
 

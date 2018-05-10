@@ -430,4 +430,14 @@ class CarpetaController extends Controller
             }
         }
     }
+    public function descripcionHechos(Request $request){
+        if ($request->session()->has('carpeta')) {
+            $id=session('carpeta');
+            $carpeta = Carpeta::find($id);
+            $carpeta->descripcionHechos = $request->descripcionHechos;
+            $carpeta->save();
+            Alert::success('Descripcion de hechos registrada', 'Hecho');
+            return redirect();        
+        }
+    }
 }
