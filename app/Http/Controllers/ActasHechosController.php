@@ -11,6 +11,7 @@ use App\Models\CatEstadoCivil;
 use App\Models\CatOcupacion;
 use App\Models\CatNacionalidad;
 use App\Models\Preregistro;
+use App\Models\Oficio;
 use App\Http\Requests\ActaRequest;
 use DB;
 use Alert;
@@ -383,64 +384,6 @@ class ActasHechosController extends Controller
                 $preregistro->save();
             }
             DB::commit();
-            
-            // $catalogos = DB::table('actas_hechos')->where('actas_hechos.id', $acta->id)
-            // ->join('cat_ocupacion','actas_hechos.idOcupacion','=','cat_ocupacion.id')
-            // ->join('cat_estado_civil','actas_hechos.idEstadoCivil','=','cat_estado_civil.id')
-            // ->join('cat_escolaridad','actas_hechos.idEscolaridad','=','cat_escolaridad.id')
-            // ->join('domicilio','actas_hechos.idDomicilio','=','domicilio.id')
-            // ->join('cat_municipio','domicilio.idMunicipio','=','cat_municipio.id')
-            // ->join('cat_localidad','domicilio.idLocalidad','=','cat_localidad.id')
-            // ->join('cat_colonia','domicilio.idColonia','=','cat_colonia.id')
-            // ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')
-            // ->select('cat_ocupacion.nombre as nombreOcupacion',
-            // 'cat_estado_civil.nombre as nombreEstadoCivil',
-            // 'cat_escolaridad.nombre as nombreEscolaridad',
-            // 'cat_municipio.nombre as nombreMunicipio',
-            // 'cat_localidad.nombre as nombreLocalidad',
-            // 'cat_colonia.nombre as nombreColonia',
-            // 'cat_estado.nombre as nombreEstado')
-            // ->first();
-            // if($request->numInterno2==''){
-            //     $numExterno = $direccion->numExterno;
-            // }
-            // else{
-            //     $numExterno = $direccion->numExterno.' interior '.$direccion->numInterno;
-            // }
-            // $fechahum = Date::now()->format('l j').' de '.Date::now()->format('F').' del año '.Date::now()->format('Y');
-            // $date = new Date($acta->fecha_nac);
-            // $fechanachum = $date->format('j').' de '.$date->format('F').' del año '.$date->format('Y');
-            // $fechasep = explode("-", $request->fecha_nac);
-            // $tiposep = explode(" ", $request->tipoActa);
-            // $tipofinal = '';
-            // foreach($tiposep as $tipo){
-            //     $tipofinal = $tipofinal.substr($tipo,0,2);
-            // }
-            // $edad = Date::createFromDate($fechasep[0],$fechasep[1],$fechasep[2])->age;
-            // return view('impresion')
-            // ->with('estado', $catalogos->nombreEstado)
-            // ->with('municipio', $catalogos->nombreMunicipio)
-            // ->with('localidad', $catalogos->nombreLocalidad)
-            // ->with('colonia', $catalogos->nombreColonia)
-            // ->with('calle', $direccion->calle)
-            // ->with('cp', $request->cp2)
-            // ->with('numExterno', $numExterno)
-            // ->with('folio', $new)
-            // ->with('hora', Date::now()->format('H:i'))
-            // ->with('fecha',$fechahum)
-            // ->with('fiscal', $acta->fiscal)
-            // ->with('nombre', $acta->nombre.' '.$acta->primer_ap.' '.$acta->segundo_ap)
-            // ->with('identificacion', $acta->identificacion)
-            // ->with('numIdentificacion', $acta->num_identificacion)
-            // ->with('fechaNacimiento', $fechanachum)
-            // ->with('ocupacion', $catalogos->nombreOcupacion)
-            // ->with('estadoCivil', $catalogos->nombreEstadoCivil)
-            // ->with('escolaridad', $catalogos->nombreEscolaridad)
-            // ->with('telefono', $acta->telefono)
-            // ->with('narracion', $acta->narracion)
-            // ->with('expedido', $acta->expedido)
-            // ->with('edad', $edad)
-            // ->with('id', $acta->id);
             $request->session()->flash('redirectoficio', url("oficioah/$acta->id"));
             return redirect("actas-pendientes");
         }
@@ -455,8 +398,57 @@ class ActasHechosController extends Controller
         return substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length); 
     } 
 
-    public function getToken(){
-        $token = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 25);
+    public function getToken($id){
+            $catalogos = DB::table('actas_hechos')->where('actas_hechos.id', $id)
+            ->join('cat_ocupacion','actas_hechos.idOcupacion','=','cat_ocupacion.id')
+            ->join('cat_estado_civil','actas_hechos.idEstadoCivil','=','cat_estado_civil.id')
+            ->join('cat_escolaridad','actas_hechos.idEscolaridad','=','cat_escolaridad.id')
+            ->join('domicilio','actas_hechos.idDomicilio','=','domicilio.id')
+            ->join('cat_municipio','domicilio.idMunicipio','=','cat_municipio.id')
+            ->join('cat_localidad','domicilio.idLocalidad','=','cat_localidad.id')
+            ->join('cat_colonia','domicilio.idColonia','=','cat_colonia.id')
+            ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')
+            ->select('cat_ocupacion.nombre as nombreOcupacion',
+            'cat_estado_civil.nombre as nombreEstadoCivil',
+            'cat_escolaridad.nombre as nombreEscolaridad',
+            'cat_municipio.nombre as nombreMunicipio',
+            'cat_localidad.nombre as nombreLocalidad',
+            'cat_colonia.nombre as nombreColonia',
+            'cat_estado.nombre as nombreEstado',
+            'domicilio.numInterno as numInterno', 'domicilio.numExterno as numExterno', 'domicilio.calle as calle',
+            'actas_hechos.fecha_nac as fecha_nac', 'actas_hechos.telefono as telefono', 'actas_hechos.narracion as narracion',
+            'actas_hechos.expedido as expedido', 'actas_hechos.fiscal as fiscal', 'actas_hechos.nombre as nombrePersona',
+            'actas_hechos.primer_ap as primer_ap', 'actas_hechos.segundo_ap as segundo_ap',
+            'actas_hechos.identificacion as identificacion', 'actas_hechos.num_identificacion as num_identificacion',
+            'cat_colonia.codigoPostal as cp', 'actas_hechos.folio as folio', 'actas_hechos.hora as hora',
+            'actas_hechos.fecha as fecha','cat_estado.id as idEstado','domicilio.idMunicipio as idMunicipio',
+            'domicilio.idLocalidad as idLocalidad','actas_hechos.tipoActa as tipoActa')
+            ->first();
+            $numLetras = strlen($catalogos->narracion)*2;
+            $random = rand(3, 999);
+            $letrasrandom = $this->getRandom();
+            $fechasep = explode("-", $catalogos->fecha_nac);
+            $tiposep = explode(" ", $catalogos->tipoActa);
+            $tipofinal = '';
+            foreach($tiposep as $tipo){
+                $tipofinal = $tipofinal.substr($tipo,0,2);
+            }
+            $token = $catalogos->nombrePersona."_".
+            substr($catalogos->primer_ap,0,2)."_".
+            substr($catalogos->segundo_ap,0,2)."_".
+            $fechasep[2].$fechasep[1].substr($fechasep[0],-2)."_".
+            $catalogos->num_identificacion."_".
+            $catalogos->idEstado."_".
+            $catalogos->idMunicipio."_".
+            $catalogos->idLocalidad."_".
+            $tipofinal."_".
+            $numLetras."_".
+            Date::now()->format('Y_m_d_H_i_s')."_".
+            $random."_".
+            $letrasrandom;
+            $token = str_replace(' ', '', $token);
+            //dd($token);
+        //$token = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 25);
         echo $token;
     }
 
@@ -482,7 +474,8 @@ class ActasHechosController extends Controller
         'actas_hechos.expedido as expedido', 'actas_hechos.fiscal as fiscal', 'actas_hechos.nombre as nombrePersona',
         'actas_hechos.primer_ap as primer_ap', 'actas_hechos.segundo_ap as segundo_ap',
         'actas_hechos.identificacion as identificacion', 'actas_hechos.num_identificacion as num_identificacion',
-        'cat_colonia.codigoPostal as cp', 'actas_hechos.folio as folio')
+        'cat_colonia.codigoPostal as cp', 'actas_hechos.folio as folio', 'actas_hechos.hora as hora',
+        'actas_hechos.fecha as fecha')
         ->first();
         if($catalogos->numInterno==''){
             $numExterno = $catalogos->numExterno;
@@ -490,7 +483,8 @@ class ActasHechosController extends Controller
         else{
             $numExterno = $catalogos->numExterno.' interior '.$catalogos->numInterno;
         }
-        $fechahum = Date::now()->format('l j').' de '.Date::now()->format('F').' del año '.Date::now()->format('Y');
+        $fechaactual = new Date($catalogos->fecha);
+        $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
         $date = new Date($catalogos->fecha_nac);
         $fechanachum = $date->format('j').' de '.$date->format('F').' del año '.$date->format('Y');
         $fechasep = explode("-", $catalogos->fecha_nac);
@@ -504,7 +498,7 @@ class ActasHechosController extends Controller
         ->with('cp', $catalogos->cp)
         ->with('numExterno', $numExterno)
         ->with('folio', $catalogos->folio)
-        ->with('hora', Date::now()->format('H:i'))
+        ->with('hora', $date->parse($catalogos->hora)->format('H:i'))
         ->with('fecha',$fechahum)
         ->with('fiscal', $catalogos->fiscal)
         ->with('nombre', $catalogos->nombrePersona.' '.$catalogos->primer_ap.' '.$catalogos->segundo_ap)
@@ -519,5 +513,21 @@ class ActasHechosController extends Controller
         ->with('expedido', $catalogos->expedido)
         ->with('edad', $edad)
         ->with('id', $id);
+    }
+
+    public function saveOficio(Request $request){
+        if($request->ajax()){
+            $oficio = new Oficio();
+            $oficio->html = $request->html;
+            $oficio->tipo = $request->tipo;
+            $oficio->id_tipo = $request->id_tipo;
+            $oficio->token = $request->token;
+            if($oficio->save()){
+                echo 1;
+            }
+            else{
+                echo 0;
+            }
+        }
     }
 }

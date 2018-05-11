@@ -18,6 +18,7 @@ class CreateOficiosTable extends Migration
             $table->longText('html');
             $table->string('tipo',100);
             $table->integer('id_tipo');
+            $table->string('token',100);
             $table->timestamps();
         });
     }

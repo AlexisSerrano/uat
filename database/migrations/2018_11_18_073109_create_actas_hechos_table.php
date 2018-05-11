@@ -16,8 +16,8 @@ class CreateActasHechosTable extends Migration
         Schema::create('actas_hechos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('folio')->unique();
-            $table->date('hora');
-            $table->time('fecha');
+            $table->time('hora');
+            $table->date('fecha');
             $table->string('fiscal');
             $table->string('nombre');
             $table->string('primer_ap');

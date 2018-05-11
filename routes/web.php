@@ -231,5 +231,6 @@ Route::get('periciales','pericialesController@pericialesindex');
 Route::post('periciales/agregar','pericialesController@agregar')->name('store.agregar');
 
 /* --------Ruta para obtener token oficios----------- */
-Route::get('getToken','ActasHechosController@getToken')->name('getToken');
+Route::get('getToken/{id}','ActasHechosController@getToken')->name('getToken');
 Route::get('oficioah/{id}','ActasHechosController@getoficioah')->name('oficioah');
+Route::post('saveOficio','ActasHechosController@saveOficio')->name('saveOficio');
