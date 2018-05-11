@@ -25,11 +25,10 @@
 
 {{-- <div class="card"> --}}
 	@include('fields.errores')
-	<br>
 	<div class="container" >
 		<br>
 		<div class="row">
-			<div class="col 3">
+			{{-- <div class="col 3">
 				<table class="table table-striped table-bordered table-hover text-center">
 					<thead class="thead-active">
 						<tr>
@@ -54,18 +53,26 @@
 						@endforelse
 					</tbody>
 				</table>
-			</div>
-			<div class="col-9">
-				<form action="{{url('addnarracion')}}" method="post" id="formNarracion" enctype="multipart/form-data">
+			</div> --}}
+			<div class="col">
+				{{-- <form action="{{url('addnarracion')}}" method="post" id="formNarracion" enctype="multipart/form-data"> --}}
+				{!! Form::open(['route' => 'store.descripcionHechos', 'method' => 'POST', 'id'=>'form'])  !!}
+	
 					@csrf
-					<div class="form-group" id="divnarracion">		
-						<textarea name="narracion" id="areaNarracion" cols="30" rows="10" class="form-control form-control-sm">@if($ultimo != null){{ $ultimo->narracion}} @endif</textarea>
-						<div id="divText" style="display:none"></div>
+					<div class="form-group" id="divnarracion">
+						@isset($narracion)
+							{{ Form::textarea('descripcionHechos', $narracion, ['class' => 'form-control']) }}
+						@else	
+							{{ Form::textarea('descripcionHechos', null, ['class' => 'form-control']) }}
+						@endisset		
+						{{-- <textarea name="narracion" id="areaNarracion" cols="30" rows="10" class="form-control form-control-sm"></textarea> --}}
+						{{-- <div id="divText" style="display:none"></div> --}}
 					</div>
 					<div class="form-group text-right">
 						<button type="submit" class="btn btn-primary">Guardar</button>
 					</div>
-				</form>
+				{!! Form::close() !!}
+				{{-- </form> --}}
 			
 
 			</div>

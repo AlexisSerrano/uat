@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Narracion;
+use App\Models\Carpeta;
 use App\Models\BitacoraNavCaso;
 use App\Http\Requests\SolicitanteRequest;
 use Illuminate\Support\Facades\Storage;
@@ -13,7 +14,38 @@ use DB;
 
 class NarracionController extends Controller
 {
+    
+    public function descripcionHechos(){
+        $carpeta = session('carpeta');
+        $narracion = Carpeta::select('descripcionHechos')->where('id',$carpeta)->first();
+        $narracion =$narracion->descripcionHechos;
+        return view("forms.hechos-orientador")
+        ->with('narracion',$narracion);
+    }
+    public function storeDescripcionHechos(Request $request){
+        $idCarpera = session('carpeta');
+        DB::beginTransaction();
+        try{
+            $carpeta = Carpeta::find($idCarpera);
+            $carpeta->descripcionHechos=$request->descripcionHechos;
+            $carpeta->save();
+            Alert::success('Descripción de hechos guardada con éxito', 'Hecho');
+            $bitacora = true;
+            if($bitacora){
+                $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+                $bdbitacora->hechos = 1;
+                $bdbitacora->save();
+            }
+            DB::commit();
+            return redirect(route('descripcionHechos'));
+        }catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar los datos, intente de nuevo', 'Error');
+            return back()->withInput();
+        }
+    }
     public function index(){
+    
         $carpeta = session('carpeta');
         $narraciones = Narracion::where('idCarpeta',$carpeta)->orderby('created_at','desc')->get();
         $ultimo = Narracion::where('idCarpeta',$carpeta)->where('tipo','0')->orderby('created_at','desc')->first();

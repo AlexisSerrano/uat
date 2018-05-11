@@ -9,8 +9,9 @@ $barra = getNavCaso();
 	<a href="{{route('new.delito')}}" class="{{$barra['delitos']}} form-control">Delitos {{$barra['cdelitos']}}</a>
 	<a href="{{route('new.acusacion')}}" class="{{$barra['acusaciones']}} form-control">Acusaciones {{$barra['cacusaciones']}}</a>
 	<a href="{{route('new.defensa')}}"  class="{{$barra['defensa']}} form-control">Defensa {{$barra['cdefensa']}}</a>
-    <a href="{{route('narracion')}}" class="{{$barra['hechos']}} form-control">Descripción de hechos {{$barra['chechos']}}</a>
-	<a href="{{url('medidas')}}" class="{{$barra['medidas']}} form-control">Medidas de protección {{$barra['cmedidas']}}</a>
+    <a href="{{route('descripcionHechos')}}" class="{{$barra['hechos']}} form-control">Descripción de hechos</a>
+    {{-- <a href="{{route('descripcionHechos')}}" class="{{$barra['hechos']}} form-control">Descripción de hechos {{$barra['chechos']}}</a> --}}
+	{{-- <a href="{{url('medidas')}}" class="{{$barra['medidas']}} form-control">Medidas de protección {{$barra['cmedidas']}}</a> --}}
 	<a href="{{url('terminar')}}" class="form-control btn btn-secondary">Terminar</a>
 </div>
  
