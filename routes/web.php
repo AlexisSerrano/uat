@@ -35,9 +35,13 @@ Route::get('/pruebasconsulta', function(){
     return view('tables.consulta-actas');
     
     });
-    Route::get('/pruebaslibro', function(){
+    Route::get('/formatos-pruebas', function(){
         return view('tables.formatos');
         });
+        Route::get('/turnos-pruebas', function(){
+            return view('tables.consulta-turnos');
+            });
+
         Route::get('/pruebasformatos', function(){
             return view('tables.formatos');
             });
