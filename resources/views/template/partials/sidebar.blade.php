@@ -1,3 +1,11 @@
+<style>
+	 .badge-info {
+    color: #0a0a0a;
+    background-color: #dda61d;
+}
+
+</style>
+
 {{-- <aside class="main-sidebar sidebar-dark-primary elevation-4">
 		<!-- Brand Logo -->
 		<a href="#" class="brand-link">
@@ -6,7 +14,7 @@
 			{{-- <span class="brand-text font-weight-light"></span>
 		</a>  --}}
 
-		<aside class="main-sidebar  elevation-4 barra-izquierda">
+		<aside class="main-sidebar  elevation-4 barra-izquierda collapsado " id="barra">
 			<!-- Brand Logo -->
 			<a href="index3.html" class="brand-link">
 				<img src="https://rawcdn.githack.com/Romaincks/assets/master/img/logo-150px-FGE.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -43,13 +51,13 @@
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-									<a href="{{url('preregistro')}}" class="nav-link">
+									<a href="{{url('preregistro')}}" class="nav-link {{ Request::is( 'preregistro') ? 'active' : '' }}">
 										<i class="fa fa-user-plus nav-icon"></i>
 										<p>Nuevo pre-registro</p>
 									</a>
 								</li>
 							<li class="nav-item">
-								<a href='{{url("registros")}}' class="nav-link">
+								<a href='{{url("registros")}}' class="nav-link {{ Request::is( 'registros') ? 'active' : '' }}">
 										<i class="fa fa-pencil nav-icon"></i>
 										<p>Consulta de pre-registros</p>
 								</a>
@@ -57,7 +65,7 @@
 						</ul>
 					</li>
 					<li class="nav-item has-treeview">
-						<a href="#" class="nav-link">
+						<a href="#" class="nav-link ">
 							<i class="nav-icon fa fa-user-o"></i>
 							<p>
 								Recepción
@@ -65,8 +73,8 @@
 							</p>
 						</a>
 						<ul class="nav nav-treeview">
-							<li class="nav-item has-treeview">
-								<a href="{{url('predenuncias')}}" class="nav-link">
+							<li class="nav-item has-treeview  ">
+								<a href="{{url('predenuncias')}}" class="nav-link {{ Request::is( 'predenuncias') ? 'active' : '' }}">
 									{{-- <i class="nav-icon fa fa-user-times"></i> --}}
 									<p>
 										Todos los registros
@@ -74,7 +82,7 @@
 								</a>
 							</li>
 							<li class="nav-item has-treeview">
-								<a href="{{url('encola')}}" class="nav-link">
+								<a href="{{url('encola')}}" class="nav-link {{ Request::is( 'encola') ? 'active' : '' }}">
 									{{-- <i class="nav-icon fa fa-user-times"></i> --}}
 									<p>
 										Registros en cola
@@ -82,7 +90,7 @@
 								</a>
 							</li>
 							<li class="nav-item has-treeview">
-								<a href="{{url('urgentes')}}" class="nav-link">
+								<a href="{{url('urgentes')}}" class="nav-link {{ Request::is( 'urgentes') ? 'active' : '' }}">
 									{{-- <i class="nav-icon fa fa-user-times"></i> --}}
 									<p>
 										Urgentes
@@ -90,13 +98,19 @@
 								</a>
 							</li>
 							<li class="nav-item has-treeview">
-								<a href="{{url('recepcionista')}}" class="nav-link">
+								<a href="{{url('recepcionista')}}" class="nav-link {{ Request::is( 'recepcionista') ? 'active' : '' }}">
 									{{-- <i class="nav-icon fa fa-user-times"></i> --}}
 									<p>
 										Agregar
 									</p>
 								</a>
 							</li>
+							<li class="nav-item has-treeview">
+								<a href="{{url('turnos-pruebas')}}" class="nav-link {{ Request::is( 'turnos-pruebas') ? 'active' : '' }}">
+										{{-- <i class="nav-icon  fa fa-print"></i> --}}
+										<p>Turnos tomados</p>
+									</a>
+								</li>
 						</ul>
 					</li>
 					{{-- menu-open --}}
@@ -130,7 +144,7 @@
 						</li>
 						@endif
 						<li class="nav-item has-treeview">
-							<a href='{{route("new.denunciante")}}' class="nav-link">
+							<a href='{{route("new.denunciante")}}' class="nav-link {{ Request::is( 'agregar-denunciante') ? 'active' : '' }}">
 								<i class="nav-icon fa fa-share"></i>
 								<p>
 									Reanudar registro
@@ -140,7 +154,7 @@
 						
 					@else
 						<li class="nav-item has-treeview">
-							<a href="{{url('crear-caso')}}" class="nav-link">
+							<a href="{{url('crear-caso')}}" class="nav-link {{ Request::is( 'crear-caso') ? 'active' : '' }}">
 								<i class="fa fa-folder-open nav-icon"></i>
 								<p>Nuevo caso</p>
 							</a>
@@ -151,7 +165,7 @@
 					
 		<!--termina recepcion-->
 					<li class="nav-item has-treeview">
-						<a href="{{url('atencion')}}" class="nav-link">
+						<a href="{{url('atencion')}}" class="nav-link {{ Request::is( 'atencion') ? 'active' : '' }}">
 							{{-- <span class="bagde">{{countAtencion()}}</span> --}}
 							<i class="nav-icon  fa fa-clock-o"></i>
 							<p>
@@ -162,29 +176,26 @@
 					</li>
 					
 					<li class="nav-item has-treeview">
-						<a href="{{route('actaspendientes')}}" class="nav-link">
+						<a href="{{route('actaspendientes')}}" class="nav-link {{ Request::is( 'actas-pendientes') ? 'active' : '' }}">
 							<i class="nav-icon  fa fa-file-text-o"></i>
 							<p>Actas de hechos</p>
 						</a>
 					</li>
-					<li class="nav-item has-treeview">
-						<a href="{{url('carpetas')}}" class="nav-link">
+					<li class="nav-item has-treeview ">
+						<a href="{{url('carpetas')}}" class="nav-link {{ Request::is( 'carpetas') ? 'active' : '' }}">
 							<i class="nav-icon  fa fa-archive"></i>
 							<p>Carpetas</p>
 						</a>
 					</li>
 					<li class="nav-item has-treeview">
-						<a href="{{url('libro')}}" class="nav-link">
+						<a href="{{url('libro')}}" class="nav-link {{ Request::is( 'libro') ? 'active' : '' }}">
 							<i class="nav-icon  fa fa-book"></i>
 							<p>Libro de gobierno</p>
 						</a>
 					</li>
-					<li class="nav-item has-treeview">
-					<a href="{{url('pruebaslibro')}}" class="nav-link">
-							<i class="nav-icon  fa fa-print"></i>
-							<p>Formatos</p>
-						</a>
-					</li>
+					
+				</li>
+					
 
 
 					
