@@ -45,6 +45,7 @@ Route::get('/pruebasconsulta', function(){
         Route::get('/pruebasformatos', function(){
             return view('tables.formatos');
             });
+            
         Route::get('/pruebasactas','PruebasController@actas');
         
     
