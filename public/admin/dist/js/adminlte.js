@@ -343,6 +343,7 @@ var PushMenu = function ($) {
     TOGGLE_BUTTON: '[data-widget="pushmenu"]',
     SIDEBAR_MINI: '.sidebar-mini',
     SIDEBAR_COLLAPSED: '.sidebar-collapse',
+    NAV_SIDEBAR: '.barra-izquierda',
     BODY: 'body',
     OVERLAY: '#sidebar-overlay',
     WRAPPER: '.wrapper'
@@ -352,7 +353,9 @@ var PushMenu = function ($) {
     SIDEBAR_OPEN: 'sidebar-open',
     COLLAPSED: 'sidebar-collapse',
     OPEN: 'sidebar-open',
-    SIDEBAR_MINI: 'sidebar-mini'
+    SIDEBAR_MINI: 'sidebar-mini',
+    MINI: 'collapsado',
+    MACRO: 'abierto'
 
     /**
      * Class Definition

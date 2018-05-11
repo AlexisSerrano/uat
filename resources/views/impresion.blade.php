@@ -58,8 +58,8 @@
         .negritas{
             font-weight: bold;
         }
-        .padding td{
-            padding:20px;
+        .padding td{ 
+            padding: 20px 60px;
         }
         #imprimir{
             text-align: center;
@@ -85,7 +85,7 @@
 </head>
 <body>
     <table class="editable">
-        <tr style="width:50%;" class="font16 padding">
+        <tr class="font16 padding">
             <td>
                 <img src="{{asset('img/iconofge.png')}}" alt="" style="height:120px">
             </td>
