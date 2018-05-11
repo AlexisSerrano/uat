@@ -18,7 +18,7 @@ use App\Models\VariablesPersona;
 use App\Models\ExtraAbogado;
 use App\Models\Domicilio;
 use App\Models\BitacoraNavCaso;
-use App\Models\PerMensaje;
+use App\Models\formatos\PerMensaje;
 
 
 class pericialesController extends Controller
