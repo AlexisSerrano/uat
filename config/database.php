@@ -54,6 +54,21 @@ return [
             'engine' => null,
         ],
 
+        'formatos' => [
+            'driver' => env('DB_CONNECTION_F'),
+            'host' => env('DB_HOST_F'),
+            'port' => env('DB_PORT_F'),
+            'database' => env('DB_DATABASE_F'),
+            'username' => env('DB_USERNAME_F'),
+            'password' => env('DB_PASSWORD_F'),
+            'unix_socket' => env('DB_SOCKET'),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+        ],
+
         'uipj' => [
             'driver' => env('DB_CONNECTION_UIPJ'),
             'host' => env('DB_HOST_UIPJ'),

@@ -42,7 +42,7 @@
 				<div class="boxtwo">
 					@include('fields.psicologo-per')
 					{{-- botones --}}
-					<div class="row menu">	
+					{{-- <div class="row menu">	
 						<div class="col text-left">				
 							<a id="irpersonales" class="btn btn-secondary "><i class="fa fa-arrow-left"></i></a>
 						</div>
@@ -50,7 +50,7 @@
 							<a id="aAbogado" class="btn btn-secondary irextraabogado"><i class="fa fa-arrow-right"></i></a>							
 						</div>
 					</div>
-				</div>
+				</div> --}}
 			
 		</div>
 		<div class="tab-pane fade" id="abogado" role="tabpanel" aria-labelledby="abogado-tab">
@@ -58,9 +58,9 @@
 					@include('fields.vehiculos-per')
 					{{-- botones --}}
 					<div class="row menu">	
-						<div class="col text-left">
+						{{-- <div class="col text-left">
 							<a id="irtrabajo" class="btn btn-secondary "><i class="fa fa-arrow-left"></i></a>				
-						</div>
+						</div> --}}
 						<div class="col text-right">
 							{{-- {!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!} --}}
 						</div>
@@ -73,9 +73,9 @@
 					@include('fields.lesiones-per')
 					{{-- botones --}}
 					<div class="row menu">	
-						<div class="col text-left">
+						{{-- <div class="col text-left">
 							<a id="irtrabajo" class="btn btn-secondary "><i class="fa fa-arrow-left"></i></a>				
-						</div>
+						</div> --}}
 						<div class="col text-right">
 							{{-- {!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!} --}}
 						</div>
