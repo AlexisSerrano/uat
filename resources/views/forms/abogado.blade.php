@@ -84,6 +84,8 @@
 	<script src="{{ asset('js/selectsDirecciones.js') }}"></script>
 	<script src="{{ asset('js/siguientes.js') }}"></script>
 	<script src="{{ asset('js/borrar.js') }}"></script>
+	<script src="{{ asset('js/rfcFisico-f.js') }}"></script>
+
 	<script>
 		$('#irtrabajo').click(function(){
 			$('.nav-link').removeClass("active");//Quito la clase active al tab actual

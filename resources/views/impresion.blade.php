@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset ('css/cssfonts.css')}}">    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Oficio</title>
     <style>
         *{
@@ -57,8 +58,8 @@
         .negritas{
             font-weight: bold;
         }
-        .padding td{
-            padding:20px;
+        .padding td{ 
+            padding: 20px 60px;
         }
         #imprimir{
             text-align: center;
@@ -84,7 +85,7 @@
 </head>
 <body>
     <table class="editable">
-        <tr style="width:50%;" class="font16 padding">
+        <tr class="font16 padding">
             <td>
                 <img src="{{asset('img/iconofge.png')}}" alt="" style="height:120px">
             </td>
@@ -100,7 +101,7 @@
         </tr>
         <tr class="font14">
             <td colspan="2" >
-                <div >
+                <div class="justificado">
                     En la ciudad de Xalapa, Veracruz, siendo las <span class="noeditable hora">{{$hora}}</span> horas del día <span class="noeditable fecha">{{$fecha}}</span>
                     , ante la presencia de la C. licenciada <span class="noeditable fiscal">{{$fiscal}}</span>, Fiscal Sexta Orientadora de la Unidad de Atención Temprana del 
                     XI Distrito Judicial de Xalapa, Veracruz, se presenta el C. <span class="noeditable nombre">{{$nombre}}</span>, identificándose con <span class="noeditable identificacion">{{$identificacion}}</span> CON NÚMERO 
@@ -160,7 +161,7 @@
         </tr>
         <tr class="font13">
             <td>
-                <div >
+                <div class="justificado">
                     Circuito Rafael Guízar y <br>
                     Valencia No. 147, <br>
                     Colonia Reserva Territorial, <br>
@@ -217,13 +218,14 @@ $("#imprimir").click(function(){
     $(".edad").text("{{$edad}}");
     $.ajax({
 		type: "GET",
-		url: "../getToken",
+		url: "../getToken/{{$id}}",
 		success: function(data) {
             $(".num").text(data);
             var parametros = {
                 "html" : $(".editable").html(),
                 "tipo" : 'actas_hechos',
-                "id_tipo": {{$id}}
+                "id_tipo": {{$id}},
+                "token": data
             };
             $.ajax({
                 headers: {
@@ -234,9 +236,9 @@ $("#imprimir").click(function(){
                 data:  parametros,
                 success: function(data) {
                     window.print();
+                    $(".num").text('');
                 }
             });
-            $(".num").text('');
         }
 	});
 })

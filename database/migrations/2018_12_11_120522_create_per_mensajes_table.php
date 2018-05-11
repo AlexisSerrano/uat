@@ -13,9 +13,9 @@ class CreatePerMensajesTable extends Migration
      */
     public function up()
     {
-        Schema::create('per_mensajes', function (Blueprint $table) {
+        Schema::connection('formatos')->create('per_mensajes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idCarpeta')->unsigned();
+            $table->integer('idCarpeta');
             $table->string('nombre',200);
             $table->string('marca');
             $table->string('imei');
@@ -23,7 +23,7 @@ class CreatePerMensajesTable extends Migration
             $table->string('telefono',15);
             $table->string('telefono_destino',15);
             $table->string('narracion',300);
-            $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
+            // $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
             // $table->foreign('idPersona')->references('id')->on('persona');
             $table->timestamps();
         });

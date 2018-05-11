@@ -35,12 +35,17 @@ Route::get('/pruebasconsulta', function(){
     return view('tables.consulta-actas');
     
     });
-    Route::get('/pruebaslibro', function(){
+    Route::get('/formatos-pruebas', function(){
         return view('tables.formatos');
         });
+        Route::get('/turnos-pruebas', function(){
+            return view('tables.consulta-turnos');
+            });
+
         Route::get('/pruebasformatos', function(){
             return view('tables.formatos');
             });
+            
         Route::get('/pruebasactas','PruebasController@actas');
         
     
@@ -231,5 +236,6 @@ Route::get('periciales','pericialesController@pericialesindex');
 Route::post('periciales/agregar','pericialesController@agregar')->name('store.agregar');
 
 /* --------Ruta para obtener token oficios----------- */
-Route::get('getToken','ActasHechosController@getToken')->name('getToken');
+Route::get('getToken/{id}','ActasHechosController@getToken')->name('getToken');
 Route::get('oficioah/{id}','ActasHechosController@getoficioah')->name('oficioah');
+Route::post('saveOficio','ActasHechosController@saveOficio')->name('saveOficio');
