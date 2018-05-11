@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ConNotificacion extends Model
 {
     protected $connection = 'uipj';
-    protected $table = 'dirNotificacion';
+    protected $table = 'notificacion';
 
     protected $fillable = [
         'id', 'idDomicilio', 'correo', 'telefono', 'fax',
