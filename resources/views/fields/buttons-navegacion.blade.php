@@ -1,17 +1,23 @@
 @php
 $barra = getNavCaso();
 @endphp
+<style>
+	.badge-info {
+    color: #0a0a0a;
+    background-color: #dda61d;
+}
+</style>
 <div class="btn-group col">
-	<a href="{{route('new.denunciante')}}" class="{{$barra['denunciante']}} form-control">Denunciante {{$barra['cdenunciante']}}</a>
-	<a href="{{route('new.denunciado')}}" class="{{$barra['denunciado']}} form-control">Denunciado {{$barra['cdenunciado']}}</a>
-	<a href="{{route('new.abogado')}}" class="{{$barra['abogado']}} form-control">Abogado {{$barra['cabogado']}}</a>
-	<a href="{{route('new.autoridad')}}"  class="{{$barra['autoridad']}} form-control">Autoridad {{$barra['cautoridad']}}</a>
-	<a href="{{route('new.delito')}}" class="{{$barra['delitos']}} form-control">Delitos {{$barra['cdelitos']}}</a>
-	<a href="{{route('new.acusacion')}}" class="{{$barra['acusaciones']}} form-control">Acusaciones {{$barra['cacusaciones']}}</a>
-	<a href="{{route('new.defensa')}}"  class="{{$barra['defensa']}} form-control">Defensa {{$barra['cdefensa']}}</a>
-    <a href="{{route('descripcionHechos')}}" class="{{$barra['hechos']}} form-control">Descripción de hechos</a>
+	<a href="{{route('new.denunciante')}}" class="{{$barra['denunciante']}} form-control">Denunciante <span class="badge badge-info right">{{$barra['cdenunciante']}}</span></a>
+	<a href="{{route('new.denunciado')}}" class="{{$barra['denunciado']}} form-control">Denunciado <span class="badge badge-info right">{{$barra['cdenunciado']}}</span></a>
+	<a href="{{route('new.abogado')}}" class="{{$barra['abogado']}} form-control">Abogado <span class="badge badge-info right">{{$barra['cabogado']}}</span></a>
+	<a href="{{route('new.autoridad')}}"  class="{{$barra['autoridad']}} form-control">Autoridad <span class="badge badge-info right">{{$barra['cautoridad']}}</span></a>
+	<a href="{{route('new.delito')}}" class="{{$barra['delitos']}} form-control">Delitos <span class="badge badge-info right">{{$barra['cdelitos']}}</span></a>
+	<a href="{{route('new.acusacion')}}" class="{{$barra['acusaciones']}} form-control">Acusaciones <span class="badge badge-info right">{{$barra['cacusaciones']}}</span></a>
+	<a href="{{route('new.defensa')}}"  class="{{$barra['defensa']}} form-control">Defensa <span class="badge badge-info right">{{$barra['cdefensa']}}</span></a>
+    <a href="{{route('descripcionHechos')}}" class="{{$barra['hechos']}} form-control">Descripción de hechos </a>
     {{-- <a href="{{route('descripcionHechos')}}" class="{{$barra['hechos']}} form-control">Descripción de hechos {{$barra['chechos']}}</a> --}}
-	{{-- <a href="{{url('medidas')}}" class="{{$barra['medidas']}} form-control">Medidas de protección {{$barra['cmedidas']}}</a> --}}
+	{{-- <a href="{{url('medidas')}}" class="{{$barra['medidas']}} form-control" <span class="badge badge-info right">>Medidas de protección {{$barra['cmedidas']}}</a> --}}
 	<a href="{{url('terminar')}}" class="form-control btn btn-secondary">Terminar</a>
 </div>
  

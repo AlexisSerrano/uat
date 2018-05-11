@@ -278,5 +278,10 @@ form .form-control:focus {
 	text-transform:uppercase; 
   }
 
+  .badge-info {
+    color: #0a0a0a;
+    background-color: #dda61d;
+}
+
 
    
