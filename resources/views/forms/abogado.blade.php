@@ -3,6 +3,7 @@
 @section('title', 'Agregar Abogado')
 @section('content')
 	@include('fields.buttons-navegacion')
+	@include('fields.botonborrar')
 	@include('fields.errores')
 	
     {!! Form::open(['route' => 'store.abogado', 'method' => 'POST', 'id'=>'form'])  !!}
@@ -82,6 +83,7 @@
 @push('scripts')
 	<script src="{{ asset('js/selectsDirecciones.js') }}"></script>
 	<script src="{{ asset('js/siguientes.js') }}"></script>
+	<script src="{{ asset('js/borrar.js') }}"></script>
 	<script>
 		$('#irtrabajo').click(function(){
 			$('.nav-link').removeClass("active");//Quito la clase active al tab actual

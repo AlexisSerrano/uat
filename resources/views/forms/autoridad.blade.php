@@ -3,6 +3,7 @@
 @section('title', 'Agregar Autoridad')
 @section('content')
 @include('fields.buttons-navegacion')
+@include('fields.botonborrar')
 @include('fields.errores')
 {!! Form::open(['route' => 'store.autoridad', 'method' => 'POST', 'id'=>'form'])  !!}
 <br>
@@ -94,6 +95,7 @@
 	<script src="{{ asset('js/siguientes.js') }}"></script>
 	<script src="{{ asset('js/rfcFisico-f.js') }}"></script>
 	<script src="{{ asset('js/curp-f.js') }}"></script>
+	<script src="{{ asset('js/borrar.js') }}"></script>
 	<script>
 
 		$('#irdireccion').click(function(){

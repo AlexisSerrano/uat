@@ -45,25 +45,19 @@ class AbogadoController extends Controller
         DB::beginTransaction();
         try{
             //dd($request->all());
-            $comprobarPersona=Persona::where('curp',$request->curp)->get();
-            if(count($comprobarPersona)>0){
-                $comprobarPersona=$comprobarPersona[0];
-                $idPersona = $comprobarPersona->id;
-            }else{
-                $persona = new Persona();
-                $persona->nombres = $request->nombres;
-                $persona->primerAp = $request->primerAp;
-                $persona->segundoAp = $request->segundoAp;
-                $persona->fechaNacimiento = $request->fechaNacimiento;
-                $persona->rfc = $request->rfc . $request->homo;
-                $persona->sexo = $request->sexo;
-                $persona->idNacionalidad = 1;
-                $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
-                
-                $persona->save();
-                $idPersona = $persona->id;
-            }
-
+            $persona = new Persona();
+            $persona->nombres = $request->nombres;
+            $persona->primerAp = $request->primerAp;
+            $persona->segundoAp = $request->segundoAp;
+            $persona->fechaNacimiento = $request->fechaNacimiento;
+            $persona->rfc = $request->rfc . $request->homo;
+            $persona->sexo = $request->sexo;
+            $persona->idNacionalidad = 1;
+            $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
+            
+            $persona->save();
+            $idPersona = $persona->id;
+        
             $domicilio2 = new Domicilio();
             $domicilio2->idMunicipio = $request->idMunicipio2;
             $domicilio2->idLocalidad = $request->idLocalidad2;

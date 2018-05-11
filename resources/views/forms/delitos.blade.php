@@ -5,6 +5,7 @@
 @section('content')
 @include('fields.errores')
 	@include('fields.buttons-navegacion')
+	@include('fields.botonborrar')
     {!! Form::open(['route' => 'store.delito', 'method' => 'POST', 'id'=>'form'])  !!}
 	<br>
 	<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -54,6 +55,7 @@
 @push('scripts')
 	<script src="{{ asset('js/selectsDirecciones.js') }}"></script>
 	<script src="{{ asset('js/siguientes.js') }}"></script>
+	<script src="{{ asset('js/borrar.js') }}"></script>
 	<script>
 		// $('.irdirdelito').click(function(){
 			

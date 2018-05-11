@@ -36,8 +36,11 @@ Route::get('/pruebasconsulta', function(){
     
     });
     Route::get('/pruebaslibro', function(){
-        return view('forms.libro-gobierno');
+        return view('tables.formatos');
         });
+        Route::get('/pruebasformatos', function(){
+            return view('tables.formatos');
+            });
         Route::get('/pruebasactas','PruebasController@actas');
         
     
@@ -57,12 +60,12 @@ Route::get('FormatoRegistro/{id}', 'PdfController@datos');
 
 /************Rutas para formulario de solicitante/victima/denunciante*************/
 Route::get('/crear-caso', 'CarpetaController@crearCaso')->name('inicio');
+Route::get('cancelar-caso', 'CarpetaController@cancelarCaso')->name('cancelar.caso');
 Route::get('terminar', 'CarpetaController@terminar')->name('terminar');
 //Route::post('storecarpeta', 'CarpetaController@storeCarpeta')->name('store.carpeta');
 //Route::get('/carpeta-inicial/{id}', 'CarpetaController@index')->name('carpeta');
 
 Route::get('agregar-denunciante', 'DenuncianteController@showForm')->name('new.denunciante');
-Route::get('cancelar-caso', 'DenuncianteController@cancelarCaso')->name('cancelar.caso');
 Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name('store.denunciante');
 Route::get('agregar-denunciante/{id}/eliminar', 'DenuncianteController@delete')->name('delete.denunciante');
 Route::get('/atender/{id}', 'PreregistroAuxController@atender');
@@ -96,6 +99,9 @@ Route::post('/predenuncias/{id}/update', 'PreregistroAuxController@update')->nam
 Route::get('/preregistroWeb/pre-auxiliar', 'PreregistroAuxController@create'); //ver formulario
 Route::post('/preregistroWeb', 'PreregistroAuxController@store'); //registar
 
+/*-----------------descripcion de Hechos------------------------------*/
+Route::get('descripcionHechos', 'NarracionController@descripcionHechos')->name('descripcionHechos');
+Route::post('storeDescripcionHechos', 'NarracionController@storeDescripcionHechos')->name('store.descripcionHechos');
 /*---------Rutas narración-------------*/
 Route::get('narracion', 'NarracionController@index')->name('narracion');
 Route::post('addnarracion', 'NarracionController@addNarracion');

@@ -180,9 +180,9 @@
 						</a>
 					</li>
 					<li class="nav-item has-treeview">
-						 <button class="nav-link btn-reset" ></button>
-							<i class="nav-icon  fa fa-eraser"></i>
-							<p>Limpiar campos</p>
+					<a href="{{url('pruebaslibro')}}" class="nav-link">
+							<i class="nav-icon  fa fa-print"></i>
+							<p>Formatos</p>
 						</a>
 					</li>
 
