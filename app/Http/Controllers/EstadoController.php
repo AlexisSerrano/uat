@@ -85,29 +85,11 @@ class EstadoController extends Controller
             if ($request->EstadoCarpeta==3) {
                 //datos de la carpeta
                 $carpeta=Carpeta::where('id',$idCarpeta)->first();
-                //dd($carpeta);
-                if (count($carpeta)!=null) {
-                    $concarpeta= new ConCarpeta;
-                    $concarpeta->idUnidad = 11;
-                    $concarpeta->fechaInicio = $carpeta->fechaInicio;
-                    $concarpeta->conDetenido = $carpeta->conDetenido;
-                    $concarpeta->esRelevante = $carpeta->esRelevante;
-                    $concarpeta->idEstadoCarpeta = $carpeta->idEstadoCarpeta;
-                    $concarpeta->horaIntervencion = $carpeta->horaIntervencion;
-                    $concarpeta->npd = $carpeta->npd;
-                    $concarpeta->fechaIph = $carpeta->fechaIph;
-                    $concarpeta->numIph = $carpeta->numIph;
-                    $concarpeta->narracionIph = $carpeta->narracionIph;
-                    $concarpeta->descripcionHechos = $carpeta->descripcionHechos;
-                    $concarpeta->nombreFiscalUat = 'XXXXXXXXXXXXXXX XXXXXXXXXXX XXXXXXXXXXXXXXx';
-                    $concarpeta->numCarpetaUat = $carpeta->numCarpeta;
-                    $concarpeta->asignada = 0;
-                    $concarpeta->observacionesEstatus = $carpeta->observacionesEstatus;
-                    $concarpeta->save();
-                    $idCarpetaTurnada=$concarpeta->id;
-                    //dd($concarpeta);
-                }
-                
+
+                //datos del delitos
+                $delitos=TipifDelito::where('idCarpeta',$idCarpeta)->get();
+
+
                 //datos de autoridades
 
                 $autoridades=DB::table('extra_autoridad')
@@ -134,6 +116,165 @@ class EstadoController extends Controller
                             'extra_autoridad.narracion as autonarracion')
                 ->get();
                 //dd($autoridades);
+
+                //abogados
+
+                $abogados=DB::table('extra_abogado')
+                ->join('variables_persona','variables_persona.id','=','extra_abogado.idVariablesPersona')
+                ->where('variables_persona.idCarpeta',$idCarpeta)
+                ->select(   'variables_persona.idPersona as variaidPersona',
+                            'variables_persona.edad as variaedad',
+                            'variables_persona.telefono as variatelefono',
+                            'variables_persona.motivoEstancia as variamotivoEstancia',
+                            'variables_persona.idOcupacion as variaidOcupacion',
+                            'variables_persona.idEstadoCivil as variaidEstadoCivil',
+                            'variables_persona.idEscolaridad as variaidEscolaridad',
+                            'variables_persona.idReligion as variaidReligion',
+                            'variables_persona.idDomicilio as variaidDomicilio',
+                            'variables_persona.docIdentificacion as variadocIdentificacion',
+                            'variables_persona.numDocIdentificacion as varianumDocIdentificacion',
+                            'variables_persona.lugarTrabajo as varialugarTrabajo',
+                            'variables_persona.idDomicilioTrabajo as variaidDomicilioTrabajo',
+                            'variables_persona.telefonoTrabajo as variatelefonoTrabajo',
+                            'variables_persona.representanteLegal as variarepresentanteLegal',
+                            'extra_abogado.id as aboid',
+                            'extra_abogado.cedulaProf as abocedulaProf',
+                            'extra_abogado.sector as abosector',
+                            'extra_abogado.correo as abocorreo',
+                            'extra_abogado.tipo as abotipo')
+                ->get();
+                //dd($abogados);
+                
+                $denunciados=DB::table('extra_denunciado')
+                ->join('dirNotificacion','dirNotificacion.id','=','extra_denunciado.idNotificacion')
+                ->join('variables_persona','variables_persona.id','=','extra_denunciado.idVariablesPersona')
+                ->where('variables_persona.idCarpeta',$idCarpeta)
+                ->select(   'variables_persona.idPersona as variaidPersona',
+                            'variables_persona.edad as variaedad',
+                            'variables_persona.telefono as variatelefono',
+                            'variables_persona.motivoEstancia as variamotivoEstancia',
+                            'variables_persona.idOcupacion as variaidOcupacion',
+                            'variables_persona.idEstadoCivil as variaidEstadoCivil',
+                            'variables_persona.idEscolaridad as variaidEscolaridad',
+                            'variables_persona.idReligion as variaidReligion',
+                            'variables_persona.idDomicilio as variaidDomicilio',
+                            'variables_persona.docIdentificacion as variadocIdentificacion',
+                            'variables_persona.numDocIdentificacion as varianumDocIdentificacion',
+                            'variables_persona.lugarTrabajo as varialugarTrabajo',
+                            'variables_persona.idDomicilioTrabajo as variaidDomicilioTrabajo',
+                            'variables_persona.telefonoTrabajo as variatelefonoTrabajo',
+                            'variables_persona.representanteLegal as variarepresentanteLegal',
+                            'extra_denunciado.id as denunciadoid',
+                            'extra_denunciado.idPuesto as denunciadoidPuesto',
+                            'extra_denunciado.alias as denunciadoalias',
+                            'extra_denunciado.senasPartic as denunciadosenasPartic',
+                            'extra_denunciado.ingreso as denunciadoingreso',
+                            'extra_denunciado.periodoIngreso as denunciadoperiodoIngreso',
+                            'extra_denunciado.residenciaAnterior as denunciadoresidenciaAnterior',
+                            'extra_denunciado.idAbogado as denunciadoidAbogado',
+                            'extra_denunciado.personasBajoSuGuarda as denunciadopersonasBajoSuGuarda',
+                            'extra_denunciado.perseguidoPenalmente as denunciadoperseguidoPenalmente',
+                            'extra_denunciado.vestimenta as denunciadovestimenta',
+                            'extra_denunciado.narracion as denunciadonarracion',
+                            'dirnotificacion.idDomicilio as notifiidDomicilio',
+                            'dirnotificacion.correo as notificorreo',
+                            'dirnotificacion.telefono as notifitelefono',
+                            'dirnotificacion.fax as notififax')
+                ->get();
+                //dd($denunciados);
+
+                $denunciantes=DB::table('extra_denunciante')
+                ->join('dirNotificacion','dirNotificacion.id','=','extra_denunciante.idNotificacion')
+                ->join('variables_persona','variables_persona.id','=','extra_denunciante.idVariablesPersona')
+                ->where('variables_persona.idCarpeta',$idCarpeta)
+                ->select(   'variables_persona.idPersona as variaidPersona',
+                            'variables_persona.edad as variaedad',
+                            'variables_persona.telefono as variatelefono',
+                            'variables_persona.motivoEstancia as variamotivoEstancia',
+                            'variables_persona.idOcupacion as variaidOcupacion',
+                            'variables_persona.idEstadoCivil as variaidEstadoCivil',
+                            'variables_persona.idEscolaridad as variaidEscolaridad',
+                            'variables_persona.idReligion as variaidReligion',
+                            'variables_persona.idDomicilio as variaidDomicilio',
+                            'variables_persona.docIdentificacion as variadocIdentificacion',
+                            'variables_persona.numDocIdentificacion as varianumDocIdentificacion',
+                            'variables_persona.lugarTrabajo as varialugarTrabajo',
+                            'variables_persona.idDomicilioTrabajo as variaidDomicilioTrabajo',
+                            'variables_persona.telefonoTrabajo as variatelefonoTrabajo',
+                            'variables_persona.representanteLegal as variarepresentanteLegal',
+                            'extra_denunciante.id as denuncianteid',
+                            'extra_denunciante.idNotificacion as denuncianteidNotificacion',
+                            'extra_denunciante.idAbogado as denuncianteidAbogado',
+                            'extra_denunciante.reguardarIdentidad as denunciantereguardarIdentidad',
+                            'extra_denunciante.victima as denunciantevictima',
+                            'extra_denunciante.narracion as denunciantenarracion',
+                            'dirnotificacion.idDomicilio as notifiidDomicilio',
+                            'dirnotificacion.correo as notificorreo',
+                            'dirnotificacion.telefono as notifitelefono',
+                            'dirnotificacion.fax as notififax')
+                ->get();
+                //dd($abogados);
+
+                $acusaciones=Acusacion::where('idCarpeta',$idCarpeta)->get();
+                //dd($acusaciones);
+                
+                //dd($carpeta);
+                if (count($carpeta)!=null) {
+                    $concarpeta= new ConCarpeta;
+                    $concarpeta->idUnidad = 11;
+                    $concarpeta->fechaInicio = $carpeta->fechaInicio;
+                    $concarpeta->conDetenido = $carpeta->conDetenido;
+                    $concarpeta->esRelevante = $carpeta->esRelevante;
+                    $concarpeta->idEstadoCarpeta = $carpeta->idEstadoCarpeta;
+                    $concarpeta->horaIntervencion = $carpeta->horaIntervencion;
+                    $concarpeta->npd = $carpeta->npd;
+                    $concarpeta->fechaIph = $carpeta->fechaIph;
+                    $concarpeta->numIph = $carpeta->numIph;
+                    $concarpeta->narracionIph = $carpeta->narracionIph;
+                    $concarpeta->descripcionHechos = $carpeta->descripcionHechos;
+                    $concarpeta->nombreFiscalUat = 'XXXXXXXXXXXXXXX XXXXXXXXXXX XXXXXXXXXXXXXXx';
+                    $concarpeta->numCarpetaUat = $carpeta->numCarpeta;
+                    $concarpeta->asignada = 0;
+                    $concarpeta->observacionesEstatus = $carpeta->observacionesEstatus;
+                    $concarpeta->save();
+                    $idCarpetaTurnada=$concarpeta->id;
+                    //dd($concarpeta);
+                }
+            
+                
+            
+                // dd($delitos);
+
+                if (count($delitos)!=null) {
+                    $arraydelitos=array();
+                    foreach ($delitos as $delito) {
+                        $condelito = new ConTipifDelito;
+                        $condelito->idCarpeta = $idCarpetaTurnada;
+                        $condelito->idDelito = $delito->idDelito;
+                        $condelito->idAgrupacion1 = $delito->idAgrupacion1;
+                        $condelito->idAgrupacion2 = $delito->idAgrupacion2;
+                        $condelito->conViolencia = $delito->conViolencia;
+                        $condelito->idArma = 1;
+                        $condelito->consumacion = 'SIN INFORMACION';
+                        $condelito->idPosibleCausa = 1;
+                        $condelito->idModalidad = 1;
+                        $condelito->formaComision = $delito->formaComision;
+                        $condelito->fecha = $delito->fecha;
+                        $condelito->hora = $delito->hora;
+                        $condelito->idZona = $delito->idLugar;
+                        $condelito->idLugar = $delito->idZona;
+                        $condelito->idDomicilio = $delito->idDomicilio;
+                        $condelito->entreCalle = $delito->entreCalle;
+                        $condelito->yCalle = $delito->yCalle;
+                        $condelito->calleTrasera = $delito->calleTrasera;
+                        $condelito->puntoReferencia = $delito->puntoReferencia;
+                        $condelito->save();
+                        array_push($arraydelitos,array('iduat'=>$delito->id,'idnuevo'=>$condelito->id));
+                        // dd($arraydelitos);
+                    }
+                }
+
+
 
                 if (count($autoridades)!=null) {
                     foreach ($autoridades as $autoridad) {
@@ -164,39 +305,25 @@ class EstadoController extends Controller
                         $conautoridad->horarioLaboral = $autoridad->autohorarioLaboral;
                         //$conautoridad->narracion = $autoridad->autonarracion;
                         $conautoridad->save();
+                        $idextraauto=$conautoridad->id;
                         //dd($conautoridad);
                         
+                        $narracion=DB::connection('uipj')->table('narracion')->insert([
+                            'idInvolucrado'=>$idextraauto,
+                            'idCarpeta'=>$idCarpetaTurnada,
+                            'tipoInvolucrado'=>3,
+                            'narracion'=>$autoridad->autonarracion
+                        ]);
+                        //$narracion->save();
+                        //dd($narracion->id);
 
                     }
                 }
-                
+
                 //datos de abogados
                 
-                $abogados=DB::table('extra_abogado')
-                ->join('variables_persona','variables_persona.id','=','extra_abogado.idVariablesPersona')
-                ->where('variables_persona.idCarpeta',$idCarpeta)
-                ->select(   'variables_persona.idPersona as variaidPersona',
-                            'variables_persona.edad as variaedad',
-                            'variables_persona.telefono as variatelefono',
-                            'variables_persona.motivoEstancia as variamotivoEstancia',
-                            'variables_persona.idOcupacion as variaidOcupacion',
-                            'variables_persona.idEstadoCivil as variaidEstadoCivil',
-                            'variables_persona.idEscolaridad as variaidEscolaridad',
-                            'variables_persona.idReligion as variaidReligion',
-                            'variables_persona.idDomicilio as variaidDomicilio',
-                            'variables_persona.docIdentificacion as variadocIdentificacion',
-                            'variables_persona.numDocIdentificacion as varianumDocIdentificacion',
-                            'variables_persona.lugarTrabajo as varialugarTrabajo',
-                            'variables_persona.idDomicilioTrabajo as variaidDomicilioTrabajo',
-                            'variables_persona.telefonoTrabajo as variatelefonoTrabajo',
-                            'variables_persona.representanteLegal as variarepresentanteLegal',
-                            'extra_abogado.cedulaProf as abocedulaProf',
-                            'extra_abogado.sector as abosector',
-                            'extra_abogado.correo as abocorreo',
-                            'extra_abogado.tipo as abotipo')
-                ->get();
-                //dd($abogados);
 
+                
                 if (count($abogados)!=null) {
                     foreach ($abogados as $abogado) {
                         $convariables = new ConVariablesPersona;
@@ -234,43 +361,9 @@ class EstadoController extends Controller
                 
                 /****DATOS DEL DENUNCIADO******/
 
-                $denunciados=DB::table('extra_denunciado')
-                ->join('dirNotificacion','dirNotificacion.id','=','extra_denunciado.idNotificacion')
-                ->join('variables_persona','variables_persona.id','=','extra_denunciado.idVariablesPersona')
-                ->where('variables_persona.idCarpeta',$idCarpeta)
-                ->select(   'variables_persona.idPersona as variaidPersona',
-                            'variables_persona.edad as variaedad',
-                            'variables_persona.telefono as variatelefono',
-                            'variables_persona.motivoEstancia as variamotivoEstancia',
-                            'variables_persona.idOcupacion as variaidOcupacion',
-                            'variables_persona.idEstadoCivil as variaidEstadoCivil',
-                            'variables_persona.idEscolaridad as variaidEscolaridad',
-                            'variables_persona.idReligion as variaidReligion',
-                            'variables_persona.idDomicilio as variaidDomicilio',
-                            'variables_persona.docIdentificacion as variadocIdentificacion',
-                            'variables_persona.numDocIdentificacion as varianumDocIdentificacion',
-                            'variables_persona.lugarTrabajo as varialugarTrabajo',
-                            'variables_persona.idDomicilioTrabajo as variaidDomicilioTrabajo',
-                            'variables_persona.telefonoTrabajo as variatelefonoTrabajo',
-                            'variables_persona.representanteLegal as variarepresentanteLegal',
-                            'extra_denunciado.idPuesto as denunciadoidPuesto',
-                            'extra_denunciado.alias as denunciadoalias',
-                            'extra_denunciado.senasPartic as denunciadosenasPartic',
-                            'extra_denunciado.ingreso as denunciadoingreso',
-                            'extra_denunciado.periodoIngreso as denunciadoperiodoIngreso',
-                            'extra_denunciado.residenciaAnterior as denunciadoresidenciaAnterior',
-                            'extra_denunciado.idAbogado as denunciadoidAbogado',
-                            'extra_denunciado.personasBajoSuGuarda as denunciadopersonasBajoSuGuarda',
-                            'extra_denunciado.perseguidoPenalmente as denunciadoperseguidoPenalmente',
-                            'extra_denunciado.vestimenta as denunciadovestimenta',
-                            'dirnotificacion.idDomicilio as notifiidDomicilio',
-                            'dirnotificacion.correo as notificorreo',
-                            'dirnotificacion.telefono as notifitelefono',
-                            'dirnotificacion.fax as notififax')
-                ->get();
-                //dd($abogados);
 
                 if (count($denunciados)!=null) {
+                    $arraydenunciado=array();
                     foreach ($denunciados as $denunciado) {
                         $convariables = new ConVariablesPersona;
                         $convariables->idCarpeta = $idCarpetaTurnada;
@@ -314,45 +407,28 @@ class EstadoController extends Controller
                         $condenunciado->perseguidoPenalmente = $denunciado->denunciadoperseguidoPenalmente;
                         $condenunciado->vestimenta = $denunciado->denunciadovestimenta;
                         $condenunciado->save();
+                        $idextra=$condenunciado->id;
                         //dd($condenunciado);
+                        $narracion=DB::connection('uipj')->table('narracion')->insert([
+                            'idInvolucrado'=>$idextra,
+                            'idCarpeta'=>$idCarpetaTurnada,
+                            'tipoInvolucrado'=>2,
+                            'narracion'=>$denunciado->denunciadonarracion
+                        ]);
+                        //$narracion->save();
+                        //dd($narracion->id);
+                        array_push($arraydenunciado,array('iduat'=>$denunciado->denunciadoid,'idnuevo'=>$condenunciado->id));
                         
+                        //dd($arraydenunciado);
 
                     }
                 }
                 
                 /****DATOS DEL DENUNCIANTE******/
 
-                $denunciantes=DB::table('extra_denunciante')
-                ->join('dirNotificacion','dirNotificacion.id','=','extra_denunciante.idNotificacion')
-                ->join('variables_persona','variables_persona.id','=','extra_denunciante.idVariablesPersona')
-                ->where('variables_persona.idCarpeta',$idCarpeta)
-                ->select(   'variables_persona.idPersona as variaidPersona',
-                            'variables_persona.edad as variaedad',
-                            'variables_persona.telefono as variatelefono',
-                            'variables_persona.motivoEstancia as variamotivoEstancia',
-                            'variables_persona.idOcupacion as variaidOcupacion',
-                            'variables_persona.idEstadoCivil as variaidEstadoCivil',
-                            'variables_persona.idEscolaridad as variaidEscolaridad',
-                            'variables_persona.idReligion as variaidReligion',
-                            'variables_persona.idDomicilio as variaidDomicilio',
-                            'variables_persona.docIdentificacion as variadocIdentificacion',
-                            'variables_persona.numDocIdentificacion as varianumDocIdentificacion',
-                            'variables_persona.lugarTrabajo as varialugarTrabajo',
-                            'variables_persona.idDomicilioTrabajo as variaidDomicilioTrabajo',
-                            'variables_persona.telefonoTrabajo as variatelefonoTrabajo',
-                            'variables_persona.representanteLegal as variarepresentanteLegal',
-                            'extra_denunciante.idNotificacion as denuncianteidNotificacion',
-                            'extra_denunciante.idAbogado as denuncianteidAbogado',
-                            'extra_denunciante.reguardarIdentidad as denunciantereguardarIdentidad',
-                            'extra_denunciante.victima as denunciantevictima',
-                            'dirnotificacion.idDomicilio as notifiidDomicilio',
-                            'dirnotificacion.correo as notificorreo',
-                            'dirnotificacion.telefono as notifitelefono',
-                            'dirnotificacion.fax as notififax')
-                ->get();
-                //dd($abogados);
-
+                
                 if (count($denunciantes)!=null) {
+                    $arraydenunciante=array();
                     foreach ($denunciantes as $denunciante) {
                         $convariables = new ConVariablesPersona;
                         $convariables->idCarpeta = $idCarpetaTurnada;
@@ -386,15 +462,64 @@ class EstadoController extends Controller
                         $condenunciante->idVariablesPersona = $idvariablesabo;
                         $condenunciante->idNotificacion = $idnotificon;
                         $condenunciante->idAbogado = $denunciante->denuncianteidAbogado;
-                        $condenunciante->reguardarIdentidad = $denunciante->denunciantereguardarIdentidad;
-                        $condenunciante->victima = $denunciante->denunciantevictima;
+                        $condenunciante->identidadResguarda = $denunciante->denunciantereguardarIdentidad;
+                        $condenunciante->esVictima = $denunciante->denunciantevictima;
                         $condenunciante->save();
-                        dd($condenunciante);
-                        
+                        $idextra=$condenunciante->id;
+                        //dd($condenunciante);
 
+                        $narracion=DB::connection('uipj')->table('narracion')->insert([
+                            'idInvolucrado'=>$idextra,
+                            'idCarpeta'=>$idCarpetaTurnada,
+                            'tipoInvolucrado'=>1,
+                            'narracion'=>$denunciante->denunciantenarracion
+                        ]);
+                        array_push($arraydenunciante,array('iduat'=>$denunciante->denuncianteid,'idnuevo'=>$condenunciante->id));
+                        // dd($arraydenunciante);
                     }
+
                 }
                 
+                
+
+                foreach ($acusaciones as $acusacion) {
+                    $conacusacion= new ConAcusacion;
+                    $conacusacion->idCarpeta=$idCarpetaTurnada;
+                    for($cont=0; $cont<count($arraydelitos); $cont++){
+                        if($arraydelitos[$cont]['iduat'] == $acusacion->idTipifDelito){
+                            $conacusacion->idTipifDelito = $arraydelitos[$cont]['idnuevo'];
+                            break;
+                        }
+                    }
+                    for($cont=0; $cont<count($arraydenunciado); $cont++){
+                        if($arraydenunciado[$cont]['iduat'] == $acusacion->idDenunciado){
+                            $conacusacion->idDenunciado = $arraydenunciado[$cont]['idnuevo'];
+                            break;
+                        }
+                    }
+                    for($cont=0; $cont<count($arraydenunciante); $cont++){
+                        if($arraydenunciante[$cont]['iduat'] == $acusacion->idDenunciante){
+                            $conacusacion->idDenunciante = $arraydenunciante[$cont]['idnuevo'];
+                            break;
+                        }
+                    }
+                    $conacusacion->save();
+
+                
+                }
+                
+             
+                // $del = array();
+                // for($cont=1; $cont<=10; $cont++){
+                //     array_push($del, array('idViejo'=>$cont,'idNuevo'=>$cont));
+                // }
+                // //Para consultar
+                // for($cont=0; $cont<count($del); $cont++){
+                //     if($del[$cont]['idViejo'] == 5){
+                //         dump("hola".$cont);
+                //     }
+                // }
+                // dump($del);
             }
             // DB::commit();
             Alert::success('Registro modificado con exito','Hecho');

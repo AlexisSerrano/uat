@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ConTipifDelito extends Model
 {
+    protected $connection = 'uipj';
     public $table = 'tipif_delito';
 
     /**
@@ -21,10 +22,10 @@ class ConTipifDelito extends Model
         'idAgrupacion1',
         'idAgrupacion2',
         'conViolencia',
-        // 'idArma',
-        // 'idPosibleCausa',
+        'idArma',
+        'idPosibleCausa',
         'idModalidad',
-        // 'formaComision',
+        'formaComision',
         'fecha',
         'hora',
         'idZona',
