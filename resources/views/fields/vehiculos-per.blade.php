@@ -1,58 +1,58 @@
-{!! Form::open(['route' => 'store.agregar', 'method' => 'POST'])  !!} 
+{!! Form::open(['route' => 'store.vehiculo', 'method' => 'POST'])  !!} 
 <div class="row">
 	
 		<div class="col-4">
 				<div class="form-group">
-					{!! Form::label('marcat', 'Marca', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('marcat', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese marca del vehículo',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras']) !!}
+					{!! Form::label('marcav', 'Marca', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('marcav', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese marca del vehículo',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras']) !!}
 				</div>
 			</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('lineat', 'Línea', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('lineat', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese línea del vehículo',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'La marca del teléfono debe contener al menos dos letras']) !!}
+			{!! Form::label('lineav', 'Línea', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('lineav', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese línea del vehículo',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'La marca del teléfono debe contener al menos dos letras']) !!}
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('modelot', 'Modelo', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('modelot', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese modelo del vehículo', 'data-validation'=>'required']) !!}
+			{!! Form::label('modelov', 'Modelo', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('modelov', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese modelo del vehículo', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('colort', 'Color', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('colort', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese color del vehículo', 'data-validation'=>'required']) !!}
+			{!! Form::label('colorv', 'Color', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('colorv', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese color del vehículo', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('numeroseriet', 'Número de serie ', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numeroseriet', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el número de serie', 'data-validation'=>'required']) !!}
+			{!! Form::label('numeroseriev', 'Número de serie ', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('numeroseriev', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el número de serie', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('lugarFabt', 'Lugar de fabricacion del motor', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('lugarFabt', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese lugar de fabricación', 'data-validation'=>'required']) !!}
+			{!! Form::label('lugarFabvt', 'Lugar de fabricacion del motor', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('lugarFabv', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese lugar de fabricación', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('placat', 'Placas de circulación', ['class' => 'col-form-label-sm']) !!}		
-			{!! Form::text('placat', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese número de placas', 'data-validation'=>'required']) !!}   
+			{!! Form::label('placav', 'Placas de circulación', ['class' => 'col-form-label-sm']) !!}		
+			{!! Form::text('placav', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese número de placas', 'data-validation'=>'required']) !!}   
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('propietariot', 'Nombre completo del propietario', ['class' => 'col-form-label-sm']) !!}		
-			{!! Form::text('propietariot', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese nombre del propietario', 'data-validation'=>'required']) !!}   
+			{!! Form::label('propietariov', 'Nombre completo del propietario', ['class' => 'col-form-label-sm']) !!}		
+			{!! Form::text('propietariov', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese nombre del propietario', 'data-validation'=>'required']) !!}   
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('celulart', 'Número de celular', ['class' => 'col-form-label-sm']) !!}		
-			{!! Form::text('celulart', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese su número de celular ', 'data-validation'=>'required']) !!}   
+			{!! Form::label('celularv', 'Número de celular', ['class' => 'col-form-label-sm']) !!}		
+			{!! Form::text('celularv', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese su número de celular ', 'data-validation'=>'required']) !!}   
 		</div>
 	</div>
 	<div class="col-4">

@@ -1,13 +1,13 @@
-{!! Form::open(['route' => 'store.agregar', 'method' => 'POST'])  !!} 
+{!! Form::open(['route' => 'store.psicologo', 'method' => 'POST'])  !!} 
 <div class="row">
 	
 		<div class="col-4">
 				<div class="form-group">
-					{!! Form::label('nombret', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('nombret', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el Nombre',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras']) !!}
+					{!! Form::label('nombrep', 'Nombre', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('nombrep', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el Nombre',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras']) !!}
 				</div>
 			</div>
-	<div class="col-4">
+	{{-- <div class="col-4">
 		<div class="form-group">
 			{!! Form::label('marcat', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::text('marcat', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese apellido',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'La marca del teléfono debe contener al menos dos letras']) !!}
@@ -18,7 +18,7 @@
 			{!! Form::label('imeit', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::text('imeit', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese apellido', 'data-validation'=>'required']) !!}
 		</div>
-	</div>
+	</div> --}}
 	{{-- <div class="col-4">
 		<div class="form-group">
 			{!! Form::label('compat', 'Compañia Teléfonica', ['class' => 'col-form-label-sm']) !!}
@@ -28,8 +28,8 @@
 	
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('numerot', 'Número de teléfono', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numerot', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese número de teléfono', 'data-validation'=>'required']) !!}
+			{!! Form::label('numerop', 'Número de teléfono', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('numerop', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese número de teléfono', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
 	
@@ -60,7 +60,7 @@
 	
 </div>
 <div class="col text-right">
-	{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarPericiales'))!!}
+	{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarPsicologo'))!!}
 	
 </div>
 </div> 

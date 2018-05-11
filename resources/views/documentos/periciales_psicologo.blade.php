@@ -7,13 +7,78 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Document</title>
     <style>
-    @media print {
-        .impre {display:none}
+        *{
+            font-family: "NeoSans";
         }
-    @page 
-    {
-        size:  auto;   /* auto es el valor inicial */
-    }
+        body{
+            background-color: #F0F0F0;
+        }
+        .editable{
+            background-color: #ffffff;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid #E3E3E3;
+        }
+        .editable td{
+            padding: 10px;
+        }
+        .font16{
+            font-size: 16px;
+        }
+        .font14{
+            font-size: 14px;
+        }
+        .font13{
+            font-size: 13px;
+        }
+        .font10{
+            font-size: 10px;
+        }
+        .format1{
+            font-weight: bold;
+            font-style: italic;
+        }
+        .format2{
+            font-weight: bold;
+            text-align: center;
+            display: block;
+            margin-bottom: -15px;
+        }
+        .noeditable{
+            font-weight: bold;
+        }
+        .justificado{
+            margin-left: 50px;
+            margin-right: 50px;
+            text-align : justify;
+        }
+        .negritas{
+            font-weight: bold;
+        }
+        .padding td{
+            padding:20px;
+        }
+        #imprimir{
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .impre{
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        @media print {
+            .impre {display:none}
+            .editable{
+                border: none;
+                width: 100%;
+            }
+            }
+        @page 
+        {
+            size:  auto;   /* auto es el valor inicial */
+        }
     </style>
 </head>
 <body>
