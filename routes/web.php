@@ -214,7 +214,7 @@ Route::post('/folioActa', 'ActasHechosController@filtroActasPendientes')->name('
 /* --------Rutas para Libro de gobierno----------- */
 Route::get('libro','libroGobController@terminadas');
 Route::get('getCarpetas','libroGobController@getCarpetas');
-Route::get('carpetas','libroGobController@buscar');
+Route::get('carpetas','libroGobController@buscar')->name('indexcarpetas');
 route::get('buscarcarpeta/{id}','libroGobController@showForm');
 Route::post('carpetaNum','libroGobController@searchNumCarpeta')->name('filtro.carpetas');
 Route::post('libroGobierno','libroGobController@mostrarlibro')->name('libro.filtro');

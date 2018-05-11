@@ -42,12 +42,14 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('hora', 'Hora', ['class' => 'col-form-label-sm']) !!}
-			<div class="input-group date" id="horadelit" data-target-input="nearest">
+			{!! Form::time('hora', null, ['class' => 'delito form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadelit', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+				
+			{{-- <div class="input-group date" id="horadelit" data-target-input="nearest">
 				{!! Form::text('hora', null, ['class' => 'delito form-control form-control-sm datetimepicker-input', 'data-target' => '#horadelit', 'required', 'placeholder' => '00:00']) !!}
 				<div class="input-group-addon" data-target="#horadelit" data-toggle="datetimepicker">
 					<div class="input-group-text"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
 				</div>
-			</div>
+			</div> --}}
 		</div>
 	</div>
 	<div class="col-4">

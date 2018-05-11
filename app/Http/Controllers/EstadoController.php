@@ -325,6 +325,7 @@ class EstadoController extends Controller
 
                 
                 if (count($abogados)!=null) {
+                    $arrayabogados=array();
                     foreach ($abogados as $abogado) {
                         $convariables = new ConVariablesPersona;
                         $convariables->idCarpeta = $idCarpetaTurnada;
@@ -354,6 +355,7 @@ class EstadoController extends Controller
                         $conabogado->tipo = $abogado->abotipo;
                         $conabogado->save();
                         //dd($conabogado);
+                        array_push($arrayabogados,array('iduat'=>$abogado->aboid,'idnuevo'=>$conabogado->id));
                         
 
                     }
@@ -402,7 +404,12 @@ class EstadoController extends Controller
                         $condenunciado->ingreso = $denunciado->denunciadoingreso;
                         $condenunciado->periodoIngreso = $denunciado->denunciadoperiodoIngreso;
                         $condenunciado->residenciaAnterior = $denunciado->denunciadoresidenciaAnterior;
-                        $condenunciado->idAbogado = $denunciado->denunciadoidAbogado;
+                        for($cont=0; $cont<count($arrayabogados); $cont++){
+                            if($arrayabogados[$cont]['iduat'] == $denunciado->denunciadoidAbogado){
+                                $condenunciado->idAbogado = $arrayabogados[$cont]['idnuevo'];
+                                break;
+                            }
+                        }
                         $condenunciado->personasBajoSuGuarda = $denunciado->denunciadopersonasBajoSuGuarda;
                         $condenunciado->perseguidoPenalmente = $denunciado->denunciadoperseguidoPenalmente;
                         $condenunciado->vestimenta = $denunciado->denunciadovestimenta;
@@ -461,7 +468,12 @@ class EstadoController extends Controller
                         $condenunciante = new ConExtraDenunciante;
                         $condenunciante->idVariablesPersona = $idvariablesabo;
                         $condenunciante->idNotificacion = $idnotificon;
-                        $condenunciante->idAbogado = $denunciante->denuncianteidAbogado;
+                        for($cont=0; $cont<count($arrayabogados); $cont++){
+                            if($arrayabogados[$cont]['iduat'] == $denunciante->denuncianteidAbogado){
+                                $condenunciante->idAbogado = $arrayabogados[$cont]['idnuevo'];
+                                break;
+                            }
+                        }
                         $condenunciante->identidadResguarda = $denunciante->denunciantereguardarIdentidad;
                         $condenunciante->esVictima = $denunciante->denunciantevictima;
                         $condenunciante->save();
@@ -520,6 +532,8 @@ class EstadoController extends Controller
                 //     }
                 // }
                 // dump($del);
+                Alert::success('La carpeta con numero '.$carpeta->numCarpeta.' ha sido turnada con éxito','Hecho')->persistent('Aceptar');
+                return redirect(route('indexcarpetas'));
             }
             // DB::commit();
             Alert::success('Registro modificado con exito','Hecho');
