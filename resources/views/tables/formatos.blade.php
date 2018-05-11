@@ -27,7 +27,7 @@
                 <tr>
                     <td>Caratula de carpeta de información</td>
                     <td>01</td>
-                   <td><a href="" title="imprimir" class="btn btn-primary"><i class="fa fa-print"></i></a>
+                   <td><a href="{{ url('caratula')}}" title="imprimir" class="btn btn-primary"><i class="fa fa-print"></i></a>
                   
                 </td>                               
                 </tr>
