@@ -60,9 +60,9 @@
         lang : 'es'
     });
 
-    $('#form').sisyphus({
-        excludeFields: $( 'input[name=_token]')
-    });
+    // $('#form').sisyphus({
+    //     excludeFields: $( 'input[name=_token]')
+    // });
 
 
     toastr.options = {
