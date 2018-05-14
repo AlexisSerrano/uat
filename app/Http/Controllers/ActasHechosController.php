@@ -130,16 +130,16 @@ class ActasHechosController extends Controller
             $acta->narracion = $request->narracion;
             switch ($request->docIdentificacion) {
                 case 'CREDENCIAL PARA VOTAR':
-                $acta->expedido ="POR EL INEW";
+                $acta->expedido ="INSTITUTO NACIONAL ELECTORAL";
 
                 case 'PASAPORTE':
-                $acta->expedido ="INSTITUCION";
+                $acta->expedido ="SECRETARÍA DE RELACIONES EXTERIORES";
                 
                 case 'CEDULA PROFESIONAL':
-                $acta->expedido ="POR EL INEW";
+                $acta->expedido ="DIRECCIÓN GENERAL DE PROFESIONES";
 
                 case 'CARTILLA DEL SERVICIO MILITAR NACIONAL':
-                $acta->expedido ="INSTITUCION";
+                $acta->expedido ="SECRETARÍA DE LA DEFENSA NACIONAL";
                 
                 case 'TARJETA UNICA DE IDENTIDAD MILITAR':
                 $acta->expedido ="POR EL INEW";
