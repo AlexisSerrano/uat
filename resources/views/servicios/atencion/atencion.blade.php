@@ -8,19 +8,19 @@
             <div class="col-4">
                 <div class="form-group">
                     {!! Form::label('nombre', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-                    {!! Form::text('nombre', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' , 'data-validation-regexp'=>'^([A-Z]+)$']) !!}
+                    {!! Form::text('nombre', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' , 'data-validation-regexp'=>'^[A-Z Ñ.ÁÉÓÚÄËÏÖÜ\'-]*$']) !!}
                 </div>
             </div>
             <div class="col-4">
                 <div class="form-group">
                     {!! Form::label('primer_ap', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
-                    {!! Form::text('primer_ap', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido', 'data-validation'=>'custom' , 'data-validation-regexp'=>'^([A-Z]+)$']) !!}
+                    {!! Form::text('primer_ap', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido', 'data-validation'=>'custom' , 'data-validation-regexp'=>'^[A-Z Ñ.ÁÉÓÚÄËÏÖÜ\'-]*$']) !!}
                 </div>
             </div>
             <div class="col-4">
                 <div class="form-group">
                     {!! Form::label('segundo_ap', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
-                    {!! Form::text('segundo_ap', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'data-validation'=>'custom' , 'data-validation-regexp'=>'^([A-Z]+)$']) !!}
+                    {!! Form::text('segundo_ap', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'data-validation'=>'custom' , 'data-validation-regexp'=>'^[A-Z Ñ.ÁÉÓÚÄËÏÖÜ\'-]*$']) !!}
                 </div>
             </div>
             <div class="col-12">

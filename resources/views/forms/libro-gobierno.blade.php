@@ -8,10 +8,13 @@
         <h6 style="text-align:center">UNIDAD DE ATENCIÓN TEMPRANA DEL DISTRITO JUDICIAL</h6>
             <div class="table  table-hover table-responsive">
                 <div class="">
-                    {{ Form::open(['route' => ['libro.filtro'], 'method' => 'POST']) }}
-                    {{ Form::text('search', old('search'), array('placeholder'=>'Buscar..')) }}
-                    {{ Form::submit('Search') }}
-                    {{ Form::close() }}
+                        {{ Form::open(['route' => ['libro.filtro'], 'method' => 'POST']) }}
+                        <div class="input-group mb-3 col-2">
+                            {{ Form::text('search', old('search'), array('class'=>'form-control', 'placeholder'=>'Buscar..')) }}
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
                     <br>
                     <table id="tablaprovidencias" class="table-sm">
                         <thead class="table-active">
@@ -27,7 +30,7 @@
                             <th>Estatus</th>
                             <th>Resultado final</th>
                             <th>Oficio turno a fiscal de distrito</th>
-                            <th >Nuevo numero de carpeta UIPJ</th>
+                            <th >Nuevo número de carpeta UIPJ</th>
                         </thead>
                         <tbody>
                                 @if(count($carpterminadas)==0)

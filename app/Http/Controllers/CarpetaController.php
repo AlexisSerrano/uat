@@ -311,77 +311,13 @@ class CarpetaController extends Controller
         return $vehiculos;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function crearCaso(){
         $caso=session('carpeta');
         //dd($caso);
         if (is_null($caso)){   
             $caso = new Carpeta();
+            $caso->idFiscal = Auth::user()->id;
+            $caso->idUnidad = Auth::user()->idUnidad;
             $caso->fechaInicio = Carbon::now();
             $caso->horaIntervencion = Carbon::now();
             $caso->fechaDeterminacion = Carbon::now();
@@ -421,7 +357,10 @@ class CarpetaController extends Controller
                 $carpeta->idEstadoCarpeta = 1;
                 $carpeta->save();
                 $request->session()->forget('carpeta');
-                Alert::success('Caso terminado con éxito', 'Hecho');
+                if (session('preregistro')!=null) {
+                    $request->session()->forget('preretistro');
+                }
+                Alert::success('Carpeta iniciada con éxito se le ha asignado el numero de carpeta: '.$carpeta->numCarpeta, 'Hecho')->persistent('Aceptar');
                 return redirect('registros');
             }
             else{
