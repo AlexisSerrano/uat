@@ -98,7 +98,7 @@ class pericialesController extends Controller
             DB::beginTransaction();
             try{
                 $idCarpeta = session('carpeta');
-                $Psicologo = new Vehiculo;
+                $Psicologo = new Psicologo;
                 $Psicologo->idCarpeta = 1;
                 $Psicologo->nombre = $request->nombrep;
                 $Psicologo->numero = $request->numerop;
@@ -132,6 +132,45 @@ class pericialesController extends Controller
             }
         }
     
+        public function vehiculo(Request $request) {   
 
+            DB::beginTransaction();
+            try{
+                $idCarpeta = session('carpeta');
+                $Psicologo = new Vehiculo;
+                $Psicologo->idCarpeta = 1;
+                $Psicologo->nombre = $request->nombrep;
+                $Psicologo->numero = $request->numerop;
+                $Psicologo->fecha = $request->fecha_nac;
+               
+                if($Psicologo->save()){
+                    Alert::success('Registro guardado con éxito', 'Hecho');
+                    // $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+                    // $bdbitacora->medidas = $bdbitacora->medidas+1;
+                    // $bdbitacora->save();
+                }
+                else{
+                    Alert::error('Se presentó un problema al guardar el registro', 'Error');
+                }
+                DB::commit();
+    
+                // return redirect("home");
+                return view('documentos.periciales_psicologo')
+          
+                ->with('fecha',  $Psicologo->fecha  )
+                ->with('folio',   $Psicologo->idCarpeta)
+                ->with('numero',   $Psicologo->numero )
+                ->with('nombre',  $Psicologo->nombre )
+                ->with('fiscal',  "XXXXXXXXXXX" );
+        
+    
+            }catch (\PDOException $e){
+                DB::rollBack();
+                Alert::error('Se presentó un problema al guardar el registro, intente de nuevo', 'Error');
+                return back()->withInput();
+            }
+        }
 
+    
+    
     }
