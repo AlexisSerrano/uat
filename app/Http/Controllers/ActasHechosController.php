@@ -306,7 +306,8 @@ class ActasHechosController extends Controller
            $query
            ->orWhere(DB::raw("CONCAT(preregistros.nombre,' ',primerAp,' ',segundoAp)"), 'LIKE', '%' . $folio . '%')
            ->orWhere('representanteLegal', 'like', '%' . $folio . '%')
-           ->orWhere('tipoActa', 'like', '%' . $folio . '%');
+           ->orWhere('tipoActa', 'like', '%' . $folio . '%')
+           ->orWhere('folio', 'like', '%' . $folio . '%');
        })
        ->orderBy('id','desc')
        ->paginate(10);
