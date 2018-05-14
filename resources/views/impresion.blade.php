@@ -171,8 +171,8 @@
                 </div>
             </td>
             <td>
+                <div id="qr" style="text-align:center"></div>
                 <div class="num"></div>
-                <div id="qr"></div>
             </td>
         </tr>
     </table>
