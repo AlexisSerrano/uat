@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
 use Carbon\Carbon;
@@ -105,12 +106,13 @@ class libroGobController extends Controller
 
     public function buscar()
        {
+        //    dd(session());
         $carpetas = DB::table('carpeta')
         ->join('cat_estatus_casos','carpeta.idEstadoCarpeta','=','cat_estatus_casos.id')
         ->select('carpeta.id as id','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta','cat_estatus_casos.nombreEstatus as idEstadoCarpeta' )
-      // ->where('carpeta',$id)
+        ->where('idFiscal',Auth::user()->id)
       // ->orwhere()
-      ->paginate('15');
+        ->paginate('15');
         // dd($acusaciones);
         return view('tables.carpetasEnGral')->with('carpetas',$carpetas);
 

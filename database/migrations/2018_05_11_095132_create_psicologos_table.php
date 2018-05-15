@@ -31,6 +31,6 @@ class CreatePsicologosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('psicologos');
+        Schema::connection('formatos')->dropIfExists('psicologos');
     }
 }

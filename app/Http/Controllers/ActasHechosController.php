@@ -307,7 +307,8 @@ class ActasHechosController extends Controller
            $query
            ->orWhere(DB::raw("CONCAT(preregistros.nombre,' ',primerAp,' ',segundoAp)"), 'LIKE', '%' . $folio . '%')
            ->orWhere('representanteLegal', 'like', '%' . $folio . '%')
-           ->orWhere('tipoActa', 'like', '%' . $folio . '%');
+           ->orWhere('tipoActa', 'like', '%' . $folio . '%')
+           ->orWhere('folio', 'like', '%' . $folio . '%');
        })
        ->orderBy('id','desc')
        ->paginate(10);
@@ -434,11 +435,11 @@ class ActasHechosController extends Controller
             foreach($tiposep as $tipo){
                 $tipofinal = $tipofinal.substr($tipo,0,2);
             }
-            $token = $catalogos->nombrePersona."_".
-            substr($catalogos->primer_ap,0,2)."_".
+            //$token = $catalogos->nombrePersona."_".
+            $token = substr($catalogos->primer_ap,0,2)."_".
             substr($catalogos->segundo_ap,0,2)."_".
             $fechasep[2].$fechasep[1].substr($fechasep[0],-2)."_".
-            $catalogos->num_identificacion."_".
+            //$catalogos->num_identificacion."_".
             $catalogos->idEstado."_".
             $catalogos->idMunicipio."_".
             $catalogos->idLocalidad."_".

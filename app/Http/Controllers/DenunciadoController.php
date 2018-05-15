@@ -68,8 +68,8 @@ class DenunciadoController extends Controller
             ->join('persona','persona.id','=','variables_persona.idPersona')
             ->join('extra_denunciado','extra_denunciado.idVariablesPersona','=','variables_persona.idPersona')
             ->where('variables_persona.idCarpeta', $idCarpeta)
-           // ->where('persona.nombres','QUIEN O QUIENES RESULTEN RESPONSABLES')
-           // ->select('persona.nombres')
+            ->where('persona.nombres','QUIEN O QUIENES RESULTEN RESPONSABLES')
+           // ->select('extra_denunciado.idVariablesPersona')
             ->first();
                
                 if($sql){

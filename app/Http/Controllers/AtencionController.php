@@ -7,6 +7,7 @@ use App\Models\CatRedireccion;
 use App\Models\Atencion;
 use App\Http\Requests\AtencionRequest;
 use Alert;
+use DB;
 
 class AtencionController extends Controller
 {

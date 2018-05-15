@@ -32,7 +32,8 @@
 
 				</div>
 				<div class="info">
-					<a href="#" class="d-block"><i class="fa fa-user-circle" aria-hidden="true"></i> USUARIO</a>
+					<a href="#" class="d-block"><i class="fa fa-user-circle" aria-hidden="true"></i> {{ Auth::user()->nombres }} </a>
+					{{-- <a href="#" class="d-block"><i class="fa fa-user-circle" aria-hidden="true"></i> USUARIO</a> --}}
 				</div>
 			</div>
 
