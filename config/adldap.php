@@ -167,8 +167,8 @@ return [
                 |
                 */
 
-//                'base_dn' => env('ADLDAP_BASEDN', 'OU=FGE,dc=fiscaliaveracruz,dc=gob,dc=mx'),
-                'base_dn' => env('ADLDAP_BASEDN', 'OU=UAT,OU=GRUPOS DE APLICACIONES,OU=FGE,dc=fiscaliaveracruz,dc=gob,dc=mx'),
+               'base_dn' => env('ADLDAP_BASEDN', 'OU=FGE,dc=fiscaliaveracruz,dc=gob,dc=mx'),
+                // 'base_dn' => env('ADLDAP_BASEDN', 'OU=UAT,OU=GRUPOS DE APLICACIONES,OU=FGE,dc=fiscaliaveracruz,dc=gob,dc=mx'),
 
                 /*distinguishedName: para apuntar a las carpetas-> OU=UAT,OU=GRUPOS DE APLICACIONES,OU=FGE,DC=fiscaliaveracruz,DC=gob,DC=mx
                 |--------------------------------------------------------------------------
