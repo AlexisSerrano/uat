@@ -10,7 +10,7 @@
 <div id="page-content-wrapper">
 
 		@include('fields.botonborrar')
-{{--  <span class="datotip" id="{{$tipopersona}}"></span> 	  --}}
+ <span class="datotip" id="{{$tipopersona}}"></span> 	 
 	
 	<div class="col-md-12">
 		<br>
@@ -53,7 +53,7 @@
 						<div class="col text-left">
 						</div>
 						<div class="col text-right">
-							<a class="btn btn-secondary irdireccion"><i class="fa fa-arrow-right"></i></a>
+							<a id="Adireccion" class="btn btn-secondary "><i class="fa fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -66,16 +66,16 @@
 					@include('fields.direcciones')
 					<div class="row">
 						<div class="col text-left">
-							<a class="btn btn-secondary irpersonales"><i class="fa fa-arrow-left"></i></a>
+							<a  id="aPersonales"  class="btn btn-secondary irpersonales"><i class="fa fa-arrow-left"></i></a>
 						</div>
 			
 						@if ($tipopersona==0)
 							<div class="col text-right">
-								<a class="btn btn-secondary irtrabajo"><i class="fa fa-arrow-right"></i></a>
+								<a id="Atrabajo" class="btn btn-secondary "><i class="fa fa-arrow-right"></i></a>
 							</div>
 						@else
 							<div class="col text-right">
-								<a class="btn btn-secondary irdirnotificacion"><i class="fa fa-arrow-right"></i></a>
+								<a id="ANotificaciones2" class="btn btn-secondary "><i class="fa fa-arrow-right"></i></a>
 							</div>
 						@endif
 
@@ -92,7 +92,7 @@
 								<a class="btn btn-secondary irdireccion"><i class="fa fa-arrow-left"></i></a>
 							</div>
 							<div class="col text-right">
-								<a class="btn btn-secondary irdirnotificacion"><i class="fa fa-arrow-right"></i></a>
+								<a id="ANotificaciones" class="btn btn-secondary "><i class="fa fa-arrow-right"></i></a>
 							</div>
 						</div>
 					</div>
@@ -104,10 +104,10 @@
 					@include('fields.notificaciones')
 					<div class="row menu">
 						<div class="col text-left">
-							<a id="este" class="btn btn-secondary {{$botonatras}}"><i class="fa fa-arrow-left"></i></a>
+							<a class="btn btn-secondary {{$botonatras}}"><i class="fa fa-arrow-left"></i></a>
 						</div>
 						<div class="col text-right">
-							<a class="btn btn-secondary irdenunciante"><i class="fa fa-arrow-right"></i></a>
+							<a id="aDenunciante" class="btn btn-secondary"><i class="fa fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -119,7 +119,7 @@
 					<div>
 						<div class="row menu">
 							<div class="col text-left">
-								<a class="btn btn-secondary irdirnotificacion"><i class="fa fa-arrow-left"></i></a>
+								<a id="irdirnotificacion" class="btn btn-secondary irdirnotificacion"><i class="fa fa-arrow-left"></i></a>
 							</div>
 							<div class="col text-right">
 								{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarDenunciante'))!!}
@@ -148,62 +148,80 @@
 	<script src="{{ asset('js/selectsDirecciones.js') }}"></script>
 	<script src="{{ asset('js/rfcMoral-f.js') }}"></script>
 	<script src="{{ asset('js/borrar.js') }}"></script>
+	<script src="{{ asset('js/siguientes-turno.js') }}"></script>
 	{{-- <script src="{{ asset('js/validation.js')}}"></script> --}}
 	{{-- <script src="{{ asset('js/validation-orientador.js')}}"></script> --}}
 	<script>	
-		$('.irtrabajo').click(function(){
-			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-			$('#trabajo-tab').addClass("active");//Agrego la clase active al tab actual
-			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-			$('.tab-pane').removeClass("show");
-			$('#trabajo').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-			$('#trabajo').addClass("show");
-		});
+	
 
-		$('.irdireccion').click(function(){
-			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-			$('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
-			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-			$('.tab-pane').removeClass("show");
-			$('#direccion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-			$('#direccion').addClass("show");
-		});
+		// $('#Adireccion').click(function(){
+		// $('.nav-link').removeClass("active");
+        // $('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
+        // $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+        // $('.tab-pane').removeClass("show");
+        // $('#direccion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		// $('#direccion').addClass("show");
+		// console.log('boton atrás')
+		// console.log($persona);
+
+		// });
 
 		
-		$('.irpersonales').click(function(){
-			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-			$('#personales-tab').addClass("active");//Agrego la clase active al tab actual
-			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-			$('.tab-pane').removeClass("show");
-			$('#personales').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-			$('#personales').addClass("show");
+
+
+		$('#aPersonales').click(function(){
+		$('.nav-link').removeClass("active");
+        $('#personales-tab').addClass("active");//Agrego la clase active al tab actual
+        $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+        $('.tab-pane').removeClass("show");
+        $('#personales').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		$('#personales').addClass("show");
+		console.log('boton atrás')
+		});
+		
+		
+		
+/*-----botones atras----------*/
+
+	$('#irdirnotificacion').click(function(){
+		$('.nav-link').removeClass("active");
+        $('#dirnotificacion-tab').addClass("active");//Agrego la clase active al tab actual
+        $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+        $('.tab-pane').removeClass("show");
+        $('#dirnotificacion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		$('#dirnotificacion').addClass("show");
+		console.log('boton atrás')
+		});
+	$('.irtrabajo').click(function(){
+		$('.nav-link').removeClass("active");
+        $('#trabajo-tab').addClass("active");//Agrego la clase active al tab actual
+        $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+        $('.tab-pane').removeClass("show");
+        $('#trabajo').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		$('#trabajo').addClass("show");
+		console.log('boton atrás')
 		});
 
-		$('.irdirnotificacion').click(function(){
-			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-			$('#dirnotificacion-tab').addClass("active");//Agrego la clase active al tab actual
-			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-			$('.tab-pane').removeClass("show");
-			$('#dirnotificacion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-			$('#dirnotificacion').addClass("show");
+	$('.irdireccion').click(function(){
+		$('.nav-link').removeClass("active");
+        $('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
+        $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+        $('.tab-pane').removeClass("show");
+        $('#direccion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		$('#direccion').addClass("show");
+		console.log('boton atrás')
 		});
-
-		$('.irdenunciante').click(function(){
-			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-			$('#denunciante-tab').addClass("active");//Agrego la clase active al tab actual
-			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-			$('.tab-pane').removeClass("show");
-			$('#denunciante').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-			$('#denunciante').addClass("show");
+	$('.aPersonales').click(function(){
+		$('.nav-link').removeClass("active");
+        $('#personales-tab').addClass("active");//Agrego la clase active al tab actual
+        $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+        $('.tab-pane').removeClass("show");
+        $('#personales').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+		$('#personales').addClass("show");
+		console.log('boton atrás')
 		});
+	
+	
 
-		id = $(".datotip").attr("id");
-		if(id==0){
-			$("#esEmpresa1").prop("checked", true);
-			console.log("entro");
-		}
-		else{
-			console.log(id);
-		}
 	</script>
 @endpush
