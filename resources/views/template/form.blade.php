@@ -45,7 +45,7 @@
     <script src="{{asset('js/selectsDirecciones.js')}}"></script>  
     <script src="{{asset('js/funciones.js')}}"></script>
     <script src="{{asset ('js/toastr.min.js')}}"></script>
-    <script src="{{ asset('plugins/sisyphus/js/sisyphus.js')}}" ></script>
+    {{-- <script src="{{ asset('plugins/sisyphus/js/sisyphus.js')}}" ></script> --}}
     <script>
         
 

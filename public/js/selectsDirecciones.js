@@ -463,6 +463,6 @@ $("#idAgrupacion1").change(function(event){
 	});
 }
 });
-$('form').sisyphus({
-	excludeFields: $( 'input[name=_token]' )
-});
+// $('form').sisyphus({
+// 	excludeFields: $( 'input[name=_token]' )
+// });
