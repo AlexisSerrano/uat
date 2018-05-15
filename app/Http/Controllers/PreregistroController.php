@@ -168,16 +168,16 @@ class PreregistroController extends Controller
                 }   
             }elseif($request->esEmpresa==1){
                 $domicilio = new Domicilio();
-                if (!is_null($request->idMunicipio1)){
-                    $domicilio->idMunicipio = $request->idMunicipio1;
+                if (!is_null($request->idMunicipio)){
+                    $domicilio->idMunicipio = $request->idMunicipio;
                 }
-                if (!is_null($request->idLocalidad1)){
-                    $domicilio->idLocalidad = $request->idLocalidad1;
+                if (!is_null($request->idLocalidad)){
+                    $domicilio->idLocalidad = $request->idLocalidad;
                 }
-                if (!is_null($request->idColonia1)){
-                    $domicilio->idColonia = $request->idColonia1;
+                if (!is_null($request->idColonia)){
+                    $domicilio->idColonia = $request->idColonia;
                 }
-                if (!is_null($request->calle1)){
+                if (!is_null($request->calle)){
                     $domicilio->calle = $request->calle1;
                 }
                 if (!is_null($request->numExterno1)){

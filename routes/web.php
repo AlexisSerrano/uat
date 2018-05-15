@@ -63,17 +63,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->group(function () {
 
 
-    /********************generar pdf**********************************/
-
-    Route::get('FormatoRegistro/{id}', 'PdfController@datos');
-
+    
     /************Rutas para formulario de solicitante/victima/denunciante*************/
     Route::get('/crear-caso', 'CarpetaController@crearCaso')->name('inicio');
     Route::get('cancelar-caso', 'CarpetaController@cancelarCaso')->name('cancelar.caso');
     Route::get('terminar', 'CarpetaController@terminar')->name('terminar');
     //Route::post('storecarpeta', 'CarpetaController@storeCarpeta')->name('store.carpeta');
     //Route::get('/carpeta-inicial/{id}', 'CarpetaController@index')->name('carpeta');
-
+    
     Route::get('agregar-denunciante', 'DenuncianteController@showForm')->name('new.denunciante');
     Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name('store.denunciante');
     Route::get('agregar-denunciante/{id}/eliminar', 'DenuncianteController@delete')->name('delete.denunciante');
@@ -85,9 +82,6 @@ Route::middleware(['auth'])->group(function () {
     
     
     //Route::resource('/preregistro','PreregistroController');
-    
-    Route::get('/preregistro', 'PreregistroController@create')->name('preregistro.create'); //ver formulario
-    Route::post('/preregistro/store', 'PreregistroController@store')->name('preregistro.store'); //registar
     
     
     
@@ -123,14 +117,7 @@ Route::middleware(['auth'])->group(function () {
     
     /*---------Rutas de preregistro orientador-------------*/
     Route::get('preregistros', 'PreregistroAuxController@orientador');
-    /*---------Rutas para los selects dinámicos-------------*/
     
-    Route::get('municipios/{id}', 'RegisterController@getMunicipios');
-    Route::get('localidades/{id}', 'RegisterController@getLocalidades');
-    Route::get('codigos/{id}', 'RegisterController@getCodigos');
-    Route::get('colonias/{cp}', 'RegisterController@getColonias');
-    Route::get('colonias2/{id}', 'RegisterController@getColonias2');
-    Route::get('codigos2/{id}', 'RegisterController@getCodigos2');
 	
     /*---------Rutas para las notificaciones-------------*/
     Route::get('notificaciones', 'NotificacionesController@getNotificacionesCola');
@@ -148,11 +135,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('recepcionista','PreregistroController@fiscal');
     Route::post('/recepcionista/create','PreregistroController@fiscalcreate')->name('fiscal');
     
-    
-    /*---------correo------------*/
-    Route::get('correo', 'PreregistroAuxController@boton');
-    //Route::post('correo/enviar', 'PreregistroAuxController@enviar')->name('correo');
-    Route::post('enviar/correo', 'PreregistroController@enviar')->name('envio');
     
     
     /*---------Atención rápida------------*/
@@ -230,10 +212,6 @@ Route::middleware(['auth'])->group(function () {
     /* --------Rutas para Caratula de carpeta de investigacion----------- */
     Route::get('caratula','CaratulaCarpetaController@crearCaratula');
     
-    /*--------------------Rutas para generar el RFC----------------------------------*/
-    Route::post('rfc-moral', 'PreregistroAuxController@rfcMoral')->name('rfc.moral');
-    Route::post('rfc-fisico', 'PreregistroAuxController@rfcFisico')->name('rfc.fisico');
-    
     
     /* --------Rutas para Periciales----------- */
     Route::get('periciales','pericialesController@pericialesindex');
@@ -248,3 +226,29 @@ Route::middleware(['auth'])->group(function () {
     Route::get('oficioah/{id}','ActasHechosController@getoficioah')->name('oficioah');
     Route::post('saveOficio','ActasHechosController@saveOficio')->name('saveOficio');
 });
+
+
+// ///////////////////////////////////////preregistro/////////////////////////
+Route::get('/preregistro', 'PreregistroController@create')->name('preregistro.create'); //ver formulario
+Route::post('/preregistro/store', 'PreregistroController@store')->name('preregistro.store'); //registar
+
+/*--------------------Rutas para generar el RFC----------------------------------*/
+Route::post('rfc-moral', 'PreregistroAuxController@rfcMoral')->name('rfc.moral');
+Route::post('rfc-fisico', 'PreregistroAuxController@rfcFisico')->name('rfc.fisico');
+
+/*---------correo------------*/
+Route::get('correo', 'PreregistroAuxController@boton');
+//Route::post('correo/enviar', 'PreregistroAuxController@enviar')->name('correo');
+Route::post('enviar/correo', 'PreregistroController@enviar')->name('envio');
+
+/*---------Rutas para los selects dinámicos-------------*/
+Route::get('municipios/{id}', 'RegisterController@getMunicipios');
+Route::get('localidades/{id}', 'RegisterController@getLocalidades');
+Route::get('codigos/{id}', 'RegisterController@getCodigos');
+Route::get('colonias/{cp}', 'RegisterController@getColonias');
+Route::get('colonias2/{id}', 'RegisterController@getColonias2');
+Route::get('codigos2/{id}', 'RegisterController@getCodigos2');
+
+/********************generar pdf**********************************/
+
+Route::get('FormatoRegistro/{id}', 'PdfController@datos');

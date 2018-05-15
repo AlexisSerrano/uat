@@ -87,6 +87,9 @@ return [
         // Only allows users with a uid to authenticate.
         // Uncomment if you're using OpenLDAP.
         // Adldap\Laravel\Scopes\UidScope::class,
+        // App\Scopes\GrupoFacilitadorScope::class,
+        // App\Scopes\GrupoOrientedorScope::class,
+        // App\Scopes\GrupoRecepcionScope::class,
 
     ],
 
@@ -262,6 +265,8 @@ return [
         'nombres' => 'cn',
         'idUnidad' => 'extensionattribute2',
         'idZona' => 'extensionattribute1',
+        'grupo' => 'memberof',
+
 
 
     ],

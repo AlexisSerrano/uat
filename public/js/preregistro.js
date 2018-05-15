@@ -109,18 +109,20 @@ function mostrarpersonal(){
     $('#repLegal').prop('disabled', true);
     $("#fechaAltaEmpresa").prop('disabled', true); 
     $('#telefono1').prop('disabled', true);
-    $("#idEstado1").prop('disabled', true);   
-    $("#idMunicipio1").prop('disabled', true);   
-    $("#idLocalidad1").prop('disabled', true);   
-    $("#cp1").prop('disabled', true);   
-    $("#idColonia1").prop('disabled', true);   
+    $("#idEstado").prop('disabled', true);   
+    $("#idMunicipio").prop('disabled', true);   
+    $("#idLocalidad").prop('disabled', true);   
+    $("#cp").prop('disabled', true);   
+    $("#idColonia").prop('disabled', true);   
     $("#numInterno1").prop('disabled', true);   
     $("#calle1").prop('disabled', true);   
     $("#numExterno1").prop('disabled', true); 
     $("#idRazon1").prop('disabled',true);  
     
-    
     //Datos personales requeridos de Persona Física
+    $('#estadoCivil').prop('disabled', false);
+    $('#escolaridad').prop('disabled', false);
+    $('#ocupacion').prop('disabled', false);
     $("#nombre2").prop('disabled', false);   
     $("#primerAp").prop('disabled', false);   
     $("#segundoAp").prop('disabled', false);   
@@ -154,17 +156,20 @@ function mostrarmoral(){
     $("#fechaAltaEmpresa").prop('disabled', false); 
     $('#repLegal').prop('disabled', false);
     $('#telefono1').prop('disabled', false);
-    $("#idEstado1").prop('disabled', false);   
-    $("#idMunicipio1").prop('disabled', false);   
-    $("#idLocalidad1").prop('disabled', false);   
-    $("#cp1").prop('disabled', false);   
-    $("#idColonia1").prop('disabled', false);   
+    $("#idEstado").prop('disabled', false);   
+    $("#idMunicipio").prop('disabled', false);   
+    $("#idLocalidad").prop('disabled', false);   
+    $("#cp").prop('disabled', false);   
+    $("#idColonia").prop('disabled', false);   
     $("#numInterno1").prop('disabled', false);   
     $("#calle1").prop('disabled', false);   
     $("#numExterno1").prop('disabled', false); 
      $("#idRazon1").prop('disabled', false); 
     
     //Datos personales no requeridos de Persona Física
+    $('#estadoCivil').prop('disabled', true);
+    $('#escolaridad').prop('disabled', true);
+    $('#ocupacion').prop('disabled', true);
     $("#nombre2").prop('disabled', true);   
     $("#primerAp").prop('disabled', true);   
     $("#segundoAp").prop('disabled', true);   
