@@ -12,6 +12,7 @@ use App\Models\CatOcupacion;
 use App\Models\CatNacionalidad;
 use App\Models\Preregistro;
 use App\Models\Oficio;
+use App\Models\catIdentificacion;
 use App\Http\Requests\ActaRequest;
 use DB;
 use Alert;
@@ -142,31 +143,31 @@ class ActasHechosController extends Controller
                 $acta->expedido ="SECRETARÍA DE LA DEFENSA NACIONAL";
                 
                 case 'TARJETA UNICA DE IDENTIDAD MILITAR':
-                $acta->expedido ="POR EL INEW";
+                $acta->expedido ="DISPOSICIONES DE CARÁCTER GENERAL";
             
                 case 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES':
-                $acta->expedido ="INSTITUCION";
+                $acta->expedido ="INAPAM";
                 
                 case 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL':
-                $acta->expedido ="POR EL INEW";
+                $acta->expedido ="IMSS";
 
                 case 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR':
-                $acta->expedido ="INSTITUCION";
+                $acta->expedido ="DIRECCIÓN GENERAL DE ACREDITACIÓN, INCORPORACIÓN Y REVALIDACIÓN";
                 
                 case 'LICENCIA DE CONDUCIR':
-                $acta->expedido ="DDSDD";
+                $acta->expedido ="SECRETARÍA DE COMUNICACIONES Y TRANSPORTES";
                 
                 case 'CERTIFICADO DE MATRICULA CONSULAR':
-                $acta->expedido ="POR EL INEW";
+                $acta->expedido ="CERTIFICADO DE MATRICULA CONSULAR";
 
                 case 'ACTA DE NACIMIENTO':
-                $acta->expedido ="INSTITUCION";
+                $acta->expedido ="REGISTRO NACIONAL DE POBLACIÓN";
 
                 case 'CURP':
-                $acta->expedido ="INSTITUCION";
+                $acta->expedido ="REGISTRO NACIONAL DE POBLACIÓN";
 
                 case 'CONSTANCIA DE RESIDENCIA':
-                $acta->expedido ="INSTITUCION";
+                $acta->expedido ="SERVICIO DE ADMINISTRACIÓN TRIBUTARIA";
                 
                 break;
                 
@@ -357,19 +358,19 @@ class ActasHechosController extends Controller
             $acta->narracion = $request->narracion;
 
             switch ($request->docIdentificacion) {
-                case 'CREDENCIAL PARA VOTAR': $acta->expedido ="POR EL INEW";
-                case 'PASAPORTE':$acta->expedido ="INSTITUCION";
-                case 'CEDULA PROFESIONAL':$acta->expedido ="POR EL INEW";
-                case 'CARTILLA DEL SERVICIO MILITAR NACIONAL':$acta->expedido ="INSTITUCION";
-                case 'TARJETA UNICA DE IDENTIDAD MILITAR':$acta->expedido ="POR EL INEW";
-                case 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES':$acta->expedido ="INSTITUCION";
-                case 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL':$acta->expedido ="POR EL INEW";
-                case 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR':$acta->expedido ="INSTITUCION";
-                case 'LICENCIA DE CONDUCIR':$acta->expedido ="DDSDD";
-                case 'CERTIFICADO DE MATRICULA CONSULAR':$acta->expedido ="POR EL INEW";
-                case 'ACTA DE NACIMIENTO':$acta->expedido ="INSTITUCION";
-                case 'CURP':$acta->expedido ="INSTITUCION";
-                case 'CONSTANCIA DE RESIDENCIA':$acta->expedido ="INSTITUCION";
+                case 'CREDENCIAL PARA VOTAR': $acta->expedido ="INSTITUTO NACIONAL ELECTORAL";
+                case 'PASAPORTE':$acta->expedido ="SECRETARÍA DE RELACIONES EXTERIORES";
+                case 'CEDULA PROFESIONAL':$acta->expedido ="DIRECCIÓN GENERAL DE PROFESIONES";
+                case 'CARTILLA DEL SERVICIO MILITAR NACIONAL':$acta->expedido ="SECRETARÍA DE LA DEFENSA NACIONAL";
+                case 'TARJETA UNICA DE IDENTIDAD MILITAR':$acta->expedido ="DISPOSICIONES DE CARÁCTER GENERAL";
+                case 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES':$acta->expedido ="INAPAM";
+                case 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL':$acta->expedido ="IMSS";
+                case 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR':$acta->expedido ="DIRECCIÓN GENERAL DE ACREDITACIÓN, INCORPORACIÓN Y REVALIDACIÓN";
+                case 'LICENCIA DE CONDUCIR':$acta->expedido ="SECRETARÍA DE COMUNICACIONES Y TRANSPORTES";
+                case 'CERTIFICADO DE MATRICULA CONSULAR':$acta->expedido ="CERTIFICADO DE MATRICULA CONSULAR";
+                case 'ACTA DE NACIMIENTO':$acta->expedido ="REGISTRO NACIONAL DE POBLACIÓN";
+                case 'CURP':$acta->expedido ="REGISTRO NACIONAL DE POBLACIÓN";
+                case 'CONSTANCIA DE RESIDENCIA':$acta->expedido ="SERVICIO DE ADMINISTRACIÓN TRIBUTARIA";
                 break;
                 default:$acta->expedido = $request->expedido;
                 break;

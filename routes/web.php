@@ -236,6 +236,7 @@ Route::get('periciales','pericialesController@pericialesindex');
 Route::post('periciales/agregar','pericialesController@agregar')->name('store.agregar');
 Route::post('periciales/psicologo','pericialesController@psico')->name('store.psicologo');
 Route::post('periciales/vehiculo','pericialesController@vehi')->name('store.vehiculo');
+Route::post('periciales/lesiones','pericialesController@lesiones')->name('store.lesiones');
 
 
 /* --------Ruta para obtener token oficios----------- */
