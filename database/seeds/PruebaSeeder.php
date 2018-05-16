@@ -31,7 +31,7 @@ class PruebaSeeder extends Seeder
         ]);
 
         DB::table('preregistros')->insert([
-            ['idDireccion'  =>  2,  'esEmpresa'   =>  1, 'idRazon'=>2,  'nombre' =>  'TALLER DE LOS HERMANOS SA DE CV',  'rfc' =>  'ASDF963258741','telefono'=>'22565534316','representanteLegal'=> 'LIC. JAUN PEREZ PEREZ','statusCancelacion'=>0,'narracion'=>'ROBO MI ESTABLECIMIENTO','folio'=>'UANFAFSM87166581' ],
+            ['idDireccion'  =>  2,  'esEmpresa'   =>  1, 'idRazon'=>2,  'nombre' =>  'TALLER DE LOS HERMANOS SA DE CV',  'rfc' =>  'ASDF963258741','telefono'=>'22565534316','representanteLegal'=> 'LIC. JAUN PEREZ PEREZ','statusCancelacion'=>0,'narracion'=>'ROBO MI ESTABLECIMIENTO','folio'=>'ANFAFSM87166581' ],
             ['idDireccion'  =>  2,  'esEmpresa'   =>  1, 'idRazon'=>2,  'nombre' =>  'AUTOLAVADOS PEREZ SA DE CV',    'rfc' =>  'QWER764312589','telefono'=>'2241534316','representanteLegal'=> 'MARTA MORALES ACOSTA','statusCancelacion'=>0,'narracion'=>'ARMO UN ALBOROTO EN MI ESTABLECIMIENTO','folio'=>'11861616854153' ],
             ['idDireccion'  =>  1,  'esEmpresa'   =>  1, 'idRazon'=>2,  'nombre' =>  'UNIVERSIDAD DE XALAPA',  'rfc' =>  'FSHD123679548','telefono'=>'22965534316','representanteLegal'=> 'FRANCISCO LOPEZ PEREZ','statusCancelacion'=>0,'narracion'=>'ASALTO MI ESTABLECIMIENTO','folio'=>'56165163135135' ]
         ]);
