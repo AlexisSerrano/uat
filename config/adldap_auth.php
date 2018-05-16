@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    
     /*
     |--------------------------------------------------------------------------
     | Connection
@@ -59,7 +59,7 @@ return [
         Adldap\Laravel\Validation\Rules\DenyTrashed::class,
 
         // Allows only manually imported users to authenticate.
-
+        App\Rules\OnlyUATPersonal::class,
         // Adldap\Laravel\Validation\Rules\OnlyImported::class,
 
     ],
@@ -87,10 +87,7 @@ return [
         // Only allows users with a uid to authenticate.
         // Uncomment if you're using OpenLDAP.
         // Adldap\Laravel\Scopes\UidScope::class,
-        // App\Scopes\GrupoFacilitadorScope::class,
-        // App\Scopes\GrupoOrientedorScope::class,
-        // App\Scopes\GrupoRecepcionScope::class,
-
+       
     ],
 
     'usernames' => [
@@ -170,17 +167,17 @@ return [
         |    For example, $_SERVER['AUTH_USER'].
         |
         */
-
+        
         'windows' => [
-
+            
             'discover' => 'userprincipalname',
-
+            
             'key' => 'AUTH_USER',
-
+            
         ],
-
+        
     ],
-
+    
     'passwords' => [
 
         /*
@@ -219,9 +216,9 @@ return [
         | This option is only applicable to the DatabaseUserProvider.
         |
         */
-
+        
         'column' => 'password',
-
+        
     ],
 
     /*
@@ -257,7 +254,6 @@ return [
     | to the DatabaseUserProvider.
     |
     */
-
     'sync_attributes' => [
 
         'email' => 'userprincipalname',
