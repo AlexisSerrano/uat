@@ -7,4 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Lesione extends Model
 {
     //
+    protected $connection = 'formatos'; 
+    protected $table = 'lesiones';
+    protected $fillable = [
+        'id',
+        'idCarpeta',
+        'nombre',
+        'fecha'
+        
+    ];
+
 }
