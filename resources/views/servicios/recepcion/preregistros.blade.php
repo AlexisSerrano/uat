@@ -1,8 +1,10 @@
 @extends('template.form')
 @section('title','Pre-registros/recepción')
 @section('content')
+
 	<div class="row">
 		<div class="col-12">
+			
 				
 
 			<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbarpredenuncia">
@@ -62,8 +64,9 @@
 			</nav>
 		</div>
 		<div class="col-12">
-			<table class="table table-striped table-bordered table-hover">
-			 	<thead class="thead-active">
+				<div class="card">
+			<table class="table table-hover">
+			 	<thead class="thead-light">
 			    	<tr>
 			    		<th scope="col">Id</th>
 			      		<th scope="col">Folio</th>
@@ -99,5 +102,5 @@
 			@endif
 		</div>	
 	</div>
-
+</div>
 @endsection
