@@ -39,7 +39,7 @@
                        No CARPETA DE INVESTIGACIÓN:UAT/D-XI<span class="noeditable">{{$folio2}}/2018-6° </span>
                     </td>
                     <td colspan="2" style="padding-bottom:10px; text-align:left;">
-                            ASUNTO DERIVADO POR:<span class="noeditable">{{$derivado}}</span>
+                            ASUNTO DERIVADO POR:Se solicita peritaje que se indica
                         </td>
 
                         <td colspan="2">
@@ -57,7 +57,7 @@
                      de la Fiscalía General del Estado de Veracruz de Ignacio de la Llave, 1, 4, 34, 126, 128, 150, 195 y 201 del Reglamento de la Ley en cita, solicito a Usted designe perito en la materia a fin de que realice peritaje
                       de avalúo de daños que presenta la unidad MARCA <span class="noeditable">{{$marca}}</span>, LÍNEA <span class="noeditable">{{$linea}}</span>, MODELO <span class="noeditable">{{$modelo}}</span>, COLOR <span class="noeditable">{{$color}}</span>, CON NÚMERO DE SERIE <span class="noeditable">{{$serie}}</span>, MOTOR <span class="noeditable">{{$motor}}</span>, CON PLACAS DE CIRCULACIÓN <span class="noeditable">{{$placas}}</span>
                        PARTICULARES DEL ESTADO DE <span class="noeditable">{{$estado}}</span>, propiedad del <span class="noeditable">{{$ciudadano}}</span>, número de celular <span class="noeditable">{{$cel}}</span>, vehículo que se encuentra en SU DOMICILIO ubicado en la calle <span class="noeditable">{{$calle}}</span> NÚMERO <span class="noeditable">{{$numero}}</span>, LOCALIDAD <span class="noeditable">{{$localidad}}</span>,
-                        C.P.<span class="noeditable">{{$codigo}}</span>, <span class="noeditable">{{$ciudad}}</span>, <span class="noeditable">{{$estado}}</span>; a efecto de que el perito designado, realice lo ya indicado.
+                        C.P.<span class="noeditable">{{$codigo}}</span>, <span class="noeditable">{{$ciudad}}</span>, <span class="noeditable">{{$estado1}}</span>; a efecto de que el perito designado, realice lo ya indicado.
                    
 
 
