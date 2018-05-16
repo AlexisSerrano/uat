@@ -19,7 +19,7 @@ class OnlyUATPersonal extends Rule
         $accounting3 = 'CN=FFacilitador,OU=UAT,OU=GRUPOS DE APLICACIONES,OU=FGE,DC=fiscaliaveracruz,DC=gob,DC=mx';
         $accounting2 = 'CN=FOrientador,OU=UAT,OU=GRUPOS DE APLICACIONES,OU=FGE,DC=fiscaliaveracruz,DC=gob,DC=mx';
         $accounting = 'CN=Recepcion,OU=UAT,OU=GRUPOS DE APLICACIONES,OU=FGE,DC=fiscaliaveracruz,DC=gob,DC=mx';
-        dd($this->user);
+        //dd($this->user);
         $validar1= $this->user->inGroup($accounting3);
         if ($validar1==true) {
             return $validar1;
