@@ -132,44 +132,59 @@ class pericialesController extends Controller
             }
         }
     
-        public function vehiculo(Request $request) {   
+        public function vehi(Request $request) {   
 
-            DB::beginTransaction();
-            try{
+            // DB::beginTransaction();
+            // try{
                 $idCarpeta = session('carpeta');
-                $Psicologo = new Vehiculo;
-                $Psicologo->idCarpeta = 1;
-                $Psicologo->nombre = $request->nombrep;
-                $Psicologo->numero = $request->numerop;
-                $Psicologo->fecha = $request->fecha_nac;
-               
-                if($Psicologo->save()){
-                    Alert::success('Registro guardado con éxito', 'Hecho');
-                    // $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-                    // $bdbitacora->medidas = $bdbitacora->medidas+1;
-                    // $bdbitacora->save();
-                }
-                else{
-                    Alert::error('Se presentó un problema al guardar el registro', 'Error');
-                }
-                DB::commit();
+                $vehiculo = new Vehiculo;
+                $vehiculo->idCarpeta = 1;
+                $vehiculo->marca = $request->marcav;
+                $vehiculo->linea = $request->lineav;
+                $vehiculo->modelo = $request->modelov;
+                $vehiculo->color = $request->colorv;
+                $vehiculo->numero_serie = $request->numeroseriev;
+                $vehiculo->lugar_fabricacion = $request->lugarFabv;
+                $vehiculo->placas = $request->placav;
+                $vehiculo->nombre = $request->propietariov;
+                $vehiculo->numero = $request->celularv;
+                $vehiculo->calle = $request->calle2;
+                $vehiculo->num_ext = $request->numExterno2;
+                $vehiculo->num_int = $request->numInterno2;
+                $vehiculo->entidad = $request->idEstado2;
+                $vehiculo->municipio = $request->idMunicipio2;
+                $vehiculo->localidad = $request->idLocalidad2;
+                $vehiculo->colonia = $request->idColonia2;
+                $vehiculo->codigo_postal = $request->cp2;
+                $vehiculo->fecha = $request->fecha_nac;
+                $vehiculo->save();
+        //         if($vehiculo->save()){
+        //             Alert::success('Registro guardado con éxito', 'Hecho');
+        //             // $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+        //             // $bdbitacora->medidas = $bdbitacora->medidas+1;
+        //             // $bdbitacora->save();
+        //         }
+        //         else{
+        //             Alert::error('Se presentó un problema al guardar el registro', 'Error');
+        //         }
+        //         DB::commit();
     
-                // return redirect("home");
-                return view('documentos.periciales_psicologo')
+        //         // return redirect("home");
+        //         // return view('documentos.periciales_psicologo')
           
-                ->with('fecha',  $Psicologo->fecha  )
-                ->with('folio',   $Psicologo->idCarpeta)
-                ->with('numero',   $Psicologo->numero )
-                ->with('nombre',  $Psicologo->nombre )
-                ->with('fiscal',  "XXXXXXXXXXX" );
+        //         // ->with('fecha',  $Psicologo->fecha  )
+        //         // ->with('folio',   $Psicologo->idCarpeta)
+        //         // ->with('numero',   $Psicologo->numero )
+        //         // ->with('nombre',  $Psicologo->nombre )
+        //         // ->with('fiscal',  "XXXXXXXXXXX" );
         
     
-            }catch (\PDOException $e){
-                DB::rollBack();
-                Alert::error('Se presentó un problema al guardar el registro, intente de nuevo', 'Error');
-                return back()->withInput();
-            }
-        }
+        //     }catch (\PDOException $e){
+        //         DB::rollBack();
+        //         Alert::error('Se presentó un problema al guardar el registro, intente de nuevo', 'Error');
+        //         return back()->withInput();
+        //     }
+         }
 
     
     

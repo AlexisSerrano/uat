@@ -22,46 +22,6 @@
 </div>
 
 <div class="col-4">
-    <div class="form-group" >
-        {!! Form::label('docIdentificacion', 'Seleccione el tipo de acta de hechos que requiere:', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::select('docIdentificacion', array('CREDENCIAL PARA VOTAR' => 'CREDENCIAL PARA VOTAR', 
-        'PASAPORTE' => 'PASAPORTE',
-        'CEDULA PROFESIONAL' => 'CEDULA PROFESIONAL',
-        'CARTILLA DEL SERVICIO MILITAR NACIONAL' => 'CARTILLA DEL SERVICIO MILITAR NACIONAL',
-        'TARJETA UNICA DE IDENTIDAD MILITAR' => 'TARJETA UNICA DE IDENTIDAD MILITAR',
-        'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES' => 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES',
-        'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL' => 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL',
-        'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR' => 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR',
-        'LICENCIA DE CONDUCIR' => 'LICENCIA DE CONDUCIR',
-        'CERTIFICADO DE MATRICULA CONSULAR' => 'CERTIFICADO DE MATRICULA CONSULAR',
-        'ACTA DE NACIMIENTO' => 'ACTA DE NACIMIENTO',
-        'CURP' => 'CURP',
-        'CONSTANCIA DE RESIDENCIA' => 'CONSTANCIA DE RESIDENCIA',
-        ), null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
-</div>
-
-
-
-</div>
-
-<div class="col">
-    <div class="form-group">
-        {!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación','data-validation'=>'required' ]) !!}
-        <div class="help-block with-errors"></div>
-    </div>
-</div>
-
-<div class="col">
-    <div class="form-group">
-        {!! Form::label('expedido', 'Expedido por', ['class' => 'col-form-label-sm expedido']) !!}
-        {!! Form::text('expedido', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Expedido por']) !!}
-        <div class="help-block with-errors"></div>
-    </div>
-</div>
-
-
-<div class="col-4">
     <div class="form-group">
     {!! Form::label('fecha_nac', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
         <div class="input-group date" id="fecha_nac" data-target-input="nearest">
@@ -199,7 +159,53 @@
         <div class="help-block with-errors"></div>
     </div>
 </div>	
-     
+
+<div class="col-4">
+        <div class="form-group" >
+            {!! Form::label('docIdentificacion', 'Seleccione el tipo de acta de hechos que requiere:', ['class' => 'col-form-label-sm']) !!}
+            {!! Form::select('docIdentificacion', array('CREDENCIAL PARA VOTAR' => 'CREDENCIAL PARA VOTAR', 
+            'PASAPORTE' => 'PASAPORTE',
+            'CEDULA PROFESIONAL' => 'CEDULA PROFESIONAL',
+            'CARTILLA DEL SERVICIO MILITAR NACIONAL' => 'CARTILLA DEL SERVICIO MILITAR NACIONAL',
+            'TARJETA UNICA DE IDENTIDAD MILITAR' => 'TARJETA UNICA DE IDENTIDAD MILITAR',
+            'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES' => 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES',
+            'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL' => 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL',
+            'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR' => 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR',
+            'LICENCIA DE CONDUCIR' => 'LICENCIA DE CONDUCIR',
+            'CERTIFICADO DE MATRICULA CONSULAR' => 'CERTIFICADO DE MATRICULA CONSULAR',
+            'ACTA DE NACIMIENTO' => 'ACTA DE NACIMIENTO',
+            'CURP' => 'CURP',
+            'CONSTANCIA DE RESIDENCIA' => 'CONSTANCIA DE RESIDENCIA',
+            'CREDENCIAL DE TRABAJO' => 'CREDENCIAL DE TRABAJO',
+            ), null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+    </div>
+    </div>
+    
+    
+    <div class="col-4">
+        <div class="form-group">
+            {!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
+            {!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación','data-validation'=>'required' ]) !!}
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+    
+    <div id="ocultar" class="col">
+        <div class="form-group">
+            {!! Form::label('expedido', 'Expedido por', ['class' => 'col-form-label-sm expedido']) !!}
+            {!! Form::text('expedido', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Expedido por']) !!}
+            <div class="help-block with-errors"></div>
+        </div>
+    </div>
+    
+    
+
+
+
+
+
+
+
 <div class="col-12">
     <div class="form-group">        
         <label for="narracion" class="col-form-label-sm">Narración</label>
@@ -215,42 +221,40 @@
         </textarea> --}}
     </div>
 </div>
-{{-- 
+
 @push('scripts')
 <script>
 
  $(document).ready(function(){   
     $(".expedido").hide();
     $("#expedido").hide();
+    $("#ocultar").hide();
+    
     MostrarInput();
 
- )};
+ });
 
-
+ 
 
 function MostrarInput(){
 
-
 $("#docIdentificacion").change(function(){
-
     valor = $(this).val();
-
     if(valor == 'CREDENCIAL DE TRABAJO'){
-
         $("#expedido").show();
-
+        $(".expedido").show();
+        $("#ocultar").show();
     }
 
     else{
-
               $("#expedido").hide();
-              $("#expedido").disable('true');
+              $(".expedido").hide();
+              $("#ocultar").hide();
 
+              
     }
-
 });
-
-
+}
 
 </script>
-@endpush --}}
+@endpush 
