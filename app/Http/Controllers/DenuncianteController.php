@@ -331,14 +331,33 @@ public function showForm()
     }
 
     public function delete($id){
+        DB::beginTransaction();
+        try{
+            $vpersonas = DB::table('extra_denunciante')
+            ->join('variables_persona','variables_persona.id','=','extra_denunciante.idVariablesPersona')
+            ->where('extra_denunciante.id', '=', $id)
+            ->select('variables_persona.id as id')
+            ->first();
 
-        $ExtraDenunciante =  ExtraDenunciante::find($id);
-        $ExtraDenunciante->delete();
-        $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-            $bdbitacora->denunciante = $bdbitacora->denunciante-1;
-            $bdbitacora->save();
-        Alert::success('Registrado eliminado con éxito', 'Hecho');
-        return back();
+            $ExtraDenunciante =  ExtraDenunciante::find($id);
+            $ExtraDenunciante->delete();
+        
+                $vp= VariablesPersona::find($vpersonas->id);
+                $vp->idCarpeta = null;
+                $vp->save();
+
+            $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+                $bdbitacora->denunciante = $bdbitacora->denunciante-1;
+                $bdbitacora->save();
+                DB::commit();
+            Alert::success('Registrado eliminado con éxito', 'Hecho');
+            return back();
+        }
+        catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            return back()->withInput();
+        }
     }
 
     public function addbitacora(){
