@@ -82,8 +82,8 @@
     </style>
 </head>
 <body>
-    <table style="width:100%" class="editable">
-        <tr style="width:50%;">
+    <table  class="editable">
+        <tr style="width:50%;" class="font16 padding">
             <td>
                 <img src="{{asset('img/iconofge.png')}}" alt="" style="height:100px">
             </td>
@@ -93,20 +93,19 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2" >
-                C. DIRECTOR DE SERVICIOS PERICIALES</span>
-            </td>
-            <td colspan="2" >
-                Presente</span>
-            </td>
-            <td colspan="2">
-                    Xalapa-Enríquez, Veracruz;<span class="noeditable">{{$fecha}}</span>
-                    Oficio: UAT-XI/2,<span class="noeditable">{{$folio}}/2018-6°</span>
+            <td colspan="2"  style="padding-bottom:10px; text-align:left;" >
+                C. DIRECTOR DE SERVICIOS PERICIALES</span> 
+                <br> Zona Centro Xalapa
+                <p>Presente</p>
+                <br>
+                <p>Xalapa-Enríquez, Veracruz;<span class="noeditable">{{$fecha}}</span>
+                <br>OFICIO: UAT-XI/2,<span class="noeditable">{{$folio}}/2018-6°</span>
+                </p>
                 </td>
              
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="2" class="justificado">
                     Con fundamento en lo dispuesto por los artículos 14, 16 y 21 de la Constitución Política de los Estados Unidos Mexicanos;
                      52 y 67 fracción I de la Constitución Política Local; 2°, 127, 131, 212, 214, 272, 273, 368, 369 y demás relativos y aplicables
                       del Código Nacional de Procedimientos Penales en vigor; 2, 5, 6, 7, 39, 40 y 43 de la Ley Orgánica de la Fiscalía General del Estado 
@@ -138,7 +137,7 @@
                 <tr style="text-align: center;">
                         <td colspan="2">ATENTAMENTE.</td>  
                     </tr>
-        <tr style="text-align: center;">
+        <tr style="text-align: center;" class="font14">
             <td colspan="2">
                 __________________________________________ <br>
                 LIC. <span class="noeditable">{{$fiscal}}</span>
@@ -149,16 +148,20 @@
         
         <tr>
             <td colspan="2">
+                <div class="justificado">
                 Circuito Rafael Guízar y <br>
                 Valencia No. 147, <br>
                 Colonia Reserva Territorial, <br>
                 C.P. 91096 <br>
                 Teléfono: 01 (228) 8149428, <br>
                 Xalapa-Enríquez, Veracruz
+            </div>
             </td>
         </tr>
     </table>
+    <div ID="imprimir">
     <input type="button" value="Imprime esta pagina" onclick="window.print()" class="impre"> 
+    </div>
 </body>
 </html>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

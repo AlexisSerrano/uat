@@ -226,7 +226,7 @@ var datTrabajo=0;
         datTrabajo==1;
     }
     if ($('#idEstado2').val().length == 0) {
-        $('.idEstado2').css({"color":"red"});
+        // $('.idEstado2').css({"color":"red"});
         datTrabajo==1; 
         // else{
         //     $('.idEstado2').css({'color:' #8c1333;});
