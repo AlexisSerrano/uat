@@ -308,4 +308,8 @@ body::-webkit-scrollbar-thumb {
   outline: 1px solid slategrey;
 }
 
-   
+/* .select2-container--default .select2-selection--single .custom-error {
+	background-color: #fff;
+    border: 1px solid #ca0a0a;
+    border-radius: 4px;
+} */

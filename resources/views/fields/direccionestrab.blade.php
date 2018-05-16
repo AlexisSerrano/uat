@@ -3,8 +3,8 @@ $form = oldFormTrabajo();
 @endphp --}}
 <div class="row">
 	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('idEstado2', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
+		<div class="form-group custom">
+			{!! Form::label('idEstado2', 'Entidad federativa', ['class' => ' idEstado2 col-form-label-sm']) !!}
 			{!! Form::select('idEstado2', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
 		</div>
 	</div>

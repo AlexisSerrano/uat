@@ -218,38 +218,53 @@ $('#ANotificaciones').click(function(){
 function datTrabajo(){
 var datTrabajo=0;
     if ($('#lugarTrabajo').val().length == 0) {
+        // $('#lugarTrabajo').css({"border-color":"red"});
         datTrabajo==1;
     }
     if ($('#telefonoTrabajo').val().length == 0) {
+        // $('#telefonoTrabajo').css({"border-color":"red"});
         datTrabajo==1;
     }
     if ($('#idEstado2').val().length == 0) {
-        datTrabajo==1;
-        toastr.warning("Entidad Federativa faltante");
-    }
+        $('.idEstado2').css({"color":"red"});
+        datTrabajo==1; 
+        // else{
+        //     $('.idEstado2').css({'color:' #8c1333;});
+        }
+      
+        
+       
+        
+    
     if ($('#idMunicipio2').val().length == 0) {
-        datTrabajo==1;
-        toastr.warning("Municipio faltante");
-    }
+        // $('#idMunicipio2').css({"border-color":"red"});
+        datTrabajo==1;}
+       
+    
     if ($('#idLocalidad2').val().length == 0) {
+        // $('#idLocalidad2').css({"border-color":"red"});
         datTrabajo==1;
-        toastr.warning("Localidad faltante");
+       
     }
     if ($('#idColonia2').val().length == 0) {
+        // $('#idColonia2').css({"border-color":"red"});
         datTrabajo==1;
-        toastr.warning("Colonia faltante");
+        
     }
     if ($('#cp2').val().length == 0) {
+        // $('#cp2').css({"border-color":"red"});
         datTrabajo==1;
-        toastr.warning("Codigo postal faltante");
+       
     }
     if ($('#calle2').val().length == 0) {
+        // $('#calle2').css({"border-color":"red"});
         datTrabajo==1;
-        toastr.warning("Calle faltante");
+       
     }
     if ($('#numExterno2').val().length == 0) {
+        // $('#numExterno2').css({"border-color":"red"});
         datTrabajo==1;
-        toastr.warning("Numero externo faltante");
+       
      }
     
     else

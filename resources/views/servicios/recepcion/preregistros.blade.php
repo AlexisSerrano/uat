@@ -3,21 +3,43 @@
 @section('content')
 	<div class="row">
 		<div class="col-12">
+				
+
 			<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbarpredenuncia">
 			  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			    <span class="navbar-toggler-icon"></span>
-			  	</button>
+				  </button>
+				  
+				  
+
 			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+						
 			    	<ul class="navbar-nav mr-auto" style="margin-left: -8px;">
 						<LI>
 								<form class="form-inline my-2 my-lg-0" method="POST" action="{{ url('showbyfolio') }}" id="busquedafolio">
 										@csrf
-										  <input class="form-control mr-sm-2 col-8" type="text" name="folio" id="folio" placeholder="Buscar" aria-label="Buscar">
-										  <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-									</form>
+								<div class="input-group mb-6">
+										
+										<div class="input-group-prepend">
+										
+										  <span class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></span>
+										
+										</div>
+										<input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="basic-addon1" name="folio" id="folio">
+									  </div>	
 						</LI>
 					</ul>
-					<ul class="navbar-nav mr-auto" style="margin-left: 440px;">
+				</form>
+					{{-- 
+						
+										
+										  <input class="form-control mr-sm-2 col-8" type="text" name="folio" id="folio" placeholder="Buscar" aria-label="Buscar">
+										  <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+									{{-- --}}
+						
+						
+						<ul class="navbar-nav mr-auto" style="margin-left: 440px;">
 			      		<li class="nav-item" style="margin-left: 30px;">
 			        		<select class="form-control" id="filmunicipio" name="filmunicipio">
                                 @forelse($municipios as $municipio)
@@ -33,7 +55,7 @@
                                 @empty
                                 @endforelse
                             </select>
-			      		</li>
+			      		</li> 
 					
 			    	
 			  	</div>
