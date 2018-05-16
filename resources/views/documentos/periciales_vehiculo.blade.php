@@ -70,6 +70,10 @@
         }
     @media print {
         .impre {display:none}
+        .editable{
+                border: none;
+                width: 100%;
+            }
         }
     @page 
     {
@@ -89,27 +93,23 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2" style="padding-bottom:10px; text-align:left;">
-                UNIDAD DE ATENCIÓN TEMPRANA DEL DISTRITO JUDICIAL XI DE XALAPA</span>
-            </td>
-        
-            <td colspan="2" style="padding-bottom:10px; text-align:left;">
-                    OFICIO:<span class="noeditable"><span class="noeditable">UAT-XI/{{$folio}}/2018</span>
+            <td colspan="2" style="padding-bottom:10px; text-align:center;">
+                    <span>UNIDAD DE ATENCIÓN TEMPRANA DEL DISTRITO JUDICIAL XI DE XALAPA</span>
+            <br>
+            <p>OFICIO:<span class="noeditable"><span class="noeditable">UAT-XI/{{$folio}}/2018</span>
+                <br>
                 </td>
+            </tr>
                 <td colspan="2" style="padding-bottom:10px; text-align:left;">
-                       No CARPETA DE INVESTIGACIÓN:UAT/D-XI<span class="noeditable">{{$folio2}}/2018-6° </span>
-                    </td>
-                    <td colspan="2" style="padding-bottom:10px; text-align:left;">
+                    <p>  No CARPETA DE INVESTIGACIÓN:UAT/D-XI<span class="noeditable">{{$folio2}}/2018-6° </span>
+                        <br>
                             ASUNTO DERIVADO POR:Se solicita peritaje que se indica
-                        </td>
-
-                        <td colspan="2">
-                                LIC. DIRECTOR GENERAL DE LOS SERVICIOS
-                                PERICIALES EN EL Estados
-                            </td>
-                            <td colspan="2">
-                                   P R E S E N T E
+                    <p>   LIC. DIRECTOR GENERAL DE LOS SERVICIOS
+                    PERICIALES EN EL Estados</p><br>
+        
+                        <p>         P R E S E N T E </p>
                                 </td>
+                </td>
         </tr>
         <tr>
             <td colspan="2" class="justificado">
@@ -146,7 +146,7 @@
     </tr>
     
     <tr class="font13">
-        <td colspan="2">
+        <td>
                 <div class="justificado">
             Circuito Rafael Guízar y <br>
             Valencia No. 147, <br>
