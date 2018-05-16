@@ -462,6 +462,18 @@ class DenunciadoController extends Controller
 
     public function delete($id){
             $ExtraDenunciado =  ExtraDenunciado::find($id);
+
+            $variables = DB::table('variables_persona')
+            ->where('idCarpeta', '=', $id)
+            ->get();
+
+            foreach ($variables as $variable) {
+                $persona=VariablesPersona::find($variable->id);
+                $persona->idCarpeta = null;
+                $persona->save();
+            }
+
+            ////////////////////////////////////////////////////
             $ExtraDenunciado->delete();
             $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
             $bdbitacora->denunciado = $bdbitacora->denunciado-1;
