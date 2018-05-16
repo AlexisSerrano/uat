@@ -8,6 +8,7 @@ use App\Models\Preregistro;
 use App\Models\Domicilio;
 use App\Models\CatEstado;
 use App\Models\Razon;
+use App\Models\CatMunicipio;
 use App\Models\CatColonia;
 use App\Models\CatOcupacion;
 use App\Models\CatEstadoCivil;
@@ -48,6 +49,8 @@ class PreregistroController extends Controller
         ->pluck('nombre','id');
         $estados=CatEstado::orderBy('nombre', 'ASC')
         ->pluck('nombre','id');
+        $municipios=CatMunicipio::where('idEstado',30)->orderBy('nombre', 'ASC')
+        ->pluck('nombre','id');
         $ocupaciones=CatOcupacion::orderBy('nombre', 'ASC')
         ->pluck('nombre', 'id');
         $estadocivil = CatEstadoCivil::orderBy('nombre', 'ASC')
@@ -59,6 +62,7 @@ class PreregistroController extends Controller
 
         return view('servicios.preregistro.create')
         ->with('estados',$estados)
+        ->with('municipios',$municipios)
         ->with('ocupaciones',$ocupaciones)
         ->with('escolaridades',$escolaridades)
         ->with('estadocivil',$estadocivil)
