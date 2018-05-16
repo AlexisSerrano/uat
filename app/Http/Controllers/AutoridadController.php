@@ -115,8 +115,16 @@ class AutoridadController extends Controller
             $domicilio->idLocalidad = $request->idLocalidad;
             $domicilio->idColonia = $request->idColonia;
             $domicilio->calle = $request->calle;
-            $domicilio->numExterno = $request->numExterno;
-            $domicilio->numInterno = $request->numInterno;
+            if ($request->numExterno==null) {
+                $domicilio->numExterno = 'S/N';
+            } else {
+                $domicilio->numExterno = $request->numExterno;
+            }
+            if ($request->numInterno==null) {
+                $domicilio->numInterno = 'S/N';
+            } else {
+                $domicilio->numInterno = $request->numInterno;
+            }
             $domicilio->save();
             $idD1 = $domicilio->id;
 
@@ -125,8 +133,17 @@ class AutoridadController extends Controller
             $domicilio2->idLocalidad = $request->idLocalidad2;
             $domicilio2->idColonia = $request->idColonia2;
             $domicilio2->calle = $request->calle2;
-            $domicilio2->numExterno = $request->numExterno2;
-            $domicilio2->numInterno = $request->numInterno2;
+            if ($request->numExterno2==null) {
+                $domicilio2->numExterno = 'S/N';
+            } else {
+                $domicilio2->numExterno = $request->numExterno2;
+            }
+            if ($request->numInterno2==null) {
+                $domicilio2->numInterno = 'S/N';
+            } else {
+                $domicilio2->numInterno = $request->numInterno2;
+            }
+            
             $domicilio2->save();
             $idD2 = $domicilio2->id;
 

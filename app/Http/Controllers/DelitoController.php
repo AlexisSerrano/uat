@@ -104,10 +104,27 @@ class DelitoController extends Controller
             $tipifDelito->idLugar = $request->idLugar;
             $tipifDelito->idZona = $request->idZona;
             $tipifDelito->idDomicilio = $idD1;
-            $tipifDelito->entreCalle = $request->entreCalle;
-            $tipifDelito->yCalle = $request->yCalle;
-            $tipifDelito->calleTrasera = $request->calleTrasera;
-            $tipifDelito->puntoReferencia = $request->puntoReferencia;
+            if ($request->entreCalle==null) {
+                $tipifDelito->entreCalle = 'SIN INFORMACION';
+            } else {
+                $tipifDelito->entreCalle = $request->entreCalle;
+            }
+            if ($request->yCalle==null) {
+                $tipifDelito->yCalle = 'SIN INFORMACION';
+            } else {
+                $tipifDelito->yCalle = $request->yCalle;
+            }
+            if ($request->calleTrasera==null) {
+                $tipifDelito->calleTrasera = 'SIN INFORMACION';
+            } else {
+                $tipifDelito->calleTrasera = $request->calleTrasera;
+            }
+            if ($request->puntoReferencia==null) {
+                $tipifDelito->puntoReferencia = 'SIN INFORMACION';
+            } else {
+                $tipifDelito->puntoReferencia = $request->puntoReferencia;
+            }
+            
             $tipifDelito->save();
             if($tipifDelito->save()){
                 Alert::success('Delito registrado con éxito', 'Hecho');

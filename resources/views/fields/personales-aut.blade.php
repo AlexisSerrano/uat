@@ -74,19 +74,19 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idNacionalidad', 'Nacionalidad', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idNacionalidad', $nacionalidades, null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Seleccione la nacionalidad', 'required']) !!}
+			{!! Form::select('idNacionalidad', $nacionalidades, 1, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Seleccione la nacionalidad', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idEtnia', 'Etnia', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idEtnia', $etnias, null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Seleccione la etnia', 'required']) !!}
+			{!! Form::select('idEtnia', $etnias, 1, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Seleccione la etnia', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idLengua', 'Lengua', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idLengua', $lenguas, null, ['class' => ' persona form-control form-control-sm', 'placeholder' => 'Seleccione la lengua', 'required']) !!}
+			{!! Form::select('idLengua', $lenguas, 70, ['class' => ' persona form-control form-control-sm', 'placeholder' => 'Seleccione la lengua', 'required']) !!}
 		</div>
 	</div>
 	
@@ -99,7 +99,7 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('motivoEstancia', 'Motivo de estancia', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('motivoEstancia', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el motivo de estancia','data-validation-optional'=>'true']) !!}
+			{!! Form::text('motivoEstancia', 'NO APLICA', ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el motivo de estancia','data-validation-optional'=>'true']) !!}
 		</div>
 	</div>
 	<div class="col-3">

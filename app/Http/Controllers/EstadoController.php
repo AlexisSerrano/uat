@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Carpeta;
 use App\Models\Acusacion;
 use App\Models\ExtraAbogado;
@@ -232,7 +233,7 @@ class EstadoController extends Controller
                     $concarpeta->numIph = $carpeta->numIph;
                     $concarpeta->narracionIph = $carpeta->narracionIph;
                     $concarpeta->descripcionHechos = $carpeta->descripcionHechos;
-                    $concarpeta->nombreFiscalUat = 'XXXXXXXXXXXXXXX XXXXXXXXXXX XXXXXXXXXXXXXXx';
+                    $concarpeta->nombreFiscalUat = Auth::user()->nombres;
                     $concarpeta->numCarpetaUat = $carpeta->numCarpeta;
                     $concarpeta->asignada = 0;
                     $concarpeta->observacionesEstatus = $carpeta->observacionesEstatus;
@@ -261,8 +262,8 @@ class EstadoController extends Controller
                         $condelito->formaComision = $delito->formaComision;
                         $condelito->fecha = $delito->fecha;
                         $condelito->hora = $delito->hora;
-                        $condelito->idZona = $delito->idLugar;
-                        $condelito->idLugar = $delito->idZona;
+                        $condelito->idZona = $delito->idZona;
+                        $condelito->idLugar = $delito->idLugar;
                         $condelito->idDomicilio = $delito->idDomicilio;
                         $condelito->entreCalle = $delito->entreCalle;
                         $condelito->yCalle = $delito->yCalle;

@@ -10,13 +10,13 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('lineav', 'Línea', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('lineav', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese línea del vehículo',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'La marca del teléfono debe contener al menos dos letras']) !!}
+			{!! Form::text('lineav', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese línea del vehículo',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'La linea del vehículo debe contener al menos dos letras']) !!}
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('modelov', 'Modelo', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('modelov', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese modelo del vehículo', 'data-validation'=>'required']) !!}
+			{!! Form::text('modelov', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese modelo del vehículo (año).', 'data-validation'=>'number']) !!}
 		</div>
 	</div>
 	<div class="col-4">
@@ -52,7 +52,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('celularv', 'Número de celular', ['class' => 'col-form-label-sm']) !!}		
-			{!! Form::text('celularv', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese su número de celular ', 'data-validation'=>'required']) !!}   
+			{!! Form::text('celularv', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese su número de celular ', 'data-validation'=>'number']) !!}   
 		</div>
 	</div>
 	<div class="col-4">
@@ -131,9 +131,9 @@
 			{!! Form::label('fecha_nac', 'Fecha de realizacion', ['class' => 'col-form-label-sm']) !!}
 				<div class="input-group date" id="fecha_nac" data-target-input="nearest">
 					@if(isset($form['fecha_nac']))
-					<input type="date" id="fecha_nac" name="fecha_nac" value="{{ $form['fecha_nac'] }}" class="form-control form-control-sm", data-validation="birthdate">
+					<input type="date" id="fecha_nac" name="fecha_nac" value="{{ $form['fecha_nac'] }}" class="form-control form-control-sm", data-validation="required">
 					@else
-					<input type="date" id="fecha_nac" name="fecha_nac" class="form-control form-control-sm", data-validation="birthdate">
+					<input type="date" id="fecha_nac" name="fecha_nac" class="form-control form-control-sm", data-validation="required">
 					@endif
 				</div>
 			</div>
