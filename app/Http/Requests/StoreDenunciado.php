@@ -45,7 +45,7 @@ class StoreDenunciado extends FormRequest
             'numInterno3' => 'nullable|string|min:1|max:10',
             'correo' => 'email',
             'telefonoN' => 'numeric|min:7',
-            'fax' => 'numeric',
+            'fax' => 'nullable|numeric',
             'senasPartic' => 'string|min:1|max:150',
             'narracion' => 'string|min:5|max:2000',
 

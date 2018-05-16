@@ -361,7 +361,7 @@ class CarpetaController extends Controller
                     $request->session()->forget('preretistro');
                 }
                 Alert::success('Carpeta iniciada con éxito se le ha asignado el numero de carpeta: '.$carpeta->numCarpeta, 'Hecho')->persistent('Aceptar');
-                return redirect('registros');
+                return redirect('carpetas');
             }
             else{
                 Alert::warning('No cuenta con los requisitos mínimos (denunciante,denunciado,delito,acusación) para terminar la carpeta', 'Advertencia');

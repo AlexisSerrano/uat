@@ -131,8 +131,16 @@ class DenunciadoController extends Controller
                 $domicilio->idMunicipio = $request->idMunicipioC;
                 $domicilio->idLocalidad = $request->idLocalidadC;
                 $domicilio->idColonia = $request->idColoniaC;
-                $domicilio->calle = $request->calleC;
-                $domicilio->numExterno = $request->numExternoC;
+                if($request->calleC==null){
+                    $domicilio->calle = 'SIN INFORMACION';
+                }else{
+                    $domicilio->calle = $request->calleC;
+                }
+                if($request->numExternoC==null){
+                    $domicilio->numExterno = 'S/N';
+                }else{
+                    $domicilio->numExterno = $request->numExternoC;
+                }
                 if($request->numInternoC==null){
                     $domicilio->numInterno = 'S/N';
                 }else{
@@ -275,7 +283,11 @@ class DenunciadoController extends Controller
                     $notificacion->idDomicilio = $idD3;
                     $notificacion->correo = $request->correo;
                     $notificacion->telefono = $request->telefono;
-                    $notificacion->fax = $request->fax;
+                    if ($request->fax==null) {
+                        $notificacion->fax = 'SIN INFORMACION';
+                    } else {
+                        $notificacion->fax = $request->fax;
+                    }
                     $notificacion->save();
                     $idNotificacion = $notificacion->id;
 
@@ -412,7 +424,11 @@ class DenunciadoController extends Controller
                     $notificacion->idDomicilio = $idD3;
                     $notificacion->correo = $request->correo;
                     $notificacion->telefono = $request->telefonoN;
-                    $notificacion->fax = $request->fax;
+                    if ($request->fax==null) {
+                        $notificacion->fax = 'SIN INFORMACION';
+                    } else {
+                        $notificacion->fax = $request->fax;
+                    }
                     $notificacion->save();
                     $idNotificacion = $notificacion->id;
 
