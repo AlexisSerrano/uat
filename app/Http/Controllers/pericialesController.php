@@ -20,6 +20,7 @@ use App\Models\Domicilio;
 use App\Models\BitacoraNavCaso;
 use App\Models\formatos\PerMensaje;
 use App\Models\formatos\Psicologo;
+use App\Models\formatos\Lesione;
 use App\Models\formatos\Vehiculo;
 
 
@@ -205,5 +206,45 @@ class pericialesController extends Controller
          }
 
     
+
+         public function lesiones(Request $request) {   
+
+            DB::beginTransaction();
+            try{
+                $idCarpeta = session('carpeta');
+                $lesiones = new Lesione;
+                $lesiones->idCarpeta = 1;
+                $lesiones->nombre = $request->nombre2;
+                $lesiones->fecha = $request->fecha_nac;
+               
+                if($lesiones->save()){
+                    Alert::success('Registro guardado con éxito', 'Hecho');
+                    // $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+                    // $bdbitacora->medidas = $bdbitacora->medidas+1;
+                    // $bdbitacora->save();
+                }
+                else{
+                    Alert::error('Se presentó un problema al guardar el registro', 'Error');
+                }
+                DB::commit();
+    
+                // return redirect("home");
+                return view('documentos.periciales_lesiones')
+          
+                ->with('fecha',  $lesiones->fecha  )
+                ->with('folio',  $lesiones->idCarpeta)
+              
+                ->with('nombre', $lesiones->nombre )
+                ->with('fiscal',  "XXXXXXXXXXX" );
+        
+    
+            }catch (\PDOException $e){
+                DB::rollBack();
+                Alert::error('Se presentó un problema al guardar el registro, intente de nuevo', 'Error');
+                return back()->withInput();
+            }
+        }
+    
+
     
     }

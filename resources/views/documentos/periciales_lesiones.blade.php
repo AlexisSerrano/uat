@@ -104,7 +104,7 @@
                      52 y 67 fracción I de la Constitución Política Local; 2°, 127, 131, 212, 214, 272, 273, 368, 369 y demás relativos y aplicables
                       del Código Nacional de Procedimientos Penales en vigor; 2, 5, 6, 7, 39, 40 y 43 de la Ley Orgánica de la Fiscalía General del
                        Estado de Veracruz de Ignacio de la Llave, 1, 4, 34, 126, 128, 150, 195 y 201 del Reglamento de la Ley en cita, solicito a Usted
-                        designe perito en la materia a fin de que se sirva examinar clínicamente a la C. <span class="noeditable">{{$folio}}</span>,
+                        designe perito en la materia a fin de que se sirva examinar clínicamente a la C. <span class="noeditable">{{$nombre}}</span>,
                          y se determine lo siguiente:
                     1. Su orden de esfera neurológico.
                     2. Si presenta huellas de lesiones, su naturaleza, ubicación y clasificación.
