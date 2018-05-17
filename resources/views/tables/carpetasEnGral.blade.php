@@ -2,17 +2,27 @@
 @section('title', 'Carpetas')
 
 @section('contenido')
+
 <div class="table">
     {{ Form::open(['route' => ['filtro.carpetas'], 'method' => 'POST']) }}
-        <div class="input-group mb-3 col-2">
+    
+        <div class="input-group mb-6 col-4" style="margin-left: -8px;">
+            <div class="input-group-prepend">
+             <span class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true" ></i></span>
+            </div>
+         <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="basic-addon2" name="search" id="search" value="{{old('search')}}" >
+            </div> 
+
+        {{-- <div class="input-group mb-3 col-2">
             <input type="text" class="form-control" name="search" id="search" value="{{old('search')}}" placeholder="Buscar" aria-label="Buscar" aria-describedby="basic-addon2">
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
             </div>
-        </div>
+        </div> --}}
     {{ Form::close() }}
     <br>
-    <table class="table table-hover table-striped" id="tablacarpetas">
+    <div class="card">
+    <table class="table table-hover" id="tablacarpetas">
         <thead class="table-active">
             <tr>
                 {{-- <th >N.</th> --}}
@@ -63,6 +73,7 @@
         {{ $carpetas->links() }}
     </div>
     <br>
+</div>
 </div>
 @endsection
 

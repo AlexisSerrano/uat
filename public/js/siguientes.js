@@ -1,17 +1,3 @@
-//agregar denunciante
-// $(document).ready(function(){
-
-    // if ($('#esEmpresa1').is(':checked') ) {
-
-    //     $('.nav-link').removeClass("active");//quitamos clases de activo
-    //         $('#direccion-tab').addClass("disabled");
-    //         $('#trabajo-tab').addClass("disabled");
-    //         $('#dirnotificacion-tab').addClass("disabled");
-    //         $('#denunciante-tab').addClass("disabled");
-    //         $('#personales-tab').addClass("active");
-
-    
-
 
 
 //Datos personales-direccion
@@ -124,20 +110,6 @@
         toastr.error("Complete los campos faltantes para poder avanzar");
         }
         }
-
-        // $('#ANotificaciones2').click(function(){
-
-        //         $('.nav-link').removeClass("active");//Quito la clase active al tab actual
-        //                 $('#dirnotificacion-tab').addClass("active");//Agrego la clase active al tab actual
-        //                 $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-        //                 $('.tab-pane').removeClass("show");
-        //                 $('#dirnotificacion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-        //                 $('#dirnotificacion').addClass("show");
-        //                 console.log('a notificaciones')
-
-
-
-        //  });
 
         $('#ANotificaciones').click(function(){
         validarTrabajo();
@@ -504,91 +476,53 @@
 
         });
 
-        // function validarDelito2(){
-        //     var valDelito2=0;
+        /**-----------------BOTONES ATRÁS-------------------------------------------- */
 
-        //     if ($('.lugarH').val().length == 0){
-        //         valDelito2=1;
-                
-        //     }
-        //     else{
-        //         $('.nav-link').removeClass("active");//Quito la clase active al tab actual
-        //         $('#dirdelito-tab').addClass("active");//Agrego la clase active al tab actual
-        //         $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-        //         $('.tab-pane').removeClass("show");
-        //         $('#dirdelito').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-        //         $('#dirdelito').addClass("show"); 
-        //     }
-        //     if (valDelito2==1) {
-        //         toastr.error("Complete los campos faltantes para poder avanzar");
-        //     }
-
-        // }
-
-//tabs});
-
-
-// if ($('#esEmpresa1').is(':checked') ) {
-
-    
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function valDomEmpresa(){
-
-//     var completoDE=0;
-
-    
+        $('#irpersonales').click(function(){
+            $('.nav-link').removeClass("active");
+            $('#personales-tab').addClass("active");//Agrego la clase active al tab actual
+            $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+            $('.tab-pane').removeClass("show");
+            $('#personales').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+            $('#personales').addClass("show");
+            console.log('boton atrás')
+        });
         
-    // $('.irtrabajo').click(function(){
-    //     $('.nav-link').removeClass("active");//Quito la clase active al tab actual
-    //     $('#trabajo-tab').addClass("active");//Agrego la clase active al tab actual
-    //     $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-    //     $('.tab-pane').removeClass("show");
-    //     $('#trabajo').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-    //     $('#trabajo').addClass("show");
-    // });
-
-$('.irpersonales').click(function(){
-    // $('.nav-link').removeClass("active");//Quito la clase active al tab actual
-    // $('#personales-tab').addClass("active");//Agrego la clase active al tab actual
-    // $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-    // $('.tab-pane').removeClass("show");
-    // $('#personales').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-    // $('#personales').addClass("show");
-});
-
-// $('.irdirnotificacion').click(function(){
-//     $('.nav-link').removeClass("active");//Quito la clase active al tab actual
-//     $('#dirnotificacion-tab').addClass("active");//Agrego la clase active al tab actual
-//     $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-//     $('.tab-pane').removeClass("show");
-//     $('#dirnotificacion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-//     $('#dirnotificacion').addClass("show");
-// });
-
-// $('.irdenunciante').click(function(){
-//     $('.nav-link').removeClass("active");//Quito la clase active al tab actual
-//     $('#denunciante-tab').addClass("active");//Agrego la clase active al tab actual
-//     $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-//     $('.tab-pane').removeClass("show");
-//     $('#denunciante').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-//     $('#denunciante').addClass("show");
-// });
+        $('#adireccion2').click(function(){
+            $('.nav-link').removeClass("active");
+            $('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
+            $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+            $('.tab-pane').removeClass("show");
+            $('#direccion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+            $('#direccion').addClass("show");
+            console.log('boton atrás')
+        });
+        $('#irdireccion').click(function(){
+            $('.nav-link').removeClass("active");
+            $('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
+            $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+            $('.tab-pane').removeClass("show");
+            $('#direccion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+            $('#direccion').addClass("show");
+            console.log('boton atrás')
+        });
+        $('#atrabajo2').click(function(){
+            $('.nav-link').removeClass("active");
+            $('#trabajo-tab').addClass("active");//Agrego la clase active al tab actual
+            $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+            $('.tab-pane').removeClass("show");
+            $('#trabajo').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+            $('#trabajo').addClass("show");
+            console.log('boton atrás')
+        });
+    
+        $('#irdirnotificacion').click(function(){
+            $('.nav-link').removeClass("active");
+            $('#dirnotificacion-tab').addClass("active");//Agrego la clase active al tab actual
+            $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+            $('.tab-pane').removeClass("show");
+            $('#dirnotificacion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+            $('#dirnotificacion').addClass("show");
+            console.log('boton atrás')
+        });
+        
