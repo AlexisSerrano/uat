@@ -74,7 +74,7 @@
 			      		<th scope="col">Nombre</th>
 						  <th scope="col">Identificación</th>
 						  <th scope="col">Razón</th>
-			      		<th scope="col">Validar</th>
+			      		<th scope="col">Ver</th>
 			    	</tr>
 			  	</thead>
 			  	<tbody>
@@ -87,8 +87,10 @@
 			      		<td>{{($registro->esEmpresa==0)?$registro->nombre.' '.$registro->primerAp.' '.$registro->segundoAp:$registro->representanteLegal}}</td>
 						  <td>{{$registro->docIdentificacion}}</td>
 						  <td>{{$registro->razon}}</td>
-			      		<td><a href="{{url("predenuncias/".$registro->id."/edit")}}"><i class="fa fa-check-square-o" aria-hidden="true"></i></a></td>
-			    	</tr>
+			      		<td><button class="btn btn-primary">
+							  <a href="{{url("predenuncias/".$registro->id."/edit")}}"><i style="color:white" class="fa fa-check" aria-hidden="true"></i></a></td>
+						  </button>
+						</tr>
 					@empty
 					<tr><td colspan="7" class="text-center">Sin registros</td></tr>
 					
