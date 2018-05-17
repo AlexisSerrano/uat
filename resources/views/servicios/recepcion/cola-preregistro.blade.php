@@ -1,8 +1,8 @@
 @extends('template.form')
 @if ($status==0)
-@section('title', 'Registros en cola')
+	@section('title', 'Registros en cola')
 @else
-@section('title', 'Registros urgentes')
+	@section('title', 'Registros urgentes')
 @endif
 @section('content')
 <div class="container">
