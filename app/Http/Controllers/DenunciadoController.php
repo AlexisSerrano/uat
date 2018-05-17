@@ -461,26 +461,35 @@ class DenunciadoController extends Controller
     }
 
     public function delete($id){
+        DB::beginTransaction();
+        try{
+            $vpersonas = DB::table('extra_denunciado')
+            ->join('variables_persona','variables_persona.id','=','extra_denunciado.idVariablesPersona')
+            ->where('extra_denunciado.id', '=', $id)
+            ->select('variables_persona.id as id')
+            ->first();
+
             $ExtraDenunciado =  ExtraDenunciado::find($id);
-
-            $variables = DB::table('variables_persona')
-            ->where('idCarpeta', '=', $id)
-            ->get();
-
-            foreach ($variables as $variable) {
-                $persona=VariablesPersona::find($variable->id);
-                $persona->idCarpeta = null;
-                $persona->save();
-            }
-
-            ////////////////////////////////////////////////////
             $ExtraDenunciado->delete();
+        
+                $vp= VariablesPersona::find($vpersonas->id);
+                $vp->idCarpeta = null;
+                $vp->save();
+
             $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-            $bdbitacora->denunciado = $bdbitacora->denunciado-1;
-            $bdbitacora->save();
-            Alert::success('Registro eliminado con éxito', 'Hecho');
+                $bdbitacora->denunciado = $bdbitacora->denunciado-1;
+                $bdbitacora->save();
+                DB::commit();
+            Alert::success('Registrado eliminado con éxito', 'Hecho');
             return back();
         }
+        catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            return back()->withInput();
+        }
+    }
+
 
     public function addbitacora(){
         $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
