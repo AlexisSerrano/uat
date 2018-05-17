@@ -84,12 +84,15 @@ Route::middleware(['auth'])->group(function () {
     //Route::resource('/preregistro','PreregistroController');
     
     
-    
     Route::post('/showbyfolio', 'PreregistroAuxController@showbyfolio');
     Route::get('/showbyfolio', 'PreregistroAuxController@showbyfolio');
-    Route::get('/showbymunicipio/{id}', 'PreregistroAuxController@showbymunicipio');
+    
     Route::get('/encola', 'PreregistroAuxController@encola');
     Route::get('/urgentes', 'PreregistroAuxController@urgentes');
+    
+    Route::post('/filtroprioridad', 'PreregistroAuxController@filtroPrioridad')->name('prioridadpreregistrofiltro');
+
+    Route::get('/showbymunicipio/{id}', 'PreregistroAuxController@showbymunicipio');
     Route::get('/estado/{id}/{tipo}', 'PreregistroController@estado');
     Route::post('/estado', 'PreregistroController@estadourgente');
     

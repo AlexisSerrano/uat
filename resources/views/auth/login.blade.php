@@ -165,7 +165,7 @@ sessionStorage.removeItem('isLive');
             
 			<div id="cargando" style="display:none;">
 				<div class="text-center">
-					<strong  style="color:#f5f5f5;">Inciando sesión<strong>
+					<strong  style="color:#f5f5f5;">Iniciando sesión<strong>
 				</div>
 				<div class="sk-circle">
 					<div class="sk-circle1 sk-child"></div>

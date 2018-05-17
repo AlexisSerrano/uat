@@ -106,7 +106,7 @@ $form = oldFormActas();
         @if(isset($form['catColonias'],$form['idColonia2']))
         {!! Form::select('idColonia2', $form['catColonias'], $form['idColonia2'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
         @else
-        {!! Form::select('idColonia2', $catColonias, null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+        {!! Form::select('idColonia2', $catColonias, $acta->idColonia, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
         @endif
     </div>
 </div>
@@ -170,7 +170,7 @@ $form = oldFormActas();
             {!! Form::select('tipoActa', array('PASAPORTE' => 'PASAPORTE', 
             'CREDENCIAL DE TRABAJO/GAFFETE' => 'CREDENCIAL DE TRABAJO/GAFFETE',
             'TARJETA DE CREDITO/DEBITO' => 'TARJETA DE CRÉDITO/DÉBITO',
-            'TELEFONO CELULAR' => 'TELÉFONO CELULAR',
+            'TELÉFONO CELULAR' => 'TELÉFONO CELULAR',
             'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)' => 'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)',
             'PERMISO DE TRANSITO PARA EMPLACAMIENTO DE TAXIS' => 'PERMISO DE TRÁNSITO PARA EMPLACAMIENTO DE TAXIS',
             'FACTURA DE VEHICULO/MOTOCICLETA' => 'FACTURA DE VEHICULO/MOTOCICLETA',

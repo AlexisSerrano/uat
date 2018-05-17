@@ -10,6 +10,7 @@ use App\Models\CatEstadoCivil;
 use App\Models\CatEtnia;
 use App\Models\CatLengua;
 use App\Models\CatNacionalidad;
+use App\Models\CatMunicipio;
 use App\Models\CatOcupacion;
 use App\Models\CatPuesto;
 use App\Models\CatReligion;
@@ -33,6 +34,7 @@ class DenunciadoController extends Controller
         if(count($carpetaNueva)>0){ 
             $denunciados = CarpetaController::getDenunciados($idCarpeta);
             $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
+            $municipios=CatMunicipio::where('idEstado',30)->orderBy('nombre', 'ASC')->pluck('nombre','id');
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $etnias = CatEtnia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -46,6 +48,7 @@ class DenunciadoController extends Controller
                 ->with('escolaridades', $escolaridades)
                 ->with('estados', $estados)
                 ->with('estadoscivil', $estadoscivil)
+                ->with('municipios', $municipios)
                 ->with('etnias', $etnias)
                 ->with('lenguas', $lenguas)
                 ->with('nacionalidades', $nacionalidades)

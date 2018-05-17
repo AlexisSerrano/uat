@@ -8,36 +8,26 @@
 <div class="container">
 	<div class="row">
 		<div class="col-12">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			    <span class="navbar-toggler-icon"></span>
-			  	</button>
-			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			    	{{-- <ul class="navbar-nav mr-auto">
-			      		<li class="nav-item active">
-			        	<a class="nav-link" href="{{url('predenuncias')}}">
-			        		<button class="btn btn-outline-secondary">Todos</button>
-			        	</a>
-			      		</li>
-			      		<li class="nav-item">
-			        		<a class="nav-link" href="{{url('encola')}}">
-			        			<button class="btn btn-outline-secondary">En cola</button>
-			        		</a>
-			      		</li>
-			      		<li class="nav-item">
-			        		<a class="nav-link" href="{{url('urgentes')}}">
-			        			<button class="btn btn-outline-secondary">Urgentes</button>
-			        		</a>
-			      		</li>
-			    	</ul> --}}
-			    	<form class="form-inline my-2 my-lg-0" method="POST" action="{{ url('showbyfolio') }}">
-			    		@csrf
-			      		<input class="form-control mr-sm-2" type="text" name="folio" id="folio" placeholder="Buscar" aria-label="Buscar">
-			      		<button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-			    	</form>
-			  	</div>
-			</nav>
+			{!! Form::open(['route' => 'prioridadpreregistrofiltro', 'method' => 'POST'])  !!}
+			@csrf
+			@if ($status==0)
+				<input type="hidden" name="tipo" id="tipo" value=0>
+			@else
+				<input type="hidden" name="tipo" id="tipo" value=1>
+			@endif
+				<div class="row">
+					<div class="col-4 text-right">
+						<div class="input-group">
+							<input type="text" id="folio" name="folio" class="form-control" placeholder="buscar">
+							<span class="input-group-btn">
+								<button type="submit" class="btn btn-secondary"><i class="fa fa-search" aria-hidden="true"></i></button>
+							</span>
+						</div>
+					</div>
+				</div>
+			{!!Form::close()!!}	
 		</div>
+		<br><br>
 		<div class="col-12">
 			<table class="table table-striped table-bordered table-hover">
 			 	<thead class="thead-active">
