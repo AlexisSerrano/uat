@@ -220,53 +220,6 @@
 		}
 	
 		
-	$('#irpersonales').click(function(){
-		$('.nav-link').removeClass("active");
-        $('#personales-tab').addClass("active");//Agrego la clase active al tab actual
-        $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-        $('.tab-pane').removeClass("show");
-        $('#personales').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-		$('#personales').addClass("show");
-		console.log('boton atrás')
-	});
-	
-	$('#adireccion2').click(function(){
-		$('.nav-link').removeClass("active");
-        $('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
-        $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-        $('.tab-pane').removeClass("show");
-        $('#direccion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-		$('#direccion').addClass("show");
-		console.log('boton atrás')
-	});
-	$('#irdireccion').click(function(){
-		$('.nav-link').removeClass("active");
-        $('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
-        $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-        $('.tab-pane').removeClass("show");
-        $('#direccion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-		$('#direccion').addClass("show");
-		console.log('boton atrás')
-	});
-	$('#atrabajo2').click(function(){
-		$('.nav-link').removeClass("active");
-        $('#trabajo-tab').addClass("active");//Agrego la clase active al tab actual
-        $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-        $('.tab-pane').removeClass("show");
-        $('#trabajo').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-		$('#trabajo').addClass("show");
-		console.log('boton atrás')
-	});
 
-	$('#irdirnotificacion').click(function(){
-		$('.nav-link').removeClass("active");
-        $('#dirnotificacion-tab').addClass("active");//Agrego la clase active al tab actual
-        $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-        $('.tab-pane').removeClass("show");
-        $('#dirnotificacion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-		$('#dirnotificacion').addClass("show");
-		console.log('boton atrás')
-	});
-	
 </script>
 @endpush
