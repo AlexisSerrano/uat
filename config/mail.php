@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.gmail.org'),
+    'host' => env('MAIL_HOST', 'preregistro@fiscaliaveracruz.gob.mx'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'fiscalia@veracruz.gob'),
+        'address' => env('MAIL_FROM_ADDRESS', 'preregistro@fiscaliaveracruz.gob.mx'),
         'name' => env('MAIL_FROM_NAME', 'Julio'),
     ],
 

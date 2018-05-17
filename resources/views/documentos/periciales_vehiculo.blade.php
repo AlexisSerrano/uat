@@ -105,7 +105,7 @@
                         <br>
                             ASUNTO DERIVADO POR:Se solicita peritaje que se indica
                     <p>   LIC. DIRECTOR GENERAL DE LOS SERVICIOS
-                    PERICIALES EN EL Estados</p><br>
+                    PERICIALES EN EL ESTADO</p><br>
         
                         <p>         P R E S E N T E </p>
                                 </td>
