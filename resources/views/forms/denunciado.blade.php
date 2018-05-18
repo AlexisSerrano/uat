@@ -162,10 +162,10 @@
 					<div class="row menu">
 						<div class="col text-left">
 							<a id="atrabajo2" class="btn btn-secondary irtrabajo"><i class="fa fa-arrow-left"></i></a>
-							<a id="adireccion2" class="btn btn-secondary irdireccion"><i class="fa fa-arrow-left"></i></a>
+							<a id="adireccion2" class="btn btn-secondary"><i class="fa fa-arrow-left"></i></a>
 						</div>
 						<div class="col text-right">
-							<a id="Adenunciado" class="btn btn-secondary irdenunciado"><i class="fa fa-arrow-right"></i></a>
+							<a id="Adenunciado" class="btn btn-secondary "><i class="fa fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>

@@ -143,7 +143,7 @@
 			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('nombres2', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('nombres2', null, ['class' => 'empresa form-control form-control-sm personales', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}
+					{!! Form::text('nombres2', null, ['class' => ' form-control form-control-sm personales', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}
 				</div>
 			</div>
 			<div class="col-4">
@@ -172,7 +172,7 @@
 			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('representanteLegal', 'Representante legal', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('representanteLegal', null, ['class' => 'empresa form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal','data-validation'=>'required']) !!}
+					{!! Form::text('representanteLegal', null, ['class' => ' form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal','data-validation'=>'required']) !!}
 				</div>
 			</div>
 		</div>

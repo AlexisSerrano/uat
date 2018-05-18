@@ -17,10 +17,26 @@
 
         var completo=0;
 
-        if ($('.empresa').val().length == 0){
+
+        if ($('#nombres2').val().length == 0){
+        completo=1;
+        
+        }
+        if ($('#fechaAltaEmpresa').val().length == 0){
+        completo=1;
+        }
+        if ($('#rfc2').val().length == 0){
+        completo=1;
+        }
+        if ($('#homo2').val().length == 0){
+        completo=1;
+        }
+        if ($('#representanteLegal').val().length == 0){
         completo=1;
         }
         else{
+            
+        if (completo==0) {
 
         $('.nav-link').removeClass("active");
         $('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
@@ -32,18 +48,70 @@
         console.log("todo bien!")
         }
 
-        if (completo==1) {
+        else if (completo==1) {
 
         toastr.error("Complete los campos faltantes para poder avanzar");
         }
 
-        }   
+    }   
+}
         function validarPersona(){
 
         var completoP=0;
-        if ($('.persona').val().length == 0){
+        if ($('#nombres').val().length == 0){
         completoP=1;
         }
+        if ($('#primerAp').val().length == 0){
+            completoP=1;
+        }
+        if ($('#fechaNacimiento').val().length == 0){
+            completoP=1;
+        }
+        if ($('#idEstadoOrigen').val().length == 0){
+            completoP=1;
+        }
+        if ($('#idMunicipioOrigen').val().length == 0){
+            completoP=1;
+         }
+        if ($('#sexo').val().length == 0){
+                completoP=1;
+         }
+         if ($('#curp').val().length == 0){
+            completoP=1;
+        }
+        if ($('#idNacionalidad').val().length == 0){
+                completoP=1;
+        }
+        if ($('#idEtnia').val().length == 0){
+                completoP=1;
+        }
+        if ($('#idLengua').val().length == 0){
+                    completoP=1;
+         }
+        if ($('#telefono').val().length == 0){
+                completoP=1;
+        }
+        
+        if ($('#idOcupacion').val().length == 0){
+            completoP=1;
+        }
+        if ($('#idEstadoCivil').val().length == 0){
+            completoP=1;
+        }
+        if ($('#idReligion').val().length == 0){
+            completoP=1;
+        }
+        if ($('#idEscolaridad').val().length == 0){
+                completoP=1;
+        }
+        if ($('#docIdentificacion').val().length == 0){
+            completoP=1;
+        }
+        if ($('#numDocIdentificacion').val().length == 0){
+                completoP=1;
+         }
+         
+
         else{
         $('.nav-link').removeClass("active");//Quito la clase active al tab actual
         $('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
