@@ -13,6 +13,8 @@ class Lesione extends Model
         'id',
         'idCarpeta',
         'nombre',
+        'primerAp',
+        'segundoAp',
         'fecha'
         
     ];

@@ -13,6 +13,8 @@ class PerMensaje extends Model
         'id',
         'idCarpeta',
         'nombre',
+        'primerAp',
+       'segundoAp',
         'marca',
         'imei',
         'compania',

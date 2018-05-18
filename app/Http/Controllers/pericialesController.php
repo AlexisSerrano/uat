@@ -54,6 +54,8 @@ class pericialesController extends Controller
             $PerMensaje = new PerMensaje;
             $PerMensaje->idCarpeta = 1;
             $PerMensaje->nombre = $request->nombret;
+            $PerMensaje->primerAp = $request->primerAp;
+            $PerMensaje->segundoAp = $request->segundoAp;
             $PerMensaje->marca = $request->marcat;
             $PerMensaje->imei = $request->imeit;
             $PerMensaje->compania = $request->compat;
@@ -83,6 +85,8 @@ class pericialesController extends Controller
             ->with('numero',  $PerMensaje->telefono )
             ->with('numero2',  $PerMensaje->telefono_destino )
             ->with('nombre',  $PerMensaje->nombre )
+            ->with('primerAp',  $PerMensaje->primerAp )
+            ->with('segundoAp',  $PerMensaje->segundoAp )
             ->with('fiscal',  "XXXXXXXXXXX" );
     
 
@@ -102,6 +106,8 @@ class pericialesController extends Controller
                 $Psicologo = new Psicologo;
                 $Psicologo->idCarpeta = 1;
                 $Psicologo->nombre = $request->nombrep;
+                $Psicologo->nombre = $request->primerAp;
+                $Psicologo->nombre = $request->segundoAp;
                 $Psicologo->numero = $request->numerop;
                 $Psicologo->fecha = $request->fecha_nac;
                
@@ -123,6 +129,8 @@ class pericialesController extends Controller
                 ->with('folio',   $Psicologo->idCarpeta)
                 ->with('numero',   $Psicologo->numero )
                 ->with('nombre',  $Psicologo->nombre )
+                ->with('primerAp',  $Psicologo->primerAp )
+                ->with('segundoAp',  $Psicologo->segundoAp )
                 ->with('fiscal',  "XXXXXXXXXXX" );
         
     
@@ -215,6 +223,8 @@ class pericialesController extends Controller
                 $lesiones = new Lesione;
                 $lesiones->idCarpeta = 1;
                 $lesiones->nombre = $request->nombre2;
+                $lesiones->primerAp = $request->primerAp;
+                $lesiones->segundoAp = $request->segundoAp;
                 $lesiones->fecha = $request->fecha_nac;
                
                 if($lesiones->save()){
@@ -235,6 +245,8 @@ class pericialesController extends Controller
                 ->with('folio',  $lesiones->idCarpeta)
               
                 ->with('nombre', $lesiones->nombre )
+                ->with('primerAp', $lesiones->primerAp )
+                ->with('segundoAp', $lesiones->segundoAp )
                 ->with('fiscal',  "XXXXXXXXXXX" );
         
     

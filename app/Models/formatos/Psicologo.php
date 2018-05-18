@@ -13,6 +13,8 @@ class Psicologo extends Model
         'id',
         'idCarpeta',
         'nombre',
+       'primerAp',
+        'segundoAp',
         'numero',
         'fecha'
         

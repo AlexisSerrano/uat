@@ -17,6 +17,8 @@ class CreateLesionesTable extends Migration
             $table->increments('id');
             $table->integer('idCarpeta');
             $table->string('nombre',200);
+            $table->string('primerAp',200);
+            $table->string('segundoAp',200);
             $table->date('fecha');
 
             $table->timestamps();
