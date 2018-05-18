@@ -23,7 +23,9 @@ class CreateVehiculosTable extends Migration
             $table->string('numero_serie');
             $table->string('lugar_fabricacion');
             $table->string('placas');
-            $table->string('nombre');
+            $table->string('nombre',200);
+            $table->string('primerAp',200);
+            $table->string('segundoAp',200);
             $table->string('numero');
             $table->string('calle');
             $table->integer('num_ext');

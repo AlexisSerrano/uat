@@ -117,7 +117,7 @@
                       atenta solicito a Usted, tenga a bien designar peritos en materia a fin de que realicen <span class="noeditable">{{$narracion}}</span>, 
                        EN EL EQUIPO CELULAR MARCA <span class="noeditable">{{$marca}}</span>, CON NÚMERO DE IMEI-<span class="noeditable">{{$imei}}</span>, de la compañía 
                        <span class="noeditable">{{$compania}}</span> con número <span class="noeditable">{{$numero}}</span>, proveniente del número <span class="noeditable">{{$numero2}}</span>; lo anterior con las formalidades de ley,
-                        equipo que será puesto a la vista en esas oficinas a su digno cargo por el <span class="noeditable">{{$nombre}}</span>.
+                        equipo que será puesto a la vista en esas oficinas a su digno cargo por el <span class="noeditable">{{$nombre}}</span> <span class="noeditable">{{$primerAp}}</span> <span class="noeditable">{{$segundoAp}}</span>.
 
 
 

@@ -110,7 +110,7 @@
                      52 y 67 fracción I de la Constitución Política Local; 2°, 127, 131, 212, 214, 272, 273, 368, 369 y demás relativos y aplicables
                       del Código Nacional de Procedimientos Penales en vigor; 2, 5, 6, 7, 39, 40 y 43 de la Ley Orgánica de la Fiscalía General del Estado 
                       de Veracruz de Ignacio de la Llave, 1, 4, 34, 126, 128, 150, 195 y 201 del Reglamento de la Ley en cita, solicito a Usted designe perito
-                       en la materia a fin de que se sirva a efecto de que se sirva realizar valoración psicológica al ciudadana <span class="noeditable">{{$nombre}}</span> con número
+                       en la materia a fin de que se sirva a efecto de que se sirva realizar valoración psicológica al ciudadana <span class="noeditable">{{$nombre}}</span> <span class="noeditable">{{$primerAp}}</span> <span class="noeditable">{{$segundoAp}}</span> con número
                         de teléfono celular <span class="noeditable">{{$numero}}</span>, quien denunciara hechos en su agravio que pudieran constituir delito, debiendo determinar el estado emocional
                          y descripción de estado psicológico, precisando si presenta:                     
 

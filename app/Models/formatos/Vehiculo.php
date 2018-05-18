@@ -20,6 +20,8 @@ class Vehiculo extends Model
         'lugar_fabricacion',
         'placas',
         'nombre',
+        'primerAp',
+         'segundoAp',
         'numero',
         'calle',
         'num_ext',
