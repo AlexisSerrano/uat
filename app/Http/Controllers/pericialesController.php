@@ -106,8 +106,8 @@ class pericialesController extends Controller
                 $Psicologo = new Psicologo;
                 $Psicologo->idCarpeta = 1;
                 $Psicologo->nombre = $request->nombrep;
-                $Psicologo->nombre = $request->primerAp;
-                $Psicologo->nombre = $request->segundoAp;
+                $Psicologo->primerAp = $request->primerAp;
+                $Psicologo->segundoAp = $request->segundoAp;
                 $Psicologo->numero = $request->numerop;
                 $Psicologo->fecha = $request->fecha_nac;
                
@@ -143,8 +143,8 @@ class pericialesController extends Controller
     
         public function vehi(Request $request) {   
 
-            DB::beginTransaction();
-            try{
+            // DB::beginTransaction();
+            // try{
                 $idCarpeta = session('carpeta');
                 $vehiculo = new Vehiculo;
                 $vehiculo->idCarpeta = 1;
@@ -155,7 +155,9 @@ class pericialesController extends Controller
                 $vehiculo->numero_serie = $request->numeroseriev;
                 $vehiculo->lugar_fabricacion = $request->lugarFabv;
                 $vehiculo->placas = $request->placav;
-                $vehiculo->nombre = $request->propietariov;
+                $vehiculo->nombre = $request->nombret;
+                $vehiculo->primerAp = $request->primerAp;
+                $vehiculo->segundoAp = $request->segundoAp;
                 $vehiculo->numero = $request->celularv;
                 $vehiculo->calle = $request->calle2;
                 $vehiculo->num_ext = $request->numExterno2;
@@ -173,10 +175,10 @@ class pericialesController extends Controller
                     // $bdbitacora->medidas = $bdbitacora->medidas+1;
                     // $bdbitacora->save();
                 }
-                else{
-                    Alert::error('Se presentó un problema al guardar el registro', 'Error');
-                }
-                DB::commit();
+                // else{
+                //     Alert::error('Se presentó un problema al guardar el registro', 'Error');
+                // }
+                // DB::commit();
     
                 // return redirect("home");
                  return view('documentos.periciales_vehiculo')
@@ -187,11 +189,16 @@ class pericialesController extends Controller
                  ->with('linea',  $vehiculo->linea  )
                  ->with('modelo',  $vehiculo->modelo  )
                  ->with('color',  $vehiculo->color  )
-                 ->with('serie',  $vehiculo->serie  )
+                 ->with('serie',  $vehiculo->numero_serie  )
                  ->with('motor',  $vehiculo->motor  )
                  ->with('placas',  $vehiculo->placas  )
                  ->with('estado',  $vehiculo->entidad  )
-                 ->with('ciudadano',  $vehiculo->nombre  )
+               
+                 ->with('nombre',  $vehiculo->nombre )
+                 ->with('primerAp',  $vehiculo->primerAp )
+                 ->with('segundoAp',  $vehiculo->segundoAp ) 
+
+
                  ->with('cel',  $vehiculo->numero  )             
                  ->with('calle',  $vehiculo->calle  )
                  ->with('numero',  $vehiculo->num_ext  )
@@ -206,11 +213,11 @@ class pericialesController extends Controller
                  ->with('fiscal',  "XXXXXXXXXXX" );
         
     
-            }catch (\PDOException $e){
-                DB::rollBack();
-                Alert::error('Se presentó un problema al guardar el registro, intente de nuevo', 'Error');
-                return back()->withInput();
-            }
+            // }catch (\PDOException $e){
+            //     DB::rollBack();
+            //     Alert::error('Se presentó un problema al guardar el registro, intente de nuevo', 'Error');
+            //     return back()->withInput();
+            // }
          }
 
     
