@@ -5,7 +5,7 @@ $form = oldFormTrabajo();
 	<div class="col-4">
 		<div class="form-group custom">
 			{!! Form::label('idEstado2', 'Entidad federativa', ['class' => ' idEstado2 col-form-label-sm']) !!}
-			{!! Form::select('idEstado2', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
+			{!! Form::select('idEstado2', $estados, 30, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">

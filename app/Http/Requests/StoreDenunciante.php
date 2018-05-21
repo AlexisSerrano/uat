@@ -41,7 +41,7 @@ class StoreDenunciante extends FormRequest
 
             'nombres' => 'string|min:3|max:200',
             'primerAp' => 'string|min:3|max:50',
-            'segundoAp' => 'string|min:3|max:50',
+            // 'segundoAp' => 'string|min:3|max:50',
             'rfc' => 'alpha_num|min:8|max:13',
             'curp' => 'alpha_num|min:17|max:18',
             'telefono' => 'numeric|min:7',
@@ -92,8 +92,8 @@ class StoreDenunciante extends FormRequest
             'nombres.max'=> 'El nombre debe contener como máximo 200 letras',
             'primerAp.min'=> 'El primer apellido debe contener como mínimo 2 letras',
             'primerAp.max'=> 'El primer apellido debe contener como máximo 200 letras',
-            'segundoAp.min'=> 'El segundo apellido debe contener como mínimo 2 letras',
-            'segundoAp.max'=> 'El segundo apellido debe contener como máximo 200 letras',
+            // 'segundoAp.min'=> 'El segundo apellido debe contener como mínimo 2 letras',
+            // 'segundoAp.max'=> 'El segundo apellido debe contener como máximo 200 letras',
             
             'rfc.alpha_num'=> 'El RFC solo contienen números y letras',
             'rfc.min'=> 'El RFC debe de tener como mínimo 8',
