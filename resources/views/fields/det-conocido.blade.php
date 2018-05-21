@@ -1,20 +1,26 @@
 <div class="row">
-	<div class="col-4">
+	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('nombresC', 'Nombre', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::text('nombresC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'data-validation'=>'custom' ,'data-validation' =>'length','data-validation-length' =>'min2', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras','required']) !!}
 		</div>
 	</div>
-	<div class="col-4">
+	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('primerApC', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::text('primerApC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido', 'data-validation'=>'custom' ,'data-validation' =>'length','data-validation-length' =>'min2', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras','required']) !!}
 		</div>
 	</div>
-	<div class="col-4">
+	<div class="col-3">
+		<div class="form-group">
+			{!! Form::label('segundoApC', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('segundoApC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido', 'data-validation'=>'custom' ,'data-validation' =>'length','data-validation-length' =>'min2', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras','required']) !!}
+		</div>
+	</div>
+	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('aliasC', 'Alias', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('aliasC', null, ['class' => 'form-control form-control-sm',  'data-validation'=>'custom' ,'data-validation' =>'length','data-validation-length' =>'min2', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras']) !!}
+			{!! Form::text('aliasC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el alias',  'data-validation'=>'custom' ,'data-validation' =>'length','data-validation-length' =>'min2', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras']) !!}
 		</div>
 	</div>
 </div>

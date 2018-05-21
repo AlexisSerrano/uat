@@ -126,6 +126,7 @@ class DenunciadoController extends Controller
                 $persona = new Persona();
                 $persona->nombres = $request->nombresC;
                 $persona->primerAp = $request->primerApC;
+                $persona->segundoAp = $request->segundoApC;
                 $persona->rfc = "SIN INFORMACION";
                 $persona->save();
                 $idPersona = $persona->id;
