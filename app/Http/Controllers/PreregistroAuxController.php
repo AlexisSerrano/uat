@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 
 use DB;
 use Mail;
@@ -13,6 +14,7 @@ use App\Mail\EnviarCorreo as sendMail;
 use App\Models\Preregistro;
 use App\Models\CatMunicipio;
 use App\Models\Domicilio;
+use App\User;
 use Alert;
 use App\Models\CatLocalidad;
 use App\Models\CatColonia;
@@ -515,12 +517,16 @@ class PreregistroAuxController extends Controller
         $caso = new Carpeta();
         // $caso->numCarpeta = "UAT/D"."1"."/"."X"."/"."XX"."/".Carbon::now()->year;
         $caso->fechaInicio = Carbon::now();
+        $caso->idFiscal = Auth::user()->id;
+        $caso->idUnidad = Auth::user()->idUnidad;
+            
         // $caso->idEstadoCarpeta = 1;
         $caso->horaIntervencion = Carbon::now();
         $caso->fechaDeterminacion = Carbon::now();
         $caso->save();
         $idCarpeta = $caso->id;
 
+        
         $editpreregistro=Preregistro::find($id);
         $editpreregistro->idCarpeta= $idCarpeta;
         $editpreregistro->save();
@@ -528,6 +534,11 @@ class PreregistroAuxController extends Controller
 
         session(['preregistro' => $id]);
         session(['carpeta' => $idCarpeta]);
+
+        $usuario=User::find(Auth::user()->id);
+        $usuario->idCarpeta=session('carpeta');
+        $usuario->save();
+
         $bdbitacora = new BitacoraNavCaso;
         $bdbitacora->idCaso = $caso->id;
         $bdbitacora->save();
@@ -654,12 +665,18 @@ class PreregistroAuxController extends Controller
         //$carpeta->delete();
         
         //$carpeta->delete();
+
+        $usuario=User::find(Auth::user()->id);
+        $usuario->idCarpeta=null;
+        $usuario->save();
         
         session()->forget('carpeta');
         session()->forget('preregistro');
          //dd($idCarpeta);
         //dd(session('carpeta'));
         
+
+
         Alert::info('Los datos del caso que inicio han sido borrados y el turno fue devuelto a la cola ', 'Turno devuelto');
         return redirect('registros');
        }

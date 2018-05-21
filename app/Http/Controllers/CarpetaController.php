@@ -8,6 +8,7 @@ use DB;
 use Alert;
 use Carbon\Carbon;
 use App\Models\Carpeta;
+use App\User;
 use App\Models\Unidad;
 use App\Models\CatTipoDeterminacion;
 use App\Models\BitacoraNavCaso;
@@ -25,7 +26,17 @@ class CarpetaController extends Controller
             Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia');
             return redirect(url('registros'));    
         }
+        
+        $usuario=User::find(Auth::user()->id);
+        $usuario->idCarpeta=null;
+        $usuario->save();
+        
         if (count($comprobar)==0) {
+            $usuario=User::find(Auth::user()->id);
+            $usuario->idCarpeta=null;
+            $usuario->save();
+            
+
             session()->forget('carpeta');
             Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia');
             return redirect(url('registros'));
@@ -323,6 +334,11 @@ class CarpetaController extends Controller
             $caso->fechaDeterminacion = Carbon::now();
             $caso->save();
             session(['carpeta' => $caso->id]);
+
+            $usuario=User::find(Auth::user()->id);
+            $usuario->idCarpeta=session('carpeta');
+            $usuario->save();
+
             $bdbitacora = new BitacoraNavCaso;
             $bdbitacora->idCaso = $caso->id;
             $bdbitacora->save();
@@ -356,6 +372,15 @@ class CarpetaController extends Controller
                 $carpeta->numCarpeta = "UAT/D"."1"."/"."X"."/"."XX"."/".Carbon::now()->year;
                 $carpeta->idEstadoCarpeta = 1;
                 $carpeta->save();
+
+                $bdbitacora = BitacoraNavCaso::where('idCaso',$id)->first();
+                $bdbitacora->terminada = 1;
+                $bdbitacora->save();
+
+                $usuario=User::find(Auth::user()->id);
+                $usuario->idCarpeta=null;
+                $usuario->save();
+
                 $request->session()->forget('carpeta');
                 if (session('preregistro')!=null) {
                     $request->session()->forget('preretistro');

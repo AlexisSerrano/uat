@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\CatRedireccion;
 use App\Models\Atencion;
 use App\Http\Requests\AtencionRequest;
@@ -31,9 +32,9 @@ class AtencionController extends Controller
             // $atencion->zona = session('zona');
             // $atencion->unidad = session('unidad');
             // $atencion->usuario = session('usuario');
-            $atencion->zona = 1;
-            $atencion->unidad = 1;
-            $atencion->usuario = 1;
+            $atencion->idZona = Auth::user()->idZona;
+            $atencion->idUnidad = Auth::user()->idUnidad;
+            $atencion->idUsuario = Auth::user()->id;
             if($atencion->save()){
                 Alert::success('Atención rápida creada con éxito', 'Hecho');
             }
