@@ -99,6 +99,7 @@ sessionStorage.removeItem('isLive');
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 
+
 <body class="hold-transition login-page">
     <div class="login-box rounded">
 		<div class="card-body arriba rounded-top">
@@ -112,30 +113,23 @@ sessionStorage.removeItem('isLive');
 					<input type="hidden" id="email" name="email" value="">
 					<input type="hidden" id="vpassword" name="password" value="">
 
-					<div id="usuario" class="form-row align-items-center">
-                                 {{-- <div class="input-group">
-                                    <div class="input-group-prepend">
-                                      <div class="input-group-text" id="btnGroupAddon">@</div>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon">
-                                  </div>
-                                 --}}
-                        
-                        <div class="col form-group has-feedback input-group row{{ $errors->has('password') ? ' has-error' : '' }} inputrow">
-                                <div class=" input-group-text mb-2" id="btnGroupAddon"><i class="fa fa-user fa-lg"></i></div>
-                                <input type="text" class="form-control mb-2 usuario" id="name" name="name" placeholder="Usuario">
-                           
+		
 						
-                        </div>
-                        
-						{{-- <div class="col form-group has-feedback">
+						<div id="usuario" class="form-row align-items-center">
+							<div class="col form-group has-feedback row{{ $errors->has('password') ? ' has-error' : '' }} inputrow">
+								<input type="text" class="form-control mb-2" id="name" name="name" placeholder="Usuario">
+								<label class="fa fa-user fa-lg" for="name"></label>
+							</div>
+						<div class="col form-group has-feedback">
 							<label class="sr-only" for="inlineFormInputGroup" style="white">Username</label>
 							<div class="input-group mb-2">
 								<div class="input-group-prepend">
 									<div id="dominio" class="input-group-text rounded">@fiscaliaveracruz.gob.mx</div>
 								</div>
 							</div>
-                        </div> --}}
+						</div> 
+						
+				
                         
 						@if ($errors->has('email'))
 							<span class="help-block">

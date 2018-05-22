@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Alert;
+use Carbon\Carbon;
 use App\Models\CatAgrupacion1;
 use App\Models\CatAgrupacion2;
 use App\Models\Acusaciones;
@@ -33,6 +34,7 @@ class DelitoController extends Controller
             $delits = CatDelito::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             // $posiblescausas = CatPosibleCausa::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $municipios = CatMunicipio::select('id', 'nombre')->orderBy('nombre', 'ASC')->where('idEstado',30)->pluck('nombre', 'id');
             $lugares = CatLugar::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             // $marcas = CatMarca::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             // $modalidades = CatModalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -40,10 +42,14 @@ class DelitoController extends Controller
             $zonas = CatZona::orderBy('nombre', 'ASC')->pluck('nombre', 'id');   
             // dd($delitos);
            
+            $maximo=Carbon::now()->subYears(18)->toDateString();
+
             return view('forms.delitos')->with('idCarpeta', $idCarpeta)
                 ->with('delitos', $delitos)
+                ->with('maximo', $maximo)
                 ->with('delits', $delits)
                 ->with('estados', $estados)
+                ->with('municipios', $municipios)
                 ->with('lugares', $lugares)
                 ->with('zonas', $zonas);
                 // ->with('posiblescausas', $posiblescausas)

@@ -42,28 +42,28 @@ $form = oldFormConocido();
 		<div class="form-group">
 			{!! Form::label('cpC', 'Código postal', ['class' => 'col-form-label-sm']) !!}
 			@if(isset($form['catCodigoPostal'],$form['cpC']))
-			{!! Form::select('cpC', $form['catCodigoPostal'], $form['cpC'], ['class' => 'form-control form-control-sm', 'data-validation'=> 'required']) !!}
+			{!! Form::select('cpC', $form['catCodigoPostal'], $form['cpC'], ['class' => 'form-control form-control-sm','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 			@else
-			{!! Form::select('cpC', ['' => 'Seleccione un código postal'], null, ['class' => 'form-control form-control-sm', 'data-validation'=> 'required']) !!}
+			{!! Form::select('cpC', ['' => 'Seleccione un código postal'], null, ['class' => 'form-control form-control-sm', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 			@endif
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('calleC', 'Calle', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('calleC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle', 'data-validation'=> 'required']) !!}
+			{!! Form::text('calleC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 		</div>
 	</div>
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('numExternoC', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numExternoC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número exterior']) !!}
+			{!! Form::text('numExternoC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número exterior','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 		</div>
 	</div>
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('numInternoC', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numInternoC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior']) !!}
+			{!! Form::text('numInternoC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 		</div>
 	</div>
 </div>

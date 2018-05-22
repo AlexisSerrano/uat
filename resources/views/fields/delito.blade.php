@@ -34,15 +34,16 @@
 		<div class="form-group">
 			{!! Form::label('fecha', 'Fecha', ['class' => 'col-form-label-sm']) !!}
 			<div class="input-group date" id="fechadelit" data-target-input="nearest">
-				{!! Form::date('fecha', null, ['class' => 'delito form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadelit', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+				{!! Form::date('fecha', date("Y-m-d"), ['class' => 'delito form-control form-control-sm datetimepicker-input', 'max'=>date("Y-m-d"), 'required']) !!}
 				
 			</div>
 		</div>
 	</div>
+	
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('hora', 'Hora', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::time('hora', null, ['class' => 'delito form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadelit', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+			{!! Form::time('hora', date('h:i'), ['class' => 'delito form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadelit', 'required', 'placeholder' => 'DD/MM/AAAA']) !!}
 				
 			{{-- <div class="input-group date" id="horadelit" data-target-input="nearest">
 				{!! Form::text('hora', null, ['class' => 'delito form-control form-control-sm datetimepicker-input', 'data-target' => '#horadelit', 'required', 'placeholder' => '00:00']) !!}

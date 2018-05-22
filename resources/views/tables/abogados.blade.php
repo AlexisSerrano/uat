@@ -1,6 +1,13 @@
-<h6>Abogados</h6>
-<div class="table">
-    <table class="table table-striped">
+<div class="card">
+    <div class="card-header">
+        <strong>
+            <h6>Abogados</h6>
+            </strong>
+    </div>
+
+
+<div class="table-responsive">
+    <table class="table table-hover">
         <thead>
             <th>Nombre</th>
             <th>Cédula</th>
@@ -18,19 +25,19 @@
                         <td>{{ $abogado->cedulaProf }}</td>
                         <td>{{ $abogado->sector }}</td>
                         <td>{{ $abogado->tipo }}</td>  
-                        <td>
                         {{-- <a href="{{ url('agregar-abogado/'.$abogado->id.'/eliminar')}}" title="Eliminar Registro" class="btn btn-secondary ">
                         <i class="fa fa-times"></i></td>  --}}
                         <td> <a data-abogado-id={{$abogado->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
                                 <i class="fa fa-times"></i></a></td>
-                        </td>                                  
+                                                         
                     </tr>
                 @endforeach
             @endif
         </tbody>
     </table>
-</div>
 
+</div>
+</div>
 @push('scripts')
    <script> 
         $(document).ready(function() {

@@ -24,6 +24,7 @@ class CreateBitacoraNavcasoTable extends Migration
             $table->tinyInteger('defensa');
             $table->tinyInteger('hechos');
             $table->tinyInteger('medidas');
+            $table->tinyInteger('terminada');
             $table->integer('idCaso')->unsigned();
             $table->foreign('idCaso')->references('id')->on('carpeta')->onDelete('cascade');
             $table->timestamps();

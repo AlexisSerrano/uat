@@ -186,9 +186,9 @@ public function showForm()
                 if (!is_null($request->telefono)){
                     $VariablesPersona->telefono = $request->telefono;
                 }
-                if (!is_null($request->motivoEstancia)){
-                    $VariablesPersona->motivoEstancia = $request->motivoEstancia;
-                }
+                // if (!is_null($request->motivoEstancia)){
+                //     $VariablesPersona->motivoEstancia = $request->motivoEstancia;
+                // }
                 if (!is_null($request->idOcupacion)){
                     $VariablesPersona->idOcupacion = $request->idOcupacion;
                 }

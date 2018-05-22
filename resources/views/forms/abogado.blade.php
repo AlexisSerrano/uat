@@ -38,7 +38,7 @@
 		<div class="tab-pane fade" id="trabajo" role="tabpanel" aria-labelledby="trabajo-tab">
 			
 				<div class="boxtwo">
-					@include('fields.lugartrabajo')
+					@include('fields.lugartrabajoAb')
 					{{-- botones --}}
 					<div class="row menu">	
 						<div class="col text-left">				
@@ -73,11 +73,11 @@
 
 	{!! Form::close() !!}
 	<br>
-	<div class="card">
-		<div class="boxtwo card-body">
+	
+		
 			@include('tables.abogados')
-		</div>
-	</div>
+	
+	
 @endsection
 
 @push('scripts')
@@ -87,34 +87,6 @@
 	<script src="{{ asset('js/rfcFisico-f.js') }}"></script>
 
 	<script>
-		$('#irtrabajo').click(function(){
-			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-			$('#trabajo-tab').addClass("active");//Agrego la clase active al tab actual
-			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-			$('.tab-pane').removeClass("show");
-			$('#trabajo').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-			$('#trabajo').addClass("show");
-		});
-
-		$('#irpersonales').click(function(){
-			$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-			$('#personales-tab').addClass("active");//Agrego la clase active al tab actual
-			$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-			$('.tab-pane').removeClass("show");
-			$('#personales').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-			$('#personales').addClass("show");
-		});
-
-		// $('.irextraabogado').click(function(){
-		// 	$('.nav-link').removeClass("active");//Quito la clase active al tab actual
-		// 	$('#abogado-tab').addClass("active");//Agrego la clase active al tab actual
-		// 	$('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-		// 	$('.tab-pane').removeClass("show");
-		// 	$('#abogado').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-		// 	$('#abogado').addClass("show");
-		// });
-
-
 		$(function () {
 			$('#fechanac').datetimepicker({
 				format: 'YYYY-MM-DD',

@@ -6,8 +6,8 @@
     <div class="col-md-12">
         {{ Form::open(['route' => ['libro.filtro'], 'method' => 'POST']) }}
             <div class="input-group mb-6 col-4">
-                    <div class="input-group-append">
-                            <span id="basic-addon1" class=" input-group-text btn btn-secondary" ><i class="fa fa-search"></i></span>
+                    <div class="input-group-prepend">
+                            <button id="basic-addon1" class=" input-group-text" ><i class="fa fa-search"></i></button>
                        </div>
             {{ Form::text('search', old('search'), array('class'=>'form-control', 'placeholder'=>'Buscar..','aria-describedby'=>'basic-addon1')) }}
             
@@ -18,8 +18,8 @@
             <h6 style="text-align:center">UNIDAD DE ATENCIÓN TEMPRANA DEL DISTRITO JUDICIAL</h6>
         </div>
                    
-                    <div class="card-body table-responsive" align="center">  
-                    <table id="tablaprovidencias" style="font-size:13px; column-width:80"  class='display table table-hover table-responsive-lg table-sm' width="min">
+                    <div class=" table-responsive" align="center">  
+                    <table id="tablaprovidencias" style="font-size:13px; column-width:90"  class='display table table-hover table-responsive-lg table-sm' width="min">
                         <thead style="text-align:center;">
                             <th >N.</th>
                             <th >Fecha</th>

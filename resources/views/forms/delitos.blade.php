@@ -31,7 +31,7 @@
 		</div>
 		<div class="tab-pane fade" id="dirdelito" role="tabpanel" aria-labelledby="dirdelito-tab">
 			<div class="boxtwo">
-				@include('fields.direcciones')
+				@include('fields.dir-delito')
 				@include('fields.lugar-hechos')
 				
 				<div class="row">
@@ -47,9 +47,9 @@
 	</div>
 	
 	{!! Form::close() !!}
-	<div class="boxtwo">
+	
 		@include('tables.delitos')
-	</div>
+	
 @endsection
 
 @push('scripts')
@@ -70,20 +70,5 @@
 			$('#delito').addClass("show");
 		});
 
-		$(document).ready(function(){
-			$(function () {
-				$('#fechadelit').datetimepicker({
-				format: 'YYYY-MM-DD',
-				maxDate: moment()
-				});
-			});
-
-			$(function () {
-				$('#horadelit').datetimepicker({
-				format: 'LT',
-				maxDate: moment()
-				});
-			});
-		});
 	</script>
 @endpush

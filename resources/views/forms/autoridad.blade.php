@@ -84,9 +84,9 @@
 	
 	
 	{!! Form::close() !!}
-	<div class="boxtwo">
+	
 		@include('tables.autoridades')
-	</div>
+	
 @endsection
 
 

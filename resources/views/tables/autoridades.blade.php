@@ -1,6 +1,10 @@
-<h6>Autoridades</h6>
-<div class="table">
-    <table class="table table-striped">
+<br>
+<div class="card">
+        <div class="card-header">
+            <h6>Autoridades</h6>
+        </div>
+<div class="table-responsive">
+    <table class="table table-hover">
         <thead>
             <th>Nombre</th>
             <th>Antigüedad</th>
@@ -33,6 +37,7 @@
             @endif
         </tbody>
     </table>
+</div>
 </div>
 
 @push('scripts')

@@ -19,7 +19,7 @@ class CreateVariablesPersonasTable extends Migration
             $table->integer('idPersona')->unsigned();
             $table->integer('edad')->nullable();
             $table->string('telefono',15)->default("SIN INFORMACION");
-            $table->string('motivoEstancia',200)->default("SIN INFORMACION");
+           
             $table->integer('idOcupacion')->unsigned()->default(2941);
             $table->integer('idEstadoCivil')->unsigned()->default(7);
             $table->integer('idEscolaridad')->unsigned()->default(14);

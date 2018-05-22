@@ -147,7 +147,7 @@ class pericialesController extends Controller
             // try{
                 $idCarpeta = session('carpeta');
                 $vehiculo = new Vehiculo;
-                $vehiculo->idCarpeta = 1;
+                $vehiculo->idCarpeta =  $idCarpeta;
                 $vehiculo->marca = $request->marcav;
                 $vehiculo->linea = $request->lineav;
                 $vehiculo->modelo = $request->modelov;
@@ -162,11 +162,11 @@ class pericialesController extends Controller
                 $vehiculo->calle = $request->calle2;
                 $vehiculo->num_ext = $request->numExterno2;
                 $vehiculo->num_int = $request->numInterno2;
-                $vehiculo->entidad = $request->idEstado2;
-                $vehiculo->municipio = $request->idMunicipio2;
-                $vehiculo->localidad = $request->idLocalidad2;
-                $vehiculo->colonia = $request->idColonia2;
-                $vehiculo->codigo_postal = $request->cp2;
+                $vehiculo->idEstado = $request->idEstado2;
+                $vehiculo->idMunicipio = $request->idMunicipio2;
+                $vehiculo->idLocalidad = $request->idLocalidad2;
+                $vehiculo->idColonia = $request->idColonia2;
+                $vehiculo->cp = $request->cp2;
                 $vehiculo->fecha = $request->fecha_nac;
                 $vehiculo->save();
                 if($vehiculo->save()){
@@ -175,11 +175,25 @@ class pericialesController extends Controller
                     // $bdbitacora->medidas = $bdbitacora->medidas+1;
                     // $bdbitacora->save();
                 }
+               
+
+                $catalogos = DB::table('vehiculos')
+                ->where('vehiculos.id', $vehiculo->id)
+                ->join('cat_municipio','cat_municipio.id','=','vehiculos.idMunicipio')
+                ->join('cat_localidad','cat_localidad.id','=','vehiculos.idLocalidad')
+                ->join('cat_colonia','cat_colonia.id','=','vehiculos.idColonia')
+                ->join('cat_estado','cat_estado.id','=','vehiculos.idEstado')
+                ->select( 'cat_municipio.nombre as nombreMunicipio',
+                'cat_localidad.nombre as nombreLocalidad',
+                'cat_colonia.nombre as nombreColonia',
+                'cat_estado.nombre as nombreEstado',
+                'cat_colonia.codigoPostal')
+                ->first();
                 // else{
                 //     Alert::error('Se presentó un problema al guardar el registro', 'Error');
                 // }
                 // DB::commit();
-    
+    // dd( $catalogos);
                 // return redirect("home");
                  return view('documentos.periciales_vehiculo')
           
@@ -202,10 +216,11 @@ class pericialesController extends Controller
                  ->with('cel',  $vehiculo->numero  )             
                  ->with('calle',  $vehiculo->calle  )
                  ->with('numero',  $vehiculo->num_ext  )
-                 ->with('localidad',  $vehiculo->localidad  )
-                 ->with('codigo',  $vehiculo->codigo_postal  )
-                 ->with('ciudad',  $vehiculo->localidad  )
-                 ->with('estado1',  $vehiculo->entidad  )
+                 ->with('idEstado', $catalogos->nombreEstado)
+                 ->with('idMunicipio', $catalogos->nombreMunicipio)
+                 ->with('idLocalidad', $catalogos->nombreLocalidad)
+                 ->with('idColonia', $catalogos->nombreColonia)
+                 ->with('cp', $request->cp2)
 
                 // ->with('folio',   $Psicologo->idCarpeta)
                
