@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Lesione extends Model
 {
     //
-    protected $connection = 'formatos'; 
-    protected $table = 'lesiones';
-    protected $fillable = [
+    // protected $connection = 'formatos'; 
+    // protected $table = 'lesiones';
+    public $fillable = [
         'id',
         'idCarpeta',
         'nombre',

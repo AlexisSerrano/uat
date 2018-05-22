@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Psicologo extends Model
 {
     //
-    protected $connection = 'formatos'; 
-    protected $table = 'psicologos';
-    protected $fillable = [
+    // protected $connection = 'formatos'; 
+    // protected $table = 'psicologos';
+    public $fillable = [
         'id',
         'idCarpeta',
         'nombre',

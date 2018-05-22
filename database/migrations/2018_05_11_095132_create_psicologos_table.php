@@ -13,7 +13,7 @@ class CreatePsicologosTable extends Migration
      */
     public function up()
     {
-        Schema::connection('formatos')->create('psicologos', function (Blueprint $table) {
+        Schema::create('psicologos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idCarpeta');
             $table->string('nombre',200);

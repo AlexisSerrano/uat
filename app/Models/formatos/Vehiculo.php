@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Vehiculo extends Model
 {
     //
-    protected $connection = 'formatos'; 
-    protected $table = 'vehiculos';
-    protected $fillable = [
+     
+   
+    public $fillable = [
         'id',
         'idCarpeta',
         'marca',

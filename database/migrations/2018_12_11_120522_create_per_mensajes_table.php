@@ -13,7 +13,7 @@ class CreatePerMensajesTable extends Migration
      */
     public function up()
     {
-        Schema::connection('formatos')->create('per_mensajes', function (Blueprint $table) {
+        Schema::create('per_mensajes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idCarpeta');
             $table->string('nombre',200);
