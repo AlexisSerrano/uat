@@ -71,20 +71,20 @@
 			$('#delito').addClass("show");
 		});
 
-		$(document).ready(function(){
-			$(function () {
-				$('#fechadelit').datetimepicker({
-				format: 'YYYY-MM-DD',
-				maxDate: moment()
-				});
-			});
+		// $(document).ready(function(){
+		// 	$(function () {
+		// 		$('#fechadelit').datetimepicker({
+		// 		format: 'YYYY-MM-DD',
+		// 		maxDate: moment()
+		// 		});
+		// 	});
 
-			$(function () {
-				$('#horadelit').datetimepicker({
-				format: 'LT',
-				maxDate: moment()
-				});
-			});
-		});
+		// 	$(function () {
+		// 		$('#horadelit').datetimepicker({
+		// 		format: 'LT',
+		// 		maxDate: moment()
+		// 		});
+		// 	});
+		// });
 	</script>
 @endpush

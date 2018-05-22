@@ -156,11 +156,6 @@ class ActasHechosController extends Controller
         return view('tables.actas-hechos', compact('actas'));
     }
 
-
-    public function descActas($id){
-        return response()->download('../storage/oficios/ActasHechos'.$id.'.docx');
-    }
-
     public function addActas2(ActaRequest $request){
         DB::beginTransaction();
         try{
@@ -239,7 +234,7 @@ class ActasHechosController extends Controller
                 $preregistro->save();
             }
             DB::commit();
-            $request->session()->flash('redirectoficio', url("getoficioah2/$acta->id"));
+            $request->session()->flash('redirectoficio', url("actaoficio/$acta->id"));
             return redirect("actas-pendientes");
         }
         catch (\PDOException $e){
@@ -249,66 +244,8 @@ class ActasHechosController extends Controller
         }
     }
 
-    public function getRandom($length = 3) { 
-        return substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length); 
-    } 
-
-    public function getToken($id){
-            $catalogos = DB::table('actas_hechos')->where('actas_hechos.id', $id)
-            ->join('cat_ocupacion','actas_hechos.idOcupacion','=','cat_ocupacion.id')
-            ->join('cat_estado_civil','actas_hechos.idEstadoCivil','=','cat_estado_civil.id')
-            ->join('cat_escolaridad','actas_hechos.idEscolaridad','=','cat_escolaridad.id')
-            ->join('domicilio','actas_hechos.idDomicilio','=','domicilio.id')
-            ->join('cat_municipio','domicilio.idMunicipio','=','cat_municipio.id')
-            ->join('cat_localidad','domicilio.idLocalidad','=','cat_localidad.id')
-            ->join('cat_colonia','domicilio.idColonia','=','cat_colonia.id')
-            ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')
-            ->select('cat_ocupacion.nombre as nombreOcupacion',
-            'cat_estado_civil.nombre as nombreEstadoCivil',
-            'cat_escolaridad.nombre as nombreEscolaridad',
-            'cat_municipio.nombre as nombreMunicipio',
-            'cat_localidad.nombre as nombreLocalidad',
-            'cat_colonia.nombre as nombreColonia',
-            'cat_estado.nombre as nombreEstado',
-            'domicilio.numInterno as numInterno', 'domicilio.numExterno as numExterno', 'domicilio.calle as calle',
-            'actas_hechos.fecha_nac as fecha_nac', 'actas_hechos.telefono as telefono', 'actas_hechos.narracion as narracion',
-            'actas_hechos.expedido as expedido', 'actas_hechos.fiscal as fiscal', 'actas_hechos.nombre as nombrePersona',
-            'actas_hechos.primer_ap as primer_ap', 'actas_hechos.segundo_ap as segundo_ap',
-            'actas_hechos.identificacion as identificacion', 'actas_hechos.num_identificacion as num_identificacion',
-            'cat_colonia.codigoPostal as cp', 'actas_hechos.folio as folio', 'actas_hechos.hora as hora',
-            'actas_hechos.fecha as fecha','cat_estado.id as idEstado','domicilio.idMunicipio as idMunicipio',
-            'domicilio.idLocalidad as idLocalidad','actas_hechos.tipoActa as tipoActa')
-            ->first();
-            $numLetras = strlen($catalogos->narracion)*2;
-            $random = rand(3, 999);
-            $letrasrandom = $this->getRandom();
-            $fechasep = explode("-", $catalogos->fecha_nac);
-            $tiposep = explode(" ", $catalogos->tipoActa);
-            $tipofinal = '';
-            foreach($tiposep as $tipo){
-                $tipofinal = $tipofinal.substr($tipo,0,2);
-            }
-            //$token = $catalogos->nombrePersona."_".
-            $token = substr($catalogos->primer_ap,0,2)."_".
-            substr($catalogos->segundo_ap,0,2)."_".
-            $fechasep[2].$fechasep[1].substr($fechasep[0],-2)."_".
-            //$catalogos->num_identificacion."_".
-            $catalogos->idEstado."_".
-            $catalogos->idMunicipio."_".
-            $catalogos->idLocalidad."_".
-            $tipofinal."_".
-            $numLetras."_".
-            Date::now()->format('Y_m_d_H_i_s')."_".
-            $random."_".
-            $letrasrandom;
-            $token = str_replace(' ', '', $token);
-            //dd($token);
-        //$token = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 25);
-        echo $token;
-    }
-
-    public function getoficioah2($id){
-        return view("prueba")->with('id',$id);
+    public function actaoficio($id){
+        return view("documentos/actashechos")->with('id',$id);
     }
 
     public function getoficioah($id){
@@ -348,30 +285,6 @@ class ActasHechosController extends Controller
         $fechanachum = $date->format('j').' de '.$date->format('F').' del año '.$date->format('Y');
         $fechasep = explode("-", $catalogos->fecha_nac);
         $edad = Date::createFromDate($fechasep[0],$fechasep[1],$fechasep[2])->age;
-        // return view('impresion')
-        // ->with('estado', $catalogos->nombreEstado)
-        // ->with('municipio', $catalogos->nombreMunicipio)
-        // ->with('localidad', $catalogos->nombreLocalidad)
-        // ->with('colonia', $catalogos->nombreColonia)
-        // ->with('calle', $catalogos->calle)
-        // ->with('cp', $catalogos->cp)
-        // ->with('numExterno', $numExterno)
-        // ->with('folio', $catalogos->folio)
-        // ->with('hora', $date->parse($catalogos->hora)->format('H:i'))
-        // ->with('fecha',$fechahum)
-        // ->with('fiscal', $catalogos->fiscal)
-        // ->with('nombre', $catalogos->nombrePersona.' '.$catalogos->primer_ap.' '.$catalogos->segundo_ap)
-        // ->with('identificacion', $catalogos->identificacion)
-        // ->with('numIdentificacion', $catalogos->num_identificacion)
-        // ->with('fechaNacimiento', $fechanachum)
-        // ->with('ocupacion', $catalogos->nombreOcupacion)
-        // ->with('estadoCivil', $catalogos->nombreEstadoCivil)
-        // ->with('escolaridad', $catalogos->nombreEscolaridad)
-        // ->with('telefono', $catalogos->telefono)
-        // ->with('narracion', $catalogos->narracion)
-        // ->with('expedido', $catalogos->expedido)
-        // ->with('edad', $edad)
-        // ->with('id', $id);
         $data = array('estado' => $catalogos->nombreEstado, 
         'municipio' => $catalogos->nombreMunicipio, 
         'localidad' => $catalogos->nombreLocalidad,
@@ -395,23 +308,6 @@ class ActasHechosController extends Controller
         'expedido' => $catalogos->expedido,
         'edad' => $edad,
         'id' => $id);
-
         return response()->json($data);
-    }
-
-    public function saveOficio(Request $request){
-        if($request->ajax()){
-            $oficio = new Oficio();
-            $oficio->html = $request->html;
-            $oficio->tipo = $request->tipo;
-            $oficio->id_tipo = $request->id_tipo;
-            $oficio->token = $request->token;
-            if($oficio->save()){
-                echo 1;
-            }
-            else{
-                echo 0;
-            }
-        }
     }
 }

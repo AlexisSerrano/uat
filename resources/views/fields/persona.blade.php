@@ -46,7 +46,7 @@
 					{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 					{{-- <div class="input-group date" id="fechanac" data-target-input="nearest"> --}}
 					 {{-- <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="{{$preregistro->fechaNac}}"class="form-control form-control-sm", data-validation="birthdate"> --}}
-						{!! Form::date('fechaNacimiento',$preregistro->fechaNac , ['class' => 'turnopersona form-control form-control-sm datetimepicker-input ', 'data-target' => '#fechanac', 'required', 'placeholder' => 'AAAA/MM/DD']) !!} 
+						{!! Form::date('fechaNacimiento',$preregistro->fechaNac , ['class' => 'turnopersona form-control form-control-sm ', 'data-target' => '#fechanac', 'required', 'placeholder' => 'AAAA/MM/DD']) !!} 
 						 {{-- <div class="input-group-addon" data-target="#fechanac" data-toggle="datetimepicker">
 							<div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
 						</div> --}}

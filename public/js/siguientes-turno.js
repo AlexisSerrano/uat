@@ -146,9 +146,9 @@ function PersonaT(){
         if ($('#telefonoN').val().length == 0){
             validarNoti=1;
         }
-        if ($('#fax').val().length == 0){
-            validarNoti=1;
-        }
+        // if ($('#fax').val().length == 0){
+        //     validarNoti=1;
+        // }
         if (validarNoti==1) {
 
             toastr.error("Complete los campos faltantes para poder avanzar");

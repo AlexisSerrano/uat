@@ -22,7 +22,7 @@
 		<div class="col-3">
 			<div class="form-group">
 				{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
-				<input type="date" id="fechaNacimiento" name="fechaNacimiento" class="persona form-control form-control-sm", data-validation="birthdate, required">
+				<input type="date" id="fechaNacimiento" name="fechaNacimiento" class="persona form-control form-control-sm", "required">
 					{{-- {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'required', 'placeholder' => 'AAAA-MM-DD']) !!} --}}
 					
 			</div>

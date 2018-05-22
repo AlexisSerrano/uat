@@ -53,7 +53,7 @@
 			{!!Form::label('nombre',$preregistro->fechaNac ,['class'=> 'col-form-label-sm labelCambioFechaNac'])!!}
 			<div class="input-group inputOculto" id="inputFechaNac">
 				{{-- <div class="input-group date" id="fechanac" data-target-input="nearest"> --}}
-					{!! Form::date('fechaNacimiento', $preregistro->fechaNac, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'required']) !!}
+					{!! Form::date('fechaNacimiento', $preregistro->fechaNac, ['class' => 'form-control form-control-sm', 'data-target' => '#fechanac', 'required']) !!}
 					<input type="button" id="botonCambioEdad" value="Cancelar" class="btn btn-sm btn-danger">
 					{{-- <div class="input-group-append" data-target="#fechanac" data-toggle="datetimepicker">
 						<div class="input-group-text"><i class="fa fa-calendar"></i></div>

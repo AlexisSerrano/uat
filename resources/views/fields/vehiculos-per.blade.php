@@ -4,19 +4,19 @@
 		<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('nombret', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('nombret', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el Nombre',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras']) !!}
+					{!! Form::text('nombret', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras']) !!}
 				</div>
 			</div>
 			<div class="col-4">
 					<div class="form-group">
 						{!! Form::label('primerAp', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese apellido',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'La marca del teléfono debe contener al menos dos letras']) !!}
+						{!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'La marca del teléfono debe contener al menos dos letras']) !!}
 					</div>
 				</div>
 				<div class="col-4">
 					<div class="form-group">
 						{!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese apellido', 'data-validation'=>'required']) !!}
+						{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'data-validation'=>'required']) !!}
 					</div>
 				</div>
 		<div class="col-4">
@@ -51,7 +51,7 @@
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('lugarFabvt', 'Lugar de fabricacion del motor', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::label('lugarFabvt', 'Lugar de fabricación del motor', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::text('lugarFabv', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese lugar de fabricación', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
@@ -85,7 +85,7 @@
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('numInterno2', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numInterno2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Interior', 'data-validation'=>'required']) !!}
+			{!! Form::text('numInterno2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Interior', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 		</div>
 	</div>
 	<div class="col-4">
@@ -141,7 +141,7 @@
 
 	<div class="col-4">
 			<div class="form-group">
-			{!! Form::label('fecha_nac', 'Fecha de realizacion', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::label('fecha_nac', 'Fecha de elaboración', ['class' => 'col-form-label-sm']) !!}
 				<div class="input-group date" id="fecha_nac" data-target-input="nearest">
 					@if(isset($form['fecha_nac']))
 					<input type="date" id="fecha_nac" name="fecha_nac" value="{{ $form['fecha_nac'] }}" class="form-control form-control-sm", data-validation="required">

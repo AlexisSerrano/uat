@@ -57,9 +57,9 @@ $form = oldFormActas();
     {!! Form::label('fecha_nac', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
         <div class="input-group date" id="fecha_nac" data-target-input="nearest">
             @if(isset($form['fecha_nac']))
-            <input type="date" id="fecha_nac" name="fecha_nac" value="{{ $form['fecha_nac'] }}" class="form-control form-control-sm", data-validation="birthdate">
+            <input type="date" id="fecha_nac" name="fecha_nac" value="{{ $form['fecha_nac'] }}" class="form-control form-control-sm", "required">
             @else
-            <input type="date" id="fecha_nac" name="fecha_nac" value="{{$acta->fechaNac}}" class="form-control form-control-sm", data-validation="birthdate">
+            <input type="date" id="fecha_nac" name="fecha_nac" value="{{$acta->fechaNac}}" class="form-control form-control-sm","required">
             @endif
         </div>
     </div>
@@ -140,7 +140,7 @@ $form = oldFormActas();
 <div class="col-2">
     <div class="form-group">
         {!! Form::label('numInterno2', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('numInterno2', $acta->numInterno, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Interior', 'data-validation'=>'required']) !!}
+        {!! Form::text('numInterno2', $acta->numInterno, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Interior','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
     </div>
 </div>
 
