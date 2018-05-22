@@ -2,15 +2,14 @@
 
 @section('csss')
 {{-- estilos --}}
+<link rel="stylesheet" href="{{asset ('css/app.css')}}">
 <link rel="stylesheet" href="{{asset ('css/cssfonts.css')}}">
 <link rel="stylesheet" href="{{asset ('css/estilos.css')}}">
-<link rel="stylesheet" href="{{ asset('css/tempusdominus-bootstrap-4.min.css') }}">
 {{-- fileinput --}}
 <link rel="stylesheet" href="{{ asset('plugins/fileinput/css/fileinput.min.css') }}">
 {{-- validator --}}
 <link rel="stylesheet" href="{{ asset('css/theme-jquery-validation.min.css') }}">
 <link rel="stylesheet" href="{{asset ('css/toastr.min.css')}}">
-<link rel="stylesheet" href="{{asset ('css/app.css')}}">
 {{-- para calendarios --}}
 {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha18/css/tempusdominus-bootstrap-4.min.css" /> --}}
 @yield('css')

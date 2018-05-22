@@ -71,9 +71,9 @@ section {
 
 body {
   margin: 0;
-  font-family: "Raleway", sans-serif;
+  /* font-family: "Raleway", sans-serif;
   font-size: 0.9rem;
-  font-weight: 400;
+  font-weight: 400; */
   line-height: 1.6;
   color: #212529;
   text-align: left;
