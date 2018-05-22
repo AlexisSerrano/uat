@@ -1,8 +1,10 @@
 <div class="card">
     <div class="card-header">
-        <h6>Abogados</h6>
+        <strong>
+            <h6>Abogados</h6>
+            </strong>
     </div>
-<div class="card-body">
+
 
 <div class="table-responsive">
     <table class="table table-hover">
@@ -33,7 +35,7 @@
             @endif
         </tbody>
     </table>
-</div>
+
 </div>
 </div>
 @push('scripts')

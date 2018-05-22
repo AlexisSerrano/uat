@@ -1,7 +1,10 @@
-
-
-<div class="table">
-    <table class="table table-striped">
+<br>
+<div class="card">
+        <div class="card-header">
+                <h6>Delitos</h6>
+        </div>
+<div class="table-responsive">
+    <table class="table table-hover">
         <thead>
             <th>Delito</th>
             <th>Forma de Comisión</th>
@@ -36,6 +39,7 @@
             @endif
         </tbody>
     </table>
+</div>
 </div>
 
 

@@ -47,9 +47,9 @@
 	</div>
 	
 	{!! Form::close() !!}
-	<div class="boxtwo">
+	
 		@include('tables.delitos')
-	</div>
+	
 @endsection
 
 @push('scripts')
