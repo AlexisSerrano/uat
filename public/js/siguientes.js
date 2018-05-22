@@ -459,7 +459,7 @@
                 $('.tab-pane').removeClass("show");
                 $('#trabajo').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
                 $('#trabajo').addClass("show");
-                console.log("todo bien")}
+                console.log("todo bien yeah")}
         
                 if (completoP==1) {
                 toastr.error("Complete los campos faltantes para poder avanzar");

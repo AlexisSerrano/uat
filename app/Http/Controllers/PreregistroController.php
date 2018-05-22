@@ -226,6 +226,7 @@ class PreregistroController extends Controller
             }
             DB::commit();
             // Alert::success('Registro modificado con exito','Hecho');
+            
             return redirect('FormatoRegistro/'.$id);
         }catch (\PDOException $e){
             DB::rollBack();

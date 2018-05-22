@@ -1,4 +1,33 @@
 
+<style type="text/css">
+	.loadPage{
+		display: block;
+		background: #333;
+		color: white;
+		width: 100%;
+		height:100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 1000;
+	}
+	.loadPage p{
+		display: : block;
+		width: 100px;
+		height: 30px;
+		font-size: 30px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		margin: auto;
+			}
+	
+	.oculto{
+		display: none;
+	}
+	</style>
 @extends('template.form2')
 
 @section('content')
@@ -25,6 +54,9 @@
 				PRE-REGISTRO
 
 	</p>
+	<span id ="loadPage" class="oculto">
+		<p>Cargando...</p>
+	</span>
 	<div>
 		@include('servicios.preregistro.fields.tipo-persona')
 	</div>
@@ -106,7 +138,7 @@
 							<div class="text-center">
 								<br>
 									<a href="http://fiscaliaveracruz.gob.mx/" title="" class="btn btn-primary">Cancelar</a>
-									{!!Form::submit('Guardar',array('class' => 'btn btn-primary'))!!}
+									{!!Form::submit('Guardar',array('class' => 'btn btn-primary ', 'id'=>'cargando', 'onclick'=> 'cargando();'))!!}
 		
 								<br>
 							
@@ -115,7 +147,26 @@
 					</div>
 				</div>
 		</div>
-
+		{{-- <div id="cargando" style="display:none;">
+			<div class="text-center">
+				<strong  style="color:#f5f5f5;">Iniciando sesión<strong>
+			</div>
+			<div class="sk-circle">
+				<div class="sk-circle1 sk-child"></div>
+				<div class="sk-circle2 sk-child"></div>
+				<div class="sk-circle3 sk-child"></div>
+				<div class="sk-circle4 sk-child"></div>
+				<div class="sk-circle5 sk-child"></div>
+				<div class="sk-circle6 sk-child"></div>
+				<div class="sk-circle7 sk-child"></div>
+				<div class="sk-circle8 sk-child"></div>
+				<div class="sk-circle9 sk-child"></div>
+				<div class="sk-circle10 sk-child"></div>
+				<div class="sk-circle11 sk-child"></div>
+				<div class="sk-circle12 sk-child"></div>
+			</div>
+		</div> --}}
+	</div>
 		
 
 
@@ -128,11 +179,45 @@
 	<script src="{{ asset('js/curp.js') }}"></script> 
 	<script src="{{ asset('js/rfcFisico.js') }}"></script>
 	<script src="{{ asset('js/rfcMoral.js') }}"></script>
-	
+	{{-- <script src="{{ asset('js/jquery.disableAutoFill.min.js')}}" ></script> --}}
 	
 	{{-- <script src="{{ asset('js/rfcMoral.js') }}"></script> --}}
 	<script>	
+	// $(window).load(function(){
+	// 			$("#loadPage").delay(2000).fadeOut("slow");
+	// 		});
 
-		</script>
-	
+		// $('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
+		// $('.tab-pane').removeClass("active");
+		
+
+			window.onload = function(){
+				var contenedor = document.getElementById('
+				loadPage');
+				contenedor.removeClass("loadPage");
+				contenedor.removeClass("oculto");
+				contenedor.addClass("oculto");
+
+			}
+
+			  $('#cargando').click(function(){
+				console.log("entro");
+            	cargando();
+			    });
+
+
+			 function cargando(){
+				
+				var contenedor2 = document.getElementById('
+				loadPage');
+					contenedor2.removeClass("loadPage");
+				contenedor2.removeClass("oculto");
+				contenedor2.addClass("loadPage");
+			}
+
+			
+
+
+	</script>
+		
 @endpush
