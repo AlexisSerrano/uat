@@ -10,8 +10,9 @@
 </head>
 <body>
     <div id="app">
-        <oficio tipo="actas hechos" url="{{url("oficioah/$id")}}"></oficio>
+        <oficio tipo="actas hechos" url="{{url("getoficioah/$id")}}"></oficio>
     </div>
 </body>
 </html>
+<script src="{{asset ('js/jquery-3.2.1.min.js')}}">  </script>
 <script src="{{asset ('js/app.js')}}">  </script>

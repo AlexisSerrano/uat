@@ -50279,20 +50279,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         getTemplate: function getTemplate() {
-            var urlTemplate = 'oficios';
+            var _this = this;
+
+            var urlTemplate = '../oficios';
             var urlPeticion = this.url;
             axios.post(urlTemplate, {
                 tipo: this.tipo
             }).then(function (response) {
                 if (response.data[0] == undefined) {
-                    alert("sin datos");
+                    console.log("sin datos");
+                } else {
+                    _this.template = response.data[0]['html'];
+                    _this.tipoOficio = response.data[0]['id'];
+                    axios.get(urlPeticion).then(function (response) {
+                        _this.info = response.data;
+                        _this.setData();
+                    });
                 }
-                // this.template = response.data[0]['html'];
-                // this.tipoOficio = response.data[0]['id'];
-                // axios.get(urlPeticion).then(response => {
-                //     this.info = response.data;
-                //     this.setData();
-                // });
             });
         },
         setData: function setData() {
@@ -50330,7 +50333,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             $(".editable").removeAttr("contenteditable");
         },
         imprimir: function imprimir() {
-            var _this = this;
+            var _this2 = this;
 
             var info = this.info;
             var correcto = true;
@@ -50343,21 +50346,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.variables.map(function (value, key) {
                     $("." + value).text(info[value]);
                 });
-                axios.post("getToken").then(function (response) {
-                    _this.token = response.data;
-                    __WEBPACK_IMPORTED_MODULE_0_qrcode___default.a.toCanvas(_this.$refs.canvas, _this.token);
-                    axios.post("saveOficio", {
+                axios.post("../getToken").then(function (response) {
+                    _this2.token = response.data;
+                    __WEBPACK_IMPORTED_MODULE_0_qrcode___default.a.toCanvas(_this2.$refs.canvas, _this2.token);
+                    axios.post("../saveOficio", {
                         "html": $(".editable").html(),
-                        "token": _this.token,
+                        "token": _this2.token,
                         "fiscal": info['fiscal'],
-                        "id_oficio": _this.tipoOficio
+                        "id_oficio": _this2.tipoOficio
                     }).then(function (response) {
                         window.print();
-                        _this.$refs.canvas.width = _this.$refs.canvas.width;
+                        _this2.$refs.canvas.width = _this2.$refs.canvas.width;
                     });
                 });
             } else {
-                axios.post("intentos", {
+                axios.post("../intentos", {
                     "html": $(".editable").html(),
                     "fiscal": info['fiscal'],
                     "id_oficio": this.tipoOficio

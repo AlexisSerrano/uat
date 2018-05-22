@@ -569,72 +569,72 @@ $(document).ready(function(){
 
     $('[data-toggle="tooltip"]').tooltip();  
 
-    $(function () {
-        $('#fechaInicial').datetimepicker({
-           format: 'YYYY-MM-DD',
-           defaultDate: moment()
-       });
-    });
-    $(function () {
-        $('#horaInter').datetimepicker({
-           format: 'LT',
-           maxDate: moment()
-       });
-    });
-    $(function () {
-        $('#fechaiph2').datetimepicker({
-           format: 'YYYY-MM-DD',
-           maxDate: moment()
-       });
-    });
-    $(function () {
-        $('#fechadet').datetimepicker({
-            format: 'YYYY-MM-DD',
-            defaultDate: moment()
-        });
-    });
+//     $(function () {
+//         $('#fechaInicial').datetimepicker({
+//            format: 'YYYY-MM-DD',
+//            defaultDate: moment()
+//        });
+//     });
+//     $(function () {
+//         $('#horaInter').datetimepicker({
+//            format: 'LT',
+//            maxDate: moment()
+//        });
+//     });
+//     $(function () {
+//         $('#fechaiph2').datetimepicker({
+//            format: 'YYYY-MM-DD',
+//            maxDate: moment()
+//        });
+//     });
+//     $(function () {
+//         $('#fechadet').datetimepicker({
+//             format: 'YYYY-MM-DD',
+//             defaultDate: moment()
+//         });
+//     });
 
-    $(function () {
-        $('#fechanac').datetimepicker({
-            format: 'YYYY-MM-DD',
-            minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
-            maxDate: moment().subtract(18, 'years').format('YYYY-MM-DD')
-        });
-    });
-    $("#fechanac").on("change.datetimepicker", function (e) {
-        $('#edad').val(moment().diff(e.date,'years'));
-    });
-    $( "#edad" ).change(function() {
-        var anios = $('#edad').val();
-        $('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
-    });
+//     $(function () {
+//         $('#fechanac').datetimepicker({
+//             format: 'YYYY-MM-DD',
+//             minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
+//             maxDate: moment().subtract(18, 'years').format('YYYY-MM-DD')
+//         });
+//     });
+//     $("#fechanac").on("change.datetimepicker", function (e) {
+//         $('#edad').val(moment().diff(e.date,'years'));
+//     });
+//     $( "#edad" ).change(function() {
+//         var anios = $('#edad').val();
+//         $('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
+//     });
 
-    $(function () {
-        $('#fechanac2').datetimepicker({
-            format: 'YYYY-MM-DD',
-            minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
-            maxDate: moment()
-        });
-    });
-    $("#fechanac2").on("change.datetimepicker", function (e) {
-        $('.edad2').val(moment().diff(e.date,'years'));
-    });
-    $( ".edad2" ).change(function() {
-        var anios = $('.edad2').val();
-        $('#fechanac2').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
-    });
+//     $(function () {
+//         $('#fechanac2').datetimepicker({
+//             format: 'YYYY-MM-DD',
+//             minDate: moment().subtract(150, 'years').format('YYYY-MM-DD'),
+//             maxDate: moment()
+//         });
+//     });
+//     $("#fechanac2").on("change.datetimepicker", function (e) {
+//         $('.edad2').val(moment().diff(e.date,'years'));
+//     });
+//     $( ".edad2" ).change(function() {
+//         var anios = $('.edad2').val();
+//         $('#fechanac2').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
+//     });
 
-    $(function () {
-        $('#fechadelit').datetimepicker({
-           format: 'YYYY-MM-DD',
-           maxDate: moment()
-       });
-    });
+//     $(function () {
+//         $('#fechadelit').datetimepicker({
+//            format: 'YYYY-MM-DD',
+//            maxDate: moment()
+//        });
+//     });
 
-    $(function () {
-        $('#horadelit').datetimepicker({
-           format: 'LT',
-           maxDate: moment()
-       });
-    });
-});
+//     $(function () {
+//         $('#horadelit').datetimepicker({
+//            format: 'LT',
+//            maxDate: moment()
+//        });
+//     });
+ });
