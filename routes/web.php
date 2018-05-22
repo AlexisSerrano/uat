@@ -53,10 +53,20 @@ Route::get('/pruebasconsulta', function(){
 // -------------------------------------------------------------------
 
 /* --------Ruta para obtener token oficios----------- */
-Route::get('getToken/{id}','ActasHechosController@getToken')->name('getToken');
-Route::get('oficioah/{id}','ActasHechosController@getoficioah')->name('oficioah');  
-Route::post('saveOficio','ActasHechosController@saveOficio')->name('saveOficio');
-Route::get('getoficioah2/{id}','ActasHechosController@getoficioah2')->name('getoficioah');
+// Route::get('getToken/{id}','ActasHechosController@getToken')->name('getToken');
+// Route::get('oficioah/{id}','ActasHechosController@getoficioah')->name('oficioah');  
+// Route::post('saveOficio','ActasHechosController@saveOficio')->name('saveOficio');
+// Route::get('getoficioah2/{id}','ActasHechosController@getoficioah2')->name('getoficioah');
+
+Route::post('oficios', 'OficioController@oficios')->name('oficios');
+Route::post('getToken', 'OficioController@getToken')->name('getToken');
+Route::post('saveOficio', 'OficioController@saveOficio')->name('saveOficio');
+Route::post('intentos', 'OficioController@intentos')->name('intentos');
+
+Route::get('actaoficio/{id}', 'ActasHechosController@actaoficio')->name('actaoficio');
+Route::get('getoficioah/{id}', 'ActasHechosController@getoficioah');
+
+
 /**NO TOCAR***/
 Auth::routes();
 
