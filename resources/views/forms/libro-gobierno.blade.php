@@ -18,8 +18,8 @@
             <h6 style="text-align:center">UNIDAD DE ATENCIÓN TEMPRANA DEL DISTRITO JUDICIAL</h6>
         </div>
                    
-                    <div class="card-body table-responsive" align="center">  
-                    <table id="tablaprovidencias" style="font-size:13px; column-width:80"  class='display table table-hover table-responsive-lg table-sm' width="min">
+                    <div class=" table-responsive" align="center">  
+                    <table id="tablaprovidencias" style="font-size:13px; column-width:90"  class='display table table-hover table-responsive-lg table-sm' width="min">
                         <thead style="text-align:center;">
                             <th >N.</th>
                             <th >Fecha</th>

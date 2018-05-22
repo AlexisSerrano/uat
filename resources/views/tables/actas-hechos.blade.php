@@ -32,7 +32,7 @@
     </div>
         {!!Form::close()!!}
         
-        <div class="card-body">
+       
         <table class="table table-hover">
             <thead>
                 <th>Folio</th>
@@ -61,7 +61,7 @@
         </table>
         {{$actas->links()}}
     </div>    
-</div>    
+   
 
 
 @endsection
