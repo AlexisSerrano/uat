@@ -36,7 +36,7 @@ class CreateVehiculosTable extends Migration
             $table->integer('idMunicipio')->unsigned()->default(2493);
             $table->integer('idLocalidad')->unsigned()->nullable();//default(27592);
             $table->integer('idColonia')->unsigned()->nullable();//default(8982);
-            $table->string('codigo_postal'); 
+            $table->string('cp'); 
             $table->date('fecha');
 
             $table->foreign('idEstado')->references('id')->on('cat_estado')->onDelete('cascade');
