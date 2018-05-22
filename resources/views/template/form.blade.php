@@ -25,12 +25,12 @@
 @endsection
         
 @section('pilaScripts')
-    <script src="{{ asset('js/moment.min.js') }}"></script>
-    <script src="{{asset('js/es.js')}}"></script>
-    <script src="{{ asset('js/tempusdominus-bootstrap-4.min.js') }}"></script>
-    <script src="{{ asset('plugins/fileinput/js/fileinput.min.js')}}" ></script>
-    <script src="{{ asset('plugins/fileinput/themes/fa/theme.min.js')}}" ></script>
-    <script src="{{ asset('plugins/fileinput/js/locales/es.js')}}" ></script>
+<script src="{{ asset('js/moment.min.js') }}"></script>
+<script src="{{asset('js/es.js')}}"></script>
+<script src="{{ asset('plugins/fileinput/js/fileinput.min.js')}}" ></script>
+<script src="{{ asset('plugins/fileinput/themes/fa/theme.min.js')}}" ></script>
+<script src="{{ asset('plugins/fileinput/js/locales/es.js')}}" ></script>
+<script src="{{asset ('js/app.js')}}"></script>
 
 
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
@@ -45,7 +45,6 @@
     <script src="{{asset('js/selectsDirecciones.js')}}"></script>  
     <script src="{{asset('js/funciones.js')}}"></script>
     <script src="{{asset ('js/toastr.min.js')}}"></script>
-    <script src="{{asset ('js/app.js')}}"></script>
     {{-- <script src="{{ asset('plugins/sisyphus/js/sisyphus.js')}}" ></script> --}}
     <script>
         
