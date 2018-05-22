@@ -10,6 +10,7 @@
 {{-- validator --}}
 <link rel="stylesheet" href="{{ asset('css/theme-jquery-validation.min.css') }}">
 <link rel="stylesheet" href="{{asset ('css/toastr.min.css')}}">
+<link rel="stylesheet" href="{{asset ('css/app.css')}}">
 {{-- para calendarios --}}
 {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha18/css/tempusdominus-bootstrap-4.min.css" /> --}}
 @yield('css')
@@ -45,6 +46,7 @@
     <script src="{{asset('js/selectsDirecciones.js')}}"></script>  
     <script src="{{asset('js/funciones.js')}}"></script>
     <script src="{{asset ('js/toastr.min.js')}}"></script>
+    <script src="{{asset ('js/app.js')}}"></script>
     {{-- <script src="{{ asset('plugins/sisyphus/js/sisyphus.js')}}" ></script> --}}
     <script>
         

@@ -52,7 +52,11 @@ Route::get('/pruebasconsulta', function(){
 /**************************************************************/
 // -------------------------------------------------------------------
 
-
+/* --------Ruta para obtener token oficios----------- */
+Route::get('getToken/{id}','ActasHechosController@getToken')->name('getToken');
+Route::get('oficioah/{id}','ActasHechosController@getoficioah')->name('oficioah');  
+Route::post('saveOficio','ActasHechosController@saveOficio')->name('saveOficio');
+Route::get('getoficioah2/{id}','ActasHechosController@getoficioah2')->name('getoficioah');
 /**NO TOCAR***/
 Auth::routes();
 
@@ -224,10 +228,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('periciales/lesiones','pericialesController@lesiones')->name('store.lesiones');
     
     
-    /* --------Ruta para obtener token oficios----------- */
-    Route::get('getToken/{id}','ActasHechosController@getToken')->name('getToken');
-    Route::get('oficioah/{id}','ActasHechosController@getoficioah')->name('oficioah');
-    Route::post('saveOficio','ActasHechosController@saveOficio')->name('saveOficio');
+    
 });
 
 
