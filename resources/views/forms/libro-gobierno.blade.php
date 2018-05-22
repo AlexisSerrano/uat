@@ -6,8 +6,8 @@
     <div class="col-md-12">
         {{ Form::open(['route' => ['libro.filtro'], 'method' => 'POST']) }}
             <div class="input-group mb-6 col-4">
-                    <div class="input-group-append">
-                            <span id="basic-addon1" class=" input-group-text btn btn-secondary" ><i class="fa fa-search"></i></span>
+                    <div class="input-group-prepend">
+                            <button id="basic-addon1" class=" input-group-text" ><i class="fa fa-search"></i></button>
                        </div>
             {{ Form::text('search', old('search'), array('class'=>'form-control', 'placeholder'=>'Buscar..','aria-describedby'=>'basic-addon1')) }}
             
