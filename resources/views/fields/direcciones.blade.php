@@ -86,7 +86,7 @@ $form = oldFormDelitos();
 				@if(isset($form['catMunicipios'], $form['idMunicipio']))
 				{!! Form::select('idMunicipio', $form['catMunicipios'], $form['idMunicipio'], ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
 				@else
-				{!! Form::select('idMunicipio', [''=>'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+				{!! Form::select('idMunicipio', $municipios, null, ['class' => 'form-control form-control-sm','placeholder'=>'Seleccione un municipio','data-validation'=>'required']) !!}
 				@endif
 			</div>
 		</div>

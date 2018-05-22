@@ -12,6 +12,7 @@ use App\Models\Carpeta;
 use App\Models\CatEstado;
 use App\Models\CatEstadoCivil;
 use App\Models\ExtraDenunciante;
+use App\Models\CatMunicipio;
 use App\Models\ExtraDenunciado;
 use App\Models\Persona;
 use App\Models\VariablesPersona;
@@ -29,10 +30,12 @@ class AbogadoController extends Controller
             $abogados = CarpetaController::getAbogados($idCarpeta);
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $municipios=CatMunicipio::where('idEstado',30)->orderBy('nombre', 'ASC')->pluck('nombre','id');
             // dd($estados);
             return view('forms.abogado')->with('idCarpeta', $idCarpeta)
                 ->with('abogados', $abogados)
                 ->with('estados', $estados)
+                ->with('municipios', $municipios)
                 ->with('estadoscivil', $estadoscivil);
         }else{
             return redirect()->route('home');
@@ -82,7 +85,7 @@ class AbogadoController extends Controller
             $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
             $fecha = Carbon::parse($request->fechaNacimiento);
             $VariablesPersona->edad = Carbon::createFromDate($fecha->year, $fecha->month, $fecha->day)->age;
-            $VariablesPersona->motivoEstancia = "NO APLICA";
+            // $VariablesPersona->motivoEstancia = "NO APLICA";
             $VariablesPersona->idOcupacion = 2469;
             $VariablesPersona->idEscolaridad = 8;
             $VariablesPersona->docIdentificacion = "NO APLICA";

@@ -50,7 +50,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('idEstado', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idEstado', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required','required']) !!}
+			{!! Form::select('idEstado', $estados, 30, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required','required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
@@ -59,7 +59,7 @@
 			@if(isset($form['catMunicipios'], $form['idMunicipio']))
 			{!! Form::select('idMunicipio', $form['catMunicipios'], $form['idMunicipio'], ['class' => 'form-control form-control-sm','data-validation'=>'required','required']) !!}
 			@else
-			{!! Form::select('idMunicipio', [''=>'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm','data-validation'=>'required','required']) !!}
+			{!! Form::select('idMunicipio',$municipios, null, ['class' => 'form-control form-control-sm','placeholder' => 'Seleccione un municipio','data-validation'=>'required','required']) !!}
 			@endif
 		</div>
 	</div>

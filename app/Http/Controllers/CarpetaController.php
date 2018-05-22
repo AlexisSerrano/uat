@@ -19,12 +19,30 @@ class CarpetaController extends Controller
         Carbon::setLocale('es');
     }
 
+    public function salirCaso(){
+        $idCarpeta = session('carpeta');
+        $terminada = session('carpeta');
+        $comprobar= Carpeta::where('id',$idCarpeta)->get();
+        if(is_null($idCarpeta)||is_null($terminada)){
+            Alert::info('No tiene ningún  caso abierto.');
+            return redirect(url('carpetas'));    
+        }else{
+            session()->forget('terminada');
+            session()->forget('carpeta');
+            Alert::info('No tiene ningún  caso abierto.');
+            return redirect(url('carpetas'));
+        }
+        
+        session()->forget('carpeta');
+        return redirect(url('carpetas'));
+    }
+
     public function cancelarCaso(){
         $idCarpeta = session('carpeta');
         $comprobar= Carpeta::where('id',$idCarpeta)->get();
         if(is_null($idCarpeta)){
             Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia');
-            return redirect(url('registros'));    
+            return redirect(url('carpetas'));    
         }
         
         $usuario=User::find(Auth::user()->id);
@@ -39,14 +57,14 @@ class CarpetaController extends Controller
 
             session()->forget('carpeta');
             Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia');
-            return redirect(url('registros'));
+            return redirect(url('carpetas'));
         }
         // $carpeta = Carpeta::find($idCarpeta);
         // $carpeta->delete();
         
         session()->forget('carpeta');
         Alert::info('El caso ha sido cancelado con éxito.', 'Hecho');
-        return redirect(url('registros'));
+        return redirect(url('carpetas'));
     }
 
 
@@ -59,57 +77,7 @@ class CarpetaController extends Controller
         return view('forms.inicio')->with('nombreUnidad', $nombreUnidad)->with('tiposdet', $tiposdet);
     }
 
-    // public function storeCarpeta(Request $request){
-    //     //dd($request->all());
-    //     $datos = DB::table('users')
-    //         ->join('unidad', 'unidad.id', '=', 'users.idUnidad')
-    //         ->select('unidad.distrito','users.numFiscal', 'unidad.consecutivo')
-    //         ->where('users.id', '=', Auth::user()->id)
-    //         ->get();
-    //     $num = $datos[0]->consecutivo+1;
-    //     $carpeta = new Carpeta();
-    //     $carpeta->idUnidad = Auth::user()->idUnidad;
-    //     $carpeta->idFiscal = Auth::user()->id;
-    //     $carpeta->numCarpeta = "UIPJ/D".$datos[0]->distrito."/".$datos[0]->numFiscal."/".$num."/".Carbon::now()->year;
-    //     $carpeta->fechaInicio = $request->fechaInicio;
-    //     if (isset($request->conDetenido)) {
-    //         $carpeta->conDetenido = $request->conDetenido;
-    //     }
-    //     if (isset($request->esRelevante)) {
-    //         $carpeta->esRelevante = $request->esRelevante;
-    //     }
-    //     $carpeta->estadoCarpeta = "INICIO";
-    //     $carpeta->horaIntervencion = $request->horaIntervencion;
-    //     $carpeta->descripcionHechos = $request->descripcionHechos;
-    //     if (!is_null($request->npd)){
-    //         $carpeta->npd = $request->npd;
-    //     }
-    //     if (!is_null($request->numIph)){
-    //         $carpeta->numIph = $request->numIph;
-    //     }
-    //     $carpeta->fechaIph = $request->fechaIph;
-    //     if (!is_null($request->narracionIph)){
-    //         $carpeta->narracionIph = $request->narracionIph;
-    //     }
-    //     $carpeta->fechaDeterminacion = $request->fechaDeterminacion;
-    //     $carpeta->save();
-    //     $idCarpeta = $carpeta->id;
-    //     //dd($idCarpeta);
-    //     DB::table('unidad')->where('id', Auth::user()->idUnidad)->update(['consecutivo' => $num]);
-    //     /*
-    //     Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
-    //     //Para mostrar modal
-    //     //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
-    //     */
-    //     Alert::success('Carpeta iniciada con éxito', 'Hecho')->persistent("Aceptar");
-    //     return redirect()->route('carpeta', $idCarpeta);
-    // }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index($id)
     {
         $carpetaNueva = Carpeta::where('id', $id)->where('idFiscal', Auth::user()->id)->get();
@@ -390,7 +358,7 @@ class CarpetaController extends Controller
             }
             else{
                 Alert::warning('No cuenta con los requisitos mínimos (denunciante, denunciado, delito, acusación) para terminar la carpeta', 'Advertencia')->persistent('Aceptar');
-                return redirect()->back();
+                return redirect()->back()->withInput();
             }
         }
     }

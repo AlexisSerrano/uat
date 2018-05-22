@@ -14,6 +14,7 @@ use App\Models\CatEstadoCivil;
 use App\Models\CatEtnia;
 use App\Models\CatLengua;
 use App\Models\CatNacionalidad;
+use App\Models\CatMunicipio;
 use App\Models\CatOcupacion;
 use App\Models\CatPuesto;
 use App\Models\CatReligion;
@@ -38,6 +39,7 @@ class AutoridadController extends Controller
             $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $etnias = CatEtnia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $lenguas = CatLengua::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $municipios=CatMunicipio::where('idEstado',30)->orderBy('nombre', 'ASC')->pluck('nombre','id');
             $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $ocupaciones=  DB::table('cat_ocupacion')->select('id','nombre')->where('id','>',2941)->pluck('nombre', 'id');
             $religiones = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -47,6 +49,7 @@ class AutoridadController extends Controller
                 ->with('autoridades', $autoridades)
                 ->with('escolaridades', $escolaridades)
                 ->with('estados', $estados)
+                ->with('municipios', $municipios)
                 ->with('estadoscivil', $estadoscivil)
                 ->with('etnias', $etnias)
                 ->with('lenguas', $lenguas)
@@ -153,7 +156,7 @@ class AutoridadController extends Controller
             $fecha = Carbon::parse($request->fechaNacimiento);
             $VariablesPersona->edad = Carbon::createFromDate($fecha->year, $fecha->month, $fecha->day)->age;
             $VariablesPersona->telefono = $request->telefono;
-            $VariablesPersona->motivoEstancia = $request->motivoEstancia;
+            // $VariablesPersona->motivoEstancia = $request->motivoEstancia;
             $VariablesPersona->idOcupacion = $request->idOcupacion;
             $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
             $VariablesPersona->idEscolaridad = $request->idEscolaridad;

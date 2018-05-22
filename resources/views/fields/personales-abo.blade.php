@@ -34,13 +34,13 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idEstadoOrigen', 'Entidad federativa de origen', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idEstadoOrigen', $estados, null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'data-validation'=>'required']) !!}
+			{!! Form::select('idEstadoOrigen', $estados, 30, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idMunicipioOrigen', ['' => 'Seleccione un municipio'], null, ['class' => 'persona form-control form-control-sm', 'data-validation'=>'required']) !!}
+			{!! Form::select('idMunicipioOrigen', $municipios, null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Seleccione un municipio', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
