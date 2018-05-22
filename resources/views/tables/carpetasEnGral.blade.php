@@ -72,7 +72,7 @@
     <div class="mt-2 mx-auto">
         {{ $carpetas->links() }}
     </div>
-    <br>
+
 </div>
 </div>
 @endsection

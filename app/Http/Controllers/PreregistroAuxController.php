@@ -439,19 +439,19 @@ class PreregistroAuxController extends Controller
         // ->get();
         // $preregistros = $preregistros[0];
         // $tipopersona=$preregistros->esEmpresa;
-        $estados=CatEstado::orderBy('nombre', 'ASC')
-        ->pluck('nombre','id');
-        $municipios=CatMunicipio::where('idEstado',30)->orderBy('nombre', 'ASC')->pluck('nombre','id');
+        //$estados=CatEstado::orderBy('nombre', 'ASC')->pluck('nombre','id');
+        //$municipios=CatMunicipio::where('idEstado',30)->orderBy('nombre', 'ASC')->pluck('nombre','id');
         //$preregistro = Preregistro::find($id);
         $preregistro = DB::table('preregistros')
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')
         ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','nombre','primerAp',
-        'segundoAp','rfc','fechaNac','idEscolaridad','idEstadoCivil','idOcupacion','edad',
+        'segundoAp','rfc','fechaNac','idEscolaridad','idEstadoCivil','idMunicipioOrigen','idOcupacion','edad',
         'sexo','curp','telefono','cat_identificacion.documento as docIdentificacion',
         'numDocIdentificacion','conViolencia','narracion','folio','tipoActa','representanteLegal',
         'statusCancelacion','statusOrigen','statusCola','horaLlegada')
-        ->where('preregistros.id',$id)->get();
-        $preregistro=$preregistro[0];
+        ->where('preregistros.id',$id)->first();
+        // dd($preregistro);
+        //$preregistro=$preregistro[0];
         $tipopersona=$preregistro->esEmpresa;
         $idDireccionPregistro =$preregistro->idDireccion;//id direccion
         $idpreregistro =$preregistro->id;
@@ -543,9 +543,12 @@ class PreregistroAuxController extends Controller
         $bdbitacora->idCaso = $caso->id;
         $bdbitacora->save();
             
-        
+        $municipioOrigen=CatMunicipio::where('id',$preregistro->idMunicipioOrigen)->first();
+        // dd($municipioOrigen);  
+
         $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $municipios = CatMunicipio::select('id', 'nombre')->orderBy('nombre', 'ASC')->where('idEstado',$municipioOrigen->idEstado)->pluck('nombre', 'id');
         $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $etnias = CatEtnia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $lenguas = CatLengua::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -555,6 +558,7 @@ class PreregistroAuxController extends Controller
         Alert::success('Turno Tomado', 'Hecho');
         return view('forms.denunciante-turno')->with('idCarpeta', $idCarpeta)
         ->with('escolaridades', $escolaridades)
+        ->with('municipioOrigen', $municipioOrigen)
         ->with('estados', $estados)
         ->with('estadoscivil', $estadoscivil)
         ->with('etnias', $etnias)

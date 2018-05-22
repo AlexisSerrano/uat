@@ -24,13 +24,13 @@ class StoreDelito extends FormRequest
     public function rules()
     {
         return [
-            'calle' => 'string|min:1|max:100',
+            'calle' => 'nullable|string|min:1|max:100',
             'numExterno' => 'nullable|string|min:1|max:10',
             'numInterno' => 'nullable|string|min:1|max:10',
-            'entreCalle' => 'string|min:1|max:100',
-            'yCalle' => 'string|min:1|max:100',
-            'calleTrasera' => 'string|min:1|max:100',
-            'puntoReferencia' => 'string|min:4|max:100',
+            'entreCalle' => 'nullable|string|min:1|max:100',
+            'yCalle' => 'nullable|string|min:1|max:100',
+            'calleTrasera' => 'nullable|string|min:1|max:100',
+            'puntoReferencia' => 'nullable|string|min:4|max:100',
 
         ];
     }
