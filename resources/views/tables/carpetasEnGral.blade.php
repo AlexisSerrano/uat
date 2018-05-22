@@ -8,7 +8,7 @@
     
         <div class="input-group mb-6 col-4" style="margin-left: -8px;">
             <div class="input-group-prepend">
-             <span class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true" ></i></span>
+             <button class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true" ></i></button>
             </div>
          <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="basic-addon2" name="search" id="search" value="{{old('search')}}" >
             </div> 
