@@ -389,7 +389,7 @@ class CarpetaController extends Controller
                 return redirect('carpetas');
             }
             else{
-                Alert::warning('No cuenta con los requisitos mínimos (denunciante,denunciado,delito,acusación) para terminar la carpeta', 'Advertencia');
+                Alert::warning('No cuenta con los requisitos mínimos (denunciante, denunciado, delito, acusación) para terminar la carpeta', 'Advertencia')->persistent('Aceptar');
                 return redirect()->back();
             }
         }

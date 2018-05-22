@@ -194,6 +194,12 @@
 							<p>Libro de gobierno</p>
 						</a>
 					</li>
+					<li class="nav-item has-treeview">
+							<a href="{{url('periciales')}}" class="nav-link {{ Request::is( 'periciales') ? 'active' : '' }}">
+								<i class="nav-icon  fa fa-files-o"></i>
+								<p>Periciales</p>
+							</a>
+						</li>
 					
 				</li>
 					

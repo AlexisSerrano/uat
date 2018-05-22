@@ -3,16 +3,21 @@
 
 @section('content')
 <div class="card">
-    <div class="card-body">
+    
+            <table class="table table-hover" style="text-align:center;">
+                    <thead class="thead-light">
+                        <th>Fiscal</th>
+                        <th>Caso N.</th>
+                        <th>Estatus</th>
+                                                     
+                    </thead>
+                
+
+    </div>
+    
        
-        <hr>
-        <table class="table table-striped" style="text-align:center;">
-            <thead>
-                <th>Fiscal</th>
-                <th>Caso N.</th>
-                <th>Estatus</th>
-                                             
-            </thead>
+        
+       
             <tbody>
                
                 {{-- <tr><td colspan="5" class="text-center">Sin registros</td></tr> --}}
@@ -38,7 +43,7 @@
         </table>
        
     </div>    
-</div>    
+ 
 
 
 @endsection
