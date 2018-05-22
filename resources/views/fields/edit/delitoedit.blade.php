@@ -20,8 +20,8 @@
 		<div class="form-group">
 			{!! Form::label('fecha2', 'Fecha', ['class' => 'col-form-label-sm']) !!}
 			<div class="input-group date" id="fechadeli" data-target-input="nearest">
-				{!! Form::date('fecha2', null , ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechadeli', 'required', 'placeholder' => 'DD/MM/AAAA', 'id'=>'fecha2']) !!}
-				<span class="input-group-addon" data-target="#fechadeli" data-toggle="datetimepicker">
+				{!! Form::date('fecha2', null , ['class' => 'form-control form-control-sm', 'data-target' => '#fechadeli', 'required', 'placeholder' => 'DD/MM/AAAA', 'id'=>'fecha2']) !!}
+				<span class="input-group-addon" data-target="#fechadeli">
 					<div class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></div>
 				</span>
 			</div>
@@ -31,8 +31,8 @@
 		<div class="form-group">
 			{!! Form::label('hora2', 'Hora', ['class' => 'col-form-label-sm']) !!}
 			<div class="input-group date" id="horadeli" data-target-input="nearest">
-				{!! Form::text('hora2',  'hora', ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#horadeli', 'required', 'placeholder' => '00:00', 'id'=>'hora2']) !!}
-				<div class="input-group-addon" data-target="#horadeli" data-toggle="datetimepicker">
+				{!! Form::text('hora2',  'hora', ['class' => 'form-control form-control-sm', 'data-target' => '#horadeli', 'required', 'placeholder' => '00:00', 'id'=>'hora2']) !!}
+				<div class="input-group-addon" data-target="#horadeli">
 					<div class="input-group-text"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
 				</div>
 			</div>
