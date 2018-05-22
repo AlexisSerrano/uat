@@ -212,65 +212,79 @@ function validDom(){
 
 }
 
+$("#sinEmpleo").bind("change",function(){
+    if ($('#sinEmpleo').val()=='SI'){
+
+        $('#lugarTrabajo').prop('disabled', true);
+        $('#telefonoTrabajo').prop('disabled', true);
+        $('#idEstado2').prop('disabled', true);
+        $('#idMunicipio2').prop('disabled', true);
+        $('#idLocalidad2').prop('disabled', true);
+        $('#idColonia2').prop('disabled', true);
+        $('#cp2').prop('disabled', true);
+        $('#calle2').prop('disabled', true);
+        $('#numExterno2').prop('disabled', true);
+        $('#numInterno2').prop('disabled', true);
+       }
+    else{
+        if ($('#sinEmpleo').val()=='NO'){
+            $('#lugarTrabajo').prop('disabled', false);
+            $('#telefonoTrabajo').prop('disabled', false);
+            $('#idEstado2').prop('disabled', false);
+            $('#idMunicipio2').prop('disabled', false);
+            $('#idLocalidad2').prop('disabled', false);
+            $('#idColonia2').prop('disabled', false);
+            $('#cp2').prop('disabled', false);
+            $('#calle2').prop('disabled', false);
+            $('#numExterno2').prop('disabled', false);
+            $('#numInterno2').prop('disabled', false);
+
+        }
+    }
+} );
+
 $('#ANotificaciones').click(function(){
     datTrabajo();
 });
 function datTrabajo(){
-var datTrabajo=0;
-    if ($('#lugarTrabajo').val().length == 0) {
-        // $('#lugarTrabajo').css({"border-color":"red"});
-        datTrabajo==1;
-    }
-    if ($('#telefonoTrabajo').val().length == 0) {
-        // $('#telefonoTrabajo').css({"border-color":"red"});
-        datTrabajo==1;
-    }
-    if ($('#idEstado2').val().length == 0) {
-        // $('.idEstado2').css({"color":"red"});
-        datTrabajo==1; 
-        // else{
-        //     $('.idEstado2').css({'color:' #8c1333;});
-        }
-      
-        
-       
-        
-    
-    if ($('#idMunicipio2').val().length == 0) {
-        // $('#idMunicipio2').css({"border-color":"red"});
-        datTrabajo==1;}
-       
-    
-    if ($('#idLocalidad2').val().length == 0) {
-        // $('#idLocalidad2').css({"border-color":"red"});
-        datTrabajo==1;
-       
-    }
-    if ($('#idColonia2').val().length == 0) {
-        // $('#idColonia2').css({"border-color":"red"});
-        datTrabajo==1;
-        
-    }
-    if ($('#cp2').val().length == 0) {
-        // $('#cp2').css({"border-color":"red"});
-        datTrabajo==1;
-       
-    }
-    if ($('#calle2').val().length == 0) {
-        // $('#calle2').css({"border-color":"red"});
-        datTrabajo==1;
-       
-    }
-    if ($('#numExterno2').val().length == 0) {
-        // $('#numExterno2').css({"border-color":"red"});
-        datTrabajo==1;
-       
-     }
-    
-    else
-    {
+var trabajo=0;
 
-     if (datTrabajo==0) {
+if ($('#sinEmpleo').val().length == 0){
+    trabajo=1;
+    toastr.warning("Complere el campo de sin empleo para poder continuar");
+    }
+else if ($('#sinEmpleo').val()=='NO') {
+       
+        if ($('#lugarTrabajo').val().length == 0){
+        trabajo=1;
+        }
+        if ($('#telefonoTrabajo').val().length == 0){
+        trabajo=1;
+        }
+        if ($('#idEstado2').val().length == 0){
+        trabajo=1;
+        }
+        if ($('#idMunicipio2').val().length == 0){
+        trabajo=1;
+        }
+        if ($('#idLocalidad2').val().length == 0){
+        trabajo=1;
+        }
+        if ($('#idColonia2').val().length == 0){
+        trabajo=1;
+        }
+        if ($('#cp2').val().length == 0){
+        trabajo=1;
+        }
+        if ($('#calle2').val().length == 0){
+        trabajo=1;
+        }
+        if ($('#numExterno2').val().length == 0){
+        trabajo=1;
+        }
+    else{
+        if (trabajo==0) {
+        
 
     $('.nav-link').removeClass("active");
     $('#dirnotificacion-tab').addClass("active");//Agrego la clase active al tab actual
@@ -279,14 +293,30 @@ var datTrabajo=0;
     $('#dirnotificacion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
     $('#dirnotificacion').addClass("show");
     console.log('pasaaaaaa');
-    }
-    else if (datTrabajo==1) {
+}
+                
 
-        toastr.error("Complete los campos faltantes para poder avanzar");
-    }
+}
+if (trabajo==1) {
+    toastr.error("Complete los campos faltantes para poder avanzar");
 }
 
-   
+}
+
+
+else{
+ if ($('#sinEmpleo').val()=='SI') {
+    
+        $('.nav-link').removeClass("active");//Quito la clase active al tab actual
+        $('#dirnotificacion-tab').addClass("active");//Agrego la clase active al tab actual
+        $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+        $('.tab-pane').removeClass("show");
+        $('#dirnotificacion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+        $('#dirnotificacion').addClass("show");
+        console.log('a notificaciones')
+ }
+
+}
 
 }
     

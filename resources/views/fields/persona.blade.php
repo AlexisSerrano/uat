@@ -94,14 +94,14 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idEstadoOrigen', 'Entidad federativa de origen', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idEstadoOrigen', $estados, null, ['class' => 'turnopersona form-control form-control-sm ', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required']) !!}
+					{!! Form::select('idEstadoOrigen', $estados, $municipioOrigen->idEstado, ['class' => 'turnopersona form-control form-control-sm ', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required']) !!}
 				</div>
 			</div>
 			
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idMunicipioOrigen', ['' => 'Seleccione un municipio'], null, ['class' => 'turnopersona form-control form-control-sm ','data-validation'=>'required', 'data-validation-regexp'=>'^([0-9]{10,15}|(SIN NUMERO)|(SN))$']) !!}
+					{!! Form::select('idMunicipioOrigen', $municipios, $municipioOrigen->id, ['class' => 'turnopersona form-control form-control-sm ', 'placeholder' => 'Seleccione un municipio','data-validation'=>'required']) !!}
 				</div>
 			</div>
 			

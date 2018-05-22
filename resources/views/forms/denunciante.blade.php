@@ -42,7 +42,7 @@
 						<div class="col text-left">
 						</div>
 						<div class="col text-right">
-							<a  id=Adireccion  class="btn btn-secondary irdireccion"><i class="fa fa-arrow-right"></i></a>
+							<a  id=Adireccion  class="btn btn-secondary "><i class="fa fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>

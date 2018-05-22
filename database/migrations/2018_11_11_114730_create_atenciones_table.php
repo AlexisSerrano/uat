@@ -16,11 +16,13 @@ class CreateAtencionesTable extends Migration
         Schema::create('atenciones', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idRedireccion')->unsigned();
+            $table->integer('idUsuario')->unsigned();
+            $table->integer('idZona')->unsigned();
+            $table->integer('idUnidad')->unsigned();
             $table->string('nombre',100);
-            $table->string('zona',10);
-            $table->string('unidad',10);
-            $table->string('usuario',50);
             $table->foreign('idRedireccion')->references('id')->on('cat_redirecciones');
+            $table->foreign('idUsuario')->references('id')->on('users');
+            $table->foreign('idUnidad')->references('id')->on('unidad');
             $table->timestamps();
         });
     }

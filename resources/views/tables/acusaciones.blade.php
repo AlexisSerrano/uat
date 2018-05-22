@@ -1,6 +1,10 @@
-<h6>Acusaciones</h6>
-<div class="table">
-    <table class="table table-striped">
+<br>
+<div class="card">
+        <div class="card-header">
+            <h6>Acusaciones</h6>
+        </div>
+<div class="table-responsive">
+    <table class="table table-hover">
         <thead>
             <th>Nombre denunciante</th>
             <th>Delito</th>
@@ -29,6 +33,7 @@
             @endif
         </tbody>
     </table>
+</div>
 </div>
 
 @push('scripts')

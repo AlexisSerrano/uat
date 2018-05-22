@@ -93,12 +93,7 @@
 					{!! Form::text('telefono', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'number' ]) !!}
 				</div>
 			</div>
-			<div class="col-3">
-				<div class="form-group">
-					{!! Form::label('motivoEstancia', 'Motivo de estancia', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('motivoEstancia', 'SIN INFORMACION', ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el motivo de estancia', 'data-validation'=>'required']) !!}
-				</div>
-			</div>
+			
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('idOcupacion', 'Ocupación', ['class' => 'col-form-label-sm']) !!}

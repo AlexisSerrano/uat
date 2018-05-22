@@ -1,6 +1,10 @@
-<h6>Denunciados</h6>
-<div class="table">
-    <table class="table table-striped">
+<div class="card">
+        <div class="card-header">
+            <h6>Denunciados</h6>
+        </div>
+
+<div class="table-responsive">
+    <table class="table table-hover">
         <thead>
             <th>Nombre</th>
             <th>RFC</th>
@@ -38,6 +42,8 @@
             @endif
         </tbody>
     </table>
+
+</div>
 </div>
 
 @push('scripts')

@@ -13,7 +13,7 @@ class CreateLesionesTable extends Migration
      */
     public function up()
     {
-        Schema::connection('formatos')->create('lesiones', function (Blueprint $table) {
+        Schema::create('lesiones', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idCarpeta');
             $table->string('nombre',200);

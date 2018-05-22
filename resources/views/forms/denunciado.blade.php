@@ -188,10 +188,8 @@
 		</div>
 		
 	</div>
-	
-	<div>
-		@include('tables.denunciados')
-	</div>
+	<br>
+	@include('tables.denunciados')
 </div>
 {!!Form::close()!!}
 

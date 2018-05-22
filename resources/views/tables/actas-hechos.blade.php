@@ -12,7 +12,7 @@
     
             <div class="input-group mb-6 col-4">						
                 <div class="input-group-prepend">
-                  <span  class="input-group-text " id="basic-addon1"><i class="fa fa-search" aria-hidden="true" ></i></span>
+                  <button  class="input-group-text " id="basic-addon1"><i class="fa fa-search" aria-hidden="true" ></i></button>
                 </div>
                 <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="basic-addon1" id="folio" name="folio">
               </div>	
@@ -32,7 +32,7 @@
     </div>
         {!!Form::close()!!}
         
-        <div class="card-body">
+       
         <table class="table table-hover">
             <thead>
                 <th>Folio</th>
@@ -61,7 +61,7 @@
         </table>
         {{$actas->links()}}
     </div>    
-</div>    
+   
 
 
 @endsection

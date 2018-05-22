@@ -1,10 +1,13 @@
 
 <br>
-<h5>Denunciantes</h5>
+<div class="card">
+        <div class="card-header">
+            <h6>Denunciantes</h6>
+        </div>
 
 
-<div class="table">
-    <table class="table table-striped">
+<div class="table-respinsive">
+    <table class="table table-hover">
         <thead>
             <th>Nombre</th>
             <th>RFC</th>
@@ -20,7 +23,7 @@
         </thead>
         <tbody>
             @if(count($denunciantes)==0)
-                <tr><td colspan="7" class="text-center">Sin registros</td></tr>
+                <tr><td colspan="8" class="text-center">Sin registros</td></tr>
             @else
                 @foreach($denunciantes as $denunciante)
                     <tr>
@@ -57,6 +60,7 @@
             @endif
         </tbody>
     </table>
+</div>
 </div>
 @push('scripts')
    <script> 

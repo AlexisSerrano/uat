@@ -4,6 +4,8 @@
 <div id="page-content-wrapper">
     @include('fields.errores')
     {!!Form::open(['route' => 'addatencion'])!!}
+    <div class="card">
+        <div class="card-body">
         <div class="row">
             <div class="col-4">
                 <div class="form-group">
@@ -37,6 +39,8 @@
             </div>
               
         </div>
+    </div>
     {!!Form::close()!!}
+</div>
 </div>
 @endsection

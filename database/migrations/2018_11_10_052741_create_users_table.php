@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             //$table->string('apellidos', 50);
             $table->string('email', 100)->unique();
             $table->string('password', 100);
+            $table->integer('idCarpeta')->unsigned()->nullable();
             // $table->integer('numFiscal');
             //$table->enum('nivel', ['1', '2', '3', '4', '5'])->default('1');
 

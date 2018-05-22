@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 
 use DB;
 use Mail;
@@ -13,6 +14,7 @@ use App\Mail\EnviarCorreo as sendMail;
 use App\Models\Preregistro;
 use App\Models\CatMunicipio;
 use App\Models\Domicilio;
+use App\User;
 use Alert;
 use App\Models\CatLocalidad;
 use App\Models\CatColonia;
@@ -437,19 +439,19 @@ class PreregistroAuxController extends Controller
         // ->get();
         // $preregistros = $preregistros[0];
         // $tipopersona=$preregistros->esEmpresa;
-        $estados=CatEstado::orderBy('nombre', 'ASC')
-        ->pluck('nombre','id');
-        $municipios=CatMunicipio::where('idEstado',30)->orderBy('nombre', 'ASC')->pluck('nombre','id');
+        //$estados=CatEstado::orderBy('nombre', 'ASC')->pluck('nombre','id');
+        //$municipios=CatMunicipio::where('idEstado',30)->orderBy('nombre', 'ASC')->pluck('nombre','id');
         //$preregistro = Preregistro::find($id);
         $preregistro = DB::table('preregistros')
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')
         ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','nombre','primerAp',
-        'segundoAp','rfc','fechaNac','idEscolaridad','idEstadoCivil','idOcupacion','edad',
+        'segundoAp','rfc','fechaNac','idEscolaridad','idEstadoCivil','idMunicipioOrigen','idOcupacion','edad',
         'sexo','curp','telefono','cat_identificacion.documento as docIdentificacion',
         'numDocIdentificacion','conViolencia','narracion','folio','tipoActa','representanteLegal',
         'statusCancelacion','statusOrigen','statusCola','horaLlegada')
-        ->where('preregistros.id',$id)->get();
-        $preregistro=$preregistro[0];
+        ->where('preregistros.id',$id)->first();
+        // dd($preregistro);
+        //$preregistro=$preregistro[0];
         $tipopersona=$preregistro->esEmpresa;
         $idDireccionPregistro =$preregistro->idDireccion;//id direccion
         $idpreregistro =$preregistro->id;
@@ -515,12 +517,16 @@ class PreregistroAuxController extends Controller
         $caso = new Carpeta();
         // $caso->numCarpeta = "UAT/D"."1"."/"."X"."/"."XX"."/".Carbon::now()->year;
         $caso->fechaInicio = Carbon::now();
+        $caso->idFiscal = Auth::user()->id;
+        $caso->idUnidad = Auth::user()->idUnidad;
+            
         // $caso->idEstadoCarpeta = 1;
         $caso->horaIntervencion = Carbon::now();
         $caso->fechaDeterminacion = Carbon::now();
         $caso->save();
         $idCarpeta = $caso->id;
 
+        
         $editpreregistro=Preregistro::find($id);
         $editpreregistro->idCarpeta= $idCarpeta;
         $editpreregistro->save();
@@ -528,13 +534,21 @@ class PreregistroAuxController extends Controller
 
         session(['preregistro' => $id]);
         session(['carpeta' => $idCarpeta]);
+
+        $usuario=User::find(Auth::user()->id);
+        $usuario->idCarpeta=session('carpeta');
+        $usuario->save();
+
         $bdbitacora = new BitacoraNavCaso;
         $bdbitacora->idCaso = $caso->id;
         $bdbitacora->save();
             
-        
+        $municipioOrigen=CatMunicipio::where('id',$preregistro->idMunicipioOrigen)->first();
+        // dd($municipioOrigen);  
+
         $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
         $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $municipios = CatMunicipio::select('id', 'nombre')->orderBy('nombre', 'ASC')->where('idEstado',$municipioOrigen->idEstado)->pluck('nombre', 'id');
         $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $etnias = CatEtnia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $lenguas = CatLengua::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -544,6 +558,7 @@ class PreregistroAuxController extends Controller
         Alert::success('Turno Tomado', 'Hecho');
         return view('forms.denunciante-turno')->with('idCarpeta', $idCarpeta)
         ->with('escolaridades', $escolaridades)
+        ->with('municipioOrigen', $municipioOrigen)
         ->with('estados', $estados)
         ->with('estadoscivil', $estadoscivil)
         ->with('etnias', $etnias)
@@ -654,12 +669,18 @@ class PreregistroAuxController extends Controller
         //$carpeta->delete();
         
         //$carpeta->delete();
+
+        $usuario=User::find(Auth::user()->id);
+        $usuario->idCarpeta=null;
+        $usuario->save();
         
         session()->forget('carpeta');
         session()->forget('preregistro');
          //dd($idCarpeta);
         //dd(session('carpeta'));
         
+
+
         Alert::info('Los datos del caso que inicio han sido borrados y el turno fue devuelto a la cola ', 'Turno devuelto');
         return redirect('registros');
        }

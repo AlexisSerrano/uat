@@ -20,7 +20,7 @@ class VariablesPersona extends Model
         'idPersona',
         'edad',
         'telefono',
-        'motivoEstancia',
+       
         'idOcupacion',
         'idEstadoCivil',
         'idEscolaridad',

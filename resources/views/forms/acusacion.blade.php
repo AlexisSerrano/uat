@@ -21,9 +21,9 @@
 		</div>
 	</div>
 	{!! Form::close() !!}
-	<div class="boxtwo">
+	
 		@include('tables.acusaciones')
-	</div>
+	
 @endsection
 @push('scripts')
 <script src="{{ asset('js/borrar.js') }}"></script>

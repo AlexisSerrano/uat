@@ -370,6 +370,8 @@ function oldFormNoti(){
 function countAtencion(){
 	$atenciones=DB::table('atenciones')
 		->select('id')
+		->where('idUnidad',Auth::user()->idUnidad)
+		->where('idUsuario',Auth::user()->id)
 		->whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))->get()
 		->count();
 	return $atenciones;
