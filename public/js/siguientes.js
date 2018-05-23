@@ -218,7 +218,7 @@
         
         if ($('#sinEmpleo').val().length == 0){
             trabajo=1;
-            toastr.warning("Complere el campo de sin empleo para poder continuar");
+            toastr.warning("Complete el campo de sin empleo para poder continuar");
             }
        else if ($('#sinEmpleo').val()=='NO') {
                
