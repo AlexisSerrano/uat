@@ -67,7 +67,7 @@
                                     
                                 </div>
                                 <br>    
-                                <div style="height: 200px;  width: 210px; overflow: auto;">
+                                <div style="height: 200px;  width: 215px; overflow: auto;">
                                 <div class=" panel panel-default">
                                     <div class="panel-body">
                                         <table class="table table-hover">
