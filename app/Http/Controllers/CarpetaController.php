@@ -21,7 +21,7 @@ class CarpetaController extends Controller
 
     public function salirCaso(){
         $idCarpeta = session('carpeta');
-        $terminada = session('carpeta');
+        $terminada = session('terminada');
         $comprobar= Carpeta::where('id',$idCarpeta)->get();
         if(is_null($idCarpeta)||is_null($terminada)){
             Alert::info('No tiene ningún  caso abierto.');
@@ -29,7 +29,7 @@ class CarpetaController extends Controller
         }else{
             session()->forget('terminada');
             session()->forget('carpeta');
-            Alert::info('No tiene ningún  caso abierto.');
+            // Alert::info('No tiene ningún  caso abierto.');
             return redirect(url('carpetas'));
         }
         
@@ -41,7 +41,7 @@ class CarpetaController extends Controller
         $idCarpeta = session('carpeta');
         $comprobar= Carpeta::where('id',$idCarpeta)->get();
         if(is_null($idCarpeta)){
-            Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia');
+            Alert::info('No tiene ningún caso en proceso.', 'Advertiencia');
             return redirect(url('carpetas'));    
         }
         

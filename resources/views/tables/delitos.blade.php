@@ -25,12 +25,14 @@
                         <td>
                        {{-- <a href="{{ url('delito/'.$delito->id.'/eliminar')}}"  rel="tooltip" title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
                        <i class="fa fa-edit"></i></a> --}} 
-
                             {{-- <button type="button" class="btn btn-secondary btn-simple btn-xs btn-modal-delito"  value={{$delito->id}} data-toggle="modal" data-target="#myModal-delito" id="open"> <i class="fa fa-edit"></i</button> --}}
+                            @if(is_null(session('terminada')))
                             <a data-delito-id={{$delito->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
-                                <i class="fa fa-times"></i></a></td>
-                          
-                            </td> 
+                                <i class="fa fa-times"></i>
+                            </a>
+                        	@endif
+                        </td>
+                           
                           
                     </tr>
 

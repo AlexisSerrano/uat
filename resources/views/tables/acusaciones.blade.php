@@ -22,12 +22,16 @@
                         <td>{{ $acusacion->delito }}</td>
                         <td>{{ $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2 }}</td>
                         <td>
-                                {{-- <a href="{{ url('agregar-acusacion/'.$acusacion->id.'/eliminar')}}"  title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
-                                <i class="fa fa-times"></i></a> --}}
+                            {{-- <a href="{{ url('agregar-acusacion/'.$acusacion->id.'/eliminar')}}"  title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
+                            <i class="fa fa-times"></i></a> --}}
+                            @if(is_null(session('terminada')))
                                 <a data-acusacion-id={{$acusacion->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
-                                        <i class="fa fa-times"></i></a></td>
-                                </td> 
-                        {{-- <td><a href="{{ route('formato.denuncia', $acusacion->id) }}" class="btn btn-secondary text-right">Descargar formato de Denuncia</a></td> --}}
+                                    <i class="fa fa-times"></i>
+                                </a>
+                        	@endif
+                        </td>
+                                    {{-- </td>  --}}
+                    {{-- <td><a href="{{ route('formato.denuncia', $acusacion->id) }}" class="btn btn-secondary text-right">Descargar formato de Denuncia</a></td> --}}
                     </tr>
                 @endforeach
             @endif

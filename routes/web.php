@@ -79,9 +79,10 @@ Route::middleware(['auth'])->group(function () {
 
     
     /************Rutas para formulario de solicitante/victima/denunciante*************/
-    Route::get('/crear-caso', 'CarpetaController@crearCaso')->name('inicio');
+    Route::get('/crear-caso', 'CarpetaController@crearCaso')->name('inicio.caso');
     Route::get('cancelar-caso', 'CarpetaController@cancelarCaso')->name('cancelar.caso');
-    Route::get('terminar', 'CarpetaController@terminar')->name('terminar');
+    Route::get('terminar', 'CarpetaController@terminar')->name('terminar.caso');
+    Route::get('salir', 'CarpetaController@salirCaso')->name('salir.caso');
     //Route::post('storecarpeta', 'CarpetaController@storeCarpeta')->name('store.carpeta');
     //Route::get('/carpeta-inicial/{id}', 'CarpetaController@index')->name('carpeta');
     

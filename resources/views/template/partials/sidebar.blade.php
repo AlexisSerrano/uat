@@ -36,12 +36,11 @@
 					{{-- <a href="#" class="d-block"><i class="fa fa-user-circle" aria-hidden="true"></i> USUARIO</a> --}}
 				</div>
 			</div>
-
+			
 			<!-- Sidebar Menu -->
 			<nav class="mt-2">
 				<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-					<!-- Add icons to the links using the .nav-icon class
-							 with font-awesome or any other icon font library -->
+					@if (is_null(session('carpeta')))
 					<li class="nav-item has-treeview">
 						<a href="#" class="nav-link">
 							<i class="nav-icon fa fa-users"></i>
@@ -52,77 +51,78 @@
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-									<a href="{{url('preregistro')}}" class="nav-link {{ Request::is( 'preregistro') ? 'active' : '' }}">
+								<a href="{{url('preregistro')}}" class="nav-link {{ Request::is( 'preregistro') ? 'active' : '' }}">
 										<i class="fa fa-user-plus nav-icon"></i>
 										<p>Nuevo pre-registro</p>
 									</a>
 								</li>
-							<li class="nav-item">
-								<a href='{{url("registros")}}' class="nav-link {{ Request::is( 'registros') ? 'active' : '' }}">
-										<i class="fa fa-pencil nav-icon"></i>
-										<p>Consulta de pre-registros</p>
-								</a>
+								<li class="nav-item">
+									<a href='{{url("registros")}}' class="nav-link {{ Request::is( 'registros') ? 'active' : '' }}">
+											<i class="fa fa-pencil nav-icon"></i>
+											<p>Consulta de pre-registros</p>
+										</a>
+									</li>
+								</ul>
 							</li>
-						</ul>
-					</li>
-					<li class="nav-item has-treeview">
-						<a href="#" class="nav-link ">
-							<i class="nav-icon fa fa-user-o"></i>
-							<p>
-								Recepción
-								<i class="right fa fa-angle-left"></i>
+							<li class="nav-item has-treeview">
+								<a href="#" class="nav-link ">
+									<i class="nav-icon fa fa-user-o"></i>
+									<p>
+										Recepción
+										<i class="right fa fa-angle-left"></i>
+									</p>
+								</a>
+								<ul class="nav nav-treeview">
+									<li class="nav-item has-treeview  ">
+										<a href="{{url('predenuncias')}}" class="nav-link {{ Request::is( 'predenuncias') ? 'active' : '' }}">
+												{{-- <i class="nav-icon fa fa-user-times"></i> --}}
+												<p>
+													Todos los registros
+												</p>
+											</a>
+										</li>
+										<li class="nav-item has-treeview">
+											<a href="{{url('encola')}}" class="nav-link {{ Request::is( 'encola') ? 'active' : '' }}">
+													{{-- <i class="nav-icon fa fa-user-times"></i> --}}
+													<p>
+														Registros en cola
+													</p>
+												</a>
+											</li>
+											<li class="nav-item has-treeview">
+												<a href="{{url('urgentes')}}" class="nav-link {{ Request::is( 'urgentes') ? 'active' : '' }}">
+														{{-- <i class="nav-icon fa fa-user-times"></i> --}}
+														<p>
+															Urgentes
+														</p>
+													</a>
+												</li>
+												<li class="nav-item has-treeview">
+													<a href="{{url('recepcionista')}}" class="nav-link {{ Request::is( 'recepcionista') ? 'active' : '' }}">
+															{{-- <i class="nav-icon fa fa-user-times"></i> --}}
+															<p>
+																Agregar
+															</p>
+														</a>
+													</li>
+													<li class="nav-item has-treeview">
+														<a href="{{url('turnos-pruebas')}}" class="nav-link {{ Request::is( 'turnos-pruebas') ? 'active' : '' }}">
+																{{-- <i class="nav-icon  fa fa-print"></i> --}}
+																<p>Turnos tomados</p>
+															</a>
+														</li>
+													</ul>
+												</li>
+												{{-- menu-open --}}
+												<li class="nav-item has-treeview ">
+													<a href="{{url('Traerturno')}}" class="nav-link">
+															<i class="nav-icon fa fa-check-circle-o"></i>
+															<p>
+																Tomar turno
 							</p>
 						</a>
-						<ul class="nav nav-treeview">
-							<li class="nav-item has-treeview  ">
-								<a href="{{url('predenuncias')}}" class="nav-link {{ Request::is( 'predenuncias') ? 'active' : '' }}">
-									{{-- <i class="nav-icon fa fa-user-times"></i> --}}
-									<p>
-										Todos los registros
-									</p>
-								</a>
-							</li>
-							<li class="nav-item has-treeview">
-								<a href="{{url('encola')}}" class="nav-link {{ Request::is( 'encola') ? 'active' : '' }}">
-									{{-- <i class="nav-icon fa fa-user-times"></i> --}}
-									<p>
-										Registros en cola
-									</p>
-								</a>
-							</li>
-							<li class="nav-item has-treeview">
-								<a href="{{url('urgentes')}}" class="nav-link {{ Request::is( 'urgentes') ? 'active' : '' }}">
-									{{-- <i class="nav-icon fa fa-user-times"></i> --}}
-									<p>
-										Urgentes
-									</p>
-								</a>
-							</li>
-							<li class="nav-item has-treeview">
-								<a href="{{url('recepcionista')}}" class="nav-link {{ Request::is( 'recepcionista') ? 'active' : '' }}">
-									{{-- <i class="nav-icon fa fa-user-times"></i> --}}
-									<p>
-										Agregar
-									</p>
-								</a>
-							</li>
-							<li class="nav-item has-treeview">
-								<a href="{{url('turnos-pruebas')}}" class="nav-link {{ Request::is( 'turnos-pruebas') ? 'active' : '' }}">
-										{{-- <i class="nav-icon  fa fa-print"></i> --}}
-										<p>Turnos tomados</p>
-									</a>
-								</li>
-						</ul>
 					</li>
-					{{-- menu-open --}}
-					<li class="nav-item has-treeview ">
-						<a href="{{url('Traerturno')}}" class="nav-link">
-							<i class="nav-icon fa fa-check-circle-o"></i>
-							<p>
-								Tomar turno
-							</p>
-						</a>
-					</li>
+					@endif
 					@if (!is_null(session('carpeta')))
 
 						@if(!is_null(session('preregistro')))
@@ -134,16 +134,30 @@
 								</p>
 							</a>
 						</li>
-						@else	
-						<li class="nav-item has-treeview">
-							<a href='{{route("cancelar.caso")}}' class="nav-link">
-								<i class="nav-icon fa fa-ban"></i>
-								<p>
-									Cancelar registro
-								</p>
-							</a>
-						</li>
+						@else
+							@if (is_null(session('terminada')))
+								<li class="nav-item has-treeview">
+									<a href='{{route("cancelar.caso")}}' class="nav-link">
+										<i class="nav-icon fa fa-ban"></i>
+										<p>
+											Cancelar registro
+										</p>
+									</a>
+								</li>
+							@else
+								<li class="nav-item has-treeview">
+									<a href='{{route("salir.caso")}}' class="nav-link">
+										<i class="nav-icon fa fa-backward"></i>
+										<p>
+											Salir
+										</p>
+									</a>
+								</li>
+								
+							@endif	
 						@endif
+						@if (is_null(session('terminada')))
+							
 						<li class="nav-item has-treeview">
 							<a href='{{route("new.denunciante")}}' class="nav-link {{ Request::is( 'agregar-denunciante') ? 'active' : '' }}">
 								<i class="nav-icon fa fa-share"></i>
@@ -152,7 +166,7 @@
 								</p>
 							</a>
 						</li>
-						
+						@endif
 					@else
 						<li class="nav-item has-treeview">
 							<a href="{{url('crear-caso')}}" class="nav-link {{ Request::is( 'crear-caso') ? 'active' : '' }}">
@@ -163,8 +177,7 @@
 						
 					@endif
 					
-					
-		<!--termina recepcion-->
+					@if (is_null(session('terminada'))&&is_null(session('carpeta')))
 					<li class="nav-item has-treeview">
 						<a href="{{url('atencion')}}" class="nav-link {{ Request::is( 'atencion') ? 'active' : '' }}">
 							{{-- <span class="bagde">{{countAtencion()}}</span> --}}
@@ -194,19 +207,22 @@
 							<p>Libro de gobierno</p>
 						</a>
 					</li>
-					<li class="nav-item has-treeview">
-							<a href="{{url('periciales')}}" class="nav-link {{ Request::is( 'periciales') ? 'active' : '' }}">
-								<i class="nav-icon  fa fa-files-o"></i>
-								<p>Periciales</p>
-							</a>
-						</li>
-					<li class="nav-item has-treeview">
-								<a href="{{url('medidas')}}" class="nav-link {{ Request::is( 'medidas') ? 'active' : '' }}">
-									<i class="nav-icon fa fa-plus-square"></i>
-									<p>Medidas de protección</p>
-								</a>
-						</li>
+					@endif		
 					
+					@if (!is_null(session('carpeta'))&&!is_null(session('terminada')))
+					<li class="nav-item has-treeview">
+						<a href="{{url('periciales')}}" class="nav-link {{ Request::is( 'periciales') ? 'active' : '' }}">
+							<i class="nav-icon  fa fa-files-o"></i>
+							<p>Periciales</p>
+						</a>
+					</li>
+					<li class="nav-item has-treeview">
+						<a href="{{url('medidas')}}" class="nav-link {{ Request::is( 'medidas') ? 'active' : '' }}">
+							<i class="nav-icon fa fa-plus-square"></i>
+							<p>Medidas de protección</p>
+						</a>
+					</li>
+					@endif
 				</li>
 					
 

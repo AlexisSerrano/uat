@@ -27,8 +27,13 @@
                         <td>{{ $abogado->tipo }}</td>  
                         {{-- <a href="{{ url('agregar-abogado/'.$abogado->id.'/eliminar')}}" title="Eliminar Registro" class="btn btn-secondary ">
                         <i class="fa fa-times"></i></td>  --}}
-                        <td> <a data-abogado-id={{$abogado->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
-                                <i class="fa fa-times"></i></a></td>
+                        <td> 
+	                        @if(is_null(session('terminada')))
+                            <a data-abogado-id={{$abogado->id}} title="Eliminar abogado" class="deleteBtn btn btn-secondary btn-simple btn-xs">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        	@endif             
+                        </td>
                                                          
                     </tr>
                 @endforeach

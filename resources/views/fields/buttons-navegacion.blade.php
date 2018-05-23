@@ -18,6 +18,10 @@ $barra = getNavCaso();
     <a href="{{route('descripcionHechos')}}" class="{{$barra['hechos']}} form-control">Descripción de hechos </a>
     {{-- <a href="{{route('descripcionHechos')}}" class="{{$barra['hechos']}} form-control">Descripción de hechos {{$barra['chechos']}}</a> --}}
 	{{-- <a href="{{url('medidas')}}" class="{{$barra['medidas']}} form-control" <span class="badge badge-info right">>Medidas de protección {{$barra['cmedidas']}}</a> --}}
-	<a href="{{url('terminar')}}" class="form-control btn btn-secondary">Terminar</a>
+	@if(session('terminada')==null)
+	<a href="{{route('terminar.caso')}}" class="form-control btn btn-secondary">Finalizar</a>
+	@else	
+	<a href="{{route('salir.caso')}}" class="form-control btn btn-secondary">Salir</a>
+	@endif
 </div>
  

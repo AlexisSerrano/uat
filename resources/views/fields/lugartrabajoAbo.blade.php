@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-6">
+	<div class="col-8">
 		<div class="form-group">
 			{!! Form::label('lugarTrabajo', 'Lugar de trabajo', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::text('lugarTrabajo', null, ['class' => 'trabajo form-control form-control-sm', 'placeholder' => 'Ingrese el lugar de trabajo.','data-validation'=> 'required']) !!}
@@ -26,7 +26,7 @@
 			@if(isset($form['catMunicipios'], $form['idMunicipio2']))
 			{!! Form::select('idMunicipio2', $form['catMunicipios'], $form['idMunicipio2'], ['class' => 'form-control form-control-sm', 'required']) !!}
 			@else
-			{!! Form::select('idMunicipio2', [''=>'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
+			{!! Form::select('idMunicipio2', $municipios, null, ['class' => 'form-control form-control-sm', 'required']) !!}
 			@endif
 		</div>
 	</div>

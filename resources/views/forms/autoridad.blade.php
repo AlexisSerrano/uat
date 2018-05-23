@@ -52,7 +52,7 @@
 	</div>
 	<div class="tab-pane fade" id="trabajo" role="tabpanel" aria-labelledby="trabajo-tab">
 		<div class="boxtwo">
-			@include('fields.lugartrabajo')
+			@include('fields.lugartrabajoAuto')
 			{{-- botones --}}
 			<div class="row menu">	
 				<div class="col text-left">				

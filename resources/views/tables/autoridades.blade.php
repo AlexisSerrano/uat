@@ -29,8 +29,11 @@
                         <td>
                         {{-- <a href="{{ url('agregar-autoridad/'.$autoridad->id.'/eliminar')}}" type="button" rel="tooltip" title="Eliminar Registro" class="btn btn-success btn-simple btn-xs">
                         <i class="fa fa-edit"></i> --}}
-                        <a data-autoridad-id={{$autoridad->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
-                                <i class="fa fa-times"></i></a></td>
+                            @if(is_null(session('terminada')))
+                            <a data-autoridad-id={{$autoridad->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        	@endif
                         </td>
                     </tr>
                 @endforeach
