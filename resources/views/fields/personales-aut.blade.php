@@ -93,7 +93,7 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('telefono', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'required']) !!}
+			{!! Form::text('telefono', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'custom','data-validation-optional'=>'true','data-validation'=>'required']) !!}
 		</div>
 	</div>
 	{{-- <div class="col-3">
@@ -123,7 +123,7 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idEscolaridad', 'Escolaridad', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idEscolaridad', $escolaridades, null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Seleccione la escoalridad', 'required']) !!}
+			{!! Form::select('idEscolaridad', $escolaridades, 1, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Seleccione la escoalridad', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">

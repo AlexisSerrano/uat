@@ -83,9 +83,9 @@
         if ($('#idLengua').val().length == 0){
                     completoP=1;
          }
-        if ($('#telefono').val().length == 0){
-                completoP=1;
-        }
+        // if ($('#telefono').val().length == 0){
+        //         completoP=1;
+        // }
         
         if ($('#idOcupacion').val().length == 0){
             completoP=1;
@@ -225,9 +225,9 @@
                 if ($('#lugarTrabajo').val().length == 0){
                 trabajo=1;
                 }
-                if ($('#telefonoTrabajo').val().length == 0){
-                trabajo=1;
-                }
+                // if ($('#telefonoTrabajo').val().length == 0){
+                // trabajo=1;
+                // }
                 if ($('#idEstado2').val().length == 0){
                 trabajo=1;
                 }
@@ -321,13 +321,13 @@
                 if ($('#numExterno3').val().length == 0){
                 notificaciones=1;
                 }
-                if ($('#correo').val().length == 0){
-                notificaciones=1;
-                }
-                if ($('#telefonoN').val().length == 0){
-                notificaciones=1;
+                // if ($('#correo').val().length == 0){
+                // notificaciones=1;
+                // }
+                // if ($('#telefonoN').val().length == 0){
+                // notificaciones=1;
 
-                }
+               // }
         else{
             if (notificaciones==0) {
                 
@@ -373,11 +373,11 @@
                 if ($('#numExterno3').val().length == 0){
                 notificaciones=1;
                 }
-                if ($('#correo').val().length == 0){
-                notificaciones=1;
-                }
-                if ($('#telefonoN').val().length == 0){
-                notificaciones=1;}
+                // if ($('#correo').val().length == 0){
+                // notificaciones=1;
+                // }
+                // if ($('#telefonoN').val().length == 0){
+                // notificaciones=1;}
     else{
         if (notificaciones==0) {
             
@@ -419,11 +419,11 @@
         if ($('#numExterno3').val().length == 0){
             notificaciones=1;
             }
-        if ($('#correo').val().length == 0){
-        notificaciones=1;
-        }
-        if ($('#telefonoN').val().length == 0){
-        notificaciones=1;}
+        // if ($('#correo').val().length == 0){
+        // notificaciones=1;
+        // }
+        // if ($('#telefonoN').val().length == 0){
+        // notificaciones=1;}
     else{
             if (notificaciones==0) {
                 
@@ -471,9 +471,9 @@
             if ($('#lugarTrabajo').val().length == 0){
             trabajo=1;
             }
-            if ($('#telefonoTrabajo').val().length == 0){
-            trabajo=1;
-            }
+            // if ($('#telefonoTrabajo').val().length == 0){
+            // trabajo=1;
+            // }
             if ($('#idEstado2').val().length == 0){
             trabajo=1;
             }
@@ -545,9 +545,9 @@
                 if ($('#lugarTrabajo').val().length == 0){
                 trabajo=1;
                 }
-                if ($('#telefonoTrabajo').val().length == 0){
-                trabajo=1;
-                }
+                // if ($('#telefonoTrabajo').val().length == 0){
+                // trabajo=1;
+                // }
                 if ($('#idEstado2').val().length == 0){
                 trabajo=1;
                 }
