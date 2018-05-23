@@ -216,7 +216,14 @@
 							<p>Medidas de protección</p>
 						</a>
 					</li>
+					
 					@endif
+					<li class="nav-item has-treeview">
+							<a href="{{url('oficios')}}" class="nav-link {{ Request::is( 'oficios') ? 'active' : '' }}">
+									<i class="fa fa-font"></i>
+								<p>Oficios</p>
+							</a>
+						</li>
 				</li>
 					
 
