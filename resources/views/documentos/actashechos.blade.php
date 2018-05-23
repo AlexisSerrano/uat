@@ -7,6 +7,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{asset ('css/app.css')}}">
     <title>Document</title>
+    <style type="text/css" media="print">
+        .contenedor{page-break-after:always;writing-mode:lr-tb;}
+        #sidebar,#header,#nav,#footer,#masthead, #navbar,{color:#FFFFFF;display:none;}
+        .NomPrint{display:none !important;}
+        </style>
 </head>
 <body>
     <div id="app">
