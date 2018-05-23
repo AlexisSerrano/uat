@@ -147,7 +147,7 @@
 					</div>
 				</div>
 		</div>
-		{{-- <div id="cargando" style="display:none;">
+		<div id="cargando" style="display:none;">
 			<div class="text-center">
 				<strong  style="color:#f5f5f5;">Iniciando sesión<strong>
 			</div>
@@ -165,7 +165,7 @@
 				<div class="sk-circle11 sk-child"></div>
 				<div class="sk-circle12 sk-child"></div>
 			</div>
-		</div> --}}
+		</div>
 	</div>
 		
 
@@ -179,7 +179,7 @@
 	<script src="{{ asset('js/curp.js') }}"></script> 
 	<script src="{{ asset('js/rfcFisico.js') }}"></script>
 	<script src="{{ asset('js/rfcMoral.js') }}"></script>
-	{{-- <script src="{{ asset('js/jquery.disableAutoFill.min.js')}}" ></script> --}}
+	<script src="{{ asset('js/jquery.disableAutoFill.min.js')}}" ></script>
 	
 	{{-- <script src="{{ asset('js/rfcMoral.js') }}"></script> --}}
 	<script>	
@@ -191,14 +191,13 @@
 		// $('.tab-pane').removeClass("active");
 		
 
-			window.onload = function(){
-				var contenedor = document.getElementById('
-				loadPage');
-				contenedor.removeClass("loadPage");
-				contenedor.removeClass("oculto");
-				contenedor.addClass("oculto");
-
-			}
+			// window.onload = function(){
+			// 	var contenedor = document.getElementById('
+			// 	loadPage');
+			// 	contenedor.removeClass("loadPage");
+			// 	contenedor.removeClass("oculto");
+			// 	contenedor.addClass("oculto");}
+			
 
 			  $('#cargando').click(function(){
 				console.log("entro");

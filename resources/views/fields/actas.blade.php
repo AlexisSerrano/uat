@@ -162,7 +162,7 @@
 
 <div class="col-4">
         <div class="form-group" >
-            {!! Form::label('docIdentificacion', 'Seleccione el tipo de acta de hechos que requiere:', ['class' => 'col-form-label-sm']) !!}
+            {!! Form::label('docIdentificacion', 'Seleccione el documento de identificación:', ['class' => 'col-form-label-sm']) !!}
             {!! Form::select('docIdentificacion', array('CREDENCIAL PARA VOTAR' => 'CREDENCIAL PARA VOTAR', 
             'PASAPORTE' => 'PASAPORTE',
             'CEDULA PROFESIONAL' => 'CEDULA PROFESIONAL',
