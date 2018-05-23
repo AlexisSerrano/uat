@@ -29,7 +29,7 @@
 			{!! Form::label('segundoAp', 'Segundo apellido: ', ['class' => 'col-form-label-sm labelCambioSegundoAp']) !!}
 			{!!Form::label('nombre',$preregistro->segundoAp ,['class'=> 'col-form-label-sm labelCambioSegundoAp'])!!}
 			<div class="input-group inputOculto" id="inputSegundoAp">
-				{!! Form::text('segundoAp', $preregistro->segundoAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido']) !!}
+				{!! Form::text('segundoAp', $preregistro->segundoAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 				<input type="button" id="botonCambioSegundoAp" value="Cancelar" class="btn btn-sm btn-danger">
 			</div>
 		</div>
@@ -81,7 +81,7 @@
 			{!! Form::label('sexo', 'Sexo: ', ['class' => 'col-form-label-sm labelCambioSexo']) !!}
 			{!!Form::label('nombre',$preregistro->sexo ,['class'=> 'col-form-label-sm labelCambioSexo'])!!}
 			<div class="input-group inputOculto" id="inputSexo">
-				{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], $preregistro->sexo, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'required']) !!}
+				{!! Form::select('sexo', ['HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], $preregistro->sexo, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'required']) !!}
 				<input type="button" id="botonCambioSexo" value="Cancelar" class="btn btn-sm btn-danger">
 			</div>
 			<div class="help-block with-errors"></div>

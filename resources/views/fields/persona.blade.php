@@ -16,7 +16,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('segundoAp', $preregistro->segundoAp,['class' => ' turnopersona form-control form-control-sm ', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'required']) !!}
+					{!! Form::text('segundoAp', $preregistro->segundoAp,['class' => ' turnopersona form-control form-control-sm ', 'placeholder' => 'Ingrese el ','data-validation'=>'required']) !!}
 				</div>
 			</div>
 			<div class="col-3">
@@ -64,7 +64,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], $preregistro->sexo, ['class' => 'turnopersona form-control form-control-sm ', 'placeholder' => 'Seleccione el sexo','data-validation'=>'required']) !!}
+					{!! Form::select('sexo', ['HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], $preregistro->sexo, ['class' => 'turnopersona form-control form-control-sm ', 'placeholder' => 'Seleccione el sexo','data-validation'=>'required','required']) !!}
 				</div>
 			</div>
 			
@@ -108,7 +108,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::number('telefono',$preregistro->telefono,['class' => 'turnopersona form-control form-control-sm ', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'number']) !!}
+					{!! Form::number('telefono',$preregistro->telefono,['class' => 'turnopersona form-control form-control-sm ', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'custom','data-validation-optional'=>'true','data-validation'=>'number']) !!}
 				</div>
 			</div>
 			
@@ -147,13 +147,35 @@
 				</div>
 			</div>
 			
-			<div class="col-6">
+			{{-- <div class="col-6">
 				<div class="form-group">
 					{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('docIdentificacion',$preregistro->docIdentificacion, ['class' => 'turnopersona form-control form-control-sm ', 'placeholder' => 'Ingrese el docto. de identificación','data-validation'=>'required']) !!}
 				</div>
-			</div>
+			</div> --}}
 			
+			<div class="col-6">
+				<div class="form-group" >
+					{!! Form::label('docIdentificacion', 'Seleccione el documento de identificación:', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('docIdentificacion', array('CREDENCIAL PARA VOTAR' => 'CREDENCIAL PARA VOTAR', 
+					'PASAPORTE' => 'PASAPORTE',
+					'CEDULA PROFESIONAL' => 'CEDULA PROFESIONAL',
+					'CARTILLA DEL SERVICIO MILITAR NACIONAL' => 'CARTILLA DEL SERVICIO MILITAR NACIONAL',
+					'TARJETA UNICA DE IDENTIDAD MILITAR' => 'TARJETA UNICA DE IDENTIDAD MILITAR',
+					'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES' => 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES',
+					'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL' => 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL',
+					'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR' => 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR',
+					'LICENCIA DE CONDUCIR' => 'LICENCIA DE CONDUCIR',
+					'CERTIFICADO DE MATRICULA CONSULAR' => 'CERTIFICADO DE MATRICULA CONSULAR',
+					'ACTA DE NACIMIENTO' => 'ACTA DE NACIMIENTO',
+					'CURP' => 'CURP',
+					'CONSTANCIA DE RESIDENCIA' => 'CONSTANCIA DE RESIDENCIA',
+					'CREDENCIAL DE TRABAJO' => 'CREDENCIAL DE TRABAJO',
+					// 'NO PRESENTO' => 'NO PRESENTO',
+					), $preregistro->docIdentificacion, ['class' => 'form-control form-control-sm','data-validation'=>'required','placeholder'=>'Seleccione el documento de identificación']) !!}
+				</div>
+			</div>
+
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}

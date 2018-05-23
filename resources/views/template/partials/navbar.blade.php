@@ -13,17 +13,18 @@
 	</ul>
 
 	<!-- SEARCH FORM -->
-	{{-- <form class="form-inline ml-3">
-		<div class="input-group input-group-sm">
-			<input class="form-control form-control-navbar" type="search" placeholder="Buscar" aria-label="Search">
-			<div class="input-group-append">
-				<button class="btn btn-navbar" type="submit">
-					<i class="fa fa-search"></i>
-				</button>
-			</div>
-		</div>
-	</form> --}}
-
+	@if (!is_null(session('terminada')))
+		
+	<div style="color:white;margin-left:20px;">
+		<span>
+			Numero de carpeta: 
+			<strong>
+				{{session('terminada')}}
+			</strong>
+		</span>
+	</div>
+	@endif
+		
 	<!-- Right navbar links -->
 	<ul class="navbar-nav ml-auto">
 		<!-- Messages Dropdown Menu -->
@@ -86,7 +87,7 @@
 		</li> --}}
 
 		<!-- Notifications Dropdown Menu -->
-		<li class="nav-item dropdown">
+		{{-- <li class="nav-item dropdown">
 			<a class="nav-link" data-toggle="dropdown" href="#">
 				<i class="fa fa-bell-o"></i>
 				<span class="badge badge-warning navbar-badge">15</span>
@@ -111,7 +112,7 @@
 				<div class="dropdown-divider"></div>
 				<a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
 			</div>
-		</li>
+		</li> --}}
 		<li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Cerrar sesión">
 			<a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
 			document.getElementById('logout-form').submit();" ><i class="fa fa-power-off"></i></a>
