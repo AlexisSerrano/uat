@@ -16,7 +16,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'data-validation'=>'required']) !!}
+			{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 		</div>
 	</div>
 	{{-- <div class="col-4">
@@ -35,7 +35,7 @@
 	
 	<div class="col-4">
 		<div class="form-group">
-		{!! Form::label('fecha_nac', 'Fecha de realizacion', ['class' => 'col-form-label-sm']) !!}
+		{!! Form::label('fecha_nac', 'Fecha de realización', ['class' => 'col-form-label-sm']) !!}
 			<div class="input-group date" id="fecha_nac" data-target-input="nearest">
 				@if(isset($form['fecha_nac']))
 				<input type="date" id="fecha_nac" name="fecha_nac" value="{{ $form['fecha_nac'] }}" class="form-control form-control-sm",data-validation="required" >

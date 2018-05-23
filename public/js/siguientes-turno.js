@@ -133,14 +133,14 @@ function PersonaT(){
     function validarNoti(){
         var validarNoti=0;
 
-        if ($('#correo').val().length == 0){
-            validarNoti=1;
-        }
+        // if ($('#correo').val().length == 0){
+        //     validarNoti=1;
+        // }
 
-        if ($('#correo').hasClass('error')){
-            validarNoti=1;
-            toastr.error("Por favor verifique el campo de correo electronico.");
-        }
+        // if ($('#correo').hasClass('error')){
+        //     validarNoti=1;
+        //     toastr.error("Por favor verifique el campo de correo electronico.");
+        // }
             
 
         if ($('#telefonoN').val().length == 0){

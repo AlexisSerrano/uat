@@ -173,6 +173,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getMedidasAjax/{id}', 'MedidasProteccionController@getMedidasAjax');
     
     
+    /*----------------medidas version2------------------*/
+    Route::get('medidas2', 'MedidasController@index')->name('medidas2');
+    Route::post('addMedidas2', 'MedidasController@addMedidas2')->name('addMedidas2');
+    Route::get('getMedidas2', 'MedidasController@getMedidas2')->name('getMedidas2');
+
     
     /*---------Rutas  Delitos Controller------------*/
     Route::get('agregar-delito', 'DelitoController@showForm')->name('new.delito');
@@ -261,12 +266,12 @@ Route::get('correo', 'PreregistroAuxController@boton');
 Route::post('enviar/correo', 'PreregistroController@enviar')->name('envio');
 
 /*---------Rutas para los selects dinámicos-------------*/
-Route::get('municipios/{id}', 'RegisterController@getMunicipios');
-Route::get('localidades/{id}', 'RegisterController@getLocalidades');
-Route::get('codigos/{id}', 'RegisterController@getCodigos');
-Route::get('colonias/{cp}', 'RegisterController@getColonias');
-Route::get('colonias2/{id}', 'RegisterController@getColonias2');
-Route::get('codigos2/{id}', 'RegisterController@getCodigos2');
+Route::get('municipios/{id}', 'RegisterController@getMunicipios')->name('get.municipio');
+Route::get('localidades/{id}', 'RegisterController@getLocalidades')->name('get.localidad');
+Route::get('codigos/{id}', 'RegisterController@getCodigos')->name('get.codigo');
+Route::get('colonias/{cp}', 'RegisterController@getColonias')->name('get.colonia');
+Route::get('colonias2/{id}', 'RegisterController@getColonias2')->name('get.colonia2');
+Route::get('codigos2/{id}', 'RegisterController@getCodigos2')->name('get.codigo2');
 
 /********************generar pdf**********************************/
 

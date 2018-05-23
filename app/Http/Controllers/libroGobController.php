@@ -30,7 +30,10 @@ class libroGobController extends Controller
        
     public function showForm($id){   
         session(['carpeta' => $id]);
-        session(['terminada' => $id]);
+        $numcarpeta=Carpeta::where('id',$id)->first();
+        $numcarpeta=$numcarpeta->numCarpeta;
+        // dd($numcarpeta);
+        session(['terminada' => $numcarpeta]);
         return redirect(route('new.denunciante'));
     }
         

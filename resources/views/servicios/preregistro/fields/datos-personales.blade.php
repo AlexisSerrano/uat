@@ -19,7 +19,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation' =>'length','data-validation-length' =>'min2']) !!}
+			{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 		</div>
 	</div>
 	<div class="col-4">
@@ -34,7 +34,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'data-validation'=>'required','required']) !!}
+			{!! Form::select('sexo', [ 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'data-validation'=>'required','required']) !!}
 			<div class="help-block with-errors"></div>
 		</div>
 	</div>	
@@ -133,7 +133,7 @@
 	<div class="col-2">
 			<div class="form-group">
 				{!! Form::label('telefono2', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('telefono2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono','data-validation'=>'number, length', 'data-validation-length'=>'7-10']) !!}
+				{!! Form::text('telefono2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono','data-validation'=>'custom','data-validation-optional'=>'true','data-validation'=>'number, length', 'data-validation-length'=>'7-10']) !!}
 				<div class="help-block with-errors"></div>
 			</div>
 		</div>
@@ -166,7 +166,7 @@
 		<div class="col-4">
 			<div class="form-group" >
 					{!! Form::label('escolaridad', 'Escolaridad (Nivel de estudios)', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('escolaridad', $escolaridades, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione su escolaridad','data-validation'=>'required','required']) !!}
+					{!! Form::select('escolaridad', $escolaridades, 1, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione su escolaridad','data-validation'=>'required','required']) !!}
 			</div>
 		</div>
 	
