@@ -89,7 +89,7 @@ $form = oldFormActas();
 <div class="col-4">
     <div class="form-group">
         {!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('telefono', $acta->telefono, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono','data-validation'=>'required']) !!}
+        {!! Form::text('telefono', $acta->telefono, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
     </div>
 </div>
 

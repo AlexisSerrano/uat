@@ -11,7 +11,7 @@
 			<div class="col-4">
 					<div class="form-group">
 						{!! Form::label('fechaAltaEmpresa', 'Fecha de alta de la empresa', ['class' => 'col-form-label-sm']) !!}
-						<input type="date" id="fechaAltaEmpresa" value="{{$preregistro->fechaNac}}" name="fechaNacimiento" class="turnoempresa form-control form-control-sm">
+						<input type="date" id="fechaAltaEmpresa" value="{{$preregistro->fechaNac}}" name="fechaNacimiento" class="turnoempresa form-control form-control-sm" data-validation="required">
 						<div class="help-block with-errors"></div>	
 					</div>
 				</div>

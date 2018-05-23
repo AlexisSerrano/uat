@@ -38,7 +38,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('residenciaAnterior', 'Residencia anterior', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('residenciaAnterior', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la  residencia anterior',  'data-validation'=>'required']) !!}
+					{!! Form::text('residenciaAnterior', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la  residencia anterior', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 				</div>
 			</div>
 			<div class="col-3">

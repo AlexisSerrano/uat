@@ -61,7 +61,7 @@
                     function(isConfirm){
                 if (isConfirm) {
                 var id = $(".deleteBtn").data("acusacion-id");
-                 window.location.href=route('delete.acusacion',{id:id});
+                 window.location.href=route('delete.acusacion',id);
                 //  window.location.href=route("agregar-denunciado/'.$denunciante->id.'/eliminar");
                 }
         });

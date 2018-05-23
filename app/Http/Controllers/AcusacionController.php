@@ -79,7 +79,7 @@ class AcusacionController extends Controller
             $acusacion->idDenunciado = $request->idDenunciado;
             $acusacion->save();
     
-            $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
+            $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
                 $bdbitacora->acusaciones = $bdbitacora->acusaciones+1;
                 $bdbitacora->save();
             Alert::success('Acusación registrada con éxito', 'Hecho');
@@ -92,13 +92,13 @@ class AcusacionController extends Controller
 
         $Acusacion =  Acusacion::find($id);
         $Acusacion->delete();
-        $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
+        $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
             $bdbitacora->acusaciones = $bdbitacora->acusaciones-1;
             $bdbitacora->save();
         Alert::success('Registro eliminado con éxito', 'Hecho');
         return back();
 
-
+//dd($id);
     }
 
 }

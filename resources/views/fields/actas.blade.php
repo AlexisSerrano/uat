@@ -36,7 +36,7 @@
 <div class="col-4">
     <div class="form-group">
         {!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('telefono', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono','data-validation'=>'required']) !!}
+        {!! Form::text('telefono', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
     </div>
 </div>
 
@@ -122,7 +122,7 @@
 <div class="col-4">
     <div class="form-group" >
         {!! Form::label('escActa1', 'Escolaridad', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::select('escActa1', $escolaridades,null,['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+        {!! Form::select('escActa1', $escolaridades,1,['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
     </div>
 </div>
 
