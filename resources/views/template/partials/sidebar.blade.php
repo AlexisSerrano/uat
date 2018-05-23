@@ -200,6 +200,12 @@
 								<p>Periciales</p>
 							</a>
 						</li>
+					<li class="nav-item has-treeview">
+								<a href="{{url('medidas')}}" class="nav-link {{ Request::is( 'medidas') ? 'active' : '' }}">
+									<i class="nav-icon fa fa-plus-square"></i>
+									<p>Medidas de protección</p>
+								</a>
+						</li>
 					
 				</li>
 					
