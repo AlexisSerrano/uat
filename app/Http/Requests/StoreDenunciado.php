@@ -117,8 +117,8 @@ class StoreDenunciado extends FormRequest
             'primerAp.max'=> 'El primer apellido debe contener como máximo 200 letras',
             // 'primerApC.min'=> 'El primer apellido conocido debe contener como mínimo 2 letras',
             // 'primerApC.max'=> 'El primer apellido conocido debe contener como máximo 200 letras',
-            'segundoAp.min'=> 'El segundo apellido debe contener como mínimo 2 letras',
-            'segundoAp.max'=> 'El segundo apellido debe contener como máximo 200 letras',
+            // 'segundoAp.min'=> 'El segundo apellido debe contener como mínimo 2 letras',
+            // 'segundoAp.max'=> 'El segundo apellido debe contener como máximo 200 letras',
             // 'segundoApC.min'=> 'El segundo apellido conocido debe contener como mínimo 2 letras',
             // 'segundoApC.max'=> 'El segundo apellido conocido debe contener como máximo 200 letras',
             
