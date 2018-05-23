@@ -87,9 +87,9 @@
 			      		<td>{{($registro->esEmpresa==0)?$registro->nombre.' '.$registro->primerAp.' '.$registro->segundoAp:$registro->representanteLegal}}</td>
 						  <td>{{$registro->docIdentificacion}}</td>
 						  <td>{{$registro->razon}}</td>
-			      		<td><button class="btn btn-primary">
-							  <a href="{{url("predenuncias/".$registro->id."/edit")}}"><i style="color:white" class="fa fa-check" aria-hidden="true"></i></a></td>
-						  </button>
+			      		<td>
+							  <a href="{{url("predenuncias/".$registro->id."/edit")}}"><i style="color:white" class="fa fa-check btn btn-primary" aria-hidden="true"></i></a></td>
+						  
 						</tr>
 					@empty
 					<tr><td colspan="7" class="text-center">Sin registros</td></tr>
