@@ -1,10 +1,3 @@
-<style>
-	 .badge-info {
-    color: #0a0a0a;
-    background-color: #dda61d;
-}
-
-</style>
 
 {{-- <aside class="main-sidebar sidebar-dark-primary elevation-4">
 		<!-- Brand Logo -->
@@ -17,23 +10,24 @@
 		<aside class="main-sidebar  elevation-4 barra-izquierda collapsado " id="barra">
 			<!-- Brand Logo -->
 			<a href="index3.html" class="brand-link">
-				<img src="https://rawcdn.githack.com/Romaincks/assets/master/img/logo-150px-FGE.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+				{{-- <img src="https://rawcdn.githack.com/Romaincks/assets/master/img/logo-150px-FGE.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" --}}
+				<img src="{{asset('img/escudo.png')}}" alt="AdminLTE Logo" height="" class="brand-image img-circle elevation-3"
 				style="opacity: .8">
-				<span class="brand-text font-weight-light">FGE Veracruz</span>
+				<span class="brand-text font-weight-light">FGE | Veracruz</span>
 			</a>
 
 		<!-- Sidebar -->
 		<div class="sidebar font-weight-light">
 			<!-- Sidebar user panel (optional) -->
 			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
-				<div class="image">
-						
+				<div class="image">				
 					{{-- <img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="Imagen de perfil" > --}}
-
+					<i class="fa fa-user-circle" aria-hidden="true" style="color:white; font-size:33px;"></i> 
 				</div>
 				<div class="info">
-					<a href="#" class="d-block"><i class="fa fa-user-circle" aria-hidden="true"></i> {{ Auth::user()->nombres }} </a>
-					{{-- <a href="#" class="d-block"><i class="fa fa-user-circle" aria-hidden="true"></i> USUARIO</a> --}}
+					<a href="#" class="d-block">{{ Auth::user()->nombres }}</a>
+					{{-- <span style="color:white;font-size:10px;">{{'algun cargo'}}</span> --}}
+					
 				</div>
 			</div>
 			
@@ -225,11 +219,11 @@
 					
 					@endif
 					<li class="nav-item has-treeview">
-							<a href="{{url('oficios')}}" class="nav-link {{ Request::is( 'oficios') ? 'active' : '' }}">
-									<i class=" nav-icon fa fa-font"></i>
-								<p>Oficios</p>
-							</a>
-						</li>
+						<a href="{{url('oficios')}}" class="nav-link {{ Request::is( 'oficios') ? 'active' : '' }}">
+							<i class="nav-icon fa fa-font"></i>
+							<p>Oficios</p>
+						</a>
+					</li>
 				</li>
 					
 
