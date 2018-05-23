@@ -13,17 +13,18 @@
 	</ul>
 
 	<!-- SEARCH FORM -->
-	{{-- <form class="form-inline ml-3">
-		<div class="input-group input-group-sm">
-			<input class="form-control form-control-navbar" type="search" placeholder="Buscar" aria-label="Search">
-			<div class="input-group-append">
-				<button class="btn btn-navbar" type="submit">
-					<i class="fa fa-search"></i>
-				</button>
-			</div>
-		</div>
-	</form> --}}
-
+	@if (!is_null(session('terminada')))
+		
+	<div style="color:white;margin-left:20px;">
+		<span>
+			Numero de carpeta: 
+			<strong>
+				{{session('terminada')}}
+			</strong>
+		</span>
+	</div>
+	@endif
+		
 	<!-- Right navbar links -->
 	<ul class="navbar-nav ml-auto">
 		<!-- Messages Dropdown Menu -->

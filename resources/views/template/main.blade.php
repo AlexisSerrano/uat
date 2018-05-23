@@ -22,7 +22,11 @@
 	<link rel="stylesheet" href="{{asset ('css/estilos.css')}}">
 	
 	<link rel="stylesheet" href="{{ asset('css/theme-jquery-validation.min.css') }}">
-	
+	<style>
+		.brand-image {
+			max-height: 40px;
+		}
+	</style>
 
 
 
