@@ -19,7 +19,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation' =>'length','data-validation-length' =>'min2']) !!}
+			{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 		</div>
 	</div>
 	<div class="col-4">
@@ -34,7 +34,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('sexo', ['SIN INFORMACION' => 'SIN INFORMACION', 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'data-validation'=>'required','required']) !!}
+			{!! Form::select('sexo', [ 'HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'data-validation'=>'required','required']) !!}
 			<div class="help-block with-errors"></div>
 		</div>
 	</div>	
