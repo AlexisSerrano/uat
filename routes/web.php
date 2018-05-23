@@ -48,7 +48,9 @@ Route::get('/pruebasconsulta', function(){
             
         Route::get('/pruebasactas','PruebasController@actas');
         
-    
+        Route::get('/oficios', function(){
+            return view('forms.oficios');  
+        });    
 /**************************************************************/
 // -------------------------------------------------------------------
 
