@@ -5,7 +5,7 @@ $form = oldFormConocido();
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('idEstadoC', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idEstadoC', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'data-validation'=> 'required']) !!}
+			{!! Form::select('idEstadoC', $estados, 30, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'data-validation'=> 'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">
@@ -14,7 +14,7 @@ $form = oldFormConocido();
 			@if(isset($form['catMunicipios'], $form['idMunicipioC']))
 			{!! Form::select('idMunicipioC', $form['catMunicipios'], $form['idMunicipioC'], ['class' => 'form-control form-control-sm', 'data-validation'=> 'required']) !!}
 			@else
-			{!! Form::select('idMunicipioC', [''=>'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm', 'data-validation'=> 'required']) !!}
+			{!! Form::select('idMunicipioC', $municipios, null, ['class' => 'form-control form-control-sm','placeholder'=>'Seleccione un municipio', 'data-validation'=> 'required']) !!}
 			@endif
 		</div>
 	</div>

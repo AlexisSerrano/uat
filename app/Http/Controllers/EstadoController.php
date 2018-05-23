@@ -99,7 +99,7 @@ class EstadoController extends Controller
                 ->select(   'variables_persona.idPersona as variaidPersona',
                             'variables_persona.edad as variaedad',
                             'variables_persona.telefono as variatelefono',
-                            'variables_persona.motivoEstancia as variamotivoEstancia',
+                            // 'variables_persona.motivoEstancia as variamotivoEstancia',
                             'variables_persona.idOcupacion as variaidOcupacion',
                             'variables_persona.idEstadoCivil as variaidEstadoCivil',
                             'variables_persona.idEscolaridad as variaidEscolaridad',
@@ -126,7 +126,7 @@ class EstadoController extends Controller
                 ->select(   'variables_persona.idPersona as variaidPersona',
                             'variables_persona.edad as variaedad',
                             'variables_persona.telefono as variatelefono',
-                            'variables_persona.motivoEstancia as variamotivoEstancia',
+                            // 'variables_persona.motivoEstancia as variamotivoEstancia',
                             'variables_persona.idOcupacion as variaidOcupacion',
                             'variables_persona.idEstadoCivil as variaidEstadoCivil',
                             'variables_persona.idEscolaridad as variaidEscolaridad',
@@ -153,7 +153,7 @@ class EstadoController extends Controller
                 ->select(   'variables_persona.idPersona as variaidPersona',
                             'variables_persona.edad as variaedad',
                             'variables_persona.telefono as variatelefono',
-                            'variables_persona.motivoEstancia as variamotivoEstancia',
+                            // 'variables_persona.motivoEstancia as variamotivoEstancia',
                             'variables_persona.idOcupacion as variaidOcupacion',
                             'variables_persona.idEstadoCivil as variaidEstadoCivil',
                             'variables_persona.idEscolaridad as variaidEscolaridad',
@@ -191,7 +191,7 @@ class EstadoController extends Controller
                 ->select(   'variables_persona.idPersona as variaidPersona',
                             'variables_persona.edad as variaedad',
                             'variables_persona.telefono as variatelefono',
-                            'variables_persona.motivoEstancia as variamotivoEstancia',
+                            // 'variables_persona.motivoEstancia as variamotivoEstancia',
                             'variables_persona.idOcupacion as variaidOcupacion',
                             'variables_persona.idEstadoCivil as variaidEstadoCivil',
                             'variables_persona.idEscolaridad as variaidEscolaridad',
@@ -284,7 +284,7 @@ class EstadoController extends Controller
                         $convariables->idPersona = $autoridad->variaidPersona;
                         $convariables->edad = $autoridad->variaedad;
                         $convariables->telefono = $autoridad->variatelefono;
-                        $convariables->motivoEstancia = $autoridad->variamotivoEstancia;
+                        $convariables->motivoEstancia = 'NO APLICA';
                         $convariables->idOcupacion = $autoridad->variaidOcupacion;
                         $convariables->idEstadoCivil = $autoridad->variaidEstadoCivil;
                         $convariables->idEscolaridad = $autoridad->variaidEscolaridad;
@@ -333,7 +333,7 @@ class EstadoController extends Controller
                         $convariables->idPersona = $abogado->variaidPersona;
                         $convariables->edad = $abogado->variaedad;
                         $convariables->telefono = $abogado->variatelefono;
-                        $convariables->motivoEstancia = $abogado->variamotivoEstancia;
+                        $convariables->motivoEstancia = 'SIN INFORMACION';
                         $convariables->idOcupacion = $abogado->variaidOcupacion;
                         $convariables->idEstadoCivil = $abogado->variaidEstadoCivil;
                         $convariables->idEscolaridad = $abogado->variaidEscolaridad;
@@ -373,7 +373,7 @@ class EstadoController extends Controller
                         $convariables->idPersona = $denunciado->variaidPersona;
                         $convariables->edad = $denunciado->variaedad;
                         $convariables->telefono = $denunciado->variatelefono;
-                        $convariables->motivoEstancia = $denunciado->variamotivoEstancia;
+                        $convariables->motivoEstancia = 'SIN INFORMACION';
                         $convariables->idOcupacion = $denunciado->variaidOcupacion;
                         $convariables->idEstadoCivil = $denunciado->variaidEstadoCivil;
                         $convariables->idEscolaridad = $denunciado->variaidEscolaridad;
@@ -443,7 +443,7 @@ class EstadoController extends Controller
                         $convariables->idPersona = $denunciante->variaidPersona;
                         $convariables->edad = $denunciante->variaedad;
                         $convariables->telefono = $denunciante->variatelefono;
-                        $convariables->motivoEstancia = $denunciante->variamotivoEstancia;
+                        $convariables->motivoEstancia ='SIN INFORMACION';
                         $convariables->idOcupacion = $denunciante->variaidOcupacion;
                         $convariables->idEstadoCivil = $denunciante->variaidEstadoCivil;
                         $convariables->idEscolaridad = $denunciante->variaidEscolaridad;

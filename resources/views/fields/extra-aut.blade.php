@@ -4,8 +4,8 @@
 	@endif
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('antiguedad', 'Antigüedad', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::number('antiguedad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la antigüedad','data-validation'=> 'required']) !!}
+			{!! Form::label('antiguedad', 'Antigüedad (Años)', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::number('antiguedad', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la antigüedad','data-validation'=> 'required', 'min'=>'0']) !!}
 		</div>
 	</div>
 	<div class="col-4">

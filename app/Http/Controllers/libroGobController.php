@@ -30,7 +30,8 @@ class libroGobController extends Controller
        
     public function showForm($id){   
         session(['carpeta' => $id]);
-        return redirect(route('new.denunciado'));
+        session(['terminada' => $id]);
+        return redirect(route('new.denunciante'));
     }
         
 
@@ -74,7 +75,7 @@ class libroGobController extends Controller
             return view('tables.carpetasEnGral')->with('carpetas',$carpetas);
         }else{
             session(['carpeta' => $comprobar]);
-            Alert::info('Al cerrar sesión dejarte un caso abierto');
+            Alert::info('Al cerrar sesión dejaste un caso abierto');
             return redirect(route('new.denunciante'));
         }
         //    dd(session());

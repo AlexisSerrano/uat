@@ -14,7 +14,7 @@ $form = oldFormTrabajo();
 			@if(isset($form['catMunicipios'], $form['idMunicipio2']))
 			{!! Form::select('idMunicipio2', $form['catMunicipios'], $form['idMunicipio2'], ['class' => 'form-control form-control-sm', 'required']) !!}
 			@else
-			{!! Form::select('idMunicipio2', [''=>'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm', 'required']) !!}
+			{!! Form::select('idMunicipio2', $municipios, null, ['class' => 'form-control form-control-sm','placeholder'=>'Seleccione un municipio', 'required']) !!}
 			@endif
 		</div>
 	</div>

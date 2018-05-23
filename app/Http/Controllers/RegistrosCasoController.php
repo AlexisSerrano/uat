@@ -33,15 +33,19 @@ class RegistrosCasoController extends Controller
         // 
         // ->orderBy('id','desc')
         // ->paginate(10);
-        $registros = DB::table('preregistros')->where('statusCola', null)->where('tipoActa', null)
+        $registros = DB::table('preregistros')
         ->join('razones','razones.id','=','preregistros.idRazon')
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')        
+        ->where('statusCola', null)
+        ->where('tipoActa', null)
+        ->where('razones.nombre','!=' ,'SOLICITUD DE ACTA DE HECHOS')
         ->orderBy('horaLlegada','asc')
         ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
         'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
         'cat_identificacion.documento as docIdentificacion','numDocIdentificacion','conViolencia','narracion','folio','representanteLegal',
         'statusCancelacion','statusOrigen','statusCola','horaLlegada','unidad','zona','razones.nombre as razon')
         ->paginate(10);
+        // dd($registros);
         $municipios = CatMunicipio::where('idEstado',30)
         ->where('nombre', '!=', 'SIN INFORMACION')
         ->orderBy('nombre','asc')

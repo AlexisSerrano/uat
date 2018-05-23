@@ -42,13 +42,13 @@
 	<div class="col-3">
 			<div class="form-group">
 				{!! Form::label('idEstadoOrigen', 'Entidad federativa de origen', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('idEstadoOrigen', $estados, null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
+				{!! Form::select('idEstadoOrigen', $estados, 30, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
 			</div>
 		</div>
 		<div class="col-3">
 			<div class="form-group">
 				{!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('idMunicipioOrigen', ['' => 'Seleccione un municipio'], null, ['class' => 'persona form-control form-control-sm', 'required']) !!}
+				{!! Form::select('idMunicipioOrigen', $municipios, null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
 			</div>
 		</div>
 	<div class="col-3">
@@ -96,12 +96,12 @@
 			{!! Form::text('telefono', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
-	<div class="col-3">
+	{{-- <div class="col-3">
 		<div class="form-group">
 			{!! Form::label('motivoEstancia', 'Motivo de estancia', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::text('motivoEstancia', 'NO APLICA', ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el motivo de estancia','data-validation-optional'=>'true']) !!}
 		</div>
-	</div>
+	</div> --}}
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idOcupacion', 'Ocupación', ['class' => 'col-form-label-sm']) !!}

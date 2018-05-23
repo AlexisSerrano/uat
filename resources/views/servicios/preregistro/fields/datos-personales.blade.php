@@ -85,7 +85,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('idEstado2', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idEstado2', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required','required']) !!}
+			{!! Form::select('idEstado2', $estados, 30, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required','required']) !!}
 		</div>
 	</div>
 	
@@ -93,9 +93,9 @@
         <div class="form-group">
 			{!! Form::label('idMunicipio2', 'Municipio', ['class' => 'col-form-label-sm']) !!}
 			@if(isset($form['catMunicipios'], $form['idMunicipio2']))
-            {!! Form::select('idMunicipio2',  $form['catMunicipios'], $form['idMunicipio2'], ['class' => 'form-control form-control-sm','data-validation'=>'required','required']) !!}
+            {!! Form::select('idMunicipio2',  $form['catMunicipios'], $form['idMunicipio2'], ['class' => 'form-control form-control-sm','placeholder' => 'Seleccione un municipio','data-validation'=>'required','required']) !!}
 			@else
-			{!! Form::select('idMunicipio2', [''=>'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm','data-validation'=>'required','required']) !!}
+			{!! Form::select('idMunicipio2', $municipios, null, ['class' => 'form-control form-control-sm','data-validation'=>'required','required','placeholder' => 'Seleccione un municipio']) !!}
 			@endif
 		</div>
     </div>

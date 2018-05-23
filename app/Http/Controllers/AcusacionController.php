@@ -34,7 +34,7 @@ class AcusacionController extends Controller
                 ->where('variables_persona.idCarpeta', '=', $idCarpeta)
                 ->orderBy('persona.nombres', 'ASC')
                 ->get();
-                $tipifdelitos = DB::table('tipif_delito')
+            $tipifdelitos = DB::table('tipif_delito')
                 ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
                 ->join('cat_agrupacion1', 'cat_agrupacion1.id', '=', 'tipif_delito.idAgrupacion1')
                 ->join('cat_agrupacion2', 'cat_agrupacion2.id', '=', 'tipif_delito.idAgrupacion2')
@@ -63,17 +63,29 @@ class AcusacionController extends Controller
 
     public function storeAcusacion(AcusacionRequest $request){
         $idCarpeta=session('carpeta');
-        $acusacion = new Acusacion();
-        $acusacion->idCarpeta = $idCarpeta;
-        $acusacion->idDenunciante = $request->idDenunciante;
-        $acusacion->idTipifDelito = $request->idTipifDelito;
-        $acusacion->idDenunciado = $request->idDenunciado;
-        $acusacion->save();
-        $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
-            $bdbitacora->acusaciones = $bdbitacora->acusaciones+1;
-            $bdbitacora->save();
-        Alert::success('Acusación registrada con éxito', 'Hecho');
-        return redirect()->route('new.acusacion');
+
+        $comprobar=Acusacion::where('idDenunciante',$request->idDenunciante)
+        ->where('idTipifDelito',$request->idTipifDelito)
+        ->where('idDenunciado',$request->idDenunciado)->get();
+        // dd($comprobar);
+        if (count($comprobar)>0) {
+            Alert::warning('La acusación ya existe', 'Advertencia');
+            return redirect()->back()->withInput();
+        } else {
+            $acusacion = new Acusacion();
+            $acusacion->idCarpeta = $idCarpeta;
+            $acusacion->idDenunciante = $request->idDenunciante;
+            $acusacion->idTipifDelito = $request->idTipifDelito;
+            $acusacion->idDenunciado = $request->idDenunciado;
+            $acusacion->save();
+    
+            $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
+                $bdbitacora->acusaciones = $bdbitacora->acusaciones+1;
+                $bdbitacora->save();
+            Alert::success('Acusación registrada con éxito', 'Hecho');
+            return redirect()->route('new.acusacion');
+        }
+        
     }
     
     public function delete($id){
