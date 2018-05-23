@@ -62,8 +62,8 @@
 					{!! Form::text('rfc', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
 						</div>
 					<div class="col">
-							{!! Form::label('homo', 'Homo', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::text('homo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
+							{!! Form::label('homo', 'Homoclave', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::text('homo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Homoclave','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
 					</div>
 				</div>
 			</div>
