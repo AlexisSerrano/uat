@@ -1,6 +1,7 @@
 jQuery.ajaxSetup({async:false});
 $("#idEstadoOrigen").change(function(event){
-	$.get("../municipios/"+event.target.value+"", function(response, estado){
+	//$.get(route('get.municipio', event.target.value), function(response, estado){
+	$.get(route('get.municipio', event.target.value), function(response, estado){
 		$("#idMunicipioOrigen").empty();
 		$("#idMunicipioOrigen").append("<option value=''>Seleccione un municipio</option>");
 		for(i=0; i<response.length; i++){
@@ -11,7 +12,7 @@ $("#idEstadoOrigen").change(function(event){
 
 $("#idEstado").change(function(event){
 	if(event.target.value!=""){
-		$.get("../municipios/"+event.target.value+"", function(response, estado){
+		$.get(route('get.municipio', event.target.value), function(response, estado){
 			$("#idMunicipio").empty();
 			$("#idMunicipio").append("<option value=''>Seleccione un municipio</option>");
 			for(i=0; i<response.length; i++){
@@ -29,7 +30,7 @@ $("#idEstado").change(function(event){
 
 $("#idMunicipio").change(function(event){
 	if(event.target.value!=""){
-		$.get("../localidades/"+event.target.value+"", function(response, municipio){
+		$.get(route('get.localidad', event.target.value), function(response, municipio){
 			$("#idLocalidad").empty();
 			$("#idLocalidad").append("<option value=''>Seleccione una localidad</option>");
 			for(i=0; i<response.length; i++){
@@ -41,7 +42,7 @@ $("#idMunicipio").change(function(event){
 				$("#idLocalidad3").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
 		});
-		$.get("../colonias2/"+event.target.value+"", function(response, municipio){
+		$.get(route('get.colonia2', event.target.value), function(response, municipio){
 			$("#idColonia").empty();
 			$("#idColonia").append("<option value=''>Seleccione una colonia</option>");
 			for(i=0; i<response.length; i++){
@@ -53,7 +54,7 @@ $("#idMunicipio").change(function(event){
 				$("#idColonia3").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
 		});
-		$.get("../codigos/"+event.target.value+"", function(response, municipio){
+		$.get(route('get.codigo', event.target.value), function(response, municipio){
 			$("#cp").empty();
 			$("#cp").append("<option value=''>Seleccione un código postal</option>");
 			for(i=0; i<response.length; i++){
@@ -96,7 +97,7 @@ $("#idLocalidad").change(function(event){
 
 $("#idColonia").change(function(event){
 	if(event.target.value!=""){
-		$.get("../codigos2/"+event.target.value+"", function(response, colonia){
+		$.get(route('get.codigo2', event.target.value), function(response, colonia){
 			$("#cp").empty();
 			$("#cp").append("<option value='"+response[0].id+"'> "+response[0].codigoPostal+"</option>");
 			$("#cp3").empty();
@@ -119,7 +120,7 @@ $("#numInterno").keyup(function() {
 
 $("#idEstado2").change(function(event){
 	if(event.target.value!=""){
-		$.get("../municipios/"+event.target.value+"", function(response, estado){
+		$.get(route('get.municipio', event.target.value), function(response, estado){
 			$("#idMunicipio2").empty();
 			$("#idMunicipio2").append("<option value=''>Seleccione un municipio</option>");
 			for(i=0; i<response.length; i++){
@@ -131,21 +132,21 @@ $("#idEstado2").change(function(event){
 
 $("#idMunicipio2").change(function(event){
 	if(event.target.value!=""){
-		$.get("../localidades/"+event.target.value+"", function(response, municipio){
+		$.get(route('get.localidad', event.target.value), function(response, municipio){
 			$("#idLocalidad2").empty();
 			$("#idLocalidad2").append("<option value=''>Seleccione una localidad</option>");
 			for(i=0; i<response.length; i++){
 				$("#idLocalidad2").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
 		});
-		$.get("../colonias2/"+event.target.value+"", function(response, municipio){
+		$.get(route('get.colonia2', event.target.value), function(response, municipio){
 			$("#idColonia2").empty();
 			$("#idColonia2").append("<option value=''>Seleccione una colonia</option>");
 			for(i=0; i<response.length; i++){
 				$("#idColonia2").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
 		});
-		$.get("../codigos/"+event.target.value+"", function(response, municipio){
+		$.get(route('get.codigo', event.target.value), function(response, municipio){
 			$("#cp2").empty();
 			$("#cp2").append("<option value=''>Seleccione un código postal</option>");
 			for(i=0; i<response.length; i++){
@@ -169,7 +170,7 @@ $("#idMunicipio2").change(function(event){
 
 $("#idColonia2").change(function(event){
 	if(event.target.value!=""){
-		$.get("../codigos2/"+event.target.value+"", function(response, colonia){
+		$.get(route('get.codigo2', event.target.value), function(response, colonia){
 			$("#cp2").empty();
 			$("#cp2").append("<option value='"+response[0].id+"'> "+response[0].codigoPostal+"</option>");
 		});
@@ -178,7 +179,7 @@ $("#idColonia2").change(function(event){
 
 $("#idEstado3").change(function(event){
 	if(event.target.value!=""){
-		$.get("../municipios/"+event.target.value+"", function(response, estado){
+		$.get(route('get.municipio', event.target.value), function(response, estado){
 			$("#idMunicipio3").empty();
 			$("#idMunicipio3").append("<option value=''>Seleccione un municipio</option>");
 			for(i=0; i<response.length; i++){
@@ -190,21 +191,21 @@ $("#idEstado3").change(function(event){
 
 $("#idMunicipio3").change(function(event){
 	if(event.target.value!=""){
-		$.get("../localidades/"+event.target.value+"", function(response, municipio){
+		$.get(route('get.localidad', event.target.value), function(response, municipio){
 			$("#idLocalidad3").empty();
 			$("#idLocalidad3").append("<option value=''>Seleccione una localidad</option>");
 			for(i=0; i<response.length; i++){
 				$("#idLocalidad3").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
 		});
-		$.get("../colonias2/"+event.target.value+"", function(response, municipio){
+		$.get(route('get.colonia2', event.target.value), function(response, municipio){
 			$("#idColonia3").empty();
 			$("#idColonia3").append("<option value=''>Seleccione una colonia</option>");
 			for(i=0; i<response.length; i++){
 				$("#idColonia3").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
 		});
-		$.get("../codigos/"+event.target.value+"", function(response, municipio){
+		$.get(route('get.codigo', event.target.value), function(response, municipio){
 			$("#cp3").empty();
 			$("#cp3").append("<option value=''>Seleccione un código postal</option>");
 			for(i=0; i<response.length; i++){
@@ -228,7 +229,7 @@ $("#idMunicipio3").change(function(event){
 
 $("#idColonia3").change(function(event){
 	if(event.target.value!=""){
-		$.get("../codigos2/"+event.target.value+"", function(response, colonia){
+		$.get(route('get.codigo2', event.target.value), function(response, colonia){
 			$("#cp3").empty();
 			$("#cp3").append("<option value='"+response[0].id+"'> "+response[0].codigoPostal+"</option>");
 		});
@@ -251,7 +252,7 @@ $("#idAbogado").change(function(event){
 
 $("#idEstadoC").change(function(event){
 	if(event.target.value!=""){
-		$.get("../municipios/"+event.target.value+"", function(response, estado){
+		$.get(route('get.municipio', event.target.value), function(response, estado){
 			$("#idMunicipioC").empty();
 			$("#idMunicipioC").append("<option value=''>Seleccione un municipio</option>");
 			for(i=0; i<response.length; i++){
@@ -263,21 +264,21 @@ $("#idEstadoC").change(function(event){
 
 $("#idMunicipioC").change(function(event){
 	if(event.target.value!=""){
-		$.get("../localidades/"+event.target.value+"", function(response, municipio){
+		$.get(route('get.localidad', event.target.value), function(response, municipio){
 			$("#idLocalidadC").empty();
 			$("#idLocalidadC").append("<option value=''>Seleccione una localidad</option>");
 			for(i=0; i<response.length; i++){
 				$("#idLocalidadC").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
 		});
-		$.get("../colonias2/"+event.target.value+"", function(response, municipio){
+		$.get(route('get.colonia2', event.target.value), function(response, municipio){
 			$("#idColoniaC").empty();
 			$("#idColoniaC").append("<option value=''>Seleccione una colonia</option>");
 			for(i=0; i<response.length; i++){
 				$("#idColoniaC").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
 		});
-		$.get("../codigos/"+event.target.value+"", function(response, municipio){
+		$.get(route('get.codigo', event.target.value), function(response, municipio){
 			$("#cpC").empty();
 			$("#cpC").append("<option value=''>Seleccione un código postal</option>");
 			for(i=0; i<response.length; i++){
@@ -290,7 +291,7 @@ $("#idMunicipioC").change(function(event){
 
 $("#idColoniaC").change(function(event){
 	if(event.target.value!=""){
-		$.get("../codigos2/"+event.target.value+"", function(response, colonia){
+		$.get(route('get.codigo2', event.target.value), function(response, colonia){
 			$("#cpC").empty();
 			$("#cpC").append("<option value='"+response[0].id+"'> "+response[0].codigoPostal+"</option>");
 		});
@@ -327,7 +328,7 @@ $("#idAgrupacion1").change(function(event){
 
 $("#idEstado1").change(function(event){
 	if(event.target.value!=""){
-		$.get("../municipios/"+event.target.value+"", function(response, estado){
+		$.get(route('get.municipio', event.target.value), function(response, estado){
 			$("#idMunicipio1").empty();
 			$("#idMunicipio1").append("<option value=''>Seleccione un municipio</option>");
 			for(i=0; i<response.length; i++){
@@ -341,7 +342,7 @@ $("#idEstado1").change(function(event){
 
 $("#idMunicipio1").change(function(event){
 	if(event.target.value!=""){
-		$.get("../localidades/"+event.target.value+"", function(response, municipio){
+		$.get(route('get.localidad', event.target.value), function(response, municipio){
 			$("#idLocalidad1").empty();
 			$("#idLocalidad1").append("<option value=''>Seleccione una localidad</option>");
 			for(i=0; i<response.length; i++){
@@ -349,7 +350,7 @@ $("#idMunicipio1").change(function(event){
 			}
 		});
 		
-		$.get("../codigos/"+event.target.value+"", function(response, municipio){
+		$.get(route('get.codigo', event.target.value), function(response, municipio){
 			$("#cp1").empty();
 			$("#cp1").append("<option value=''>Seleccione un código postal</option>");
 			for(i=0; i<response.length; i++){
@@ -386,7 +387,7 @@ $("#cp1").change(function(event){
 $("#idEstado2").change(function(event){
 	if(event.target.value!=""){
 		
-		$.get("../municipios/"+event.target.value+"", function(response, estado){
+		$.get(route('get.municipio', event.target.value), function(response, estado){
 			$("#idMunicipio2").empty();
 			$("#idMunicipio2").append("<option value=''>Seleccione un municipio</option>");
 			for(i=0; i<response.length; i++){
@@ -399,14 +400,14 @@ $("#idEstado2").change(function(event){
 
 $("#idMunicipio2").change(function(event){
 	if(event.target.value!=""){
-		$.get("../localidades/"+event.target.value+"", function(response, municipio){
+		$.get(route('get.localidad', event.target.value), function(response, municipio){
 			$("#idLocalidad2").empty();
 			$("#idLocalidad2").append("<option value=''>Seleccione una localidad</option>");
 			for(i=0; i<response.length; i++){
 				$("#idLocalidad2").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
 			}
 		});
-		$.get("../codigos/"+event.target.value+"", function(response, municipio){
+		$.get(route('get.codigo', event.target.value), function(response, municipio){
 			$("#cp2").empty();
 			$("#cp2").append("<option value=''>Seleccione un código postal</option>");
 			for(i=0; i<response.length; i++){
