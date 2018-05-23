@@ -147,13 +147,35 @@
 				</div>
 			</div>
 			
-			<div class="col-6">
+			{{-- <div class="col-6">
 				<div class="form-group">
 					{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('docIdentificacion',$preregistro->docIdentificacion, ['class' => 'turnopersona form-control form-control-sm ', 'placeholder' => 'Ingrese el docto. de identificación','data-validation'=>'required']) !!}
 				</div>
-			</div>
+			</div> --}}
 			
+			<div class="col-6">
+				<div class="form-group" >
+					{!! Form::label('docIdentificacion', 'Seleccione el documento de identificación:', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('docIdentificacion', array('CREDENCIAL PARA VOTAR' => 'CREDENCIAL PARA VOTAR', 
+					'PASAPORTE' => 'PASAPORTE',
+					'CEDULA PROFESIONAL' => 'CEDULA PROFESIONAL',
+					'CARTILLA DEL SERVICIO MILITAR NACIONAL' => 'CARTILLA DEL SERVICIO MILITAR NACIONAL',
+					'TARJETA UNICA DE IDENTIDAD MILITAR' => 'TARJETA UNICA DE IDENTIDAD MILITAR',
+					'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES' => 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES',
+					'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL' => 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL',
+					'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR' => 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR',
+					'LICENCIA DE CONDUCIR' => 'LICENCIA DE CONDUCIR',
+					'CERTIFICADO DE MATRICULA CONSULAR' => 'CERTIFICADO DE MATRICULA CONSULAR',
+					'ACTA DE NACIMIENTO' => 'ACTA DE NACIMIENTO',
+					'CURP' => 'CURP',
+					'CONSTANCIA DE RESIDENCIA' => 'CONSTANCIA DE RESIDENCIA',
+					'CREDENCIAL DE TRABAJO' => 'CREDENCIAL DE TRABAJO',
+					// 'NO PRESENTO' => 'NO PRESENTO',
+					), $preregistro->docIdentificacion, ['class' => 'form-control form-control-sm','data-validation'=>'required','placeholder'=>'Seleccione el documento de identificación']) !!}
+				</div>
+			</div>
+
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}

@@ -128,28 +128,28 @@
 
 <div class="col-4">
     <div class="form-group" >
-            {!! Form::label('ocupActa1', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
-            {!! Form::select('ocupActa1',$ocupaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una ocupación','data-validation'=>'required']) !!}
+        {!! Form::label('ocupActa1', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::select('ocupActa1',$ocupaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una ocupación','data-validation'=>'required']) !!}
     </div>
 </div>
 
 <div class="col-4"  >
     <div class="form-group" >
-            {!! Form::label('tipoActa', 'Seleccione el tipo de acta de hechos que requiere:', ['class' => 'col-form-label-sm']) !!}
-            {!! Form::select('tipoActa', array('PASAPORTE' => 'PASAPORTE', 
-            'CREDENCIAL DE TRABAJO/GAFFETE' => 'CREDENCIAL DE TRABAJO/GAFFETE',
-            'TARJETA DE CREDITO/DEBITO' => 'TARJETA DE CRÉDITO/DÉBITO',
-            'TELEFONO CELULAR' => 'TELÉFONO CELULAR',
-            'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)' => 'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)',
-            'PERMISO DE TRANSITO PARA EMPLACAMIENTO DE TAXIS' => 'PERMISO DE TRÁNSITO PARA EMPLACAMIENTO DE TAXIS',
-            'FACTURA DE VEHICULO/MOTOCICLETA' => 'FACTURA DE VEHICULO/MOTOCICLETA',
-            'TARJETA DE CIRCULACION' => 'TARJETA DE CIRCULACIÓN',
-            'PLACAS DE CIRCULACION' => 'PLACAS DE CIRCULACIÓN',
-            'LICENCIA DE CONDUCIR ESTATAL' => 'LICENCIA DE CONDUCIR ESTATAL',
-            'LICENCIA DE CONDUCIR FEDERAL' => 'LICENCIA DE CONDUCIR FEDERAL',
-            'DOCUMENTO/BIEN EXTRAVIADO O ROBADO' => 'DOCUMENTO/BIEN EXTRAVIADO O ROBADO',
-            'CERTIFICADO DE ALUMBRAMIENTO' => 'CERTIFICADO DE ALUMBRAMIENTO',
-            'OTROS DOCUMENTOS' => 'OTROS DOCUMENTOS'), null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+        {!! Form::label('tipoActa', 'Seleccione el tipo de acta de hechos que requiere:', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::select('tipoActa', array('PASAPORTE' => 'PASAPORTE', 
+        'CREDENCIAL DE TRABAJO/GAFFETE' => 'CREDENCIAL DE TRABAJO/GAFFETE',
+        'TARJETA DE CREDITO/DEBITO' => 'TARJETA DE CRÉDITO/DÉBITO',
+        'TELEFONO CELULAR' => 'TELÉFONO CELULAR',
+        'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)' => 'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)',
+        'PERMISO DE TRANSITO PARA EMPLACAMIENTO DE TAXIS' => 'PERMISO DE TRÁNSITO PARA EMPLACAMIENTO DE TAXIS',
+        'FACTURA DE VEHICULO/MOTOCICLETA' => 'FACTURA DE VEHICULO/MOTOCICLETA',
+        'TARJETA DE CIRCULACION' => 'TARJETA DE CIRCULACIÓN',
+        'PLACAS DE CIRCULACION' => 'PLACAS DE CIRCULACIÓN',
+        'LICENCIA DE CONDUCIR ESTATAL' => 'LICENCIA DE CONDUCIR ESTATAL',
+        'LICENCIA DE CONDUCIR FEDERAL' => 'LICENCIA DE CONDUCIR FEDERAL',
+        'DOCUMENTO/BIEN EXTRAVIADO O ROBADO' => 'DOCUMENTO/BIEN EXTRAVIADO O ROBADO',
+        'CERTIFICADO DE ALUMBRAMIENTO' => 'CERTIFICADO DE ALUMBRAMIENTO',
+        'OTROS DOCUMENTOS' => 'OTROS DOCUMENTOS'), null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
     </div>
 </div>
 <div class="col-6 otros">
@@ -161,44 +161,44 @@
 </div>	
 
 <div class="col-4">
-        <div class="form-group" >
-            {!! Form::label('docIdentificacion', 'Seleccione el documento de identificación:', ['class' => 'col-form-label-sm']) !!}
-            {!! Form::select('docIdentificacion', array('CREDENCIAL PARA VOTAR' => 'CREDENCIAL PARA VOTAR', 
-            'PASAPORTE' => 'PASAPORTE',
-            'CEDULA PROFESIONAL' => 'CEDULA PROFESIONAL',
-            'CARTILLA DEL SERVICIO MILITAR NACIONAL' => 'CARTILLA DEL SERVICIO MILITAR NACIONAL',
-            'TARJETA UNICA DE IDENTIDAD MILITAR' => 'TARJETA UNICA DE IDENTIDAD MILITAR',
-            'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES' => 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES',
-            'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL' => 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL',
-            'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR' => 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR',
-            'LICENCIA DE CONDUCIR' => 'LICENCIA DE CONDUCIR',
-            'CERTIFICADO DE MATRICULA CONSULAR' => 'CERTIFICADO DE MATRICULA CONSULAR',
-            'ACTA DE NACIMIENTO' => 'ACTA DE NACIMIENTO',
-            'CURP' => 'CURP',
-            'CONSTANCIA DE RESIDENCIA' => 'CONSTANCIA DE RESIDENCIA',
-            'CREDENCIAL DE TRABAJO' => 'CREDENCIAL DE TRABAJO',
-            ), null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+    <div class="form-group" >
+        {!! Form::label('docIdentificacion', 'Seleccione el documento de identificación:', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::select('docIdentificacion', array('CREDENCIAL PARA VOTAR' => 'CREDENCIAL PARA VOTAR', 
+        'PASAPORTE' => 'PASAPORTE',
+        'CEDULA PROFESIONAL' => 'CEDULA PROFESIONAL',
+        'CARTILLA DEL SERVICIO MILITAR NACIONAL' => 'CARTILLA DEL SERVICIO MILITAR NACIONAL',
+        'TARJETA UNICA DE IDENTIDAD MILITAR' => 'TARJETA UNICA DE IDENTIDAD MILITAR',
+        'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES' => 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES',
+        'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL' => 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL',
+        'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR' => 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR',
+        'LICENCIA DE CONDUCIR' => 'LICENCIA DE CONDUCIR',
+        'CERTIFICADO DE MATRICULA CONSULAR' => 'CERTIFICADO DE MATRICULA CONSULAR',
+        'ACTA DE NACIMIENTO' => 'ACTA DE NACIMIENTO',
+        'CURP' => 'CURP',
+        'CONSTANCIA DE RESIDENCIA' => 'CONSTANCIA DE RESIDENCIA',
+        'CREDENCIAL DE TRABAJO' => 'CREDENCIAL DE TRABAJO',
+        ), null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
     </div>
+</div>
+
+
+<div class="col-4">
+    <div class="form-group">
+        {!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación','data-validation'=>'required' ]) !!}
+        <div class="help-block with-errors"></div>
     </div>
-    
-    
-    <div class="col-4">
-        <div class="form-group">
-            {!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
-            {!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación','data-validation'=>'required' ]) !!}
-            <div class="help-block with-errors"></div>
-        </div>
+</div>
+
+<div id="ocultar" class="col">
+    <div class="form-group">
+        {!! Form::label('expedido', 'Expedido por', ['class' => 'col-form-label-sm expedido']) !!}
+        {!! Form::text('expedido', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Expedido por']) !!}
+        <div class="help-block with-errors"></div>
     </div>
-    
-    <div id="ocultar" class="col">
-        <div class="form-group">
-            {!! Form::label('expedido', 'Expedido por', ['class' => 'col-form-label-sm expedido']) !!}
-            {!! Form::text('expedido', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Expedido por']) !!}
-            <div class="help-block with-errors"></div>
-        </div>
-    </div>
-    
-    
+</div>
+
+
 
 
 

@@ -259,12 +259,12 @@ Route::get('correo', 'PreregistroAuxController@boton');
 Route::post('enviar/correo', 'PreregistroController@enviar')->name('envio');
 
 /*---------Rutas para los selects dinámicos-------------*/
-Route::get('municipios/{id}', 'RegisterController@getMunicipios');
-Route::get('localidades/{id}', 'RegisterController@getLocalidades');
-Route::get('codigos/{id}', 'RegisterController@getCodigos');
-Route::get('colonias/{cp}', 'RegisterController@getColonias');
-Route::get('colonias2/{id}', 'RegisterController@getColonias2');
-Route::get('codigos2/{id}', 'RegisterController@getCodigos2');
+Route::get('municipios/{id}', 'RegisterController@getMunicipios')->name('get.municipio');
+Route::get('localidades/{id}', 'RegisterController@getLocalidades')->name('get.localidad');
+Route::get('codigos/{id}', 'RegisterController@getCodigos')->name('get.codigo');
+Route::get('colonias/{cp}', 'RegisterController@getColonias')->name('get.colonia');
+Route::get('colonias2/{id}', 'RegisterController@getColonias2')->name('get.colonia2');
+Route::get('codigos2/{id}', 'RegisterController@getCodigos2')->name('get.codigo2');
 
 /********************generar pdf**********************************/
 
