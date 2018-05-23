@@ -87,7 +87,7 @@
 		</li> --}}
 
 		<!-- Notifications Dropdown Menu -->
-		<li class="nav-item dropdown">
+		{{-- <li class="nav-item dropdown">
 			<a class="nav-link" data-toggle="dropdown" href="#">
 				<i class="fa fa-bell-o"></i>
 				<span class="badge badge-warning navbar-badge">15</span>
@@ -112,7 +112,7 @@
 				<div class="dropdown-divider"></div>
 				<a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
 			</div>
-		</li>
+		</li> --}}
 		<li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Cerrar sesión">
 			<a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
 			document.getElementById('logout-form').submit();" ><i class="fa fa-power-off"></i></a>
