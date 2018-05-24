@@ -753,16 +753,16 @@ if (campo.length < 1 || campo.length > 200){
 }
 });
 
-$('#fax').focusout(function(){
+// $('#fax').focusout(function(){
 
-var campo = $(this).val();
-if (campo.length < 1 || campo.length > 200){
-    $(this).css({"border-color":"yellow"});
-}else{
-    $(this).css({"border-color":"green"});
+// var campo = $(this).val();
+// if (campo.length < 1 || campo.length > 200){
+//     $(this).css({"border-color":"yellow"});
+// }else{
+//     $(this).css({"border-color":"green"});
     
-}
-});
+// }
+// });
 $('#lugarTrabajo').focusout(function(){
 
 var campo = $(this).val();

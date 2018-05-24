@@ -287,11 +287,11 @@ class DenunciadoController extends Controller
                     $notificacion->idDomicilio = $idD3;
                     $notificacion->correo = $request->correo;
                     $notificacion->telefono = $request->telefono;
-                    if ($request->fax==null) {
-                        $notificacion->fax = 'SIN INFORMACION';
-                    } else {
-                        $notificacion->fax = $request->fax;
-                    }
+                    // if ($request->fax==null) {
+                    //     $notificacion->fax = 'SIN INFORMACION';
+                    // } else {
+                    //     $notificacion->fax = $request->fax;
+                    // }
                     $notificacion->save();
                     $idNotificacion = $notificacion->id;
 
@@ -428,11 +428,11 @@ class DenunciadoController extends Controller
                     $notificacion->idDomicilio = $idD3;
                     $notificacion->correo = $request->correo;
                     $notificacion->telefono = $request->telefonoN;
-                    if ($request->fax==null) {
-                        $notificacion->fax = 'SIN INFORMACION';
-                    } else {
-                        $notificacion->fax = $request->fax;
-                    }
+                    // if ($request->fax==null) {
+                    //     $notificacion->fax = 'SIN INFORMACION';
+                    // } else {
+                    //     $notificacion->fax = $request->fax;
+                    // }
                     $notificacion->save();
                     $idNotificacion = $notificacion->id;
 

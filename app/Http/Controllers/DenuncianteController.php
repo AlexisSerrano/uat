@@ -172,7 +172,7 @@ public function showForm()
                 $notificacion->idDomicilio = $idD3;
                 $notificacion->correo = $request->correo;
                 $notificacion->telefono = $request->telefono;
-                $notificacion->fax = $request->fax;
+                // $notificacion->fax = $request->fax;
                 $notificacion->save();
                 $idNotificacion = $notificacion->id;
                 
@@ -299,7 +299,7 @@ public function showForm()
                 $notificacion->idDomicilio = $idD3;
                 $notificacion->correo = $request->correo;
                 $notificacion->telefono = $request->telefonoN;
-                $notificacion->fax = $request->fax;
+                // $notificacion->fax = $request->fax;
                 $notificacion->save();
                 $idNotificacion = $notificacion->id;
 
