@@ -3,7 +3,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('nombre1', 'Nombre', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
-			{!! Form::text('nombre1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras','required']) !!}
+			{!! Form::text('nombre1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$','data-validation-ignore'=>'.', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras','required']) !!}
 			<div class="help-block with-errors"></div> 
 		</div>
 	</div>

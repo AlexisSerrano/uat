@@ -99,7 +99,7 @@ class UnidadSeeder extends Seeder
             [ 'id' => 75, 'descripcion' => 'MALTRATA', 'idZona' => 3 ,'activo' => 1 ,'abreviacion'=> ''],
             [ 'id' => 76, 'descripcion' => 'TEZONAPAN', 'idZona' => 3 ,'activo' => 1 ,'abreviacion'=> ''],
             [ 'id' => 77, 'descripcion' => 'CARRILLO PUERTO', 'idZona' => 3 ,'activo' => 1 ,'abreviacion'=> ''],
-            [ 'id' => 78, 'descripcion' => 'ATOYAC', 'idZona' => 3 ,'activo' =>  ,'abreviacion'=> ''1]
+            [ 'id' => 78, 'descripcion' => 'ATOYAC', 'idZona' => 3 ,'activo' =>  ,'abreviacion'=> '']
             
 
 	    

@@ -3,7 +3,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('nombre1', 'Nombre', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
-			{!! Form::text('nombre1', $preregistro->nombre, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}
+			{!! Form::text('nombre1', $preregistro->nombre, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required','data-validation-ignore'=>'.']) !!}
 			<div class="help-block with-errors"></div> 
 		</div>
 	</div>
