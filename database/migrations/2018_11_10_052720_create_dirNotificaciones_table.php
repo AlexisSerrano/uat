@@ -18,7 +18,7 @@ class CreateDirNotificacionesTable extends Migration
             $table->integer('idDomicilio')->unsigned();
             $table->string('correo', 100)->default("SIN INFORMACION");
             $table->string('telefono', 15)->default("SIN INFORMACION");
-            $table->string('fax', 20)->default("SIN INFORMACION");
+            // $table->string('fax', 20)->default("SIN INFORMACION");
 
             $table->foreign('idDomicilio')->references('id')->on('domicilio')->onDelete('cascade');
 

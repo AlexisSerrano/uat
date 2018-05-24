@@ -392,7 +392,7 @@ class EstadoController extends Controller
                         $conNotifi->idDomicilio = $denunciado->notifiidDomicilio;
                         $conNotifi->correo = $denunciado->notificorreo;
                         $conNotifi->telefono = $denunciado->notifitelefono;
-                        $conNotifi->fax = $denunciado->notififax;
+                        // $conNotifi->fax = $denunciado->notififax;
                         $conNotifi->save();
                         $idnotificon=$conNotifi->id;
 
@@ -462,7 +462,7 @@ class EstadoController extends Controller
                         $conNotifi->idDomicilio = $denunciante->notifiidDomicilio;
                         $conNotifi->correo = $denunciante->notificorreo;
                         $conNotifi->telefono = $denunciante->notifitelefono;
-                        $conNotifi->fax = $denunciante->notififax;
+                        // $conNotifi->fax = $denunciante->notififax;
                         $conNotifi->save();
                         $idnotificon=$conNotifi->id;
 

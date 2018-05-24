@@ -9,7 +9,8 @@ class DirNotificacion extends Model
     protected $table = 'dirNotificacion';
 
     protected $fillable = [
-        'id', 'idDomicilio', 'correo', 'telefono', 'fax',
+        'id', 'idDomicilio', 'correo', 'telefono', 
+        // 'fax',
     ];
 
     public function extraDenunciante()
