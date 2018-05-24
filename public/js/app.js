@@ -50295,7 +50295,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (response.data[0] == undefined) {
                     console.log("sin datos");
                 } else {
-                    _this.template = response.data[0]['html'];
+                    //console.log(response.data);
+                    _this.template = response.data[0]['contenido'];
                     _this.tipoOficio = response.data[0]['id'];
                     axios.get(urlPeticion).then(function (response) {
                         _this.info = response.data;
