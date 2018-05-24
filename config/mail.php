@@ -57,7 +57,10 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'preregistro@fiscaliaveracruz.gob.mx'),
-        'name' => env('MAIL_FROM_NAME', 'Preregistro'),
+        'name' => env('MAIL_FROM_NAME', 'Fiscalia General del Estado'),
+        'subject' => env('MAIL_FROM_SUBJECT', 'Preregistro'),
+  
+
     ],
 
     /*

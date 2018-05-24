@@ -15,7 +15,7 @@ use App\Models\CatEstadoCivil;
 use App\Models\CatEscolaridad;
 use App\Models\CatIdentificacion;
 use Carbon\Carbon;
-use App\Mail\EnviarCorreo as sendMail;
+use App\Mail\Preregistro as sendMail;
 use DB;
 use Alert;
 use Mail;
