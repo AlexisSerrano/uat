@@ -14,6 +14,8 @@ use App\Models\CatOcupacion;
 use App\Models\CatEstadoCivil;
 use App\Models\CatEscolaridad;
 use App\Models\CatIdentificacion;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 use Carbon\Carbon;
 use App\Mail\EnviarCorreo as sendMail;
 use DB;
@@ -24,27 +26,13 @@ use App\Http\Requests\StorePreregistro;
 
 class PreregistroController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return redirect('preregistro/create');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-
-        //$cd= DB::table('cat_colonia')->groupBy('codigoPostal')->having('idMunicipio', '=', 5)->get();
-        //dd($cd);
-
         $razones=Razon::orderBy('nombre', 'ASC')
         ->pluck('nombre','id');
         $estados=CatEstado::orderBy('nombre', 'ASC')
@@ -71,12 +59,6 @@ class PreregistroController extends Controller
 
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response  StorePreregistro
-     */
     public function store(StorePreregistro $request)
     {
        
@@ -427,7 +409,6 @@ class PreregistroController extends Controller
 
     public function estado($id,$tipo)
     {
-        //dd($id);
         $estado = Preregistro::find($id);
         $estado->statusCancelacion = 1;
         $estado->statusCola = $tipo;
@@ -458,6 +439,12 @@ class PreregistroController extends Controller
         else{
             echo 0;
         }
+    }
+
+    public function estadoFiscales(){
+        $fiscales=User::orderBy('nombres', 'ASC')->where('idUnidad',Auth::user()->idUnidad)->get();
+        return view('tables.consulta-turnos')->with('fiscales',$fiscales);
+
     }
 
 }

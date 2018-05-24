@@ -106,7 +106,7 @@
 														</a>
 													</li>
 													<li class="nav-item has-treeview">
-														<a href="{{url('turnos-pruebas')}}" class="nav-link {{ Request::is( 'turnos-pruebas') ? 'active' : '' }}">
+														<a href="{{route('disponibilidad.fiscal')}}" class="nav-link {{ Request::is( 'turnos-pruebas') ? 'active' : '' }}">
 																{{-- <i class="nav-icon  fa fa-print"></i> --}}
 																<p>Turnos tomados</p>
 															</a>
