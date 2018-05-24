@@ -3,7 +3,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('nombre2', 'Nombre', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
-			{!! Form::text('nombre2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'data-validation' =>'length','data-validation-length' =>'min2' ,'required']) !!}
+			{!! Form::text('nombre2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre', 'data-validation' =>'length','data-validation-length' =>'min2','required']) !!}
 			<div class="help-block with-errors"></div> 
 		</div>
 	</div>
