@@ -1,4 +1,4 @@
-@extends('template.main2')
+@extends('servicios.preregistro.templates.main2')
 
 @section('csss')
 {{-- estilos --}}

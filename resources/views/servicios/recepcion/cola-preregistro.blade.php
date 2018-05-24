@@ -3,6 +3,9 @@
 	@section('title', 'Registros en cola')
 @else
 	@section('title', 'Registros urgentes')
+{{-- @else
+	@if($status=x)
+	@section('title','Registros ausentes') --}}
 @endif
 @section('content')
 	<div class="row">
@@ -18,7 +21,7 @@
 				<div class="row">
 					<div class=" input-group col-4 text-right">
 							<div class="input-group-prepend">
-								<span class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></span>
+								<button class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></button>
 							</div>
 							<input type="text" id="folio" name="folio" class="form-control" placeholder="buscar" aria-describedby="basic-addon1">
 						
