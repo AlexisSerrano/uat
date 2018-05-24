@@ -28,7 +28,7 @@
 		display: none;
 	}
 	</style>
-@extends('template.form2')
+@extends('servicios.preregistro.templates.form2')
 
 @section('content')
 @if ($errors->any())
