@@ -123,7 +123,7 @@ $(document).ready(function(){
             $("#numInterno3").prop('disabled', true);   
             $("#correo").prop('disabled', true);   
             $("#telefonoN").prop('disabled', true);  
-            $("#fax").prop('disabled', true);
+            // $("#fax").prop('disabled', true);
 
             //Datos no requeridos de extra denunciado
             $("#idPuesto").prop('disabled', true);
@@ -230,7 +230,7 @@ $(document).ready(function(){
             $("#numInterno3").prop('disabled', true);   
             $("#correo").prop('disabled', true);   
             $("#telefonoN").prop('disabled', true);  
-            $("#fax").prop('disabled', true);
+            // $("#fax").prop('disabled', true);
 
             //Datos no requeridos de extra denunciado
             $("#idPuesto").prop('disabled', true);
@@ -335,7 +335,7 @@ $(document).ready(function(){
             $("#numInterno3").prop('disabled', false);   
             $("#correo").prop('disabled', false);   
             $("#telefonoN").prop('disabled', false);  
-            $("#fax").prop('disabled', false);
+            // $("#fax").prop('disabled', false);
 
             //Datos requeridos de extra denunciado
             $("#idPuesto").prop('disabled', false);
