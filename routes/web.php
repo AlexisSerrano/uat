@@ -38,9 +38,8 @@ Route::get('/pruebasconsulta', function(){
     Route::get('/formatos-pruebas', function(){
         return view('tables.formatos');
         });
-        Route::get('/turnos-pruebas', function(){
-            return view('tables.consulta-turnos');
-            });
+        Route::get('/fiscales', 'PreregistroController@estadoFiscales')->name('disponibilidad.fiscal');
+        
 
         Route::get('/pruebasformatos', function(){
             return view('tables.formatos');
