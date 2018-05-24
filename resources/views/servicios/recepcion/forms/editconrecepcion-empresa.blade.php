@@ -1,13 +1,7 @@
 @extends('template.form')
 @section('content')
 @include('fields.errores')
- <style>
- .alert-info{
-    background-color: #0e0e0e!important;
-    border-color: #f5f8f905;
- }
  
- </style>
 
         
         <div class="alert alert-info">

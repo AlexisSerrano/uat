@@ -24,7 +24,7 @@ use App\Models\formatos\Lesione;
 use App\Models\formatos\Vehiculo;
 
 
-class pericialesController extends Controller
+class PericialesController extends Controller
 {
  
     public function pericialesindex()
@@ -106,8 +106,8 @@ class pericialesController extends Controller
                 $Psicologo = new Psicologo;
                 $Psicologo->idCarpeta = 1;
                 $Psicologo->nombre = $request->nombrep;
-                $Psicologo->primerAp = $request->primerAp;
-                $Psicologo->segundoAp = $request->segundoAp;
+                $Psicologo->primerAp = $request->primerAp2;
+                $Psicologo->segundoAp = $request->segundoAp2;
                 $Psicologo->numero = $request->numerop;
                 $Psicologo->fecha = $request->fecha_nac;
                

@@ -13,13 +13,22 @@
 	</ul>
 
 	<!-- SEARCH FORM -->
-	@if (!is_null(session('terminada')))
-		
+	@if (!is_null(session('terminada')))	
 	<div style="color:white;margin-left:20px;">
 		<span>
-			Numero de carpeta: 
+			Número de carpeta: 
 			<strong>
 				{{session('terminada')}}
+			</strong>
+		</span>
+	</div>
+	@endif
+	@if (!is_null(session('preregistro')))	
+	<div style="color:white;margin-left:20px;">
+		<span>
+			Folio de pre-registro: 
+			<strong>
+				{{session('foliopreregistro')}}
 			</strong>
 		</span>
 	</div>

@@ -23,7 +23,7 @@ use App\Models\VariablesPersona;
 use App\Models\ExtraDenunciante;
 
 
-class libroGobController extends Controller
+class LibroGobController extends Controller
 {
     
      

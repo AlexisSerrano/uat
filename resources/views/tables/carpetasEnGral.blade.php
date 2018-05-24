@@ -60,7 +60,7 @@
                     <td>{{ $carpeta->idEstadoCarpeta}}</td>
                     <td>
                         <a href="{{ url('buscarcarpeta/'.$carpeta->id)}}"   rel="tooltip" title="Editar Registro" class="btn btn-secondary btn-simple btn-xs">
-                        <i class="fa fa-edit"></i></a>
+                        <i class="fa fa-pencil"></i></a>
                         <a href="{{ url('turnar/'.$carpeta->id)}}"   rel="tooltip" title="Turnar" class="btn btn-secondary btn-simple btn-xs">
                         <i class="fa fa-child"></i></a>
                     </td>                     

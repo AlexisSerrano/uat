@@ -531,8 +531,9 @@ class PreregistroAuxController extends Controller
         $editpreregistro->idCarpeta= $idCarpeta;
         $editpreregistro->save();
 
-
+        // dd($preregistro->folio);
         session(['preregistro' => $id]);
+        session(['foliopreregistro' => $preregistro->folio]);
         session(['carpeta' => $idCarpeta]);
 
         $usuario=User::find(Auth::user()->id);
@@ -676,6 +677,7 @@ class PreregistroAuxController extends Controller
         
         session()->forget('carpeta');
         session()->forget('preregistro');
+        session()->forget('foliopreregistro');
          //dd($idCarpeta);
         //dd(session('carpeta'));
         

@@ -92,6 +92,12 @@
 													</a>
 												</li>
 												<li class="nav-item has-treeview">
+														<a href="{{url('encola')}}" class="nav-link {{ Request::is( 'encola') ? 'active' : '' }}">
+															{{-- <i class="nav-icon fa fa-user-times"></i> --}}
+															<p>Ausentes</p>
+														</a>
+													</li>
+												<li class="nav-item has-treeview">
 													<a href="{{url('recepcionista')}}" class="nav-link {{ Request::is( 'recepcionista') ? 'active' : '' }}">
 															{{-- <i class="nav-icon fa fa-user-times"></i> --}}
 															<p>
@@ -224,6 +230,7 @@
 							<p>Oficios</p>
 						</a>
 					</li>
+					
 				</li>
 					
 

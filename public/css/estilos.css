@@ -313,3 +313,11 @@ body::-webkit-scrollbar-thumb {
     border: 1px solid #ca0a0a;
     border-radius: 4px;
 } */
+
+
+ .alert-info{
+    background-color: #0e0e0e!important;
+	border-color: #f5f8f905;
+	color: whitesmoke
+ }
+ 
