@@ -149,7 +149,7 @@
         'LICENCIA DE CONDUCIR FEDERAL' => 'LICENCIA DE CONDUCIR FEDERAL',
         'DOCUMENTO/BIEN EXTRAVIADO O ROBADO' => 'DOCUMENTO/BIEN EXTRAVIADO O ROBADO',
         'CERTIFICADO DE ALUMBRAMIENTO' => 'CERTIFICADO DE ALUMBRAMIENTO',
-        'OTROS DOCUMENTOS' => 'OTROS DOCUMENTOS'), null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+        'OTROS DOCUMENTOS' => 'OTROS DOCUMENTOS'), null, ['class' => 'form-control form-control-sm','placeholder'=>'Seleccione un tipo de acta','data-validation'=>'required']) !!}
     </div>
 </div>
 <div class="col-6 otros">
@@ -177,7 +177,7 @@
         'CURP' => 'CURP',
         'CONSTANCIA DE RESIDENCIA' => 'CONSTANCIA DE RESIDENCIA',
         'CREDENCIAL DE TRABAJO' => 'CREDENCIAL DE TRABAJO',
-        ), null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+        ), null, ['class' => 'form-control form-control-sm','placeholder'=>'Seleccione el documento de identificación','data-validation'=>'required']) !!}
     </div>
 </div>
 

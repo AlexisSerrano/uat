@@ -27,12 +27,34 @@ $form = oldFormActas();
 </div>
 
 <div class="col-4">
+    <div class="form-group" >
+        {!! Form::label('docIdentificacion', 'Seleccione el documento de identificación:', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::select('docIdentificacion', array('CREDENCIAL PARA VOTAR' => 'CREDENCIAL PARA VOTAR', 
+        'PASAPORTE' => 'PASAPORTE',
+        'CEDULA PROFESIONAL' => 'CEDULA PROFESIONAL',
+        'CARTILLA DEL SERVICIO MILITAR NACIONAL' => 'CARTILLA DEL SERVICIO MILITAR NACIONAL',
+        'TARJETA UNICA DE IDENTIDAD MILITAR' => 'TARJETA UNICA DE IDENTIDAD MILITAR',
+        'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES' => 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES',
+        'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL' => 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL',
+        'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR' => 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR',
+        'LICENCIA DE CONDUCIR' => 'LICENCIA DE CONDUCIR',
+        'CERTIFICADO DE MATRICULA CONSULAR' => 'CERTIFICADO DE MATRICULA CONSULAR',
+        'ACTA DE NACIMIENTO' => 'ACTA DE NACIMIENTO',
+        'CURP' => 'CURP',
+        'CONSTANCIA DE RESIDENCIA' => 'CONSTANCIA DE RESIDENCIA',
+        'CREDENCIAL DE TRABAJO' => 'CREDENCIAL DE TRABAJO',
+        ), $acta->docIdentificacion, ['class' => 'form-control form-control-sm','placeholder'=>'Seleccione el documento de identificación','data-validation'=>'required']) !!}
+    </div>
+</div>
+
+{{-- 
+<div class="col-4">
     <div class="form-group">
         {!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
         {!! Form::text('docIdentificacion', $acta->docIdentificacion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificación','data-validation'=>'required']) !!}
         <div class="help-block with-errors"></div>
     </div>
-</div>
+</div> --}}
 
 <div class="col-4">
     <div class="form-group">
@@ -170,7 +192,7 @@ $form = oldFormActas();
             {!! Form::select('tipoActa', array('PASAPORTE' => 'PASAPORTE', 
             'CREDENCIAL DE TRABAJO/GAFFETE' => 'CREDENCIAL DE TRABAJO/GAFFETE',
             'TARJETA DE CREDITO/DEBITO' => 'TARJETA DE CRÉDITO/DÉBITO',
-            'TELÉFONO CELULAR' => 'TELÉFONO CELULAR',
+            'TELEFONO CELULAR' => 'TELÉFONO CELULAR',
             'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)' => 'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)',
             'PERMISO DE TRANSITO PARA EMPLACAMIENTO DE TAXIS' => 'PERMISO DE TRÁNSITO PARA EMPLACAMIENTO DE TAXIS',
             'FACTURA DE VEHICULO/MOTOCICLETA' => 'FACTURA DE VEHICULO/MOTOCICLETA',
@@ -180,7 +202,7 @@ $form = oldFormActas();
             'LICENCIA DE CONDUCIR FEDERAL' => 'LICENCIA DE CONDUCIR FEDERAL',
             'DOCUMENTO/BIEN EXTRAVIADO O ROBADO' => 'DOCUMENTO/BIEN EXTRAVIADO O ROBADO',
             'CERTIFICADO DE ALUMBRAMIENTO' => 'CERTIFICADO DE ALUMBRAMIENTO',
-            'OTROS DOCUMENTOS' => 'OTROS DOCUMENTOS'), $acta->tipoActa, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+            'OTROS DOCUMENTOS' => 'OTROS DOCUMENTOS'), $acta->tipoActa, ['class' => 'form-control form-control-sm','placeholder'=>'Seleccione un tipo de acta','data-validation'=>'required']) !!}
     </div>
 </div>
 <div class="col-6 otros">

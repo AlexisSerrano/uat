@@ -352,6 +352,7 @@ class CarpetaController extends Controller
                 $request->session()->forget('carpeta');
                 if (session('preregistro')!=null) {
                     $request->session()->forget('preregistro');
+                    $request->session()->forget('foliopreregistro');
                 }
                 Alert::success('Carpeta iniciada con éxito se le ha asignado el numero de carpeta: '.$carpeta->numCarpeta, 'Hecho')->persistent('Aceptar');
                 return redirect('carpetas');
