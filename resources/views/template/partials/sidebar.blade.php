@@ -225,7 +225,7 @@
 					
 					@endif
 					<li class="nav-item has-treeview">
-						<a href="{{url('oficios')}}" class="nav-link {{ Request::is( 'oficios') ? 'active' : '' }}">
+						<a href="{{url('getOficios')}}" class="nav-link {{ Request::is( 'getOficios') ? 'active' : '' }}">
 							<i class="nav-icon fa fa-font"></i>
 							<p>Oficios</p>
 						</a>
