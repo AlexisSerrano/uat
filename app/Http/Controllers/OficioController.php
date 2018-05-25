@@ -67,10 +67,19 @@ class OficioController extends Controller
 
     /*Cambiar sistema por el que corresponda y la unidad por la que tenga asiganada el usuario logueado */
     public function addOficio(Request $request){
-        $oficio = new Oficio();
-        $oficio->unidad = 1;
-        $oficio->sistema = 'uat';
+        $oficio = new Aoficio();
         $oficio->nombre = $request->nombre;
+        $oficio->sistema = 'uat';
+        $oficio->encabezado = '1';
+        $oficio->contenido = $request->contenido;
+        $oficio->pie = '1';
+        $oficio->unidad = 1;
+        if($oficio->save()){
+            echo 1;
+        }
+        else{
+            echo 0;
+        }
     }
 
     public function updateOficio(Request $request){

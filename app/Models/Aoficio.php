@@ -9,6 +9,6 @@ class Aoficio extends Model
     protected $table = 'oficios';
 
     protected $fillable = [
-        'id', 'nombre', 'sistema', 'unidad'
+        'id', 'nombre', 'sistema', 'encabezado', 'contenido', 'pie', 'unidad'
     ];
 }
