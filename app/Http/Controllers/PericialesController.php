@@ -155,7 +155,7 @@ class PericialesController extends Controller
                 $vehiculo->numero_serie = $request->numeroseriev;
                 $vehiculo->lugar_fabricacion = $request->lugarFabv;
                 $vehiculo->placas = $request->placav;
-                $vehiculo->nombre = $request->nombreve;
+                $vehiculo->nombre = $request->nombretve;
                 $vehiculo->primerAp = $request->primerAp4;
                 $vehiculo->segundoAp = $request->segundoAp4;
                 $vehiculo->numero = $request->celularv;
