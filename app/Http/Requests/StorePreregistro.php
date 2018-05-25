@@ -29,8 +29,8 @@ class StorePreregistro extends FormRequest
             'rfc1' => 'alpha_num|min:8',
             'representanteLegal' => 'string|min:4|max:100',
             'calle1' => 'string|min:1|max:100',
-            'numExterno1' => 'string|min:1|max:9999',
-            'numInterno1' => 'string|min:1|max:9999',
+            'numExterno1' => 'nullable|string|min:1|max:9999',
+            'numInterno1' => 'nullable|string|min:1|max:9999',
             'telefono1' => 'numeric',
             'narracion' => 'string|min:5|max:2000',
 
@@ -45,8 +45,8 @@ class StorePreregistro extends FormRequest
             // 'docIdentificacion' => 'string|min:2|max:50',
             'numDocIdentificacion' => 'string|min:2|max:50',
             'calle2' => 'string|min:1|max:100',
-            'numExterno2' =>  'string|min:1|max:9999',
-            'numInterno2' => 'string|min:1|max:9999',
+            'numExterno2' =>  'nullable|string|min:1|max:9999',
+            'numInterno2' => 'nullable|string|min:1|max:9999',
           
         ];
     }

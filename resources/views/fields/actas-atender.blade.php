@@ -154,8 +154,8 @@ $form = oldFormActas();
 
 <div class="col-2">
     <div class="form-group">
-        {!! Form::label('numExterno2', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('numExterno2', $acta->numExterno, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Exterior', 'data-validation'=>'required']) !!}
+        {!! Form::label('erno2', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::text('numExterno2', $acta->numExterno, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Exterior', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
     </div>
 </div>
 

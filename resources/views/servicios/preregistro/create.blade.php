@@ -183,20 +183,20 @@
 	
 	{{-- <script src="{{ asset('js/rfcMoral.js') }}"></script> --}}
 	<script>	
-	// $(window).load(function(){
-	// 			$("#loadPage").delay(2000).fadeOut("slow");
-	// 		});
+	$(window).load(function(){
+				$("#loadPage").delay(2000).fadeOut("slow");
+			});
 
-		// $('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
-		// $('.tab-pane').removeClass("active");
+		$('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
+		$('.tab-pane').removeClass("active");
 		
 
-			// window.onload = function(){
-			// 	var contenedor = document.getElementById('
-			// 	loadPage');
-			// 	contenedor.removeClass("loadPage");
-			// 	contenedor.removeClass("oculto");
-			// 	contenedor.addClass("oculto");}
+			window.onload = function(){
+				var contenedor = document.getElementById('
+				loadPage');
+				contenedor.removeClass("loadPage");
+				contenedor.removeClass("oculto");
+				// contenedor.addClass("oculto");}
 			
 
 			  $('#cargando').click(function(){
@@ -205,14 +205,14 @@
 			    });
 
 
-			 function cargando(){
+		//   function cargando(){
 				
-				var contenedor2 = document.getElementById('
-				loadPage');
-					contenedor2.removeClass("loadPage");
-				contenedor2.removeClass("oculto");
-				contenedor2.addClass("loadPage");
-			}
+		// 		var contenedor2 = document.getElementById('
+		//  	loadPage');
+		// 			contenedor2.removeClass("loadPage");
+		// 	 	contenedor2.removeClass("oculto");
+		// 	 	contenedor2.addClass("loadPage");
+		// 	 }
 
 			
 

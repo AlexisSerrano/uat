@@ -155,9 +155,9 @@ class PericialesController extends Controller
                 $vehiculo->numero_serie = $request->numeroseriev;
                 $vehiculo->lugar_fabricacion = $request->lugarFabv;
                 $vehiculo->placas = $request->placav;
-                $vehiculo->nombre = $request->nombret;
-                $vehiculo->primerAp = $request->primerAp;
-                $vehiculo->segundoAp = $request->segundoAp;
+                $vehiculo->nombre = $request->nombreve;
+                $vehiculo->primerAp = $request->primerAp4;
+                $vehiculo->segundoAp = $request->segundoAp4;
                 $vehiculo->numero = $request->celularv;
                 $vehiculo->calle = $request->calle2;
                 $vehiculo->num_ext = $request->numExterno2;
@@ -244,9 +244,9 @@ class PericialesController extends Controller
                 $idCarpeta = session('carpeta');
                 $lesiones = new Lesione;
                 $lesiones->idCarpeta = 1;
-                $lesiones->nombre = $request->nombre2;
-                $lesiones->primerAp = $request->primerAp;
-                $lesiones->segundoAp = $request->segundoAp;
+                $lesiones->nombre = $request->nombrele;
+                $lesiones->primerAp = $request->primerAp5;
+                $lesiones->segundoAp = $request->segundoAp5;
                 $lesiones->fecha = $request->fecha_nac;
                
                 if($lesiones->save()){

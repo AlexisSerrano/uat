@@ -61,6 +61,8 @@
         }
         if ($('#fechaNacimiento').val().length == 0){
             completoP=1;
+                toastr.warning("Complete el campo de fecha de nacimiento");
+                
         }
         if ($('#idEstadoOrigen').val().length == 0){
             completoP=1;
@@ -146,9 +148,9 @@
         if ($('#calle').val().length == 0){
         direcciones=1;
         }
-        if ($('#numExterno').val().length == 0){
-        direcciones=1;
-        }
+        // if ($('#numExterno').val().length == 0){
+        // direcciones=1;
+        // }
 
         else{
             if (direcciones==0) {
@@ -246,9 +248,9 @@
                 if ($('#calle2').val().length == 0){
                 trabajo=1;
                 }
-                if ($('#numExterno2').val().length == 0){
-                trabajo=1;
-                }
+                // if ($('#numExterno2').val().length == 0){
+                // trabajo=1;
+                // }
             else{
                 if (trabajo==0) {
                 
@@ -318,16 +320,16 @@
                 if ($('#calle3').val().length == 0){
                 notificaciones=1;
                 }
-                if ($('#numExterno3').val().length == 0){
-                notificaciones=1;
-                }
+                // if ($('#numExterno3').val().length == 0){
+                // notificaciones=1;
+                // }
                 // if ($('#correo').val().length == 0){
                 // notificaciones=1;
                 // }
-                // if ($('#telefonoN').val().length == 0){
-                // notificaciones=1;
+                if ($('#telefonoN').val().length == 0){
+                notificaciones=1;
 
-               // }
+               }
         else{
             if (notificaciones==0) {
                 
@@ -370,14 +372,14 @@
                 if ($('#calle3').val().length == 0){
                 notificaciones=1;
                 }
-                if ($('#numExterno3').val().length == 0){
-                notificaciones=1;
-                }
+                // if ($('#numExterno3').val().length == 0){
+                // notificaciones=1;
+                // }
                 // if ($('#correo').val().length == 0){
                 // notificaciones=1;
                 // }
-                // if ($('#telefonoN').val().length == 0){
-                // notificaciones=1;}
+                if ($('#telefonoN').val().length == 0){
+                notificaciones=1;}
     else{
         if (notificaciones==0) {
             
@@ -416,14 +418,14 @@
         if ($('#calle3').val().length == 0){
             notificaciones=1;
             }
-        if ($('#numExterno3').val().length == 0){
-            notificaciones=1;
-            }
+        // if ($('#numExterno3').val().length == 0){
+        //     notificaciones=1;
+        //     }
         // if ($('#correo').val().length == 0){
         // notificaciones=1;
         // }
-        // if ($('#telefonoN').val().length == 0){
-        // notificaciones=1;}
+        if ($('#telefonoN').val().length == 0){
+        notificaciones=1;}
     else{
             if (notificaciones==0) {
                 
@@ -492,9 +494,9 @@
             if ($('#calle2').val().length == 0){
             trabajo=1;
             }
-            if ($('#numExterno2').val().length == 0){
-            trabajo=1;
-            }
+            // if ($('#numExterno2').val().length == 0){
+            // trabajo=1;
+            // }
      else{
             if (trabajo==0) {
                     
@@ -566,9 +568,9 @@
                 if ($('#calle2').val().length == 0){
                 trabajo=1;
                 }
-                if ($('#numExterno2').val().length == 0){
-                trabajo=1;
-                }
+                // if ($('#numExterno2').val().length == 0){
+                // trabajo=1;
+                // }
                 else{
                     if (trabajo==0) {
                         
