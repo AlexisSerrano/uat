@@ -59,7 +59,7 @@ $form = oldFormDelitos();
 		<div class="col-2">
 			<div class="form-group">
 				{!! Form::label('numExterno', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('numExterno', null, ['class' => ' form-control form-control-sm', 'placeholder' => 'Ingrese el número exterior','data-validation'=>'required']) !!}
+				{!! Form::text('numExterno', null, ['class' => ' form-control form-control-sm', 'placeholder' => 'Ingrese el número exterior','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 			</div>
 		</div>
 		<div class="col-2">
@@ -129,13 +129,13 @@ $form = oldFormDelitos();
 		<div class="col-2">
 			<div class="form-group">
 				{!! Form::label('numExterno', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('numExterno', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número exterior','data-validation'=>'required']) !!}
+				{!! Form::text('numExterno', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número exterior','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 			</div>
 		</div>
 		<div class="col-2">
 			<div class="form-group">
 				{!! Form::label('numInterno', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('numInterno', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior']) !!}
+				{!! Form::text('numInterno', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 			</div>
 		</div>
 	</div>

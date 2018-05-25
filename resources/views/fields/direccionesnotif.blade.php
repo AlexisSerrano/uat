@@ -57,13 +57,13 @@ $form = oldFormNoti();
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('numExterno3', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numExterno3', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número exterior','data-validation'=> 'required']) !!}
+			{!! Form::text('numExterno3', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número exterior','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 		</div>
 	</div>
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('numInterno3', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numInterno3', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior']) !!}
+			{!! Form::text('numInterno3', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 		</div>
 	</div>
 </div>
