@@ -24,9 +24,9 @@
 		margin: auto;
 			}
 	
-	.oculto{
+	/* .oculto{
 		display: none;
-	}
+	} */
 	</style>
 @extends('servicios.preregistro.templates.form2')
 
@@ -54,9 +54,9 @@
 				PRE-REGISTRO
 
 	</p>
-	<span id ="loadPage" class="oculto">
+	{{-- <span  class="ocuto">
 		<p>Cargando...</p>
-	</span>
+	</span> --}}
 	<div>
 		@include('servicios.preregistro.fields.tipo-persona')
 	</div>
@@ -147,7 +147,7 @@
 					</div>
 				</div>
 		</div>
-		<div id="cargando" style="display:none;">
+		{{-- <div id="cargando" style="display:none;">
 			<div class="text-center">
 				<strong  style="color:#f5f5f5;">Iniciando sesión<strong>
 			</div>
@@ -165,7 +165,7 @@
 				<div class="sk-circle11 sk-child"></div>
 				<div class="sk-circle12 sk-child"></div>
 			</div>
-		</div>
+		</div> --}}
 	</div>
 		
 
@@ -183,26 +183,22 @@
 	
 	{{-- <script src="{{ asset('js/rfcMoral.js') }}"></script> --}}
 	<script>	
-	$(window).load(function(){
-				$("#loadPage").delay(2000).fadeOut("slow");
-			});
+	// $(window).load(function(){
+	// 			$("#loadPage").delay(5000).fadeOut("slow");
+	// 		});
 
-		$('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
-		$('.tab-pane').removeClass("active");
+	// 	 $('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
+	// 	 $('.tab-pane').removeClass("active");
 		
 
-			window.onload = function(){
-				var contenedor = document.getElementById('
-				loadPage');
-				contenedor.removeClass("loadPage");
-				contenedor.removeClass("oculto");
-				// contenedor.addClass("oculto");}
-			
+	// 		window.onload = function(){
+	// 			var contenedor = document.getElementById('
+	// 			loadPage');
+	// 			contenedor.removeClass("loadPage");
+	// 			contenedor.removeClass("oculto");
+	// 			 contenedor.addClass("oculto");
+	// 			}
 
-			  $('#cargando').click(function(){
-				console.log("entro");
-            	cargando();
-			    });
 
 
 		//   function cargando(){
