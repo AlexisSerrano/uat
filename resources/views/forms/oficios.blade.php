@@ -15,30 +15,30 @@
                             {!! Form::text('oficio', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del oficio','data-validation'=>'required' ]) !!}
                         </div>
                     </div>
-                    <div class="form-group">
+                    {{--  <div class="form-group">
                         <div class="col-12">
                             <div class="col-12">
                                 <label for="header" class="col-form-label-sm">Encabezado</label>
                                 <textarea name="header" id="encabezado" cols="30" rows="10" class="form-control form-control-sm ckeditor"data-validation="required" ></textarea>
                             </div>
                         </div>
-                    </div>
+                    </div>  --}}
                     <div class="form-group">
                         <div class="col-12">
                             <div class="col-12">
                                 <label for="contenido" class="col-form-label-sm">Contenido del documento</label>
-                                <textarea name="contenido" id="contenido" cols="30" rows="10" class="form-control form-control-sm" data-validation="required"></textarea>
+                                <textarea name="contenido" id="contenido" cols="30" rows="30" class="form-control form-control-sm" data-validation="required"></textarea>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    {{--  <div class="form-group">
                         <div class="col-12">
                             <div class="col-12">
                                 <label for="piePagina" class="col-form-label-sm">Pie de pagina</label>
                                 <textarea name="piePagina" id="narracion" cols="30" rows="10" class="form-control form-control-sm" data-validation="required"></textarea>
                             </div>
                         </div>
-                    </div>
+                    </div>  --}}
                 </div>
             </div>
         </div>
@@ -91,7 +91,7 @@ $(".itemoficio").on("click", function(){
         data : {'id':{{$oficio->id}} },
         type : 'POST',
         success : function(data) {
-            console.log(data);
+            console.log(data.contenido);
         }
     });
 });
