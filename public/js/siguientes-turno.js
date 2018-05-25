@@ -105,9 +105,9 @@ function PersonaT(){
         if ($('#calle').val().length == 0){
         validardirec=1;
         }
-        if ($('#numExterno').val().length == 0){
-        validardirec=1;
-        }
+        // if ($('#numExterno').val().length == 0){
+        // validardirec=1;
+        // }
         if (validardirec==1) {
 
             toastr.error("Complete los campos faltantes para poder avanzar");
@@ -194,9 +194,9 @@ function validDom(){
     if ($('#calle').val().length == 0){
         validDom=1;
     }
-    if ($('#numExterno').val().length == 0){
-        validDom=1;
-    }
+    // if ($('#numExterno').val().length == 0){
+    //     validDom=1;
+    // }
     if (validDom==1) {
 
         toastr.error("Complete los campos faltantes para poder avanzar");
@@ -279,9 +279,9 @@ else if ($('#sinEmpleo').val()=='NO') {
         if ($('#calle2').val().length == 0){
         trabajo=1;
         }
-        if ($('#numExterno2').val().length == 0){
-        trabajo=1;
-        }
+        // if ($('#numExterno2').val().length == 0){
+        // trabajo=1;
+        // }
     else{
         if (trabajo==0) {
         

@@ -65,6 +65,7 @@ Route::post('saveOficio', 'OficioController@saveOficio')->name('saveOficio');
 Route::post('intentos', 'OficioController@intentos')->name('intentos');
 Route::get('getOficios', 'OficioController@getOficios')->name('getOficios');
 Route::post('getOficio', 'OficioController@getOficio')->name('getOficio');
+Route::post('addOficio', 'OficioController@addOficio')->name('addOficio');
 
 Route::get('actaoficio/{id}', 'ActasHechosController@actaoficio')->name('actaoficio');
 Route::get('getoficioah/{id}', 'ActasHechosController@getoficioah');

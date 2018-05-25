@@ -2,19 +2,16 @@
 @section('title','Oficios')
 @section('content')
     @include('fields.errores')
-    {!!Form::open()!!}
  <div class="col">
     <div class="row">
         <div class="col-9">
             <div class="card">
                  <div class="card-header"><h6>Nuevo oficio</h1></div>
                     <div class="card-body">
-                    <div class="col">
                         <div class="form-group">
                             {!! Form::label('oficio', 'Oficio', ['class' => 'col-form-label-sm']) !!}
                             {!! Form::text('oficio', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del oficio','data-validation'=>'required' ]) !!}
                         </div>
-                    </div>
                     {{--  <div class="form-group">
                         <div class="col-12">
                             <div class="col-12">
@@ -24,12 +21,8 @@
                         </div>
                     </div>  --}}
                     <div class="form-group">
-                        <div class="col-12">
-                            <div class="col-12">
-                                <label for="contenido" class="col-form-label-sm">Contenido del documento</label>
-                                <textarea name="contenido" id="contenido" cols="30" rows="30" class="form-control form-control-sm" data-validation="required"></textarea>
-                            </div>
-                        </div>
+                        <label for="contenido" class="col-form-label-sm">Contenido del documento</label>
+                        <textarea name="contenido" id="contenido" cols="30" rows="30" class="form-control form-control-sm" data-validation="required"></textarea>
                     </div>
                     {{--  <div class="form-group">
                         <div class="col-12">
@@ -63,7 +56,7 @@
                                         <tbody>
                                             @forelse($oficios as $oficio)
                                             <tr>
-                                                <td class="btn btn-primary" width="100%"><span id="{{$oficio->id}}" class="itemoficio">{{$oficio->nombre}}</span></td>
+                                                <td class="btn btn-primary itemoficio" width="100%"><span id="{{$oficio->id}}">{{$oficio->nombre}}</span></td>
                                             </tr>
                                             @empty
                                             
@@ -77,7 +70,6 @@
                 </div>
             </div>
         </div>
-    {!!Form::close()!!}
 @endsection
 @push('scripts')
 <script>
@@ -91,7 +83,29 @@ $(".itemoficio").on("click", function(){
         data : {'id':{{$oficio->id}} },
         type : 'POST',
         success : function(data) {
-            console.log(data.contenido);
+            $("#contenido").val(data[0].contenido);
+        }
+    });
+});
+$("#guardarOficio").on("click", function(){
+    var contenido = $("#contenido").val();
+    var nombre = $("#oficio").val();
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        async: false,
+        url : "../addOficio",
+        data : {'nombre':nombre, 'contenido':contenido },
+        type : 'POST',
+        success : function(data) {
+            if(data){
+                var URLactual = window.location;
+                window.location.replace(URLactual);
+            }
+            else{
+
+            }
         }
     });
 });

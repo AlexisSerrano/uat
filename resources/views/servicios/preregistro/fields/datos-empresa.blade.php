@@ -108,7 +108,7 @@
 	<div class="col-2">
 		<div class="form-group">
 			{!! Form::label('numInterno1', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numInterno1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Interior']) !!}
+			{!! Form::text('numInterno1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Interior','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 		</div>
 	</div>
 	<div class="col-4">
