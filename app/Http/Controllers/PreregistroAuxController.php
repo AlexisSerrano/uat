@@ -12,13 +12,13 @@ use Mail;
 //use App\Http\Controllers\sendMail;
 use App\Mail\EnviarCorreo as sendMail;
 use App\Models\Preregistro;
-use App\Models\CatMunicipio;
 use App\Models\Domicilio;
 use App\User;
 use Alert;
+use App\Models\CatEstado;
+use App\Models\CatMunicipio;
 use App\Models\CatLocalidad;
 use App\Models\CatColonia;
-use App\Models\CatEstado;
 use App\Models\Razon;
 use Carbon\Carbon;
 use App\Models\Carpeta;
@@ -433,105 +433,104 @@ class PreregistroAuxController extends Controller
 
     public function turno($id){
         
-        // $preregistros = Preregistro::where('statusCola', 2)
-        // ->where('conViolencia', 0)
-        // ->orderBy('horaLlegada','asc')
-        // ->get();
-        // $preregistros = $preregistros[0];
-        // $tipopersona=$preregistros->esEmpresa;
-        //$estados=CatEstado::orderBy('nombre', 'ASC')->pluck('nombre','id');
-        //$municipios=CatMunicipio::where('idEstado',30)->orderBy('nombre', 'ASC')->pluck('nombre','id');
-        //$preregistro = Preregistro::find($id);
         $preregistro = DB::table('preregistros')
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')
-        ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','nombre','primerAp',
-        'segundoAp','rfc','fechaNac','idEscolaridad','idEstadoCivil','idMunicipioOrigen','idOcupacion','edad',
-        'sexo','curp','telefono','cat_identificacion.documento as docIdentificacion',
-        'numDocIdentificacion','conViolencia','narracion','folio','tipoActa','representanteLegal',
-        'statusCancelacion','statusOrigen','statusCola','horaLlegada')
+        ->leftJoin('domicilio','domicilio.id','=','preregistros.idDireccion')
+        ->join('cat_municipio','domicilio.idMunicipio','=','cat_municipio.id')
+        ->join('cat_colonia','domicilio.idColonia','=','cat_colonia.id')
+        ->join('cat_municipio as municipioOreigen','preregistros.idMunicipioOrigen','=','municipioOreigen.id')
+        ->select('preregistros.id as id',
+            'preregistros.idDireccion',
+            'cat_municipio.idEstado',
+            'domicilio.idMunicipio',
+            'domicilio.idLocalidad',
+            'domicilio.idColonia',
+            'cat_colonia.codigoPostal',
+            'domicilio.calle',
+            'domicilio.numExterno',
+            'domicilio.numInterno',
+            'preregistros.idRazon',
+            'preregistros.esEmpresa',
+            'preregistros.nombre',
+            'preregistros.primerAp',
+            'preregistros.segundoAp',
+            'preregistros.rfc',
+            'preregistros.fechaNac',
+            'preregistros.idEscolaridad',
+            'preregistros.idEstadoCivil',
+            'municipioOreigen.idEstado as idEstadoOrigen',
+            'preregistros.idMunicipioOrigen',
+            'preregistros.idOcupacion',
+            'preregistros.edad',
+            'preregistros.sexo',
+            'preregistros.curp',
+            'preregistros.telefono',
+            'cat_identificacion.documento as docIdentificacion',
+            'preregistros.numDocIdentificacion',
+            'preregistros.conViolencia',
+            'preregistros.narracion',
+            'preregistros.folio',
+            'preregistros.tipoActa',
+            'preregistros.representanteLegal',
+            'preregistros.statusCancelacion',
+            'preregistros.statusOrigen',
+            'preregistros.statusCola',
+            'preregistros.horaLlegada')
         ->where('preregistros.id',$id)->first();
         // dd($preregistro);
-        //$preregistro=$preregistro[0];
-        $tipopersona=$preregistro->esEmpresa;
-        $idDireccionPregistro =$preregistro->idDireccion;//id direccion
-        $idpreregistro =$preregistro->id;
-        $direccionTB=DB::table('domicilio')
-        ->where('domicilio.id','=',$idDireccionPregistro)
-        ->get();
-        $municipio=DB::table('cat_municipio')//nombre municipio
-        ->where('cat_municipio.id','=',$direccionTB[0]->idMunicipio)
-        ->get();
-        $coloniaRow=DB::table('cat_colonia')//nombre municipio
-        ->where('cat_colonia.id','=',$direccionTB[0]->idColonia)
-        ->get();
-        $idMunicipioSelect = $municipio[0]->id;
-        $idEstadoSelect = $municipio[0]->idEstado; 
-        $idLocalidadSelect = $direccionTB[0]->idLocalidad;
-        $idColoniaSelect = $direccionTB[0]->idColonia;
-        $idCodigoPostalSelect = $coloniaRow[0]->codigoPostal;
-        //nombre del estado
-        $nombreEstado=DB::table('cat_estado')
-        ->where('cat_estado.id','=',$municipio[0]->idEstado)
-        ->get();
-        $nombreEstado=$nombreEstado[0]->nombre;
         
-        //nombre del municipio
-        $nombreMunicipio=DB::table('cat_municipio')
-        ->where('cat_municipio.id','=',$municipio[0]->id)
-        ->get();
-        $nombreMunicipio=$nombreMunicipio[0]->nombre;
+        $tipopersona=$preregistro->esEmpresa;
+        
+        $idEstadoOrigenSelect = $preregistro->idEstadoOrigen; 
+        $idMunicipioOrigenSelect = $preregistro->idMunicipioOrigen;
+        
+        $idEstadoSelect = $preregistro->idEstado; 
+        $idMunicipioSelect = $preregistro->idMunicipio;
+        $idLocalidadSelect = $preregistro->idLocalidad;
+        $idColoniaSelect = $preregistro->idColonia;
+        $idCodigoPostalSelect = $preregistro->codigoPostal;
+        
+        // dd($idMunicipioSelect);
+        
+        $estados=CatEstado::orderBy('nombre','asc')
+        ->pluck('nombre','id');
 
-        //nombre del localidad
-        $nombreLocalidad=DB::table('cat_localidad')
-        ->where('cat_localidad.id','=',$direccionTB[0]->idLocalidad)
-        ->get();
-        $nombreLocalidad=$nombreLocalidad[0]->nombre;
- 
-        //nombre del colonia
-        $Colonia=DB::table('cat_colonia')
-        ->where('cat_colonia.id','=',$direccionTB[0]->idColonia)
-        ->get();
-        $nombreColonia=$Colonia[0]->nombre;
-        $nombreCP=$Colonia[0]->codigoPostal;
-        /* FIN DE PRUEBAS PARA NOMBRES DE DIRECCIONES */
-        $catMunicipios=DB::table('cat_municipio')
-        ->where('cat_municipio.idEstado','=',$idEstadoSelect)
+        $municipiospre=CatMunicipio::where('idEstado','=',$idEstadoSelect)
         ->orderBy('nombre','asc')
         ->pluck('nombre','id');
-        $catLocalidades=DB::table('cat_localidad')
-        ->where('cat_localidad.idMunicipio','=',$municipio[0]->id)
+        $municipios=CatMunicipio::where('idEstado','=',30)
         ->orderBy('nombre','asc')
         ->pluck('nombre','id');
-        $catColonias=DB::table('cat_colonia')
-        ->where('cat_colonia.codigoPostal','=',$coloniaRow[0]->codigoPostal)
+        
+        $localidades=CatLocalidad::where('idMunicipio','=',$idMunicipioSelect)
         ->orderBy('nombre','asc')
         ->pluck('nombre','id');
-        $catCodigoPostal=DB::table('cat_colonia')
-        ->where('cat_colonia.idMunicipio','=',$idMunicipioSelect)
-        ->where('cat_colonia.codigoPostal','!=',0)
+        
+        $colonias=CatColonia::where('idMunicipio','=',$idMunicipioSelect)
+        ->orderBy('nombre','asc')
+        ->pluck('nombre','id');
+        
+        $codigoPostal=CatColonia::where('codigoPostal','=',$idCodigoPostalSelect)
         ->orderBy('codigoPostal','asc')
-        ->groupBy('codigoPostal')
         ->pluck('codigoPostal','codigopostal');
-
+        
+        $municipiosOrigen=CatMunicipio::where('idEstado',$preregistro->idEstadoOrigen)
+        ->pluck('nombre','id');;
+        // dd($municipioOrigen);  
        
         $caso = new Carpeta();
-        // $caso->numCarpeta = "UAT/D"."1"."/"."X"."/"."XX"."/".Carbon::now()->year;
         $caso->fechaInicio = Carbon::now();
         $caso->idFiscal = Auth::user()->id;
         $caso->idUnidad = Auth::user()->idUnidad;
-            
-        // $caso->idEstadoCarpeta = 1;
         $caso->horaIntervencion = Carbon::now();
         $caso->fechaDeterminacion = Carbon::now();
         $caso->save();
         $idCarpeta = $caso->id;
 
-        
         $editpreregistro=Preregistro::find($id);
         $editpreregistro->idCarpeta= $idCarpeta;
         $editpreregistro->save();
 
-        // dd($preregistro->folio);
         session(['preregistro' => $id]);
         session(['foliopreregistro' => $preregistro->folio]);
         session(['carpeta' => $idCarpeta]);
@@ -543,13 +542,9 @@ class PreregistroAuxController extends Controller
         $bdbitacora = new BitacoraNavCaso;
         $bdbitacora->idCaso = $caso->id;
         $bdbitacora->save();
-            
-        $municipioOrigen=CatMunicipio::where('id',$preregistro->idMunicipioOrigen)->first();
-        // dd($municipioOrigen);  
+        
 
         $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
-        $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        $municipios = CatMunicipio::select('id', 'nombre')->orderBy('nombre', 'ASC')->where('idEstado',$municipioOrigen->idEstado)->pluck('nombre', 'id');
         $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $etnias = CatEtnia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $lenguas = CatLengua::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -558,37 +553,31 @@ class PreregistroAuxController extends Controller
         $religiones = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         Alert::success('Turno Tomado', 'Hecho');
         return view('forms.denunciante-turno')->with('idCarpeta', $idCarpeta)
-        ->with('escolaridades', $escolaridades)
-        ->with('municipioOrigen', $municipioOrigen)
-        ->with('estados', $estados)
-        ->with('estadoscivil', $estadoscivil)
-        ->with('etnias', $etnias)
-        ->with('lenguas', $lenguas)
-        ->with('municipios', $municipios)
-        ->with('nacionalidades', $nacionalidades)
-        ->with('ocupaciones', $ocupaciones)
-        ->with('religiones', $religiones)
+        ->with('preregistro', $preregistro)
+        ->with('tipopersona', $tipopersona)
+        ->with('idEstadoOrigenSelect', $idEstadoOrigenSelect)
+        ->with('idMunicipioOrigenSelect', $idMunicipioOrigenSelect)
         ->with('idEstadoSelect', $idEstadoSelect)
         ->with('idMunicipioSelect', $idMunicipioSelect)
         ->with('idLocalidadSelect', $idLocalidadSelect)
         ->with('idColoniaSelect', $idColoniaSelect)
-        ->with('catMunicipios', $catMunicipios)
-        ->with('catLocalidades', $catLocalidades)
-        ->with('catColonias',  $catColonias)
-        ->with('estados',   $estados)
-        ->with('preregistro',  $preregistro)
-        ->with('direccionTB',  $direccionTB)
-        ->with('idCodigoPostalSelect',  $direccionTB)
-        ->with('catCodigoPostal',  $catCodigoPostal)
-        ->with('nombreEstado',  $nombreEstado)
-        ->with('nombreMunicipio',  $nombreMunicipio)
-        ->with('nombreLocalidad',  $nombreLocalidad)
-        ->with('nombreColonia',   $nombreColonia)
-        ->with('nombreCP',  $nombreCP)
-        ->with('tipopersona',  $tipopersona)
-        ->with('idpreregistro',  $idpreregistro);
-        // ->with('identificaciones', $identificaciones);
-        
+        ->with('idCodigoPostalSelect', $idCodigoPostalSelect)
+        ->with('estados', $estados)
+        ->with('municipios', $municipios)
+        ->with('municipiospre', $municipiospre)
+        ->with('localidades', $localidades)
+        ->with('colonias', $colonias)
+        ->with('codigoPostal', $codigoPostal)
+        ->with('municipiosOrigen', $municipiosOrigen)
+        ->with('idCarpeta', $idCarpeta)
+        ->with('escolaridades',  $escolaridades)
+        ->with('estadoscivil',   $estadoscivil)
+        ->with('etnias',  $etnias)
+        ->with('lenguas',  $lenguas)
+        ->with('nacionalidades',  $nacionalidades)
+        ->with('ocupaciones',  $ocupaciones)
+        ->with('religiones',  $religiones);
+        // ->with('identificaciones', $identificaciones);        
     }
 
     public function Traerturno(){

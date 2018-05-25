@@ -22,7 +22,7 @@
 		<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('marcav', 'Marca', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('marcav', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese marca del vehículo',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras']) !!}
+					{!! Form::text('marcav', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese marca del vehículo',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'La marca debe contener al menos dos letras']) !!}
 				</div>
 			</div>
 	<div class="col-4">

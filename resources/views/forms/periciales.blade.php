@@ -12,7 +12,7 @@
 		  	<a class="nav-link active " id="personales-tab" data-toggle="tab" href="#personales" role="tab" aria-controls="personales" aria-selected="true">Extracción de Mensajes</a>
 		</li>
 		<li class="nav-item">
-		  	<a class="nav-link " id="trabajo-tab" data-toggle="tab" href="#trabajo" role="tab" aria-controls="trabajo" aria-selected="false">Psicologo</a>
+		  	<a class="nav-link " id="trabajo-tab" data-toggle="tab" href="#trabajo" role="tab" aria-controls="trabajo" aria-selected="false">Psicólogo</a>
 		</li>
 		<li class="nav-item">
 		  	<a class="nav-link " id="abogado-tab" data-toggle="tab" href="#abogado" role="tab" aria-controls="abogado" aria-selected="false">Vehículos</a>
