@@ -66,7 +66,11 @@ class AbogadoController extends Controller
             $domicilio2->idLocalidad = $request->idLocalidad2;
             $domicilio2->idColonia = $request->idColonia2;
             $domicilio2->calle = $request->calle2;
-            $domicilio2->numExterno = $request->numExterno2;
+            if ($request->numExterno==null) {
+                $domicilio2->numExterno = 'S/N';
+            } else{
+                $domicilio2->numExterno = $request->numExterno2;
+            }
             if ($request->numInterno2==null) {
                 $domicilio2->numInterno = 'S/N';
             } else {

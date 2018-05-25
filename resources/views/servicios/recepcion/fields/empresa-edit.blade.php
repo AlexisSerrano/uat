@@ -133,7 +133,7 @@
 				{!! Form::label('numInterno1', 'Número interior: ', ['class' => 'col-form-label-sm labelCambioNumInterno']) !!}
 				{!!Form::label('nombre',$direccionTB[0]->numInterno ,['class'=> 'col-form-label-sm labelCambioNumInterno'])!!}
 				<div class="input-group inputOculto" id="inputNumInterno">
-					{!! Form::text('numInterno',$direccionTB[0]->numInterno, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior', 'required']) !!}
+					{!! Form::text('numInterno',$direccionTB[0]->numInterno, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 					<input type="button" id="botonCambioNumInterno" value="Cancelar" class="btn btn-sm btn-danger">
 				</div>
 			</div>
