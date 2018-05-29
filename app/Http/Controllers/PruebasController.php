@@ -13,6 +13,7 @@ use App\Models\CatEstadoCivil;
 use App\Models\CatEtnia;
 use App\Models\CatLengua;
 use App\Models\CatNacionalidad;
+use App\Models\Preregistro;
 use App\Models\CatOcupacion;
 use App\Models\CatReligion;
 use App\Models\Razon;
@@ -20,6 +21,30 @@ use App\Models\Razon;
 
 class PruebasController extends Controller
 {
+
+    public function metodo(){
+        // $comprobacionFolio=null;
+        // $folio=null;
+        // while($comprobacionFolio==$folio){
+        // }
+
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < 6; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        dd($randomString);
+            // while(strlen($folio)==6-1) {
+            //     $cadena = '1234567890ABCDEFGHIJKLMNOPKRSTUVWXYZ';
+            //     // $folio=$folio.substr($cadena,rand(0,35));
+            //     $folio=$folio.$cadena[rand(0,35)];
+            //     dd($folio);
+            // }
+            
+            // $comprobacionFolio=Preregistro::where('folio','=',$folio);
+            
+    }
     public function create()
     {
 
