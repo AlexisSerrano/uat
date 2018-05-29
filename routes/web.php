@@ -46,6 +46,7 @@ Route::get('/pruebasconsulta', function(){
             });
             
         Route::get('/pruebasactas','PruebasController@actas');
+        Route::get('/pruebasmetodo','PruebasController@metodo');
         
         Route::get('/oficios', function(){
             return view('forms.oficios');  
@@ -186,8 +187,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('editar/{id}', 'DelitoController@editar')->name('editar');
     Route::put('delito/{id}/actualizar', 'DelitoController@actualizar')->name('actualizar.delito');
     /*---------Rutas para obtener delitos y desagregaciones------------*/
-    Route::get('agrupaciones1/{id}', 'DelitoController@getAgrupaciones1');
-    Route::get('agrupaciones2/{id}', 'DelitoController@getAgrupaciones2');
+    Route::get('agrupaciones1/{id}', 'DelitoController@getAgrupaciones1')->name('get.agregacion1');
+    Route::get('agrupaciones2/{id}', 'DelitoController@getAgrupaciones2')->name('get.agregacion2');
     
     Route::get('acusacion', 'AcusacionController@showForm')->name('new.acusacion');
     Route::post('storeacusacion', 'AcusacionController@storeAcusacion')->name('store.acusacion');
@@ -205,7 +206,7 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('agregar-defensa/{id}/eliminar', 'AbogadoController@delete');
     
     
-    Route::get('involucrados/{idCarpeta}/{idAbogado}', 'AbogadoController@getInvolucrados');
+    Route::get('involucrados/{idAbogado}', 'AbogadoController@getInvolucrados')->name('getinvolucrados');
     /* --------Rutas para Autoridad----------- */
     Route::get('agregar-autoridad', 'AutoridadController@showForm')->name('new.autoridad');
     Route::post('storeautoridad', 'AutoridadController@storeAutoridad')->name('store.autoridad');
