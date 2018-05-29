@@ -16,7 +16,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('segundoAp', $preregistro->segundoAp,['class' => ' turnopersona form-control form-control-sm ', 'placeholder' => 'Ingrese el ','data-validation'=>'required']) !!}
+					{!! Form::text('segundoAp', $preregistro->segundoAp,['class' => ' turnopersona form-control form-control-sm ', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'required']) !!}
 				</div>
 			</div>
 			<div class="col-3">
@@ -28,7 +28,7 @@
 						</div>
 						<div class="col">
 								{!! Form::label('homo', 'Homoclave', ['class' => 'col-form-label-sm']) !!}
-							{!! Form::text('homo', substr($preregistro->rfc,10,3), ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Homoclave','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
+							{!! Form::text('homo', substr($preregistro->rfc,10,3), ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Homoclave','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'Homoclave inválida' ,'required']) !!}
 						</div>
 					</div>
 				</div>
@@ -115,7 +115,7 @@
 			{{-- <div class="col-3">
 				<div class="form-group">
 					{!! Form::label('motivoEstancia', 'Motivo de estancia', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('motivoEstancia', 'SIN INFORMACION', ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el motivo de estancia']) !!}
+					{!! Form::text('motivoEstancia', 'SIN INFORMACIÓN', ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el motivo de estancia']) !!}
 				</div>
 			</div> --}}
 			
@@ -159,14 +159,14 @@
 					{!! Form::label('docIdentificacion', 'Seleccione el documento de identificación:', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::select('docIdentificacion', array('CREDENCIAL PARA VOTAR' => 'CREDENCIAL PARA VOTAR', 
 					'PASAPORTE' => 'PASAPORTE',
-					'CEDULA PROFESIONAL' => 'CEDULA PROFESIONAL',
+					'CEDULA PROFESIONAL' => 'CÉDULA PROFESIONAL',
 					'CARTILLA DEL SERVICIO MILITAR NACIONAL' => 'CARTILLA DEL SERVICIO MILITAR NACIONAL',
-					'TARJETA UNICA DE IDENTIDAD MILITAR' => 'TARJETA UNICA DE IDENTIDAD MILITAR',
-					'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES' => 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES',
+					'TARJETA UNICA DE IDENTIDAD MILITAR' => 'TARJETA ÚNICA DE IDENTIDAD MILITAR',
+					'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES' => 'TARJETA DE AFILIACIÓN AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES',
 					'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL' => 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL',
-					'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR' => 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR',
+					'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR' => 'CREDENCIALES DE EDUCACIÓN MEDIA SUPERIOR Y SUPERIOR',
 					'LICENCIA DE CONDUCIR' => 'LICENCIA DE CONDUCIR',
-					'CERTIFICADO DE MATRICULA CONSULAR' => 'CERTIFICADO DE MATRICULA CONSULAR',
+					'CERTIFICADO DE MATRICULA CONSULAR' => 'CERTIFICADO DE MATRÍCULA CONSULAR',
 					'ACTA DE NACIMIENTO' => 'ACTA DE NACIMIENTO',
 					'CURP' => 'CURP',
 					'CONSTANCIA DE RESIDENCIA' => 'CONSTANCIA DE RESIDENCIA',
