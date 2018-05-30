@@ -220,9 +220,9 @@ class EstadoController extends Controller
                             'extra_denunciado.perseguidoPenalmente as denunciadoperseguidoPenalmente',
                             'extra_denunciado.vestimenta as denunciadovestimenta',
                             'extra_denunciado.narracion as denunciadonarracion',
-                            'dirnotificacion.idDomicilio as notifiidDomicilio',
-                            'dirnotificacion.correo as notificorreo',
-                            'dirnotificacion.telefono as notifitelefono')
+                            'dirNotificacion.idDomicilio as notifiidDomicilio',
+                            'dirNotificacion.correo as notificorreo',
+                            'dirNotificacion.telefono as notifitelefono')
                 ->get();
                 //dd($denunciados);
 
@@ -266,409 +266,405 @@ class EstadoController extends Controller
                             'extra_denunciante.reguardarIdentidad as denunciantereguardarIdentidad',
                             'extra_denunciante.victima as denunciantevictima',
                             'extra_denunciante.narracion as denunciantenarracion',
-                            'dirnotificacion.idDomicilio as notifiidDomicilio',
-                            'dirnotificacion.correo as notificorreo',
-                            'dirnotificacion.telefono as notifitelefono')
+                            'dirNotificacion.idDomicilio as notifiidDomicilio',
+                            'dirNotificacion.correo as notificorreo',
+                            'dirNotificacion.telefono as notifitelefono')
                 ->get();
                 //dd($abogados);
 
                 $acusaciones=Acusacion::where('idCarpeta',$idCarpeta)->get();
                 //dd($acusaciones);
+                DB::beginTransaction();
+                try{
                 
-                //dd($carpeta);
-                if (count($carpeta)!=null) {
-                    $concarpeta= new ConCarpeta;
-                    $concarpeta->idUnidad = 11;
-                    $concarpeta->fechaInicio = $carpeta->fechaInicio;
-                    $concarpeta->conDetenido = $carpeta->conDetenido;
-                    $concarpeta->esRelevante = $carpeta->esRelevante;
-                    $concarpeta->idEstadoCarpeta = $carpeta->idEstadoCarpeta;
-                    $concarpeta->horaIntervencion = $carpeta->horaIntervencion;
-                    $concarpeta->npd = $carpeta->npd;
-                    $concarpeta->fechaIph = $carpeta->fechaIph;
-                    $concarpeta->numIph = $carpeta->numIph;
-                    $concarpeta->narracionIph = $carpeta->narracionIph;
-                    $concarpeta->descripcionHechos = $carpeta->descripcionHechos;
-                    $concarpeta->nombreFiscalUat = Auth::user()->nombres;
-                    $concarpeta->numCarpetaUat = $carpeta->numCarpeta;
-                    $concarpeta->asignada = 0;
-                    $concarpeta->observacionesEstatus = $carpeta->observacionesEstatus;
-                    $concarpeta->save();
-                    $idCarpetaTurnada=$concarpeta->id;
-                    //dd($concarpeta);
-                }
-            
-                
-            
-                // dd($delitos);
-
-                if (count($delitos)!=null) {
-                    $arraydelitos=array();
-                    foreach ($delitos as $delito) {
-                        $condelito = new ConTipifDelito;
-                        $condelito->idCarpeta = $idCarpetaTurnada;
-                        $condelito->idDelito = $delito->idDelito;
-                        $condelito->idAgrupacion1 = $delito->idAgrupacion1;
-                        $condelito->idAgrupacion2 = $delito->idAgrupacion2;
-                        $condelito->conViolencia = $delito->conViolencia;
-                        $condelito->idArma = 1;
-                        $condelito->consumacion = 'SIN INFORMACION';
-                        $condelito->idPosibleCausa = 1;
-                        $condelito->idModalidad = 1;
-                        $condelito->formaComision = $delito->formaComision;
-                        $condelito->fecha = $delito->fecha;
-                        $condelito->hora = $delito->hora;
-                        $condelito->idZona = $delito->idZona;
-                        $condelito->idLugar = $delito->idLugar;
-                        $condelito->idDomicilio = $delito->idDomicilio;
-                        $condelito->entreCalle = $delito->entreCalle;
-                        $condelito->yCalle = $delito->yCalle;
-                        $condelito->calleTrasera = $delito->calleTrasera;
-                        $condelito->puntoReferencia = $delito->puntoReferencia;
-                        $condelito->save();
-                        array_push($arraydelitos,array('iduat'=>$delito->id,'idnuevo'=>$condelito->id));
-                        // dd($arraydelitos);
+                    //dd($carpeta);
+                    if (count($carpeta)>0) {
+                        $concarpeta= new ConCarpeta;
+                        $concarpeta->idUnidad = 11;
+                        $concarpeta->fechaInicio = $carpeta->fechaInicio;
+                        $concarpeta->conDetenido = $carpeta->conDetenido;
+                        $concarpeta->esRelevante = $carpeta->esRelevante;
+                        $concarpeta->idEstadoCarpeta = $carpeta->idEstadoCarpeta;
+                        $concarpeta->horaIntervencion = $carpeta->horaIntervencion;
+                        $concarpeta->npd = $carpeta->npd;
+                        $concarpeta->fechaIph = $carpeta->fechaIph;
+                        $concarpeta->numIph = $carpeta->numIph;
+                        $concarpeta->narracionIph = $carpeta->narracionIph;
+                        $concarpeta->descripcionHechos = $carpeta->descripcionHechos;
+                        $concarpeta->nombreFiscalUat = Auth::user()->nombres;
+                        $concarpeta->numCarpetaUat = $carpeta->numCarpeta;
+                        $concarpeta->asignada = 0;
+                        $concarpeta->observacionesEstatus = $carpeta->observacionesEstatus;
+                        $concarpeta->save();
+                        $idCarpetaTurnada=$concarpeta->id;
+                        //dd($concarpeta);
                     }
-                }
+                
+                    
+                
+                    // dd($delitos);
 
-
-
-                if (count($autoridades)!=null) {
-                    foreach ($autoridades as $autoridad) {
-                        $conpersona = new ConPersona;
-                        $conpersona->nombres = $autoridad->pernombres;
-                        $conpersona->primerAp = $autoridad->perprimerAp;
-                        $conpersona->segundoAp = $autoridad->persegundoAp;
-                        $conpersona->fechaNacimiento = $autoridad->perfechaNacimiento;
-                        $conpersona->rfc = $autoridad->perrfc;
-                        $conpersona->curp = $autoridad->percurp;
-                        $conpersona->sexo = $autoridad->persexo;
-                        $conpersona->idNacionalidad = $autoridad->peridNacionalidad;
-                        $conpersona->idEtnia = $autoridad->peridEtnia;
-                        $conpersona->idLengua = $autoridad->peridLengua;
-                        $conpersona->idMunicipioOrigen = $autoridad->peridMunicipioOrigen;
-                        $conpersona->esEmpresa = $autoridad->peresEmpresa;
-                        $conpersona->save();
-                        $idpersonaauto=$conpersona->id;
-
-
-                        $convariables = new ConVariablesPersona;
-                        $convariables->idCarpeta = $idCarpetaTurnada;
-                        $convariables->idPersona = $idpersonaauto;
-                        $convariables->edad = $autoridad->variaedad;
-                        $convariables->telefono = $autoridad->variatelefono;
-                        $convariables->motivoEstancia = 'NO APLICA';
-                        $convariables->idOcupacion = $autoridad->variaidOcupacion;
-                        $convariables->idEstadoCivil = $autoridad->variaidEstadoCivil;
-                        $convariables->idEscolaridad = $autoridad->variaidEscolaridad;
-                        $convariables->idReligion = $autoridad->variaidReligion;
-                        $convariables->idDomicilio = $autoridad->variaidDomicilio;
-                        $convariables->docIdentificacion = $autoridad->variadocIdentificacion;
-                        $convariables->numDocIdentificacion = $autoridad->varianumDocIdentificacion;
-                        $convariables->lugarTrabajo = $autoridad->varialugarTrabajo;
-                        $convariables->idDomicilioTrabajo = $autoridad->variaidDomicilioTrabajo;
-                        $convariables->telefonoTrabajo = $autoridad->variatelefonoTrabajo;
-                        $convariables->representanteLegal = $autoridad->variarepresentanteLegal;
-                        $convariables->save();
-                        $idvariablesauto=$convariables->id;
-                        
-                        $conautoridad = new ConExtraAutoridad;
-                        $conautoridad->idVariablesPersona = $idvariablesauto;
-                        $conautoridad->antiguedad = $autoridad->autoantiguedad;
-                        $conautoridad->rango = $autoridad->autorango;
-                        $conautoridad->horarioLaboral = $autoridad->autohorarioLaboral;
-                        //$conautoridad->narracion = $autoridad->autonarracion;
-                        $conautoridad->save();
-                        $idextraauto=$conautoridad->id;
-                        //dd($conautoridad);
-                        
-                        $narracion=DB::connection('uipj')->table('narracion')->insert([
-                            'idInvolucrado'=>$idextraauto,
-                            'idCarpeta'=>$idCarpetaTurnada,
-                            'tipoInvolucrado'=>3,
-                            'narracion'=>$autoridad->autonarracion
-                        ]);
-                        //$narracion->save();
-                        //dd($narracion->id);
-
+                    if (count($delitos)>0) {
+                        $arraydelitos=array();
+                        foreach ($delitos as $delito) {
+                            $condelito = new ConTipifDelito;
+                            $condelito->idCarpeta = $idCarpetaTurnada;
+                            $condelito->idDelito = $delito->idDelito;
+                            $condelito->idAgrupacion1 = $delito->idAgrupacion1;
+                            $condelito->idAgrupacion2 = $delito->idAgrupacion2;
+                            $condelito->conViolencia = $delito->conViolencia;
+                            $condelito->idArma = 1;
+                            $condelito->consumacion = 'SIN INFORMACION';
+                            $condelito->idPosibleCausa = 1;
+                            $condelito->idModalidad = 1;
+                            $condelito->formaComision = $delito->formaComision;
+                            $condelito->fecha = $delito->fecha;
+                            $condelito->hora = $delito->hora;
+                            $condelito->idZona = $delito->idZona;
+                            $condelito->idLugar = $delito->idLugar;
+                            $condelito->idDomicilio = $delito->idDomicilio;
+                            $condelito->entreCalle = $delito->entreCalle;
+                            $condelito->yCalle = $delito->yCalle;
+                            $condelito->calleTrasera = $delito->calleTrasera;
+                            $condelito->puntoReferencia = $delito->puntoReferencia;
+                            $condelito->save();
+                            array_push($arraydelitos,array('iduat'=>$delito->id,'idnuevo'=>$condelito->id));
+                            // dd($arraydelitos);
+                        }
                     }
-                }
 
-                //datos de abogados
-                
 
-                
-                if (count($abogados)!=null) {
-                    $arrayabogados=array();
-                    foreach ($abogados as $abogado) {
-                        $conpersona = new ConPersona;
-                        $conpersona->nombres = $abogado->pernombres;
-                        $conpersona->primerAp = $abogado->perprimerAp;
-                        $conpersona->segundoAp = $abogado->persegundoAp;
-                        $conpersona->fechaNacimiento = $abogado->perfechaNacimiento;
-                        $conpersona->rfc = $abogado->perrfc;
-                        $conpersona->curp = $abogado->percurp;
-                        $conpersona->sexo = $abogado->persexo;
-                        $conpersona->idNacionalidad = $abogado->peridNacionalidad;
-                        $conpersona->idEtnia = $abogado->peridEtnia;
-                        $conpersona->idLengua = $abogado->peridLengua;
-                        $conpersona->idMunicipioOrigen = $abogado->peridMunicipioOrigen;
-                        $conpersona->esEmpresa = $abogado->peresEmpresa;
-                        $conpersona->save();
-                        $idpersonaabo=$conpersona->id;
-                        
-                        $convariables = new ConVariablesPersona;
-                        $convariables->idCarpeta = $idCarpetaTurnada;
-                        $convariables->idPersona = $idpersonaabo;
-                        $convariables->edad = $abogado->variaedad;
-                        $convariables->telefono = $abogado->variatelefono;
-                        $convariables->motivoEstancia = 'SIN INFORMACION';
-                        $convariables->idOcupacion = $abogado->variaidOcupacion;
-                        $convariables->idEstadoCivil = $abogado->variaidEstadoCivil;
-                        $convariables->idEscolaridad = $abogado->variaidEscolaridad;
-                        $convariables->idReligion = $abogado->variaidReligion;
-                        $convariables->idDomicilio = $abogado->variaidDomicilio;
-                        $convariables->docIdentificacion = $abogado->variadocIdentificacion;
-                        $convariables->numDocIdentificacion = $abogado->varianumDocIdentificacion;
-                        $convariables->lugarTrabajo = $abogado->varialugarTrabajo;
-                        $convariables->idDomicilioTrabajo = $abogado->variaidDomicilioTrabajo;
-                        $convariables->telefonoTrabajo = $abogado->variatelefonoTrabajo;
-                        $convariables->representanteLegal = $abogado->variarepresentanteLegal;
-                        $convariables->save();
-                        $idvariablesabo=$convariables->id;
-                        
-                        $conabogado = new ConExtraAbogado;
-                        $conabogado->idVariablesPersona = $idvariablesabo;
-                        $conabogado->cedulaProf = $abogado->abocedulaProf;
-                        $conabogado->sector = $abogado->abosector;
-                        $conabogado->correo = $abogado->abocorreo;
-                        $conabogado->tipo = $abogado->abotipo;
-                        $conabogado->save();
-                        //dd($conabogado);
-                        array_push($arrayabogados,array('iduat'=>$abogado->aboid,'idnuevo'=>$conabogado->id));
-                        
 
+                    if (count($autoridades)>0) {
+                        foreach ($autoridades as $autoridad) {
+                            $conpersona = new ConPersona;
+                            $conpersona->nombres = $autoridad->pernombres;
+                            $conpersona->primerAp = $autoridad->perprimerAp;
+                            $conpersona->segundoAp = $autoridad->persegundoAp;
+                            $conpersona->fechaNacimiento = $autoridad->perfechaNacimiento;
+                            $conpersona->rfc = $autoridad->perrfc;
+                            $conpersona->curp = $autoridad->percurp;
+                            $conpersona->sexo = $autoridad->persexo;
+                            $conpersona->idNacionalidad = $autoridad->peridNacionalidad;
+                            $conpersona->idEtnia = $autoridad->peridEtnia;
+                            $conpersona->idLengua = $autoridad->peridLengua;
+                            $conpersona->idMunicipioOrigen = $autoridad->peridMunicipioOrigen;
+                            $conpersona->esEmpresa = $autoridad->peresEmpresa;
+                            $conpersona->save();
+                            $idpersonaauto=$conpersona->id;
+
+
+                            $convariables = new ConVariablesPersona;
+                            $convariables->idCarpeta = $idCarpetaTurnada;
+                            $convariables->idPersona = $idpersonaauto;
+                            $convariables->edad = $autoridad->variaedad;
+                            $convariables->telefono = $autoridad->variatelefono;
+                            $convariables->motivoEstancia = 'NO APLICA';
+                            $convariables->idOcupacion = $autoridad->variaidOcupacion;
+                            $convariables->idEstadoCivil = $autoridad->variaidEstadoCivil;
+                            $convariables->idEscolaridad = $autoridad->variaidEscolaridad;
+                            $convariables->idReligion = $autoridad->variaidReligion;
+                            $convariables->idDomicilio = $autoridad->variaidDomicilio;
+                            $convariables->docIdentificacion = $autoridad->variadocIdentificacion;
+                            $convariables->numDocIdentificacion = $autoridad->varianumDocIdentificacion;
+                            $convariables->lugarTrabajo = $autoridad->varialugarTrabajo;
+                            $convariables->idDomicilioTrabajo = $autoridad->variaidDomicilioTrabajo;
+                            $convariables->telefonoTrabajo = $autoridad->variatelefonoTrabajo;
+                            $convariables->representanteLegal = $autoridad->variarepresentanteLegal;
+                            $convariables->save();
+                            $idvariablesauto=$convariables->id;
+                            
+                            $conautoridad = new ConExtraAutoridad;
+                            $conautoridad->idVariablesPersona = $idvariablesauto;
+                            $conautoridad->antiguedad = $autoridad->autoantiguedad;
+                            $conautoridad->rango = $autoridad->autorango;
+                            $conautoridad->horarioLaboral = $autoridad->autohorarioLaboral;
+                            //$conautoridad->narracion = $autoridad->autonarracion;
+                            $conautoridad->save();
+                            $idextraauto=$conautoridad->id;
+                            //dd($conautoridad);
+                            
+                            $narracion=DB::connection('uipj')->table('narracion')->insert([
+                                'idInvolucrado'=>$idextraauto,
+                                'idCarpeta'=>$idCarpetaTurnada,
+                                'tipoInvolucrado'=>3,
+                                'narracion'=>$autoridad->autonarracion
+                            ]);
+                            //$narracion->save();
+                            //dd($narracion->id);
+
+                        }
                     }
-                }
-                
-                /****DATOS DEL DENUNCIADO******/
+
+                    //datos de abogados
+                    
+
+                    
+                    if (count($abogados)>0) {
+                        $arrayabogados=array();
+                        foreach ($abogados as $abogado) {
+                            $conpersona = new ConPersona;
+                            $conpersona->nombres = $abogado->pernombres;
+                            $conpersona->primerAp = $abogado->perprimerAp;
+                            $conpersona->segundoAp = $abogado->persegundoAp;
+                            $conpersona->fechaNacimiento = $abogado->perfechaNacimiento;
+                            $conpersona->rfc = $abogado->perrfc;
+                            $conpersona->curp = $abogado->percurp;
+                            $conpersona->sexo = $abogado->persexo;
+                            $conpersona->idNacionalidad = $abogado->peridNacionalidad;
+                            $conpersona->idEtnia = $abogado->peridEtnia;
+                            $conpersona->idLengua = $abogado->peridLengua;
+                            $conpersona->idMunicipioOrigen = $abogado->peridMunicipioOrigen;
+                            $conpersona->esEmpresa = $abogado->peresEmpresa;
+                            $conpersona->save();
+                            $idpersonaabo=$conpersona->id;
+                            
+                            $convariables = new ConVariablesPersona;
+                            $convariables->idCarpeta = $idCarpetaTurnada;
+                            $convariables->idPersona = $idpersonaabo;
+                            $convariables->edad = $abogado->variaedad;
+                            $convariables->telefono = $abogado->variatelefono;
+                            $convariables->motivoEstancia = 'SIN INFORMACION';
+                            $convariables->idOcupacion = $abogado->variaidOcupacion;
+                            $convariables->idEstadoCivil = $abogado->variaidEstadoCivil;
+                            $convariables->idEscolaridad = $abogado->variaidEscolaridad;
+                            $convariables->idReligion = $abogado->variaidReligion;
+                            $convariables->idDomicilio = $abogado->variaidDomicilio;
+                            $convariables->docIdentificacion = $abogado->variadocIdentificacion;
+                            $convariables->numDocIdentificacion = $abogado->varianumDocIdentificacion;
+                            $convariables->lugarTrabajo = $abogado->varialugarTrabajo;
+                            $convariables->idDomicilioTrabajo = $abogado->variaidDomicilioTrabajo;
+                            $convariables->telefonoTrabajo = $abogado->variatelefonoTrabajo;
+                            $convariables->representanteLegal = $abogado->variarepresentanteLegal;
+                            $convariables->save();
+                            $idvariablesabo=$convariables->id;
+                            
+                            $conabogado = new ConExtraAbogado;
+                            $conabogado->idVariablesPersona = $idvariablesabo;
+                            $conabogado->cedulaProf = $abogado->abocedulaProf;
+                            $conabogado->sector = $abogado->abosector;
+                            $conabogado->correo = $abogado->abocorreo;
+                            $conabogado->tipo = $abogado->abotipo;
+                            $conabogado->save();
+                            //dd($conabogado);
+                            array_push($arrayabogados,array('iduat'=>$abogado->aboid,'idnuevo'=>$conabogado->id));
+                            
+
+                        }
+                    }
+                    
+                    /****DATOS DEL DENUNCIADO******/
 
 
-                if (count($denunciados)!=null) {
-                    $arraydenunciado=array();
-                    foreach ($denunciados as $denunciado) {
-                        $conpersona = new ConPersona;
-                        $conpersona->nombres = $denunciado->pernombres;
-                        $conpersona->primerAp = $denunciado->perprimerAp;
-                        $conpersona->segundoAp = $denunciado->persegundoAp;
-                        $conpersona->fechaNacimiento = $denunciado->perfechaNacimiento;
-                        $conpersona->rfc = $denunciado->perrfc;
-                        $conpersona->curp = $denunciado->percurp;
-                        $conpersona->sexo = $denunciado->persexo;
-                        $conpersona->idNacionalidad = $denunciado->peridNacionalidad;
-                        $conpersona->idEtnia = $denunciado->peridEtnia;
-                        $conpersona->idLengua = $denunciado->peridLengua;
-                        $conpersona->idMunicipioOrigen = $denunciado->peridMunicipioOrigen;
-                        $conpersona->esEmpresa = $denunciado->peresEmpresa;
-                        $conpersona->save();
-                        $idpersonadenunciado=$conpersona->id;
-                        
-                        $convariables = new ConVariablesPersona;
-                        $convariables->idCarpeta = $idCarpetaTurnada;
-                        $convariables->idPersona = $idpersonadenunciado;
-                        $convariables->edad = $denunciado->variaedad;
-                        $convariables->telefono = $denunciado->variatelefono;
-                        $convariables->motivoEstancia = 'SIN INFORMACION';
-                        $convariables->idOcupacion = $denunciado->variaidOcupacion;
-                        $convariables->idEstadoCivil = $denunciado->variaidEstadoCivil;
-                        $convariables->idEscolaridad = $denunciado->variaidEscolaridad;
-                        $convariables->idReligion = $denunciado->variaidReligion;
-                        $convariables->idDomicilio = $denunciado->variaidDomicilio;
-                        $convariables->docIdentificacion = $denunciado->variadocIdentificacion;
-                        $convariables->numDocIdentificacion = $denunciado->varianumDocIdentificacion;
-                        $convariables->lugarTrabajo = $denunciado->varialugarTrabajo;
-                        $convariables->idDomicilioTrabajo = $denunciado->variaidDomicilioTrabajo;
-                        $convariables->telefonoTrabajo = $denunciado->variatelefonoTrabajo;
-                        $convariables->representanteLegal = $denunciado->variarepresentanteLegal;
-                        $convariables->save();
-                        $idvariablesabo=$convariables->id;
-                        
-                        $conNotifi = new ConNotificacion;
-                        $conNotifi->idDomicilio = $denunciado->notifiidDomicilio;
-                        $conNotifi->correo = $denunciado->notificorreo;
-                        $conNotifi->telefono = $denunciado->notifitelefono;
-                        // $conNotifi->fax = $denunciado->notififax;
-                        $conNotifi->save();
-                        $idnotificon=$conNotifi->id;
+                    if (count($denunciados)>0) {
+                        $arraydenunciado=array();
+                        foreach ($denunciados as $denunciado) {
+                            $conpersona = new ConPersona;
+                            $conpersona->nombres = $denunciado->pernombres;
+                            $conpersona->primerAp = $denunciado->perprimerAp;
+                            $conpersona->segundoAp = $denunciado->persegundoAp;
+                            $conpersona->fechaNacimiento = $denunciado->perfechaNacimiento;
+                            $conpersona->rfc = $denunciado->perrfc;
+                            $conpersona->curp = $denunciado->percurp;
+                            $conpersona->sexo = $denunciado->persexo;
+                            $conpersona->idNacionalidad = $denunciado->peridNacionalidad;
+                            $conpersona->idEtnia = $denunciado->peridEtnia;
+                            $conpersona->idLengua = $denunciado->peridLengua;
+                            $conpersona->idMunicipioOrigen = $denunciado->peridMunicipioOrigen;
+                            $conpersona->esEmpresa = $denunciado->peresEmpresa;
+                            $conpersona->save();
+                            $idpersonadenunciado=$conpersona->id;
+                            
+                            $convariables = new ConVariablesPersona;
+                            $convariables->idCarpeta = $idCarpetaTurnada;
+                            $convariables->idPersona = $idpersonadenunciado;
+                            $convariables->edad = $denunciado->variaedad;
+                            $convariables->telefono = $denunciado->variatelefono;
+                            $convariables->motivoEstancia = 'SIN INFORMACION';
+                            $convariables->idOcupacion = $denunciado->variaidOcupacion;
+                            $convariables->idEstadoCivil = $denunciado->variaidEstadoCivil;
+                            $convariables->idEscolaridad = $denunciado->variaidEscolaridad;
+                            $convariables->idReligion = $denunciado->variaidReligion;
+                            $convariables->idDomicilio = $denunciado->variaidDomicilio;
+                            $convariables->docIdentificacion = $denunciado->variadocIdentificacion;
+                            $convariables->numDocIdentificacion = $denunciado->varianumDocIdentificacion;
+                            $convariables->lugarTrabajo = $denunciado->varialugarTrabajo;
+                            $convariables->idDomicilioTrabajo = $denunciado->variaidDomicilioTrabajo;
+                            $convariables->telefonoTrabajo = $denunciado->variatelefonoTrabajo;
+                            $convariables->representanteLegal = $denunciado->variarepresentanteLegal;
+                            $convariables->save();
+                            $idvariablesabo=$convariables->id;
+                            
+                            $conNotifi = new ConNotificacion;
+                            $conNotifi->idDomicilio = $denunciado->notifiidDomicilio;
+                            $conNotifi->correo = $denunciado->notificorreo;
+                            $conNotifi->telefono = $denunciado->notifitelefono;
+                            // $conNotifi->fax = $denunciado->notififax;
+                            $conNotifi->save();
+                            $idnotificon=$conNotifi->id;
 
-                        $condenunciado = new ConExtraDenunciado;
-                        $condenunciado->idVariablesPersona = $idvariablesabo;
-                        $condenunciado->idNotificacion = $idnotificon;
-                        $condenunciado->idPuesto = $denunciado->denunciadoidPuesto;
-                        $condenunciado->alias = $denunciado->denunciadoalias;
-                        $condenunciado->senasPartic = $denunciado->denunciadosenasPartic;
-                        $condenunciado->ingreso = $denunciado->denunciadoingreso;
-                        $condenunciado->periodoIngreso = $denunciado->denunciadoperiodoIngreso;
-                        $condenunciado->residenciaAnterior = $denunciado->denunciadoresidenciaAnterior;
-                        if (is_null($denunciado->denunciadoidAbogado)) {
-                            $condenunciado->idAbogado=null;
-                        } else {
-                            for($cont=0; $cont<count($arrayabogados); $cont++){
-                                if($arrayabogados[$cont]['iduat'] == $denunciado->denunciadoidAbogado){
-                                    $condenunciado->idAbogado = $arrayabogados[$cont]['idnuevo'];
-                                    break;
+                            $condenunciado = new ConExtraDenunciado;
+                            $condenunciado->idVariablesPersona = $idvariablesabo;
+                            $condenunciado->idNotificacion = $idnotificon;
+                            $condenunciado->idPuesto = $denunciado->denunciadoidPuesto;
+                            $condenunciado->alias = $denunciado->denunciadoalias;
+                            $condenunciado->senasPartic = $denunciado->denunciadosenasPartic;
+                            $condenunciado->ingreso = $denunciado->denunciadoingreso;
+                            $condenunciado->periodoIngreso = $denunciado->denunciadoperiodoIngreso;
+                            $condenunciado->residenciaAnterior = $denunciado->denunciadoresidenciaAnterior;
+                            if (is_null($denunciado->denunciadoidAbogado)) {
+                                $condenunciado->idAbogado=null;
+                            } else {
+                                for($cont=0; $cont<count($arrayabogados); $cont++){
+                                    if($arrayabogados[$cont]['iduat'] == $denunciado->denunciadoidAbogado){
+                                        $condenunciado->idAbogado = $arrayabogados[$cont]['idnuevo'];
+                                        break;
+                                    }
                                 }
                             }
+                            
+                            $condenunciado->personasBajoSuGuarda = $denunciado->denunciadopersonasBajoSuGuarda;
+                            $condenunciado->perseguidoPenalmente = $denunciado->denunciadoperseguidoPenalmente;
+                            $condenunciado->vestimenta = $denunciado->denunciadovestimenta;
+                            $condenunciado->save();
+                            $idextra=$condenunciado->id;
+                            //dd($condenunciado);
+                            $narracion=DB::connection('uipj')->table('narracion')->insert([
+                                'idInvolucrado'=>$idextra,
+                                'idCarpeta'=>$idCarpetaTurnada,
+                                'tipoInvolucrado'=>2,
+                                'narracion'=>$denunciado->denunciadonarracion
+                            ]);
+                            //$narracion->save();
+                            //dd($narracion->id);
+                            array_push($arraydenunciado,array('iduat'=>$denunciado->denunciadoid,'idnuevo'=>$condenunciado->id));
+                            
+                            //dd($arraydenunciado);
+
                         }
-                        
-                        $condenunciado->personasBajoSuGuarda = $denunciado->denunciadopersonasBajoSuGuarda;
-                        $condenunciado->perseguidoPenalmente = $denunciado->denunciadoperseguidoPenalmente;
-                        $condenunciado->vestimenta = $denunciado->denunciadovestimenta;
-                        $condenunciado->save();
-                        $idextra=$condenunciado->id;
-                        //dd($condenunciado);
-                        $narracion=DB::connection('uipj')->table('narracion')->insert([
-                            'idInvolucrado'=>$idextra,
-                            'idCarpeta'=>$idCarpetaTurnada,
-                            'tipoInvolucrado'=>2,
-                            'narracion'=>$denunciado->denunciadonarracion
-                        ]);
-                        //$narracion->save();
-                        //dd($narracion->id);
-                        array_push($arraydenunciado,array('iduat'=>$denunciado->denunciadoid,'idnuevo'=>$condenunciado->id));
-                        
-                        //dd($arraydenunciado);
-
                     }
-                }
-                
-                /****DATOS DEL DENUNCIANTE******/
+                    
+                    /****DATOS DEL DENUNCIANTE******/
 
-                
-                if (count($denunciantes)!=null) {
-                    $arraydenunciante=array();
-                    foreach ($denunciantes as $denunciante) {
-                        $conpersona = new ConPersona;
-                        $conpersona->nombres = $denunciante->pernombres;
-                        $conpersona->primerAp = $denunciante->perprimerAp;
-                        $conpersona->segundoAp = $denunciante->persegundoAp;
-                        $conpersona->fechaNacimiento = $denunciante->perfechaNacimiento;
-                        $conpersona->rfc = $denunciante->perrfc;
-                        $conpersona->curp = $denunciante->percurp;
-                        $conpersona->sexo = $denunciante->persexo;
-                        $conpersona->idNacionalidad = $denunciante->peridNacionalidad;
-                        $conpersona->idEtnia = $denunciante->peridEtnia;
-                        $conpersona->idLengua = $denunciante->peridLengua;
-                        $conpersona->idMunicipioOrigen = $denunciante->peridMunicipioOrigen;
-                        $conpersona->esEmpresa = $denunciante->peresEmpresa;
-                        $conpersona->save();
-                        $idpersonadenuncianate=$conpersona->id;
-                        
-                        
-                        $convariables = new ConVariablesPersona;
-                        $convariables->idCarpeta = $idCarpetaTurnada;
-                        $convariables->idPersona = $idpersonadenuncianate;
-                        $convariables->edad = $denunciante->variaedad;
-                        $convariables->telefono = $denunciante->variatelefono;
-                        $convariables->motivoEstancia ='SIN INFORMACION';
-                        $convariables->idOcupacion = $denunciante->variaidOcupacion;
-                        $convariables->idEstadoCivil = $denunciante->variaidEstadoCivil;
-                        $convariables->idEscolaridad = $denunciante->variaidEscolaridad;
-                        $convariables->idReligion = $denunciante->variaidReligion;
-                        $convariables->idDomicilio = $denunciante->variaidDomicilio;
-                        $convariables->docIdentificacion = $denunciante->variadocIdentificacion;
-                        $convariables->numDocIdentificacion = $denunciante->varianumDocIdentificacion;
-                        $convariables->lugarTrabajo = $denunciante->varialugarTrabajo;
-                        $convariables->idDomicilioTrabajo = $denunciante->variaidDomicilioTrabajo;
-                        $convariables->telefonoTrabajo = $denunciante->variatelefonoTrabajo;
-                        $convariables->representanteLegal = $denunciante->variarepresentanteLegal;
-                        $convariables->save();
-                        $idvariablesabo=$convariables->id;
-                        
-                        $conNotifi = new ConNotificacion;
-                        $conNotifi->idDomicilio = $denunciante->notifiidDomicilio;
-                        $conNotifi->correo = $denunciante->notificorreo;
-                        $conNotifi->telefono = $denunciante->notifitelefono;
-                        // $conNotifi->fax = $denunciante->notififax;
-                        $conNotifi->save();
-                        $idnotificon=$conNotifi->id;
+                    
+                    if (count($denunciantes)>0) {
+                        $arraydenunciante=array();
+                        foreach ($denunciantes as $denunciante) {
+                            $conpersona = new ConPersona;
+                            $conpersona->nombres = $denunciante->pernombres;
+                            $conpersona->primerAp = $denunciante->perprimerAp;
+                            $conpersona->segundoAp = $denunciante->persegundoAp;
+                            $conpersona->fechaNacimiento = $denunciante->perfechaNacimiento;
+                            $conpersona->rfc = $denunciante->perrfc;
+                            $conpersona->curp = $denunciante->percurp;
+                            $conpersona->sexo = $denunciante->persexo;
+                            $conpersona->idNacionalidad = $denunciante->peridNacionalidad;
+                            $conpersona->idEtnia = $denunciante->peridEtnia;
+                            $conpersona->idLengua = $denunciante->peridLengua;
+                            $conpersona->idMunicipioOrigen = $denunciante->peridMunicipioOrigen;
+                            $conpersona->esEmpresa = $denunciante->peresEmpresa;
+                            $conpersona->save();
+                            $idpersonadenuncianate=$conpersona->id;
+                            
+                            
+                            $convariables = new ConVariablesPersona;
+                            $convariables->idCarpeta = $idCarpetaTurnada;
+                            $convariables->idPersona = $idpersonadenuncianate;
+                            $convariables->edad = $denunciante->variaedad;
+                            $convariables->telefono = $denunciante->variatelefono;
+                            $convariables->motivoEstancia ='SIN INFORMACION';
+                            $convariables->idOcupacion = $denunciante->variaidOcupacion;
+                            $convariables->idEstadoCivil = $denunciante->variaidEstadoCivil;
+                            $convariables->idEscolaridad = $denunciante->variaidEscolaridad;
+                            $convariables->idReligion = $denunciante->variaidReligion;
+                            $convariables->idDomicilio = $denunciante->variaidDomicilio;
+                            $convariables->docIdentificacion = $denunciante->variadocIdentificacion;
+                            $convariables->numDocIdentificacion = $denunciante->varianumDocIdentificacion;
+                            $convariables->lugarTrabajo = $denunciante->varialugarTrabajo;
+                            $convariables->idDomicilioTrabajo = $denunciante->variaidDomicilioTrabajo;
+                            $convariables->telefonoTrabajo = $denunciante->variatelefonoTrabajo;
+                            $convariables->representanteLegal = $denunciante->variarepresentanteLegal;
+                            $convariables->save();
+                            $idvariablesabo=$convariables->id;
+                            
+                            $conNotifi = new ConNotificacion;
+                            $conNotifi->idDomicilio = $denunciante->notifiidDomicilio;
+                            $conNotifi->correo = $denunciante->notificorreo;
+                            $conNotifi->telefono = $denunciante->notifitelefono;
+                            // $conNotifi->fax = $denunciante->notififax;
+                            $conNotifi->save();
+                            $idnotificon=$conNotifi->id;
 
-                        $condenunciante = new ConExtraDenunciante;
-                        $condenunciante->idVariablesPersona = $idvariablesabo;
-                        $condenunciante->idNotificacion = $idnotificon;
-                        if (is_null($denunciado->denunciadoidAbogado)) {
-                            $condenunciante->idAbogado=null;
-                        } else {
-                            for($cont=0; $cont<count($arrayabogados); $cont++){
-                                if($arrayabogados[$cont]['iduat'] == $denunciante->denuncianteidAbogado){
-                                    $condenunciante->idAbogado = $arrayabogados[$cont]['idnuevo'];
-                                    break;
+                            $condenunciante = new ConExtraDenunciante;
+                            $condenunciante->idVariablesPersona = $idvariablesabo;
+                            $condenunciante->idNotificacion = $idnotificon;
+                            if (is_null($denunciado->denunciadoidAbogado)) {
+                                $condenunciante->idAbogado=null;
+                            } else {
+                                for($cont=0; $cont<count($arrayabogados); $cont++){
+                                    if($arrayabogados[$cont]['iduat'] == $denunciante->denuncianteidAbogado){
+                                        $condenunciante->idAbogado = $arrayabogados[$cont]['idnuevo'];
+                                        break;
+                                    }
                                 }
                             }
+                            $condenunciante->identidadResguarda = $denunciante->denunciantereguardarIdentidad;
+                            $condenunciante->esVictima = $denunciante->denunciantevictima;
+                            $condenunciante->save();
+                            $idextra=$condenunciante->id;
+                            //dd($condenunciante);
+
+                            $narracion=DB::connection('uipj')->table('narracion')->insert([
+                                'idInvolucrado'=>$idextra,
+                                'idCarpeta'=>$idCarpetaTurnada,
+                                'tipoInvolucrado'=>1,
+                                'narracion'=>$denunciante->denunciantenarracion
+                            ]);
+                            array_push($arraydenunciante,array('iduat'=>$denunciante->denuncianteid,'idnuevo'=>$condenunciante->id));
+                            // dd($arraydenunciante);
                         }
-                        $condenunciante->identidadResguarda = $denunciante->denunciantereguardarIdentidad;
-                        $condenunciante->esVictima = $denunciante->denunciantevictima;
-                        $condenunciante->save();
-                        $idextra=$condenunciante->id;
-                        //dd($condenunciante);
 
-                        $narracion=DB::connection('uipj')->table('narracion')->insert([
-                            'idInvolucrado'=>$idextra,
-                            'idCarpeta'=>$idCarpetaTurnada,
-                            'tipoInvolucrado'=>1,
-                            'narracion'=>$denunciante->denunciantenarracion
-                        ]);
-                        array_push($arraydenunciante,array('iduat'=>$denunciante->denuncianteid,'idnuevo'=>$condenunciante->id));
-                        // dd($arraydenunciante);
                     }
+                    
+                    
 
+                    foreach ($acusaciones as $acusacion) {
+                        $conacusacion= new ConAcusacion;
+                        $conacusacion->idCarpeta=$idCarpetaTurnada;
+                        for($cont=0; $cont<count($arraydelitos); $cont++){
+                            if($arraydelitos[$cont]['iduat'] == $acusacion->idTipifDelito){
+                                $conacusacion->idTipifDelito = $arraydelitos[$cont]['idnuevo'];
+                                break;
+                            }
+                        }
+                        for($cont=0; $cont<count($arraydenunciado); $cont++){
+                            if($arraydenunciado[$cont]['iduat'] == $acusacion->idDenunciado){
+                                $conacusacion->idDenunciado = $arraydenunciado[$cont]['idnuevo'];
+                                break;
+                            }
+                        }
+                        for($cont=0; $cont<count($arraydenunciante); $cont++){
+                            if($arraydenunciante[$cont]['iduat'] == $acusacion->idDenunciante){
+                                $conacusacion->idDenunciante = $arraydenunciante[$cont]['idnuevo'];
+                                break;
+                            }
+                        }
+                        $conacusacion->save();
+
+                    
+                    }
+                    
+                    DB::commit();
+                    Alert::success('La carpeta con número '.$carpeta->numCarpeta.' ha sido turnada con éxito','Hecho')->persistent('Aceptar');
+                    return redirect(route('indexcarpetas'));
+                }catch (\PDOException $e){
+                    DB::rollBack();
+                    Alert::error('Se presentó un problema al guardar los datos, intente de nuevo', 'Error');
+                    return back()->withInput();
                 }
-                
-                
-
-                foreach ($acusaciones as $acusacion) {
-                    $conacusacion= new ConAcusacion;
-                    $conacusacion->idCarpeta=$idCarpetaTurnada;
-                    for($cont=0; $cont<count($arraydelitos); $cont++){
-                        if($arraydelitos[$cont]['iduat'] == $acusacion->idTipifDelito){
-                            $conacusacion->idTipifDelito = $arraydelitos[$cont]['idnuevo'];
-                            break;
-                        }
-                    }
-                    for($cont=0; $cont<count($arraydenunciado); $cont++){
-                        if($arraydenunciado[$cont]['iduat'] == $acusacion->idDenunciado){
-                            $conacusacion->idDenunciado = $arraydenunciado[$cont]['idnuevo'];
-                            break;
-                        }
-                    }
-                    for($cont=0; $cont<count($arraydenunciante); $cont++){
-                        if($arraydenunciante[$cont]['iduat'] == $acusacion->idDenunciante){
-                            $conacusacion->idDenunciante = $arraydenunciante[$cont]['idnuevo'];
-                            break;
-                        }
-                    }
-                    $conacusacion->save();
-
-                
-                }
-                
-             
-                // $del = array();
-                // for($cont=1; $cont<=10; $cont++){
-                //     array_push($del, array('idViejo'=>$cont,'idNuevo'=>$cont));
-                // }
-                // //Para consultar
-                // for($cont=0; $cont<count($del); $cont++){
-                //     if($del[$cont]['idViejo'] == 5){
-                //         dump("hola".$cont);
-                //     }
-                // }
-                // dump($del);
-                Alert::success('La carpeta con numero '.$carpeta->numCarpeta.' ha sido turnada con éxito','Hecho')->persistent('Aceptar');
-                return redirect(route('indexcarpetas'));
             }
-            // DB::commit();
-            Alert::success('Registro modificado con exito','Hecho');
+                // DB::commit();
+                Alert::success('Registro modificado con exito','Hecho');
             return back();
         // }catch (\PDOException $e){
         //     DB::rollBack();

@@ -50,7 +50,14 @@ Route::get('/pruebasconsulta', function(){
         
         Route::get('/oficios', function(){
             return view('forms.oficios');  
-        });    
+        });   
+        
+        
+ /* --------Pruebas vehiculos----------- */
+
+ Route::get('/vehiculos-pruebas','VehiculoController@showform');
+
+
 /**************************************************************/
 // -------------------------------------------------------------------
 
@@ -228,6 +235,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/descActas/{id}', 'ActasHechosController@descActas');
     
     Route::post('/folioActa', 'ActasHechosController@filtroActasPendientes')->name('filtroactapendiente');
+
+     /* --------Rutas para Actas circunstanciadas----------- */
+     Route::get('actacircunstanciada','ActaCircunstanciadaController@showform')->name('new.actacircunstanciada');
+     Route::post('addactacircunstanciada','ActaCircunstanciadaController@addActaCirc')->name('addactaCirc');
     
     
     /* --------Rutas para Libro de gobierno----------- */

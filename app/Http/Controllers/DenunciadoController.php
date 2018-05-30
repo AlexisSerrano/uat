@@ -459,7 +459,7 @@ class DenunciadoController extends Controller
             return redirect()->route('new.denunciado');
         }catch (\PDOException $e){
             DB::rollBack();
-            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            Alert::error('Se presentó un problema al guardar los datos, intente de nuevo', 'Error');
             return back()->withInput();
         }
     }
@@ -489,7 +489,7 @@ class DenunciadoController extends Controller
         }
         catch (\PDOException $e){
             DB::rollBack();
-            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            Alert::error('Se presentó un problema al guardar los datos, intente de nuevo', 'Error');
             return back()->withInput();
         }
     }

@@ -1,7 +1,9 @@
 <?php
 use App\Models\BitacoraSesiones;
 use Carbon\Carbon;
-/*La siguiente función recibe un usuario, contraseña y grupo al que pertenece en active directory por parámetros, autentifica y devuelve el status: 0 = usuario o contraseña inválidos, 1 = datos correctos pero no pertenece al grupo, 2 = autentificación correcta, 3 = sin autorización, no tiene información en el active*/
+/*La siguiente función recibe un usuario, contraseña y grupo al que pertenece en active directory por parámetros, autentifica y 
+devuelve el status: 0 = usuario o contraseña inválidos, 1 = datos correctos pero no pertenece al grupo, 2 = autentificación correcta, 
+3 = sin autorización, no tiene información en el active*/
 function login($usuario,$pass,$grupo) {
     $ip = "192.108.24.107";
 	$dn = "OU=FGE,DC=fiscaliaveracruz,DC=gob,DC=mx";

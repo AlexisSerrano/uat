@@ -9,7 +9,7 @@
 
 	<ul class="nav nav-tabs" id="myTab" role="tablist">
 		<li class="nav-item">
-		  	<a class="nav-link active " id="personales-tab" data-toggle="tab" href="#personales" role="tab" aria-controls="personales" aria-selected="true">Extracción de Mensajes</a>
+		  	<a class="nav-link active " id="personales-tab" data-toggle="tab" href="#personales" role="tab" aria-controls="personales" aria-selected="true">Extracción de mensajes</a>
 		</li>
 		<li class="nav-item">
 		  	<a class="nav-link " id="trabajo-tab" data-toggle="tab" href="#trabajo" role="tab" aria-controls="trabajo" aria-selected="false">Psicólogo</a>

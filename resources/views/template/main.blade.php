@@ -112,7 +112,7 @@
 <script src="{{ asset('js/bootstrap.min.js')}}" ></script>
 <script src="{{asset ('js/sweetalert.min.js')}}"></script>
 
-
+<script src="{{asset ('js/app.js')}}"></script>
 <script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
 <script src="{{ asset('js/jquery.form-validator.min.js')}}" ></script>
 
@@ -133,7 +133,8 @@
 <script src="{{ asset('admin/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
 <!-- ChartJS 1.0.1 -->
 <script src="{{ asset('admin/plugins/chartjs/Chart.min.js') }}"></script>
-{{--  <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>  --}}
+
+ <script src="{{ asset('ckeditor/ckeditor.js') }}"></script> 
 
 <script>
 	$("input:text").focusout(function() {

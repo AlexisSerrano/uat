@@ -33,20 +33,20 @@
                         <td>{{ $denunciante->sexo }}</td> --}}
                         <td>{{ $denunciante->telefono }}</td>
                         @if($denunciante->esEmpresa==1)
-                            <td>Persona Moral</td>
+                            <td>PERSONA MORAL</td>
                         @else
-                            <td>Persona Fisica</td>
+                            <td>PERSONA FÍSICA</td>
                         @endif
                         @if($denunciante->victima==1)
-                            <td>Victima</td>
+                            <td>VÍCTIMA</td>
                         @else
-                            <td>Ofendido</td>
+                            <td>OFENDIDO</td>
                         @endif
                         @if($denunciante->reguardarIdentidad!=NULL)
-                            <td>Si</td>
+                            <td>SI</td>
                             <td>{{$denunciante->reguardarIdentidad}}</td>
                         @else
-                            <td colspan="2" style="text-align:center">No</td>
+                            <td colspan="2" style="text-align:center">NO</td>
                         @endif
 {{--               
                         <td> <a id="deleteBtn" href="{{ url('agregar-denunciante/'.$denunciante->id.'/eliminar')}}" title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">

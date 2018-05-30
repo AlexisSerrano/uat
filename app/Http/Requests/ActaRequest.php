@@ -49,8 +49,8 @@ class ActaRequest extends FormRequest
     {
         return [
             'nombre2.required' => 'Introduzca el campo Nombre',
-            'primerAp.required' => 'Introduzca el campo Primer Apellido',
-            'segundoAp.required' => 'Introduzca el campo Segundo Apellido',
+            'primerAp.required' => 'Introduzca el campo Primer apellido',
+            'segundoAp.required' => 'Introduzca el campo Segundo apellido',
             'docIdentificacion.required' => 'Introduzca el campo Documento de indentificación',
             'numDocIdentificacion.required' => 'Introduzca el campo Número de indentificación',
             'expedido.required' => 'Introduzca el campo Expedido por',
@@ -62,7 +62,7 @@ class ActaRequest extends FormRequest
             'cp2.required' => 'Introduzca el campo CP',
             'idColonia2.required' => 'Introduzca el campo Colonia',
             'calle2.required' => 'Introduzca el campo Calle',
-            'numExterno2.required' => 'Introduzca el campo Numero externo',
+            'numExterno2.required' => 'Introduzca el campo Número externo',
             'estadoCivilActa1.required' => 'Introduzca el campo Estado civil',
             'escActa1.required' => 'Introduzca el campo Escolaridad',
             'ocupActa1.required' => 'Introduzca el campo Ocupación',
