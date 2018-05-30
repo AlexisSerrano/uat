@@ -116,7 +116,7 @@
                     lo cual, en uso de la voz, y bajo responsabilidad explica lo siguiente:  TODO ESTO LO MANIFIESTO POR EL MAL USO QUE SE 
                     LE PUDIERE DAR - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Lo aquí manifestado es responsabilidad de 
                     quien comparece.- en términos de lo dispuesto en los artículos 21 de la Constitución Política de los Estados Unidos Mexicanos, 
-                    2, 3 Fracción XI, 5 y 15 Fracción XII de la ley orgánica de la fiscalía general del estado de Veracruz de Ignacio de la Llave, 
+                    2, 3 Fracción XI, 5 y 15 Fracción XII de la ley orgánica de la Fiscalía General del Estado de Veracruz de Ignacio de la Llave, 
                     así como 201 y 207 del reglamento de la precitada ley y la Circular 01/2015, emitida por el Fiscal General del Estado esta 
                     representación social a mi cargo tiene a bien levantar la presente, misma que se firma por duplicado, otorgando un tanto 
                     al solicitante tal como lo requiere. - - - - - -
