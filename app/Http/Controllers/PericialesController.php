@@ -36,9 +36,23 @@ class PericialesController extends Controller
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             // dd($estados);
+          
+            $victimas[''] = 'Seleccione una víctima/ofendido';
+            $victimas2 = DB::table('variables_persona')
+            ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
+            ->join('extra_denunciante', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->where('variables_persona.idCarpeta',$idCarpeta)
+            ->select('persona.nombres','persona.primerAp','persona.segundoAp', 'persona.id')
+            ->get();
+
+            foreach($victimas2 as $victima){
+                $victimas[$victima->nombres.'-'.$victima->primerAp.'-'.$victima->segundoAp] = $victima->nombres.' '.$victima->primerAp.' '.$victima->segundoAp;
+            }
+            
             return view('forms.periciales')->with('idCarpeta', $idCarpeta)
                 ->with('abogados', $abogados)
                 ->with('estados', $estados)
+                ->with('victimas', $victimas)
                 ->with('estadoscivil', $estadoscivil);
         }else{
             return redirect()->route('home');
@@ -48,14 +62,15 @@ class PericialesController extends Controller
 
     public function agregar(Request $request)
     {   
+        $NombreComp = explode("-",  $request->victima);
         DB::beginTransaction();
         try{
             $idCarpeta = session('carpeta');
             $PerMensaje = new PerMensaje;
             $PerMensaje->idCarpeta = 1;
-            $PerMensaje->nombre = $request->nombret;
-            $PerMensaje->primerAp = $request->primerAp;
-            $PerMensaje->segundoAp = $request->segundoAp;
+            $PerMensaje->nombre = $NombreComp[0];
+            $PerMensaje->primerAp =$NombreComp[1];
+            $PerMensaje->segundoAp = $NombreComp[2];
             $PerMensaje->marca = $request->marcat;
             $PerMensaje->imei = $request->imeit;
             $PerMensaje->compania = $request->compat;

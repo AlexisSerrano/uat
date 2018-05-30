@@ -22,7 +22,7 @@
                         <td class="fechainicio">{{ $provide->fechainicio }}</td>  
                         <td class="fechafin">{{ $provide->fechafin }}</td>
                         <td class="ejecutor">{{ $provide->ejecutor }}</td>  
-                        <td class="persona">{{ $provide->persona }}</td>  
+                        {{-- <td class="persona">{{ $provide->persona . $provide->primerAp. $provide->segundoAp}}</td>    --}}
                         <td class="observacion">{{ $provide->observacion }}</td>  
                         <td>
                                 <a data-medida-id={{$provide->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
@@ -131,7 +131,6 @@
              //  DenuncianteId = $(this).attr("data-denunciante-id");
              // alert("ok");
              $(".deleteBtn").on("click", function(e) {
-                var id = $(this).data("medida-id");
              e.preventDefault()
                  swal({
                      title: "Está seguro de eliminarlo?",
@@ -145,8 +144,8 @@
                      closeOnCancel: true },
                      function(isConfirm){
                  if (isConfirm) {
-               
-                  window.location.href=route('delete.medidas',id);
+                 var id = $(".deleteBtn").data("medida-id");
+                  window.location.href=route('delete.medidas',{id:id});
                  //  window.location.href=route("agregar-denunciado/'.$denunciante->id.'/eliminar");
                  }
          });
