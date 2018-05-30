@@ -155,7 +155,7 @@ class DelitoController extends Controller
 
         }catch (\PDOException $e){
             DB::rollBack();
-            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            Alert::error('Se presentó un problema al guardar sus datos, intente de nuevo', 'Error');
             return back()->withInput();
         }
 
@@ -236,7 +236,7 @@ class DelitoController extends Controller
 //dd($domicilio,$tipifDelito);
 
 
-        Alert::success('Delito modificado con exito','Hecho');
+        Alert::success('Delito modificado con éxito','Hecho');
        
 
         return redirect()->route('new.delito', $id);

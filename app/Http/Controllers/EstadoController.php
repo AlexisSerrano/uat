@@ -655,11 +655,11 @@ class EstadoController extends Controller
                     }
                     
                     DB::commit();
-                    Alert::success('La carpeta con numero '.$carpeta->numCarpeta.' ha sido turnada con éxito','Hecho')->persistent('Aceptar');
+                    Alert::success('La carpeta con número '.$carpeta->numCarpeta.' ha sido turnada con éxito','Hecho')->persistent('Aceptar');
                     return redirect(route('indexcarpetas'));
                 }catch (\PDOException $e){
                     DB::rollBack();
-                    Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+                    Alert::error('Se presentó un problema al guardar los datos, intente de nuevo', 'Error');
                     return back()->withInput();
                 }
             }

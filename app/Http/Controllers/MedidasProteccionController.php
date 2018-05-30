@@ -79,13 +79,13 @@ class MedidasProteccionController extends Controller
                 $bdbitacora->save();
             }
             else{
-                Alert::error('Se presentó un problema al crear su medida de protección', 'Error');
+                Alert::error('Se presentó un problema al crear la medida de protección', 'Error');
             }
             DB::commit();
             return redirect("medidas");
         }catch (\PDOException $e){
             DB::rollBack();
-            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            Alert::error('Se presentó un problema al guardar los datos, intente de nuevo', 'Error');
             return back()->withInput();
         }
     }
