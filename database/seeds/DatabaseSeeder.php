@@ -84,6 +84,15 @@ class DatabaseSeeder extends Seeder
         $this->call(PruebaSeeder::class);
         $this->call(Agrupacion1Seeder::class);
         $this->call(Agrupacion2Seeder::class);
+        $this->call(AseguradoraSeeder::class);
+        $this->call(TipoVehiculoSeeder::class);
+        $this->call(ColorSeeder::class);
+        $this->call(ProcedenciaSeeder::class);
+        $this->call(TipoUsoSeeder::class);
         $this->call(ActasSeeder::class);
+    
+    
     }
+
+    
 }

@@ -1,38 +1,148 @@
-<div class="col-4">
-    <div class="form-group">
-        {!! Form::label('nombre2', 'Nombre', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
-        {!! Form::text('nombre2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}
-        <div class="help-block with-errors"></div> 
-    </div>
-</div>
 
-<div class="col-4">
-    <div class="form-group">
-        {!! Form::label('primerAp', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','data-validation'=>'required']) !!}
-        <div class="help-block with-errors"></div>
-    </div>
-</div>
-
-<div class="col-4">
-    <div class="form-group">
-        {!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
-    </div>
-</div>
-
-<div class="col-4">
-    <div class="form-group">
-    {!! Form::label('fecha_nac', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
-        <div class="input-group date" id="fecha_nac" data-target-input="nearest">
-            @if(isset($form['fecha_nac']))
-            <input type="date" id="fecha_nac" name="fecha_nac" value="{{ $form['fecha_nac'] }}" class="form-control form-control-sm">
-            @else
-            <input type="date" id="fecha_nac" name="fecha_nac" class="form-control form-control-sm">
-            @endif
+<div class="col">
+<div id="actaPersona" class="row">
+        <div class="col-4">
+            <div class="form-group">
+                {!! Form::label('nombre2', 'Nombre', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
+                {!! Form::text('nombre2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}
+                <div class="help-block with-errors"></div> 
+            </div>
         </div>
-    </div>
+
+        <div class="col-4">
+            <div class="form-group">
+                {!! Form::label('primerAp', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
+                {!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','data-validation'=>'required']) !!}
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="form-group">
+                {!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
+                {!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="form-group">
+            {!! Form::label('fecha_nac', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
+                <div class="input-group date" id="fecha_nac" data-target-input="nearest">
+                    @if(isset($form['fecha_nac']))
+                    <input type="date" id="fecha_nac" name="fecha_nac" value="{{ $form['fecha_nac'] }}" class="form-control form-control-sm">
+                    @else
+                    <input type="date" id="fecha_nac" name="fecha_nac" class="form-control form-control-sm">
+                    @endif
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+				<div class="form-group">
+					{!! Form::label('idEstadoOrigen', 'Estado de origen', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idEstadoOrigen', $estados, 30, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required','required']) !!}
+				</div>
+			</div>
+			
+			<div class="col-4">
+				<div class="form-group">
+					{!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idMunicipioOrigen', $municipios, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un municipio','data-validation'=>'required','required']) !!}
+				</div>
+			</div>
+
+				
+			<div class="col-4">
+				<div class="form-group">
+					{!! Form::label('sexo', 'Sexo', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('sexo', ['HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Seleccione el sexo','data-validation'=>'required']) !!}
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="form-group">
+					{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('curp', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$','data-validation-error-msg'=>'CURP inválido','required']) !!}
+				</div>
+			</div>
+        <div class="col-4">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col">
+                            {!! Form::label('rfc1', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
+                            {!! Form::text('rfc2', null, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
+                        </div>
+                        <div class="col">
+                                {!! Form::label('homo1', 'Homo', ['class' => 'col-form-label-sm']) !!}
+                            {!! Form::text('homo2',null, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="col-4">
+            <div class="form-group" >
+                {!! Form::label('estadoCivilActa1', 'Estado Civil', ['class' => 'col-form-label-sm']) !!}
+                {!! Form::select('estadoCivilActa1',$estadocivil,null ,['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione su estado civil','data-validation'=>'required']) !!}
+            </div>
+        </div>		
+
+        <div class="col-4">
+            <div class="form-group" >
+                {!! Form::label('escActa1', 'Escolaridad', ['class' => 'col-form-label-sm']) !!}
+                {!! Form::select('escActa1', $escolaridades,1,['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="form-group" >
+                {!! Form::label('ocupActa1', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
+                {!! Form::select('ocupActa1',$ocupaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una ocupación','data-validation'=>'required']) !!}
+            </div>
+        </div>
 </div>
+
+
+
+
+{{-- para actas de empresa --}}
+<div id="actaEmpresa" class="row">
+                <div class="col-8">
+                    <div class="form-group">
+                        {!! Form::label('nombres2', 'Nombre de la empresa', ['class' => 'col-form-label-sm']) !!}
+                        {!! Form::text('nombres2',null, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}
+                    </div>
+                </div>
+    
+                <div class="col-4">
+                        <div class="form-group">
+                            {!! Form::label('fechaAltaEmpresa', 'Fecha de alta de la empresa', ['class' => 'col-form-label-sm']) !!}
+                            <input type="date" id="fechaAltaEmpresa" value="" name="fechaNacimiento" class="turnoempresa form-control form-control-sm" data-validation="required">
+                            <div class="help-block with-errors"></div>	
+                        </div>
+                    </div>
+            
+                <div class="col-4">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                {!! Form::label('rfc2', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
+                                {!! Form::text('rfc2', null, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
+                            </div>
+                            <div class="col">
+                                    {!! Form::label('homo2', 'Homo', ['class' => 'col-form-label-sm']) !!}
+                                {!! Form::text('homo2',null, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-8">
+                    <div class="form-group">
+                        {!! Form::label('representanteLegal', 'Representante legal', ['class' => 'col-form-label-sm']) !!}
+                        {!! Form::text('representanteLegal', null, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal','data-validation'=>'required']) !!}
+                    </div>
+                </div>
+</div>
+
+<div class="row" id="extras">
 <div class="col-4">
     <div class="form-group">
         {!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
@@ -112,26 +222,7 @@
     </div>
 </div>
 
-<div class="col-4">
-    <div class="form-group" >
-        {!! Form::label('estadoCivilActa1', 'Estado Civil', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::select('estadoCivilActa1',$estadocivil,null ,['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione su estado civil','data-validation'=>'required']) !!}
-    </div>
-</div>		
 
-<div class="col-4">
-    <div class="form-group" >
-        {!! Form::label('escActa1', 'Escolaridad', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::select('escActa1', $escolaridades,1,['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
-    </div>
-</div>
-
-<div class="col-4">
-    <div class="form-group" >
-        {!! Form::label('ocupActa1', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::select('ocupActa1',$ocupaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una ocupación','data-validation'=>'required']) !!}
-    </div>
-</div>
 
 <div class="col-4"  >
     <div class="form-group" >
@@ -220,6 +311,8 @@
             @endif
         </textarea> --}}
     </div>
+</div>
+</div>
 </div>
 
 @push('scripts')
