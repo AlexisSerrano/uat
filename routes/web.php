@@ -46,6 +46,7 @@ Route::get('/pruebasconsulta', function(){
             });
             
         Route::get('/pruebasactas','PruebasController@actas');
+        Route::get('/pruebasmetodo','PruebasController@metodo');
         
         Route::get('/oficios', function(){
             return view('forms.oficios');  
@@ -107,13 +108,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/showbyfolio', 'PreregistroAuxController@showbyfolio');
     
     Route::get('/encola', 'PreregistroAuxController@encola');
-    Route::get('/urgentes', 'PreregistroAuxController@urgentes');
+    Route::get('/urgentes', 'PreregistroAuxController@urgentes')->name('urgentes');
     
     Route::post('/filtroprioridad', 'PreregistroAuxController@filtroPrioridad')->name('prioridadpreregistrofiltro');
 
-    Route::get('/showbymunicipio/{id}', 'PreregistroAuxController@showbymunicipio');
+    Route::get('/showbymunicipio/{id}', 'PreregistroAuxController@showbymunicipio')->name('showbymunicipio');
     Route::get('/estado/{id}/{tipo}', 'PreregistroController@estado');
-    Route::post('/estado', 'PreregistroController@estadourgente');
+    Route::post('/estado', 'PreregistroController@estadourgente')->name('estado');
     
     //Route::resource('/predenuncias','PreregistroAuxController');
     Route::get('/predenuncias', 'PreregistroAuxController@index')->name('predenuncias.index'); //ver formulario
@@ -125,12 +126,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/preregistroWeb', 'PreregistroAuxController@store'); //registar
     
     /*-----------------descripcion de Hechos------------------------------*/
-    Route::get('descripcionHechos', 'NarracionController@descripcionHechos')->name('descripcionHechos');
+    Route::get('observaciones', 'NarracionController@descripcionHechos')->name('observaciones');
     Route::post('storeDescripcionHechos', 'NarracionController@storeDescripcionHechos')->name('store.descripcionHechos');
     /*---------Rutas narración-------------*/
     Route::get('narracion', 'NarracionController@index')->name('narracion');
     Route::post('addnarracion', 'NarracionController@addNarracion');
-    Route::get('getnarracion/{id}', 'NarracionController@getNarracion');
+    Route::get('getnarracion/{id}', 'NarracionController@getNarracion')->name('getnarracion');
     Route::get('mostrardoc/{id}', 'NarracionController@mostrarDoc');
     /*---------Rutas denunciado-------------*/
     Route::get('agregar-denunciado', 'DenunciadoController@showForm')->name('new.denunciado');
@@ -142,14 +143,14 @@ Route::middleware(['auth'])->group(function () {
     
 	
     /*---------Rutas para las notificaciones-------------*/
-    Route::get('notificaciones', 'NotificacionesController@getNotificacionesCola');
+    Route::get('notificaciones', 'NotificacionesController@getNotificacionesCola')->name("notificaciones");
     
     /*---------Rutas Registros Orientador-------------*/
     Route::get('registros', 'RegistrosCasoController@lista');
     Route::get('registros/{id}/edit', 'RegistrosCasoController@editRegistros');
     Route::post('/buscarfolio', 'RegistrosCasoController@buscarfolio');
     Route::get('/buscarfolio', 'RegistrosCasoController@buscarfolio');
-    Route::get('/buscarmunicipio/{id}', 'RegistrosCasoController@buscarmunicipio');
+    Route::get('/buscarmunicipio/{id}', 'RegistrosCasoController@buscarmunicipio')->name('buscarmunicipio');
     Route::put('storeregistro/{id}', 'RegistrosCasoController@updateregistros')->name('put.registro');
     
     /*---------Rutas Agregar Preregistro Controller------------*/
@@ -169,8 +170,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getMedidas', 'MedidasProteccionController@getMedidas')->name('getMedidas');
     // Route::get('deleteMedida/{id}', 'MedidasProteccionController@deleteMedida')->name('deleteMedida');
     Route::get('agregar-medidas/{id}/eliminar', 'MedidasProteccionController@delete')->name('delete.medida');
-    Route::post('agregar-medidas/editar', 'MedidasProteccionController@editar');
-    Route::get('getMedidasAjax/{id}', 'MedidasProteccionController@getMedidasAjax');
+    Route::post('agregar-medidas/editar', 'MedidasProteccionController@editar')->name('agregar-medidas');
+    Route::get('getMedidasAjax/{id}', 'MedidasProteccionController@getMedidasAjax')->name("getMedidasAjax");
     
     
     /*----------------medidas version2------------------*/
@@ -183,11 +184,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('agregar-delito', 'DelitoController@showForm')->name('new.delito');
     Route::post('storedelito', 'DelitoController@storeDelito')->name('store.delito');
     Route::get('delito/{id}/eliminar', 'DelitoController@delete')->name('delete.delito');
-    Route::get('editar/{id}', 'DelitoController@editar');
+    Route::get('editar/{id}', 'DelitoController@editar')->name('editar');
     Route::put('delito/{id}/actualizar', 'DelitoController@actualizar')->name('actualizar.delito');
     /*---------Rutas para obtener delitos y desagregaciones------------*/
-    Route::get('agrupaciones1/{id}', 'DelitoController@getAgrupaciones1');
-    Route::get('agrupaciones2/{id}', 'DelitoController@getAgrupaciones2');
+    Route::get('agrupaciones1/{id}', 'DelitoController@getAgrupaciones1')->name('get.agregacion1');
+    Route::get('agrupaciones2/{id}', 'DelitoController@getAgrupaciones2')->name('get.agregacion2');
     
     Route::get('acusacion', 'AcusacionController@showForm')->name('new.acusacion');
     Route::post('storeacusacion', 'AcusacionController@storeAcusacion')->name('store.acusacion');
@@ -205,7 +206,7 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('agregar-defensa/{id}/eliminar', 'AbogadoController@delete');
     
     
-    Route::get('involucrados/{idCarpeta}/{idAbogado}', 'AbogadoController@getInvolucrados');
+    Route::get('involucrados/{idAbogado}', 'AbogadoController@getInvolucrados')->name('getinvolucrados');
     /* --------Rutas para Autoridad----------- */
     Route::get('agregar-autoridad', 'AutoridadController@showForm')->name('new.autoridad');
     Route::post('storeautoridad', 'AutoridadController@storeAutoridad')->name('store.autoridad');

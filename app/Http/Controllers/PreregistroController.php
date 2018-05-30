@@ -68,18 +68,14 @@ class PreregistroController extends Controller
             $comprobacionFolio=0;
             $folio=$comprobacionFolio;
             while ($comprobacionFolio == $folio) {
-                $longitud=4;
-                $key = '';
-                $f1=date("d");
-                $f2=date("m");
-                $f3=date("y");
-                
-                $cadena = '1234567890';
-                $max = strlen($cadena)-1;
-                
-                for($i=0;$i < $longitud;$i++) $key .=$cadena{mt_rand(0,$max)};
-                $folio= substr($f1,0).$key.substr($f2,0).$key.substr($f3,0);
-                
+            
+                $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                $charactersLength = strlen($characters);
+                $folio = '';
+                for ($i = 0; $i < 6; $i++) {
+                    $folio .= $characters[rand(0, $charactersLength - 1)];
+                }
+
                 $comprobacionFolio=Preregistro::where('folio','=',$folio);
                 
                 
@@ -265,20 +261,15 @@ class PreregistroController extends Controller
             $comprobacionFolio=0;
             $folio=$comprobacionFolio;
             while ($comprobacionFolio == $folio) {
-                $longitud=4;
-                $key = '';
-                $f1=date("d");
-                $f2=date("m");
-                $f3=date("y");
-                
-                $cadena = '1234567890';
-                $max = strlen($cadena)-1;
-                
-                for($i=0;$i < $longitud;$i++) $key .=$cadena{mt_rand(0,$max)};
-                $folio= substr($f1,0).$key.substr($f2,0).$key.substr($f3,0);
-                
+                $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                $charactersLength = strlen($characters);
+                $folio = '';
+                for ($i = 0; $i < 6; $i++) {
+                    $folio .= $characters[rand(0, $charactersLength - 1)];
+                }
+
                 $comprobacionFolio=Preregistro::where('folio','=',$folio);
-                
+               
                 
             }
             //dd($folio);

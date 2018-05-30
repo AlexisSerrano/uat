@@ -163,7 +163,8 @@ class AbogadoController extends Controller
         return redirect()->route('new.defensa');
     }
     
-    public function getInvolucrados(Request $request, $idCarpeta, $idAbogado){
+    public function getInvolucrados(Request $request, $idAbogado){
+        $idCarpeta=session('carpeta');
         if($request->ajax()){
             $tipoAbog = DB::table('extra_abogado')
                 ->select('tipo')

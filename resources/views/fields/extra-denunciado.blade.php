@@ -32,7 +32,7 @@
 			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('periodoIngreso', 'Periodo de ingreso', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('periodoIngreso', ['DIARIO' => 'DIARIO', 'SEMANAL' => 'SEMANAL', 'QUINCENAL' => 'QUINCENAL', 'MENSUAL' => 'MENSUAL', 'SIN INFORMACION' => 'SIN INFORMACION'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un periodo',  'data-validation'=>'required']) !!}
+					{!! Form::select('periodoIngreso', ['DIARIO' => 'DIARIO', 'SEMANAL' => 'SEMANAL', 'QUINCENAL' => 'QUINCENAL', 'MENSUAL' => 'MENSUAL', 'SIN INFORMACION' => 'SIN INFORMACIÓN'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un periodo',  'data-validation'=>'required']) !!}
 				</div>
 			</div>
 			<div class="col-3">

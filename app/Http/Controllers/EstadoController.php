@@ -16,6 +16,7 @@ use App\Models\DirNotificacion;
 use App\Models\TipifDelito;
 use App\Models\VariablesPersona;
 
+use App\Models\uatuipj\ConPersona;
 use App\Models\uatuipj\ConCarpeta;
 use App\Models\uatuipj\ConAcusacion;
 use App\Models\uatuipj\ConExtraAbogado;
@@ -95,8 +96,22 @@ class EstadoController extends Controller
 
                 $autoridades=DB::table('extra_autoridad')
                 ->join('variables_persona','variables_persona.id','=','extra_autoridad.idVariablesPersona')
+                ->join('persona','variables_persona.idPersona','=','persona.id')
                 ->where('variables_persona.idCarpeta',$idCarpeta)
-                ->select(   'variables_persona.idPersona as variaidPersona',
+                ->select(   
+                            'persona.nombres as pernombres',
+                            'persona.primerAp as perprimerAp',
+                            'persona.segundoAp as persegundoAp',
+                            'persona.fechaNacimiento as perfechaNacimiento',
+                            'persona.rfc as perrfc',
+                            'persona.curp as percurp',
+                            'persona.sexo as persexo',
+                            'persona.idNacionalidad as peridNacionalidad',
+                            'persona.idEtnia as peridEtnia',
+                            'persona.idLengua as peridLengua',
+                            'persona.idMunicipioOrigen as peridMunicipioOrigen',
+                            'persona.esEmpresa as peresEmpresa',
+                            'variables_persona.idPersona as variaidPersona',
                             'variables_persona.edad as variaedad',
                             'variables_persona.telefono as variatelefono',
                             // 'variables_persona.motivoEstancia as variamotivoEstancia',
@@ -122,8 +137,22 @@ class EstadoController extends Controller
 
                 $abogados=DB::table('extra_abogado')
                 ->join('variables_persona','variables_persona.id','=','extra_abogado.idVariablesPersona')
+                ->join('persona','variables_persona.idPersona','=','persona.id')
                 ->where('variables_persona.idCarpeta',$idCarpeta)
-                ->select(   'variables_persona.idPersona as variaidPersona',
+                ->select(   
+                            'persona.nombres as pernombres',
+                            'persona.primerAp as perprimerAp',
+                            'persona.segundoAp as persegundoAp',
+                            'persona.fechaNacimiento as perfechaNacimiento',
+                            'persona.rfc as perrfc',
+                            'persona.curp as percurp',
+                            'persona.sexo as persexo',
+                            'persona.idNacionalidad as peridNacionalidad',
+                            'persona.idEtnia as peridEtnia',
+                            'persona.idLengua as peridLengua',
+                            'persona.idMunicipioOrigen as peridMunicipioOrigen',
+                            'persona.esEmpresa as peresEmpresa',
+                            'variables_persona.idPersona as variaidPersona',
                             'variables_persona.edad as variaedad',
                             'variables_persona.telefono as variatelefono',
                             // 'variables_persona.motivoEstancia as variamotivoEstancia',
@@ -149,8 +178,22 @@ class EstadoController extends Controller
                 $denunciados=DB::table('extra_denunciado')
                 ->join('dirNotificacion','dirNotificacion.id','=','extra_denunciado.idNotificacion')
                 ->join('variables_persona','variables_persona.id','=','extra_denunciado.idVariablesPersona')
+                ->join('persona','variables_persona.idPersona','=','persona.id')
                 ->where('variables_persona.idCarpeta',$idCarpeta)
-                ->select(   'variables_persona.idPersona as variaidPersona',
+                ->select(   
+                            'persona.nombres as pernombres',
+                            'persona.primerAp as perprimerAp',
+                            'persona.segundoAp as persegundoAp',
+                            'persona.fechaNacimiento as perfechaNacimiento',
+                            'persona.rfc as perrfc',
+                            'persona.curp as percurp',
+                            'persona.sexo as persexo',
+                            'persona.idNacionalidad as peridNacionalidad',
+                            'persona.idEtnia as peridEtnia',
+                            'persona.idLengua as peridLengua',
+                            'persona.idMunicipioOrigen as peridMunicipioOrigen',
+                            'persona.esEmpresa as peresEmpresa',        
+                            'variables_persona.idPersona as variaidPersona',
                             'variables_persona.edad as variaedad',
                             'variables_persona.telefono as variatelefono',
                             // 'variables_persona.motivoEstancia as variamotivoEstancia',
@@ -179,16 +222,30 @@ class EstadoController extends Controller
                             'extra_denunciado.narracion as denunciadonarracion',
                             'dirnotificacion.idDomicilio as notifiidDomicilio',
                             'dirnotificacion.correo as notificorreo',
-                            'dirnotificacion.telefono as notifitelefono',
-                            'dirnotificacion.fax as notififax')
+                            'dirnotificacion.telefono as notifitelefono')
                 ->get();
                 //dd($denunciados);
 
                 $denunciantes=DB::table('extra_denunciante')
                 ->join('dirNotificacion','dirNotificacion.id','=','extra_denunciante.idNotificacion')
                 ->join('variables_persona','variables_persona.id','=','extra_denunciante.idVariablesPersona')
+                ->join('persona','variables_persona.idPersona','=','persona.id')
                 ->where('variables_persona.idCarpeta',$idCarpeta)
-                ->select(   'variables_persona.idPersona as variaidPersona',
+                ->select(   
+                            'persona.nombres as pernombres',
+                            'persona.primerAp as perprimerAp',
+                            'persona.segundoAp as persegundoAp',
+                            'persona.fechaNacimiento as perfechaNacimiento',
+                            'persona.rfc as perrfc',
+                            'persona.curp as percurp',
+                            'persona.sexo as persexo',
+                            'persona.idNacionalidad as peridNacionalidad',
+                            'persona.idEtnia as peridEtnia',
+                            'persona.idLengua as peridLengua',
+                            'persona.idMunicipioOrigen as peridMunicipioOrigen',
+                            'persona.esEmpresa as peresEmpresa',
+                            
+                            'variables_persona.idPersona as variaidPersona',
                             'variables_persona.edad as variaedad',
                             'variables_persona.telefono as variatelefono',
                             // 'variables_persona.motivoEstancia as variamotivoEstancia',
@@ -211,8 +268,7 @@ class EstadoController extends Controller
                             'extra_denunciante.narracion as denunciantenarracion',
                             'dirnotificacion.idDomicilio as notifiidDomicilio',
                             'dirnotificacion.correo as notificorreo',
-                            'dirnotificacion.telefono as notifitelefono',
-                            'dirnotificacion.fax as notififax')
+                            'dirnotificacion.telefono as notifitelefono')
                 ->get();
                 //dd($abogados);
 
@@ -279,9 +335,26 @@ class EstadoController extends Controller
 
                 if (count($autoridades)!=null) {
                     foreach ($autoridades as $autoridad) {
+                        $conpersona = new ConPersona;
+                        $conpersona->nombres = $autoridad->pernombres;
+                        $conpersona->primerAp = $autoridad->perprimerAp;
+                        $conpersona->segundoAp = $autoridad->persegundoAp;
+                        $conpersona->fechaNacimiento = $autoridad->perfechaNacimiento;
+                        $conpersona->rfc = $autoridad->perrfc;
+                        $conpersona->curp = $autoridad->percurp;
+                        $conpersona->sexo = $autoridad->persexo;
+                        $conpersona->idNacionalidad = $autoridad->peridNacionalidad;
+                        $conpersona->idEtnia = $autoridad->peridEtnia;
+                        $conpersona->idLengua = $autoridad->peridLengua;
+                        $conpersona->idMunicipioOrigen = $autoridad->peridMunicipioOrigen;
+                        $conpersona->esEmpresa = $autoridad->peresEmpresa;
+                        $conpersona->save();
+                        $idpersonaauto=$conpersona->id;
+
+
                         $convariables = new ConVariablesPersona;
                         $convariables->idCarpeta = $idCarpetaTurnada;
-                        $convariables->idPersona = $autoridad->variaidPersona;
+                        $convariables->idPersona = $idpersonaauto;
                         $convariables->edad = $autoridad->variaedad;
                         $convariables->telefono = $autoridad->variatelefono;
                         $convariables->motivoEstancia = 'NO APLICA';
@@ -328,9 +401,25 @@ class EstadoController extends Controller
                 if (count($abogados)!=null) {
                     $arrayabogados=array();
                     foreach ($abogados as $abogado) {
+                        $conpersona = new ConPersona;
+                        $conpersona->nombres = $abogado->pernombres;
+                        $conpersona->primerAp = $abogado->perprimerAp;
+                        $conpersona->segundoAp = $abogado->persegundoAp;
+                        $conpersona->fechaNacimiento = $abogado->perfechaNacimiento;
+                        $conpersona->rfc = $abogado->perrfc;
+                        $conpersona->curp = $abogado->percurp;
+                        $conpersona->sexo = $abogado->persexo;
+                        $conpersona->idNacionalidad = $abogado->peridNacionalidad;
+                        $conpersona->idEtnia = $abogado->peridEtnia;
+                        $conpersona->idLengua = $abogado->peridLengua;
+                        $conpersona->idMunicipioOrigen = $abogado->peridMunicipioOrigen;
+                        $conpersona->esEmpresa = $abogado->peresEmpresa;
+                        $conpersona->save();
+                        $idpersonaabo=$conpersona->id;
+                        
                         $convariables = new ConVariablesPersona;
                         $convariables->idCarpeta = $idCarpetaTurnada;
-                        $convariables->idPersona = $abogado->variaidPersona;
+                        $convariables->idPersona = $idpersonaabo;
                         $convariables->edad = $abogado->variaedad;
                         $convariables->telefono = $abogado->variatelefono;
                         $convariables->motivoEstancia = 'SIN INFORMACION';
@@ -368,9 +457,25 @@ class EstadoController extends Controller
                 if (count($denunciados)!=null) {
                     $arraydenunciado=array();
                     foreach ($denunciados as $denunciado) {
+                        $conpersona = new ConPersona;
+                        $conpersona->nombres = $denunciado->pernombres;
+                        $conpersona->primerAp = $denunciado->perprimerAp;
+                        $conpersona->segundoAp = $denunciado->persegundoAp;
+                        $conpersona->fechaNacimiento = $denunciado->perfechaNacimiento;
+                        $conpersona->rfc = $denunciado->perrfc;
+                        $conpersona->curp = $denunciado->percurp;
+                        $conpersona->sexo = $denunciado->persexo;
+                        $conpersona->idNacionalidad = $denunciado->peridNacionalidad;
+                        $conpersona->idEtnia = $denunciado->peridEtnia;
+                        $conpersona->idLengua = $denunciado->peridLengua;
+                        $conpersona->idMunicipioOrigen = $denunciado->peridMunicipioOrigen;
+                        $conpersona->esEmpresa = $denunciado->peresEmpresa;
+                        $conpersona->save();
+                        $idpersonadenunciado=$conpersona->id;
+                        
                         $convariables = new ConVariablesPersona;
                         $convariables->idCarpeta = $idCarpetaTurnada;
-                        $convariables->idPersona = $denunciado->variaidPersona;
+                        $convariables->idPersona = $idpersonadenunciado;
                         $convariables->edad = $denunciado->variaedad;
                         $convariables->telefono = $denunciado->variatelefono;
                         $convariables->motivoEstancia = 'SIN INFORMACION';
@@ -405,12 +510,17 @@ class EstadoController extends Controller
                         $condenunciado->ingreso = $denunciado->denunciadoingreso;
                         $condenunciado->periodoIngreso = $denunciado->denunciadoperiodoIngreso;
                         $condenunciado->residenciaAnterior = $denunciado->denunciadoresidenciaAnterior;
-                        for($cont=0; $cont<count($arrayabogados); $cont++){
-                            if($arrayabogados[$cont]['iduat'] == $denunciado->denunciadoidAbogado){
-                                $condenunciado->idAbogado = $arrayabogados[$cont]['idnuevo'];
-                                break;
+                        if (is_null($denunciado->denunciadoidAbogado)) {
+                            $condenunciado->idAbogado=null;
+                        } else {
+                            for($cont=0; $cont<count($arrayabogados); $cont++){
+                                if($arrayabogados[$cont]['iduat'] == $denunciado->denunciadoidAbogado){
+                                    $condenunciado->idAbogado = $arrayabogados[$cont]['idnuevo'];
+                                    break;
+                                }
                             }
                         }
+                        
                         $condenunciado->personasBajoSuGuarda = $denunciado->denunciadopersonasBajoSuGuarda;
                         $condenunciado->perseguidoPenalmente = $denunciado->denunciadoperseguidoPenalmente;
                         $condenunciado->vestimenta = $denunciado->denunciadovestimenta;
@@ -438,9 +548,26 @@ class EstadoController extends Controller
                 if (count($denunciantes)!=null) {
                     $arraydenunciante=array();
                     foreach ($denunciantes as $denunciante) {
+                        $conpersona = new ConPersona;
+                        $conpersona->nombres = $denunciante->pernombres;
+                        $conpersona->primerAp = $denunciante->perprimerAp;
+                        $conpersona->segundoAp = $denunciante->persegundoAp;
+                        $conpersona->fechaNacimiento = $denunciante->perfechaNacimiento;
+                        $conpersona->rfc = $denunciante->perrfc;
+                        $conpersona->curp = $denunciante->percurp;
+                        $conpersona->sexo = $denunciante->persexo;
+                        $conpersona->idNacionalidad = $denunciante->peridNacionalidad;
+                        $conpersona->idEtnia = $denunciante->peridEtnia;
+                        $conpersona->idLengua = $denunciante->peridLengua;
+                        $conpersona->idMunicipioOrigen = $denunciante->peridMunicipioOrigen;
+                        $conpersona->esEmpresa = $denunciante->peresEmpresa;
+                        $conpersona->save();
+                        $idpersonadenuncianate=$conpersona->id;
+                        
+                        
                         $convariables = new ConVariablesPersona;
                         $convariables->idCarpeta = $idCarpetaTurnada;
-                        $convariables->idPersona = $denunciante->variaidPersona;
+                        $convariables->idPersona = $idpersonadenuncianate;
                         $convariables->edad = $denunciante->variaedad;
                         $convariables->telefono = $denunciante->variatelefono;
                         $convariables->motivoEstancia ='SIN INFORMACION';
@@ -469,10 +596,14 @@ class EstadoController extends Controller
                         $condenunciante = new ConExtraDenunciante;
                         $condenunciante->idVariablesPersona = $idvariablesabo;
                         $condenunciante->idNotificacion = $idnotificon;
-                        for($cont=0; $cont<count($arrayabogados); $cont++){
-                            if($arrayabogados[$cont]['iduat'] == $denunciante->denuncianteidAbogado){
-                                $condenunciante->idAbogado = $arrayabogados[$cont]['idnuevo'];
-                                break;
+                        if (is_null($denunciado->denunciadoidAbogado)) {
+                            $condenunciante->idAbogado=null;
+                        } else {
+                            for($cont=0; $cont<count($arrayabogados); $cont++){
+                                if($arrayabogados[$cont]['iduat'] == $denunciante->denuncianteidAbogado){
+                                    $condenunciante->idAbogado = $arrayabogados[$cont]['idnuevo'];
+                                    break;
+                                }
                             }
                         }
                         $condenunciante->identidadResguarda = $denunciante->denunciantereguardarIdentidad;

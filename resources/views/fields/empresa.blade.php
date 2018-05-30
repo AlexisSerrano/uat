@@ -24,8 +24,8 @@
 							{!! Form::text('rfc2', substr($preregistro->rfc,0,9), ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
 						</div>
 						<div class="col">
-								{!! Form::label('homo2', 'Homo', ['class' => 'col-form-label-sm']) !!}
-							{!! Form::text('homo2', substr($preregistro->rfc,10,3), ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
+								{!! Form::label('homo2', 'Homoclave', ['class' => 'col-form-label-sm']) !!}
+							{!! Form::text('homo2', substr($preregistro->rfc,10,3), ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese homoclave','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'Homoclave inválida' ,'required']) !!}
 						</div>
 					</div>
 				</div>

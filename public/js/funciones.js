@@ -3,7 +3,8 @@
 url = window.location;
 
 function redireccionarPagina() {
-	window.location = "/urgentes";
+	window.location = route("urgentes");
+	//window.location = "route('urgentes')";
   }
 function miajax(id,inputValue){
 	var parametros = {
@@ -16,12 +17,13 @@ function miajax(id,inputValue){
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		},
 		type: "POST",
-		url: "../../estado",
+		// url: "../../estado",
+		url: route('estado'),
 		data:  parametros,
 		success: function(data) {
 			if(data){
 				swal("Hecho", "Registro puesto en cola con éxito", "success");
-				setTimeout("redireccionarPagina()", 3000);
+				setTimeout("redireccionarPagina()", 2500);
 			}			
 		}
 	});
@@ -47,13 +49,16 @@ $(".btnEnUrgente").click(function(){
 });
 $( "#filmunicipio" ).change(function() {
   	id = this.value;
-  	window.location.replace('/showbymunicipio/'+id);
+	  //window.location.replace('/showbymunicipio/'+id);
+	  window.location = route("showbymunicipio",id);
 });
 
 $( "#filfiscal" ).change(function() {
 	id = this.value;
-	window.location.replace('/buscarmunicipio/'+id);
+	//window.location.replace('/buscarmunicipio/'+id);
+	window.location = route("buscarmunicipio",id);
 });
+
 $( ".rownarraciones" ).click(function() {
 	area = $('#areaNarracion');
 	div = $('#divText');
@@ -61,7 +66,8 @@ $( ".rownarraciones" ).click(function() {
 	c = $(this).attr("class");
 	$.ajax({
 		type: "GET",
-		url: "../getnarracion/"+id,
+		//url: "../getnarracion/"+id,
+		url: route("getnarracion",id),
 		dataType: "json",
 		success: function(data) {
 			if(c=='rownarraciones ultimo'){
@@ -100,7 +106,8 @@ function getRandValue(){
 
 	$.ajax({
 		type: "GET",
-		url: "../notificaciones",
+		//url: "../notificaciones",
+		url: route("notificaciones"),
 		dataType: "json",
 		success: function(data) {
 			value.text(data['espera']);
@@ -115,7 +122,8 @@ $('.btn-modal').bind('click', function(){
 	$ ('#myModal1').modal('show');
 	var idr = $(this).val();
 	$.ajax({
-		url : "getMedidasAjax/"+idr,
+		//url : "getMedidasAjax/"+idr,
+		url: route("getMedidasAjax",idr),
 		type : 'GET',
 		success : function(json) {
 			$("#observaciones1").val(json.observacion);
@@ -147,7 +155,8 @@ $('.btn-modal').bind('click', function(){
 			headers: {
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			},
-			url : "agregar-medidas/editar",
+			//url : "agregar-medidas/editar",
+			url: route('agregar-medidas'),
 			data : datos,
 			type : 'POST',
 			success : function(json) {
@@ -174,7 +183,8 @@ $('.btn-modal-delito').bind('click', function(){
 	$ ('#myModal-delito').modal('show');
 	var IdFilaTabla = $(this).val();
 	$.ajax({
-		url : "editar/"+IdFilaTabla,
+		//url : "editar/"+IdFilaTabla,
+		url: route('editar',IdFilaTabla),
 		type : 'GET',
 		success : function(json) {
 			$('#idr').val(json.id); 
