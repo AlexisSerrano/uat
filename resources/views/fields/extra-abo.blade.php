@@ -2,7 +2,7 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('tipo', 'Tipo', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('tipo', ['ASESOR JURIDICO' => 'ASESOR JURÍDICO', 'ABOGADO DEFENSOR' => 'ABOGADO DEFENSOR'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un tipo', 'required']) !!}
+			{!! Form::select('tipo', ['ASESOR JURÍDICO' => 'ASESOR JURÍDICO', 'ABOGADO DEFENSOR' => 'ABOGADO DEFENSOR'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un tipo', 'required']) !!}
 		</div>
 	</div>
 	<div class="col-3">

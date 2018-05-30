@@ -21,9 +21,9 @@
                     <div class=" table-responsive" align="center">  
                     <table id="tablaprovidencias" style="font-size:13px; column-width:90"  class='display table table-hover table-responsive-lg table-sm' width="min">
                         <thead style="text-align:center;">
-                            <th >N.</th>
+                            <th >No.</th>
                             <th >Fecha</th>
-                            <th >Victima/Querellante</th>
+                            <th >Víctima/Querellante</th>
                             <th >Ofensor/Q.R.R</th>
                             <th >Carpeta de investigación</th>
                             <th >Delito</th>
@@ -48,12 +48,12 @@
                                   <td>{{ $carpterminada->numCarpeta}}</td>
                                   <td>{{ $carpterminada->delito}}</td>
                                   <td>{{ $carpterminada->formaComision}}</td> 
-                                  <td>sin datos</td>
-                                  <td>sin datos</td>
+                                  <td>SIN DATOS</td>
+                                  <td>SIN DATOS</td>
                                   <td>{{ $carpterminada->idEstadoCarpeta}}</td>
-                                  <td>sin datos</td>
-                                  <td>sin datos</td>
-                                  <td>sin datos</td>
+                                  <td>SIN DATOS</td>
+                                  <td>SIN DATOS</td>
+                                  <td>SIN DATOS</td>
                                   
                                 </tr>
                                 @endforeach

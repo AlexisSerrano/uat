@@ -34,7 +34,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('compat', 'Compañia teléfonica', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('compat', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese la Compañia', 'data-validation'=>'required']) !!}
+			{!! Form::text('compat', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese la compañia', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
 	<div class="col-4">

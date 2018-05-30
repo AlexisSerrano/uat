@@ -74,8 +74,8 @@
              </div>
              <div class="col-4">
                     <div class="form-group">
-                        {!! Form::label('codigo', 'Codigo Postal', ['class' => 'col-form-label-sm']) !!}
-                        {!! Form::text('codigo', null, ['class' => 'lugarH form-control form-control-sm', 'placeholder' => 'Codigo Postal','data-validation'=> 'required']) !!}
+                        {!! Form::label('codigo', 'Código Postal', ['class' => 'col-form-label-sm']) !!}
+                        {!! Form::text('codigo', null, ['class' => 'lugarH form-control form-control-sm', 'placeholder' => 'Código postal','data-validation'=> 'required']) !!}
                     </div>
              </div>
 
