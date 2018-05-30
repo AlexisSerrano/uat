@@ -35,7 +35,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('repLegal', 'Representante legal', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
-			{!! Form::text('repLegal', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required','required']) !!}
+			{!! Form::text('repLegal', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required','required','data-validation-length'=>'4']) !!}
 			<div class="help-block with-errors"></div> 
 		</div>
 	</div>
