@@ -38,7 +38,7 @@ class StorePreregistro extends FormRequest
 
             'nombre2' => 'string|min:2|max:200',
             'primerAp' => 'string|min:2|max:50',
-            'segundoAp' => 'string|min:2|max:50',
+            'segundoAp' => 'nullable|string|min:2|max:50',
             'rfc2' => 'alpha_num|min:8',
             'curp' => 'string|min:18|max:20',
             'telefono2' => 'numeric',
