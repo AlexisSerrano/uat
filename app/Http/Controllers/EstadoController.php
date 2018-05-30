@@ -220,9 +220,9 @@ class EstadoController extends Controller
                             'extra_denunciado.perseguidoPenalmente as denunciadoperseguidoPenalmente',
                             'extra_denunciado.vestimenta as denunciadovestimenta',
                             'extra_denunciado.narracion as denunciadonarracion',
-                            'dirnotificacion.idDomicilio as notifiidDomicilio',
-                            'dirnotificacion.correo as notificorreo',
-                            'dirnotificacion.telefono as notifitelefono')
+                            'dirNotificacion.idDomicilio as notifiidDomicilio',
+                            'dirNotificacion.correo as notificorreo',
+                            'dirNotificacion.telefono as notifitelefono')
                 ->get();
                 //dd($denunciados);
 
@@ -266,9 +266,9 @@ class EstadoController extends Controller
                             'extra_denunciante.reguardarIdentidad as denunciantereguardarIdentidad',
                             'extra_denunciante.victima as denunciantevictima',
                             'extra_denunciante.narracion as denunciantenarracion',
-                            'dirnotificacion.idDomicilio as notifiidDomicilio',
-                            'dirnotificacion.correo as notificorreo',
-                            'dirnotificacion.telefono as notifitelefono')
+                            'dirNotificacion.idDomicilio as notifiidDomicilio',
+                            'dirNotificacion.correo as notificorreo',
+                            'dirNotificacion.telefono as notifitelefono')
                 ->get();
                 //dd($abogados);
 
