@@ -129,14 +129,14 @@
 					{!! Form::label('docIdentificacion', 'Seleccione el documento de identificación:', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::select('docIdentificacion', array('CREDENCIAL PARA VOTAR' => 'CREDENCIAL PARA VOTAR', 
 					'PASAPORTE' => 'PASAPORTE',
-					'CEDULA PROFESIONAL' => 'CEDULA PROFESIONAL',
+					'CÉDULA PROFESIONAL' => 'CÉDULA PROFESIONAL',
 					'CARTILLA DEL SERVICIO MILITAR NACIONAL' => 'CARTILLA DEL SERVICIO MILITAR NACIONAL',
-					'TARJETA UNICA DE IDENTIDAD MILITAR' => 'TARJETA UNICA DE IDENTIDAD MILITAR',
-					'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES' => 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES',
+					'TARJETA ÚNICA DE IDENTIDAD MILITAR' => 'TARJETA ÚNICA DE IDENTIDAD MILITAR',
+					'TARJETA DE AFILIACIÓN AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES' => 'TARJETA DE AFILIACIÓN AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES',
 					'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL' => 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL',
-					'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR' => 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR',
+					'CREDENCIALES DE EDUCACIÓN MEDIA SUPERIOR Y SUPERIOR' => 'CREDENCIALES DE EDUCACIÓN MEDIA SUPERIOR Y SUPERIOR',
 					'LICENCIA DE CONDUCIR' => 'LICENCIA DE CONDUCIR',
-					'CERTIFICADO DE MATRICULA CONSULAR' => 'CERTIFICADO DE MATRICULA CONSULAR',
+					'CERTIFICADO DE MATRÍCULA CONSULAR' => 'CERTIFICADO DE MATRÍCULA CONSULAR',
 					'ACTA DE NACIMIENTO' => 'ACTA DE NACIMIENTO',
 					'CURP' => 'CURP',
 					'CONSTANCIA DE RESIDENCIA' => 'CONSTANCIA DE RESIDENCIA',
@@ -178,8 +178,8 @@
 					{!! Form::text('rfc2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
 						</div>
 					<div class="col">
-							{!! Form::label('homo2', 'Homo', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::text('homo2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
+							{!! Form::label('homo2', 'Homoclave', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::text('homo2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la homoclave','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'Homoclave inválida' ,'required']) !!}
 					</div>
 				</div>
 			</div>

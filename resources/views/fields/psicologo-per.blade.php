@@ -4,7 +4,7 @@
 		<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('nombrep', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('nombrep', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el Nombre',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras']) !!}
+					{!! Form::text('nombrep', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras']) !!}
 				</div>
 			</div>
 	<div class="col-4">
@@ -22,7 +22,7 @@
 	{{-- <div class="col-4">
 		<div class="form-group">
 			{!! Form::label('compat', 'Compañia Teléfonica', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('compat', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese la Compañia', 'data-validation'=>'required']) !!}
+			{!! Form::text('compat', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese la compañia', 'data-validation'=>'required']) !!}
 		</div>
 	</div> --}}
 	
@@ -47,8 +47,8 @@
 	</div>
 	{{-- <div class="col-4">
 		<div class="form-group">
-			{!! Form::label('numero2t', 'Número Destino', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numero2t', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el Número Destino', 'data-validation'=>'required']) !!}
+			{!! Form::label('numero2t', 'Número destino', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('numero2t', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el número destino', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
 	<div class="col-12">

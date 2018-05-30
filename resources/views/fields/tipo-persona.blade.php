@@ -9,7 +9,7 @@
 		</div>
 		<div class="form-check form-check-inline">
 			<label class="form-check-label col-form-label col-form-label-sm">
-				<input class="form-check-input" type="radio" id="esEmpresa2" name="esEmpresa" value="0" required> Persona fisíca
+				<input class="form-check-input" type="radio" id="esEmpresa2" name="esEmpresa" value="0" required> Persona física
 			</label>
 		</div>
 	</div>

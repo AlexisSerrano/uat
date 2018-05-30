@@ -89,6 +89,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ColorSeeder::class);
         $this->call(ProcedenciaSeeder::class);
         $this->call(TipoUsoSeeder::class);
+        $this->call(ActasSeeder::class);
     
     
     }
