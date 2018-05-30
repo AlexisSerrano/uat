@@ -17,7 +17,7 @@
                         <textarea name="contenido" id="contenido" class="form-control form-control-sm ckeditor" data-validation="required"></textarea>
                     </div>
                     <div>
-                        <button id="guardarOficio" class="btn btn-primary btn-block"> Guardar nuevo oficio </button>   
+                        <button id="guardarOficio" class="btn btn-primary btn-block" style="margin-top:30px"> Guardar nuevo oficio </button>   
                     </div>
                 </div>
             </div>

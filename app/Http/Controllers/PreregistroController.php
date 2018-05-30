@@ -310,6 +310,10 @@ class PreregistroController extends Controller
                 $preregistro->idRazon = $request->idRazon2;
                 $preregistro->fechaNac = $request->fechaNacimiento;
                 $preregistro->edad = $edad;
+                $preregistro->idMunicipioOrigen = $request->idMunicipioOrigen;
+                $preregistro->idEstadoCivil = $request->estadoCivil;
+                $preregistro->idEscolaridad = $request->escolaridad;
+                $preregistro->idOcupacion = $request->ocupacion;
                 if (!is_null($request->rfc2)){
                     $preregistro->rfc = $request->rfc2 . $request->homo2;
                 }
@@ -320,6 +324,9 @@ class PreregistroController extends Controller
                 $preregistro->docIdentificacion = $request->docIdentificacion;
                 $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
                 $preregistro->conViolencia = $request->Violencia;
+                if (!is_null($request->tipoActa)){
+                    $preregistro->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa;
+                }
                 
                 $preregistro->save();
                 $id = $preregistro->id;
