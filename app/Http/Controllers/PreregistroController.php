@@ -176,7 +176,8 @@ class PreregistroController extends Controller
                 $preregistro = new Preregistro();
                 $preregistro->nombre = $request->nombre1;
                 $preregistro->idDireccion = $idD1;
-                $preregistro->idRazon = $request->idRazon1;
+                //$preregistro->idRazon = $request->idRazon1;
+                $preregistro->idRazon = 2;
                 $preregistro->rfc = $request->rfc1 . $request->homo1;
                 $preregistro->esEmpresa = 1;
                 $preregistro->telefono = $request->telefono1;
