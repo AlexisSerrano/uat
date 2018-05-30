@@ -1,6 +1,6 @@
 {!! Form::open(['route' => 'store.lesiones', 'method' => 'POST'])  !!} 
 <div class="row">
-	<div class="col-4">
+	{{-- <div class="col-4">
 		<div class="form-group">
 			{!! Form::label('nombrele', 'Nombre', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
 			{!! Form::text('nombrele', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}
@@ -18,7 +18,13 @@
 				{!! Form::label('segundoAp5', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::text('segundoAp5', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 			</div>
-		</div>
+		</div> --}}
+		<div class="col-4">
+			<div class="form-group">
+				{!! Form::label('victima4', 'Víctima/Ofendido', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('victima4', $victimas,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+			</div>
+	</div>		
 		
 	<div class="col-4">
 			<div class="form-group">

@@ -1,7 +1,7 @@
 {!! Form::open(['route' => 'store.psicologo', 'method' => 'POST'])  !!} 
 <div class="row">
 	
-		<div class="col-4">
+		{{-- <div class="col-4">
 				<div class="form-group">
 					{!! Form::label('nombrep', 'Nombre', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('nombrep', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el Nombre',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras']) !!}
@@ -18,7 +18,13 @@
 			{!! Form::label('segundoAp2', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::text('segundoAp2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 		</div>
-	</div>
+	</div> --}}
+	<div class="col-4">
+		<div class="form-group">
+			{!! Form::label('victima2', 'Víctima/Ofendido', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('victima2', $victimas,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+		</div>
+</div>		
 	{{-- <div class="col-4">
 		<div class="form-group">
 			{!! Form::label('compat', 'Compañia Teléfonica', ['class' => 'col-form-label-sm']) !!}

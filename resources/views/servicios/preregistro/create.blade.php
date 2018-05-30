@@ -1,4 +1,4 @@
-
+{{-- 
 <style type="text/css">
 	.loadPage{
 		display: block;
@@ -27,7 +27,7 @@
 		.oculto{
 			display: none;
 		}
-	</style>
+	</style> --}}
 @extends('servicios.preregistro.templates.form2')
 
 @section('content')
@@ -54,9 +54,9 @@
 				PRE-REGISTRO
 
 	</p>
-	<span id="pantalla" class="oculto" >
+	{{-- <span id="pantalla" class="oculto" >
 		<p>Cargando...</p>
-	</span>
+	</span> --}}
 	<div>
 		@include('servicios.preregistro.fields.tipo-persona')
 	</div>
@@ -183,16 +183,16 @@
 	
 	{{-- <script src="{{ asset('js/rfcMoral.js') }}"></script> --}}
 	<script>
-	$(document).ready(function(){
-		$("#cargando").click(function(event){
+	// $(document).ready(function(){
+	// 	$("#cargando").click(function(event){
 			
-			console.log("entro");
-				$("#pantalla").removeClass("loadPage");
-	 			$("#pantalla").removeClass("oculto");
-				 $("#pantalla").addClass("loadPage");
-    	});
-	});
-
+	// 		console.log("entro");
+	// 			$("#pantalla").removeClass("loadPage");
+	//  			$("#pantalla").removeClass("oculto");
+	// 			 $("#pantalla").addClass("loadPage");
+    // 	});
+	// });
+/////////////////////////////////////////////////////////////////LO DE ARRINA SI SIRVE
 
 
 	// $(window).load(function(){

@@ -114,15 +114,16 @@ class PericialesController extends Controller
 
 
         public function psico(Request $request) {   
-
+            
+        $NombreComp2 = explode("-",  $request->victima2);
             DB::beginTransaction();
             try{
                 $idCarpeta = session('carpeta');
                 $Psicologo = new Psicologo;
                 $Psicologo->idCarpeta = 1;
-                $Psicologo->nombre = $request->nombrep;
-                $Psicologo->primerAp = $request->primerAp2;
-                $Psicologo->segundoAp = $request->segundoAp2;
+                $Psicologo->nombre = $NombreComp2[0];
+                $Psicologo->primerAp = $NombreComp2[1];
+                $Psicologo->segundoAp = $NombreComp2[2];
                 $Psicologo->numero = $request->numerop;
                 $Psicologo->fecha = $request->fecha_nac;
                
@@ -157,7 +158,7 @@ class PericialesController extends Controller
         }
     
         public function vehi(Request $request) {   
-
+            $NombreComp3 = explode("-",  $request->victima3);
             // DB::beginTransaction();
             // try{
                 $idCarpeta = session('carpeta');
@@ -170,9 +171,9 @@ class PericialesController extends Controller
                 $vehiculo->numero_serie = $request->numeroseriev;
                 $vehiculo->lugar_fabricacion = $request->lugarFabv;
                 $vehiculo->placas = $request->placav;
-                $vehiculo->nombre = $request->nombretve;
-                $vehiculo->primerAp = $request->primerAp4;
-                $vehiculo->segundoAp = $request->segundoAp4;
+                $vehiculo->nombre = $NombreComp3[0];
+                $vehiculo->primerAp = $NombreComp3[1];
+                $vehiculo->segundoAp =  $NombreComp3[2];
                 $vehiculo->numero = $request->celularv;
                 $vehiculo->calle = $request->calle2;
                 $vehiculo->num_ext = $request->numExterno2;
@@ -253,15 +254,15 @@ class PericialesController extends Controller
     
 
          public function lesiones(Request $request) {   
-
+            $NombreComp4 = explode("-",  $request->victima4);
             DB::beginTransaction();
             try{
                 $idCarpeta = session('carpeta');
                 $lesiones = new Lesione;
                 $lesiones->idCarpeta = 1;
-                $lesiones->nombre = $request->nombrele;
-                $lesiones->primerAp = $request->primerAp5;
-                $lesiones->segundoAp = $request->segundoAp5;
+                $lesiones->nombre = $NombreComp4[0];
+                $lesiones->primerAp =$NombreComp4[1];
+                $lesiones->segundoAp = $NombreComp4[2];
                 $lesiones->fecha = $request->fecha_nac;
                
                 if($lesiones->save()){

@@ -1,6 +1,6 @@
 {!! Form::open(['route' => 'store.vehiculo', 'method' => 'POST'])  !!} 
 <div class="row">
-	
+{{-- 	
 		<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('nombretve', 'Nombre', ['class' => 'col-form-label-sm']) !!}
@@ -18,7 +18,13 @@
 						{!! Form::label('segundoAp4', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
 						{!! Form::text('segundoAp4', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 					</div>
-				</div>
+				</div> --}}
+				<div class="col-4">
+                    <div class="form-group">
+                        {!! Form::label('victima3', 'Víctima/Ofendido', ['class' => 'col-form-label-sm']) !!}
+                        {!! Form::select('victima3', $victimas,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+                    </div>
+            </div>		
 		<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('marcav', 'Marca', ['class' => 'col-form-label-sm']) !!}
