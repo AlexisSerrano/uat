@@ -126,7 +126,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/preregistroWeb', 'PreregistroAuxController@store'); //registar
     
     /*-----------------descripcion de Hechos------------------------------*/
-    Route::get('descripcionHechos', 'NarracionController@descripcionHechos')->name('descripcionHechos');
+    Route::get('observaciones', 'NarracionController@descripcionHechos')->name('observaciones');
     Route::post('storeDescripcionHechos', 'NarracionController@storeDescripcionHechos')->name('store.descripcionHechos');
     /*---------Rutas narración-------------*/
     Route::get('narracion', 'NarracionController@index')->name('narracion');

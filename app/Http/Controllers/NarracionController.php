@@ -37,7 +37,7 @@ class NarracionController extends Controller
                 $bdbitacora->save();
             }
             DB::commit();
-            return redirect(route('descripcionHechos'));
+            return redirect(route('observaciones'));
         }catch (\PDOException $e){
             DB::rollBack();
             Alert::error('Se presentó un problema al guardar los datos, intente de nuevo', 'Error');
