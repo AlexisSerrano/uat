@@ -84,5 +84,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PruebaSeeder::class);
         $this->call(Agrupacion1Seeder::class);
         $this->call(Agrupacion2Seeder::class);
+        $this->call(ActasSeeder::class);
     }
 }

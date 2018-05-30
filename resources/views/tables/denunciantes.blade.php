@@ -33,24 +33,25 @@
                         <td>{{ $denunciante->sexo }}</td> --}}
                         <td>{{ $denunciante->telefono }}</td>
                         @if($denunciante->esEmpresa==1)
-                            <td>Persona Moral</td>
+                            <td>PERSONA MORAL</td>
                         @else
-                            <td>Persona Fisica</td>
+                            <td>PERSONA FÍSICA</td>
                         @endif
                         @if($denunciante->victima==1)
-                            <td>Victima</td>
+                            <td>VÍCTIMA</td>
                         @else
-                            <td>Ofendido</td>
+                            <td>OFENDIDO</td>
                         @endif
                         @if($denunciante->reguardarIdentidad!=NULL)
-                            <td>Si</td>
+                            <td>SI</td>
                             <td>{{$denunciante->reguardarIdentidad}}</td>
                         @else
-                            <td colspan="2" style="text-align:center">No</td>
+                            <td colspan="2" style="text-align:center">NO</td>
                         @endif
-              
-                        {{-- <td> <a id="deleteBtn" href="{{ url('agregar-denunciante/'.$denunciante->id.'/eliminar')}}" title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
-                            <i class="fa fa-times"></i></a></td> --}}
+{{--               
+                        <td> <a id="deleteBtn" href="{{ url('agregar-denunciante/'.$denunciante->id.'/eliminar')}}" title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
+                            <i class="fa fa-times"></i></a>
+                        </td> --}}
                         <td> 
                             @if(is_null(session('terminada')))
                             <a data-denunciante-id={{$denunciante->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
@@ -74,8 +75,10 @@
             //  DenuncianteId = $(this).attr("data-denunciante-id");
             // alert("ok");
             $(".deleteBtn").on("click", function(e) {
+                var id = $(this).data("denunciante-id");
             e.preventDefault()
                 swal({
+                    // console.log(id);
                     title: "Está seguro de eliminarlo?",
                     text: "No podrá recuperar este registro!",
                     type: "warning",
@@ -87,9 +90,7 @@
                     closeOnCancel: true },
                     function(isConfirm){
                 if (isConfirm) {
-                var id = $(".deleteBtn").data("denunciante-id");
-                 window.location.href=route('delete.denunciante',{id:id});
-                //  window.location.href=route("agregar-denunciado/'.$denunciante->id.'/eliminar");
+                    window.location.href=route('delete.denunciante',id);
                 }
         });
         });

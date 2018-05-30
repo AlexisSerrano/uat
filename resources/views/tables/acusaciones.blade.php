@@ -47,6 +47,7 @@
             //  DenuncianteId = $(this).attr("data-denunciante-id");
             // alert("ok");
             $(".deleteBtn").on("click", function(e) {
+                var id = $(this).data("acusacion-id");
             e.preventDefault()
                 swal({
                     title: "Está seguro de eliminarlo?",
@@ -60,7 +61,7 @@
                     closeOnCancel: true },
                     function(isConfirm){
                 if (isConfirm) {
-                var id = $(".deleteBtn").data("acusacion-id");
+              
                  window.location.href=route('delete.acusacion',id);
                 //  window.location.href=route("agregar-denunciado/'.$denunciante->id.'/eliminar");
                 }

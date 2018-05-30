@@ -24,9 +24,9 @@
 		margin: auto;
 			}
 	
-	/* .oculto{
-		display: none;
-	} */
+		.oculto{
+			display: none;
+		}
 	</style>
 @extends('servicios.preregistro.templates.form2')
 
@@ -54,9 +54,9 @@
 				PRE-REGISTRO
 
 	</p>
-	{{-- <span  class="ocuto">
+	<span id="pantalla" class="oculto" >
 		<p>Cargando...</p>
-	</span> --}}
+	</span>
 	<div>
 		@include('servicios.preregistro.fields.tipo-persona')
 	</div>
@@ -138,8 +138,8 @@
 							<div class="text-center">
 								<br>
 									<a href="http://fiscaliaveracruz.gob.mx/" title="" class="btn btn-primary">Cancelar</a>
-									{!!Form::submit('Guardar',array('class' => 'btn btn-primary ', 'id'=>'cargando', 'onclick'=> 'cargando();'))!!}
-		
+									{!!Form::submit('Guardar',array('class' => 'btn btn-primary ', 'id'=>'cargando'))!!}
+									{{-- <button id="prueba" type="button" class="btn btn-primary">prueba</button> --}}
 								<br>
 							
 							</div>
@@ -182,7 +182,19 @@
 	<script src="{{ asset('js/jquery.disableAutoFill.min.js')}}" ></script>
 	
 	{{-- <script src="{{ asset('js/rfcMoral.js') }}"></script> --}}
-	<script>	
+	<script>
+	$(document).ready(function(){
+		$("#cargando").click(function(event){
+			
+			console.log("entro");
+				$("#pantalla").removeClass("loadPage");
+	 			$("#pantalla").removeClass("oculto");
+				 $("#pantalla").addClass("loadPage");
+    	});
+	});
+
+
+
 	// $(window).load(function(){
 	// 			$("#loadPage").delay(5000).fadeOut("slow");
 	// 		});
