@@ -50,7 +50,14 @@ Route::get('/pruebasconsulta', function(){
         
         Route::get('/oficios', function(){
             return view('forms.oficios');  
-        });    
+        });   
+        
+        
+ /* --------Pruebas vehiculos----------- */
+
+ Route::get('/vehiculos-pruebas','VehiculoController@showform');
+
+
 /**************************************************************/
 // -------------------------------------------------------------------
 

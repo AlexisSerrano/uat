@@ -21,10 +21,10 @@
 			<div class="boxtwo" id="vehiculos">
 				<h6>Datos generales de la unidad</h6>
 				<div class="row">
-					@if(!empty($idCarpeta))
+					{{-- @if(!empty($idCarpeta))
 						{!! Form::hidden('idCarpeta', $idCarpeta) !!}
-					@endif
-					@include('fields.vehiculo')
+					@endif --}}
+					@include('fields.vehiculos')
 				</div>
 			</div>
 		</div>
@@ -33,12 +33,12 @@
 	{!! Form::close() !!}
 @endsection
 
-@section('tabla')
+{{-- @section('tabla')
 	<div class="boxtwo">
 		@section('titulo-tabla', 'Vehículos registrados')
 		@include('tables.vehiculos')
 	</div>
-@endsection
+@endsection --}}
 
 @push('scripts')
 	

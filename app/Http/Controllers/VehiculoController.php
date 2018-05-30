@@ -10,15 +10,16 @@ use App\Models\CatEstado;
 use App\Models\CatMarca;
 use App\Models\CatProcedencia;
 use App\Models\CatTipoUso;
-use App\Models\Vehiculo;
+// use App\Models\Vehiculo;
 use DB;
 
     class VehiculoController extends Controller
 {
-    public function showForm($idCarpeta)
+    public function showForm()
     {
-        $carpetaNueva = CarpetaController::getCarpeta($idCarpeta);
-        if ($carpetaNueva->isEmpty()) return CarpetaController::redirectHome();
+        $idCarpeta=session('carpeta');
+        // $carpetaNueva = CarpetaController::getCarpeta($idCarpeta);
+        // if ($carpetaNueva->isEmpty()) return CarpetaController::redirectHome();
         
         // $numCarpeta   = $carpetaNueva[0]->numCarpeta;
         // $vehiculos    = CarpetaController::getVehiculos($idCarpeta);
@@ -29,25 +30,26 @@ use DB;
         $marcas       = CatMarca::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $procedencias = CatProcedencia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $tiposuso     = CatTipoUso::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        $tipifdelitos = DB::table('tipif_delito')
-            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
-            ->join('cat_agrupacion1', 'cat_agrupacion1.id', '=', 'tipif_delito.idAgrupacion1')
-            ->join('cat_agrupacion2', 'cat_agrupacion2.id', '=', 'tipif_delito.idAgrupacion2')
-            ->select('tipif_delito.id', 'cat_delito.nombre as delito', 'cat_agrupacion1.nombre as desagregacion1', 'cat_agrupacion2.nombre as desagregacion2')
-            ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
-            ->orderBy('cat_delito.nombre', 'ASC')
-            ->get();
-        $cont = 0;
-        foreach ($tipifdelitos as $delito => $nombre) {
-            if ($tipifdelitos[$cont]->desagregacion1 == 'SIN AGRUPACION') {
-                $tipifdelitos[$cont]->desagregacion1 = " ";
-            }
-            if ($tipifdelitos[$cont]->desagregacion2 == 'SIN AGRUPACION') {
-                $tipifdelitos[$cont]->desagregacion2 = " ";
-            }
-            $cont = $cont + 1;
-        }
-        return view('forms.vehiculo')->with('idCarpeta', $idCarpeta)
+        // $tipifdelitos = DB::table('tipif_delito')
+        //     ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+        //     ->join('cat_agrupacion1', 'cat_agrupacion1.id', '=', 'tipif_delito.idAgrupacion1')
+        //     ->join('cat_agrupacion2', 'cat_agrupacion2.id', '=', 'tipif_delito.idAgrupacion2')
+        //     ->select('tipif_delito.id', 'cat_delito.nombre as delito', 'cat_agrupacion1.nombre as desagregacion1', 'cat_agrupacion2.nombre as desagregacion2')
+        //     ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
+        //     ->orderBy('cat_delito.nombre', 'ASC')
+        //     ->get();
+        // $cont = 0;
+        // foreach ($tipifdelitos as $delito => $nombre) {
+        //     if ($tipifdelitos[$cont]->desagregacion1 == 'SIN AGRUPACION') {
+        //         $tipifdelitos[$cont]->desagregacion1 = " ";
+        //     }
+        //     if ($tipifdelitos[$cont]->desagregacion2 == 'SIN AGRUPACION') {
+        //         $tipifdelitos[$cont]->desagregacion2 = " ";
+        //     }
+        //     $cont = $cont + 1;
+        // }
+        return view('forms.vehiculos')
+        ->with('idCarpeta', $idCarpeta)
             ->with('numCarpeta', $numCarpeta)
             ->with('vehiculos', $vehiculos)
             ->with('tipifdelitos', $tipifdelitos)
@@ -59,6 +61,7 @@ use DB;
             ->with('procedencias', $procedencias)
             ->with('tiposuso', $tiposuso);
     }
+}
 
 //     public function storeVehiculo(StoreVehiculo $request)
 //     {

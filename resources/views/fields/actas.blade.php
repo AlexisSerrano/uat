@@ -1,6 +1,6 @@
 
-<div class="col">
-<div id="actaPersona" class="row">
+{{-- <div class="col"> --}}
+{{-- <div id="actaPersona" class="row"> --}}
         <div class="col-4">
             <div class="form-group">
                 {!! Form::label('nombre2', 'Nombre', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
@@ -57,7 +57,7 @@
 					{!! Form::select('sexo', ['HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Seleccione el sexo','data-validation'=>'required']) !!}
 				</div>
 			</div>
-			<div class="col-4">
+			{{-- <div class="col-4">
 				<div class="form-group">
 					{!! Form::label('curp', 'C.U.R.P.', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('curp', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$','data-validation-error-msg'=>'CURP inválido','required']) !!}
@@ -76,7 +76,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         <div class="col-4">
             <div class="form-group" >
                 {!! Form::label('estadoCivilActa1', 'Estado Civil', ['class' => 'col-form-label-sm']) !!}
@@ -97,13 +97,13 @@
                 {!! Form::select('ocupActa1',$ocupaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una ocupación','data-validation'=>'required']) !!}
             </div>
         </div>
-</div>
+{{-- </div> --}}
 
 
 
 
 {{-- para actas de empresa --}}
-<div id="actaEmpresa" class="row">
+{{-- <div id="actaEmpresa" class="row">
                 <div class="col-8">
                     <div class="form-group">
                         {!! Form::label('nombres2', 'Nombre de la empresa', ['class' => 'col-form-label-sm']) !!}
@@ -140,9 +140,9 @@
                         {!! Form::text('representanteLegal', null, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal','data-validation'=>'required']) !!}
                     </div>
                 </div>
-</div>
+</div> --}}
 
-<div class="row" id="extras">
+{{-- <div class="row" id="extras"> --}}
 <div class="col-4">
     <div class="form-group">
         {!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
@@ -311,8 +311,8 @@
             @endif
         </textarea> --}}
     </div>
-</div>
-</div>
+{{-- </div> --}}
+{{-- </div> --}}
 </div>
 
 @push('scripts')
