@@ -15,7 +15,7 @@
 		
 	</style>
 @endsection
-@section('title', 'Descripción de los hechos')
+@section('title', 'Observaciones')
 @section('content')
 
 
