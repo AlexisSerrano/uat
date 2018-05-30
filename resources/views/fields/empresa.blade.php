@@ -34,7 +34,7 @@
 			<div class="col-4">
 				<div class="form-group">
 					{!! Form::label('representanteLegal', 'Representante legal', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('representanteLegal',  $preregistro->representanteLegal, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal','data-validation'=>'required']) !!}
+					{!! Form::text('representanteLegal',  $preregistro->representanteLegal, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal','data-validation'=>'required','data-validation'=>'length', 'data-validation-length'=>'min4']) !!}
 				</div>
 			</div>
 		</div>
