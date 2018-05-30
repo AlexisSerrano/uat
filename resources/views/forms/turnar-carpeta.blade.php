@@ -29,7 +29,7 @@
     <div class="form-group">
         {!! Form::label('cambioEstatus', 'Cambiar a:', ['class' => 'col-form-label-sm']) !!}
         {{-- {!! Form::select('cambioEstatus', ['' => 'Seleccione un estatus'], $informacion, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!} --}}
-        {!! Form::select('EstadoCarpeta', $informacion, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un Estatus','data-validation'=>'required']) !!}
+        {!! Form::select('EstadoCarpeta', $informacion, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un estatus','data-validation'=>'required']) !!}
         </div>
 
    
@@ -38,7 +38,7 @@
 <div class="col-12">
         <div class="form-group">
             {!! Form::label('asignarFiscal', 'Asignar a fiscal:', ['class' => 'col-form-label-sm']) !!}
-            {!! Form::text('asignarFiscal', 'SIN INFORMACION', ['class' => 'form-control form-control-sm']) !!}
+            {!! Form::text('asignarFiscal', 'SIN INFORMACIÓN', ['class' => 'form-control form-control-sm']) !!}
         </div>
     </div>
 </div>
