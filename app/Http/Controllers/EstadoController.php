@@ -278,7 +278,7 @@ class EstadoController extends Controller
                 try{
                 
                     //dd($carpeta);
-                    if (count($carpeta)!=null) {
+                    if (count($carpeta)>0) {
                         $concarpeta= new ConCarpeta;
                         $concarpeta->idUnidad = 11;
                         $concarpeta->fechaInicio = $carpeta->fechaInicio;
@@ -304,7 +304,7 @@ class EstadoController extends Controller
                 
                     // dd($delitos);
 
-                    if (count($delitos)!=null) {
+                    if (count($delitos)>0) {
                         $arraydelitos=array();
                         foreach ($delitos as $delito) {
                             $condelito = new ConTipifDelito;
@@ -335,7 +335,7 @@ class EstadoController extends Controller
 
 
 
-                    if (count($autoridades)!=null) {
+                    if (count($autoridades)>0) {
                         foreach ($autoridades as $autoridad) {
                             $conpersona = new ConPersona;
                             $conpersona->nombres = $autoridad->pernombres;
@@ -400,7 +400,7 @@ class EstadoController extends Controller
                     
 
                     
-                    if (count($abogados)!=null) {
+                    if (count($abogados)>0) {
                         $arrayabogados=array();
                         foreach ($abogados as $abogado) {
                             $conpersona = new ConPersona;
@@ -456,7 +456,7 @@ class EstadoController extends Controller
                     /****DATOS DEL DENUNCIADO******/
 
 
-                    if (count($denunciados)!=null) {
+                    if (count($denunciados)>0) {
                         $arraydenunciado=array();
                         foreach ($denunciados as $denunciado) {
                             $conpersona = new ConPersona;
@@ -547,7 +547,7 @@ class EstadoController extends Controller
                     /****DATOS DEL DENUNCIANTE******/
 
                     
-                    if (count($denunciantes)!=null) {
+                    if (count($denunciantes)>0) {
                         $arraydenunciante=array();
                         foreach ($denunciantes as $denunciante) {
                             $conpersona = new ConPersona;
