@@ -13,7 +13,7 @@
  <span class="datotip" id="{{$tipopersona}}"></span> 	 
 	
 	<div class="col-md-12">
-		<br>
+		
 		<nav>
 			
 			<div class="nav nav-tabs color-nav-tab" id="nav-tab" role="tablist">

@@ -13,6 +13,7 @@ use App\Models\CatNacionalidad;
 use App\Models\Preregistro;
 use App\Models\Oficio;
 use App\Models\catIdentificacion;
+use App\Models\CatMunicipio;
 use App\Http\Requests\ActaRequest;
 use DB;
 use Alert;
@@ -89,7 +90,9 @@ class ActasHechosController extends Controller
         ->pluck('nombre', 'id');
         $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')
         ->pluck('nombre', 'id');
-        return view('forms.acta-hechos',compact('ocupaciones','escolaridades','estadocivil','nacionalidades','estados'));
+        $municipios = CatMunicipio::orderBy('nombre', 'ASC')
+        ->pluck('nombre', 'id');
+        return view('forms.acta-hechos',compact('ocupaciones','escolaridades','estadocivil','nacionalidades','estados','municipios'));
     }
 
     public function showActas(){
