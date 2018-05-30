@@ -26,3 +26,4 @@ class ClaseVehiculoSeeder extends Seeder
             ]);
         }
     }
+}

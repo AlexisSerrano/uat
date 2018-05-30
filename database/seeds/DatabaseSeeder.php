@@ -90,6 +90,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ProcedenciaSeeder::class);
         $this->call(TipoUsoSeeder::class);
         $this->call(ActasSeeder::class);
+        $this->call(ClaseVehiculoSeeder::class);
+
     
     
     }
