@@ -48,8 +48,8 @@ Route::get('/pruebasconsulta', function(){
         Route::get('/pruebasactas','PruebasController@actas');
         Route::get('/pruebasmetodo','PruebasController@metodo');
         
-        Route::get('/oficios', function(){
-            return view('forms.oficios');  
+        Route::get('/resumen', function(){
+            return view('forms.resumen-carpeta');  
         });   
         
         

@@ -3,8 +3,8 @@ $barra = getNavCaso();
 @endphp
 <style>
 	.badge-info {
-    color: #0a0a0a;
-    background-color: #dda61d;
+    color: #fff;
+    background-color: #138c13;
 }
 </style>
 <div class="btn-group col">
