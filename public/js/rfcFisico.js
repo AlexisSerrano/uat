@@ -10,7 +10,7 @@ $("#segundoAp").focusout(function() {
 	obtenerRFCFISICA();
 });
 
-$("#fechaNacimiento").focusout(function() {
+$("#fechaNacimiento").change(function() {
 	obtenerRFCFISICA();
 });
 
