@@ -15,7 +15,7 @@ class CreateProvidenciaPrecautoriaTable extends Migration
     {
         Schema::create('cat_providencia_precautoria', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre')->unique();
+            $table->string('nombre');
             $table->string('status', 5)->default(1);
         });
     }
