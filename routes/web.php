@@ -183,9 +183,9 @@ Route::middleware(['auth'])->group(function () {
     
     
     /*----------------medidas version2------------------*/
-    Route::get('medidas2', 'MedidasController@index')->name('medidas2');
-    Route::post('addMedidas2', 'MedidasController@addMedidas2')->name('addMedidas2');
-    Route::get('getMedidas2', 'MedidasController@getMedidas2')->name('getMedidas2');
+    // Route::get('medidas2', 'MedidasController@index')->name('medidas2');
+    // Route::post('addMedidas2', 'MedidasController@addMedidas2')->name('addMedidas2');
+    // Route::get('getMedidas2', 'MedidasController@getMedidas2')->name('getMedidas2');
 
     
     /*---------Rutas  Delitos Controller------------*/

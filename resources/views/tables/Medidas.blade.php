@@ -15,7 +15,7 @@
             @if(count($TablaProvidencia)==0)
                 <tr><td colspan="7" class="text-center">Sin registros</td></tr>
             @else
-                {{dd($TablaProvidencia);}}
+                {{-- {{dd($TablaProvidencia);}} --}}
                 @foreach($TablaProvidencia as $provide)
                     <tr id="{{$provide->id}}">
                         
@@ -23,7 +23,7 @@
                         <td class="fechainicio">{{ $provide->fechainicio }}</td>  
                         <td class="fechafin">{{ $provide->fechafin }}</td>
                         <td class="ejecutor">{{ $provide->ejecutor }}</td>  
-                        <td class="persona">{{ $provide->nombre." ".$provide->primerAp." ".$provide->segundoAp  }}</td>   
+                     {{-- <td class="persona">{{ $provide->persona}}</td>   --}}
                         <td class="observacion">{{ $provide->observacion }}</td>  
                         <td>
                                 <a data-medida-id={{$provide->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
