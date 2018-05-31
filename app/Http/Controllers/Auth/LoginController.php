@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+/*inicio pruebas*/
+use Auth;
+use Illuminate\Http\Request;
+use Session;
+/*fin pruebas*/
+
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -36,4 +42,34 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    //pruebas para la sesion
+
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+        $previous_session = Auth::User()->session_id;
+        if ($previous_session) {
+            \Session::getHandler()->destroy($previous_session);
+        }
+
+        Auth::user()->session_id = \Session::getId();
+        Auth::user()->save();
+        $this->clearLoginAttempts($request);
+
+        return $this->authenticated($request, $this->guard()->user())
+                ?: redirect()->intended($this->redirectPath());
+    }  
+
+    // protected function sendLoginResponse(Request $request)
+    // {
+    //     $request->session()->regenerate();
+
+    //     $this->clearLoginAttempts($request);
+
+    //     return $this->authenticated($request, $this->guard()->user())
+    //             ?: redirect()->intended($this->redirectPath());
+    // }
+
+
 }

@@ -7,6 +7,9 @@
     <table class="table table-hover" style="text-align:center;">
         <thead class="thead-light">
             <th>Fiscal</th>
+            <th>Persona que atiende</th>
+            <th>Folio</th>
+            <th>Estado</th>
             {{-- <th>Caso N.</th> --}}
             <th>Estatus</th>
         </thead>
@@ -21,7 +24,13 @@
         
         <tr>
             <td>{{$fiscal->nombres}}</td>
-            {{-- <td>1</td> --}}
+            @if (Jenssegers\Date\Date::parse($fiscal->updated_at)->diffForHumans()=='hace 1 segundo')
+            <td colspan="3">Disponible</td>
+            @else
+            <td>{{$fiscal->nombre."".$fiscal->primerAp."".$fiscal->segundoAp}}</td>
+            <td>{{$fiscal->folio}}</td>
+            <td>Ocupado desde {{Jenssegers\Date\Date::parse($fiscal->updated_at)->diffForHumans()}}</td>
+            @endif
             <td >
                 @if (is_null($fiscal->idCarpeta))
                     
@@ -34,20 +43,17 @@
         </tr>   
             
         @endforeach
-        {{-- <tr>
-            <td>LIC. JOSÉ ANTONIO SANCHEZ PEREZ</td>
-            <td>2</td>
-            <td>
-                    <a href="" title="libre" class="btn "><i  style="color:#138c13;" class="fa fa-circle"></i></a>
-            
-        </td>                               
-        </tr> --}}
+        
         
         
 
     </tbody>
     </table>
- 
-
 
 @endsection
+@push('scripts')
+    <script>
+        setInterval('location.reload()',30000);
+        //location.reload();
+    </script>
+@endpush

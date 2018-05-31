@@ -451,7 +451,14 @@ class PreregistroController extends Controller
     }
 
     public function estadoFiscales(){
-        $fiscales=User::orderBy('nombres', 'ASC')->where('idUnidad',Auth::user()->idUnidad)->get();
+        $fiscales=DB::table('users')
+        ->leftJoin('carpeta','carpeta.id','=','users.idCarpeta')
+        ->leftJoin('preregistros','carpeta.id','=','preregistros.idCarpeta')
+        ->orderBy('nombres', 'ASC')
+        ->where('users.idUnidad',Auth::user()->idUnidad)
+        //->select('users.nombres', 'users.updated_at', 'carpeta.created_at','preregistros.nombre as nombre')
+        ->get();
+        // dd($fiscales);
         return view('tables.consulta-turnos')->with('fiscales',$fiscales);
 
     }
