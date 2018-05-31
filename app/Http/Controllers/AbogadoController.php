@@ -121,7 +121,6 @@ class AbogadoController extends Controller
 
     public function showForm2()
     {
-        
         $idCarpeta=session('carpeta');
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();
         if(count($carpetaNueva)>0){ 
@@ -223,12 +222,6 @@ class AbogadoController extends Controller
             }
 
         }
-        
-
-
-
-
-
         $ExtraAbogado->delete();
         $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
         $bdbitacora->abogado = $bdbitacora->abogado-1;

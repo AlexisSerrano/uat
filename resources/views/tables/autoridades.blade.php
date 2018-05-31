@@ -53,13 +53,13 @@
                 var id = $(this).data("autoridad-id");
             e.preventDefault()
                 swal({
-                    title: "Está seguro de eliminarlo?",
-                    text: "No podrá recuperar este registro!",
+                    title: "¿Está seguro de eliminarlo?",
+                    text: "¡No podrá recuperar este registro!",
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "si, eliminarlo!",
-                    cancelButtonText: "No, cancelar!",
+                    confirmButtonText: "Si, ¡Eliminarlo!",
+                    cancelButtonText: "No, ¡Cancelar!",
                     closeOnConfirm: true,
                     closeOnCancel: true },
                     function(isConfirm){

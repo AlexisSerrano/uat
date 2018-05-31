@@ -39,8 +39,8 @@ class StoreLoginActive extends FormRequest
     {
         return [
             //'nombresQ.boolean' => 'A title is required',
-            'user.min' => 'El USUARIO debe de contener al menos 3 caracteres',
-            'user.max' => 'El USUARIO no debe de contener mas 200 caracteres',
+            'user.min' => 'El Usuario debe de contener al menos 3 caracteres',
+            'user.max' => 'El Usuario no debe de contener más 200 caracteres',
         ];
 }
 }

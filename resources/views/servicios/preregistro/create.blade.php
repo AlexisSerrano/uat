@@ -91,18 +91,18 @@
 					<div class="form-check form-check-inline">
 						<label class="form-check-label col-form-label col-form-label-sm">
 							@if(isset($form['violencia1']))
-							<input class="form-check-input" type="radio" id="conViolencia" name="Violencia" value="1" {{$form['violencia1']}}> Sí
+							<input class="form-check-input" type="radio" id="conViolencia" name="Violencia" value="1" {{$form['violencia1']}} data-validation="required" required> Sí
 							@else
-							<input class="form-check-input" type="radio" id="conViolencia" name="Violencia" value="1"> Sí
+							<input class="form-check-input" type="radio" id="conViolencia" name="Violencia" value="1" data-validation="required"> Sí
 							@endif
 						</label>
 					</div>
 					<div class="form-check form-check-inline">
 						<label class="form-check-label col-form-label col-form-label-sm">
 							@if(isset($form['violencia2']))
-							<input class="form-check-input" type="radio" id="sinViolencia" name="Violencia" value="0" {{$form['violencia2']}}> No
+							<input class="form-check-input" type="radio" id="sinViolencia" name="Violencia" value="0" {{$form['violencia2']}} data-validation="required" required> No
 							@else
-							<input class="form-check-input" type="radio" id="sinViolencia" name="Violencia" value="0"> No
+							<input class="form-check-input" type="radio" id="sinViolencia" name="Violencia" value="0" data-validation="required"> No
 							@endif
 						</label>
 					</div>
@@ -183,8 +183,13 @@
 	
 	{{-- <script src="{{ asset('js/rfcMoral.js') }}"></script> --}}
 	<script>
-	// $(document).ready(function(){
-	// 	$("#cargando").click(function(event){
+	$(document).ready(function(){
+		$("#cargando").click(function(event){
+			console.log("entro");
+
+		});
+	});
+
 			
 	// 		console.log("entro");
 	// 			$("#pantalla").removeClass("loadPage");

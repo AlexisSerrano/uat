@@ -13,7 +13,7 @@ use DB;
 class AtencionController extends Controller
 {
     public function index(){
-        $modulos1[''] = 'SELECCIONE UN MODULO';
+        $modulos1[''] = 'Seleccione un modulo';
         $modulos2=CatRedireccion::orderBy('titulo', 'ASC')
         ->select('titulo','id')->get();
         foreach($modulos2 as $modulo){

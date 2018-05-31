@@ -1,6 +1,6 @@
-{{-- @php
+@php
 $form = oldFormDelitos();
-@endphp --}}
+@endphp
 {{--  Formulario en blanco no tocar  --}}
 
 	<div class="row">

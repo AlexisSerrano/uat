@@ -279,8 +279,11 @@ form .form-control:focus {
   }
 
   .badge-info {
-    color: #0a0a0a;
-    background-color: #dda61d;
+    color: #fcf6f6;
+    background-color: #138c13;
+}
+#breadcumb >li>a{
+	color: #1b1b1b;
 }
 
 body::-webkit-scrollbar {
