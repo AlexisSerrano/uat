@@ -1,30 +1,31 @@
 @extends('template.form')
-
 @section('title', 'Agregar vehículo')
-@section('contenido')
+@section('content')
+@include('fields.buttons-navegacion')
+
+@include('fields.errores')
 {!! Form::open([ 'method' => 'POST'])  !!}
 {{ csrf_field() }}
-<div class="card-header">
+<br>
+<div class="card">
+		<div class="card-header">
 <div class="row">
 		<div class="col">
 			<div class="text-left">
 				{{--Aqui van radios, etc --}}
+				<h5>Datos generales de la unidad</h5>
 			</div>
 		</div>
-		
-	</div>
 </div>
-	@include('forms.errores')
+	</div>
+	
 	<div class=" card-body boxone">
-	<div class="row no-gutters">
-		<div class="col-12">
-			<div class="boxtwo" id="vehiculos">
-				<h6>Datos generales de la unidad</h6>
-				<div class="row">
-					{{-- @if(!empty($idCarpeta))
-						{!! Form::hidden('idCarpeta', $idCarpeta) !!}
-					@endif --}}
-					@include('fields.vehiculos')
+		<div class="row no-gutters">
+			<div class="col-12">
+				<div class="boxtwo" id="vehiculos">
+					<div class="row">
+						@include('fields.vehiculos')
+					</div>
 				</div>
 			</div>
 		</div>
@@ -33,12 +34,7 @@
 	{!! Form::close() !!}
 @endsection
 
-{{-- @section('tabla')
-	<div class="boxtwo">
-		@section('titulo-tabla', 'Vehículos registrados')
-		@include('tables.vehiculos')
-	</div>
-@endsection --}}
+
 
 @push('scripts')
 	

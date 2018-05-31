@@ -10,6 +10,8 @@ use App\Models\CatEstado;
 use App\Models\CatMarca;
 use App\Models\CatProcedencia;
 use App\Models\CatTipoUso;
+use App\Models\Carpeta;
+use App\Models\CatDelito;
 // use App\Models\Vehiculo;
 use DB;
 
@@ -30,6 +32,15 @@ use DB;
         $marcas       = CatMarca::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $procedencias = CatProcedencia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $tiposuso     = CatTipoUso::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $delitos = CarpetaController::getDelitos($idCarpeta);
+        $tipifdelitos = DB::table('tipif_delito')
+                ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+                ->join('cat_agrupacion1', 'cat_agrupacion1.id', '=', 'tipif_delito.idAgrupacion1')
+                ->join('cat_agrupacion2', 'cat_agrupacion2.id', '=', 'tipif_delito.idAgrupacion2')
+                ->select('tipif_delito.id', 'cat_delito.nombre as delito', 'cat_agrupacion1.nombre as desagregacion1', 'cat_agrupacion2.nombre as desagregacion2')
+                ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
+                ->orderBy('cat_delito.nombre', 'ASC')
+                ->get();
         // $tipifdelitos = DB::table('tipif_delito')
         //     ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
         //     ->join('cat_agrupacion1', 'cat_agrupacion1.id', '=', 'tipif_delito.idAgrupacion1')
@@ -50,8 +61,7 @@ use DB;
         // }
         return view('forms.vehiculos')
         ->with('idCarpeta', $idCarpeta)
-            ->with('numCarpeta', $numCarpeta)
-            ->with('vehiculos', $vehiculos)
+            // ->with('vehiculos', $vehiculos)
             ->with('tipifdelitos', $tipifdelitos)
             ->with('aseguradoras', $aseguradoras)
             ->with('clasesveh', $clasesveh)
