@@ -2,12 +2,11 @@
     <div class="form-group">
         {!! Form::label('idTipifDelito', 'Delito', ['class' => 'col-form-label-sm']) !!}
         <select name="idTipifDelito" id="idTipifDelito" class="form-control form-control-sm" required>
-            <option value="">Seleccione un delito</option>
-            @foreach($tipifdelitos as $tipifdelito)
-            <option value="{{ $tipifdelito->id }}">{{ $tipifdelito->delito." ".$tipifdelito->desagregacion1." ".$tipifdelito->desagregacion2}}</option>
-            @endforeach
-        </select>
-    
+                <option value="">Seleccione un delito</option>
+                @foreach($tipifdelitos as $tipifdelito)
+                <option value="{{ $tipifdelito->id }}">{{ $tipifdelito->delito." ".$tipifdelito->desagregacion1." ".$tipifdelito->desagregacion2}}</option>
+                @endforeach
+            </select>
     </div>
 </div>
 
@@ -34,9 +33,10 @@
 <div class="col-2">
     <div class="form-group">
         {!! Form::label('idSubmarca', 'Submarca', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::select('idSubmarca', ['' => 'Seleccione una submarca'], null, ['class' => 'form-control form-control-sm']) !!}
+        {!! Form::text('idSubmarca',null , ['class' => 'form-control form-control-sm']) !!}
     </div>
 </div>
+
 <div class="col-2">
     <div class="form-group">
         {!! Form::label('modelo', 'Modelo', ['class' => 'col-form-label-sm']) !!}
@@ -75,12 +75,12 @@
         {!! Form::text('permiso', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el permiso']) !!}	
     </div>
 </div>
-<div class="col-4">
+{{-- <div class="col-4">
     <div class="form-group">
         {!! Form::label('idClaseVehiculo', 'Clase de vehículo', ['class' => 'col-form-label-sm']) !!}
         {!! Form::select('idClaseVehiculo', $clasesveh, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una clase de vehículo']) !!}
     </div>
-</div>
+</div> --}}
 <div class="col-4">
     <div class="form-group">
         {!! Form::label('idTipoVehiculo', 'Tipo de vehículo', ['class' => 'col-form-label-sm']) !!}

@@ -3,8 +3,8 @@ $barra = getNavCaso();
 @endphp
 <style>
 	.badge-info {
-    color: #0a0a0a;
-    background-color: #dda61d;
+    color: #fff;
+    background-color: #138c13;
 }
 </style>
 <div class="btn-group col">
@@ -15,6 +15,7 @@ $barra = getNavCaso();
 	<a href="{{route('new.delito')}}" class="{{$barra['delitos']}} form-control">Delitos <span class="badge badge-info right">{{$barra['cdelitos']}}</span></a>
 	<a href="{{route('new.acusacion')}}" class="{{$barra['acusaciones']}} form-control">Acusaciones <span class="badge badge-info right">{{$barra['cacusaciones']}}</span></a>
 	<a href="{{route('new.defensa')}}"  class="{{$barra['defensa']}} form-control">Defensa <span class="badge badge-info right">{{$barra['cdefensa']}}</span></a>
+	<a href="{{route('vehiculo.carpeta')}}"  class="{{$barra['defensa']}} form-control">Vehiculos <span class="badge badge-info right">{{$barra['cdefensa']}}</span></a>
     <a href="{{route('observaciones')}}" class="{{$barra['hechos']}} form-control">Observaciones </a>
     {{-- <a href="{{route('descripcionHechos')}}" class="{{$barra['hechos']}} form-control">Descripción de hechos {{$barra['chechos']}}</a> --}}
 	{{-- <a href="{{url('medidas')}}" class="{{$barra['medidas']}} form-control" <span class="badge badge-info right">>Medidas de protección {{$barra['cmedidas']}}</a> --}}

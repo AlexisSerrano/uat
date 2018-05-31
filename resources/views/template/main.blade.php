@@ -52,8 +52,9 @@
 						<h5 class="m-0 text-dark">@yield('title', '')</h5>
 					</div><!-- /.col -->
 					<div class="col-sm-6">
-						<ol class="breadcrumb float-sm-right">
+						<ol class="breadcrumb float-sm-right" id="breadcumb">
 							@yield('navegacion')
+							<li class="breadcrumb-item"><a href="{{ route('home') }}"><i class=" nav-icon fa fa-home"></i> Inicio</a></li>
 							<li class="breadcrumb-item active">@yield('title')</li>
 						</ol>
 					</div><!-- /.col -->

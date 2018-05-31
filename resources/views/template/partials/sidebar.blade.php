@@ -7,7 +7,7 @@
 			{{-- <span class="brand-text font-weight-light"></span>
 		</a>  --}}
 
-		<aside class="main-sidebar  elevation-4 barra-izquierda collapsado " id="barra">
+		<aside class="main-sidebar  elevation-4 barra-izquierda " id="barra">
 			<!-- Brand Logo -->
 			<a href="index3.html" class="brand-link">
 				{{-- <img src="https://rawcdn.githack.com/Romaincks/assets/master/img/logo-150px-FGE.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" --}}
@@ -17,7 +17,7 @@
 			</a>
 
 		<!-- Sidebar -->
-		<div class="sidebar font-weight-light">
+		<div class="sidebar font-weight-light ">
 			<!-- Sidebar user panel (optional) -->
 			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 				<div class="image">				
@@ -195,6 +195,12 @@
 							<p>Actas de hechos</p>
 						</a>
 					</li>
+					<li class="nav-item has-treeview">
+							<a href="{{route('actaspendientes')}}" class="nav-link {{ Request::is( 'actacircunstanciada') ? 'active' : '' }}">
+								<i class="nav-icon  fa fa-file-text"></i>
+								<p>Actas circunstanciales</p>
+							</a>
+						</li>
 					<li class="nav-item has-treeview ">
 						<a href="{{url('carpetas')}}" class="nav-link {{ Request::is( 'carpetas') ? 'active' : '' }}">
 							<i class="nav-icon  fa fa-archive"></i>

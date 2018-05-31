@@ -48,14 +48,14 @@ Route::get('/pruebasconsulta', function(){
         Route::get('/pruebasactas','PruebasController@actas');
         Route::get('/pruebasmetodo/{id}','PruebasController@pruebas');
         
-        Route::get('/oficios', function(){
-            return view('forms.oficios');  
+        Route::get('/resumen', function(){
+            return view('forms.resumen-carpeta');  
         });   
         
         
  /* --------Pruebas vehiculos----------- */
 
- Route::get('/vehiculos-pruebas','VehiculoController@showform');
+ Route::get('/vehiculos-pruebas','VehiculoController@showform')->name('vehiculo.carpeta');
 
 
 /**************************************************************/

@@ -4,6 +4,7 @@
             <label class="col-form-label col-form-label-sm" for="formGroupExampleInput">¿Es empresa?</label>
             <div class="clearfix"></div>
             <div class="form-check form-check-inline">
+                    {{-- @if(isset($form['esEmpresa1'])) --}}
                 <label class="form-check-label col-form-label col-form-label-sm">
                     <input class="form-check-input" type="radio" id="esEmpresaA" name="esEmpresa" value="1" required> Sí
                 </label>

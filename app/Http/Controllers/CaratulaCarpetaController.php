@@ -7,9 +7,6 @@ use DB;
 
 class CaratulaCarpetaController extends Controller
 {
-
-
-
     public function crearCaratula(){
 
         $idCarpeta=session('carpeta');
@@ -31,14 +28,6 @@ class CaratulaCarpetaController extends Controller
 
         $word->saveAs('../storage/oficios/CaratulaCarpeta'.'avila'.'.docx');
         return response()->download('../storage/oficios/CaratulaCarpeta'.'avila'.'.docx');
-
-
-
-
-
-
-
-
 
     }
 

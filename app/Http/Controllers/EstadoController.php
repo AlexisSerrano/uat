@@ -285,7 +285,7 @@ class EstadoController extends Controller
                         $concarpeta->conDetenido = $carpeta->conDetenido;
                         $concarpeta->esRelevante = $carpeta->esRelevante;
                         $concarpeta->idEstadoCarpeta = $carpeta->idEstadoCarpeta;
-                        //$concarpeta->horaIntervencion = $carpeta->horaIntervencion;
+                        $concarpeta->horaIntervencion = $carpeta->horaIntervencion;
                         $concarpeta->npd = $carpeta->npd;
                         $concarpeta->fechaIph = $carpeta->fechaIph;
                         $concarpeta->numIph = $carpeta->numIph;
