@@ -55,7 +55,7 @@ Route::get('/pruebasconsulta', function(){
         
  /* --------Pruebas vehiculos----------- */
 
- Route::get('/vehiculos-pruebas','VehiculoController@showform');
+ Route::get('/vehiculos-pruebas','VehiculoController@showform')->name('vehiculo.carpeta');
 
 
 /**************************************************************/
