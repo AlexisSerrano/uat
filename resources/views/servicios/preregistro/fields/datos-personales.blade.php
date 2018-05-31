@@ -26,7 +26,7 @@
 		<div class="form-group">
 			{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
 			{{-- <input type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-control form-control-sm"> --}}
-			{!! Form::date('fechaNacimiento', null, ['class' => 'form-control form-control-sm', 'data-target' => '#fechanac','data-validation-format'=>'dd/mm/yyyy', 'data-validation'=>'required', 'placeholder' => 'DD/MM/AAAA']) !!}
+			{!! Form::date('fechaNacimiento', null, ['class' => 'form-control form-control-sm', 'data-target' => '#fechanac','data-validation-format'=>'dd/mm/yyyy', 'placeholder' => 'DD/MM/AAAA']) !!}
 			<div class="help-block with-errors"></div>	
 		</div>
 	</div>

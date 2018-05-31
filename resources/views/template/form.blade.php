@@ -27,6 +27,7 @@
 @section('pilaScripts')
 <script src="{{ asset('js/moment.min.js') }}"></script>
 <script src="{{asset('js/es.js')}}"></script>
+<script src="{{asset('js/semaforos.js')}}"></script>
 <script src="{{ asset('plugins/fileinput/js/fileinput.min.js')}}" ></script>
 <script src="{{ asset('plugins/fileinput/themes/fa/theme.min.js')}}" ></script>
 <script src="{{ asset('plugins/fileinput/js/locales/es.js')}}" ></script>

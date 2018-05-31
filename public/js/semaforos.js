@@ -796,11 +796,35 @@ if (campo.length < 1 || campo.length > 200){
 }
 });
 
+$('#fechaAltaEmpresa').focusout(function(){
+     var campo = $(this).val();
+    if (campo.length < 1 || campo.length > 200){
+        $(this).css({"border-color":"red"});
+    }else{
+        $(this).css({"border-color":"green"});
+        
+    }
+    });
+    $('#fecha_nac').focusout(function(){
+        var campo = $(this).val();
+       if (campo.length < 1 || campo.length > 200){
+           $(this).css({"border-color":"red"});
+       }else{
+           $(this).css({"border-color":"green"});
+           
+       }
+       });
 
-
-
-
-
+       $('#fechaNacimiento').focusout(function(){
+        var campo = $(this).val();
+       if (campo.length < 1 || campo.length > 200){
+           $(this).css({"border-color":"red"});
+       }else{
+           $(this).css({"border-color":"green"});
+           
+       }
+       });
+   
 
 
 });
