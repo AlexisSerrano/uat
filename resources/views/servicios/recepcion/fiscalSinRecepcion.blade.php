@@ -15,7 +15,7 @@
 							  
 						  <ul class="navbar-nav mr-auto" style="margin-left: -8px;">
 							  <LI>
-									  <form class="form-inline my-2 my-lg-0" method="POST" action="{{ url('showbyfolio') }}" id="busquedafolio">
+									  <form class="form-inline my-2 my-lg-0" method="POST" action="{{ url('registrosfiltro') }}" id="busquedafolio">
 											  @csrf
 									  <div class="input-group mb-6">
 											  

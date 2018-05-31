@@ -55,6 +55,41 @@ class RegistrosCasoController extends Controller
         
        }
 
+       public function listafiltro(Request $request){
+        // $registros = Preregistro::where('statusCola', null)
+        // 
+        // ->orderBy('id','desc')
+        // ->paginate(10);
+        $folio=$request->folio;
+        $registros = DB::table('preregistros')
+        ->join('razones','razones.id','=','preregistros.idRazon')
+        ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')        
+        ->where('statusCola', null)
+        ->where('tipoActa', null)
+        ->where('razones.nombre','!=' ,'SOLICITUD DE ACTA DE HECHOS')
+        ->orderBy('horaLlegada','asc')
+        ->where(function($query) use ($folio){
+            $query
+            ->orWhere(DB::raw("CONCAT(preregistros.nombre,' ',primerAp,' ',segundoAp)"), 'LIKE', '%' . $folio . '%')
+            ->orWhere('representanteLegal', 'like', '%' . $folio . '%')
+            ->orWhere('razones.nombre', 'like', '%' . $folio . '%')
+            ->orWhere('folio', 'like', '%' . $folio . '%');
+        })
+        ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
+        'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
+        'cat_identificacion.documento as docIdentificacion','numDocIdentificacion','conViolencia','narracion','folio','representanteLegal',
+        'statusCancelacion','statusOrigen','statusCola','horaLlegada','unidad','zona','razones.nombre as razon')
+        ->paginate(10);
+        // dd($registros);
+        $municipios = CatMunicipio::where('idEstado',30)
+        ->where('nombre', '!=', 'SIN INFORMACION')
+        ->orderBy('nombre','asc')
+        ->get();
+        // return view('orientador.denunciante.fields-denunciante.filtroBusqueda')
+        return view('servicios.recepcion.fiscalSinRecepcion')->with('registros',$registros)->with('municipios', $municipios);
+        
+       }
+
 
        public function editRegistros($id)
        {

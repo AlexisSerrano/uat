@@ -335,9 +335,13 @@ class CarpetaController extends Controller
             ->select('carpeta.id')
             ->where('carpeta.id',$id)
             ->first();
+
+            $unidad=DB::table('unidad')->where('id',Auth::user()->idUnidad)->first();
+            $unidad=$unidad->abreviacion;
+
             if($carpterminadas){
                 $carpeta = Carpeta::find($id);
-                $carpeta->numCarpeta = "UAT/D"."1"."/"."X"."/"."XX"."/".Carbon::now()->year;
+                $carpeta->numCarpeta = $unidad."/"."5"."/".$id."/".Carbon::now()->year;
                 $carpeta->idEstadoCarpeta = 1;
                 $carpeta->save();
 

@@ -2,7 +2,7 @@ $("#nombres2").focusout(function() {
 	obtenerRFC();
 });
 
-$("#fechaAltaEmpresa").focusout(function() {
+$("#fechaAltaEmpresa").change(function() {
 	obtenerRFC();
 });
 

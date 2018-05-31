@@ -154,6 +154,7 @@ Route::middleware(['auth'])->group(function () {
     
     /*---------Rutas Registros Orientador-------------*/
     Route::get('registros', 'RegistrosCasoController@lista');
+    Route::post('registrosfiltro', 'RegistrosCasoController@listafiltro');
     Route::get('registros/{id}/edit', 'RegistrosCasoController@editRegistros');
     Route::post('/buscarfolio', 'RegistrosCasoController@buscarfolio');
     Route::get('/buscarfolio', 'RegistrosCasoController@buscarfolio');
