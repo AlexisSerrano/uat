@@ -11,7 +11,8 @@
 			<div class="col-4">
 					<div class="form-group">
 						{!! Form::label('fechaAltaEmpresa', 'Fecha de alta de la empresa', ['class' => 'col-form-label-sm']) !!}
-						<input type="date" id="fechaAltaEmpresa" value="{{$preregistro->fechaNac}}" name="fechaNacimiento" class="turnoempresa form-control form-control-sm" data-validation="required">
+						{{-- <input type="date" id="fechaAltaEmpresa" value="{{$preregistro->fechaNac}}" name="fechaNacimiento" class="turnoempresa form-control form-control-sm" data-validation="required"> --}}
+						{!! Form::date('fechaNacimiento',$preregistro->fechaNac , ['class' => 'turnopersona form-control form-control-sm ', 'data-target' => '#fechanac', 'required', 'id'=>'fechaAltaEmpresa', 'placeholder' => 'AAAA/MM/DD']) !!} 
 						<div class="help-block with-errors"></div>	
 					</div>
 				</div>
@@ -25,7 +26,7 @@
 						</div>
 						<div class="col">
 								{!! Form::label('homo2', 'Homoclave', ['class' => 'col-form-label-sm']) !!}
-							{!! Form::text('homo2', substr($preregistro->rfc,10,3), ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese homoclave','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'Homoclave inválida' ,'required']) !!}
+							{!! Form::text('homo2', substr($preregistro->rfc,9,3), ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese homoclave','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'Homoclave inválida' ,'required']) !!}
 						</div>
 					</div>
 				</div>

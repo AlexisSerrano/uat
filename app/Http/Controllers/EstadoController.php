@@ -278,14 +278,14 @@ class EstadoController extends Controller
                 try{
                 
                     //dd($carpeta);
-                    if (count($carpeta)>0) {
+                    if ($carpeta) {
                         $concarpeta= new ConCarpeta;
                         $concarpeta->idUnidad = 11;
                         $concarpeta->fechaInicio = $carpeta->fechaInicio;
                         $concarpeta->conDetenido = $carpeta->conDetenido;
                         $concarpeta->esRelevante = $carpeta->esRelevante;
                         $concarpeta->idEstadoCarpeta = $carpeta->idEstadoCarpeta;
-                        $concarpeta->horaIntervencion = $carpeta->horaIntervencion;
+                        //$concarpeta->horaIntervencion = $carpeta->horaIntervencion;
                         $concarpeta->npd = $carpeta->npd;
                         $concarpeta->fechaIph = $carpeta->fechaIph;
                         $concarpeta->numIph = $carpeta->numIph;

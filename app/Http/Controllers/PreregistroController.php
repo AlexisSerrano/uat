@@ -139,14 +139,14 @@ class PreregistroController extends Controller
                 
                 $preregistro->save();
                 $id = $preregistro->id;
-
+                
                 if (!is_null($request->correo2)) {
                     $correo2 = $request->correo2;
                     session(['idpreregistro' => $id]);
                     Mail::to($correo2)->send(new sendMail());
                     // Mail::to($correo)->send(new EnviarCorreo($id));
                     // Mail::to($correo)->send('FormatoRegistro/'.$id);
-
+                    
                 }   
             }elseif($request->esEmpresa==1){
                 $domicilio = new Domicilio();
@@ -181,6 +181,7 @@ class PreregistroController extends Controller
                 $preregistro->rfc = $request->rfc1 . $request->homo1;
                 $preregistro->esEmpresa = 1;
                 $preregistro->telefono = $request->telefono1;
+                $preregistro->fechaNac = $request->fechaAltaEmpresa;
                 $preregistro->narracion = $request->narracion;
                 $preregistro->folio = $folio;
                 $preregistro->statusCancelacion = 0;
@@ -410,16 +411,25 @@ class PreregistroController extends Controller
     {
         $estado = Preregistro::find($id);
         $estado->statusCancelacion = 1;
-        $estado->statusCola = $tipo;
+        if($tipo==99){
+            $estado->statusCola = null;
+        }else{
+            $estado->statusCola = $tipo;
+        }
         $estado->horaLlegada = now();
         $estado->save();
-        Alert::success('Registro puesto en cola con éxito', 'Hecho');
         //return 'archivo cambiado con exito';
         if ($tipo==0) {
+            Alert::success('Registro puesto en cola con éxito', 'Hecho');
             return redirect('encola');
         }
         if ($tipo==1) {
+            Alert::success('Registro puesto en urgente con éxito', 'Hecho');
             return redirect('urgentes');
+        }
+        if ($tipo==99) {
+            Alert::success('Registro descartado con éxito', 'Hecho');
+            return redirect('predenuncias');
         }
     }
 

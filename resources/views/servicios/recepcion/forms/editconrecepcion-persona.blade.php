@@ -46,6 +46,7 @@
             <a href="{{url('predenuncias')}}" title="" class="btn btn-secondary ">Regresar</a>
         </div>       
         <div class="text-right col">
+            <a href="{{url('estado/'.$preregistro->id.'/99')}}" title="button1" class="btn  btn-secondary btnEnCola" id="{{$preregistro->id}}">Descartar</a>
             <a href="{{url('estado/'.$preregistro->id.'/0')}}" title="button1" class="btn  btn-secondary btnEnCola" id="{{$preregistro->id}}">En cola</a>
             <a href="#" title="" class="btn btn-secondary btnEnUrgente" id="{{$preregistro->id}}">Urgente</a>
             {!!Form::submit('Guardar',array('class' => 'btn  btn-primary'))!!}
