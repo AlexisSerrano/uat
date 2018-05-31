@@ -39,7 +39,7 @@ class RegistrosCasoController extends Controller
         ->where('statusCola', null)
         ->where('tipoActa', null)
         ->where('razones.nombre','!=' ,'SOLICITUD DE ACTA DE HECHOS')
-        ->orderBy('horaLlegada','asc')
+        ->orderBy('id','desc')
         ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
         'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
         'cat_identificacion.documento as docIdentificacion','numDocIdentificacion','conViolencia','narracion','folio','representanteLegal',
