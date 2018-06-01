@@ -22,6 +22,7 @@ Route::get('/pruebas/caso','PruebasController@create');
 Route::get('/pruebas/hechos','PruebasController@hechos');
 Route::get('/pruebas/delitos','PruebasController@delitos');
 Route::get('/pruebas/impresion','PruebasController@impresion');
+Route::get('/pruebas/alfred','PruebasController@alfred');
 
 Route::get('/pruebasIndex', function(){
 return view('prueba-index');
@@ -74,6 +75,7 @@ Route::post('intentos', 'OficioController@intentos')->name('intentos');
 Route::get('getOficios', 'OficioController@getOficios')->name('getOficios');
 Route::post('getOficio', 'OficioController@getOficio')->name('getOficio');
 Route::post('addOficio', 'OficioController@addOficio')->name('addOficio');
+Route::post('updateOficio', 'OficioController@updateOficio')->name('updateOficio');
 
 Route::get('actaoficio/{id}', 'ActasHechosController@actaoficio')->name('actaoficio');
 Route::get('getoficioah/{id}', 'ActasHechosController@getoficioah');
