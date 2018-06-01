@@ -19,12 +19,16 @@ class CreateUsersTable extends Migration
             $table->integer('idZona')->nullable();
             $table->string('grupo')->nullable();
             $table->string('username', 20);
-            $table->string('nombres', 50);
-            //$table->string('apellidos', 50);
+            $table->string('nombreC', 100);
+            $table->string('nombres', 100);
+            $table->string('apellidos', 100);
             $table->string('email', 100)->unique();
             $table->string('password', 100);
             $table->integer('idCarpeta')->unsigned()->nullable();
             $table->string('session_id')->default(null);
+            $table->string('puesto');
+            $table->string('numFiscal');
+            $table->string('numFiscalLetras');
             // $table->integer('numFiscal');
             //$table->enum('nivel', ['1', '2', '3', '4', '5'])->default('1');
 

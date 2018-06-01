@@ -21,14 +21,14 @@
 		<div class="sidebar font-weight-light ">
 			<!-- Sidebar user panel (optional) -->
 			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
-				<div class="image">				
+				<div class="image" style="margin-top:auto;margin-bottom:auto;">				
 					{{-- <img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="Imagen de perfil" > --}}
 					<i class="fa fa-user-circle" aria-hidden="true" style="color:white; font-size:33px;"></i> 
 				</div>
-				<div class="info">
+				<div class="info" style="padding-top:0;width: 100%;text-align: center;">
 					<a href="#" class="d-block">{{ Auth::user()->nombres }}</a>
-					{{-- <span style="color:white;font-size:10px;">{{'algun cargo'}}</span> --}}
-					
+					<a href="#" class="d-block">{{ Auth::user()->apellidos }}</a>
+					<span style="color:white;font-size:13px;">Número de Fiscal: {{Auth::user()->numFiscal}}</span>
 				</div>
 			</div>
 			

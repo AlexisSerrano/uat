@@ -256,15 +256,15 @@ return [
     */
     'sync_attributes' => [
 
-        'email' => 'userprincipalname',
-        'username'  => 'samaccountname',
-        'nombres' => 'cn',
-        'idUnidad' => 'extensionattribute2',
-        'idZona' => 'extensionattribute1',
-        'grupo' => 'memberof',
-
-
-
+        App\Handlers\LdapAttributeHandler::class,
+        
+        
+        // 'email' => 'userprincipalname',
+        // 'username'  => 'samaccountname',
+        // 'nombres' => 'cn',
+        // 'idUnidad' => 'extensionattribute2',
+        // 'idZona' => 'extensionattribute1',
+        // 'grupo' => 'memberof',
     ],
 
     /*
