@@ -128,7 +128,7 @@
 	{{--  <div  id="tipodeActa1">
 		<div class="col-12"  >
 			<div class="form-group" >
-					{!! Form::label('tipoActa', 'Seleccione el tipo de constancia de extravío que requiere:', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::label('tipoActa', 'Seleccione el tipo de constancia de extravío que requiere', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::select('tipoActa', array('PASAPORTE' => 'PASAPORTE', 
 					'CREDENCIAL DE TRABAJO/GAFFETE' => 'CREDENCIAL DE TRABAJO/GAFFETE',
 					'TARJETA DE CREDITO/DEBITO' => 'TARJETA DE CRÉDITO/DÉBITO',
