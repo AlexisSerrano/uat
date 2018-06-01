@@ -48,10 +48,10 @@
                         @else
                             <td colspan="2" style="text-align:center">NO</td>
                         @endif
-{{--               
-                        <td> <a id="deleteBtn" href="{{ url('agregar-denunciante/'.$denunciante->id.'/eliminar')}}" title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
-                            <i class="fa fa-times"></i></a>
-                        </td> --}}
+                        <td> 
+                           <a href="{{ url('narracion/'.$denunciante->id)}}"  rel="tooltip" title="Ampliar narracion" class="btn btn-secondary btn-simple btn-xs">
+                       <i class="fa fa-edit"></i></a>  </td>
+                        
                         <td> 
                             @if(is_null(session('terminada')))
                             <a data-denunciante-id={{$denunciante->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
