@@ -31,15 +31,16 @@
 		</div>
 	</div>
 </div>
+{!!Form::submit('Guardar',array('class' => 'btn  btn-primary'))!!}
 	{!! Form::close() !!}
 @endsection
 
 
 
 @push('scripts')
-	
-    {{-- <script src="{{ asset('js/selects/vehiculo.js') }}"></script>
-	 <script src="{{ asset('js/vehiculos.js') }}"></script> --}}
+<script src="{{ asset('js/selects/vehiculo.js') }}"></script>
+    {{-- <script src="{{ asset('js/selects/vehiculo.js') }}"></script>--}}
+	 <script src="{{ asset('js/vehiculos.js') }}"></script> 
 @endpush
 @push('docready-js')
 

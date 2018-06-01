@@ -1,5 +1,5 @@
 <?php
-
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class PruebaSeeder extends Seeder
@@ -24,9 +24,9 @@ class PruebaSeeder extends Seeder
         ]);
 
         DB::table('preregistros')->insert([
-            ['idDireccion'  =>  1,  'esEmpresa'   =>  0, 'idRazon'=>2, 'fechaNac'=>'1995-02-11','statusCancelacion'=>0, 'edad'=>23, 'nombre' =>  'JUAN',  'primerAp' =>  'PEREZ', 'segundoAp'    =>  'PEREZ',  'rfc'    =>  'PEPJ950211VH3', 'curp' => 'PEPJ950211VH3VZNL0','sexo'=>'HOMBRE','telefono'=>'2284658970','docIdentificacion'=> 1,'numDocIdentificacion'=>'HVOZSDFA151ASC51EF65','narracion'=>'LE ACABAN DE ASALTAR Y SE LLEVANRON MI CELULAR','folio'=>'A65S4F','idEscolaridad'=>5,'idEstadoCivil'=>5,'idOcupacion'=>4 ],
-            ['idDireccion'  =>  3,  'esEmpresa'   =>  0, 'idRazon'=>2, 'fechaNac'=>'1995-02-11','statusCancelacion'=>0, 'edad'=>23, 'nombre' =>  'ALEJANDRO',  'primerAp' =>  'MARTINEZ', 'segundoAp'    =>  'ACOSTA',  'rfc'    =>  'MAAA950211VH3', 'curp' => 'MAAA950211VH3VH3NL','sexo'=>'HOMBRE','telefono'=>'6841534316','docIdentificacion'=> 5,'numDocIdentificacion'=>'A416514A35FASDAS','narracion'=>'ME GOLPERARON CUANDO ME BAJE DEL CALLO POR LA LAZARO.','folio'=>'F63NGS' ,'idEscolaridad'=>5,'idEstadoCivil'=>5,'idOcupacion'=>4],
-            ['idDireccion'  =>  3,  'esEmpresa'   =>  0, 'idRazon'=>2, 'fechaNac'=>'1995-02-11','statusCancelacion'=>0, 'edad'=>23, 'nombre' =>  'MARTA',  'primerAp' =>  'RAMIREZ', 'segundoAp'    =>  'CRUZ',  'rfc'    =>  'RACM950211S48' ,'curp' => 'RACM950211VH3VH3VZ','sexo'=>'HOMBRE','telefono'=>'6841534316','docIdentificacion'=> 3,'numDocIdentificacion'=>'6RG4WEF6W8E4F6QWFQ6W4D','narracion'=>'asufhaksdifahsdgijakshd iDHSFisdhfi hKFH Khfkihfk hkfuahsdkfhakshkaehfh awehfñwaehfk','folio'=>'MVG64M','idEscolaridad'=>5,'idEstadoCivil'=>5,'idOcupacion'=>4 ]
+            ['idDireccion'  =>  1,  'esEmpresa'   =>  0, 'idRazon'=>2, 'fechaNac'=>'1995-02-11','statusCancelacion'=>0, 'edad'=>23, 'nombre' =>  'JUAN',  'primerAp' =>  'PEREZ', 'segundoAp'    =>  'PEREZ',  'rfc'    =>  'PEPJ950211VH3', 'curp' => 'PEPJ950211VH3VZNL0','sexo'=>'HOMBRE','telefono'=>'2284658970','docIdentificacion'=> 1,'numDocIdentificacion'=>'HVOZSDFA151ASC51EF65','narracion'=>'LE ACABAN DE ASALTAR Y SE LLEVANRON MI CELULAR','folio'=>'A65S4F','idEscolaridad'=>5,'idEstadoCivil'=>5,'idOcupacion'=>4, 'created_at'=>Carbon::now() ],
+            ['idDireccion'  =>  3,  'esEmpresa'   =>  0, 'idRazon'=>2, 'fechaNac'=>'1995-02-11','statusCancelacion'=>0, 'edad'=>23, 'nombre' =>  'ALEJANDRO',  'primerAp' =>  'MARTINEZ', 'segundoAp'    =>  'ACOSTA',  'rfc'    =>  'MAAA950211VH3', 'curp' => 'MAAA950211VH3VH3NL','sexo'=>'HOMBRE','telefono'=>'6841534316','docIdentificacion'=> 5,'numDocIdentificacion'=>'A416514A35FASDAS','narracion'=>'ME GOLPERARON CUANDO ME BAJE DEL CALLO POR LA LAZARO.','folio'=>'F63NGS' ,'idEscolaridad'=>5,'idEstadoCivil'=>5,'idOcupacion'=>4, 'created_at'=>Carbon::now()],
+            ['idDireccion'  =>  3,  'esEmpresa'   =>  0, 'idRazon'=>2, 'fechaNac'=>'1995-02-11','statusCancelacion'=>0, 'edad'=>23, 'nombre' =>  'MARTA',  'primerAp' =>  'RAMIREZ', 'segundoAp'    =>  'CRUZ',  'rfc'    =>  'RACM950211S48' ,'curp' => 'RACM950211VH3VH3VZ','sexo'=>'HOMBRE','telefono'=>'6841534316','docIdentificacion'=> 3,'numDocIdentificacion'=>'6RG4WEF6W8E4F6QWFQ6W4D','narracion'=>'asufhaksdifahsdgijakshd iDHSFisdhfi hKFH Khfkihfk hkfuahsdkfhakshkaehfh awehfñwaehfk','folio'=>'MVG64M','idEscolaridad'=>5,'idEstadoCivil'=>5,'idOcupacion'=>4, 'created_at'=>Carbon::now() ]
         ]);
         
         DB::table('preregistros')->insert([

@@ -12,7 +12,9 @@ use App\Models\CatProcedencia;
 use App\Models\CatTipoUso;
 use App\Models\Carpeta;
 use App\Models\CatDelito;
-// use App\Models\Vehiculo;
+use App\Models\CatSubmarca;
+use App\Models\CatTipoVehiculo;
+use App\Models\VehiculoCarpeta;
 use DB;
 
     class VehiculoController extends Controller
@@ -71,8 +73,88 @@ use DB;
             ->with('procedencias', $procedencias)
             ->with('tiposuso', $tiposuso);
     }
+
+
+
+public function getSubmarcas(Request $request, $id)
+{
+    if ($request->ajax()) {
+        $submarcas = CatSubmarca::submarcas($id);
+        return response()->json($submarcas);
+    }
 }
 
+public function getTipoVehiculos(Request $request, $id)
+{
+    if ($request->ajax()) {
+        $tipoVehiculos = CatTipoVehiculo::tipoVehiculos($id);
+        return response()->json($tipoVehiculos);
+    }
+}
+
+public function storeVehiculo(StoreVehiculo $request)
+{
+    //dd($request->all());
+    $carpetaNueva = CarpetaController::getCarpeta($request->idCarpeta);
+    if ($carpetaNueva->isEmpty()) return CarpetaController::redirectHome();
+    $idFiscal = CarpetaController::getIdFiscal();
+
+    $vehiculo                = new Vehiculo();
+    $vehiculo->idTipifDelito = $request->idTipifDelito;
+    if ($request->filled('placas')) {    
+        $vehiculo->placas         = $request->placas;
+    }
+    if ($request->filled('idEstado')) {    
+        $vehiculo->idEstado       = $request->idEstado;
+    }
+    if ($request->filled('idSubmarca')) {    
+        $vehiculo->idSubmarca     = $request->idSubmarca;
+    }
+    if ($request->filled('modelo')) {    
+        $vehiculo->modelo         = $request->modelo;
+    }
+    if ($request->filled('nrpv')) {    
+        $vehiculo->nrpv           = $request->nrpv;
+    }
+    if ($request->filled('idColor')) {    
+        $vehiculo->idColor        = $request->idColor;
+    }
+    if ($request->filled('permiso')) {    
+        $vehiculo->permiso        = $request->permiso;
+    }
+    if ($request->filled('numSerie')) {    
+        $vehiculo->numSerie       = $request->numSerie;
+    }
+    if ($request->filled('numMotor')) {    
+        $vehiculo->numMotor       = $request->numMotor;
+    }
+    if ($request->filled('idTipoVehiculo')) {    
+        $vehiculo->idTipoVehiculo = $request->idTipoVehiculo;
+    }
+    if ($request->filled('idTipoUso')) {    
+        $vehiculo->idTipoUso      = $request->idTipoUso;
+    }
+    if ($request->filled('senasPartic')) {    
+        $vehiculo->senasPartic    = $request->senasPartic;
+    }
+    if ($request->filled('idProcedencia')) {    
+        $vehiculo->idProcedencia  = $request->idProcedencia;
+    }
+    if ($request->filled('idAseguradora')) {    
+        $vehiculo->idAseguradora  = $request->idAseguradora;
+    }
+    $vehiculo->save();
+
+    //Agregar a Bitacora
+    Bitacora::create(['idUsuario' => $idFiscal, 'tabla' => 'vehiculo', 'accion' => 'insert', 'descripcion' => 'Se han registrado datos generales de un Vehículo del delito: ' . $request->idTipifDelito . ' con Placas: ' . $request->placas . ' Del estado: ' . $request->idEstado, 'idFilaAccion' => $vehiculo->id]);
+    
+    Alert::success('Vehículo registrado con éxito', 'Hecho')->persistent("Aceptar");
+    return redirect()->route('new.vehiculo', $request->idCarpeta);
+}
+
+
+
+}
 //     public function storeVehiculo(StoreVehiculo $request)
 //     {
 //         //dd($request->all());
