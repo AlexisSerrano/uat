@@ -138,7 +138,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('observaciones', 'NarracionController@descripcionHechos')->name('observaciones');
     Route::post('storeDescripcionHechos', 'NarracionController@storeDescripcionHechos')->name('store.descripcionHechos');
     /*---------Rutas narración-------------*/
-    Route::get('narracion', 'NarracionController@index')->name('narracion');
+    Route::get('narracion/{id}', 'NarracionController@index');
     Route::post('addnarracion', 'NarracionController@addNarracion');
     Route::get('getnarracion/{id}', 'NarracionController@getNarracion')->name('getnarracion');
     Route::get('mostrardoc/{id}', 'NarracionController@mostrarDoc');
