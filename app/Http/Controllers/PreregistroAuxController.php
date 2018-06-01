@@ -45,7 +45,7 @@ class PreregistroAuxController extends Controller
         ->join('razones','razones.id','=','preregistros.idRazon')
         ->orderBy('id','desc')
         ->where('tipoActa', null)
-        ->where('razones.nombre','!=' ,'SOLICITUD DE ACTA DE HECHOS')
+        ->where('razones.nombre','!=' ,'SOLICITUD DE CONSTANCIA DE EXTRAVIO')
         ->where('statusCola', null)
         ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
         'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
@@ -289,7 +289,7 @@ class PreregistroAuxController extends Controller
         ->join('razones','razones.id','=','preregistros.idRazon')
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion') 
         ->where('tipoActa', null)
-        ->where('razones.nombre','!=' ,'SOLICITUD DE ACTA DE HECHOS')
+        ->where('razones.nombre','!=' ,'SOLICITUD DE CONSTANCIA DE EXTRAVIO')
         ->where(function($query) use ($folio){
             $query
             ->orWhere(DB::raw("CONCAT(preregistros.nombre,' ',primerAp,' ',segundoAp)"), 'LIKE', '%' . $folio . '%')
@@ -321,7 +321,7 @@ class PreregistroAuxController extends Controller
         ->join('razones','razones.id','=','preregistros.idRazon')
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion') 
         ->where('tipoActa', null)
-        ->where('razones.nombre','!=' ,'SOLICITUD DE ACTA DE HECHOS')
+        ->where('razones.nombre','!=' ,'OLICITUD DE CONSTANCIA DE EXTRAVIO')
         ->where('statusCola', $prioridad)
         ->where(function($query) use ($folio){
             $query
