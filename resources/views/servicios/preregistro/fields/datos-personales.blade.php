@@ -195,13 +195,13 @@
     
 	<div class="col-4">
 		<div class="form-group">
-			 {!! Form::label('correo2', 'Correo:', ['class' => 'col-form-label-sm']) !!}
+			 {!! Form::label('correo2', 'Correo', ['class' => 'col-form-label-sm']) !!}
 			 {!! Form::email('correo2', null, ['class' => 'form-control form-control-sm emailc', 'placeholder' => 'Si desea recibir su folio por email','data-validation'=>'custom','data-validation-optional'=>'true','data-validation'=>'email','data-validation-error-msg'=>'Proporcione un correo válido. Ejemplo: nombre@gmail.com' ]) !!}
 		 </div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-				{!! Form::label('idRazon2', 'Razón:', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::label('idRazon2', 'Razón', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::select('idRazon2', $razones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una razón','data-validation'=>'required','required']) !!}
 		</div>
 	</div>
@@ -209,7 +209,7 @@
 	<div id="tipodeActa">
 		<div class="col-12"  >
 			<div class="form-group" >
-					{!! Form::label('tipoActa', 'Seleccione el tipo de  constancia de extravío  que requiere:', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::label('tipoActa', 'Seleccione el tipo de constancia de extravío que requiere', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::select('tipoActa', array('PASAPORTE' => 'PASAPORTE', 
 					'CREDENCIAL DE TRABAJO/GAFFETE' => 'CREDENCIAL DE TRABAJO/GAFFETE',
 					'TARJETA DE CREDITO/DEBITO' => 'TARJETA DE CRÉDITO/DÉBITO',
