@@ -17,6 +17,7 @@ use App\Models\Preregistro;
 use App\Models\CatOcupacion;
 use App\Models\CatReligion;
 use App\Models\Razon;
+use App\Http\Controllers\PruebasController;
 
 
 class PruebasController extends Controller
@@ -250,5 +251,20 @@ dd($FormatoMedidas);
     // return response()->json($data);
 }
 
-
+public function alfred(){
+    $texto = array('Décimo séptimo-17' => 'decimo septimo', '2°' => 'segundo', '3°' => 'primero');
+    $cadena = "físcal décimo séptimo prueba";
+    $cadena = normaliza($cadena);
+    foreach($texto as $text => $valor){
+        if(strpos($cadena, $valor)){
+            $numero = $text;
+            $arr = explode("-",$numero);
+            $letra = $arr[0];
+            $numero = $arr[1];
+            break;
+        }
+    }
+    echo $letra."<br>".$numero;
+    
+}
 }

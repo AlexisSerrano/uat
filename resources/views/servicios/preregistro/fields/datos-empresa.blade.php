@@ -113,13 +113,13 @@
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('correo', 'Correo:', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::label('correo', 'Correo', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::email('correo', null, ['class' => 'form-control form-control-sm emailc', 'placeholder' => 'Si desea recibir su folio por email','data-validation'=>'custom','data-validation-optional'=>'true','data-validation'=>'email','data-validation-error-msg'=>'Proporcione un correo válido. Ejemplo: algo@gmail.com']) !!}
 		</div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('idRazon1', 'Razón:', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::label('idRazon1', 'Razón', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('idRazon1', $razones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una razón', 'data-validation'=>'required','required']) !!}
 		</div>
 	</div>
@@ -128,16 +128,16 @@
 	{{--  <div  id="tipodeActa1">
 		<div class="col-12"  >
 			<div class="form-group" >
-					{!! Form::label('tipoActa', 'Seleccione el tipo de acta de hechos que requiere:', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::label('tipoActa', 'Seleccione el tipo de constancia de extravío que requiere', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::select('tipoActa', array('PASAPORTE' => 'PASAPORTE', 
 					'CREDENCIAL DE TRABAJO/GAFFETE' => 'CREDENCIAL DE TRABAJO/GAFFETE',
-					'TARJETA DE CRÉDITO/DÉBITO' => 'TARJETA DE CRÉDITO/DÉBITO',
-					'TELÉFONO CELULAR' => 'TELÉFONO CELULAR',
+					'TARJETA DE CREDITO/DEBITO' => 'TARJETA DE CRÉDITO/DÉBITO',
+					'TELEFONO CELULAR' => 'TELÉFONO CELULAR',
 					'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)' => 'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)',
-					'PERMISO DE TRÁNSITO PARA EMPLACAMIENTO DE TAXIS' => 'PERMISO DE TRÁNSITO PARA EMPLACAMIENTO DE TAXIS',
+					'PERMISO DE TRANSITO PARA EMPLACAMIENTO DE TAXIS' => 'PERMISO DE TRÁNSITO PARA EMPLACAMIENTO DE TAXIS',
 					'FACTURA DE VEHICULO/MOTOCICLETA' => 'FACTURA DE VEHICULO/MOTOCICLETA',
-					'TARJETA DE CIRCULACIÓN' => 'TARJETA DE CIRCULACIÓN',
-					'PLACAS DE CIRCULACIÓN' => 'PLACAS DE CIRCULACIÓN',
+					'TARJETA DE CIRCULACION' => 'TARJETA DE CIRCULACIÓN',
+					'PLACAS DE CIRCULACION' => 'PLACAS DE CIRCULACIÓN',
 					'LICENCIA DE CONDUCIR ESTATAL' => 'LICENCIA DE CONDUCIR ESTATAL',
 					'LICENCIA DE CONDUCIR FEDERAL' => 'LICENCIA DE CONDUCIR FEDERAL',
 					'DOCUMENTO/BIEN EXTRAVIADO O ROBADO' => 'DOCUMENTO/BIEN EXTRAVIADO O ROBADO',

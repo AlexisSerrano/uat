@@ -75,7 +75,8 @@ class OficioController extends Controller
         $oficio->pie = '1';
         $oficio->unidad = 1;
         if($oficio->save()){
-            echo 1;
+            $data = array('id' => $oficio->id, 'nombre' => $request->nombre);
+            return response()->json($data);
         }
         else{
             echo 0;
@@ -84,7 +85,16 @@ class OficioController extends Controller
 
     public function updateOficio(Request $request){
         $id = $request->id;
-        $oficio = Oficio::find('id',$id);
-        //$oficio-
+        $nombre = $request->nombre;
+        $contenido = $request->contenido;
+        $oficio = Aoficio::find($id);
+        $oficio->nombre = $nombre;
+        $oficio->contenido = $contenido;
+        if($oficio->save()){
+            echo 1;
+        }
+        else{
+            echo 0;
+        }
     }
 }

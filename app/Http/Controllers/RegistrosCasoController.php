@@ -38,7 +38,7 @@ class RegistrosCasoController extends Controller
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')        
         ->where('statusCola', null)
         ->where('tipoActa', null)
-        ->where('razones.nombre','!=' ,'SOLICITUD DE ACTA DE HECHOS')
+        ->where('razones.nombre','!=' ,'SOLICITUD DE CONSTANCIA DE EXTRAVIO')
         ->orderBy('id','desc')
         ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
         'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
@@ -66,7 +66,7 @@ class RegistrosCasoController extends Controller
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')        
         ->where('statusCola', null)
         ->where('tipoActa', null)
-        ->where('razones.nombre','!=' ,'SOLICITUD DE ACTA DE HECHOS')
+        ->where('razones.nombre','!=' ,'SOLICITUD DE CONSTANCIA DE EXTRAVIO')
         ->orderBy('horaLlegada','asc')
         ->where(function($query) use ($folio){
             $query

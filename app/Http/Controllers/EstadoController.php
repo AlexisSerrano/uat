@@ -664,8 +664,10 @@ class EstadoController extends Controller
                 }
             }
                 // DB::commit();
-                Alert::success('Registro modificado con exito','Hecho');
-            return back();
+                Alert::success('Registro modificado con éxito','Hecho');
+                return redirect(route('indexcarpetas'));
+                //return back();
+
         // }catch (\PDOException $e){
         //     DB::rollBack();
         //     Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
