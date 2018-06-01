@@ -28,9 +28,9 @@ class CatTipoVehiculo extends Model
     //     return $this->belongsTo('App\Models\CatClaseVehiculo');
     // }
 
-    //     public static function tipoVehiculos($id){
-    //     return CatTipoVehiculo::select('id', 'nombre')->where('idClaseVehiculo', '=', $id)->orderBy('nombre', 'ASC')->get();
-    // }
+        public static function tipoVehiculos($id){
+        return CatTipoVehiculo::select('id', 'nombre')->where('idClaseVehiculo', '=', $id)->orderBy('nombre', 'ASC')->get();
+    }
 
 }
 

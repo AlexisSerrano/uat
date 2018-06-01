@@ -33,7 +33,7 @@
 <div class="col-2">
     <div class="form-group">
         {!! Form::label('idSubmarca', 'Submarca', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('idSubmarca',null , ['class' => 'form-control form-control-sm']) !!}
+        {!! Form::select('idSubmarca', ['' => 'Seleccione una submarca'], null, ['class' => 'form-control form-control-sm']) !!}
     </div>
 </div>
 
@@ -75,12 +75,12 @@
         {!! Form::text('permiso', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el permiso']) !!}	
     </div>
 </div>
-{{-- <div class="col-4">
+<div class="col-4">
     <div class="form-group">
         {!! Form::label('idClaseVehiculo', 'Clase de vehículo', ['class' => 'col-form-label-sm']) !!}
         {!! Form::select('idClaseVehiculo', $clasesveh, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una clase de vehículo']) !!}
     </div>
-</div> --}}
+</div>
 <div class="col-4">
     <div class="form-group">
         {!! Form::label('idTipoVehiculo', 'Tipo de vehículo', ['class' => 'col-form-label-sm']) !!}

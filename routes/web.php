@@ -53,10 +53,6 @@ Route::get('/pruebasconsulta', function(){
             return view('forms.resumen-carpeta');  
         });   
         
-        
- /* --------Pruebas vehiculos----------- */
-
- Route::get('/vehiculos-pruebas','VehiculoController@showform')->name('vehiculo.carpeta');
 
 
 /**************************************************************/
@@ -262,7 +258,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('periciales/vehiculo','pericialesController@vehi')->name('store.vehiculo');
     Route::post('periciales/lesiones','pericialesController@lesiones')->name('store.lesiones');
     
-    
+            
+ /* --------Pruebas vehiculos----------- */
+
+ Route::get('/vehiculos-pruebas','VehiculoController@showform')->name('vehiculo.carpeta');
+ Route::get('submarcas/{id}', 'VehiculoController@getSubmarcas')->name('get.submarcas');
+ Route::get('tipoVehiculos/{id}', 'VehiculoController@getTipoVehiculos')->name('get.tipovehiculos');
+ Route::post('store-vehiculo', 'VehiculoController@storeVehiculo')->name('store.vehiculo');
     
 });
 

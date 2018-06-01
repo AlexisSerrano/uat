@@ -92,6 +92,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ActasSeeder::class);
         $this->call(ClaseVehiculoSeeder::class);
         $this->call(MarcaSeeder::class);
+        // $this->call(SubmarcaSeeder::class);
+        // $this->call(SubmarcaSeeder2::class);
 
 
     
