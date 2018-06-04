@@ -2,17 +2,17 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Registro</title>
         <link rel="icon" href="{{ asset('img/FGE-icon3.png') }}">
         {{-- <link rel="stylesheet" href="{{asset('css/cssfonts.css')}} "> --}}
+        {!! Html::style('assets/css/cssfonts.css') !!}
         <style> 
-            
             *{
                 font-family: 'neosanspro-regular';
             }
-
             label {
                 font-size: 11px;
             }
