@@ -23,6 +23,7 @@ class PDFcontroller extends Controller
 		
 		//dd($DatosRegistros);
 		$data = ['DatosRegistros' => $DatosRegistros];
+		
 		$pdf = PDF::loadView('servicios.pdf.pdf-preregistro', $data)->setPaper('letter', 'landscape');//->save('E:\NUEVO.pdf');
 		
 		//return $pdf->stream('pruebapdf.pdf');
