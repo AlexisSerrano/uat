@@ -81,6 +81,7 @@ class DatabaseSeeder extends Seeder
         $this->call(EstatusCasoSeeder::class);
         $this->call(IdentificacionSeeder::class);
         
+        $this->call(TipoDeterminacionSeeder::class);
         $this->call(PruebaSeeder::class);
         $this->call(Agrupacion1Seeder::class);
         $this->call(Agrupacion2Seeder::class);

@@ -123,12 +123,15 @@
 			</div>
 		</li> --}}
 		<li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Cerrar sesión">
+			<span class="nav-link">{{session('unidad')}}</span>
+		</li>
+		{{-- <li class="nav-item" data-toggle="tooltip" data-placement="bottom" title="Cerrar sesión">
 			<a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
 			document.getElementById('logout-form').submit();" ><i class="fa fa-power-off"></i></a>
 				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
-		</li>
+		</li> --}}
 		{{-- <li class="nav-item">
 			<a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
 					class="fa fa-gears"></i></a>
