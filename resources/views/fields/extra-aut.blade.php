@@ -22,8 +22,8 @@
 	</div>
 	<div class="col-12">
 		<div class="form-group">
-			{!! Form::label('narracion', 'Narración', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la narración de los hechos', 'rows' => '5','data-validation'=>'length', 'data-validation-length'=>'min20']) !!}
+			{!! Form::label('narracion', 'Descripción de hechos', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la descripción de los hechos', 'rows' => '5','data-validation'=>'length', 'data-validation-length'=>'min20']) !!}
 		</div>
 	</div>	
 </div>
