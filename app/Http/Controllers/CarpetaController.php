@@ -211,7 +211,7 @@ class CarpetaController extends Controller
         $autoridades = DB::table('extra_autoridad')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_autoridad.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select'extra_autoridad.idVariablesPersona',('extra_autoridad.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_autoridad.antiguedad', 'extra_autoridad.rango', 'extra_autoridad.horarioLaboral', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion')
+            ->select('extra_autoridad.idVariablesPersona','extra_autoridad.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_autoridad.antiguedad', 'extra_autoridad.rango', 'extra_autoridad.horarioLaboral', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion')
             ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
         return $autoridades;
