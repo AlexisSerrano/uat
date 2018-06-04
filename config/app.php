@@ -172,6 +172,8 @@ return [
 
         Adldap\Laravel\AdldapServiceProvider::class,
         Adldap\Laravel\AdldapAuthServiceProvider::class,
+
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class//generacion de qr
         
     ],
 
@@ -230,7 +232,8 @@ return [
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Date' => Jenssegers\Date\Date::class,//pasar fechas en español
-        'Adldap' => Adldap\Laravel\Facades\Adldap::class,
+        'Adldap' => Adldap\Laravel\Facades\Adldap::class,//active directory
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,//generacion de qr
     ],
 
 ];

@@ -132,7 +132,7 @@ class PreregistroController extends Controller
                 }
                 $preregistro->docIdentificacion = $request->docIdentificacion;
                 $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
-                $preregistro->conViolencia = $request->Violencia;
+                // $preregistro->conViolencia = $request->Violencia;
                 if (!is_null($request->tipoActa)){
                     $preregistro->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa;
                 }
@@ -186,7 +186,7 @@ class PreregistroController extends Controller
                 $preregistro->folio = $folio;
                 $preregistro->statusCancelacion = 0;
                 $preregistro->representanteLegal = $request->repLegal;
-                $preregistro->conViolencia = $request->Violencia;
+                // $preregistro->conViolencia = $request->Violencia;
                 $preregistro->save();
                 $id = $preregistro->id;
                 
@@ -325,7 +325,7 @@ class PreregistroController extends Controller
                 }
                 $preregistro->docIdentificacion = $request->docIdentificacion;
                 $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
-                $preregistro->conViolencia = $request->Violencia;
+                // $preregistro->conViolencia = $request->Violencia;
                 if (!is_null($request->tipoActa)){
                     $preregistro->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa;
                 }
@@ -380,7 +380,7 @@ class PreregistroController extends Controller
                 $preregistro->statusCancelacion = 0;
                 $preregistro->statusOrigen = 1;
                 $preregistro->representanteLegal = $request->repLegal;
-                $preregistro->conViolencia = $request->Violencia;
+                // $preregistro->conViolencia = $request->Violencia;
                 $preregistro->save();
                 $id = $preregistro->id;
                 

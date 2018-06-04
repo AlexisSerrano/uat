@@ -50,7 +50,7 @@
 		</div>
 
 </div>
-	<div class="card" id="datosPer">
+	{{-- <div class="card" id="datosPer">
 		<div class="card-header">
 		<div class="boxtwo">
 			<div class="form-group" align="center">
@@ -70,7 +70,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --}}
 	
 
 	

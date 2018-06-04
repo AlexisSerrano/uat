@@ -24,6 +24,7 @@ class CreateCarpetasTable extends Migration
             $table->integer('idEstadoCarpeta')->unsigned()->nullable(); // $table->string('estadoCarpeta',50)->default("INICIO");
             $table->time('horaIntervencion')->nullable();
             $table->string('descripcionHechos',500)->default("SIN INFORMACION");
+            $table->string('fiscalAtendio',200);
             $table->string('npd',50)->default("SIN INFORMACION");
             $table->string('numIph',50)->default("SIN INFORMACION");
             $table->date('fechaIph')->nullable();
