@@ -1,3 +1,6 @@
+@extends('fields.resumen-carpeta.resumen-carpeta')
+@section('detalle')
+<div class="card">
 <div class="card-header">
         <div class="row">
             <div class="col text-left"><h5>Autoridad</h5></div>
@@ -6,7 +9,7 @@
             </div>
         </div>
     </div>
-    <card class="card-body">
+    <div class="card-body">
         <div class="row">
                 <div class="col-4">
                         <div class="form-group">
@@ -242,4 +245,6 @@
                                                     </div>
                                                 </div>	
         </div>
-    </card>
+    </div>
+</div>
+    @endsection

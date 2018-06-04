@@ -1,3 +1,7 @@
+@extends('fields.resumen-carpeta.resumen-carpeta')
+@section('detalle')
+<div class="card">
+ 
 <div class="card-header">
         <div class="row">
             <div class="col text-left"><h5>Abogado</h5></div>
@@ -143,7 +147,7 @@
                     {!! Form::label('12', null, ['class' => 'col-form-label-sm']) !!}
                 </div>
             </div>
-        <div class="col-12" style="text-align:center"><p><h5 class="detalle">Datos del abogado</p></h5></div>
+        <div class="col-12" style="text-align:center;"><p><h5 class="detalle">Datos del abogado</p></h5></div>
             <div class="col-4">
                 <div class="form-group">
                     {!! Form::label('tipo', 'Tipo', ['class' => 'col-form-label-sm detalle']) !!}  
@@ -170,3 +174,7 @@
             </div>
 </div>
 </div>
+                   
+
+</div>
+@endsection

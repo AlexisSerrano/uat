@@ -1,3 +1,6 @@
+@extends('fields.resumen-carpeta.resumen-carpeta')
+@section('detalle')
+<div class="card">
 <div class="card-header">
         <div class="row">
             <div class="col text-left"><h5>Denunciante</h5></div>
@@ -6,7 +9,7 @@
             </div>
         </div>
     </div>
-    <card class="card-body">
+    <div class="card-body">
         <div class="row">
             <div class="col-8">
                 <div class="form-group">
@@ -158,4 +161,6 @@
                     </div>
         
         </div>
-    </card>
+    </div>
+</div>
+    @endsection
