@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLesionesTable extends Migration
+class CreatePerLesionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateLesionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('lesiones', function (Blueprint $table) {
+        Schema::create('per_lesiones', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idCarpeta');
             $table->string('nombre',200);

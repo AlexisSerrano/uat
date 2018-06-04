@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePsicologosTable extends Migration
+class CreatePerPsicologosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePsicologosTable extends Migration
      */
     public function up()
     {
-        Schema::create('psicologos', function (Blueprint $table) {
+        Schema::create('per_psicologos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idCarpeta');
             $table->string('nombre',200);
@@ -33,7 +33,7 @@ class CreatePsicologosTable extends Migration
      */
     public function down()
     {
-        Schema::connection('formatos')->dropIfExists('psicologos');
+        Schema::dropIfExists('psicologos');
    
     }
 }
