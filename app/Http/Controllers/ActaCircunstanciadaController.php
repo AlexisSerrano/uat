@@ -36,7 +36,7 @@ class ActaCircunstanciadaController extends Controller
         ->pluck('nombre', 'id');
         $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')
         ->pluck('nombre', 'id');
-        return view('forms.acta-circunstanciada',compact('ocupaciones','escolaridades','estadocivil','nacionalidades','estados'));
+        return view('servicios.actas.acta-circunstanciada',compact('ocupaciones','escolaridades','estadocivil','nacionalidades','estados'));
     }
 
     public function addActaCirc(ActaCircRequest $request){

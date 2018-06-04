@@ -75,7 +75,7 @@ class ActasHechosController extends Controller
         ->pluck('nombre', 'id');
         $escolaridades = CatEscolaridad::orderBy('id', 'ASC')
         ->pluck('nombre', 'id');
-        return view('forms.acta-hechos',compact('ocupaciones','escolaridades','estadocivil','estados','acta','catMunicipios','catLocalidades','catColonias','catCodigoPostal'));
+        return view('servicios.actas.acta-hechos',compact('ocupaciones','escolaridades','estadocivil','estados','acta','catMunicipios','catLocalidades','catColonias','catCodigoPostal'));
     }
     
 
@@ -92,7 +92,7 @@ class ActasHechosController extends Controller
         ->pluck('nombre', 'id');
         $municipios = CatMunicipio::orderBy('nombre', 'ASC')
         ->pluck('nombre', 'id');
-        return view('forms.acta-hechos',compact('ocupaciones','escolaridades','estadocivil','nacionalidades','estados','municipios'));
+        return view('servicios.actas.acta-hechos',compact('ocupaciones','escolaridades','estadocivil','nacionalidades','estados','municipios'));
     }
 
     public function showActas(){

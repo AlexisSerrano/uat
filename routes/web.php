@@ -50,7 +50,7 @@ Route::get('/pruebasconsulta', function(){
         Route::get('/pruebasmetodo/{id}','PruebasController@pruebas');
         
         Route::get('/resumen', function(){
-            return view('forms.resumen-carpeta');  
+            return view('fields.resumen-carpeta.resumen-carpeta');  
         });   
         
 
