@@ -215,7 +215,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12" style="text-align:center">
-                                        <p><h5 class="detalle">Domicilio para notificaciones</p></h5></div>
+                                        <p><h5 class="detalle">Domicilio para notificaciones: </p></h5></div>
                                         <div class="col-4">
                                                 <div class="form-group">
                                                     {!! Form::label('idEstado', 'Entidad federativa: ', ['class' => 'col-form-label-sm detalle']) !!}
@@ -283,7 +283,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     {!! Form::label('personasBajoSuGuarda', 'Personas bajo su guardia', ['class' => 'col-form-label-sm detalle']) !!}
-                                    {!! Form::label('personasBajoSuGuarda', null, ['class' => 'col-form-label-sm']) !!}
+                                    {!! Form::label('5', null, ['class' => 'col-form-label-sm']) !!}
                                 </div>
                             </div>
                             <div class="col-2">
@@ -292,13 +292,13 @@
                                     {!! Form::label('ingreso', null, ['class' => 'col-form-label-sm']) !!}
                                 </div>
                             </div> 
-                            <div class="col-2">
+                            <div class="col-4">
                                 <div class="form-group">
                                     {!! Form::label('periodoIngreso', 'Periodo de ingreso', ['class' => 'col-form-label-sm detalle']) !!}
                                     {!! Form::label('ingreso', null, ['class' => 'col-form-label-sm']) !!}
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-8">
                                 <div class="form-group">
                                     {!! Form::label('residenciaAnterior', 'Residencia anterior', ['class' => 'col-form-label-sm detalle']) !!}
                                     {!! Form::label('residenciaAnterior', null, ['class' => 'col-form-label-sm']) !!}
@@ -311,20 +311,20 @@
                                     </div>
                                 </div>
                         
-                            <div class="col-4">
+                            <div class="col-8">
                                 <div class="form-group">
                                     {!! Form::label('vestimenta', 'Vestimenta', ['class' => 'col-form-label-sm detalle']) !!}
                                     {!! Form::label('vestimenta', null, ['class' => 'col-form-label-sm']) !!}
                                 </div>
                             </div>
                 	
-                    <div class="col-4">
+                    <div class="col-8">
                         <div class="form-group">
                             {!! Form::label('senasPartic', 'Señas particulares', ['class' => 'col-form-label-sm detalle']) !!}
                             {!! Form::label('senasPartic', null, ['class' => 'col-form-label-sm']) !!}
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-10">
                         <div class="form-group">
                             {!! Form::label('narracion', 'Narración', ['class' => 'col-form-label-sm detalle']) !!}
                             {!! Form::label('narracion', null, ['class' => 'col-form-label-sm']) !!}

@@ -19,7 +19,7 @@
                                     </div>
                                 </div>
                                 <card class="card-body">
-                                    @include('tables.resumen-denunciado')
+                                    @include('tables.resumen-defensa')
                                 </card>
                             </div>
                            
