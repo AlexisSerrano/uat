@@ -47,7 +47,7 @@
 								<th><span><i class="fa fa-pencil-square" aria-hidden="true"></i></span></th>
 								@endif	
 							@else
-							<th id="{{$narracion->id}}"><a href="mostrardoc/{{$narracion->id}}" target="_blank">{{$fecha}}</a></th>
+							<th id="{{$narracion->id}}"><a href='{{url("mostrardoc/$narracion->id")}}' target="_blank">{{$fecha}}</a></th>
 							<th><span><i class="fa fa-file-word-o" aria-hidden="true"></i></span></th>
 								
 							@endif
@@ -61,7 +61,7 @@
 				</table>
 			</div>
 			<div class="col-9">
-				<form action="{{url('addnarracion')}}" method="post" id="formNarracion" enctype="multipart/form-data">
+				<form action="{{route('new.narracion', $id)}}" method="post" id="formNarracion" enctype="multipart/form-data">
 					@csrf
 					<div class="form-group" id="divnarracion">		
 						<textarea name="narracion" id="areaNarracion" cols="30" rows="10" class="form-control form-control-sm">@if($ultimo != null){{ $ultimo->narracion}} @endif</textarea>

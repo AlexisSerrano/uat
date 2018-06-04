@@ -144,7 +144,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('storeDescripcionHechos', 'NarracionController@storeDescripcionHechos')->name('store.descripcionHechos');
     /*---------Rutas narración-------------*/
     Route::get('narracion/{id}', 'NarracionController@index');
-    Route::post('addnarracion', 'NarracionController@addNarracion');
+    Route::post('addnarracion/{id}', 'NarracionController@addNarracion')->name('new.narracion');
     Route::get('getnarracion/{id}', 'NarracionController@getNarracion')->name('getnarracion');
     Route::get('mostrardoc/{id}', 'NarracionController@mostrarDoc');
     /*---------Rutas denunciado-------------*/
