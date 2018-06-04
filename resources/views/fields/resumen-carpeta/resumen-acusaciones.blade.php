@@ -10,9 +10,8 @@
         </div>
     </div>
 </div>
-<card class="card-body">
+
     <div class="row">
-        <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
@@ -34,8 +33,6 @@
                         </table>
                     </div>
                 </div>
-            </div>
-        </card>
     </div>
         @endsection
 
