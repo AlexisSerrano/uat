@@ -216,7 +216,7 @@ $form = oldFormActas();
         
 <div class="col-12">
     <div class="form-group">        
-        <label for="narracion" class="col-form-label-sm">Narración</label>
+        <label for="narracion" class="col-form-label-sm">Descripción de hechos</label>
         @if(isset($form['narracion']))
         {{ Form::textarea('narracion', $form['narracion'], ['class' => 'form-control form-control-sm', 'size' => '30x10', 'required']) }}
         @else

@@ -70,8 +70,8 @@ class StorePreregistro extends FormRequest
             // 'numInterno1.alpha_num' => 'El campo NUMERO INTERNO no debe contener letras.',
             // 'numExterno1.alpha_num' => 'El campo NUMERO EXTERNO no debe contener letras.',
             'telefono1.numeric' => 'El Teléfono no debe contener letras.',
-            'narracion.min' => 'La Narración de contener al menos 5 caracteres.',
-            'narracion.max' => 'La Narración no de contener mas de 2000 caracteres.',
+            'narracion.min' => 'La Descripción de hechos de contener al menos 5 caracteres.',
+            'narracion.max' => 'La Descripción de hechos no de contener mas de 2000 caracteres.',
 
 
 
