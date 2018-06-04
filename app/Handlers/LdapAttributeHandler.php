@@ -118,6 +118,7 @@ class LdapAttributeHandler
                 break;
             }
         }
+        
         // echo $letra."<br>".$numero;
         // dd('intento');
         // dd($ldapUser);
@@ -130,7 +131,12 @@ class LdapAttributeHandler
         $eloquentUser->grupo = $grupoad;
         $eloquentUser->idZona = $ldapUser->extensionattribute1[0];
         $eloquentUser->puesto = $ldapUser->title[0]." de la ".$ldapUser->department[0];
-        $eloquentUser->numFiscal = $numero;
-        $eloquentUser->numFiscalLetras = $letra;
+        if(isset($numero)&&isset($letra)){
+            $eloquentUser->numFiscal = $numero;
+            $eloquentUser->numFiscalLetras = $letra;
+        }else{
+            $eloquentUser->numFiscal = 0;
+            $eloquentUser->numFiscalLetras = "Sin numero";
+        }
     }
 }
