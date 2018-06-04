@@ -240,7 +240,7 @@
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        {!! Form::label('narracion', 'Narración', ['class' => 'col-form-label-sm detalle']) !!}
+                                                        {!! Form::label('narracion', 'Descripción de hechos', ['class' => 'col-form-label-sm detalle']) !!}
                                                         {!! Form::label('narracion', null, ['class' => 'col-form-label-sm']) !!}
                                                     </div>
                                                 </div>	

@@ -551,7 +551,7 @@ class PreregistroAuxController extends Controller
         $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $religiones = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        Alert::success('Turno Tomado', 'Hecho');
+        Alert::success('Turno tomado', 'Hecho');
         return view('forms.denunciante-turno')->with('idCarpeta', $idCarpeta)
         ->with('preregistro', $preregistro)
         ->with('tipopersona', $tipopersona)

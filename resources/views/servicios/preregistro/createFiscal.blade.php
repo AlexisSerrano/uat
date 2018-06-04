@@ -50,7 +50,7 @@
 		</div>
 
 </div>
-	<div class="card" id="datosPer">
+	{{-- <div class="card" id="datosPer">
 		<div class="card-header">
 		<div class="boxtwo">
 			<div class="form-group" align="center">
@@ -70,14 +70,14 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --}}
 	
 
 	
 		<div class="form-group">
 			<div class="col-12">
 				<div class="col">
-					<label for="narracion" class="col-form-label-sm">Narración</label>
+					<label for="narracion" class="col-form-label-sm">Descripción de hechos</label>
 					<textarea name="narracion" id="narracion" cols="30" rows="10" class="form-control form-control-sm" data-validation="length" data-validation-length= "min20"></textarea>
 				</div>
 			</div>

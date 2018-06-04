@@ -299,7 +299,8 @@ class CarpetaController extends Controller
             $caso->idUnidad = Auth::user()->idUnidad;
             $caso->fechaInicio = Carbon::now();
             $caso->horaIntervencion = Carbon::now();
-            $caso->fechaDeterminacion = Carbon::now();
+            $caso->fiscalAtendio = Auth::user()->nombreC;
+            //$caso->fechaDeterminacion = Carbon::now();
             $caso->save();
             session(['carpeta' => $caso->id]);
 
