@@ -18,7 +18,7 @@
             
             <div class="form-group">
                 <div class="col-12">
-                    <label for="narracion" class="col-form-label-sm">Narración: </label>
+                    <label for="narracion" class="col-form-label-sm">Descripción de hechos</label>
                     {!!Form::label('nombre',$preregistro->narracion ,['class'=> 'col-form-label-sm labelCambioNarracion'])!!}
                     <div class="input-group inputOculto" id="inputNarracion">
                         {{ Form::textarea('narracion', $preregistro->narracion, ['class'=>'form-control form-control-sm','size' => '30x5']) }}
