@@ -58,6 +58,12 @@ class LoginController extends Controller
         Auth::user()->session_id = \Session::getId();
         Auth::user()->save();
         $this->clearLoginAttempts($request);
+
+        /* inicio alerta a soporte */
+        if(is_null(Auth::User()->idUnidad) || Auth::User()->numFiscal==0){
+            return redirect(route('error.login'));
+        }
+        /* fin alerta a soporte */
         /* inicio agregar unidad */
         $unidad=Unidad::where('id',Auth::User()->idUnidad)->first();
         // dd($unidad->descripcion);
