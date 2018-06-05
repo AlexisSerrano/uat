@@ -19,6 +19,7 @@ use App\Models\VariablesPersona;
 use App\Models\ExtraDenunciado;
 use App\Models\DirNotificacion;
 use App\Models\Domicilio;
+use App\Models\NarracionPersona;
 use App\Http\Requests\StoreDenunciado;
 use App\Models\BitacoraNavCaso;
 use Alert;
@@ -336,6 +337,17 @@ class DenunciadoController extends Controller
                     $VariablesPersona->save();
                     $idVariablesPersona = $VariablesPersona->id;
 
+                    
+                    $narracion = new NarracionPersona();
+                    $narracion->idVariablesPersona=$idVariablesPersona;
+                    if (!is_null($request->narracion)){
+                        $narracion->narracion=$request->narracion;
+                    }
+                    $narracion->tipo=0;
+                    $narracion->save();
+
+
+
                     $ExtraDenunciado = new ExtraDenunciado();
                     $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
                     $ExtraDenunciado->idNotificacion = $idNotificacion;
@@ -444,6 +456,16 @@ class DenunciadoController extends Controller
                     $VariablesPersona->representanteLegal = $request->representanteLegal;
                     $VariablesPersona->save();
                     $idVariablesPersona = $VariablesPersona->id;
+
+
+                    $narracion = new NarracionPersona();
+                    $narracion->idVariablesPersona=$idVariablesPersona;
+                    if (!is_null($request->narracion)){
+                        $narracion->narracion=$request->narracion;
+                    }
+                    $narracion->tipo=0;
+                    $narracion->save();
+
 
                     $ExtraDenunciado = new ExtraDenunciado();
                     $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
