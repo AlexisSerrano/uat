@@ -64,7 +64,7 @@ use DB;
         // }
         return view('forms.vehiculos')
         ->with('idCarpeta', $idCarpeta)
-            // ->with('vehiculos', $vehiculos)
+             ->with('vehiculos', $vehiculos)
             ->with('tipifdelitos', $tipifdelitos)
             ->with('aseguradoras', $aseguradoras)
             ->with('clasesveh', $clasesveh)

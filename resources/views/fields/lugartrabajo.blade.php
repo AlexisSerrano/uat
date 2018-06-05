@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-2">
 			<div class="form-group">
-				{!! Form::label('sinEmpleo', 'Sin empleo', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::label('sinEmpleo', 'Desempleado', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::select('sinEmpleo',array('SI' => 'SI', 
 				'NO' => 'NO'), null, ['class' => 'form-control form-control-sm','placeholder' => 'SI/NO','data-validation'=>'required']) !!}
 		</div>

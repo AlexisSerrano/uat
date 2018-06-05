@@ -9,6 +9,7 @@ use Alert;
 use Carbon\Carbon;
 use App\Models\Carpeta;
 use App\Models\CatEscolaridad;
+use App\Models\NarracionPersona;
 use App\Models\CatEstado;
 use App\Models\CatMunicipio;
 use App\Models\CatEstadoCivil;
@@ -219,6 +220,15 @@ public function showForm()
                 $VariablesPersona->save();
                 $idVariablesPersona = $VariablesPersona->id;
 
+                $narracion = new NarracionPersona();
+                $narracion->idVariablesPersona=$idVariablesPersona;
+                if (!is_null($request->narracion)){
+                    $narracion->narracion=$request->narracion;
+                }
+                $narracion->tipo=0;
+                $narracion->save();
+
+
                 $ExtraDenunciante = new ExtraDenunciante();
                 $ExtraDenunciante->idVariablesPersona = $idVariablesPersona;
                 $ExtraDenunciante->idNotificacion = $idNotificacion;
@@ -311,6 +321,14 @@ public function showForm()
                 $VariablesPersona->representanteLegal = $request->representanteLegal;
                 $VariablesPersona->save();
                 $idVariablesPersona = $VariablesPersona->id;
+
+                $narracion = new NarracionPersona();
+                $narracion->idVariablesPersona=$idVariablesPersona;
+                if (!is_null($request->narracion)){
+                    $narracion->narracion=$request->narracion;
+                }
+                $narracion->tipo=0;
+                $narracion->save();
 
                 $ExtraDenunciante = new ExtraDenunciante();
                 $ExtraDenunciante->idVariablesPersona = $idVariablesPersona;

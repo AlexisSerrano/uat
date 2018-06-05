@@ -26,7 +26,7 @@
 			@if(isset($form['catMunicipios'], $form['idMunicipio2']))
 			{!! Form::select('idMunicipio2', $form['catMunicipios'], $form['idMunicipio2'], ['class' => 'form-control form-control-sm', 'required']) !!}
 			@else
-			{!! Form::select('idMunicipio2', $municipios, null, ['class' => 'form-control form-control-sm', 'required']) !!}
+			{!! Form::select('idMunicipio2', $municipios, null, ['class' => 'form-control form-control-sm','placeholder' => 'Seleccione un municipio ','required']) !!}
 			@endif
 		</div>
 	</div>
@@ -36,7 +36,7 @@
 			@if(isset($form['catLocalidades'],$form['idLocalidad2']))
 			{!! Form::select('idLocalidad2',$form['catLocalidades'], $form['idLocalidad2'], ['class' => 'form-control form-control-sm','data-validation'=> 'required']) !!}
 			@else
-			{!! Form::select('idLocalidad2', [ '' => 'Seleccione una localidad'], null, ['class' => 'form-control form-control-sm','data-validation'=> 'required']) !!}
+			{!! Form::select('idLocalidad2', [ '' => 'Seleccione una localidad'], null, ['class' => 'form-control form-control-sm','placeholder' => 'Seleccione una localidad','data-validation'=> 'required']) !!}
 			@endif
 		</div>
 	</div>
