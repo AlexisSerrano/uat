@@ -267,14 +267,17 @@ Route::middleware(['auth'])->group(function () {
     Route::post('periciales/psicologo','pericialesController@psico')->name('store.psicologo');
     Route::post('periciales/vehiculo','pericialesController@vehi')->name('store.vehiculo');
     Route::post('periciales/lesiones','pericialesController@lesiones')->name('store.lesiones');
-    
+    Route::get('getpericiales/{id}','pericialesController@getpericiales');
+    Route::get('getpsico/{id}','pericialesController@getpsico');
+    Route::get('getVh/{id}','pericialesController@getVh');
+    Route::get('getlesion/{id}','pericialesController@getlesion');
     
     /* --------Pruebas vehiculos----------- */
     
     Route::get('/vehiculos-pruebas','VehiculoController@showform')->name('vehiculo.carpeta');
     Route::get('submarcas/{id}', 'VehiculoController@getSubmarcas')->name('get.submarcas');
     Route::get('tipoVehiculos/{id}', 'VehiculoController@getTipoVehiculos')->name('get.tipovehiculos');
-    Route::post('store-vehiculo', 'VehiculoController@storeVehiculo')->name('store.vehiculo');
+    Route::post('getVh/{id}', 'pericialesController@vehi');
     
 });
 
