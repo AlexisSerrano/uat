@@ -408,9 +408,11 @@ function getNavCaso(){
 	$barra['hechos'] = ($navCaso->hechos>0)?'btn btn-primary':'btn btn-secondary';
 	$barra['hechos'] = ($url=="narracion")?$barra['hechos']." active":$barra['hechos'];
 	$barra['chechos'] = ($navCaso->hechos>0)?$navCaso->hechos:'';
+	
 	$barra['medidas'] = ($navCaso->medidas>0)?'btn btn-primary':'btn btn-secondary';
 	$barra['medidas'] = ($url=="medidas")?$barra['medidas']." active":$barra['medidas'];
 	$barra['cmedidas'] = ($navCaso->medidas>0)?$navCaso->medidas:'';
+
 	$barra['vehiculos'] = ($navCaso->vehiculos>0)?'btn btn-primary':'btn btn-secondary';
 	$barra['vehiculos'] = ($url=="vehiculo.carpeta")?$barra['vehiculos']." active":$barra['vehiculos'];
 	$barra['cvehiculos'] = ($navCaso->vehiculos>0)?$navCaso->vehiculos:'';       

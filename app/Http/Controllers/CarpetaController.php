@@ -292,14 +292,14 @@ class CarpetaController extends Controller
 
     public static function getVehiculos($id)
     {
-        $vehiculos = DB::table('vehiculo_carpetas')
-            ->join('tipif_delito', 'tipif_delito.id', '=', 'vehiculo_carpetas.idTipifDelito')
+        $vehiculos = DB::table('vehiculo')
+            ->join('tipif_delito', 'tipif_delito.id', '=', 'vehiculo.idTipifDelito')
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
-            ->join('cat_submarcas', 'cat_submarcas.id', '=', 'vehiculo_carpetas.idSubmarca')
+            ->join('cat_submarcas', 'cat_submarcas.id', '=', 'vehiculo.idSubmarca')
             ->join('cat_marca', 'cat_marca.id', '=', 'cat_submarcas.idMarca')
-            ->join('cat_tipo_vehiculo', 'cat_tipo_vehiculo.id', '=', 'vehiculo_carpetas.idTipoVehiculo')
-            ->join('cat_color', 'cat_color.id', '=', 'vehiculo_carpetas.idColor')
-            ->select('vehiculo_carpetas.id', 'cat_delito.nombre as delito', 'cat_marca.nombre as marca', 'vehiculo_carpetas.modelo', 'vehiculo_carpetas.placas', 'cat_tipo_vehiculo.nombre as tipovehiculo', 'cat_color.nombre as color')
+            ->join('cat_tipo_vehiculo', 'cat_tipo_vehiculo.id', '=', 'vehiculo.idTipoVehiculo')
+            ->join('cat_color', 'cat_color.id', '=', 'vehiculo.idColor')
+            ->select('vehiculo.id', 'cat_delito.nombre as delito', 'cat_marca.nombre as marca', 'vehiculo.modelo', 'vehiculo.placas', 'cat_tipo_vehiculo.nombre as tipovehiculo', 'cat_color.nombre as color')
             ->where('tipif_delito.idCarpeta', '=', $id)
             ->get();
         return $vehiculos;

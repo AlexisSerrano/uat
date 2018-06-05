@@ -46,10 +46,10 @@ class TipifDelito extends Model
        return $this->belongsTo('app/Models/Acusacion');
     }
 
-    // public function vehiculos()
-    // {
-    //    return $this->hasMany('app/Models/Vehiculo');
-    // }
+    public function vehiculos()
+    {
+       return $this->hasMany('app/Models/VehiculoCarpeta');
+    }
 
     public function delito()
     {

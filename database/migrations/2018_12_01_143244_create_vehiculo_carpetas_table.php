@@ -30,6 +30,7 @@ class CreateVehiculoCarpetasTable extends Migration
             $table->string('senasPartic', 100)->default("SIN INFORMACION");
             $table->integer('idProcedencia')->unsigned()->default(4);
             $table->integer('idAseguradora')->unsigned()->default(25);
+            
             $table->foreign('idTipifDelito')->references('id')->on('tipif_delito')->onDelete('cascade');
             $table->foreign('idEstado')->references('id')->on('cat_estado')->onDelete('cascade');
             $table->foreign('idSubmarca')->references('id')->on('cat_submarcas')->onDelete('cascade');

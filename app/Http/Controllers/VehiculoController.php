@@ -15,8 +15,10 @@ use App\Models\CatDelito;
 use App\Models\CatSubmarca;
 use App\Models\CatTipoVehiculo;
 use App\Models\VehiculoCarpeta;
+use App\Models\BitacoraNavCaso;
 use App\Http\Controllers\CarpetaController;
 use DB;
+use Alert;
 
     class VehiculoController extends Controller
 {
@@ -99,63 +101,72 @@ public function storeVehiculo(Request $request)
         // $idCarpeta=session('carpeta');
         //dd($request->all());
     $carpetaNueva = CarpetaController::getCarpeta($request->idCarpeta);
-    if ($carpetaNueva->isEmpty()) return CarpetaController::redirectHome();
-    $idFiscal = CarpetaController::getIdFiscal();
+    // if ($carpetaNueva->isEmpty()) return CarpetaController::redirectHome();
+    // $idFiscal = CarpetaController::getIdFiscal();
+    $vehiculo = new VehiculoCarpeta();
 
-    $vehiculo                = new VehiculoCarpeta();
-    $vehiculo->idTipifDelito = $request->idTipifDelito;
-    if ($request->filled('placas')) {    
-        $vehiculo->placas         = $request->placas;
+    if (!is_null($request->idTipifDelito)) {    
+        $vehiculo->idTipifDelito = $request->idTipifDelito;
     }
-    if ($request->filled('idEstado')) {    
-        $vehiculo->idEstado       = $request->idEstado;
+    if (!is_null($request->placas)) {    
+        $vehiculo->placas = $request->placas;
     }
-    if ($request->filled('idSubmarca')) {    
-        $vehiculo->idSubmarca     = $request->idSubmarca;
+    if (!is_null($request->idEstado)) {    
+        $vehiculo->idEstado = $request->idEstado;
     }
-    if ($request->filled('modelo')) {    
-        $vehiculo->modelo         = $request->modelo;
+    if (!is_null($request->idSubmarca)) {    
+        $vehiculo->idSubmarca= $request->idSubmarca;
     }
-    if ($request->filled('nrpv')) {    
-        $vehiculo->nrpv           = $request->nrpv;
+    if (!is_null($request->modelo)) {    
+        $vehiculo->modelo= $request->modelo;
     }
-    if ($request->filled('idColor')) {    
-        $vehiculo->idColor        = $request->idColor;
+    if (!is_null($request->nrpv)) {    
+        $vehiculo->nrpv= $request->nrpv;
     }
-    if ($request->filled('permiso')) {    
-        $vehiculo->permiso        = $request->permiso;
+    if (!is_null($request->idColor)) {    
+        $vehiculo->idColor= $request->idColor;
     }
-    if ($request->filled('numSerie')) {    
+    if (!is_null($request->permiso)) {    
+        $vehiculo->permiso= $request->permiso;
+    }
+    if (!is_null($request->numSerie)) {    
         $vehiculo->numSerie       = $request->numSerie;
     }
-    if ($request->filled('numMotor')) {    
+    if (!is_null($request->numMotor)) {    
         $vehiculo->numMotor       = $request->numMotor;
     }
-    if ($request->filled('idTipoVehiculo')) {    
+    if (!is_null($request->idTipoVehiculo)) {    
         $vehiculo->idTipoVehiculo = $request->idTipoVehiculo;
     }
-    if ($request->filled('idTipoUso')) {    
+    if (!is_null($request->idTipoUso)) {    
         $vehiculo->idTipoUso      = $request->idTipoUso;
     }
-    if ($request->filled('senasPartic')) {    
+    if (!is_null($request->senasPartic)) {    
         $vehiculo->senasPartic    = $request->senasPartic;
     }
-    if ($request->filled('idProcedencia')) {    
+    if (!is_null($request->idProcedencia)) {    
         $vehiculo->idProcedencia  = $request->idProcedencia;
     }
     if ($request->filled('idAseguradora')) {    
         $vehiculo->idAseguradora  = $request->idAseguradora;
     }
     $vehiculo->save();
-
+    // dd($request);
+    $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+    $bdbitacora->vehiculos = $bdbitacora->vehiculos-1;
+    $bdbitacora->save();
     //Agregar a Bitacora
-    // Bitacora::create(['idUsuario' => $idFiscal, 'tabla' => 'vehiculo', 'accion' => 'insert', 'descripcion' => 'Se han registrado datos generales de un Vehículo del delito: ' . $request->idTipifDelito . ' con Placas: ' . $request->placas . ' Del estado: ' . $request->idEstado, 'idFilaAccion' => $vehiculo->id]);
+   //  Bitacora::create(['idUsuario' => $idFiscal, 'tabla' => 'vehiculo', 'accion' => 'insert', 'descripcion' => 'Se han registrado datos generales de un Vehículo del delito: ' . $request->idTipifDelito . ' con Placas: ' . $request->placas . ' Del estado: ' . $request->idEstado, 'idFilaAccion' => $vehiculo->id]);
     
     Alert::success('Vehículo registrado con éxito', 'Hecho')->persistent("Aceptar");
     return redirect()->route('vehiculo.carpeta');
 }
 
-
+public function addbitacora(){
+    $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+        $bdbitacora->denunciante = $bdbitacora->denunciante+1;
+        $bdbitacora->save();
+}
 
 }
 //     public function storeVehiculo(StoreVehiculo $request)
