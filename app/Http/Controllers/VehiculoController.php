@@ -26,7 +26,7 @@ use DB;
         // if ($carpetaNueva->isEmpty()) return CarpetaController::redirectHome();
         
         // $numCarpeta   = $carpetaNueva[0]->numCarpeta;
-        // $vehiculos    = CarpetaController::getVehiculos($idCarpeta);
+        $vehiculos    = CarpetaController::getVehiculos($idCarpeta);
         $aseguradoras = CatAseguradora::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $clasesveh    = CatClaseVehiculo::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $colores      = CatColor::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -63,7 +63,7 @@ use DB;
         // }
         return view('forms.vehiculos')
         ->with('idCarpeta', $idCarpeta)
-            // ->with('vehiculos', $vehiculos)
+             ->with('vehiculos', $vehiculos)
             ->with('tipifdelitos', $tipifdelitos)
             ->with('aseguradoras', $aseguradoras)
             ->with('clasesveh', $clasesveh)
