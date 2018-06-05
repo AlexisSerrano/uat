@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Oficio;
 use App\Models\Aoficio;
 use App\Models\Intentos;
@@ -25,7 +26,7 @@ class OficioController extends Controller
             $oficio = new Oficio();
             $oficio->html = $request->html;
             $oficio->token = $request->token;
-            $oficio->fiscal = $request->fiscal;
+            $oficio->fiscal = Auth::user()->id;
             $oficio->idOficio = $request->id_oficio;
             if($oficio->save()){
                 return 1;
@@ -39,7 +40,7 @@ class OficioController extends Controller
     public function intentos(Request $request){
         $intento = new Intentos();
         $intento->html = $request->html;
-        $intento->fiscal = $request->fiscal;
+        $intento->fiscal = Auth::user()->id;
         $intento->idOficio = $request->id_oficio;
         if($intento->save()){
             return 1;
@@ -52,7 +53,6 @@ class OficioController extends Controller
     /*Cambiar sistema por el que corresponda y la unidad por la que tenga asiganada el usuario logueado */
     public function getOficios(){
         $oficios = Aoficio::where('unidad',1)
-        ->where('sistema','uat')
         ->select('id','nombre')
         ->get();
         return view('forms.oficios', compact('oficios')); 
@@ -69,7 +69,6 @@ class OficioController extends Controller
     public function addOficio(Request $request){
         $oficio = new Aoficio();
         $oficio->nombre = $request->nombre;
-        $oficio->sistema = 'uat';
         $oficio->encabezado = $request->encabezado;
         $oficio->contenido = $request->contenido;
         $oficio->pie = $request->pie;

@@ -23,7 +23,6 @@ class CreateTablasoficios extends Migration
         Schema::create('oficios', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('sistema');
             $table->longText('encabezado');
             $table->longText('contenido');
             $table->longText('pie');
@@ -66,9 +65,9 @@ class CreateTablasoficios extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('secciones_oficios');
+        //Schema::dropIfExists('secciones_oficios');
         Schema::dropIfExists('oficios');
-        Schema::dropIfExists('templates');
+        //Schema::dropIfExists('templates');
         Schema::dropIfExists('oficios_hechos');
         Schema::dropIfExists('intentos');
     }

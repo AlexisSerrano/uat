@@ -15731,7 +15731,7 @@ exports = module.exports = __webpack_require__(47)(false);
 
 
 // module
-exports.push([module.i, "\n*{\n    font-family: \"NeoSans\";\n}\nbody{\n    background-color: #F0F0F0;\n}\n.editable{\n    background-color: #ffffff;\n    width: 80%;\n    margin-left: auto;\n    margin-right: auto;\n    border: 2px solid #E3E3E3;\n}\n.editable td, .editable th{\n    padding: 10px;\n}\n.font16{\n    font-size: 16px;\n}\n.font14{\n    font-size: 14px;\n}\n.font13{\n    font-size: 13px;\n}\n.font10{\n    font-size: 10px;\n}\n.format1{\n    font-weight: bold;\n    font-style: italic;\n}\n.format2{\n    font-weight: bold;\n    text-align: center;\n    display: block;\n    margin-bottom: -15px;\n}\n.noeditable{\n    font-weight: bold;\n}\n#body{\n    margin-left: 50px;\n    margin-right: 50px;\n}\n.justificado{\n    text-align : justify;\n}\n.negritas{\n    font-weight: bold;\n}\n.padding th{ \n    padding: 20px 60px;\n}\n#imprimir{\n    text-align: center;\n    margin-top: 10px;\n    margin-bottom: 10px;\n}\n.impre{\n    padding-left: 30px;\n    padding-right: 30px;\n}\n@media print {\n.impre {display:none\n}\n.editable{\n        border: none;\n        width: 100%;\n}\n}\n@page \n{\n    size:  auto;   /* auto es el valor inicial */\n}\n", ""]);
+exports.push([module.i, "\n*{\n    font-family: \"NeoSans\";\n}\nbody{\n    background-color: #F0F0F0;\n}\n.editable{\n    background-color: #ffffff;\n    width: 80%;\n    margin-left: auto;\n    margin-right: auto;\n    border: 2px solid #E3E3E3;\n}\n.editable td, .editable th{\n    padding: 10px;\n}\n.font16{\n    font-size: 16px;\n}\n.font14{\n    font-size: 14px;\n}\n.font13{\n    font-size: 13px;\n}\n.font10{\n    font-size: 10px;\n}\n.format1{\n    font-weight: bold;\n    font-style: italic;\n}\n.format2{\n    font-weight: bold;\n    text-align: center;\n    display: block;\n    margin-bottom: -15px;\n}\n.noeditable{\n    font-weight: bold;\n}\n.centrado{\n    margin-left: 50px;\n    margin-right: 50px;\n}\n.justificado{\n    text-align : justify;\n}\n.negritas{\n    font-weight: bold;\n}\n.padding th{ \n    padding: 20px 60px;\n}\n#imprimir{\n    text-align: center;\n    margin-top: 10px;\n    margin-bottom: 10px;\n}\n.impre{\n    padding-left: 30px;\n    padding-right: 30px;\n}\n@media print {\n.impre {display:none\n}\n.editable{\n        border: none;\n        width: 100%;\n}\n}\n@page \n{\n    size:  auto;   /* auto es el valor inicial */\n}\n", ""]);
 
 // exports
 
@@ -16230,6 +16230,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -16247,7 +16250,6 @@ var browser = detect();
             info: [],
             variables: [],
             bloqueados: [],
-            logo: "http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png",
             token: ''
         };
     },
@@ -18798,18 +18800,21 @@ var render = function() {
       },
       [
         _c("thead", [
-          _c("tr", {
-            staticClass: "font16",
-            domProps: { innerHTML: _vm._s(_vm.encabezado) }
-          })
+          _c("tr", [
+            _c("td", { attrs: { colspan: "2" } }, [
+              _c("div", {
+                staticClass: "font16 centrado",
+                domProps: { innerHTML: _vm._s(_vm.encabezado) }
+              })
+            ])
+          ])
         ]),
         _vm._v(" "),
         _c("tbody", [
           _c("tr", { staticClass: "font14" }, [
             _c("td", { attrs: { colspan: "2" } }, [
               _c("div", {
-                staticClass: "justificado",
-                attrs: { id: "body" },
+                staticClass: "justificado centrado",
                 domProps: { innerHTML: _vm._s(_vm.template) }
               })
             ])
@@ -18820,7 +18825,7 @@ var render = function() {
           _c("tr", { staticClass: "font13" }, [
             _c("th", [
               _c("div", {
-                staticClass: "justificado",
+                staticClass: "justificado centrado",
                 domProps: { innerHTML: _vm._s(_vm.pie) }
               })
             ]),

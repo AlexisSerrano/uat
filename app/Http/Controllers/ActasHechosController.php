@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\ActasHechos;
 use App\Models\Domicilio;
 use App\Models\CatEscolaridad;
@@ -183,7 +184,7 @@ class ActasHechosController extends Controller
             $acta->folio = $new;
             $acta->hora = Date::now()->format('H:i:s');
             $acta->fecha = Date::now()->format('Y-m-d');
-            $acta->fiscal = "xxxxxx";
+            $acta->fiscal = Auth::user()->nombreC;
             $acta->nombre = $request->nombre2;
             $acta->primer_ap = $request->primerAp;
             $acta->segundo_ap = $request->segundoAp;
