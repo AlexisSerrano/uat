@@ -28,10 +28,10 @@ class OficioController extends Controller
             $oficio->fiscal = $request->fiscal;
             $oficio->idOficio = $request->id_oficio;
             if($oficio->save()){
-                echo 1;
+                return 1;
             }
             else{
-                echo 0;
+                return 0;
             }
         
     }
@@ -42,10 +42,10 @@ class OficioController extends Controller
         $intento->fiscal = $request->fiscal;
         $intento->idOficio = $request->id_oficio;
         if($intento->save()){
-            echo 1;
+            return 1;
         }
         else{
-            echo 0;
+            return 0;
         }
     }
 
@@ -70,31 +70,30 @@ class OficioController extends Controller
         $oficio = new Aoficio();
         $oficio->nombre = $request->nombre;
         $oficio->sistema = 'uat';
-        $oficio->encabezado = '1';
+        $oficio->encabezado = $request->encabezado;
         $oficio->contenido = $request->contenido;
-        $oficio->pie = '1';
+        $oficio->pie = $request->pie;
         $oficio->unidad = 1;
         if($oficio->save()){
             $data = array('id' => $oficio->id, 'nombre' => $request->nombre);
             return response()->json($data);
         }
         else{
-            echo 0;
+            return 0;
         }
     }
 
     public function updateOficio(Request $request){
-        $id = $request->id;
-        $nombre = $request->nombre;
-        $contenido = $request->contenido;
-        $oficio = Aoficio::find($id);
-        $oficio->nombre = $nombre;
-        $oficio->contenido = $contenido;
+        $oficio = Aoficio::find($request->id);
+        $oficio->nombre = $request->nombre;
+        $oficio->contenido = $request->contenido;
+        $oficio->encabezado = $request->encabezado;
+        $oficio->pie = $request->pie;
         if($oficio->save()){
-            echo 1;
+            return 1;
         }
         else{
-            echo 0;
+            return 0;
         }
     }
 }

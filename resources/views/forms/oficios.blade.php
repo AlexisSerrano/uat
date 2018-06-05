@@ -12,40 +12,49 @@
                             {!! Form::label('oficio', 'Oficio', ['class' => 'col-form-label-sm']) !!}
                             {!! Form::text('oficio', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del oficio','data-validation'=>'required' ]) !!}
                         </div>
-                    <div class="form-group">
-                        <label for="contenido" class="col-form-label-sm">Contenido del documento</label>
-                        <textarea name="contenido" id="contenido" class="form-control form-control-sm ckeditor" data-validation="required"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <button id="guardarOficio" class="btn btn-primary btns"> Guardar nuevo oficio </button>
-                        <button id="editarOficio" class="btn btn-primary btns"> Editar oficio </button>   
+                        <div class="form-group margindown">
+                            <label for="encabezado" class="col-form-label-sm">Encabezado</label>
+                            <textarea name="encabezado" id="encabezado" class="form-control form-control-sm ckeditor" data-validation="required"></textarea>
+                        </div>
+                        <div class="form-group margindown">
+                            <label for="contenido" class="col-form-label-sm">Contenido</label>
+                            <textarea name="contenido" id="contenido" class="form-control form-control-sm ckeditor" data-validation="required"></textarea>
+                        </div>
+                        <div class="form-group margindown">
+                            <label for="pie" class="col-form-label-sm">Pie</label>
+                            <textarea name="pie" id="pie" class="form-control form-control-sm ckeditor" data-validation="required"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button id="guardarOficio" class="btn btn-primary btns"> Guardar nuevo oficio </button>
+                            <button id="editarOficio" class="btn btn-primary btns"> Editar oficio </button>   
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-12 col-md-3">
-            <div class="card">
-                <div class="card-header"><h6>Oficios guardados</h1></div>
-                    <div class="col-12"  >    
-                        <div class=" panel panel-default">
-                            <div class="panel-body">
-                                <table class="table table-hover tableOficios">
-                                    <tbody id="listaOficios" >
-                                        @forelse($oficios as $oficio)
-                                        <tr>
-                                            <td class="btn btn-primary itemoficio" id="{{$oficio->id}}"><span>{{$oficio->nombre}}</span></td>
-                                        </tr>
-                                        @empty
-                                        
-                                        @endforelse
-                                    </tbody>
-                                </table>
+            <div class="col-sm-12 col-md-3">
+                <div class="card">
+                    <div class="card-header"><h6>Oficios guardados</h1></div>
+                        <div class="col-12">    
+                            <div class=" panel panel-default">
+                                <div class="panel-body">
+                                    <table class="table table-hover tableOficios">
+                                        <tbody id="listaOficios" >
+                                            @forelse($oficios as $oficio)
+                                            <tr>
+                                                <td class="btn btn-primary itemoficio" id="{{$oficio->id}}"><span>{{$oficio->nombre}}</span></td>
+                                            </tr>
+                                            @empty
+                                            
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div
     </div>
 </div>
 @endsection
@@ -60,10 +69,16 @@
     .tableOficios{
         margin-top: 5px;
     }
+    .margindown{
+        padding-bottom: 10px;
+    }
 </style>
 @push('scripts')
 <script>
 var oficio = '';
+CKEDITOR.replace('encabezado', { height: 200 }); 
+CKEDITOR.replace('contenido', { height: 500 });
+CKEDITOR.replace('pie', { height: 200 });  
 $("#listaOficios").on("click", ".itemoficio", function(){
     var id = $(this).attr("id");
     $.ajax({
@@ -76,13 +91,17 @@ $("#listaOficios").on("click", ".itemoficio", function(){
         type : 'POST',
         success : function(data) {
             CKEDITOR.instances['contenido'].setData(data[0].contenido);
+            CKEDITOR.instances['encabezado'].setData(data[0].encabezado);
+            CKEDITOR.instances['pie'].setData(data[0].pie);
             $("#oficio").val(data[0].nombre);
             oficio = id;
         }
     });
 });
 $("#guardarOficio").on("click", function(){
+    var encabezado = CKEDITOR.instances['encabezado'].getData();
     var conten = CKEDITOR.instances['contenido'].getData();
+    var pie = CKEDITOR.instances['pie'].getData();
     var nombre = $("#oficio").val();
     if(valida(conten, nombre)){
         $.ajax({
@@ -91,11 +110,13 @@ $("#guardarOficio").on("click", function(){
             },
             async: false,
             url: route("addOficio"),
-            data : {'nombre':nombre, 'contenido':conten },
+            data : {'nombre':nombre, 'contenido':conten, 'encabezado':encabezado, 'pie':pie },
             type : 'POST',
             success : function(data) {
                 if(data){
+                    CKEDITOR.instances['encabezado'].setData("");
                     CKEDITOR.instances['contenido'].setData("");
+                    CKEDITOR.instances['pie'].setData("");
                     var item = '<tr><td class="btn btn-primary itemoficio" width="100%" id="'+data.id+'"><span>'+data.nombre+'</span></td></tr>';
                     $("#listaOficios").append(item);
                     $("#oficio").val("");
@@ -111,6 +132,8 @@ $("#guardarOficio").on("click", function(){
 });
 $("#editarOficio").on("click", function(){
     var conten = CKEDITOR.instances['contenido'].getData();
+    var encabezado = CKEDITOR.instances['encabezado'].getData();
+    var pie = CKEDITOR.instances['pie'].getData();
     var nombre = $("#oficio").val();
     if(oficio!=''){
         if(valida(conten, nombre)){
@@ -120,11 +143,13 @@ $("#editarOficio").on("click", function(){
                 },
                 async: false,
                 url: route("updateOficio"),
-                data : {'nombre':nombre, 'contenido':conten, 'id':oficio },
+                data : {'nombre':nombre, 'contenido':conten, 'id':oficio, 'encabezado':encabezado, 'pie':pie },
                 type : 'POST',
                 success : function(data) {
                     if(data){
                         CKEDITOR.instances['contenido'].setData("");
+                        CKEDITOR.instances['encabezado'].setData("");
+                        CKEDITOR.instances['pie'].setData("");
                         $("#oficio").val("");
                         $("#"+oficio).html("<span>"+nombre+"</span>")
                         swal("Oficio modificado satisfactoriamente");

@@ -16230,59 +16230,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -16294,6 +16241,8 @@ var browser = detect();
     data: function data() {
         return {
             template: '',
+            encabezado: '',
+            pie: '',
             tipoOficio: '',
             info: [],
             variables: [],
@@ -16328,6 +16277,8 @@ var browser = detect();
                 } else {
                     //console.log(response.data);
                     _this.template = response.data[0]['contenido'];
+                    _this.encabezado = response.data[0]['encabezado'];
+                    _this.pie = response.data[0]['pie'];
                     _this.tipoOficio = response.data[0]['id'];
                     axios.get(urlPeticion).then(function (response) {
                         _this.info = response.data;
@@ -18847,21 +18798,13 @@ var render = function() {
       },
       [
         _c("thead", [
-          _c("tr", { staticClass: "font16 padding" }, [
-            _c("th", [
-              _c("img", {
-                staticStyle: { height: "150px" },
-                attrs: { src: _vm.logo, alt: "" }
-              })
-            ]),
-            _vm._v(" "),
-            _vm._m(0)
-          ])
+          _c("tr", {
+            staticClass: "font16",
+            domProps: { innerHTML: _vm._s(_vm.encabezado) }
+          })
         ]),
         _vm._v(" "),
         _c("tbody", [
-          _vm._m(1),
-          _vm._v(" "),
           _c("tr", { staticClass: "font14" }, [
             _c("td", { attrs: { colspan: "2" } }, [
               _c("div", {
@@ -18870,20 +18813,17 @@ var render = function() {
                 domProps: { innerHTML: _vm._s(_vm.template) }
               })
             ])
-          ]),
-          _vm._v(" "),
-          _vm._m(2),
-          _vm._v(" "),
-          _vm._m(3),
-          _vm._v(" "),
-          _vm._m(4),
-          _vm._v(" "),
-          _vm._m(5)
+          ])
         ]),
         _vm._v(" "),
         _c("tfoot", [
           _c("tr", { staticClass: "font13" }, [
-            _vm._m(6),
+            _c("th", [
+              _c("div", {
+                staticClass: "justificado",
+                domProps: { innerHTML: _vm._s(_vm.pie) }
+              })
+            ]),
             _vm._v(" "),
             _c("th", [_c("canvas", { ref: "canvas", attrs: { id: "qr" } })])
           ])
@@ -18900,227 +18840,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "th",
-      {
-        staticStyle: {
-          "padding-top": "85px",
-          width: "50%",
-          "text-align": "right"
-        }
-      },
-      [
-        _vm._v(
-          "\n                    Unidad de Atención Temprana, Distrito XI Xalapa, Veracruz "
-        ),
-        _c("br"),
-        _vm._v(" "),
-        _c("span", { staticClass: "format1" }, [
-          _vm._v("“Si lo platicamos, lo solucionamos”")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", { staticClass: "font14" }, [
-      _c(
-        "td",
-        {
-          staticStyle: { "padding-bottom": "10px", "text-align": "center" },
-          attrs: { colspan: "2" }
-        },
-        [
-          _vm._v("\n                    ACTA DE HECHOS NÚMERO "),
-          _c("span", { staticClass: "noeditable" }, [
-            _vm._v("UAT-XI/AH- "),
-            _c("span", { staticClass: "folio" }, [_vm._v("XXXXXXFOLIO")]),
-            _vm._v(" /2018")
-          ])
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "tr",
-      { staticClass: "font14", staticStyle: { "text-align": "center" } },
-      [
-        _c("td", { attrs: { colspan: "2" } }, [
-          _vm._v("Firma del Compareciente:")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "tr",
-      { staticClass: "font14", staticStyle: { "text-align": "center" } },
-      [
-        _c("td", { attrs: { colspan: "2" } }, [
-          _vm._v("\n                    ______________________________ "),
-          _c("br"),
-          _vm._v(" "),
-          _c("span", { staticClass: "negritas" }, [_vm._v("C.")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "noeditable nombre" }, [
-            _vm._v("XXXXXXNOMBRE")
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "tr",
-      { staticClass: "font14", staticStyle: { "text-align": "center" } },
-      [
-        _c("td", { attrs: { colspan: "2" } }, [
-          _vm._v(
-            "\n                    __________________________________________ "
-          ),
-          _c("br"),
-          _vm._v(" "),
-          _c("span", { staticClass: "negritas" }, [_vm._v("LIC.")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "noeditable fiscal" }, [
-            _vm._v("XXXXXXFISCAL")
-          ]),
-          _c("br"),
-          _vm._v(
-            "\n                    Fiscal Sexta Orientadora de la Unidad de Atención Temprana "
-          ),
-          _c("br"),
-          _vm._v(
-            "\n                    Del XI Distrito Judicial en Xalapa, Veracruz\n                "
-          )
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", { staticClass: "font10" }, [
-      _c("td", { attrs: { colspan: "2" } }, [
-        _c("div", { staticClass: "justificado" }, [
-          _c("span", { staticClass: "format2" }, [
-            _vm._v(" AVISO DE PRIVACIDAD SIMPLIFICADO")
-          ]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("span", { staticClass: "format2" }, [
-            _vm._v(" DEL EXPEDIENTE DE ATENCIÓN TEMPRANA")
-          ]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("span", { staticClass: "negritas" }, [
-            _vm._v("La Fiscalía General del Estado de Veracruz")
-          ]),
-          _vm._v(
-            ", es la responsable del tratamiento de los datos personales que nos proporcione. "
-          ),
-          _c("br"),
-          _vm._v(
-            "\n                        Los datos personales que recabamos a Usted, los utilizaremos para las siguientes finalidades: "
-          ),
-          _c("br"),
-          _vm._v(
-            "\n                        •\tIdentificar al usuario y conocer su problemática a fin de poder orientar en su caso, respecto a la procedencia del asunto expuesto, iniciando de ser procedente la Carpeta de Investigación correspondiente o por el contrario la canalización del ciudadano a la Unidad Integral de Procuración de Justicia, o alguna otra instancia competente; "
-          ),
-          _c("br"),
-          _vm._v(
-            "\n                        •\tPara iniciar el expediente de atención temprana, "
-          ),
-          _c("br"),
-          _vm._v(
-            "\n                        •\tPara la recepción de las denuncias y querellas, "
-          ),
-          _c("br"),
-          _vm._v("\n                        •\tPara la emisión de informes. "),
-          _c("br"),
-          _vm._v(
-            "\n                        De manera adicional, utilizaremos su información personal para la siguiente finalidad que nos permite y facilita brindarle una mejor atención: "
-          ),
-          _c("br"),
-          _vm._v(
-            "\n                        •\tGeneración de informes estadísticos. "
-          ),
-          _c("br"),
-          _vm._v(
-            "\n                        En caso de que no desee que sus datos personales sean tratados para las finalidades  adicionales, Usted puede manifestarlo al correo electrónico "
-          ),
-          _c(
-            "a",
-            {
-              attrs: {
-                href: "direcciondetransparencia@fiscaliaveracruz.gob.mx"
-              }
-            },
-            [_vm._v("direcciondetransparencia@fiscaliaveracruz.gob.mx")]
-          ),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(
-            "\n                        Le informamos que sus datos personales "
-          ),
-          _c("span", { staticClass: "negritas" }, [_vm._v("NO")]),
-          _vm._v(
-            " son compartidos con personas, empresas, organizaciones y autoridades distintas al sujeto obligado, salvo que sean necesarias para atender requerimientos de información de una autoridad competente, debidamente fundados y motivados. "
-          ),
-          _c("br"),
-          _vm._v(
-            "\n                        Para mayor información acerca del tratamiento y de los derechos que puede hacer valer, usted puede acceder al aviso de privacidad integral a través de la dirección electrónica: "
-          ),
-          _c("a", { attrs: { href: "http://fiscaliaveracruz.gob.mx" } }, [
-            _vm._v(" http://fiscaliaveracruz.gob.mx ")
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("th", [
-      _c("div", { staticClass: "justificado" }, [
-        _vm._v("\n                        Circuito Rafael Guízar y "),
-        _c("br"),
-        _vm._v("\n                        Valencia No. 147, "),
-        _c("br"),
-        _vm._v("\n                        Colonia Reserva Territorial, "),
-        _c("br"),
-        _vm._v("\n                        C.P. 91096 "),
-        _c("br"),
-        _vm._v("\n                        Teléfono: 01 (228) 8149428, "),
-        _c("br"),
-        _vm._v(
-          "\n                        Xalapa-Enríquez, Veracruz\n                    "
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

@@ -9,11 +9,17 @@
 <br>
 <div class="card">
 		<div class="card-header">
-<div class="row">
-		<div class="col">
-			<div class="text-left">
-				{{--Aqui van radios, etc --}}
-				<h5>Datos generales de la unidad</h5>
+<div class="">
+	<div class="row">
+		<div class="col-4 text-left">
+			
+						
+			<div class="form-group">
+						 {!! Form::label('idEstado', 'Estatus del vehiculo', ['class' => 'col-form-label-sm']) !!} 
+					
+								{!! Form::select('idEstado',array('INVOLUCRADO EN DELITO' => 'INVOLUCRADO EN DELITO', 
+								'ROBO DE VEHICULO' => 'VEHICULO'), null,  ['class' => 'form-control form-control-sm', 'placeholder' => 'Estatus del vehiculo'])!!}
+						</div>
 			</div>
 		</div>
 </div>
