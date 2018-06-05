@@ -13,7 +13,7 @@ class CreateVehiculoCarpetasTable extends Migration
      */
     public function up()
     {
-        Schema::create('vehiculo_carpetas', function (Blueprint $table) {
+        Schema::create('vehiculo', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idTipifDelito')->unsigned();       
             $table->string('placas', 9)->default("XXXXXXX");
@@ -50,6 +50,6 @@ class CreateVehiculoCarpetasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vehiculo_carpetas');
+        Schema::dropIfExists('vehiculo');
     }
 }
