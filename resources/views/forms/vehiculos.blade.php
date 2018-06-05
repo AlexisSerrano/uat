@@ -4,7 +4,7 @@
 @include('fields.buttons-navegacion')
 
 @include('fields.errores')
-{!! Form::open([ 'method' => 'POST'])  !!}
+{!! Form::open(['route' => ['store.vehiculo'], 'method' => 'POST'])  !!}
 {{ csrf_field() }}
 <br>
 <div class="card">

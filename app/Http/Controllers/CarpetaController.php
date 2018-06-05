@@ -19,6 +19,19 @@ class CarpetaController extends Controller
         Carbon::setLocale('es');
     }
 
+    
+    public static function getCarpeta($id)
+    {
+        //dd(Auth::user());
+        //if(Auth::user() == User::where('id', Auth::user()->id)){
+        if (Auth::user() instanceof User) {
+            $carpetaNueva = Carpeta::where('id', $id)->where('idFiscal', Auth::user()->id)->get();
+        } else {
+            $carpetaNueva = Carpeta::where('id', $id)->where('idFiscal', Auth::user()->idFiscal)->get();
+        }
+        return $carpetaNueva;
+    }
+
     public function salirCaso(){
         $idCarpeta = session('carpeta');
         $terminada = session('terminada');
@@ -276,19 +289,22 @@ class CarpetaController extends Controller
         return $acusaciones;
     }
 
-    public static function getVehiculos($id){
-       $vehiculos = DB::table('vehiculo')
-            ->join('tipif_delito', 'tipif_delito.id', '=', 'vehiculo.idTipifDelito')
+
+    public static function getVehiculos($id)
+    {
+        $vehiculos = DB::table('vehiculo_carpetas')
+            ->join('tipif_delito', 'tipif_delito.id', '=', 'vehiculo_carpetas.idTipifDelito')
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
-            ->join('cat_submarca', 'cat_submarca.id', '=', 'vehiculo.idSubmarca')
-            ->join('cat_marca', 'cat_marca.id', '=', 'cat_submarca.idMarca')
-            ->join('cat_tipo_vehiculo', 'cat_tipo_vehiculo.id', '=', 'vehiculo.idTipoVehiculo')
-            ->join('cat_color', 'cat_color.id', '=', 'vehiculo.idColor')
-            ->select('vehiculo.id','cat_delito.nombre as delito', 'cat_marca.nombre as marca', 'vehiculo.modelo', 'vehiculo.placas', 'cat_tipo_vehiculo.nombre as tipovehiculo', 'cat_color.nombre as color')
+            ->join('cat_submarcas', 'cat_submarcas.id', '=', 'vehiculo_carpetas.idSubmarca')
+            ->join('cat_marca', 'cat_marca.id', '=', 'cat_submarcas.idMarca')
+            ->join('cat_tipo_vehiculo', 'cat_tipo_vehiculo.id', '=', 'vehiculo_carpetas.idTipoVehiculo')
+            ->join('cat_color', 'cat_color.id', '=', 'vehiculo_carpetas.idColor')
+            ->select('vehiculo_carpetas.id', 'cat_delito.nombre as delito', 'cat_marca.nombre as marca', 'vehiculo_carpetas.modelo', 'vehiculo_carpetas.placas', 'cat_tipo_vehiculo.nombre as tipovehiculo', 'cat_color.nombre as color')
             ->where('tipif_delito.idCarpeta', '=', $id)
             ->get();
         return $vehiculos;
     }
+
 
     public function crearCaso(){
         $caso=session('carpeta');

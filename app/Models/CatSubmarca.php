@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CatSubmarca extends Model
 {
-    //
+    //h
     protected $fillable = [
         'id', 'idSubmarca', 'idMarca', 'nombre',
     ];

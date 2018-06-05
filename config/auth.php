@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'providers' => [
+     'providers' => [
         //comentar en caso de querer checar localmente sin sevidor de active directory 
         'users' => [
             'driver' => 'adldap',
@@ -77,7 +77,7 @@ return [
         // ],
 
         // NOTA: NUNCA SUBAR NINGUN CAMBIO DE ESTE ARCHIVO O ALGUNA CONFIGURACION EN LA QUE LE MUEVAN
-    ],
+     ],
 
     /*
     |--------------------------------------------------------------------------

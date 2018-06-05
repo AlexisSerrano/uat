@@ -15,6 +15,7 @@ use App\Models\CatDelito;
 use App\Models\CatSubmarca;
 use App\Models\CatTipoVehiculo;
 use App\Models\VehiculoCarpeta;
+use App\Http\Controllers\CarpetaController;
 use DB;
 
     class VehiculoController extends Controller
@@ -26,7 +27,7 @@ use DB;
         // if ($carpetaNueva->isEmpty()) return CarpetaController::redirectHome();
         
         // $numCarpeta   = $carpetaNueva[0]->numCarpeta;
-        // $vehiculos    = CarpetaController::getVehiculos($idCarpeta);
+        $vehiculos    = CarpetaController::getVehiculos($idCarpeta);
         $aseguradoras = CatAseguradora::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $clasesveh    = CatClaseVehiculo::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $colores      = CatColor::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
@@ -92,14 +93,16 @@ public function getTipoVehiculos(Request $request, $id)
     }
 }
 
-public function storeVehiculo(StoreVehiculo $request)
+// public function storeVehiculo(StoreVehiculo $request)
+public function storeVehiculo(Request $request)
 {
-    //dd($request->all());
+        // $idCarpeta=session('carpeta');
+        //dd($request->all());
     $carpetaNueva = CarpetaController::getCarpeta($request->idCarpeta);
     if ($carpetaNueva->isEmpty()) return CarpetaController::redirectHome();
     $idFiscal = CarpetaController::getIdFiscal();
 
-    $vehiculo                = new Vehiculo();
+    $vehiculo                = new VehiculoCarpeta();
     $vehiculo->idTipifDelito = $request->idTipifDelito;
     if ($request->filled('placas')) {    
         $vehiculo->placas         = $request->placas;
@@ -146,10 +149,10 @@ public function storeVehiculo(StoreVehiculo $request)
     $vehiculo->save();
 
     //Agregar a Bitacora
-    Bitacora::create(['idUsuario' => $idFiscal, 'tabla' => 'vehiculo', 'accion' => 'insert', 'descripcion' => 'Se han registrado datos generales de un Vehículo del delito: ' . $request->idTipifDelito . ' con Placas: ' . $request->placas . ' Del estado: ' . $request->idEstado, 'idFilaAccion' => $vehiculo->id]);
+    // Bitacora::create(['idUsuario' => $idFiscal, 'tabla' => 'vehiculo', 'accion' => 'insert', 'descripcion' => 'Se han registrado datos generales de un Vehículo del delito: ' . $request->idTipifDelito . ' con Placas: ' . $request->placas . ' Del estado: ' . $request->idEstado, 'idFilaAccion' => $vehiculo->id]);
     
     Alert::success('Vehículo registrado con éxito', 'Hecho')->persistent("Aceptar");
-    return redirect()->route('new.vehiculo', $request->idCarpeta);
+    return redirect()->route('vehiculo.carpeta');
 }
 
 
