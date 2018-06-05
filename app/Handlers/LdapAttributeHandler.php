@@ -34,17 +34,18 @@ class LdapAttributeHandler
                 $recepcion=1;
             }    
         }
-
+        // dd($facilitador);
         if ($facilitador==1) {
             $grupoad = 'Facilitador';
-        }else{
-            if ($orientador==1) {
-                $grupoad = 'Orientador';
-            }else {
-                if ($recepcion==1) {
-                    $grupoad = 'Recepcion';
-                }
-            }
+        }
+        if ($orientador==1) {
+            $grupoad = 'Orientador';
+        }
+        if ($recepcion==1) {
+            $grupoad = 'Recepcion';
+        }
+        if($facilitador==0||$orientador==0||$recepcion==0){
+            return redirect(route('login'));
         }
         $texto = array(
             'Sexagésimo-60' => 'sexagesimo',
