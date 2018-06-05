@@ -20,7 +20,7 @@
 		<!-- Sidebar -->
 		<div class="sidebar font-weight-light ">
 			<!-- Sidebar user panel (optional) -->
-			<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+			<div class="user-panel mt-3 pb-3 mb-3 d-flex" style="margin-bottom: -15px !important;margin-top: 3px !important;">
 				<div class="image" style="margin-top:auto;margin-bottom:auto;">				
 					{{-- <img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="Imagen de perfil" > --}}
 					<i class="fa fa-user-circle" aria-hidden="true" style="color:white; font-size:33px;"></i> 

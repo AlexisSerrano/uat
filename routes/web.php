@@ -49,10 +49,19 @@ Route::get('/pruebasconsulta', function(){
         Route::get('/pruebasactas','PruebasController@actas');
         Route::get('/pruebasmetodo/{id}','PruebasController@pruebas');
         
-        Route::get('/resumen', function(){
-            return view('forms.resumen-carpeta');  
-        });   
-        
+        // Route::get('/resumen', function(){
+        //     return view('fields.resumen-carpeta.resumen-carpeta');  
+        // });   
+        Route::get('/resumen', 'ResumenCarpetaController@showResumen')->name('carpeta.detalle');
+        Route::get('/resumen-denunciante', 'ResumenCarpetaController@detalleDenunciante')->name('resumen.denunciante');
+        Route::get('/resumen-denunciado', 'ResumenCarpetaController@detalleDenunciado')->name('resumen.denunciado');
+        Route::get('/resumen-acusaciones', 'ResumenCarpetaController@detalleAcusaciones')->name('resumen.acusaciones');
+        Route::get('/resumen-delito', 'ResumenCarpetaController@detalleDelito')->name('resumen.delito');
+        Route::get('/resumen-abogado', 'ResumenCarpetaController@detalleAbogado')->name('resumen.abogado');
+        Route::get('/resumen-autoridad', 'ResumenCarpetaController@detalleAutoridad')->name('resumen.autoridad');
+        Route::get('/resumen-observaciones', 'ResumenCarpetaController@detalleObservaciones')->name('resumen.observaciones');
+        Route::get('/resumen-defensa', 'ResumenCarpetaController@detalleDefensa')->name('resumen.defensa');
+
 
 
 /**************************************************************/
@@ -135,7 +144,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('storeDescripcionHechos', 'NarracionController@storeDescripcionHechos')->name('store.descripcionHechos');
     /*---------Rutas narración-------------*/
     Route::get('narracion/{id}', 'NarracionController@index');
-    Route::post('addnarracion', 'NarracionController@addNarracion');
+    Route::post('addnarracion/{id}', 'NarracionController@addNarracion')->name('new.narracion');
     Route::get('getnarracion/{id}', 'NarracionController@getNarracion')->name('getnarracion');
     Route::get('mostrardoc/{id}', 'NarracionController@mostrarDoc');
     /*---------Rutas denunciado-------------*/

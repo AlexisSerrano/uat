@@ -25,6 +25,7 @@ class Carpeta extends Model
         'estadoCarpeta',
         'horaIntervencion',
         'descripcionHechos',
+        'fiscalAtendio',
         'npd',
         'numIph',
         'fechaIph',

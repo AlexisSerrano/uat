@@ -30,11 +30,11 @@
                         @else
                             <td>NO</td>
                         @endif  
-                        
-                            {{-- <a href="{{ url('agregar-denunciado/'.$denunciado->id.'/eliminar')}}" rel="tooltip" title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
-                            <i class="fa fa-times"></i> --}}
+                    <td>
+                        <a href="{{ url('narracion/'.$denunciado->idVariablesPersona)}}"  rel="tooltip" title="Ampliar narracion" class="btn btn-secondary btn-simple btn-xs">
+                            <i class="fa fa-edit"></i></a>  
 
-                        <td> 
+                         
                             @if(is_null(session('terminada')))
                             <a data-denunciado-id={{$denunciado->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
                                 <i class="fa fa-times"></i>

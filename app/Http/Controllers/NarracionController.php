@@ -58,16 +58,19 @@ class NarracionController extends Controller
         ->with('narraciones',$narraciones);
     }
 
-    public function addNarracion(SolicitanteRequest $request){
+    public function addNarracion(SolicitanteRequest $request,$id){
         
         DB::beginTransaction();
         try{
           
+         
+
+            
             $narracion = $request->narracion;
            // dd( $narracion);
             $narracionM = new NarracionPersona;
           
-            $narracionM->idVariablesPersona = session('carpeta');
+            $narracionM->idVariablesPersona = $id;
            // dd( $narracionM);
             $bitacora = false;
             if($request->file('file')){
@@ -102,6 +105,7 @@ class NarracionController extends Controller
                 $bdbitacora->hechos = $bdbitacora->hechos+1;
                 $bdbitacora->save();
             }
+           //dd($narracionM);
             DB::commit();
             return redirect("narracion/".$request->id); 
         }catch (\PDOException $e){

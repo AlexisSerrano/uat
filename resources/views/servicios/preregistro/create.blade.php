@@ -82,41 +82,41 @@
 	</div>	
 
 	<div class="card" id="datosPer">
-		<div class="card-header">
-		<div class="boxtwo">
-			<div class="form-group" align="center">
-				<div class="col">
-					<label class="col-form-label col-form-label-sm"  for="formGroupExampleInput">¿Con violencia?</label>
-					<div class="clearfix"></div>
-					<div class="form-check form-check-inline">
-						<label class="form-check-label col-form-label col-form-label-sm">
-							@if(isset($form['violencia1']))
-							<input class="form-check-input" type="radio" id="conViolencia" name="Violencia" value="1" {{$form['violencia1']}} data-validation="required" required> Sí
-							@else
-							<input class="form-check-input" type="radio" id="conViolencia" name="Violencia" value="1" data-validation="required"> Sí
-							@endif
-						</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<label class="form-check-label col-form-label col-form-label-sm">
-							@if(isset($form['violencia2']))
-							<input class="form-check-input" type="radio" id="sinViolencia" name="Violencia" value="0" {{$form['violencia2']}} data-validation="required" required> No
-							@else
-							<input class="form-check-input" type="radio" id="sinViolencia" name="Violencia" value="0" data-validation="required"> No
-							@endif
-						</label>
+		{{-- <div class="card-header">
+			<div class="boxtwo">
+				<div class="form-group" align="center">
+					<div class="col">
+						<label class="col-form-label col-form-label-sm"  for="formGroupExampleInput">¿Con violencia?</label>
+						<div class="clearfix"></div>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label col-form-label col-form-label-sm">
+								@if(isset($form['violencia1']))
+								<input class="form-check-input" type="radio" id="conViolencia" name="Violencia" value="1" {{$form['violencia1']}} data-validation="required" required> Sí
+								@else
+								<input class="form-check-input" type="radio" id="conViolencia" name="Violencia" value="1" data-validation="required"> Sí
+								@endif
+							</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<label class="form-check-label col-form-label col-form-label-sm">
+								@if(isset($form['violencia2']))
+								<input class="form-check-input" type="radio" id="sinViolencia" name="Violencia" value="0" {{$form['violencia2']}} data-validation="required" required> No
+								@else
+								<input class="form-check-input" type="radio" id="sinViolencia" name="Violencia" value="0" data-validation="required"> No
+								@endif
+							</label>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
+		</div> --}}
 	
 
 	
 		<div class="form-group">
 			<div class="col-12">
 				<div class="col">
-					<label for="narracion" class="col-form-label-sm">Narración</label>
+					<label for="narracion" class="col-form-label-sm">Descripción de hechos</label>
 					@if(isset($form['narracion']))
 						{{ Form::textarea('narracion', $form['narracion'], ['class' => 'form-control form-control-sm', 'size' => '30x10', 'data-validation'=>'length', 'data-validation-length'=>'min20' ,'required']) }}
 					@else

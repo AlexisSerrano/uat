@@ -26,7 +26,7 @@
                 <tr><td colspan="8" class="text-center">Sin registros</td></tr>
             @else
                 @foreach($denunciantes as $denunciante)
-                    <tr>
+                <tr id="{{$denunciante->id}}">
                         <td>{{ $denunciante->nombres." ".$denunciante->primerAp." ".$denunciante->segundoAp }}</td>
                         <td>{{ $denunciante->rfc }}</td>
                         {{-- <td>{{ $denunciante->edad }}</td>
@@ -49,13 +49,11 @@
                             <td colspan="2" style="text-align:center">NO</td>
                         @endif
                         <td> 
-                           <a href="{{ url('narracion/'.$denunciante->id)}}"  rel="tooltip" title="Ampliar narracion" class="btn btn-secondary btn-simple btn-xs">
-                       <i class="fa fa-edit"></i></a>  </td>
-                        
-                        <td> 
-                            @if(is_null(session('terminada')))
-                            <a data-denunciante-id={{$denunciante->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
-                                <i class="fa fa-times"></i>
+                                <a href="{{ url('narracion/'.$denunciante->idVariablesPersona)}}"  rel="tooltip" title="Ampliar narracion" class="btn btn-secondary btn-simple btn-xs">
+                                    <i class="fa fa-edit"></i></a>  
+                                    @if(is_null(session('terminada')))
+                                    <a data-denunciante-id={{$denunciante->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
+                                        <i class="fa fa-times"></i>
                             </a>
                         	@endif
                         </td>

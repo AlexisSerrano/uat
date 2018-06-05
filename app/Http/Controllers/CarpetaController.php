@@ -144,7 +144,7 @@ class CarpetaController extends Controller
         $denunciantes = DB::table('extra_denunciante')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_denunciante.reguardarIdentidad', 'extra_denunciante.victima','persona.rfc', 'persona.esEmpresa', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
+            ->select('extra_denunciante.idVariablesPersona','extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_denunciante.reguardarIdentidad', 'extra_denunciante.victima','persona.rfc', 'persona.esEmpresa', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
             ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
         return $denunciantes;
@@ -168,7 +168,7 @@ class CarpetaController extends Controller
         $denunciados = DB::table('extra_denunciado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'persona.esEmpresa', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
+            ->select('extra_denunciado.idVariablesPersona','extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'persona.esEmpresa', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
             ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
         return $denunciados;
@@ -211,7 +211,7 @@ class CarpetaController extends Controller
         $autoridades = DB::table('extra_autoridad')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_autoridad.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_autoridad.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_autoridad.antiguedad', 'extra_autoridad.rango', 'extra_autoridad.horarioLaboral', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion')
+            ->select('extra_autoridad.idVariablesPersona','extra_autoridad.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_autoridad.antiguedad', 'extra_autoridad.rango', 'extra_autoridad.horarioLaboral', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion')
             ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
         return $autoridades;
@@ -299,7 +299,8 @@ class CarpetaController extends Controller
             $caso->idUnidad = Auth::user()->idUnidad;
             $caso->fechaInicio = Carbon::now();
             $caso->horaIntervencion = Carbon::now();
-            $caso->fechaDeterminacion = Carbon::now();
+            $caso->fiscalAtendio = Auth::user()->nombreC;
+            //$caso->fechaDeterminacion = Carbon::now();
             $caso->save();
             session(['carpeta' => $caso->id]);
 
