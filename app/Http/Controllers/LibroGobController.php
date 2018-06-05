@@ -34,7 +34,7 @@ class LibroGobController extends Controller
         $numcarpeta=$numcarpeta->numCarpeta;
         // dd($numcarpeta);
         session(['terminada' => $numcarpeta]);
-        return redirect(route('new.denunciante'));
+        return redirect(route('carpeta.detalle'));
     }
         
 
@@ -64,8 +64,7 @@ class LibroGobController extends Controller
 
     }
 
-    public function buscar()
-       {
+    public function buscar(){
         $comprobar=Auth::user()->idCarpeta;
         if($comprobar==null){
             $carpetas = DB::table('carpeta')
@@ -83,7 +82,7 @@ class LibroGobController extends Controller
         }
         //    dd(session());
 
-       }
+    }
 
        public function terminadas(){
       

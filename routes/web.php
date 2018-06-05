@@ -73,6 +73,7 @@ Route::get('/pruebasconsulta', function(){
 // Route::post('saveOficio','ActasHechosController@saveOficio')->name('saveOficio');
 // Route::get('getoficioah2/{id}','ActasHechosController@getoficioah2')->name('getoficioah');
 
+
 Route::post('oficios', 'OficioController@oficios')->name('oficios');
 Route::post('getToken', 'OficioController@getToken')->name('getToken');
 Route::post('saveOficio', 'OficioController@saveOficio')->name('saveOficio');
@@ -94,8 +95,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::middleware(['auth'])->group(function () {
-
-
+    
+    
     
     /************Rutas para formulario de solicitante/victima/denunciante*************/
     Route::get('/crear-caso', 'CarpetaController@crearCaso')->name('inicio.caso');
@@ -125,7 +126,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/urgentes', 'PreregistroAuxController@urgentes')->name('urgentes');
     
     Route::post('/filtroprioridad', 'PreregistroAuxController@filtroPrioridad')->name('prioridadpreregistrofiltro');
-
+    
     Route::get('/showbymunicipio/{id}', 'PreregistroAuxController@showbymunicipio')->name('showbymunicipio');
     Route::get('/estado/{id}/{tipo}', 'PreregistroController@estado');
     Route::post('/estado', 'PreregistroController@estadourgente')->name('estado');
@@ -193,7 +194,7 @@ Route::middleware(['auth'])->group(function () {
     // Route::get('medidas2', 'MedidasController@index')->name('medidas2');
     // Route::post('addMedidas2', 'MedidasController@addMedidas2')->name('addMedidas2');
     // Route::get('getMedidas2', 'MedidasController@getMedidas2')->name('getMedidas2');
-
+    
     
     /*---------Rutas  Delitos Controller------------*/
     Route::get('agregar-delito', 'DelitoController@showForm')->name('new.delito');
@@ -243,10 +244,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/descActas/{id}', 'ActasHechosController@descActas');
     
     Route::post('/folioActa', 'ActasHechosController@filtroActasPendientes')->name('filtroactapendiente');
-
-     /* --------Rutas para Actas circunstanciadas----------- */
-     Route::get('actacircunstanciada','ActaCircunstanciadaController@showform')->name('new.actacircunstanciada');
-     Route::post('addactacircunstanciada','ActaCircunstanciadaController@addActaCirc')->name('addactaCirc');
+    
+    /* --------Rutas para Actas circunstanciadas----------- */
+    Route::get('actacircunstanciada','ActaCircunstanciadaController@showform')->name('new.actacircunstanciada');
+    Route::post('addactacircunstanciada','ActaCircunstanciadaController@addActaCirc')->name('addactaCirc');
     
     
     /* --------Rutas para Libro de gobierno----------- */
@@ -266,6 +267,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('periciales/psicologo','pericialesController@psico')->name('store.psicologo');
     Route::post('periciales/vehiculo','pericialesController@vehi')->name('store.vehiculo');
     Route::post('periciales/lesiones','pericialesController@lesiones')->name('store.lesiones');
+    Route::get('getpericiales/{id}','pericialesController@getpericiales');
+    Route::get('getpsico/{id}','pericialesController@getpsico');
+    Route::get('getVh/{id}','pericialesController@getVh');
+    Route::get('getlesion/{id}','pericialesController@getlesion');
     
             
  /* --------Pruebas vehiculos----------- */
@@ -278,6 +283,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
+/*--------------------Ruta error en login----------------------------------*/
+Route::get('errorlogin', 'HomeController@errorlogin')->name('error.login');
 // ///////////////////////////////////////preregistro/////////////////////////
 Route::get('/preregistro', 'PreregistroController@create')->name('preregistro.create'); //ver formulario
 Route::post('/preregistro/store', 'PreregistroController@store')->name('preregistro.store'); //registar

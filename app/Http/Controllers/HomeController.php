@@ -25,4 +25,10 @@ class HomeController extends Controller
     {
         return redirect('carpetas');
     }
+    
+    public function errorlogin()
+    {
+        return view('servicios.errores.errorlogin');;
+    }
+    
 }

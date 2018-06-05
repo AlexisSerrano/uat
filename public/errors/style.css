@@ -1,0 +1,363 @@
+/**
+ * Table of Contents:
+ *
+ * 1 - Push-footer-push
+ * 2 - Fonts: Neo Sans Pro
+ * 3 - Nav shadow
+ * 4 - To top
+ * 5 - Muestra de colores
+ * 6 - Min-text-area
+ * 7 - Pre-footer
+ * 8 - Not-found letters 404
+ * 9 - ¡NO PASARAS!
+ * 10 - Login style
+ * 11 - 
+ * 12 - 
+ * 13 - 
+ * 14 - 
+ * 15 - 
+ * 16 - 
+ * 17 - 
+ * -----------------------------------------------------------------------------
+ */
+
+/* ----------------------
+    push-footer-push 
+ ---------------------- */
+ body {
+	height: 100%;
+    margin: 0;
+    font-family: 'neosanspro-regular';
+  }
+  .wrapper {
+	min-height:50%;
+  
+	/* Equal to height of footer */
+	/* But also accounting for potential margin-bottom of last child */
+	margin-bottom: -57px;
+  }
+/* ----------------------
+    Fonts: Neo Sans Pro
+ ---------------------- */
+body, p{
+    font-family: 'neosanspro-regular';
+    font-weight: normal;
+    font-style: normal;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, h4, h5, div {
+    font-family: 'neosanspro-regular';
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+h6 {
+	font-family: 'neosanspro-bold';
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ----------------------
+    nav shadow
+ ---------------------- */
+.nav-sh{
+    border-bottom: 2px solid #6d6d6d;
+    -webkit-box-shadow: 0px 10px 20px -6px rgba(66,66,66,0.5);
+    -moz-box-shadow: 0px 10px 20px -6px rgba(66,66,66,0.5);
+    box-shadow: 0px 10px 20px -6px rgba(66,66,66,0.5);    
+}
+
+/* ----------------------
+    to top
+ ---------------------- */
+.to-top {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    position: fixed;
+    bottom: 40px;
+    right: 10px;
+    border-radius:100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    /* image replacement properties */
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    background: #6d6d6d url(img/top-arrow.svg) no-repeat center 50%;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+    -moz-transition: opacity .3s 0s, visibility 0s .3s;
+    transition: opacity .3s 0s, visibility 0s .3s;
+  }
+
+  .to-top.is-visible, .to-top.fade-out, .no-touch .to-top:hover {
+    -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+    -moz-transition: opacity .3s 0s, visibility 0s 0s;
+    transition: opacity .3s 0s, visibility 0s 0s;
+  }
+  .to-top.is-visible {
+    /* the button becomes visible */
+    visibility: visible;
+    opacity: 1;
+  }
+  .to-top.fade-out {
+    /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+    opacity: .5;
+  }
+  .no-touch .to-top:hover {
+    background-color: #e86256;
+    opacity: 1;
+  }
+  @media only screen and (min-width: 768px) {
+    .to-top {
+      right: 20px;
+      bottom: 20px;
+    }
+  }
+  @media only screen and (min-width: 1024px) {
+    .to-top {
+      height: 60px;
+      width: 60px;
+      right: 30px;
+      bottom: 30px;
+    }
+  }
+
+.social-icon{
+color:#bdbdbd;
+}
+.social-icon:hover{
+color:#8d8d8d;
+}
+
+/* ----------------------
+    Sólo muestra de colores NO USAR
+ ---------------------- */
+
+.swatch-1{
+    background-color:   #424242;
+    color: white
+}
+
+.swatch-2{
+    background-color:   #6d6d6d;
+    color: white
+}
+.swatch-3{
+    background-color:   #1b1b1b;
+    color: white
+}
+
+.swatch-4{
+    background-color:   #bdbdbd;
+    color: #000
+}
+.swatch-5{
+    background-color:   #efefef;
+    color: #000
+}
+
+.swatch-6{
+    background-color:   #8d8d8d;
+    color: #000
+}
+.bg-300{
+    background-color:   #efefef;
+}
+
+/* ----------------------
+    Min-text-area: todos los text-area tendrán un minimo de 60px
+ ---------------------- */
+textarea{
+    min-height: 60px 
+}
+
+/* ----------------------
+    Pre-footer: backgroun con 20% de transparencia
+ ---------------------- */
+
+.pre-footer{
+    background-color: #8d8d8d20;
+}
+    /* footer-title */
+    .footer-title{
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin: 0 0 20px;
+        color: inherit;
+        position: relative;
+        border-bottom: 1px solid #8d8d8d;
+        padding-bottom: 10px;
+    }
+
+/* ----------------------
+    Not-found letters 404
+ ---------------------- */
+
+.not-found{
+    font-size: 150px;
+    font-weight: 900
+}
+
+/* ----------------------
+    ¡NO PASARAS!
+ ---------------------- */
+
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+  }
+
+  /* ----------------------
+    Login Style/error404
+ ---------------------- */
+.error-notf{
+    background: rgb(255,255,255);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(225,226,225,1) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%,rgba(225,226,225,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%,rgba(225,226,225,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e1e2e1',GradientType=1 );
+}
+.bg-logins{
+    background: rgb(109,109,109);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(109,109,109,1) 0%, rgba(66,66,66,1) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(109,109,109,1) 0%,rgba(66,66,66,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(109,109,109,1) 0%,rgba(66,66,66,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d6d6d', endColorstr='#424242',GradientType=1 );
+}
+.bg-logins, .error-notf{
+    padding: 0;    margin-top:10%;
+}
+#loginbox {width: 23%;    margin-left: auto;    margin-right: auto;    position: relative;}
+#loginbox .logo-loginfge{ padding:15px 10px; text-align:center; font-size:14px; line-height:20px; background:#bcbcbc23; color:#fff; }
+
+    /* class loginbox transparent */
+    .loginbox {
+        background-color: rgba(0,0,0,0.1);
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        -webkit-box-shadow: inset 1px 1px 0 0 rgba(255,255,255,0.2), inset -1px -1px 0 0 rgba(0,0,0,0.2);
+        -moz-box-shadow: inset 1px 1px 0 0 rgba(255,255,255,0.2), inset -1px -1px 0 0 rgba(0,0,0,0.2);
+        box-shadow: inset 1px 1px 0 0 rgba(255,255,255,0.2), inset -1px -1px 0 0 rgba(0,0,0,0.2);
+      }
+
+      .loginbox .inputrow {
+        position: relative;
+      }
+      .loginbox .inputrow label {
+        position: absolute;
+        top: 12px;
+        left: 10px;
+      }
+      .loginbox .inputrow label:before {
+        color: #424242;
+        opacity: 0.4;
+        -webkit-transition: opacity 300ms 0 ease;
+        -moz-transition: opacity 300ms 0 ease;
+        transition: opacity 300ms 0 ease;
+      }
+      .loginbox input[type="text"],
+      .loginbox input[type="password"] {
+        padding: 10px 12px 10px 32px;
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        border: 1px solid #ffffff80;
+        background-color: #fff;
+        font-size: 1em;
+        font-weight: 300;
+        outline: none;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        -webkit-transition: border-color 300ms 0 ease;
+        -moz-transition: border-color 300ms 0 ease;
+        transition: border-color 300ms 0 ease;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      .loginbox input[type="text"]:focus + label:before,
+      .loginbox input[type="password"]:focus + label:before {
+        opacity: 1;
+      }
+
+      input[type="checkbox"] {
+        display: none;
+      }
+      input[type="checkbox"] + label {
+        position: relative;
+        padding-left: 36px;
+        font-size: 0.6em;
+        font-weight: normal;
+        line-height: 16px;
+        opacity: 0.8;
+        text-transform: uppercase;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+      input[type="checkbox"] + label:before,
+      input[type="checkbox"] + label:after {
+        content: "";
+        position: absolute;
+        display: block;
+        height: 16px;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        border-radius: 30px;
+      }
+      input[type="checkbox"] + label:before {
+        left: 0;
+        top: -2px;
+        width: 30px;
+        background: #6d6d6d4d;
+        -webkit-box-shadow: inset 1px 1px 1px 1px #6d6d6d4d;
+        -moz-box-shadow: inset 1px 1px 1px 1px #6d6d6d4d;
+        box-shadow: inset 1px 1px 1px 1px #6d6d6d4d;
+      }
+      input[type="checkbox"] + label:after {
+        opacity: 0.3;
+        background: #fff;
+        top: 0px;
+        left: 2px;
+        height: 12px;
+        width: 12px;
+        -webkit-transition: all 200ms 0 ease;
+        -moz-transition: all 200ms 0 ease;
+        transition: all 200ms 0 ease;
+      }
+      input[type="checkbox"]:checked + label {
+        opacity: 1;
+      }
+      input[type="checkbox"]:checked + label:after {
+        opacity: 1;
+        left: 16px;
+      }
+      .cf:before,
+      .cf:after {
+        content: " ";
+        display: table;
+      }
+      .cf:after {
+        clear: both;
+      }
+      .cf {
+        *zoom: 1;
+      }
+
+
+
+    /* media loginbox */
+    @media (max-width:800px){
+        #loginbox{ width:80%}
+    }
+    @media (max-width: 480px){
+        #loginbox{ width:90%}
+        #loginbox .control-group{ padding:8px 0; margin-bottom:0px;}
+    }
