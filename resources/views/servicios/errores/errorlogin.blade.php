@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
         <!-- icons-fontawesome -->
         <link rel="stylesheet" href="{{asset('plugins/font-awesome/css/font-awesome.min.css')}}">
+        <link rel="stylesheet" href="{{asset ('css/cssfonts.css')}}">
         <!-- custom style -->
         <link rel="stylesheet" href="{{asset('errors/style.css')}}">
         <!-- tipografía oficial -->
@@ -15,20 +16,23 @@
         <title>Document</title>
     </head>
 <body class="error-notf">
-        <div>
+        <div class="conteiner">
             <div class="error-body text-center">
                 <h1 class="not-found">ERROR</h1>
                 <h3 class="text-uppercase">FALTA DE DATOS</h3>
-                <p class="text-uppercase text-muted">no te puedes logear porque no tienes un numero de fiscal asignado o no estas asignado a una unidad, favor de verificar su informacion con recursos humanos para que se refleje en el sistema o comunicarse con soporte tecnico del centro de inforamción de la fiscalia.</p>
-                <p class="text-uppercase text-muted">Por favor inténtelo más tarde.</p>
-                
-                <a class="btn btn-outline-dark btn-rounded waves-effect waves-light" href="{{ route('logout') }}" onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();" >
+                <div class="col">
+
+                    <p class="text-uppercase text-muted">no te puedes logear porque no tienes un numero de fiscal asignado o no estas asignado a una unidad, favor de verificar su informacion con recursos humanos para que se refleje en el sistema o comunicarse con soporte tecnico del centro de inforamción de la fiscalia.</p>
+                    <p class="text-uppercase text-muted">Por favor inténtelo más tarde, gracias.</p>
+                    
+                    <a class="btn btn-outline-dark btn-rounded waves-effect waves-light" href="{{ route('logout') }}" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();" >
                     Volver al Inicio
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
+                        {{ csrf_field() }}
+                    </form>
+                </div>
             </div>
         </div>
 
