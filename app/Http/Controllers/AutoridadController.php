@@ -22,6 +22,7 @@ use App\Models\Persona;
 use App\Models\CatIdentificacion;
 use App\Models\Domicilio;
 use App\Models\VariablesPersona;
+use App\Models\NarracionPersona;
 use App\Models\ExtraAutoridad;
 use App\Models\BitacoraNavCaso;
 use Carbon\Carbon;
@@ -170,6 +171,15 @@ class AutoridadController extends Controller
             $VariablesPersona->representanteLegal = "NO APLICA";
             $VariablesPersona->save();
             $idVariablesPersona = $VariablesPersona->id;
+
+            $narracion = new NarracionPersona();
+            $narracion->idVariablesPersona=$idVariablesPersona;
+            if (!is_null($request->narracion)){
+                $narracion->narracion=$request->narracion;
+            }
+            $narracion->tipo=0;
+            $narracion->save();
+
 
             $ExtraAutoridad = new ExtraAutoridad();
             $ExtraAutoridad->idVariablesPersona = $idVariablesPersona;
