@@ -295,6 +295,60 @@ class PericialesController extends Controller
             }
         }
     
+        public function getpericiales($id){
 
+            $pericial = DB::table('per_mensajes')->where('per_mensajes.id', $id)
+            ->select('per_mensajes.id','per_mensajes.idCarpeta','per_mensajes.nombre',
+            'per_mensajes.primerAp','per_mensajes.segundoAp','per_mensajes.marca',
+            'per_mensajes.imei','per_mensajes.compania','per_mensajes.telefono',
+            'per_mensajes.telefono_destino','per_mensajes.narracion')
+            ->first();
+
+            
+
+            $data = array('id' => $id,
+            'idCarpeta' => $pericial->idCarpeta,
+            'nombre' => $pericial->nombre,
+            'primerAp' => $pericial->primerAp,
+            'segundoAp' => $pericial->segundoAp,
+            'marca' => $pericial->marca,
+            'imei' => $pericial->imei,
+            'compania' => $pericial->compania,
+            'telefono' => $pericial->telefono,
+            'telefono_destino' => $pericial->telefono_destino,
+            'narracion' => $pericial->narracion);
+            
+            return response()->json($data);
+         }
     
+         public function getpsico($id){
+            $psico = DB::table('per_psicologos')->where('per_psicologos.id', $id)
+            ->select()
+            ->first();
+         }
+
+         public function getVh($id){
+
+           
+            $vehiculo = DB::table('vehiculos')
+            ->where('vehiculos.id', $id)
+            ->join('cat_municipio','cat_municipio.id','=','vehiculos.idMunicipio')
+            ->join('cat_localidad','cat_localidad.id','=','vehiculos.idLocalidad')
+            ->join('cat_colonia','cat_colonia.id','=','vehiculos.idColonia')
+            ->join('cat_estado','cat_estado.id','=','vehiculos.idEstado')
+            ->select( 'cat_municipio.nombre as nombreMunicipio',
+            'cat_localidad.nombre as nombreLocalidad',
+            'cat_colonia.nombre as nombreColonia',
+            'cat_estado.nombre as nombreEstado',
+            'cat_colonia.codigoPostal',
+            'vehiculos.id','vehiculos.idCarpeta','vehiculos.Marca',
+            'vehiculos.idSubmarca','vehiculos.idClase','vehiculos.linea',
+            'vehiculos.modelo','vehiculos.color','vehiculos.numero_serie',
+            'vehiculos.lugar_fabricacion','vehiculos.placas','vehiculos.nombre',
+            'vehiculos.primerAp','vehiculos.segundoAp','vehiculos.numero',
+            'vehiculos.calle','vehiculos.num_ext','vehiculos.num_int','vehiculos.id','vehiculos.fecha')
+            ->first();
+
+
+         }
     }
