@@ -327,3 +327,7 @@ body::-webkit-scrollbar-thumb {
  .detalle{
 	color: #5a6268
  }
+ .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+ background-color: #212529;
+		
+		}
