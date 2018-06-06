@@ -279,7 +279,7 @@ Route::middleware(['auth'])->group(function () {
  Route::get('submarcas/{id}', 'VehiculoController@getSubmarcas')->name('get.submarcas');
  Route::get('tipoVehiculos/{id}', 'VehiculoController@getTipoVehiculos')->name('get.tipovehiculos');
  Route::post('store-vehiculo', 'VehiculoController@storeVehiculo')->name('carpeta.vehiculo');
-    
+ Route::get('getVehiculo/{id}', 'VehiculoController@getVh');
 });
 
 

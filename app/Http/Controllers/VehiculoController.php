@@ -168,7 +168,59 @@ public function addbitacora(){
         $bdbitacora->save();
 }
 
+public function getVh($id){
+
+           
+    $vehiculo = DB::table('vehiculos')
+    ->where('vehiculos.id', $id)
+    ->join('cat_municipio','cat_municipio.id','=','vehiculos.idMunicipio')
+    ->join('cat_localidad','cat_localidad.id','=','vehiculos.idLocalidad')
+    ->join('cat_colonia','cat_colonia.id','=','vehiculos.idColonia')
+    ->join('cat_estado','cat_estado.id','=','vehiculos.idEstado')
+    ->select( 'cat_municipio.nombre as nombreMunicipio',
+    'cat_localidad.nombre as nombreLocalidad',
+    'cat_colonia.nombre as nombreColonia',
+    'cat_estado.nombre as nombreEstado',
+    'cat_colonia.codigoPostal',
+    'vehiculos.id','vehiculos.idCarpeta','vehiculos.marca'
+   ,'vehiculos.linea',
+    'vehiculos.modelo','vehiculos.color','vehiculos.numero_serie',
+    'vehiculos.lugar_fabricacion','vehiculos.placas','vehiculos.nombre',
+    'vehiculos.primerAp','vehiculos.segundoAp','vehiculos.numero',
+    'vehiculos.calle','vehiculos.num_ext','vehiculos.num_int','vehiculos.id','vehiculos.fecha')
+    ->first();
+
+    $data = array('id' => $id,
+    'idCarpeta' => $vehiculo->idCarpeta,
+    'marca' => $vehiculo->marca,
+    'linea' => $vehiculo->linea,
+    'modelo' => $vehiculo->modelo,
+    'color' => $vehiculo->color,
+    'numero_serie' => $vehiculo->numero_serie,
+    'lugar_fabricacion' => $vehiculo->lugar_fabricacion,
+    'placas' => $vehiculo->placas,
+    'nombre' => $vehiculo->nombre,
+    'primerAp' => $vehiculo->primerAp,
+    'segundoAp' => $vehiculo->segundoAp,
+    'numero' => $vehiculo->numero,
+    'num_ext' => $vehiculo->num_ext,
+    'num_int' => $vehiculo->num_int,
+    'Estado' => $vehiculo->nombreEstado,
+    'Municipio' => $vehiculo->nombreMunicipio,
+    'Localidad' => $vehiculo->nombreLocalidad,
+    'Colonia' => $vehiculo->nombreColonia,
+    'CP' => $vehiculo->codigoPostal,
+    'fecha' => $vehiculo->fecha);
+
+
+    return response()->json($data);
+ }
+
+
+
+
 }
+
 //     public function storeVehiculo(StoreVehiculo $request)
 //     {
 //         //dd($request->all());
