@@ -1,3 +1,6 @@
+@php
+$form = oldFormAbogado();
+@endphp
 @extends('template.form')
 
 @section('title', 'Agregar Abogado')

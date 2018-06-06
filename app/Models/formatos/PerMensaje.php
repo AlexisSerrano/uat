@@ -8,7 +8,7 @@ class PerMensaje extends Model
 {
     //   
     // protected $connection = 'formatos'; 
-    // protected $table = 'per_mensajes';
+    protected $table = 'per_mensajes';
     public $fillable = [
         'id',
         'idCarpeta',
@@ -20,6 +20,7 @@ class PerMensaje extends Model
         'compania',
         'telefono',
         'telefono_destino',
-        'narracion'
+        'narracion',
+        'fecha'
     ];
 }

@@ -21,6 +21,7 @@ class CreatePerPsicologosTable extends Migration
             $table->string('segundoAp',200);
             $table->string('numero');
             $table->date('fecha');
+            $table->string('delito',100)->unique();
 
             $table->timestamps();
         });
@@ -33,7 +34,7 @@ class CreatePerPsicologosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('psicologos');
+        Schema::dropIfExists('per_psicologos');
    
     }
 }

@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use App\Http\Requests\StoreAbogado;
 use App\Models\Carpeta;
 use App\Models\CatEstado;
+use App\Models\CatDelito;
 use App\Models\CatEstadoCivil;
 use App\Models\ExtraDenunciante;
 use App\Models\ExtraDenunciado;
@@ -36,7 +37,7 @@ class PericialesController extends Controller
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             // dd($estados);
-          
+            $delits = CatDelito::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $victimas[''] = 'Seleccione una víctima/ofendido';
             $victimas2 = DB::table('variables_persona')
             ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
@@ -52,6 +53,7 @@ class PericialesController extends Controller
             return view('forms.periciales')->with('idCarpeta', $idCarpeta)
                 ->with('abogados', $abogados)
                 ->with('estados', $estados)
+                ->with('delits', $delits)
                 ->with('victimas', $victimas)
                 ->with('estadoscivil', $estadoscivil);
         }else{
@@ -77,6 +79,7 @@ class PericialesController extends Controller
             $PerMensaje->telefono = $request->numerot;
             $PerMensaje->telefono_destino = $request->numero2t;
             $PerMensaje->narracion = $request->narraciont;
+            $PerMensaje->fecha = $request->fechamen;
             if($PerMensaje->save()){
                 Alert::success('Registro guardado con éxito', 'Hecho');
                 // $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
@@ -91,7 +94,7 @@ class PericialesController extends Controller
             // return redirect("periciales");
             return view('documentos.extraccion_mensajes')
       
-            ->with('folio',  $PerMensaje->nombre )
+            ->with('folio',  $PerMensaje->id )
             ->with('folio2',  $PerMensaje->idCarpeta)
             ->with('narracion',  $PerMensaje->narracion )
             ->with('marca',  $PerMensaje->marca )
@@ -102,6 +105,7 @@ class PericialesController extends Controller
             ->with('nombre',  $PerMensaje->nombre )
             ->with('primerAp',  $PerMensaje->primerAp )
             ->with('segundoAp',  $PerMensaje->segundoAp )
+            ->with('fecha',  $PerMensaje->fecha )
             ->with('fiscal',  "XXXXXXXXXXX" );
     
 
@@ -126,7 +130,9 @@ class PericialesController extends Controller
                 $Psicologo->segundoAp = $NombreComp2[2];
                 $Psicologo->numero = $request->numerop;
                 $Psicologo->fecha = $request->fecha_nac;
-               
+                $Psicologo->delito = $request->delito;
+                $Psicologo->save();
+                // dd($Psicologo);
                 if($Psicologo->save()){
                     Alert::success('Registro guardado con éxito', 'Hecho');
                     // $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
@@ -140,7 +146,8 @@ class PericialesController extends Controller
     
                 // return redirect("home");
                 return view('documentos.periciales_psicologo')
-          
+                
+                ->with('delito',  $Psicologo->delito  )
                 ->with('fecha',  $Psicologo->fecha  )
                 ->with('folio',   $Psicologo->idCarpeta)
                 ->with('numero',   $Psicologo->numero )

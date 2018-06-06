@@ -8,7 +8,7 @@ class Psicologo extends Model
 {
     //
     // protected $connection = 'formatos'; 
-    // protected $table = 'psicologos';
+     protected $table = 'per_psicologos';
     public $fillable = [
         'id',
         'idCarpeta',
@@ -16,7 +16,8 @@ class Psicologo extends Model
        'primerAp',
         'segundoAp',
         'numero',
-        'fecha'
+        'fecha',
+        'delito'
         
     ];
 }

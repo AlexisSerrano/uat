@@ -51,6 +51,13 @@
 			</div>
 		</div>
 	</div>
+	<div class="col-4">
+	<div class="form-group">
+		{!! Form::label('idDelito', 'Delito', ['class' => 'col-form-label-sm']) !!}
+		{!! Form::select('idDelito', $delits, null, ['class' => 'delito form-control form-control-sm select2', 'placeholder' => 'Seleccione un delito', 'required']) !!}
+	</div>
+</div>
+</div>
 	{{-- <div class="col-4">
 		<div class="form-group">
 			{!! Form::label('numero2t', 'Número destino', ['class' => 'col-form-label-sm']) !!}

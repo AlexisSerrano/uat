@@ -8,7 +8,7 @@ class Lesione extends Model
 {
     //
     // protected $connection = 'formatos'; 
-    // protected $table = 'lesiones';
+     protected $table = 'per_lesiones';
     public $fillable = [
         'id',
         'idCarpeta',
