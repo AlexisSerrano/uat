@@ -351,8 +351,23 @@ class PericialesController extends Controller
     
          public function getpsico($id){
             $psico = DB::table('per_psicologos')->where('per_psicologos.id', $id)
-            ->select()
+            ->join('cat_delito','cat_delito.id','=','per_psicologos.delito')
+            ->select('per_psicologos.id','per_psicologos.idCarpeta','per_psicologos.nombre',
+            'per_psicologos.primerAp','per_psicologos.segundoAp','per_psicologos.numero','per_psicologos.fecha','cat_delito.nombre as nombre')
             ->first();
+
+            $data = array('id' => $id,
+            'idCarpeta' => $psico->idCarpeta,
+            'nombre' => $psico->nombre,
+            'primerAp' => $psico->primerAp,
+            'segundoAp' => $psico->segundoAp,
+            'telefono' => $psico->numero,
+            'fecha realizacion' => $psico->fecha,
+            'delito' => $psico->nombre,
+    
+        );
+            
+            return response()->json($data);
          }
 
          public function getVh($id){
@@ -410,8 +425,22 @@ class PericialesController extends Controller
          }
 
          public function getlesion($id){
-            $psico = DB::table('per_lesiones')->where('per_lesiones.id', $id)
-            ->select()
+            $lesion = DB::table('per_lesiones')->where('per_lesiones.id', $id)
+            ->select('per_lesiones.id','per_lesiones.idCarpeta','per_lesiones.nombre',
+            'per_lesiones.primerAp','per_lesiones.segundoAp','per_lesiones.fecha')
             ->first();
+
+            $data = array('id' => $id,
+            'idCarpeta' =>  $lesion->idCarpeta,
+            'nombre' =>  $lesion->nombre,
+            'primerAp' => $lesion->primerAp,
+            'segundoAp' =>  $lesion->segundoAp,
+            'fecha realizacion' =>  $lesion->fecha,
+          
+    
+        );
+            
+            return response()->json($data);
+
          }
     }
