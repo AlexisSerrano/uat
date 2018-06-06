@@ -1,3 +1,7 @@
+@php
+$form = oldFormActas();
+@endphp
+
 @extends('template.form')
 
 @section('title', 'Acta circunstanciada')

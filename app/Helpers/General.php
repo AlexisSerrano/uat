@@ -368,6 +368,46 @@ function oldFormNoti(){
 		return $form;
 	}
 }
+function oldFormAbogado(){
+	$valoresOld = session('_old_input');
+	$form['fechaNacimiento'] = $valoresOld['fechaNacimiento'];
+		return $form;
+	}
+
+	function oldFormActasC(){
+		$valoresOld = session('_old_input');
+		if(isset($valoresOld['idEstado2'], $valoresOld['idMunicipio2'],$valoresOld['idLocalidad2'], $valoresOld['idColonia2'], $valoresOld['cp2'] )){
+			$form['idEstado2'] = $valoresOld['idEstado2'];
+			$form['idMunicipio2'] = $valoresOld['idMunicipio2'];
+			$form['idLocalidad2'] = $valoresOld['idLocalidad2'];
+			$form['idColonia2'] = $valoresOld['idColonia2'];
+			$form['cp2'] = $valoresOld['cp2'];
+			$catMunicipios=DB::table('cat_municipio')
+			->where('cat_municipio.idEstado','=',$form['idEstado2'])
+			->orderBy('nombre','asc')
+			->pluck('nombre','id');
+			$catLocalidades=DB::table('cat_localidad')
+			->where('cat_localidad.idMunicipio','=',$form['idMunicipio2'])
+			->orderBy('nombre','asc')
+			->pluck('nombre','id');
+			$catColonias=DB::table('cat_colonia')
+			->where('cat_colonia.codigoPostal','=',$form['cp2'])
+			->orderBy('nombre','asc')
+			->pluck('nombre','id');
+			$catCodigoPostal=DB::table('cat_colonia')
+			->where('cat_colonia.idMunicipio','=',$form['idMunicipio2'])
+			->where('cat_colonia.codigoPostal','!=',0)
+			->orderBy('codigoPostal','asc')
+			->groupBy('codigoPostal')
+			->pluck('codigoPostal','codigopostal');
+			$form['catMunicipios'] = $catMunicipios;
+			$form['catLocalidades'] = $catLocalidades;
+			$form['catColonias'] = $catColonias;
+			$form['catCodigoPostal'] = $catCodigoPostal;
+			return $form;
+		}
+	}
+
 
 function countAtencion(){
 	$atenciones=DB::table('atenciones')

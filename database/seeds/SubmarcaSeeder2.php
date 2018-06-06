@@ -11,7 +11,7 @@ class SubmarcaSeeder2 extends Seeder
      */
     public function run()
     {
-        DB::table('cat_submarcas')->insert([	
+        DB::table('cat_submarca')->insert([	
         	['id' =>12001,'idSubmarca' =>10207,'idMarca' =>122,'nombre' => 'MPV B'],
 			['id' =>12002,'idSubmarca' =>10208,'idMarca' =>122,'nombre' => 'MPV G'],
 			['id' =>12003,'idSubmarca' =>10209,'idMarca' =>122,'nombre' => 'MPV SPORTS'],

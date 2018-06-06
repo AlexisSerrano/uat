@@ -15,6 +15,9 @@ use App\Models\CatEstadoCivil;
 use App\Models\ExtraDenunciante;
 use App\Models\ExtraDenunciado;
 use App\Models\Persona;
+use App\Models\CatMarca;
+use App\Models\CatSubmarca;
+use App\Models\CatClaseVehiculo;
 use App\Models\VariablesPersona;
 use App\Models\ExtraAbogado;
 use App\Models\Domicilio;
@@ -22,7 +25,7 @@ use App\Models\BitacoraNavCaso;
 use App\Models\formatos\PerMensaje;
 use App\Models\formatos\Psicologo;
 use App\Models\formatos\Lesione;
-use App\Models\formatos\Vehiculo;
+use App\Models\formatos\PerVehiculo;
 
 
 class PericialesController extends Controller
@@ -36,6 +39,9 @@ class PericialesController extends Controller
             $abogados = CarpetaController::getAbogados($idCarpeta);
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $marca =  CatMarca::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $submarca =  CatSubmarca::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $tipo =  CatClaseVehiculo::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             // dd($estados);
             $delits = CatDelito::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $victimas[''] = 'Seleccione una víctima/ofendido';
@@ -55,6 +61,9 @@ class PericialesController extends Controller
                 ->with('estados', $estados)
                 ->with('delits', $delits)
                 ->with('victimas', $victimas)
+                ->with('marca', $marca)
+                ->with('submarca', $submarca)
+                ->with('tipo', $tipo)
                 ->with('estadoscivil', $estadoscivil);
         }else{
             return redirect()->route('home');
@@ -177,9 +186,11 @@ class PericialesController extends Controller
             // DB::beginTransaction();
             // try{
                 $idCarpeta = session('carpeta');
-                $vehiculo = new Vehiculo;
+                $vehiculo = new PerVehiculo;
                 $vehiculo->idCarpeta =  $idCarpeta;
-                $vehiculo->marca = $request->marcav;
+                $vehiculo->idMarca = $request->idMarca;
+                $vehiculo->idSubmarca = $request->idSubmarca;
+                $vehiculo->idClase = $request->idClaseVehiculo;
                 $vehiculo->linea = $request->lineav;
                 $vehiculo->modelo = $request->modelov;
                 $vehiculo->color = $request->colorv;
@@ -208,12 +219,12 @@ class PericialesController extends Controller
                 }
                
 
-                $catalogos = DB::table('vehiculos')
-                ->where('vehiculos.id', $vehiculo->id)
-                ->join('cat_municipio','cat_municipio.id','=','vehiculos.idMunicipio')
-                ->join('cat_localidad','cat_localidad.id','=','vehiculos.idLocalidad')
-                ->join('cat_colonia','cat_colonia.id','=','vehiculos.idColonia')
-                ->join('cat_estado','cat_estado.id','=','vehiculos.idEstado')
+                $catalogos = DB::table('per_vehiculos')
+                ->where('per_vehiculos.id', $vehiculo->id)
+                ->join('cat_municipio','cat_municipio.id','=','per_vehiculos.idMunicipio')
+                ->join('cat_localidad','cat_localidad.id','=','per_vehiculos.idLocalidad')
+                ->join('cat_colonia','cat_colonia.id','=','per_vehiculos.idColonia')
+                ->join('cat_estado','cat_estado.id','=','per_vehiculos.idEstado')
                 ->select( 'cat_municipio.nombre as nombreMunicipio',
                 'cat_localidad.nombre as nombreLocalidad',
                 'cat_colonia.nombre as nombreColonia',
