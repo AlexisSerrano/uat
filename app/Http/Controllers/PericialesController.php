@@ -119,7 +119,7 @@ class PericialesController extends Controller
 
         public function psico(Request $request) {   
             
-        $NombreComp2 = explode("-",  $request->victima2);
+        $NombreComp2 = explode("-",  $request->victima8);
             DB::beginTransaction();
             try{
                 $idCarpeta = session('carpeta');
@@ -130,8 +130,10 @@ class PericialesController extends Controller
                 $Psicologo->segundoAp = $NombreComp2[2];
                 $Psicologo->numero = $request->numerop;
                 $Psicologo->fecha = $request->fecha_nac;
-                $Psicologo->delito = $request->delito;
+                $Psicologo->delito = $request->idDelito;
                 $Psicologo->save();
+              
+                
                 // dd($Psicologo);
                 if($Psicologo->save()){
                     Alert::success('Registro guardado con éxito', 'Hecho');
@@ -139,15 +141,21 @@ class PericialesController extends Controller
                     // $bdbitacora->medidas = $bdbitacora->medidas+1;
                     // $bdbitacora->save();
                 }
+                  
+            //     
                 else{
                     Alert::error('Se presentó un problema al guardar el registro', 'Error');
                 }
                 DB::commit();
-    
+                $delito = DB::table('cat_delito')
+                ->join('per_psicologos','per_psicologos.delito','=', 'cat_delito.id')
+                ->select('cat_delito.nombre as nombre')
+                ->where('cat_delito.id', $Psicologo->delito)
+                ->first();
                 // return redirect("home");
                 return view('documentos.periciales_psicologo')
                 
-                ->with('delito',  $Psicologo->delito  )
+                ->with('delito',  $delito->nombre  )
                 ->with('fecha',  $Psicologo->fecha  )
                 ->with('folio',   $Psicologo->idCarpeta)
                 ->with('numero',   $Psicologo->numero )
@@ -261,7 +269,7 @@ class PericialesController extends Controller
     
 
          public function lesiones(Request $request) {   
-            $NombreComp4 = explode("-",  $request->victima4);
+            $NombreComp4 = explode("-",  $request->victima77);
             DB::beginTransaction();
             try{
                 $idCarpeta = session('carpeta');

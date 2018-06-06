@@ -21,8 +21,8 @@
 	</div> --}}
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('victima2', 'Víctima/Ofendido', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('victima2', $victimas,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+			{!! Form::label('victima8', 'Víctima/Ofendido', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('victima8', $victimas,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
 		</div>
 </div>		
 	{{-- <div class="col-4">

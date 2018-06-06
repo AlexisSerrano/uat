@@ -21,7 +21,7 @@ class CreatePerPsicologosTable extends Migration
             $table->string('segundoAp',200);
             $table->string('numero');
             $table->date('fecha');
-            $table->string('delito',100)->unique();
+            $table->string('delito',100);
 
             $table->timestamps();
         });

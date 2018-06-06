@@ -21,8 +21,8 @@
 		</div> --}}
 		<div class="col-4">
 			<div class="form-group">
-				{!! Form::label('victima4', 'Víctima/Ofendido', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('victima4', $victimas,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+				{!! Form::label('victima77', 'Víctima/Ofendido', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('victima77', $victimas,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
 			</div>
 	</div>		
 		
@@ -44,6 +44,6 @@
 		
 </div>
 <div class="col text-right">
-		{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarPericiales'))!!}
+		{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarLesiones'))!!}
 </div>
 {!! Form::close() !!}
