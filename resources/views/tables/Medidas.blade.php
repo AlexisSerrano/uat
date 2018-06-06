@@ -1,6 +1,10 @@
-<h6>Medidas</h6>
-<div class="table">
-    <table class="table table-striped">
+<br>
+<div class="card">
+    <div class="card-header">
+
+        <h6>Medidas</h6>
+    </div>
+    <table  style="font-size:13px; column-width:70" class='display table table-hover table-responsive-lg table-sm' width="min" >
         <thead>
                
                 <th width="25%">Tipo de medida</th>
@@ -8,7 +12,7 @@
                 <th>Fecha final</th>
                 <th>Ejecuta</th>
                 <th>Persona</th>
-                <th>Observaciones</th>
+                <th width="20%">Observaciones</th>
                 <th>Opciones</th>                             
         </thead>
         <tbody>
@@ -23,12 +27,15 @@
                         <td class="fechainicio">{{ $provide->fechainicio }}</td>  
                         <td class="fechafin">{{ $provide->fechafin }}</td>
                         <td class="ejecutor">{{ $provide->ejecutor }}</td>  
-                     {{-- <td class="persona">{{ $provide->persona}}</td>   --}}
+                        <td class="persona">
+                            {{-- {{ $provide->persona}} --}}
+                        </td>  
                         <td class="observacion">{{ $provide->observacion }}</td>  
                         <td>
-                                <a data-medida-id={{$provide->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
-                                        <i class="fa fa-times"></i></a>
-                                <button type="button" class="btn btn-secondary  btn-xs  btn-modal" title="Editar registro"  value={{$provide->id}} ><i class="fa fa-edit"></i></button>
+                                <a data-medida-id={{$provide->id}} title="Eliminar Registro" class="deleteBtn btn btn-default btn-simple btn-xs">
+                                        <i  class="fa fa-times" style="color:black"></i></a>
+                                        <br>
+                                <button type="button" class="btn btn-default   btn-xs  btn-modal" title="Editar registro"  value={{$provide->id}} ><i class="fa fa-edit"></i></button>
                                     
                         </td>                           
                     </tr>
