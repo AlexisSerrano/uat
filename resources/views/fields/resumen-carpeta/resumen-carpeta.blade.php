@@ -8,7 +8,7 @@
             <div class="card">
                  <div class="card-header"><h5>Carpeta numero: {{$carpeta->numCarpeta}} </h5></div>
                     <div class="card-body">
-                        @include('fields.datos-carpeta')
+                        @include('fields.resumen-carpeta.datos-carpeta')
                         @yield('detalle')                           
                 </div>
             </div>

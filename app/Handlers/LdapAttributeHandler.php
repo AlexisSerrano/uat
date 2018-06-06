@@ -21,7 +21,7 @@ class LdapAttributeHandler
         $orientador=0;
         $recepcion=0;
         $cordinador=0;
-        // dd($ldapUser->memberof);
+        // dd($ldapUser);
         if(!is_null($ldapUser->memberof)){
 
             foreach ($ldapUser->memberof as $grupo) {
@@ -77,6 +77,16 @@ class LdapAttributeHandler
             'Quincuagésimo tercero-53' => 'quincuagesimo tercero',
             'Quincuagésimo segundo-52' => 'quincuagesimo segundo',
             'Quincuagésimo primero-51' => 'quincuagesimo primero',
+            
+            'Quincuagésimo noveno-59' => 'quincuagesimonoveno',
+            'Quincuagésimo octavo-58' => 'quincuagesimooctavo',
+            'Quincuagésimo séptimo-57' => 'quincuagesimoseptimo',
+            'Quincuagésimo sexto-56' => 'quincuagesimosexto',
+            'Quincuagésimo quinto-55' => 'quincuagesimoquinto',
+            'Quincuagésimo cuarto-54' => 'quincuagesimocuarto',
+            'Quincuagésimo tercero-53' => 'quincuagesimotercero',
+            'Quincuagésimo segundo-52' => 'quincuagesimosegundo',
+            'Quincuagésimo primero-51' => 'quincuagesimoprimero',
             'Quincuagésimo-50' => 'quincuagesimo',
             'Cuadragésimo noveno-49' => 'cuadragesimo noveno',
             'Cuadragésimo octavo-48' => 'cuadragesimo octavo',
@@ -87,6 +97,16 @@ class LdapAttributeHandler
             'Cuadragésimo tercero-43' => 'cuadragesimo tercero',
             'Cuadragésimo segundo-42' => 'cuadragesimo segundo',
             'Cuadragésimo primero-41' => 'cuadragesimo primero',
+
+            'Cuadragésimo noveno-49' => 'cuadragesimonoveno',
+            'Cuadragésimo octavo-48' => 'cuadragesimooctavo',
+            'Cuadragésimo séptimo-47' => 'cuadragesimoseptimo',
+            'Cuadragésimo sexto-46' => 'cuadragesimosexto',
+            'Cuadragésimo quinto-45' => 'cuadragesimoquinto',
+            'Cuadragésimo cuarto-44' => 'cuadragesimocuarto',
+            'Cuadragésimo tercero-43' => 'cuadragesimotercero',
+            'Cuadragésimo segundo-42' => 'cuadragesimosegundo',
+            'Cuadragésimo primero-41' => 'cuadragesimoprimero',
             'Cuadragésimo-40' => 'cuadragesimo',
             'Trigésimo noveno-39' => 'trigesimo noveno',
             'Trigésimo octavo-38' => 'trigesimo octavo',
@@ -97,6 +117,16 @@ class LdapAttributeHandler
             'Trigésimo tercero-33' => 'trigesimo tercero',
             'Trigésimo segundo-32' => 'trigesimo segundo',
             'Trigésimo primero-31' => 'trigesimo primero',
+            
+            'Trigésimo noveno-39' => 'trigesimonoveno',
+            'Trigésimo octavo-38' => 'trigesimooctavo',
+            'Trigésimo séptimo-37' => 'trigesimoseptimo',
+            'Trigésimo sexto-36' => 'trigesimosexto',
+            'Trigésimo quinto-35' => 'trigesimoquinto',
+            'Trigésimo cuarto-34' => 'trigesimocuarto',
+            'Trigésimo tercero-33' => 'trigesimotercero',
+            'Trigésimo segundo-32' => 'trigesimosegundo',
+            'Trigésimo primero-31' => 'trigesimoprimero',
             'Trigésimo-30' => 'trigesimo',
             'Vigésimo noveno-29' => 'vigesimo noveno',
             'Vigésimo octavo-28' => 'vigesimo octavo',
@@ -107,6 +137,16 @@ class LdapAttributeHandler
             'Vigésimo tercero-23' => 'vigesimo tercero',
             'Vigésimo segundo-22' => 'vigesimo segundo',
             'Vigésimo primero-21' => 'vigesimo primero',
+
+            'Vigésimo noveno-29' => 'vigesimonoveno',
+            'Vigésimo octavo-28' => 'vigesimooctavo',
+            'Vigésimo séptimo-27' => 'vigesimoseptimo',
+            'Vigésimo sexto-26' => 'vigesimosexto',
+            'Vigésimo quinto-25' => 'vigesimoquinto',
+            'Vigésimo cuarto-24' => 'vigesimocuarto',
+            'Vigésimo tercero-23' => 'vigesimotercero',
+            'Vigésimo segundo-22' => 'vigesimosegundo',
+            'Vigésimo primero-21' => 'vigesimoprimero',
             'Vigésimo-20' => 'vigesimo',
             'Décimo noveno-19' => 'decimo noveno',
             'Décimo octavo-18' => 'decimo octavo',
@@ -117,6 +157,16 @@ class LdapAttributeHandler
             'Décimo tercero-13' => 'decimo tercero',
             'Décimo segundo-12' => 'decimo segundo',
             'Décimo primero-11' => 'decimo primero',
+            
+            'Décimo noveno-19' => 'decimonoveno',
+            'Décimo octavo-18' => 'decimooctavo',
+            'Décimo séptimo-17' => 'decimoseptimo',
+            'Décimo sexto-16' => 'decimosexto',
+            'Décimo cuarto-15' => 'decimoquinto',
+            'Décimo quinto-14' => 'decimocuarto',
+            'Décimo tercero-13' => 'decimotercero',
+            'Décimo segundo-12' => 'decimosegundo',
+            'Décimo primero-11' => 'decimoprimero',
             'Décimo-10' => 'decimo',
             'Noveno-9' => 'noveno',
             'Octavo-8' => 'octavo',
