@@ -327,7 +327,7 @@ class PericialesController extends Controller
             ->select('per_mensajes.id','per_mensajes.idCarpeta','per_mensajes.nombre',
             'per_mensajes.primerAp','per_mensajes.segundoAp','per_mensajes.marca',
             'per_mensajes.imei','per_mensajes.compania','per_mensajes.telefono',
-            'per_mensajes.telefono_destino','per_mensajes.narracion')
+            'per_mensajes.telefono_destino','per_mensajes.narracion','per_mensajes.fecha')
             ->first();
 
             
@@ -342,7 +342,9 @@ class PericialesController extends Controller
             'compania' => $pericial->compania,
             'telefono' => $pericial->telefono,
             'telefono_destino' => $pericial->telefono_destino,
-            'narracion' => $pericial->narracion);
+            'narracion' => $pericial->narracion,
+            'fecha' => $pericial->fecha
+        );
             
             return response()->json($data);
          }
@@ -356,25 +358,60 @@ class PericialesController extends Controller
          public function getVh($id){
 
            
-            $vehiculo = DB::table('vehiculos')
-            ->where('vehiculos.id', $id)
-            ->join('cat_municipio','cat_municipio.id','=','vehiculos.idMunicipio')
-            ->join('cat_localidad','cat_localidad.id','=','vehiculos.idLocalidad')
-            ->join('cat_colonia','cat_colonia.id','=','vehiculos.idColonia')
-            ->join('cat_estado','cat_estado.id','=','vehiculos.idEstado')
+            $vehiculo = DB::table('per_vehiculos')
+            ->where('per_vehiculos.id', $id)
+            ->join('cat_marca','cat_marca.id','=','per_vehiculos.idMarca')
+            ->join('cat_submarcas','cat_submarcas.id','=','per_vehiculos.idSubmarca')
+            ->join('cat_clase_vehiculo','cat_clase_vehiculo.id','=','per_vehiculos.idClase')
+            ->join('cat_municipio','cat_municipio.id','=','per_vehiculos.idMunicipio')
+            ->join('cat_localidad','cat_localidad.id','=','per_vehiculos.idLocalidad')
+            ->join('cat_colonia','cat_colonia.id','=','per_vehiculos.idColonia')
+            ->join('cat_estado','cat_estado.id','=','per_vehiculos.idEstado')
             ->select( 'cat_municipio.nombre as nombreMunicipio',
             'cat_localidad.nombre as nombreLocalidad',
             'cat_colonia.nombre as nombreColonia',
             'cat_estado.nombre as nombreEstado',
             'cat_colonia.codigoPostal',
-            'vehiculos.id','vehiculos.idCarpeta','vehiculos.Marca',
-            'vehiculos.idSubmarca','vehiculos.idClase','vehiculos.linea',
-            'vehiculos.modelo','vehiculos.color','vehiculos.numero_serie',
-            'vehiculos.lugar_fabricacion','vehiculos.placas','vehiculos.nombre',
-            'vehiculos.primerAp','vehiculos.segundoAp','vehiculos.numero',
-            'vehiculos.calle','vehiculos.num_ext','vehiculos.num_int','vehiculos.id','vehiculos.fecha')
+            'per_vehiculos.id','per_vehiculos.idCarpeta','cat_marca.nombre as marca',
+            'cat_submarcas.nombre as submarca','cat_clase_vehiculo.nombre as clase','per_vehiculos.linea',
+            'per_vehiculos.modelo','per_vehiculos.color','per_vehiculos.numero_serie',
+            'per_vehiculos.lugar_fabricacion','per_vehiculos.placas','per_vehiculos.nombre',
+            'per_vehiculos.primerAp','per_vehiculos.segundoAp','per_vehiculos.numero',
+            'per_vehiculos.calle','per_vehiculos.num_ext','per_vehiculos.num_int','per_vehiculos.fecha')
             ->first();
 
+            $data = array('id' => $id,
+            'idCarpeta' => $vehiculo->idCarpeta,
+            'marca' => $vehiculo->marca,
+            'submarca' => $vehiculo->submarca,
+            'clase' => $vehiculo->clase,
+            'linea' => $vehiculo->linea,
+            'modelo' => $vehiculo->modelo,
+            'color' => $vehiculo->color,
+            'numero_serie' => $vehiculo->numero_serie,
+            'lugar_fabricacion' => $vehiculo->lugar_fabricacion,
+            'placas' => $vehiculo->placas,
+            'nombre' => $vehiculo->nombre,
+            'primerAp' => $vehiculo->primerAp,
+            'segundoAp' => $vehiculo->segundoAp,
+            'numero' => $vehiculo->numero,
+            'num_ext' => $vehiculo->num_ext,
+            'num_int' => $vehiculo->num_int,
+            'Estado' => $vehiculo->nombreEstado,
+            'Municipio' => $vehiculo->nombreMunicipio,
+            'Localidad' => $vehiculo->nombreLocalidad,
+            'Colonia' => $vehiculo->nombreColonia,
+            'CP' => $vehiculo->codigoPostal,
+            'fecha' => $vehiculo->fecha);
+        
+        
+            return response()->json($data);
 
+         }
+
+         public function getlesion($id){
+            $psico = DB::table('per_lesiones')->where('per_lesiones.id', $id)
+            ->select()
+            ->first();
          }
     }
