@@ -20,33 +20,46 @@ class LdapAttributeHandler
         $facilitador=0;
         $orientador=0;
         $recepcion=0;
-        foreach ($ldapUser->memberof as $grupo) {
-        $grupo1 = 'CN=FFacilitador,OU=UAT,OU=GRUPOS DE APLICACIONES,OU=FGE,DC=fiscaliaveracruz,DC=gob,DC=mx';
-        $grupo2 = 'CN=FOrientador,OU=UAT,OU=GRUPOS DE APLICACIONES,OU=FGE,DC=fiscaliaveracruz,DC=gob,DC=mx';
-        $grupo3 = 'CN=Recepcion,OU=UAT,OU=GRUPOS DE APLICACIONES,OU=FGE,DC=fiscaliaveracruz,DC=gob,DC=mx';
-            if ($grupo1==$grupo) {
-                $facilitador=1;
-            } 
-            if ($grupo2==$grupo) {
-                $orientador=1;
-            } 
-            if($grupo3==$grupo){
-                $recepcion=1;
-            }    
+        $cordinador=0;
+        // dd($ldapUser->memberof);
+        if(!is_null($ldapUser->memberof)){
+
+            foreach ($ldapUser->memberof as $grupo) {
+                $grupo1 = 'CN=FFacilitador,OU=UAT,OU=GRUPOS DE APLICACIONES,OU=FGE,DC=fiscaliaveracruz,DC=gob,DC=mx';
+                $grupo2 = 'CN=FOrientador,OU=UAT,OU=GRUPOS DE APLICACIONES,OU=FGE,DC=fiscaliaveracruz,DC=gob,DC=mx';
+                $grupo3 = 'CN=Recepcion,OU=UAT,OU=GRUPOS DE APLICACIONES,OU=FGE,DC=fiscaliaveracruz,DC=gob,DC=mx';
+                $grupo4 = 'CN=FCoordinador,OU=UAT,OU=GRUPOS DE APLICACIONES,OU=FGE,DC=fiscaliaveracruz,DC=gob,DC=mx';
+                if ($grupo1==$grupo) {
+                    $facilitador=1;
+                } 
+                if ($grupo2==$grupo) {
+                    $orientador=1;
+                } 
+                if($grupo3==$grupo){
+                    $recepcion=1;
+                }
+                if($grupo4==$grupo){
+                    $cordinador=1;
+                }    
+            }
         }
         // dd($facilitador);
         if ($facilitador==1) {
-            $grupoad = 'Facilitador';
+            $grupoad = 'facilitador';
         }
         if ($orientador==1) {
-            $grupoad = 'Orientador';
+            $grupoad = 'orientador';
         }
         if ($recepcion==1) {
-            $grupoad = 'Recepcion';
+            $grupoad = 'recepcion';
         }
-        if($facilitador==0||$orientador==0||$recepcion==0){
+        if ($cordinador==1) {
+            $grupoad = 'cordinador';
+        }
+        if($facilitador==0&&$orientador==0&&$recepcion==0&&$cordinador==0){
             return redirect(route('login'));
         }
+
         $texto = array(
             'Sexagésimo-60' => 'sexagesimo',
             'Quincuagésimo noveno-59' => 'quincuagesimo noveno',
@@ -107,7 +120,9 @@ class LdapAttributeHandler
             'Cuarto-4' => 'cuarto',
             'Tercero-3' => 'tercero',
             'Segundo-2' => 'segundo',
-            'Primero-1' => 'primero');
+            'Primero-1' => 'primero'
+        );
+
         $cadena = $ldapUser->title[0];
         $cadena = normaliza($cadena);
         foreach($texto as $text => $valor){
