@@ -368,6 +368,12 @@ function oldFormNoti(){
 		return $form;
 	}
 }
+function oldFormAbogado(){
+	$valoresOld = session('_old_input');
+	$form['fechaNacimiento'] = $valoresOld['fechaNacimiento'];
+		return $form;
+	}
+
 
 function countAtencion(){
 	$atenciones=DB::table('atenciones')

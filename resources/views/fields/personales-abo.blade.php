@@ -14,15 +14,19 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('segundoAp', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+			{!! Form::text('segundoAp', null, ['class' => ' form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 		</div>
 	</div>
 	
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
+			@if(isset($form['fechaNacimiento']))
+			<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="{{ $form['fechaNacimiento'] }}" class=" <persona form-control form-control-sm">
+				@else
 			<input type="date" id="fechaNacimiento" name="fechaNacimiento" class="persona form-control form-control-sm">
-				{{-- {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'data-validation'=>'required', 'placeholder' => 'AAAA/MM/DD']) !!} --}}		
+			@endif	
+			{{-- {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'data-validation'=>'required', 'placeholder' => 'AAAA/MM/DD']) !!} --}}		
 		</div>
 	</div>
 	<div class="col-3">
@@ -60,7 +64,7 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('idEstadoCivil', 'Estado civil', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('idEstadoCivil', $estadoscivil, null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Seleccione el estado civil', 'data-validation'=>'required']) !!}
+			{!! Form::select('idEstadoCivil', $estadoscivil, null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Seleccione el estado civil', 'data-validation'=>'required','required']) !!}
 		</div>
 	</div>
 	<div class="col-3">
