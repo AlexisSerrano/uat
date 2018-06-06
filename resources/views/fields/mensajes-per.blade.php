@@ -1,30 +1,13 @@
 {!! Form::open(['route' => 'store.agregar', 'method' => 'POST'])  !!} 
 <div class="row">
 	
-		{{-- <div class="col-4">
-				<div class="form-group">
-					{!! Form::label('nombret', 'Nombre', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('nombret', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'Nombre debe contener al menos dos letras']) !!}
-				</div>
+
+	<div class="col-4">
+			<div class="form-group">
+				{!! Form::label('victima', 'Víctima/Ofendido', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('victima', $victimas,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
 			</div>
-			<div class="col-4">
-					<div class="form-group">
-						{!! Form::label('primerAp', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::text('primerAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'Apellido debe contener al menos dos letras']) !!}
-					</div>
-				</div>
-				<div class="col-4">
-					<div class="form-group">
-						{!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
-						{!! Form::text('segundoAp', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
-					</div>
-				</div> --}}
-				<div class="col-4">
-                    <div class="form-group">
-                        {!! Form::label('victima', 'Víctima/Ofendido', ['class' => 'col-form-label-sm']) !!}
-                        {!! Form::select('victima', $victimas,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
-                    </div>
-            </div>		
+	</div>		
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('marcat', 'Marca del teléfono', ['class' => 'col-form-label-sm']) !!}
