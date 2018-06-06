@@ -99,7 +99,7 @@
                 <br>  Zona Centro Xalapa
                 <p> Presente </p>
                 
-                <p>Xalapa-Enriquez, Veracurz; fecha
+                <p>Xalapa-Enriquez, Veracruz;<span class="noeditable">{{$fecha}}
                 <br> OFICIO:<span class="noeditable">UAT-XI/3-{{$folio}}/2018</span>
             </td>
         </tr>

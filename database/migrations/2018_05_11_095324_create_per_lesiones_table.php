@@ -32,6 +32,6 @@ class CreatePerLesionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lesiones');
+        Schema::dropIfExists('per_lesiones');
     }
 }

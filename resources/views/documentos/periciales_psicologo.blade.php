@@ -120,10 +120,10 @@
         </tr>
         <tr>
                 <td colspan="2">
-                        a) Daño psicológico. 
-                        b) Efecto atemorizante y/o estado zozobra. 
-                        c) Determinar si dicha persona se encuentra afectada por los hechos denunciados. 
-                        d) Cuantifique el costo de la recuperación de la agraviada en caso de que ésta presente daño (AMENAZAS).           
+                        a) Daño psicológico. <br> 
+                        b) Efecto atemorizante y/o estado zozobra. <br> 
+                        c) Determinar si dicha persona se encuentra afectada por los hechos denunciados. <br> 
+                        d) Cuantifique el costo de la recuperación de la agraviada en caso de que ésta presente daño <span class="noeditable">{{$delito}}</span>. <br>           
                 </td>
             </tr>
 
