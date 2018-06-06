@@ -24,11 +24,23 @@
                         {!! Form::label('victima3', 'Víctima/Ofendido', ['class' => 'col-form-label-sm']) !!}
                         {!! Form::select('victima3', $victimas,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
                     </div>
-            </div>		
+			</div>	
+			<div class="col-4">	
+			<div class="form-group">
+				{!! Form::label('idMarca', 'Marca', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('idMarca', $marca, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una marca']) !!}
+			</div>
+		</div>
 		<div class="col-4">
+			<div class="form-group">
+				{!! Form::label('idSubmarca', 'Submarca', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('idSubmarca', ['' => 'Seleccione una submarca'], null, ['class' => 'form-control form-control-sm']) !!}
+			</div>
+		</div>
+			<div class="col-4">
 				<div class="form-group">
-					{!! Form::label('marcav', 'Marca', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('marcav', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese marca del vehículo',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'La marca debe contener al menos dos letras']) !!}
+					{!! Form::label('idClaseVehiculo', 'Tipo de auto', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idClaseVehiculo', $tipo, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione tipo de vehiculo']) !!}
 				</div>
 			</div>
 	<div class="col-4">
