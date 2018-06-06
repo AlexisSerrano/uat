@@ -197,7 +197,7 @@
 						</a>
 					</li>
 					<li class="nav-item has-treeview">
-							<a href="{{route('actaspendientes')}}" class="nav-link {{ Request::is( 'actacircunstanciada') ? 'active' : '' }}">
+							<a href="{{route('new.actacircunstanciada')}}" class="nav-link {{ Request::is( 'actacircunstanciada') ? 'active' : '' }}">
 								<i class="nav-icon  fa fa-file-text"></i>
 								<p>Actas circunstanciales</p>
 							</a>
