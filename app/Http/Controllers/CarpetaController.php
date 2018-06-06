@@ -358,7 +358,7 @@ class CarpetaController extends Controller
 
             if($carpterminadas){
                 $carpeta = Carpeta::find($id);
-                $carpeta->numCarpeta = $unidad."/"."5"."/".$id."/".Carbon::now()->year;
+                $carpeta->numCarpeta = $unidad."/".Auth::user()->numFiscal."/".$id."/".Carbon::now()->year;
                 $carpeta->fiscalAtendio = Auth::user()->nombreC;
                 $carpeta->idEstadoCarpeta = 1;
                 $carpeta->save();
