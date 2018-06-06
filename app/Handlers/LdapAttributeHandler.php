@@ -44,21 +44,27 @@ class LdapAttributeHandler
             }
         }
         // dd($facilitador);
-        if ($facilitador==1) {
-            $grupoad = 'facilitador';
-        }
-        if ($orientador==1) {
-            $grupoad = 'orientador';
-        }
-        if ($recepcion==1) {
-            $grupoad = 'recepcion';
-        }
         if ($cordinador==1) {
             $grupoad = 'cordinador';
+        }else{
+            if ($facilitador==1) {
+                $grupoad = 'facilitador';
+            }else{
+                if ($orientador==1) {
+                    $grupoad = 'orientador';
+                }else{
+                    if ($recepcion==1) {
+                        $grupoad = 'recepcion';
+                    }else{
+                        return redirect(route('login'));
+                    }
+                }
+
+            }
+
         }
-        if($facilitador==0&&$orientador==0&&$recepcion==0&&$cordinador==0){
-            return redirect(route('login'));
-        }
+        // if($facilitador==0&&$orientador==0&&$recepcion==0&&$cordinador==0){
+        // }
 
         $texto = array(
             'Sexagésimo-60' => 'sexagesimo',
