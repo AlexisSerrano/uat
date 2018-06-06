@@ -15,10 +15,12 @@
 			
 						
 			<div class="form-group">
-						 {!! Form::label('idEstado', 'Estatus del vehiculo', ['class' => 'col-form-label-sm']) !!} 
+						 {{-- {!! Form::label('idEstado', 'Estatus del vehiculo', ['class' => 'col-form-label-sm']) !!}  --}}
 					
-								{!! Form::select('idEstado',array('INVOLUCRADO EN DELITO' => 'INVOLUCRADO EN DELITO', 
-								'ROBO DE VEHICULO' => 'VEHICULO'), null,  ['class' => 'form-control form-control-sm', 'placeholder' => 'Estatus del vehiculo'])!!}
+								{{-- {!! Form::select('idEstado',array('INVOLUCRADO EN DELITO' => 'INVOLUCRADO EN DELITO', 
+								'ROBO DE VEHICULO' => ''), null,  ['class' => 'form-control form-control-sm', 'placeholder' => 'Estatus del vehiculo'])!!} --}}
+
+							<button class="btn btn-primary">Vehículo involucrado en robo</button>
 						</div>
 			</div>
 		</div>
