@@ -101,21 +101,23 @@ class PericialesController extends Controller
             DB::commit();
 
             // return redirect("periciales");
-            return view('documentos.extraccion_mensajes')
+            return view('documentos.per-mensajes')
+
       
-            ->with('folio',  $PerMensaje->id )
-            ->with('folio2',  $PerMensaje->idCarpeta)
-            ->with('narracion',  $PerMensaje->narracion )
-            ->with('marca',  $PerMensaje->marca )
-            ->with('imei',  $PerMensaje->imei )
-            ->with('compania',  $PerMensaje->compania)
-            ->with('numero',  $PerMensaje->telefono )
-            ->with('numero2',  $PerMensaje->telefono_destino )
-            ->with('nombre',  $PerMensaje->nombre )
-            ->with('primerAp',  $PerMensaje->primerAp )
-            ->with('segundoAp',  $PerMensaje->segundoAp )
-            ->with('fecha',  $PerMensaje->fecha )
-            ->with('fiscal',  "XXXXXXXXXXX" );
+            ->with('id',  $PerMensaje->id );
+            // ->with('folio',  $PerMensaje->id )
+            // ->with('folio2',  $PerMensaje->idCarpeta)
+            // ->with('narracion',  $PerMensaje->narracion )
+            // ->with('marca',  $PerMensaje->marca )
+            // ->with('imei',  $PerMensaje->imei )
+            // ->with('compania',  $PerMensaje->compania)
+            // ->with('numero',  $PerMensaje->telefono )
+            // ->with('numero2',  $PerMensaje->telefono_destino )
+            // ->with('nombre',  $PerMensaje->nombre )
+            // ->with('primerAp',  $PerMensaje->primerAp )
+            // ->with('segundoAp',  $PerMensaje->segundoAp )
+            // ->with('fecha',  $PerMensaje->fecha )
+            // ->with('fiscal',  "XXXXXXXXXXX" );
     
 
         }catch (\PDOException $e){
@@ -343,7 +345,8 @@ class PericialesController extends Controller
             'telefono' => $pericial->telefono,
             'telefono_destino' => $pericial->telefono_destino,
             'narracion' => $pericial->narracion,
-            'fecha' => $pericial->fecha
+            'fecha' => $pericial->fecha,
+        //   'fiscal' =>  $caso->fiscalAtendio = Auth::user()->nombreC;
         );
             
             return response()->json($data);
