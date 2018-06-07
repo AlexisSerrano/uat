@@ -18,6 +18,8 @@ Route::get('/prueba', function () {
     return view('welcome');
 });
 /**********************Rutas de prueba***********************/
+Route::get('/acuerdo/{id}','AcusacionController@acuerdoInicio')->name('acuerdo-inicio');
+
 Route::get('/pruebas/caso','PruebasController@create');
 Route::get('/pruebas/hechos','PruebasController@hechos');
 Route::get('/pruebas/delitos','PruebasController@delitos');

@@ -28,7 +28,10 @@
                                 <a data-acusacion-id={{$acusacion->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
                                     <i class="fa fa-times"></i>
                                 </a>
-                        	@endif
+                            @endif
+                            <a href="{{route('acuerdo-inicio',$acusacion->id)}}" title="Imprimir acuerdo inicial" class=" btn btn-secondary btn-simple btn-xs">
+                                <i class="fa fa-print"></i>
+                            </a>
                         </td>
                                     {{-- </td>  --}}
                     {{-- <td><a href="{{ route('formato.denuncia', $acusacion->id) }}" class="btn btn-secondary text-right">Descargar formato de Denuncia</a></td> --}}
