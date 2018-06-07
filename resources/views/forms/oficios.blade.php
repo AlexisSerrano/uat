@@ -11,8 +11,8 @@
                     <nav>
                         <div class="nav nav-pills" id="pills-tab" role="tablist">
                             
-                            <a class="nav-link active " id="pills-encab-tab" data-toggle="pill" href="#pills-encab" role="tab" aria-controls="pills-encab" aria-selected="true">Encabezado</a>
-                            <a class="nav-link  " id="pills-content-tab" data-toggle="pill" href="#pills-content" role="tab" aria-controls="pills-content" aria-selected="false">Contenido</a>
+                            <a class="nav-link  " id="pills-encab-tab" data-toggle="pill" href="#pills-encab" role="tab" aria-controls="pills-encab" aria-selected="true">Encabezado</a>
+                            <a class="nav-link active " id="pills-content-tab" data-toggle="pill" href="#pills-content" role="tab" aria-controls="pills-content" aria-selected="false">Contenido</a>
                             <a class="nav-link" id="pills-pie-tab" data-toggle="pill" href="#pills-pie" role="tab" aria-controls="pills-pie" aria-selected="false">Pie</a>
                         </div>
                      </nav>
@@ -23,14 +23,14 @@
                             {!! Form::text('oficio', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del oficio','data-validation'=>'required' ]) !!}
                         </div>
                         <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane show active" id="pills-encab" role="tabpanel" aria-labelledby="encab-tab" style="height:70%;">
+                            <div class="tab-pane" id="pills-encab" role="tabpanel" aria-labelledby="encab-tab" style="height:70%;">
                                 <div class="form-group margindown">
                                     <label for="encabezado" class="col-form-label-sm">Encabezado</label>
                                     <textarea name="encabezado" id="encabezado" class="form-control form-control-sm ckeditor" data-validation="required"></textarea>
 
                                 </div>
                             </div>
-                            <div class="tab-pane" id="pills-content" role="tabpanel" aria-labelledby="pills-content-tab" style="height:70%;">
+                            <div class="tab-pane show active" id="pills-content" role="tabpanel" aria-labelledby="pills-content-tab" style="height:70%;">
                                 <div class="form-group margindown">
                                     <label for="contenido" class="col-form-label-sm">Contenido</label>
                                     <textarea name="contenido" id="contenido" class="form-control form-control-sm ckeditor" data-validation="required"></textarea>
