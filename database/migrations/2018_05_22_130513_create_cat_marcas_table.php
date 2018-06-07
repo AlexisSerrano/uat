@@ -13,7 +13,7 @@ class CreateCatMarcasTable extends Migration
      */
     public function up()
     {
-        Schema::create('cat_marca', function (Blueprint $table) {
+        Schema::create('cat_marcas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre', 50)->unique();
 

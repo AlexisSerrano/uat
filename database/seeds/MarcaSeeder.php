@@ -11,7 +11,7 @@ class MarcaSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cat_marca')->insert([
+        DB::table('cat_marcas')->insert([
 			['id' =>955,'nombre' => 'SIN INFORMACION'],
 			['id' =>1,'nombre' => 'CHEVROLET'],
 			['id' =>2,'nombre' => 'CHRYSLER'],

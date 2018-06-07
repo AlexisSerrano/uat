@@ -45,7 +45,7 @@ class CreatePerVehiculosTable extends Migration
             $table->foreign('idMunicipio')->references('id')->on('cat_municipio')->onDelete('cascade');
             $table->foreign('idLocalidad')->references('id')->on('cat_localidad')->onDelete('cascade');
             $table->foreign('idColonia')->references('id')->on('cat_colonia')->onDelete('cascade');
-            $table->foreign('idMarca')->references('id')->on('cat_marca')->onDelete('cascade');
+            $table->foreign('idMarca')->references('id')->on('cat_marcas')->onDelete('cascade');
             $table->foreign('idSubmarca')->references('id')->on('cat_submarcas')->onDelete('cascade');
             $table->foreign('idClase')->references('id')->on('cat_clase_vehiculo')->onDelete('cascade');
 
