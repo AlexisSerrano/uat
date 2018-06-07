@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCatMarcasTable extends Migration
+class CreateCatMarcaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCatMarcasTable extends Migration
      */
     public function up()
     {
-        Schema::create('cat_marcas', function (Blueprint $table) {
+        Schema::create('cat_marca', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre', 50)->unique();
 
@@ -29,6 +29,6 @@ class CreateCatMarcasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cat_marcas');
+        Schema::dropIfExists('cat_marca');
     }
 }
