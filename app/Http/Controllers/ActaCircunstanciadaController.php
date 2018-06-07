@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 
 use App\Models\Domicilio;
@@ -12,6 +11,7 @@ use App\Models\CatEstadoCivil;
 use App\Models\CatOcupacion;
 use App\Models\CatNacionalidad;
 use App\Models\Preregistro;
+use App\Models\CatMunicipio;
 use App\Models\catIdentificacion;
 use App\Models\ActaCircunstanciada;
 use App\Http\Requests\ActaCircRequest;
@@ -36,7 +36,9 @@ class ActaCircunstanciadaController extends Controller
         ->pluck('nombre', 'id');
         $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')
         ->pluck('nombre', 'id');
-        return view('servicios.actas.acta-circunstanciada',compact('ocupaciones','escolaridades','estadocivil','nacionalidades','estados'));
+        $municipios = CatMunicipio::orderBy('nombre', 'ASC')
+        ->pluck('nombre', 'id');
+        return view('servicios.actas.acta-circunstanciada',compact('ocupaciones','escolaridades','estadocivil','nacionalidades','estados','municipios'));
     }
 
     public function addActaCirc(ActaCircRequest $request){
@@ -72,6 +74,8 @@ class ActaCircunstanciadaController extends Controller
             $acta->identificacion = $request->docIdentificacion;
             $acta->num_identificacion = $request->numDocIdentificacion;
             $acta->fecha_nac = $request->fecha_nac;
+            $acta->idEstadoOrigen = $request->idEstadoOrigen;
+            $acta->idMunicipioOrigen = $request->idMunicipioOrigen;
             $acta->idDomicilio = $direccion->id;
             $acta->idOcupacion = $request->ocupActa1;
             $acta->idEstadoCivil = $request->estadoCivilActa1;
@@ -111,6 +115,7 @@ class ActaCircunstanciadaController extends Controller
             }
           
             $acta->save();
+           // dd($acta);
             if($acta->save()){
                 Alert::success('Datos registrados con éxito', 'Hecho');
                 // $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
@@ -122,6 +127,8 @@ class ActaCircunstanciadaController extends Controller
             }
     
             DB::commit();
+           // dd($acta->id);
+            return view('documentos/actaCircunstanciada')->with('id',$acta->id);
         //     $delitos = DB::table('tipif_delito')
         //     ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
         //     ->join('domicilio', 'domicilio.id', '=', 'tipif_delito.idDomicilio')
@@ -130,7 +137,7 @@ class ActaCircunstanciadaController extends Controller
         //     ->get();
 
         // dd($delitos);
-            return redirect()->route('new.actacircunstanciada');
+           // return redirect()->route('new.actacircunstanciada');
 
         }catch (\PDOException $e){
             DB::rollBack();
@@ -140,7 +147,7 @@ class ActaCircunstanciadaController extends Controller
 
     }
 
-    public function getoficioacta($id){
+    public function getcircunstanciada($id){
 
         $catalogos = DB::table('acta_circunstanciada')->where('acta_circunstanciada.id', $id)
         ->join('cat_ocupacion','acta_circunstanciada.idOcupacion','=','cat_ocupacion.id')
@@ -158,12 +165,14 @@ class ActaCircunstanciadaController extends Controller
         'cat_localidad.nombre as nombreLocalidad',
         'cat_colonia.nombre as nombreColonia',
         'cat_estado.nombre as nombreEstado',
+        'acta_circunstanciada.idEstadoOrigen',
+        'acta_circunstanciada.idMunicipioOrigen',
         'domicilio.numInterno as numInterno', 'domicilio.numExterno as numExterno', 'domicilio.calle as calle',
         'acta_circunstanciada.fecha_nac as fecha_nac', 'acta_circunstanciada.telefono as telefono', 'acta_circunstanciada.narracion as narracion',
         'acta_circunstanciada.expedido as expedido', 'acta_circunstanciada.fiscal as fiscal', 'acta_circunstanciada.nombre as nombrePersona',
         'acta_circunstanciada.primer_ap as primer_ap', 'acta_circunstanciada.segundo_ap as segundo_ap',
         'acta_circunstanciada.identificacion as identificacion', 'acta_circunstanciada.num_identificacion as num_identificacion',
-        'cat_colonia.codigoPostal as cp', 'acta_circunstanciadas.hora as hora',
+        'cat_colonia.codigoPostal as cp', 'acta_circunstanciada.hora as hora',
         'acta_circunstanciada.fecha as fecha')
         ->first();
         if($catalogos->numInterno==''){
@@ -184,7 +193,9 @@ class ActaCircunstanciadaController extends Controller
         'colonia' => $catalogos->nombreColonia,
         'calle' => $catalogos->calle,
         'cp' => $catalogos->cp,
-        'numExterno' => $numExterno,
+        'numExterno' => $catalogos->numExterno,
+        'estadoOrigen' => $catalogos->idEstadoOrigen,
+        'municipioOrigen' => $catalogos->idMunicipioOrigen,
         // 'folio' => $catalogos->folio,
         'hora' => $date->parse($catalogos->hora)->format('H:i'),
         'fecha' => $fechahum,
@@ -204,6 +215,5 @@ class ActaCircunstanciadaController extends Controller
         'id' => $id);
         return response()->json($data);
     }
-
 
 }
