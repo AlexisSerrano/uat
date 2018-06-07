@@ -176,7 +176,7 @@ class EstadoController extends Controller
                 //dd($abogados);
                 
                 $denunciados=DB::table('extra_denunciado')
-                ->join('dirNotificacion','dirNotificacion.id','=','extra_denunciado.idNotificacion')
+                ->join('dirnotificacion','dirnotificacion.id','=','extra_denunciado.idNotificacion')
                 ->join('variables_persona','variables_persona.id','=','extra_denunciado.idVariablesPersona')
                 ->join('persona','variables_persona.idPersona','=','persona.id')
                 ->where('variables_persona.idCarpeta',$idCarpeta)
@@ -220,14 +220,14 @@ class EstadoController extends Controller
                             'extra_denunciado.perseguidoPenalmente as denunciadoperseguidoPenalmente',
                             'extra_denunciado.vestimenta as denunciadovestimenta',
                             'extra_denunciado.narracion as denunciadonarracion',
-                            'dirNotificacion.idDomicilio as notifiidDomicilio',
-                            'dirNotificacion.correo as notificorreo',
-                            'dirNotificacion.telefono as notifitelefono')
+                            'dirnotificacion.idDomicilio as notifiidDomicilio',
+                            'dirnotificacion.correo as notificorreo',
+                            'dirnotificacion.telefono as notifitelefono')
                 ->get();
                 //dd($denunciados);
 
                 $denunciantes=DB::table('extra_denunciante')
-                ->join('dirNotificacion','dirNotificacion.id','=','extra_denunciante.idNotificacion')
+                ->join('dirnotificacion','dirnotificacion.id','=','extra_denunciante.idNotificacion')
                 ->join('variables_persona','variables_persona.id','=','extra_denunciante.idVariablesPersona')
                 ->join('persona','variables_persona.idPersona','=','persona.id')
                 ->where('variables_persona.idCarpeta',$idCarpeta)
@@ -266,9 +266,9 @@ class EstadoController extends Controller
                             'extra_denunciante.reguardarIdentidad as denunciantereguardarIdentidad',
                             'extra_denunciante.victima as denunciantevictima',
                             'extra_denunciante.narracion as denunciantenarracion',
-                            'dirNotificacion.idDomicilio as notifiidDomicilio',
-                            'dirNotificacion.correo as notificorreo',
-                            'dirNotificacion.telefono as notifitelefono')
+                            'dirnotificacion.idDomicilio as notifiidDomicilio',
+                            'dirnotificacion.correo as notificorreo',
+                            'dirnotificacion.telefono as notifitelefono')
                 ->get();
                 //dd($abogados);
 

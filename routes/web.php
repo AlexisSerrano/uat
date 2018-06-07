@@ -52,51 +52,51 @@ Route::get('/pruebasconsulta', function(){
         // Route::get('/resumen', function(){
         //     return view('fields.resumen-carpeta.resumen-carpeta');  
         // });   
-        Route::get('/resumen', 'ResumenCarpetaController@showResumen')->name('carpeta.detalle');
-        Route::get('/resumen-denunciante', 'ResumenCarpetaController@detalleDenunciante')->name('resumen.denunciante');
-        Route::get('/resumen-denunciado', 'ResumenCarpetaController@detalleDenunciado')->name('resumen.denunciado');
-        Route::get('/resumen-acusaciones', 'ResumenCarpetaController@detalleAcusaciones')->name('resumen.acusaciones');
-        Route::get('/resumen-delito', 'ResumenCarpetaController@detalleDelito')->name('resumen.delito');
-        Route::get('/resumen-abogado', 'ResumenCarpetaController@detalleAbogado')->name('resumen.abogado');
-        Route::get('/resumen-autoridad', 'ResumenCarpetaController@detalleAutoridad')->name('resumen.autoridad');
-        Route::get('/resumen-observaciones', 'ResumenCarpetaController@detalleObservaciones')->name('resumen.observaciones');
-        Route::get('/resumen-defensa', 'ResumenCarpetaController@detalleDefensa')->name('resumen.defensa');
-
-
-
-/**************************************************************/
-// -------------------------------------------------------------------
-
-/* --------Ruta para obtener token oficios----------- */
-// Route::get('getToken/{id}','ActasHechosController@getToken')->name('getToken');
-// Route::get('oficioah/{id}','ActasHechosController@getoficioah')->name('oficioah');  
-// Route::post('saveOficio','ActasHechosController@saveOficio')->name('saveOficio');
-// Route::get('getoficioah2/{id}','ActasHechosController@getoficioah2')->name('getoficioah');
-
-
-Route::post('oficios', 'OficioController@oficios')->name('oficios');
-Route::post('getToken', 'OficioController@getToken')->name('getToken');
-Route::post('saveOficio', 'OficioController@saveOficio')->name('saveOficio');
-Route::post('intentos', 'OficioController@intentos')->name('intentos');
-Route::get('getOficios', 'OficioController@getOficios')->name('getOficios');
-Route::post('getOficio', 'OficioController@getOficio')->name('getOficio');
-Route::post('addOficio', 'OficioController@addOficio')->name('addOficio');
-Route::post('updateOficio', 'OficioController@updateOficio')->name('updateOficio');
-
-Route::get('actaoficio/{id}', 'ActasHechosController@actaoficio')->name('actaoficio');
-Route::get('getoficioah/{id}', 'ActasHechosController@getoficioah');
-
-
-/**NO TOCAR***/
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-// ------------------------------------------------------------------
-
-
+        
+        
+        
+        /**************************************************************/
+        // -------------------------------------------------------------------
+        
+        /* --------Ruta para obtener token oficios----------- */
+        // Route::get('getToken/{id}','ActasHechosController@getToken')->name('getToken');
+        // Route::get('oficioah/{id}','ActasHechosController@getoficioah')->name('oficioah');  
+        // Route::post('saveOficio','ActasHechosController@saveOficio')->name('saveOficio');
+        // Route::get('getoficioah2/{id}','ActasHechosController@getoficioah2')->name('getoficioah');
+        
+        
+        Route::post('oficios', 'OficioController@oficios')->name('oficios');
+        Route::post('getToken', 'OficioController@getToken')->name('getToken');
+        Route::post('saveOficio', 'OficioController@saveOficio')->name('saveOficio');
+        Route::post('intentos', 'OficioController@intentos')->name('intentos');
+        Route::get('getOficios', 'OficioController@getOficios')->name('getOficios');
+        Route::post('getOficio', 'OficioController@getOficio')->name('getOficio');
+        Route::post('addOficio', 'OficioController@addOficio')->name('addOficio');
+        Route::post('updateOficio', 'OficioController@updateOficio')->name('updateOficio');
+        
+        Route::get('actaoficio/{id}', 'ActasHechosController@actaoficio')->name('actaoficio');
+        Route::get('getoficioah/{id}', 'ActasHechosController@getoficioah');
+        
+        
+        /**NO TOCAR***/
+        Auth::routes();
+        
+        Route::get('/home', 'HomeController@index')->name('home');
+        // ------------------------------------------------------------------
+        
+        
 Route::middleware(['auth'])->group(function () {
-    
-    
+            
+    Route::get('/resumen', 'ResumenCarpetaController@showResumen')->name('carpeta.detalle');
+    Route::get('/resumen-denunciante', 'ResumenCarpetaController@detalleDenunciante')->name('resumen.denunciante');
+    Route::get('/resumen-denunciado', 'ResumenCarpetaController@detalleDenunciado')->name('resumen.denunciado');
+    Route::get('/resumen-acusaciones', 'ResumenCarpetaController@detalleAcusaciones')->name('resumen.acusaciones');
+    Route::get('/resumen-delito', 'ResumenCarpetaController@detalleDelito')->name('resumen.delito');
+    Route::get('/resumen-abogado', 'ResumenCarpetaController@detalleAbogado')->name('resumen.abogado');
+    Route::get('/resumen-autoridad', 'ResumenCarpetaController@detalleAutoridad')->name('resumen.autoridad');
+    Route::get('/resumen-observaciones', 'ResumenCarpetaController@detalleObservaciones')->name('resumen.observaciones');
+    Route::get('/resumen-defensa', 'ResumenCarpetaController@detalleDefensa')->name('resumen.defensa');
+            
     
     /************Rutas para formulario de solicitante/victima/denunciante*************/
     Route::get('/crear-caso', 'CarpetaController@crearCaso')->name('inicio.caso');
@@ -144,7 +144,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('observaciones', 'NarracionController@descripcionHechos')->name('observaciones');
     Route::post('storeDescripcionHechos', 'NarracionController@storeDescripcionHechos')->name('store.descripcionHechos');
     /*---------Rutas narración-------------*/
-    Route::get('narracion/{id}', 'NarracionController@index');
+    Route::get('narracion/{id}', 'NarracionController@index')->name('narracion');
     Route::post('addnarracion/{id}', 'NarracionController@addNarracion')->name('new.narracion');
     Route::get('getnarracion/{id}', 'NarracionController@getNarracion')->name('getnarracion');
     Route::get('mostrardoc/{id}', 'NarracionController@mostrarDoc');

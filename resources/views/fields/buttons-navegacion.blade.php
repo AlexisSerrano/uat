@@ -15,14 +15,14 @@ $barra = getNavCaso();
 	<a href="{{route('new.delito')}}" class="{{$barra['delitos']}} form-control">Delitos <span class="badge badge-info right">{{$barra['cdelitos']}}</span></a>
 	<a href="{{route('new.acusacion')}}" class="{{$barra['acusaciones']}} form-control">Acusaciones <span class="badge badge-info right">{{$barra['cacusaciones']}}</span></a>
 	<a href="{{route('new.defensa')}}"  class="{{$barra['defensa']}} form-control">Defensa <span class="badge badge-info right">{{$barra['cdefensa']}}</span></a>
-	<a href="{{route('vehiculo.carpeta')}}"  class="{{$barra['vehiculos']}} form-control">Vehiculos <span class="badge badge-info right">{{$barra['cdefensa']}}</span></a>
+	<a href="{{route('vehiculo.carpeta')}}"  class="{{$barra['vehiculos']}} form-control">Vehiculos <span class="badge badge-info right">{{$barra['cvehiculos']}}</span></a>
     <a href="{{route('observaciones')}}" class="{{$barra['hechos']}} form-control">Observaciones </a>
-    {{-- <a href="{{route('descripcionHechos')}}" class="{{$barra['hechos']}} form-control">Descripción de hechos {{$barra['chechos']}}</a> --}}
-	{{-- <a href="{{url('medidas')}}" class="{{$barra['medidas']}} form-control" <span class="badge badge-info right">>Medidas de protección {{$barra['cmedidas']}}</a> --}}
 	@if(session('terminada')==null)
 	<a href="{{route('terminar.caso')}}" class="form-control btn btn-secondary">Finalizar</a>
 	@else	
 	<a href="{{route('salir.caso')}}" class="form-control btn btn-secondary">Salir</a>
 	@endif
 </div>
- 
+
+{{-- <a href="{{route('descripcionHechos')}}" class="{{$barra['hechos']}} form-control">Descripción de hechos {{$barra['chechos']}}</a> --}}
+{{-- <a href="{{url('medidas')}}" class="{{$barra['medidas']}} form-control" <span class="badge badge-info right">>Medidas de protección {{$barra['cmedidas']}}</a> --}}

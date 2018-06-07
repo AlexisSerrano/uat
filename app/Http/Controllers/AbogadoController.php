@@ -164,13 +164,16 @@ class AbogadoController extends Controller
     
     public function getInvolucrados(Request $request, $idAbogado){
         $idCarpeta=session('carpeta');
-        if($request->ajax()){
+        // if($request->ajax()){
+        if(!is_null($request)&&!is_null($idAbogado)){
             $tipoAbog = DB::table('extra_abogado')
-                ->select('tipo')
-                ->where('id', '=', $idAbogado)
-                ->get();
+            ->select('tipo')
+            ->where('id', '=', $idAbogado)
+            ->get();
             $tipo = $tipoAbog[0]->tipo;
-            if($tipo == "ASESOR JURIDICO"){
+            $tipo = normaliza($tipo);
+            // dd($tipo);
+            if($tipo == "asesor juridico"){
                 $involucrados = DB::table('extra_denunciante')
                     ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
                     ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
@@ -179,7 +182,7 @@ class AbogadoController extends Controller
                     ->whereNull('extra_denunciante.idAbogado')
                     ->orderBy('persona.nombres', 'ASC')
                     ->get();
-            }elseif($tipo == "ABOGADO DEFENSOR"){
+            }elseif($tipo == "abogado defensor"){
                 $involucrados = DB::table('extra_denunciado')
                     ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
                     ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
@@ -197,8 +200,8 @@ class AbogadoController extends Controller
     public function delete($id){
         $ExtraAbogado =  ExtraAbogado::find($id);
         $tipo=$ExtraAbogado->tipo;
-        
-        if ($tipo=="ASESOR JURIDICO") {
+        $tipo = normaliza($tipo);
+        if ($tipo=="asesor juridico") {
             
             $denunciantes = DB::table('extra_denunciante')
             ->where('idAbogado', '=', $id)
