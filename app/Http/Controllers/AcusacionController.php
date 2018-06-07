@@ -101,4 +101,62 @@ class AcusacionController extends Controller
 //dd($id);
     }
 
+    public function acuerdoInicio($id){
+
+    //     $id=session('carpeta');
+    //     $carpeta = Carpeta::find($id);
+        $datos=DB::table('acusacion')
+        ->where('acusacion.id','=',$id)
+    //   ->join('extra_de', 'acusacion.idDenunciante', '=', 'extra_denunciado.id' )
+    ->join('extra_denunciante', 'extra_denunciante.id', '=', 'acusacion.idDenunciante')
+    ->join('variables_persona','variables_persona.id','=','extra_denunciante.idVariablesPersona')
+    ->join('persona','persona.id','=','variables_persona.idPersona')
+    
+    ->join('extra_denunciado', 'extra_denunciado.id', '=', 'acusacion.idDenunciado')
+    ->join('variables_persona as variables_denunciado','variables_denunciado.id','=','extra_denunciado.idVariablesPersona')
+    ->join('persona as persona_denunciado','persona_denunciado.id','=','variables_denunciado.idPersona')
+
+    ->join('tipif_delito as delitos','delitos.id','=','acusacion.idTipifDelito')
+    ->join('cat_delito as catDelito','catDelito.id','=','delitos.idDelito')
+
+    ->select(
+        'extra_denunciante.idVariablesPersona',
+        'variables_persona.idPersona',
+        'persona.nombres as nombreDenunciante',
+        'persona.primerAp as primerApDenunciante',
+        'persona.segundoAp as segundoApDenunciante',
+        'persona_denunciado.nombres as nombreDenunciado',
+        'persona_denunciado.primerAp as primerApDenunciado',
+        'persona_denunciado.segundoAp as segundoApDenunciado',
+        'extra_denunciado.idVariablesPersona as extraDenunciado',
+        'delitos.idDelito',
+        'catDelito.nombre as delito' )
+      ->FIRST();
+    //    dd($datos);
+
+        $localidadAcuerdo='XALAPA';
+        $entidadAcuerdo='VERACRUZ';
+        $fiscalAcuerdo='JULIO';
+        $fechaAcuerdo='OCHO DÍAS DEL MES DE JUNIO DEL AÑO DOS MIL DIECIOCHO';
+        $carpeta='UAT/D-XI/005/2018-6';
+
+
+       $datos1= array('id'=> $id,
+       'nombreDenunciante'=>$datos->nombreDenunciante,
+       'primerApDenunciante'=>$datos->primerApDenunciante,
+       'segundoApDenunciante'=>$datos->segundoApDenunciante,
+       'nombreDenunciado'=>$datos->nombreDenunciado,
+       'primerApDenunciado'=>$datos->primerApDenunciado,
+       'segundoApDenunciado'=>$datos->segundoApDenunciado,
+       'delito'=>$datos->delito,
+       'localidad'= $localidadAcuerdo,
+       'entidad'= $entidadAcuerdo,
+       'fiscal'= $fiscalAcuerdo,
+       'fecha'= $fechaAcuerdo,
+       'carpeta'= $carpeta
+
+    );
+    return response()->json($datos1);
+    }
+
 }

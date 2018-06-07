@@ -164,17 +164,20 @@ class PericialesController extends Controller
                 ->where('cat_delito.id', $Psicologo->delito)
                 ->first();
                 // return redirect("home");
-                return view('documentos.periciales_psicologo')
+                // return view('documentos.periciales_psicologo')
                 
-                ->with('delito',  $delito->nombre  )
-                ->with('fecha',  $Psicologo->fecha  )
-                ->with('folio',   $Psicologo->idCarpeta)
-                ->with('numero',   $Psicologo->numero )
-                ->with('nombre',  $Psicologo->nombre )
-                ->with('primerAp',  $Psicologo->primerAp )
-                ->with('segundoAp',  $Psicologo->segundoAp )
-                ->with('fiscal',  "XXXXXXXXXXX" );
-        
+                // ->with('delito',  $delito->nombre  )
+                // ->with('fecha',  $Psicologo->fecha  )
+                // ->with('folio',   $Psicologo->idCarpeta)
+                // ->with('numero',   $Psicologo->numero )
+                // ->with('nombre',  $Psicologo->nombre )
+                // ->with('primerAp',  $Psicologo->primerAp )
+                // ->with('segundoAp',  $Psicologo->segundoAp )
+                // ->with('fiscal',  "XXXXXXXXXXX" );
+                return view('documentos.per-psicologo')
+
+      
+                ->with('id',  $Psicologo->id );
     
             }catch (\PDOException $e){
                 DB::rollBack();
@@ -356,7 +359,7 @@ class PericialesController extends Controller
             $psico = DB::table('per_psicologos')->where('per_psicologos.id', $id)
             ->join('cat_delito','cat_delito.id','=','per_psicologos.delito')
             ->select('per_psicologos.id','per_psicologos.idCarpeta','per_psicologos.nombre',
-            'per_psicologos.primerAp','per_psicologos.segundoAp','per_psicologos.numero','per_psicologos.fecha','cat_delito.nombre as nombre')
+            'per_psicologos.primerAp','per_psicologos.segundoAp','per_psicologos.numero','per_psicologos.fecha','cat_delito.nombre as delito')
             ->first();
 
             $data = array('id' => $id,
@@ -365,8 +368,8 @@ class PericialesController extends Controller
             'primerAp' => $psico->primerAp,
             'segundoAp' => $psico->segundoAp,
             'telefono' => $psico->numero,
-            'fecha realizacion' => $psico->fecha,
-            'delito' => $psico->nombre,
+            'fecharealizacion' => $psico->fecha,
+            'delito' => $psico->delito,
     
         );
             
