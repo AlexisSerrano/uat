@@ -309,11 +309,16 @@ class CarpetaController extends Controller
     public function crearCaso(){
         $caso=session('carpeta');
         //dd($caso);
-        if (is_null($caso)){   
+        if (is_null($caso)){  
+            
+            $unidad=DB::table('unidad')->where('id',Auth::user()->idUnidad)->first();
+            $unidad=$unidad->abreviacion;
+
+
             $caso = new Carpeta();
             $caso->idFiscal = Auth::user()->id;
             $caso->idUnidad = Auth::user()->idUnidad;
-            $caso->numCarpeta = $unidad."/".Auth::user()->numFiscal."/".$id."/".Carbon::now()->year;            
+            $caso->numCarpeta = $unidad."/".Auth::user()->numFiscal."/".$caso->id."/".Carbon::now()->year;            
             $caso->fechaInicio = Carbon::now();
             $caso->horaIntervencion = Carbon::now();
             $caso->fiscalAtendio = Auth::user()->nombreC;
