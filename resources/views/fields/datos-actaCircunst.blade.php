@@ -35,6 +35,19 @@
 </div>
 <div class="col-4">
     <div class="form-group">
+        {!! Form::label('idEstadoOrigen', 'Estado de origen', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::select('idEstadoOrigen', $estados, 30, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required','required']) !!}
+    </div>
+</div>
+
+<div class="col-4">
+    <div class="form-group">
+        {!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::select('idMunicipioOrigen', $municipios, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un municipio','data-validation'=>'required','required']) !!}
+    </div>
+</div>
+<div class="col-4">
+    <div class="form-group">
         {!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
         {!! Form::text('telefono', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
     </div>

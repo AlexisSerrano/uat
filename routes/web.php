@@ -250,7 +250,7 @@ Route::middleware(['auth'])->group(function () {
     /* --------Rutas para Actas circunstanciadas----------- */
     Route::get('actacircunstanciada','ActaCircunstanciadaController@showform')->name('new.actacircunstanciada');
     Route::post('addactacircunstanciada','ActaCircunstanciadaController@addActaCirc')->name('addactaCirc');
-    
+    Route::get('getcircunstanciada/{id}','ActaCircunstanciadaController@getcircunstanciada');
     
     /* --------Rutas para Libro de gobierno----------- */
     Route::get('libro','libroGobController@terminadas');
@@ -274,14 +274,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getVh/{id}','pericialesController@getVh');
     Route::get('getlesion/{id}','pericialesController@getlesion');
     
-            
- /* --------Pruebas vehiculos----------- */
-
- Route::get('/vehiculos-pruebas','VehiculoController@showform')->name('vehiculo.carpeta');
- Route::get('submarcas/{id}', 'VehiculoController@getSubmarcas')->name('get.submarcas');
- Route::get('tipoVehiculos/{id}', 'VehiculoController@getTipoVehiculos')->name('get.tipovehiculos');
- Route::post('store-vehiculo', 'VehiculoController@storeVehiculo')->name('carpeta.vehiculo');
- Route::get('getVehiculo/{id}', 'VehiculoController@getVh');
+   
+   
+    
 });
 
 
