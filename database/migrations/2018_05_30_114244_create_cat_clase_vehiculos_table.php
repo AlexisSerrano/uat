@@ -8,7 +8,7 @@ class CreateCatClaseVehiculosTable extends Migration
 {
     public function up()
     {
-        Schema::create('cat_clase_vehiculo', function (Blueprint $table) {
+        Schema::create('cat_clase_vehiculos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre', 50)->unique();
             $table->timestamps();
@@ -23,6 +23,6 @@ class CreateCatClaseVehiculosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cat_clase_vehiculo');
+        Schema::dropIfExists('cat_clase_vehiculos');
     }
 }

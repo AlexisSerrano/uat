@@ -19,7 +19,7 @@ class CreateCatSubmarcasTable extends Migration
             $table->integer('idMarca')->unsigned();
             $table->string('nombre', 50);
 
-            $table->foreign('idMarca')->references('id')->on('cat_marca')->onDelete('cascade');
+            $table->foreign('idMarca')->references('id')->on('cat_marcas')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes();
