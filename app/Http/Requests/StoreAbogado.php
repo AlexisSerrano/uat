@@ -36,7 +36,7 @@ class StoreAbogado extends FormRequest
             'numExterno2' => 'string|min:1|max:10',
             'numInterno2' => 'nullable|string|min:1|max:10',
             'cedulaProf' => 'string|min:1|max:50',
-            'correo' => 'email',
+            'correo' => 'nullable|email',
 
         ];
     }

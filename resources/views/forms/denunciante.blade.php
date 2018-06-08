@@ -1,3 +1,7 @@
+@php
+$form = oldFormDenunciante();
+@endphp
+
 @extends('template.form')
 
 @section('title', 'Agregar denunciante')

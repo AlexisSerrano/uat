@@ -411,8 +411,9 @@ class PericialesController extends Controller
             'numero_serie' => $vehiculo->numero_serie,
             'lugar_fabricacion' => $vehiculo->lugar_fabricacion,
             'placas' => $vehiculo->placas,
-            'nombre' => $vehiculo->nombrePersona.' '.$vehiculo->primerAp.' '.$vehiculo->segundoAp,
+            'nombre' => $vehiculo->nombre.' '.$vehiculo->primerAp.' '.$vehiculo->segundoAp,
             'telefono' => $vehiculo->numero,
+            'calle' => $vehiculo->calle,
             'num_ext' => $vehiculo->num_ext,
             'num_int' => $vehiculo->num_int,
             'Estado' => $vehiculo->nombreEstado,
@@ -420,8 +421,8 @@ class PericialesController extends Controller
             'Localidad' => $vehiculo->nombreLocalidad,
             'Colonia' => $vehiculo->nombreColonia,
             'CP' => $vehiculo->codigoPostal,
-            'fecha' => $vehiculo->fecha);
-        
+            'fecha' => $vehiculo->fecha,
+            'fiscal' =>  "XXXXXXXXXXX");
         
             return response()->json($data);
 

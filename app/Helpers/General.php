@@ -301,6 +301,17 @@ function oldFormConocido(){
 	}
 }
 
+
+
+function oldFormDenunciante(){
+	$valoresOld = session('_old_input');
+	$form['fechaAltaEmpresa'] = $valoresOld['fechaAltaEmpresa'];
+	$form['fechaNacimiento'] = $valoresOld['fechaNacimiento'];
+	
+		return $form;
+	}
+
+
 function oldFormTrabajo(){
 	$valoresOld = session('_old_input');
 	if(isset($valoresOld['idEstado2'], $valoresOld['idMunicipio2'],$valoresOld['idLocalidad2'], $valoresOld['idColonia2'], $valoresOld['cp2'] )){
@@ -374,7 +385,7 @@ function oldFormAbogado(){
 		return $form;
 	}
 
-	function oldFormActasC(){
+	function oldFormActasCa(){
 		$valoresOld = session('_old_input');
 		if(isset($valoresOld['idEstado2'], $valoresOld['idMunicipio2'],$valoresOld['idLocalidad2'], $valoresOld['idColonia2'], $valoresOld['cp2'] )){
 			$form['idEstado2'] = $valoresOld['idEstado2'];

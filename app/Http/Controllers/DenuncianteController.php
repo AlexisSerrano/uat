@@ -171,7 +171,11 @@ public function showForm()
 
                 $notificacion = new DirNotificacion();
                 $notificacion->idDomicilio = $idD3;
-                $notificacion->correo = $request->correo;
+                if (!is_null($request->correo)){
+                    $notificacion->correo = $request->correo;
+                }else{
+                    $notificacion->correo = 'sininformacion@correo.com';
+                }
                 $notificacion->telefono = $request->telefono;
                 // $notificacion->fax = $request->fax;
                 $notificacion->save();
@@ -307,7 +311,11 @@ public function showForm()
 
                 $notificacion = new DirNotificacion();
                 $notificacion->idDomicilio = $idD3;
-                $notificacion->correo = $request->correo;
+                if (!is_null($request->correo)){
+                    $notificacion->correo = $request->correo;
+                }else{
+                    $notificacion->correo = 'sininformacion@correo.com';
+                }
                 $notificacion->telefono = $request->telefonoN;
                 // $notificacion->fax = $request->fax;
                 $notificacion->save();

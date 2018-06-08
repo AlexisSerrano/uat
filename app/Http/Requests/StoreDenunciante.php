@@ -46,7 +46,7 @@ class StoreDenunciante extends FormRequest
             'curp' => 'alpha_num|min:17|max:18',
             'telefono' => 'numeric|min:7',
             //'motivoEstancia' => 'string|min:4|max:200',
-            'docIdentificacion' => 'string|min:2|max:50',
+            'docIdentificacion' => 'string|min:2|max:200',
             'numDocIdentificacion' => 'string|min:2|max:50',
             'lugarTrabajo' => 'string',
             'telefonoTrabajo' => 'numeric|min:7',

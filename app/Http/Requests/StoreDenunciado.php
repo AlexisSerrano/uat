@@ -57,7 +57,7 @@ class StoreDenunciado extends FormRequest
             'telefono' => 'nullable|numeric|min:7',
             'motivoEstancia' => 'nullable|string|min:4|max:200',
             'telefonoTrabajo' => 'nullable|numeric',
-            'docIdentificacion' => 'string|min:2|max:50',
+            'docIdentificacion' => 'string|min:2|max:200',
             'numDocIdentificacion' => 'string|min:2|max:50',
             'lugarTrabajo' => 'string',
             'calle2' => 'string|min:4|max:100',
