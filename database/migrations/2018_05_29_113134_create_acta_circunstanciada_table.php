@@ -26,6 +26,8 @@ class CreateActaCircunstanciadaTable extends Migration
             $table->string('num_identificacion');
             $table->string('expedido');
             $table->date('fecha_nac');
+            $table->integer('idEstadoOrigen');
+            $table->integer('idMunicipioOrigen');
             $table->integer('idDomicilio')->unsigned()->default(1);
             $table->integer('idOcupacion')->unsigned();
             $table->integer('idEstadoCivil')->unsigned();
