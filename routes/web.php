@@ -27,8 +27,8 @@ Route::get('/pruebas/delitos','PruebasController@delitos');
 Route::get('/pruebas/impresion','PruebasController@impresion');
 Route::get('/pruebas/alfred','PruebasController@alfred');
 
-Route::get('/pruebasIndex', function(){
-return view('prueba-index');
+Route::get('/libro-acta', function(){
+return view('tables.libro-actas');
 
 });
 

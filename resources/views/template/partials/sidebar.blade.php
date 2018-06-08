@@ -214,6 +214,12 @@
 							<p>Libro de gobierno</p>
 						</a>
 					</li>
+					<li class="nav-item has-treeview">
+						<a href="{{url('libro-acta')}}" class="nav-link {{ Request::is( 'libro-acta') ? 'active' : '' }}">
+							<i class="nav-icon  fa fa-book"></i>
+							<p>Libro de actas circunstanciales</p>
+						</a>
+					</li>
 					@endif		
 					
 					@if (!is_null(session('carpeta'))&&!is_null(session('terminada')))
