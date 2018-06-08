@@ -330,17 +330,17 @@ class PericialesController extends Controller
         public function getpericiales($id){
 
             $pericial = DB::table('per_mensajes')->where('per_mensajes.id', $id)
-            ->select('per_mensajes.id','per_mensajes.idCarpeta','per_mensajes.nombre',
+            ->select('per_mensajes.id','per_mensajes.idCarpeta','per_mensajes.nombre as nombrePersona',
             'per_mensajes.primerAp','per_mensajes.segundoAp','per_mensajes.marca',
             'per_mensajes.imei','per_mensajes.compania','per_mensajes.telefono',
             'per_mensajes.telefono_destino','per_mensajes.narracion','per_mensajes.fecha')
             ->first();
 
-            
+            $nombre=$pericial->nombrePersona.' '.$pericial->primerAp.' '.$pericial->segundoAp;
 
             $data = array('id' => $id,
             'idCarpeta' => $pericial->idCarpeta,
-            'nombre' => $pericial->nombrePersona.' '.$pericial->primerAp.' '.$pericial->segundoAp,
+            'nombre' => $nombre,
             'marca' => $pericial->marca,
             'imei' => $pericial->imei,
             'compania' => $pericial->compania,
@@ -361,9 +361,11 @@ class PericialesController extends Controller
             'per_psicologos.primerAp','per_psicologos.segundoAp','per_psicologos.numero','per_psicologos.fecha','cat_delito.nombre as delito')
             ->first();
 
+            $nombre2=$psico->nombre.' '.$psico->primerAp.' '.$psico->segundoAp;
+
             $data = array('id' => $id,
             'idCarpeta' => $psico->idCarpeta,
-            'nombre' => $psico->nombrePersona.' '.$psico->primerAp.' '.$psico->segundoAp,
+            'nombre' => $nombre2,
             'telefono' => $psico->numero,
             'fecharealizacion' => $psico->fecha,
             'delito' => $psico->delito,

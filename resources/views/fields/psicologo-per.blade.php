@@ -39,9 +39,10 @@
 
 	
 
+
+</div> 
 <div class="col text-right">
 	{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarPsicologo'))!!}
 	
 </div>
-</div> 
 {!! Form::close() !!}
