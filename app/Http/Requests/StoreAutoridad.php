@@ -33,7 +33,7 @@ class StoreAutoridad extends FormRequest
             'fechaNacimiento' => 'date',
             'telefono' => 'numeric',
             'motivoEstancia' => 'string|min:4|max:200',
-            'docIdentificacion' => 'string|min:2|max:50',
+            'docIdentificacion' => 'string|min:2|max:200',
             'numDocIdentificacion' => 'string|min:2|max:50',
             'calle' => 'string|min:1|max:100',
             'numExterno' => 'string|min:1|max:10',
