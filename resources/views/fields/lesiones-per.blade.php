@@ -43,8 +43,13 @@
 	
 		
 
+
+
+</div>
+
 <div class="col text-right">
-		{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarPericiales'))!!}
+	{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarPericiales'))!!}
 </div>
-</div>
+
+
 {!! Form::close() !!}
