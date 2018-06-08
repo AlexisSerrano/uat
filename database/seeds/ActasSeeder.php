@@ -198,11 +198,11 @@ class ActasSeeder extends Seeder
             Procedimientos Penales en vigor; 2, 5, 6, 7, 39, 40 y 43 de la Ley Orgánica de la Fiscalía General del
             Estado de Veracruz de Ignacio de la Llave, 1, 4, 34, 126, 128, 150, 195 y 201 del Reglamento de la
             Ley en cita, solicito a Usted designe perito en la materia a fin de que realice peritaje de avalúo de 
-            daños que presenta la unidad MARCA {{$marc}}, LÍNEA {{$linea}}, MODELO {{$modelo}}, COLOR {{$color}},
+            daños que presenta la unidad TIPO {{$clase}}, MARCA {{$marca}},SUBMARCA {{$submarca}}, LÍNEA {{$linea}}, MODELO {{$modelo}}, COLOR {{$color}},
             CON NÚMERO DE SERIE {{$numero_serie}}, MOTOR HECHO EN {{$lugar_fabricacion}}, CON PLACAS DE CIRCULACIÓN
-            {{$placas}} PARTICULARES DEL ESTADO DE {{$estado}}, propiedad del C. {{$nombre}}, número de celular {{$telefono}},
-            vehículo que se encuentra en SU DOMICILIO ubicado en la calle {{$calle}} {{$num_ext}}, LOCALIDAD {{$localidad}},
-            C.P.{{$CP}}, {{$municipio}}, {{$estado}}; a efecto de que el perito designado, realice lo ya indicado.
+            {{$placas}} PARTICULARES DEL ESTADO DE {{$Estado}}, propiedad del C. {{$nombre}}, número de celular {{$telefono}},
+            vehículo que se encuentra en SU DOMICILIO ubicado en la calle {{$calle}} {{$num_ext}}, LOCALIDAD {{$Localidad}},
+            COLONIA {{$Colonia}}, C.P.{{$CP}}, {{$Municipio}}, {{$Estado}}; a efecto de que el perito designado, realice lo ya indicado.
             No omitiendo señalar, que el dictamen respectivo deberá ser rendido a la mayor brevedad posible a esta Unidad de
             Atención Temprana, para la debida integración de la Carpeta de Investigación al rubro referida.
             
