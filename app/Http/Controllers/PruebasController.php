@@ -209,7 +209,7 @@ public function pruebas($id){
      'ejecutor.nombre as ejecutor','providencias_precautorias.fechaFin', 'providencias_precautorias.fechaInicio', 'providencias_precautorias.id', 'providencias_precautorias.idCarpeta as carpeta'  )
     
       ->first();
-dd($FormatoMedidas);
+     dd($FormatoMedidas);
 
 
     // if($catalogos->numInterno==''){

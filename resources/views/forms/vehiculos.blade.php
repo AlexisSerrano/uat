@@ -34,16 +34,23 @@
 					<div class="row">
 						@include('fields.vehiculos')
 					</div>
+					
+					<div class="col text-right">
+					{!!Form::submit('Guardar',array('class' => 'btn  btn-primary'))!!}
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 </div>
-{!!Form::submit('Guardar',array('class' => 'btn  btn-primary'))!!}
+
 	{!! Form::close() !!}
+	@include('tables.vehiculos')
 @endsection
+{{-- nuevos cambios --}}
 
-
+	
 
 @push('scripts')
 <script src="{{ asset('js/selects/vehiculo.js') }}"></script>

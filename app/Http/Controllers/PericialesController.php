@@ -321,7 +321,7 @@ class PericialesController extends Controller
                 return view('documentos.per-lesiones')
 
       
-                ->with('id',  $PerMensaje->id );
+                ->with('id',  $lesiones->id );
     
             }catch (\PDOException $e){
                 DB::rollBack();
