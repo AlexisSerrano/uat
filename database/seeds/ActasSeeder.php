@@ -174,7 +174,7 @@ class ActasSeeder extends Seeder
            <p style="text-align:center">Fiscal Sexta Orientadora de la Unidad de Atención Temprana&nbsp;<br />
            Del XI Distrito Judicial en Xalapa, Veracruz</p>
 
-           <p style="text-align:center">&nbsp;</p>'
+           <p style="text-align:center">&nbsp;</p>',
            'pie' =>  '<p>Circuito Rafael Guízar y<br />
            Valencia No. 147,<br />
            Colonia Reserva Territorial,<br />
@@ -209,7 +209,7 @@ class ActasSeeder extends Seeder
             <p style="text-align:center">Atentamente:</p>
 
             <p style="text-align:center">__________________________________________&nbsp;<br />
-            <strong>LIC. </strong>{{$fiscal}}</p>'
+            <strong>LIC. </strong>{{$fiscal}}</p>',
 
             'pie' =>  '<p>Circuito Rafael Guízar y<br />
             Valencia No. 147,<br />
