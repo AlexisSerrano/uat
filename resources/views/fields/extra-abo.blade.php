@@ -23,7 +23,7 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('correo', 'Correo', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::email('correo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el correo del abogado', 'data-validation-optional'=>'true']) !!}
+			{!! Form::email('correo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el correo del abogado', 'data-validation'=>'email','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 		</div>
 	</div>
 </div>
