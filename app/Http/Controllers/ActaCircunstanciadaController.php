@@ -127,7 +127,7 @@ class ActaCircunstanciadaController extends Controller
             }
     
             DB::commit();
-           // dd($acta->id);
+           // dd($acta);
             return view('documentos/actaCircunstanciada')->with('id',$acta->id);
         //     $delitos = DB::table('tipif_delito')
         //     ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
@@ -158,6 +158,8 @@ class ActaCircunstanciadaController extends Controller
         ->join('cat_localidad','domicilio.idLocalidad','=','cat_localidad.id')
         ->join('cat_colonia','domicilio.idColonia','=','cat_colonia.id')
         ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')
+        ->join('cat_estado as catestado','acta_circunstanciada.idEstadoOrigen','=','catestado.id')
+        ->join('cat_municipio as catmunicipio','acta_circunstanciada.idMunicipioOrigen','=','catmunicipio.id')
         ->select('cat_ocupacion.nombre as nombreOcupacion',
         'cat_estado_civil.nombre as nombreEstadoCivil',
         'cat_escolaridad.nombre as nombreEscolaridad',
@@ -165,8 +167,8 @@ class ActaCircunstanciadaController extends Controller
         'cat_localidad.nombre as nombreLocalidad',
         'cat_colonia.nombre as nombreColonia',
         'cat_estado.nombre as nombreEstado',
-        'acta_circunstanciada.idEstadoOrigen',
-        'acta_circunstanciada.idMunicipioOrigen',
+        'catestado.nombre as edoOrigen',
+        'catmunicipio.nombre as MunicipioOrigen',
         'domicilio.numInterno as numInterno', 'domicilio.numExterno as numExterno', 'domicilio.calle as calle',
         'acta_circunstanciada.fecha_nac as fecha_nac', 'acta_circunstanciada.telefono as telefono', 'acta_circunstanciada.narracion as narracion',
         'acta_circunstanciada.expedido as expedido', 'acta_circunstanciada.fiscal as fiscal', 'acta_circunstanciada.nombre as nombrePersona',
@@ -194,8 +196,8 @@ class ActaCircunstanciadaController extends Controller
         'calle' => $catalogos->calle,
         'cp' => $catalogos->cp,
         'numExterno' => $catalogos->numExterno,
-        'estadoOrigen' => $catalogos->idEstadoOrigen,
-        'municipioOrigen' => $catalogos->idMunicipioOrigen,
+        'estadoOrigen' => $catalogos->edoOrigen,
+        'municipioOrigen' => $catalogos->MunicipioOrigen,
         // 'folio' => $catalogos->folio,
         'hora' => $date->parse($catalogos->hora)->format('H:i'),
         'fecha' => $fechahum,
