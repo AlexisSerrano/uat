@@ -92,8 +92,132 @@ class ActasSeeder extends Seeder
             C.P. 91096<br />
             Teléfono: 01 (228) 8149428,<br />
             Xalapa-Enríquez, Veracruz</p>',
-            'unidad'=>'1']
+            'unidad'=>'1'],
 
+            ['nombre'  =>  'circunstanciada',
+            'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+            <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />
+                        Distrito XI Xalapa, Veracruz“</p>', 
+           'contenido' =>'En la ciudad de Xalapa, Veracruz, siendo las {{$hora}} horas del día {{$fecha}}, ante la
+            presencia de la C. {{$fiscal}}, Fiscal Sexta Orientadora en la Unidad de Atención Temprana 
+            en el Distrito XI Judicial en Xalapa, se presenta el C. {{$nombre}}, identificándose 
+            con  {{$identificacion}} número {{$numIdentificacion}}, a quien en este momento se le pone
+            en conocimiento de las penas con que la ley castiga el declarar con falsedad ante la autoridad,
+            como lo prevé el artículo 333 del código penal vigente para el estado de Veracruz, al cual se le da
+            lectura, y previa la protesta que otorga de decir la verdad, bajo su única y exclusiva responsabilidad
+            por sus generales dijo: llamarse como ha quedado escrito, ser de {{$edad}} años de edad, nació en fecha 
+            {{$fechaNacimiento}},  originario de {{$municipioOrigen}}, {{$estadoOrigen}}, con domicilio en la calle
+            {{$calle}} {{$numExterno}}, Colonia {{$colonia}}, C.P. {{$cp}}, ocupación {{$ocupacion}}, estado civil
+            {{$estadoCivil}}, grado de escolaridad {{$escolaridad}}, número telefónico {{$telefono}}, identificado
+            como corresponde, esta fiscalía hace del conocimiento a quien comparece los derechos de la víctima u 
+            ofendido consagrados en la Constitución Política de los Estados Unidos Mexicanos y el Código Nacional 
+            de Procedimientos Penales: - - - - - - - - - - - - - - - - - - - -
+
+           Artículo 20, apartado C de la Constitución Política de los Estados Unidos Mexicanos:
+           C. De los derechos de la víctima o del ofendido:
+           I. Recibir asesoría jurídica; ser informado de los derechos que en su favor establece la Constitución y, cuando lo solicite, ser informado del desarrollo del procedimiento penal;
+           II. Coadyuvar con el Ministerio Público; a que se le reciban todos los datos o elementos de prueba con los que cuente, tanto en la investigación como en el proceso, a que se desahoguen las diligencias correspondientes, y a intervenir en el juicio e interponer los recursos en los términos que prevea la ley. Cuando el Ministerio Público considere que no es necesario el desahogo de la diligencia, deberá fundar y motivar su negativa;
+           III. Recibir, desde la comisión del delito, atención médica y psicológica de urgencia;
+           IV. Que se le repare el daño. En los casos en que sea procedente, el Ministerio Público estará obligado a solicitar la reparación del daño, sin menoscabo de que la víctima u ofendido lo pueda solicitar directamente, y el juzgador no podrá absolver al sentenciado de dicha reparación si ha emitido una sentencia condenatoria.
+           La ley fijará procedimientos ágiles para ejecutar las sentencias en materia de reparación del daño;
+           V. Al resguardo de su identidad y otros datos personales en los siguientes casos: cuando sean menores de edad; cuando se trate de delitos de violación, secuestro o delincuencia organizada; y cuando a juicio del juzgador sea necesario para su protección, salvaguardando en todo caso los derechos de la defensa.
+           El Ministerio Público deberá garantizar la protección de víctimas, ofendidos, testigos y en general todas los sujetos que intervengan en el proceso. Los jueces deberán vigilar el buen cumplimiento de esta obligación;
+           VI. Solicitar las medidas cautelares y providencias necesarias para la protección y restitución de sus derechos, y
+           VII. Impugnar ante autoridad judicial las omisiones del Ministerio Público en la investigación de los delitos, así como las resoluciones de reserva, no ejercicio, desistimiento de la acción penal o suspensión del procedimiento cuando no esté satisfecha la reparación del daño.
+           
+           Artículo 109 del Código Nacional de Procedimientos Penales.
+           En los procedimientos previstos en este Código, la víctima u ofendido tendrán los siguientes derechos:
+           I. A ser informado de los derechos que en su favor le reconoce la Constitución;
+           II. A que el Ministerio Público y sus auxiliares así como el Órgano jurisdiccional les faciliten el acceso a la justicia y les presten los servicios que constitucionalmente tienen encomendados con legalidad, honradez, lealtad, imparcialidad, profesionalismo, eficiencia y eficacia y con la debida diligencia;
+           III. A contar con información sobre los derechos que en su beneficio existan, como ser atendidos por personal del mismo sexo, o del sexo que la víctima elija, cuando así lo requieran y recibir desde la comisión del delito atención médica y psicológica de urgencia, así como asistencia jurídica a través de un Asesor jurídico;
+           IV. A comunicarse, inmediatamente después de haberse cometido el delito con un familiar, e incluso con su Asesor jurídico;
+           V. A ser informado, cuando así lo solicite, del desarrollo del procedimiento penal por su Asesor jurídico, el Ministerio Público y/o, en su caso, por el Juez o Tribunal;
+           VI. A ser tratado con respeto y dignidad;
+           VII. A contar con un Asesor jurídico gratuito en cualquier etapa del procedimiento, en los términos de la legislación aplicable;
+           VIII. A recibir trato sin discriminación a fin de evitar que se atente contra la dignidad humana y se anulen o menoscaben sus derechos y libertades, por lo que la protección de sus derechos se hará sin distinción alguna;
+           IX. A acceder a la justicia de manera pronta, gratuita e imparcial respecto de sus denuncias o querellas;
+           X. A participar en los mecanismos alternativos de solución de controversias;
+           XI. A recibir gratuitamente la asistencia de un intérprete o traductor desde la denuncia hasta la conclusión del procedimiento penal, cuando la víctima u ofendido pertenezca a un grupo étnico o pueblo indígena o no conozca o no comprenda el idioma español;
+           XII. En caso de tener alguna discapacidad, a que se realicen los ajustes al procedimiento penal que sean necesarios para salvaguardar sus derechos;
+           XIII. A que se le proporcione asistencia migratoria cuando tenga otra nacionalidad;
+           XIV. A que se le reciban todos los datos o elementos de prueba pertinentes con los que cuente, tanto en la investigación como en el proceso, a que se desahoguen las diligencias correspondientes, y a intervenir en el juicio e interponer los recursos en los términos que establece este Código;
+            XV. A intervenir en todo el procedimiento por sí o a través de su Asesor jurídico, conforme lo dispuesto en este Código;
+           XVI. A que se le provea protección cuando exista riesgo para su vida o integridad personal;
+           XVII.A solicitar la realización de actos de investigación que en su caso correspondan, salvo que el Ministerio Público considere que no es necesario, debiendo fundar y motivar su negativa;
+           XVIII. A recibir atención médica y psicológica o a ser canalizado a instituciones que le proporcionen estos servicios, así como a recibir protección especial de su integridad física y psíquica cuando así lo solicite, o cuando se trate de delitos que así lo requieran;
+           XIX. A solicitar medidas de protección, providencias precautorias y medidas cautelares;
+           XX. A solicitar el traslado de la autoridad al lugar en donde se encuentre, para ser interrogada o participar en el acto para el cual fue citada, cuando por su edad, enfermedad grave o por alguna otra imposibilidad física o psicológica se dificulte su comparecencia, a cuyo fin deberá requerir la dispensa, por sí o por un tercero, con anticipación;
+           XXI. A impugnar por sí o por medio de su representante, las omisiones o negligencia que cometa el Ministerio Público en el desempeño de sus funciones de investigación, en los términos previstos en este Código y en las demás disposiciones legales aplicables;
+           XXII. A tener acceso a los registros de la investigación durante el procedimiento, así como a obtener copia gratuita de éstos, salvo que la información esté sujeta a reserva así determinada por el Órgano jurisdiccional;
+           XXIII. A ser restituido en sus derechos, cuando éstos estén acreditados;
+           XXIV. A que se le garantice la reparación del daño durante el procedimiento en cualquiera de las formas previstas en este Código;
+           XXV. A que se le repare el daño causado por la comisión del delito, pudiendo solicitarlo directamente al Órgano jurisdiccional, sin perjuicio de que el Ministerio Público lo solicite;
+           XXVI. Al resguardo de su identidad y demás datos personales cuando sean menores de edad, se trate de delitos de violación contra la libertad y el normal desarrollo psicosexual, violencia familiar, secuestro, trata de personas o cuando a juicio del Órgano jurisdiccional sea necesario para su protección, salvaguardando en todo caso los derechos de la defensa;
+           XXVII. A ser notificado del desistimiento de la acción penal y de todas las resoluciones que finalicen el procedimiento, de conformidad con las reglas que establece este Código;
+           XXVIII. A solicitar la reapertura del proceso cuando se haya decretado su suspensión, y
+           XXIX. Los demás que establezcan este Código y otras leyes aplicables.
+           En el caso de que las víctimas sean personas menores de dieciocho años, el Órgano jurisdiccional o el Ministerio Público tendrán en cuenta los principios del interés superior de los niños o adolescentes, la prevalencia de sus derechos, su protección integral y los derechos consagrados en la Constitución, en los Tratados, así como los previstos en el presente Código.
+           Para los delitos que impliquen violencia contra las mujeres, se deberán observar todos los derechos que en su favor establece la Ley General de Acceso de las Mujeres a una Vida Libre de Violencia y demás disposiciones aplicables.
+           Hecho lo anterior, bajo protesta de decir verdad, considerando el motivo de su comparecencia hacer del conocimiento de esta representación lo siguiente: - - - - - - - - - - - -  - - - - - - - - - - - - - - - -- - - - - - - “Narración de Hechos” - - - - - - - - - - - - - - - - - - - - - - - - {{$narracion}}
+           CONSTE. - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - . 
+           
+           En términos de los artículos 21 de la Constitución Política de los Estados Unidos Mexicanos; 5, 6 fracción XI, 7 fracción II, y 40 de la Ley Orgánica de la Fiscalía General del Estado de Veracruz de Ignacio de la Llave; 34 apartado A, fracción II, 195 y 201 fracción V del Reglamento de la precitada Ley Orgánica, en relación con la Circular 01/2015 inciso “a” fracción IV, V y VI emitida por el Fiscal General del Estado, esta Fiscalía Orientadora a mi cargo, tiene a bien levantar la presente, firmando por duplicado los que en ella intervienen.- - - - - - - - - - - - - - - - - - - - - - -
+           
+           <p style="text-align:center">Firma del Compareciente:</p>
+
+           <p style="text-align:center">______________________________&nbsp;<br />
+           <strong>C.&nbsp;</strong>{{$nombre}}</p>
+
+           <p style="text-align:center">__________________________________________&nbsp;<br />
+           <strong>LIC. </strong>{{$fiscal}}</p>
+
+           <p style="text-align:center">Fiscal Sexta Orientadora de la Unidad de Atención Temprana&nbsp;<br />
+           Del XI Distrito Judicial en Xalapa, Veracruz</p>
+
+           <p style="text-align:center">&nbsp;</p>'
+           'pie' =>  '<p>Circuito Rafael Guízar y<br />
+           Valencia No. 147,<br />
+           Colonia Reserva Territorial,<br />
+           C.P. 91096<br />
+           Teléfono: 01 (228) 8149428,<br />
+           Xalapa-Enríquez, Veracruz</p>',
+           'unidad'=>'1'],
+            
+            ['nombre'  =>  'pervehiculo',
+            'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+            <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />
+                        Distrito XI Xalapa, Veracruz“</p>', 
+            'contenido' => 
+            '<strong>LIC. DIRECTOR GENERAL DE LOS SERVICIOS</strong>
+            <strong>PERICIALES EN EL ESTADO.</strong>
+            <strong>P R E S E N T E.</strong>
+            
+            Con fundamento en lo dispuesto por los artículos 14, 16 y 21 de la Constitución Política de los Estados
+            Unidos Mexicanos; 52 y 67 fracción I de la Constitución Política Local; 2°, 127,130, 131 fracción,
+            132, 212, 214, 272, 273, 368, 369 y demás relativos y aplicables del Código Nacional de 
+            Procedimientos Penales en vigor; 2, 5, 6, 7, 39, 40 y 43 de la Ley Orgánica de la Fiscalía General del
+            Estado de Veracruz de Ignacio de la Llave, 1, 4, 34, 126, 128, 150, 195 y 201 del Reglamento de la
+            Ley en cita, solicito a Usted designe perito en la materia a fin de que realice peritaje de avalúo de 
+            daños que presenta la unidad MARCA {{$marc}}, LÍNEA {{$linea}}, MODELO {{$modelo}}, COLOR {{$color}},
+            CON NÚMERO DE SERIE {{$numero_serie}}, MOTOR HECHO EN {{$lugar_fabricacion}}, CON PLACAS DE CIRCULACIÓN
+            {{$placas}} PARTICULARES DEL ESTADO DE {{$estado}}, propiedad del C. {{$nombre}}, número de celular {{$telefono}},
+            vehículo que se encuentra en SU DOMICILIO ubicado en la calle {{$calle}} {{$num_ext}}, LOCALIDAD {{$localidad}},
+            C.P.{{$CP}}, {{$municipio}}, {{$estado}}; a efecto de que el perito designado, realice lo ya indicado.
+            No omitiendo señalar, que el dictamen respectivo deberá ser rendido a la mayor brevedad posible a esta Unidad de
+            Atención Temprana, para la debida integración de la Carpeta de Investigación al rubro referida.
+            
+            <p style="text-align:center">Atentamente:</p>
+
+            <p style="text-align:center">__________________________________________&nbsp;<br />
+            <strong>LIC. </strong>{{$fiscal}}</p>'
+
+            'pie' =>  '<p>Circuito Rafael Guízar y<br />
+            Valencia No. 147,<br />
+            Colonia Reserva Territorial,<br />
+            C.P. 91096<br />
+            Teléfono: 01 (228) 8149428,<br />
+            Xalapa-Enríquez, Veracruz</p>',
+            'unidad'=>'1'],
         ]);
     }
 }

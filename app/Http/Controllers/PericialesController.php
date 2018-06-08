@@ -242,37 +242,38 @@ class PericialesController extends Controller
                 // DB::commit();
     // dd( $catalogos);
                 // return redirect("home");
-                 return view('documentos.periciales_vehiculo')
+                return view('documentos.periciales_vehiculo')
+                ->with('id',   $vehiculo->id );
           
-                 ->with('folio',  $vehiculo->id  )
-                 ->with('folio2',  $vehiculo->idCarpeta  )
-                 ->with('marca',  $vehiculo->marca  )
-                 ->with('linea',  $vehiculo->linea  )
-                 ->with('modelo',  $vehiculo->modelo  )
-                 ->with('color',  $vehiculo->color  )
-                 ->with('serie',  $vehiculo->numero_serie  )
-                 ->with('motor',  $vehiculo->motor  )
-                 ->with('placas',  $vehiculo->placas  )
-                 ->with('estado',  $vehiculo->entidad  )
+                //  ->with('folio',  $vehiculo->id  )
+                //  ->with('folio2',  $vehiculo->idCarpeta  )
+                //  ->with('marca',  $vehiculo->marca  )
+                //  ->with('linea',  $vehiculo->linea  )
+                //  ->with('modelo',  $vehiculo->modelo  )
+                //  ->with('color',  $vehiculo->color  )
+                //  ->with('serie',  $vehiculo->numero_serie  )
+                //  ->with('motor',  $vehiculo->motor  )
+                //  ->with('placas',  $vehiculo->placas  )
+                //  ->with('estado',  $vehiculo->entidad  )
                
-                 ->with('nombre',  $vehiculo->nombre )
-                 ->with('primerAp',  $vehiculo->primerAp )
-                 ->with('segundoAp',  $vehiculo->segundoAp ) 
+                //  ->with('nombre',  $vehiculo->nombre )
+                //  ->with('primerAp',  $vehiculo->primerAp )
+                //  ->with('segundoAp',  $vehiculo->segundoAp ) 
 
 
-                 ->with('cel',  $vehiculo->numero  )             
-                 ->with('calle',  $vehiculo->calle  )
-                 ->with('numero',  $vehiculo->num_ext  )
-                 ->with('idEstado', $catalogos->nombreEstado)
-                 ->with('idMunicipio', $catalogos->nombreMunicipio)
-                 ->with('idLocalidad', $catalogos->nombreLocalidad)
-                 ->with('idColonia', $catalogos->nombreColonia)
-                 ->with('cp', $request->cp2)
+                //  ->with('cel',  $vehiculo->numero  )             
+                //  ->with('calle',  $vehiculo->calle  )
+                //  ->with('numero',  $vehiculo->num_ext  )
+                //  ->with('idEstado', $catalogos->nombreEstado)
+                //  ->with('idMunicipio', $catalogos->nombreMunicipio)
+                //  ->with('idLocalidad', $catalogos->nombreLocalidad)
+                //  ->with('idColonia', $catalogos->nombreColonia)
+                //  ->with('cp', $request->cp2)
 
-                // ->with('folio',   $Psicologo->idCarpeta)
+                // // ->with('folio',   $Psicologo->idCarpeta)
                
-                // ->with('nombre',  $Psicologo->nombre )
-                 ->with('fiscal',  "XXXXXXXXXXX" );
+                // // ->with('nombre',  $Psicologo->nombre )
+                //  ->with('fiscal',  "XXXXXXXXXXX" );
         
     
             // }catch (\PDOException $e){
@@ -339,9 +340,7 @@ class PericialesController extends Controller
 
             $data = array('id' => $id,
             'idCarpeta' => $pericial->idCarpeta,
-            'nombre' => $pericial->nombre,
-            'primerAp' => $pericial->primerAp,
-            'segundoAp' => $pericial->segundoAp,
+            'nombre' => $pericial->nombrePersona.' '.$pericial->primerAp.' '.$pericial->segundoAp,
             'marca' => $pericial->marca,
             'imei' => $pericial->imei,
             'compania' => $pericial->compania,
@@ -364,9 +363,7 @@ class PericialesController extends Controller
 
             $data = array('id' => $id,
             'idCarpeta' => $psico->idCarpeta,
-            'nombre' => $psico->nombre,
-            'primerAp' => $psico->primerAp,
-            'segundoAp' => $psico->segundoAp,
+            'nombre' => $psico->nombrePersona.' '.$psico->primerAp.' '.$psico->segundoAp,
             'telefono' => $psico->numero,
             'fecharealizacion' => $psico->fecha,
             'delito' => $psico->delito,
@@ -412,10 +409,8 @@ class PericialesController extends Controller
             'numero_serie' => $vehiculo->numero_serie,
             'lugar_fabricacion' => $vehiculo->lugar_fabricacion,
             'placas' => $vehiculo->placas,
-            'nombre' => $vehiculo->nombre,
-            'primerAp' => $vehiculo->primerAp,
-            'segundoAp' => $vehiculo->segundoAp,
-            'numero' => $vehiculo->numero,
+            'nombre' => $vehiculo->nombrePersona.' '.$vehiculo->primerAp.' '.$vehiculo->segundoAp,
+            'telefono' => $vehiculo->numero,
             'num_ext' => $vehiculo->num_ext,
             'num_int' => $vehiculo->num_int,
             'Estado' => $vehiculo->nombreEstado,
@@ -438,9 +433,7 @@ class PericialesController extends Controller
 
             $data = array('id' => $id,
             'idCarpeta' =>  $lesion->idCarpeta,
-            'nombre' =>  $lesion->nombre,
-            'primerAp' => $lesion->primerAp,
-            'segundoAp' =>  $lesion->segundoAp,
+            'nombre' => $lesion->nombrePersona.' '.$lesion->primerAp.' '.$lesion->segundoAp,
             'fecha realizacion' =>  $lesion->fecha,
           
     
