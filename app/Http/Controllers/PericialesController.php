@@ -309,16 +309,19 @@ class PericialesController extends Controller
                 DB::commit();
     
                 // return redirect("home");
-                return view('documentos.periciales_lesiones')
+                // return view('documentos.periciales_lesiones')
           
-                ->with('fecha',  $lesiones->fecha  )
-                ->with('folio',  $lesiones->idCarpeta)
+                // ->with('fecha',  $lesiones->fecha  )
+                // ->with('folio',  $lesiones->idCarpeta)
               
-                ->with('nombre', $lesiones->nombre )
-                ->with('primerAp', $lesiones->primerAp )
-                ->with('segundoAp', $lesiones->segundoAp )
-                ->with('fiscal',  "XXXXXXXXXXX" );
-        
+                // ->with('nombre', $lesiones->nombre )
+                // ->with('primerAp', $lesiones->primerAp )
+                // ->with('segundoAp', $lesiones->segundoAp )
+                // ->with('fiscal',  "XXXXXXXXXXX" );
+                return view('documentos.per-lesiones')
+
+      
+                ->with('id',  $PerMensaje->id );
     
             }catch (\PDOException $e){
                 DB::rollBack();
@@ -411,9 +414,8 @@ class PericialesController extends Controller
             'numero_serie' => $vehiculo->numero_serie,
             'lugar_fabricacion' => $vehiculo->lugar_fabricacion,
             'placas' => $vehiculo->placas,
-            'nombre' => $vehiculo->nombre.' '.$vehiculo->primerAp.' '.$vehiculo->segundoAp,
+            'nombre' => $vehiculo->nombrePersona.' '.$vehiculo->primerAp.' '.$vehiculo->segundoAp,
             'telefono' => $vehiculo->numero,
-            'calle' => $vehiculo->calle,
             'num_ext' => $vehiculo->num_ext,
             'num_int' => $vehiculo->num_int,
             'Estado' => $vehiculo->nombreEstado,
@@ -421,8 +423,8 @@ class PericialesController extends Controller
             'Localidad' => $vehiculo->nombreLocalidad,
             'Colonia' => $vehiculo->nombreColonia,
             'CP' => $vehiculo->codigoPostal,
-            'fecha' => $vehiculo->fecha,
-            'fiscal' =>  "XXXXXXXXXXX");
+            'fecha' => $vehiculo->fecha);
+        
         
             return response()->json($data);
 
