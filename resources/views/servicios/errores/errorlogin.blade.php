@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="{{asset('errors/style.css')}}">
         <!-- tipografía oficial -->
         <link rel="stylesheet" href="{{asset('errors/css/font-neosans.css')}}">
-        <title>Document</title>
+        <title>Error login</title>
     </head>
 <body class="error-notf">
         <div class="conteiner">
@@ -22,16 +22,17 @@
                 <h3 class="text-uppercase">FALTA DE DATOS</h3>
                 <div class="col">
 
-                    <p class="text-uppercase text-muted">no te puedes logear porque no tienes un numero de fiscal asignado o no estas asignado a una unidad, favor de verificar su informacion con recursos humanos para que se refleje en el sistema o comunicarse con soporte tecnico del centro de inforamción de la fiscalia.</p>
+                    <p class="text-uppercase text-muted">no te puedes loguear porque no tienes un número de fiscal asignado o no estas asignado a una unidad, favor de verificar su informacion con recursos humanos para que se refleje en el sistema o comunicarse con soporte tecnico del centro de inforamción de la fiscalia.</p>
                     <p class="text-uppercase text-muted">Por favor inténtelo más tarde, gracias.</p>
                     
-                    <a class="btn btn-outline-dark btn-rounded waves-effect waves-light" href="{{ route('logout') }}" onclick="event.preventDefault();
+                    <a href="{{route('login')}}" class="btn btn-outline-dark btn-rounded waves-effect waves-light">Volver al Inicio</a>
+                    {{-- <a class="btn btn-outline-dark btn-rounded waves-effect waves-light" href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();" >
                     Volver al Inicio
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
-                    </form>
+                    </form> --}}
                 </div>
             </div>
         </div>

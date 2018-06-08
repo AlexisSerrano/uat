@@ -27,7 +27,7 @@ class CarpetaController extends Controller
         if (Auth::user() instanceof User) {
             $carpetaNueva = Carpeta::where('id', $id)->where('idFiscal', Auth::user()->id)->get();
         } else {
-            $carpetaNueva = Carpeta::where('id', $id)->where('idFiscal', Auth::user()->idFiscal)->get();
+            $carpetaNueva = Carpeta::where('id', $id)->where('idFiscal', Auth::user()->id)->get();
         }
         return $carpetaNueva;
     }
@@ -318,13 +318,17 @@ class CarpetaController extends Controller
             $caso = new Carpeta();
             $caso->idFiscal = Auth::user()->id;
             $caso->idUnidad = Auth::user()->idUnidad;
-            $caso->numCarpeta = $unidad."/".Auth::user()->numFiscal."/".$caso->id."/".Carbon::now()->year;            
             $caso->fechaInicio = Carbon::now();
             $caso->horaIntervencion = Carbon::now();
             $caso->fiscalAtendio = Auth::user()->nombreC;
             //$caso->fechaDeterminacion = Carbon::now();
             $caso->save();
+            
+            
             session(['carpeta' => $caso->id]);
+            $numcarpetare=Carpeta::find($caso->id);
+            $numcarpetare->numCarpeta = $unidad."/".Auth::user()->numFiscal."/".$caso->id."/".Carbon::now()->year;            
+            $numcarpetare->save();
 
             $usuario=User::find(Auth::user()->id);
             $usuario->idCarpeta=session('carpeta');

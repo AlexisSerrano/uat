@@ -29,7 +29,7 @@ sessionStorage.removeItem('isLive');
 <body class="hold-transition login-page">
 	<div class="navbar navbar-expand-lg border-bottom text-light">
 		<p class="nav-brand h5">
-			Unidad de Atención Temprena
+			Unidad de Atención Temprana
 		</p>
 		<em class="ml-auto">
 			<a class="text-light" href="http://fiscaliaveracruz.gob.mx/" style="text-style:none">fiscaliaveracruz.gob.mx</a>

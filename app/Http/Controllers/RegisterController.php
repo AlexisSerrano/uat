@@ -52,4 +52,10 @@ class RegisterController extends Controller
             return response()->json($colonias);
         }
     }
+
+    
+    public function errorlogin()
+    {
+        return view('servicios.errores.errorlogin');
+    }
 }
