@@ -258,7 +258,24 @@
 						<p>Oficios</p>
 					</a>
 				</li>
-			
+				
+				@if (Auth::user()->grupo=='orientador')
+					<li class="nav-item has-treeview">
+						<a href="{{route('cambioRol')}}" class="nav-link">
+							<i class="nav-icon fa fa-exchange"></i>
+							<p>Cambiar a Recepción</p>
+						</a>
+					</li>
+				@endif
+
+				@if (Auth::user()->grupo=='recepcion')				
+					<li class="nav-item has-treeview">
+						<a href="{{route('cambioRol')}}" class="nav-link">
+							<i class="nav-icon fa fa-exchange"></i>
+							<p>Cambiar a Fiscal</p>
+						</a>
+					</li>
+				@endif
 				<li class="nav-item has-treeview">
 					<a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" >
 						<i class="nav-icon fa fa-power-off"></i>
