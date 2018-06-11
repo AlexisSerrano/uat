@@ -30,6 +30,7 @@ use Alert;
         
         // $numCarpeta   = $carpetaNueva[0]->numCarpeta;
         $vehiculos    = CarpetaController::getVehiculos($idCarpeta);
+        //  dd($vehiculos);
         $aseguradoras = CatAseguradora::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $clasesveh    = CatClaseVehiculo::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $colores      = CatColor::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
