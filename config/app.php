@@ -173,7 +173,8 @@ return [
         Adldap\Laravel\AdldapServiceProvider::class,
         Adldap\Laravel\AdldapAuthServiceProvider::class,
 
-        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class//generacion de qr
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,//generacion de qr
+        Barryvdh\Debugbar\ServiceProvider::class,
         
     ],
 
@@ -234,6 +235,7 @@ return [
         'Date' => Jenssegers\Date\Date::class,//pasar fechas en español
         'Adldap' => Adldap\Laravel\Facades\Adldap::class,//active directory
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,//generacion de qr
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];
