@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f479b78989cb9a5a9d7674c295f17863",
+    "content-hash": "7970d13928be78e1bd04f15ff5f3feec",
     "packages": [
         {
             "name": "adldap2/adldap2",
@@ -431,16 +431,16 @@
         },
         {
             "name": "dragonmantank/cron-expression",
-            "version": "v2.1.0",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dragonmantank/cron-expression.git",
-                "reference": "3f00985deec8df53d4cc1e5c33619bda1ee309a5"
+                "reference": "92a2c3768d50e21a1f26a53cb795ce72806266c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dragonmantank/cron-expression/zipball/3f00985deec8df53d4cc1e5c33619bda1ee309a5",
-                "reference": "3f00985deec8df53d4cc1e5c33619bda1ee309a5",
+                "url": "https://api.github.com/repos/dragonmantank/cron-expression/zipball/92a2c3768d50e21a1f26a53cb795ce72806266c5",
+                "reference": "92a2c3768d50e21a1f26a53cb795ce72806266c5",
                 "shasum": ""
             },
             "require": {
@@ -476,7 +476,7 @@
                 "cron",
                 "schedule"
             ],
-            "time": "2018-04-06T15:51:55+00:00"
+            "time": "2018-06-06T03:12:17+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -1287,12 +1287,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/NainLobato/rfc.git",
-                "reference": "13a9a2a379050b3755de98fbdfa035a6423b1d54"
+                "reference": "e3baca30663e4ad1e8cf5a1c64eacd533a3fb582"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NainLobato/rfc/zipball/13a9a2a379050b3755de98fbdfa035a6423b1d54",
-                "reference": "13a9a2a379050b3755de98fbdfa035a6423b1d54",
+                "url": "https://api.github.com/repos/NainLobato/rfc/zipball/e3baca30663e4ad1e8cf5a1c64eacd533a3fb582",
+                "reference": "e3baca30663e4ad1e8cf5a1c64eacd533a3fb582",
                 "shasum": ""
             },
             "require": {
@@ -1321,7 +1321,7 @@
                 "rfc",
                 "rfc mexico"
             ],
-            "time": "2018-05-29T12:43:53+00:00"
+            "time": "2018-06-07T17:53:39+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -1429,16 +1429,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.12",
+            "version": "v2.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "258c89a6b97de7dfaf5b8c7607d0478e236b04fb"
+                "reference": "10bcb46e8f3d365170f6de9d05245aa066b81f09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/258c89a6b97de7dfaf5b8c7607d0478e236b04fb",
-                "reference": "258c89a6b97de7dfaf5b8c7607d0478e236b04fb",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/10bcb46e8f3d365170f6de9d05245aa066b81f09",
+                "reference": "10bcb46e8f3d365170f6de9d05245aa066b81f09",
                 "shasum": ""
             },
             "require": {
@@ -1470,10 +1470,11 @@
             "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
             "keywords": [
                 "csprng",
+                "polyfill",
                 "pseudorandom",
                 "random"
             ],
-            "time": "2018-04-04T21:24:14+00:00"
+            "time": "2018-06-08T15:26:40+00:00"
         },
         {
             "name": "pclzip/pclzip",
@@ -1893,16 +1894,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.9.5",
+            "version": "v0.9.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "0951e91ac04ca28cf317f3997a0adfc319e80106"
+                "reference": "4a2ce86f199d51b6e2524214dc06835e872f4fce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/0951e91ac04ca28cf317f3997a0adfc319e80106",
-                "reference": "0951e91ac04ca28cf317f3997a0adfc319e80106",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/4a2ce86f199d51b6e2524214dc06835e872f4fce",
+                "reference": "4a2ce86f199d51b6e2524214dc06835e872f4fce",
                 "shasum": ""
             },
             "require": {
@@ -1961,7 +1962,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2018-06-02T16:39:22+00:00"
+            "time": "2018-06-10T17:57:20+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -3447,6 +3448,74 @@
     ],
     "packages-dev": [
         {
+            "name": "barryvdh/laravel-debugbar",
+            "version": "v3.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-debugbar.git",
+                "reference": "d3cdca2ad6cc6e67735b4a63e7551c690a497f5f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/d3cdca2ad6cc6e67735b4a63e7551c690a497f5f",
+                "reference": "d3cdca2ad6cc6e67735b4a63e7551c690a497f5f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/routing": "5.5.x|5.6.x",
+                "illuminate/session": "5.5.x|5.6.x",
+                "illuminate/support": "5.5.x|5.6.x",
+                "maximebf/debugbar": "~1.15.0",
+                "php": ">=7.0",
+                "symfony/debug": "^3|^4",
+                "symfony/finder": "^3|^4"
+            },
+            "require-dev": {
+                "illuminate/framework": "5.5.x"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Barryvdh\\Debugbar\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Debugbar": "Barryvdh\\Debugbar\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\Debugbar\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "PHP Debugbar integration for Laravel",
+            "keywords": [
+                "debug",
+                "debugbar",
+                "laravel",
+                "profiler",
+                "webprofiler"
+            ],
+            "time": "2018-05-03T18:27:04+00:00"
+        },
+        {
             "name": "doctrine/instantiator",
             "version": "1.1.0",
             "source": {
@@ -3658,6 +3727,67 @@
                 "test"
             ],
             "time": "2016-01-20T08:20:44+00:00"
+        },
+        {
+            "name": "maximebf/debugbar",
+            "version": "v1.15.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maximebf/php-debugbar.git",
+                "reference": "30e7d60937ee5f1320975ca9bc7bcdd44d500f07"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/30e7d60937ee5f1320975ca9bc7bcdd44d500f07",
+                "reference": "30e7d60937ee5f1320975ca9bc7bcdd44d500f07",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "psr/log": "^1.0",
+                "symfony/var-dumper": "^2.6|^3.0|^4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0|^5.0"
+            },
+            "suggest": {
+                "kriswallsmith/assetic": "The best way to manage assets",
+                "monolog/monolog": "Log using Monolog",
+                "predis/predis": "Redis storage"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.14-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DebugBar\\": "src/DebugBar/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maxime Bouroumeau-Fuseau",
+                    "email": "maxime.bouroumeau@gmail.com",
+                    "homepage": "http://maximebf.com"
+                },
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "Debug bar in the browser for php application",
+            "homepage": "https://github.com/maximebf/php-debugbar",
+            "keywords": [
+                "debug",
+                "debugbar"
+            ],
+            "time": "2017-12-15T11:13:46+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -4217,16 +4347,16 @@
         },
         {
             "name": "phpunit/php-file-iterator",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-file-iterator.git",
-                "reference": "e20525b0c2945c7c317fff95660698cb3d2a53bc"
+                "reference": "cecbc684605bb0cc288828eb5d65d93d5c676d3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/e20525b0c2945c7c317fff95660698cb3d2a53bc",
-                "reference": "e20525b0c2945c7c317fff95660698cb3d2a53bc",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-file-iterator/zipball/cecbc684605bb0cc288828eb5d65d93d5c676d3c",
+                "reference": "cecbc684605bb0cc288828eb5d65d93d5c676d3c",
                 "shasum": ""
             },
             "require": {
@@ -4260,7 +4390,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2018-05-28T12:13:49+00:00"
+            "time": "2018-06-11T11:44:00+00:00"
         },
         {
             "name": "phpunit/php-text-template",
@@ -4596,16 +4726,16 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "e09160918c66281713f1c324c1f4c4c3037ba1e8"
+                "reference": "366541b989927187c4ca70490a35615d3fef2dce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/e09160918c66281713f1c324c1f4c4c3037ba1e8",
-                "reference": "e09160918c66281713f1c324c1f4c4c3037ba1e8",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/366541b989927187c4ca70490a35615d3fef2dce",
+                "reference": "366541b989927187c4ca70490a35615d3fef2dce",
                 "shasum": ""
             },
             "require": {
@@ -4648,7 +4778,7 @@
                 "unidiff",
                 "unified diff"
             ],
-            "time": "2018-02-01T13:45:15+00:00"
+            "time": "2018-06-10T07:54:39+00:00"
         },
         {
             "name": "sebastian/environment",

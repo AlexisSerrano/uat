@@ -118,7 +118,8 @@ class NarracionController extends Controller
     public function getNarracion(Request $request, $id){
         if($request->ajax()){
             $narracionM = NarracionPersona::find($id);
-            return response()->json(['narracion'=>$narracion]);
+           // dd($narracionM);
+            return response()->json(['narracion'=>$narracionM]);
         }
     } 
 

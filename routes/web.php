@@ -284,6 +284,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('store-vehiculo', 'VehiculoController@storeVehiculo')->name('carpeta.vehiculo');
     Route::get('getVehiculo/{id}', 'VehiculoController@getVh');
 
+    /* -----------Ruta para Libro de Oficios------------ */
+    Route::get('lista-oficios','LibroOficioController@medidas-ofi');  
+    
+    /* -----------Ruta para cambio de rol------------ */
+    Route::get('rol','RegisterController@cambioRol')->name('cambioRol');  
+
 });
 
 

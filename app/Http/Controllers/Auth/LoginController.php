@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 /*inicio pruebas*/
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Session;
 /*fin pruebas*/
@@ -77,7 +77,17 @@ class LoginController extends Controller
         $unidad=Unidad::where('id',Auth::User()->idUnidad)->first();
         // dd($unidad->descripcion);
         session(['unidad' => $unidad->descripcion]);
+        
+        if (Auth::user()->grupo=='orientador') {
+            return redirect(route('indexcarpetas'));
+        }
+        if (Auth::user()->grupo=='recepcion') {
+            return redirect(route('predenuncias.index'));    
+        }
         /* fin agregar unidad */
+
+
+
 
         return $this->authenticated($request, $this->guard()->user())
                 ?: redirect()->intended($this->redirectPath());
