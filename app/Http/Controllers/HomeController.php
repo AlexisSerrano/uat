@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect('carpetas');
+        if (Auth::user()->grupo=='orientador') {
+            return redirect(route('indexcarpetas'));
+        }
+        if (Auth::user()->grupo=='recepcion') {
+            return redirect(route('predenuncias.index'));    
+        }
     }
     
     
