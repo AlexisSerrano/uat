@@ -190,7 +190,7 @@
 						</a>
 					</li>
 					
-					<li class="nav-item has-treeview">
+					{{-- <li class="nav-item has-treeview">
 						<a href="{{route('actaspendientes')}}" class="nav-link {{ Request::is( 'actas-pendientes') ? 'active' : '' }}">
 							<i class="nav-icon  fa fa-file-text-o"></i>
 							<p>Actas de hechos</p>
@@ -201,25 +201,14 @@
 								<i class="nav-icon  fa fa-file-text"></i>
 								<p>Actas circunstanciales</p>
 							</a>
-						</li>
+						</li> --}}
 					<li class="nav-item has-treeview ">
 						<a href="{{url('carpetas')}}" class="nav-link {{ Request::is( 'carpetas') ? 'active' : '' }}">
 							<i class="nav-icon  fa fa-archive"></i>
 							<p>Carpetas</p>
 						</a>
 					</li>
-					<li class="nav-item has-treeview">
-						<a href="{{url('libro')}}" class="nav-link {{ Request::is( 'libro') ? 'active' : '' }}">
-							<i class="nav-icon  fa fa-book"></i>
-							<p>Libro de gobierno</p>
-						</a>
-					</li>
-					<li class="nav-item has-treeview">
-						<a href="{{url('libro-acta')}}" class="nav-link {{ Request::is( 'libro-acta') ? 'active' : '' }}">
-							<i class="nav-icon  fa fa-book"></i>
-							<p>Libro de actas circunstanciales</p>
-						</a>
-					</li>
+					
 					@endif		
 					
 					@if (!is_null(session('carpeta'))&&!is_null(session('terminada')))
@@ -260,63 +249,57 @@
 
 
 					
-					{{-- <li class="nav-header">EXTRAS</li>
+					<li class="nav-header"></li>
 			
-					{{-- <li class="nav-item has-treeview">--}}
-						{{-- <a href="#" class="nav-link"> --}}
-								{{-- {!! Form::button( array('class' => 'btn btn-secondary borrar ','data-toggle'=>'tooltip','title'=>'Borrar Campos','id' => 'btn-reset')) !!} --}}
-							{{-- <i class="nav-icon fa fa-eraser "></i>
-							
-						</a> 
-					</li> --}} 
-					{{-- <li class="nav-item has-treeview">
+					
+					 <li class="nav-item has-treeview">
 						<a href="#" class="nav-link">
-							<i class="nav-icon fa fa-book"></i>
+							<i class="nav-icon fa fa-file-text-o"></i>
 							<p>
-								Pages
+								Actas
 								<i class="fa fa-angle-left right"></i>
 							</p>
 						</a>
 						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="pages/examples/login.html" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Login</p>
+							<li class="nav-item has-treeview">
+								<a href="{{route('actaspendientes')}}" class="nav-link {{ Request::is( 'actas-pendientes') ? 'active' : '' }}">
+									{{-- <i class="nav-icon  fa fa-file-text-o"></i> --}}
+									<p>Actas de hechos</p>
 								</a>
 							</li>
-							<li class="nav-item">
-								<a href="pages/examples/register.html" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Register</p>
-								</a>
-							</li>
-							<li class="nav-item">
+							<li class="nav-item has-treeview">
+									<a href="{{route('new.actacircunstanciada')}}" class="nav-link {{ Request::is( 'actacircunstanciada') ? 'active' : '' }}">
+										{{-- <i class="nav-icon  fa fa-file-text"></i> --}}
+										<p>Actas circunstanciales</p>
+									</a>
+								</li>
+							{{-- <li class="nav-item">
 								<a href="pages/examples/lockscreen.html" class="nav-link">
 									<i class="fa fa-circle-o nav-icon"></i>
 									<p>Lockscreen</p>
 								</a>
-							</li>
+							</li> --}}
 						</ul>
 					</li>
 					<li class="nav-item has-treeview">
 						<a href="#" class="nav-link">
-							<i class="nav-icon fa fa-plus-square-o"></i>
+							<i class="nav-icon fa fa-book"></i>
 							<p>
-								Extras
+								Libros
 								<i class="fa fa-angle-left right"></i>
 							</p>
 						</a>
 						<ul class="nav nav-treeview">
-							<li class="nav-item">
-								<a href="pages/examples/404.html" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Error 404</p>
+							<li class="nav-item has-treeview">
+								<a href="{{url('libro')}}" class="nav-link {{ Request::is( 'libro') ? 'active' : '' }}">
+									{{-- <i class="nav-icon  fa fa-book"></i> --}}
+									<p>Libro de gobierno</p>
 								</a>
 							</li>
-							<li class="nav-item">
-								<a href="pages/examples/500.html" class="nav-link">
-									<i class="fa fa-circle-o nav-icon"></i>
-									<p>Error 500</p>
+							<li class="nav-item has-treeview">
+								<a href="{{url('libro-acta')}}" class="nav-link {{ Request::is( 'libro-acta') ? 'active' : '' }}">
+									{{-- <i class="nav-icon  fa fa-book"></i> --}}
+									<p>Libro de actas circunstanciales</p>
 								</a>
 							</li>
 							<li class="nav-item">
@@ -333,7 +316,7 @@
 							</li>
 						</ul>
 					</li>
-					<li class="nav-header">MISCELLANEOUS</li>
+					{{-- <li class="nav-header">MISCELLANEOUS</li>
 					<li class="nav-item">
 						<a href="https://adminlte.io/docs" class="nav-link">
 							<i class="nav-icon fa fa-file"></i>
@@ -358,8 +341,8 @@
 							<i class="nav-icon fa fa-circle-o text-info"></i>
 							<p>Informational</p>
 						</a>
-					</li> --}}
-				
+					</li> 
+				 --}}
 				</ul>
 			</nav>
 			<!-- /.sidebar-menu -->
