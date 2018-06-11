@@ -50,9 +50,11 @@ Route::get('/pruebasformatos', function(){
 Route::get('/pruebasactas','PruebasController@actas');
 Route::get('/pruebasmetodo/{id}','PruebasController@pruebas');
 
-// Route::get('/resumen', function(){
-//     return view('fields.resumen-carpeta.resumen-carpeta');  
-// });   
+Route::get('/impresion-Oficios','ImpresionesController@tablaOficios')->name('tabla.oficios');
+Route::get('/oficio-distrito','ImpresionesController@oficioDistrito')->name('fiscal.distrito'); 
+Route::get('fiscal/{id}', 'ImpresionesController@getfiscal')->name('get.fiscal');
+Route::post('imprimir/Oficio-distrito','ImpresionesController@storeDistrito')->name('store.oficioDistrito');
+ 
 
 
 

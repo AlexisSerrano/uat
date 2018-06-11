@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Carpeta;
 use DB;
 use App\Models\Persona;
+
 use App\Models\VariablesPersona;
 class ResumenCarpetaController extends Controller
 
@@ -209,4 +210,12 @@ class ResumenCarpetaController extends Controller
         
         return view('fields.resumen-carpeta.resumen-acusaciones')->with('carpeta',$carpeta);
     }
+
+
+    // public function tablaOficios(){
+
+    //     return view('tables.documentos');
+    // }
+
+    // 
 }

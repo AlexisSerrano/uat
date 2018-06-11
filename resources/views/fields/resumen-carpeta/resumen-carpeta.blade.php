@@ -6,7 +6,12 @@
     <div class="row">
         <div class="col-10">
             <div class="card">
-                 <div class="card-header"><h5>Carpeta numero: {{$carpeta->numCarpeta}} </h5></div>
+                <div class="card-header">
+                    <div class="row">
+                    <h5>Carpeta numero: {{$carpeta->numCarpeta}} </h5>
+                    <div  class="col text-right"><a href="{{ url('/impresion-Oficios')}}" title="Oficios para impresión" class="btn btn-secondary">Oficios <i class="fa fa-font"></i></a></div>
+                </div>
+                </div>
                     <div class="card-body">
                         @include('fields.resumen-carpeta.datos-carpeta')
                         @yield('detalle')                           
@@ -15,6 +20,7 @@
         </div>
         
         @include('fields.resumen-carpeta.botonesResumen')
+       
     </div>
 </div>
         

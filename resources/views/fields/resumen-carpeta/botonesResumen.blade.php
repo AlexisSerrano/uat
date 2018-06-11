@@ -106,6 +106,7 @@ $barra = getNavCaso();
             </div>
         </div>
     </div>
+    
 </div>
     
             
