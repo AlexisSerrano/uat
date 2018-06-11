@@ -86,6 +86,7 @@
 
 @push('scritps')
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="{{ asset('public/js/funciones.js') }}"></script>
 <script>
 
 $.validate({
