@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 /*inicio pruebas*/
 use Auth;
 use Illuminate\Http\Request;
@@ -10,8 +12,6 @@ use Session;
 /* inicio pruebas unidad */
 use App\Models\Unidad;
 /* fin pruebas unidad */
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
@@ -51,6 +51,14 @@ class LoginController extends Controller
     {
         $request->session()->regenerate();
         $previous_session = Auth::User()->session_id;
+        // inicio pruebas
+        
+        // if(is_null($previous_session)){
+        //     Auth::user()->session_id = \Session::getId();
+        //     Auth::user()->save();
+        // }
+
+        // fin pruebas
         if ($previous_session) {
             \Session::getHandler()->destroy($previous_session);
         }
@@ -61,6 +69,7 @@ class LoginController extends Controller
 
         /* inicio alerta a soporte */
         if(is_null(Auth::User()->idUnidad) || Auth::User()->numFiscal==0){
+            Auth::logout();
             return redirect(route('error.login'));
         }
         /* fin alerta a soporte */

@@ -154,7 +154,7 @@ public function storeVehiculo(Request $request)
     $vehiculo->save();
     // dd($request);
     $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-    $bdbitacora->vehiculos = $bdbitacora->vehiculos-1;
+    $bdbitacora->vehiculos = $bdbitacora->vehiculos+1;
     $bdbitacora->save();
     //Agregar a Bitacora
    //  Bitacora::create(['idUsuario' => $idFiscal, 'tabla' => 'vehiculo', 'accion' => 'insert', 'descripcion' => 'Se han registrado datos generales de un Vehículo del delito: ' . $request->idTipifDelito . ' con Placas: ' . $request->placas . ' Del estado: ' . $request->idEstado, 'idFilaAccion' => $vehiculo->id]);

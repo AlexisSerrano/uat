@@ -28,8 +28,7 @@ Route::get('/pruebas/impresion','PruebasController@impresion');
 Route::get('/pruebas/alfred','PruebasController@alfred');
 
 Route::get('/libro-acta', function(){
-return view('tables.libro-actas');
-
+    return view('tables.libro-actas');
 });
 
 Route::get('/pruebaMedidas', function () {
@@ -37,56 +36,57 @@ Route::get('/pruebaMedidas', function () {
 });
 Route::get('/pruebasconsulta', function(){
     return view('tables.consulta-actas');
-    
-    });
-    Route::get('/formatos-pruebas', function(){
-        return view('tables.formatos');
-        });
-        Route::get('/fiscales', 'PreregistroController@estadoFiscales')->name('disponibilidad.fiscal');
-        
+});
+Route::get('/formatos-pruebas', function(){
+    return view('tables.formatos');
+});
+Route::get('/fiscales', 'PreregistroController@estadoFiscales')->name('disponibilidad.fiscal');
 
-        Route::get('/pruebasformatos', function(){
-            return view('tables.formatos');
-            });
-            
-        Route::get('/pruebasactas','PruebasController@actas');
-        Route::get('/pruebasmetodo/{id}','PruebasController@pruebas');
-        
-        // Route::get('/resumen', function(){
-        //     return view('fields.resumen-carpeta.resumen-carpeta');  
-        // });   
-        
-        
-        
-        /**************************************************************/
-        // -------------------------------------------------------------------
-        
-        /* --------Ruta para obtener token oficios----------- */
-        // Route::get('getToken/{id}','ActasHechosController@getToken')->name('getToken');
-        // Route::get('oficioah/{id}','ActasHechosController@getoficioah')->name('oficioah');  
-        // Route::post('saveOficio','ActasHechosController@saveOficio')->name('saveOficio');
-        // Route::get('getoficioah2/{id}','ActasHechosController@getoficioah2')->name('getoficioah');
-        
-        
-        Route::post('oficios', 'OficioController@oficios')->name('oficios');
-        Route::post('getToken', 'OficioController@getToken')->name('getToken');
-        Route::post('saveOficio', 'OficioController@saveOficio')->name('saveOficio');
-        Route::post('intentos', 'OficioController@intentos')->name('intentos');
-        Route::get('getOficios', 'OficioController@getOficios')->name('getOficios');
-        Route::post('getOficio', 'OficioController@getOficio')->name('getOficio');
-        Route::post('addOficio', 'OficioController@addOficio')->name('addOficio');
-        Route::post('updateOficio', 'OficioController@updateOficio')->name('updateOficio');
-        
-        Route::get('actaoficio/{id}', 'ActasHechosController@actaoficio')->name('actaoficio');
-        Route::get('getoficioah/{id}', 'ActasHechosController@getoficioah');
-        
-        
-        /**NO TOCAR***/
-        Auth::routes();
-        
-        Route::get('/home', 'HomeController@index')->name('home');
-        // ------------------------------------------------------------------
-        
+
+Route::get('/pruebasformatos', function(){
+    return view('tables.formatos');
+    });
+    
+Route::get('/pruebasactas','PruebasController@actas');
+Route::get('/pruebasmetodo/{id}','PruebasController@pruebas');
+
+// Route::get('/resumen', function(){
+//     return view('fields.resumen-carpeta.resumen-carpeta');  
+// });   
+
+
+
+/**************************************************************/
+// -------------------------------------------------------------------
+
+/* --------Ruta para obtener token oficios----------- */
+// Route::get('getToken/{id}','ActasHechosController@getToken')->name('getToken');
+// Route::get('oficioah/{id}','ActasHechosController@getoficioah')->name('oficioah');  
+// Route::post('saveOficio','ActasHechosController@saveOficio')->name('saveOficio');
+// Route::get('getoficioah2/{id}','ActasHechosController@getoficioah2')->name('getoficioah');
+
+
+Route::post('oficios', 'OficioController@oficios')->name('oficios');
+Route::post('getToken', 'OficioController@getToken')->name('getToken');
+Route::post('saveOficio', 'OficioController@saveOficio')->name('saveOficio');
+Route::post('intentos', 'OficioController@intentos')->name('intentos');
+Route::get('getOficios', 'OficioController@getOficios')->name('getOficios');
+Route::post('getOficio', 'OficioController@getOficio')->name('getOficio');
+Route::post('addOficio', 'OficioController@addOficio')->name('addOficio');
+Route::post('updateOficio', 'OficioController@updateOficio')->name('updateOficio');
+
+Route::get('actaoficio/{id}', 'ActasHechosController@actaoficio')->name('actaoficio');
+Route::get('getoficioah/{id}', 'ActasHechosController@getoficioah');
+
+
+/**NO TOCAR***/
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+// ------------------------------------------------------------------
+/*--------------------Ruta error en login----------------------------------*/
+Route::get('errorlogin', 'RegisterController@errorlogin')->name('error.login');
+//////////////////////////////////////////////////        
         
 Route::middleware(['auth'])->group(function () {
             
@@ -276,21 +276,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getlesion/{id}','pericialesController@getlesion');
 
      /* --------Pruebas vehiculos----------- */
- Route::get('/vehiculos-pruebas','VehiculoController@showform')->name('vehiculo.carpeta');
- Route::get('submarcas/{id}', 'VehiculoController@getSubmarcas')->name('get.submarcas');
- Route::get('tipoVehiculos/{id}', 'VehiculoController@getTipoVehiculos')->name('get.tipovehiculos');
- Route::post('store-vehiculo', 'VehiculoController@storeVehiculo')->name('carpeta.vehiculo');
- Route::get('getVehiculo/{id}', 'VehiculoController@getVh');
+    Route::get('/vehiculos-pruebas','VehiculoController@showform')->name('vehiculo.carpeta');
+    Route::get('submarcas/{id}', 'VehiculoController@getSubmarcas')->name('get.submarcas');
+    Route::get('tipoVehiculos/{id}', 'VehiculoController@getTipoVehiculos')->name('get.tipovehiculos');
+    Route::post('store-vehiculo', 'VehiculoController@storeVehiculo')->name('carpeta.vehiculo');
+    Route::get('getVehiculo/{id}', 'VehiculoController@getVh');
 
-    
-   
-   
-    
 });
 
 
-/*--------------------Ruta error en login----------------------------------*/
-Route::get('errorlogin', 'HomeController@errorlogin')->name('error.login');
 // ///////////////////////////////////////preregistro/////////////////////////
 Route::get('/preregistro', 'PreregistroController@create')->name('preregistro.create'); //ver formulario
 Route::post('/preregistro/store', 'PreregistroController@store')->name('preregistro.store'); //registar
