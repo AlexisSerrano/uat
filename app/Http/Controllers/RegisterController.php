@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\CatMunicipio;
 use App\Models\CatLocalidad;
 use App\Models\CatColonia;
+use App\User;
 
 class RegisterController extends Controller
 {
@@ -58,4 +60,26 @@ class RegisterController extends Controller
     {
         return view('servicios.errores.errorlogin');
     }
+    
+    public function cambioRol(){
+        if (Auth::user()->grupo=='orientador') {
+            $user=User::find(Auth::user()->id);
+            $user->grupo='recepcion';
+            $user->save();
+            return redirect(route('predenuncias.index'));    
+
+        }
+        if (Auth::user()->grupo=='recepcion') {
+            $user=User::find(Auth::user()->id);
+            $user->grupo='orientador';
+            $user->save();
+            return redirect(route('indexcarpetas'));
+        }       
+
+        if(Auth::user()->grupo!='recepcion'&&Auth::user()->grupo!='orientador'){
+            return redirect('home');
+        }
+
+    }
+    
 }

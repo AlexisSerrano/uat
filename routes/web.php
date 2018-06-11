@@ -284,7 +284,9 @@ Route::middleware(['auth'])->group(function () {
 
     /* -----------Ruta para Libro de Oficios------------ */
     Route::get('lista-oficios','LibroOficioController@IndexOfi');  
-
+    
+    /* -----------Ruta para cambio de rol------------ */
+    Route::get('rol','RegisterController@cambioRol')->name('cambioRol');  
 
 });
 
