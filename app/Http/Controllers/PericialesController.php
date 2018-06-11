@@ -339,7 +339,7 @@ class PericialesController extends Controller
             'per_mensajes.telefono_destino','per_mensajes.narracion','per_mensajes.fecha')
             ->first();
 
-            $nombre=$pericial->nombrePersona.' '.$pericial->primerAp.' '.$pericial->segundoAp;
+            $nombre=$pericial->nombre.' '.$pericial->primerAp.' '.$pericial->segundoAp;
 
             $data = array('id' => $id,
             'idCarpeta' => $pericial->idCarpeta,
@@ -414,7 +414,7 @@ class PericialesController extends Controller
             'numero_serie' => $vehiculo->numero_serie,
             'lugar_fabricacion' => $vehiculo->lugar_fabricacion,
             'placas' => $vehiculo->placas,
-            'nombre' => $vehiculo->nombrePersona.' '.$vehiculo->primerAp.' '.$vehiculo->segundoAp,
+            'nombre' => $vehiculo->nombre.' '.$vehiculo->primerAp.' '.$vehiculo->segundoAp,
             'telefono' => $vehiculo->numero,
             'num_ext' => $vehiculo->num_ext,
             'num_int' => $vehiculo->num_int,
