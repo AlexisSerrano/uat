@@ -92,7 +92,7 @@ Route::get('errorlogin', 'RegisterController@errorlogin')->name('error.login');
         
 Route::middleware(['auth'])->group(function () {
             
-    Route::get('/resumen', 'ResumenCarpetaController@showResumen')->name('carpeta.detalle');
+    Route::get('/resumen/{id}', 'ResumenCarpetaController@showResumen')->name('carpeta.detalle');
     Route::get('/resumen-denunciante', 'ResumenCarpetaController@detalleDenunciante')->name('resumen.denunciante');
     Route::get('/resumen-denunciado', 'ResumenCarpetaController@detalleDenunciado')->name('resumen.denunciado');
     Route::get('/resumen-acusaciones', 'ResumenCarpetaController@detalleAcusaciones')->name('resumen.acusaciones');
@@ -285,7 +285,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getVehiculo/{id}', 'VehiculoController@getVh');
 
     /* -----------Ruta para Libro de Oficios------------ */
-    Route::get('lista-oficios','LibroOficioController@medidas-ofi');  
+    Route::get('lista-oficios','LibroOficioController@IndexOfi');  
     
     /* -----------Ruta para cambio de rol------------ */
     Route::get('rol','RegisterController@cambioRol')->name('cambioRol');  

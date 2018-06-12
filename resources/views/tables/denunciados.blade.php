@@ -31,8 +31,8 @@
                             <td>NO</td>
                         @endif  
                     <td>
-                        <a href="{{ url('narracion/'.$denunciado->idVariablesPersona)}}"  rel="tooltip" title="Ampliar narracion" class="btn btn-secondary btn-simple btn-xs">
-                            <i class="fa fa-edit"></i></a>  
+                        {{-- <a href="{{ url('narracion/'.$denunciado->idVariablesPersona)}}"  rel="tooltip" title="Ampliar narracion" class="btn btn-secondary btn-simple btn-xs">
+                            <i class="fa fa-edit"></i></a>   --}}
 
                          
                             @if(is_null(session('terminada')))

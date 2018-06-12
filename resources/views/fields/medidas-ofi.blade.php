@@ -1,65 +1,52 @@
-{!! Form::open(['route' => 'store.agregar', 'method' => 'POST'])  !!} 
-<div class="row">
-	
-
-	<div class="col-4">
-			<div class="form-group">
-				{!! Form::label('victima', 'Víctima/Ofendido', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('victima', $victimas,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
-			</div>
-	</div>		
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('marcat', 'Marca del teléfono', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('marcat', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Marca',  'data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$', 'data-validation-error-msg'=>'La marca del teléfono debe contener al menos dos letras']) !!}
+	<div class="row">
+		<div class="col-12">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				
+			  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+				  </button>
+				  
+			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					  
+			    	<form class="form-inline my-2 my-lg-0" method="POST" action="{{ url('filtroactas') }}">
+						@csrf
+						
+						
+						  <input class="form-control mr-sm-2" type="text" name="filtro" id="filtro" placeholder="Buscar" aria-label="Buscar">
+						  
+						  <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+							
+						
+					
+			    	</form>
+				  </div>
+				  <a href="{{url('listaActas')}}"><button class="btn btn-outline-secondary my-2 my-sm-0" type="button">Todos</button></a>
+			</nav>
 		</div>
-	</div>
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('imeit', 'IMEI', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('imeit', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el IMEI', 'data-validation'=>'required']) !!}
+		<div class="col-12">
+			<table class="table table-striped table-bordered table-hover" >
+			 	<thead class="thead-active"style="text-align:center;">
+			    	<tr>
+			      		<th scope="col">Folio</th>
+                        <th scope="col">Nombre</th>
+						<th scope="col">Fiscal</th>
+						<th scope="col">Descargar</th>
+			    	</tr>
+			  	</thead>
+			  	<tbody>
+				@forelse($actas as $acta)
+				<tr>
+					<td>UAT-XI/AH-{{$acta->folio}}/{{$year}}</td>
+					<td>{{$acta->nombre}} {{$acta->primer_ap}} {{$acta->segundo_ap}}</td>
+					<td>{{$acta->fiscal}}</td>
+					<td style="text-align:center;"><a href='{{url("descActas/$acta->id")}}'><button class="btn btn-secondary"><i class="fa fa-download"></i></button></a></td>
+				</tr>
+				@empty
+				@endforelse
+			  	</tbody>
+			</table>
 		</div>
+		<div class="mt-2 mx-auto">
+				{{ $actas->links() }}
+		</div>	
 	</div>
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('compat', 'Compañia teléfonica', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('compat', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese la compañia', 'data-validation'=>'required']) !!}
-		</div>
-	</div>
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('numerot', 'Número ', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numerot', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el primer número', 'data-validation'=>'required']) !!}
-		</div>
-	</div>
-	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('numero2t', 'Número destino', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numero2t', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el número destino', 'data-validation'=>'required']) !!}
-		</div>
-	</div>
-	{{-- <div class="col-4">
-		<div class="form-group">
-		{!! Form::label('fechamen', 'Fecha de elaboración', ['class' => 'col-form-label-sm']) !!}
-			<div class="input-group date" id="fechamen" data-target-input="nearest">
-				@if(isset($form['fechamen']))
-				<input type="date" id="fechamen" name="fechamen" value="{{ $form['fechamen'] }}" class="form-control form-control-sm", data-validation="required">
-				@else
-				<input type="date" id="fechamen" name="fechamen" class="form-control form-control-sm", data-validation="required">
-				@endif
-			</div>
-		</div>
-	</div>
-	<div class="col-12">
-		<div class="form-group">
-			{!! Form::label('narraciont', 'Narración', ['class' => 'col-form-label-sm']) !!}		
-			<textarea name="narraciont" id="narraciont" cols="15" rows="5" class="form-control form-control-sm", data-validation= "required"></textarea>    
-		</div>
-	</div>
-
-	<div class="col text-right">
-		{!!Form::submit('Guardar',array('class' => 'btn btn-primary','id'=>'guardarPericiales'))!!}
-		
-</div>
-</div>
-{!! Form::close() !!} --}}

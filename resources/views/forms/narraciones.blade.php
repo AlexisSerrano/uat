@@ -15,7 +15,7 @@
 @section('content')
 
 
-@include('fields.buttons-navegacion')
+{{-- @include('fields.buttons-navegacion') --}}
 
 {{-- <div class="card"> --}}
 	@include('fields.errores')
@@ -67,17 +67,23 @@
 						<textarea name="narracion" id="areaNarracion" cols="30" rows="10" class="form-control form-control-sm">@if($ultimo != null){{ $ultimo->narracion}} @endif</textarea>
                         <div id="divText" style="display:none"></div>
                         <input type="hidden" name="id" value="{{$id}}"
-					</div>
+					 </div> 
                         <input id="input-id" type="file" class="file" name="file"  data-preview-file-type="text">
                
 					<br>
 					<div class="form-group text-right">
 						<button type="submit" class="btn btn-primary">Guardar</button>
+						{{-- <a href="{{ url('resumen/'.$id)}}"  rel="tooltip" title="resumen" class="btn btn-secondary btn-simple btn-xs"> <i class="fa fa-times"></i> --}}
+						{{-- <button type="button" class="btn btn-primary" href="{{ url('resumen/'.$id)}}">resumen</button> --}}
+						<td><a class="btn btn-primary" href="{{ url('resumen/'.$id)}}"><i class="fa fa-check" aria-hidden="true"></i></a></td>
 					</div>
+					
+						
+					
 				</form>
 			
 
-			</div>
+			
 
 		</div>
 	</div>
