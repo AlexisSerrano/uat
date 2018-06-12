@@ -45,7 +45,16 @@ class ImpresionesController extends Controller
                 $denunciado2[$denunciado->nombres.'-'.$denunciado->primerAp.'-'.$denunciado->segundoAp] = $denunciado->nombres.' '.$denunciado->primerAp.' '.$denunciado->segundoAp;
             }
 
-            //dd($denunciado);
+            
+            $delitos=DB::table('tipif_delito')
+            ->join('carpeta as caso','tipif_delito.idCarpeta','=','caso.id')
+            ->join('cat_delito','cat_delito.id','=','tipif_delito.idDelito')
+            ->where('caso.id',$idCarpeta)
+            ->select('cat_delito.id', 'cat_delito.nombre')
+            ->orderBy('nombre', 'ASC')
+            ->pluck('nombre', 'id');
+            
+       // dd($delitos);
 
             $victimas[''] = 'Seleccione una víctima/ofendido';
             $victimas2 = DB::table('variables_persona')
@@ -64,7 +73,8 @@ class ImpresionesController extends Controller
             ->with('carpeta',$carpeta)
             ->with('unidad',$unidad)
             ->with('denunciado',$denunciado)
-            ->with('victimas', $victimas);
+            ->with('victimas', $victimas)
+            ->with('delitos',$delitos);
         }
 
         public function getFiscal(Request $request, $id){

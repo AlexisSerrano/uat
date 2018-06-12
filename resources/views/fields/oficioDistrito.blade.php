@@ -36,7 +36,13 @@
                             {!! Form::label('denunciado1', 'Denunciado', ['class' => 'col-form-label-sm']) !!}
                             {!! Form::select('denunciado1',$denunciado ,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
                         </div>
-                    </div>
+                </div>
+                <div class="col-4">
+                        <div class="form-group">
+                            {!! Form::label('delito', 'Delito', ['class' => 'col-form-label-sm']) !!}
+                            {!! Form::select('delito',$delitos ,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+                        </div>
+                </div>
                 </div>
     </div>
 </div>
