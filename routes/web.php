@@ -54,7 +54,7 @@ Route::get('/impresion-Oficios','ImpresionesController@tablaOficios')->name('tab
 Route::get('/oficio-distrito','ImpresionesController@oficioDistrito')->name('fiscal.distrito'); 
 Route::get('fiscal/{id}', 'ImpresionesController@getfiscal')->name('get.fiscal');
 Route::post('imprimir/Oficio-distrito','ImpresionesController@storeDistrito')->name('store.oficioDistrito');
- 
+Route::get('Datosfiscal/{id}', 'ImpresionesController@getDatos'); 
 
 
 
