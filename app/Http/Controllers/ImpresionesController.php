@@ -33,14 +33,52 @@ class ImpresionesController extends Controller
             ->orderBy('descripcion', 'ASC')
             ->pluck('descripcion', 'id');
 
-             //(dd($unidad);
+            $denunciado['']='Seleccione a la persona denunciada';
+            $denunciado2= DB::table('variables_persona')
+            ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
+            ->join('extra_denunciado', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->where('variables_persona.idCarpeta',$idCarpeta)
+            ->select('persona.nombres','persona.primerAp','persona.segundoAp', 'persona.id')
+            ->get();
+
+            foreach($denunciado2 as $denunciado){
+                $denunciado2[$denunciado->nombres.'-'.$denunciado->primerAp.'-'.$denunciado->segundoAp] = $denunciado->nombres.' '.$denunciado->primerAp.' '.$denunciado->segundoAp;
+            }
+
+            
+            $delitos=DB::table('tipif_delito')
+            ->join('carpeta as caso','tipif_delito.idCarpeta','=','caso.id')
+            ->join('cat_delito','cat_delito.id','=','tipif_delito.idDelito')
+            ->where('caso.id',$idCarpeta)
+            ->select('cat_delito.id', 'cat_delito.nombre')
+            ->orderBy('nombre', 'ASC')
+            ->pluck('nombre', 'id');
+            
+       // dd($delitos);
+
+            $victimas[''] = 'Seleccione una víctima/ofendido';
+            $victimas2 = DB::table('variables_persona')
+            ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
+            ->join('extra_denunciante', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->where('variables_persona.idCarpeta',$idCarpeta)
+            ->select('persona.nombres','persona.primerAp','persona.segundoAp', 'persona.id')
+            ->get();
+
+            foreach($victimas2 as $victima){
+                $victimas[$victima->nombres.'-'.$victima->primerAp.'-'.$victima->segundoAp] = $victima->nombres.' '.$victima->primerAp.' '.$victima->segundoAp;
+            }
+
             
             return view('fields.oficioDistrito')
             ->with('carpeta',$carpeta)
-            ->with('unidad',$unidad);
+            ->with('unidad',$unidad)
+            ->with('denunciado',$denunciado)
+            ->with('victimas', $victimas)
+            ->with('delitos',$delitos);
         }
 
         public function getFiscal(Request $request, $id){
+
             // if($request->ajax()){
             if($request){
                 // dd('asdasd');
@@ -58,7 +96,7 @@ class ImpresionesController extends Controller
         public function storeDistrito(Request $request){
            
             
-            return view('fields.oficioDistrito')
+            return view('fields.oficioDistrito');
            
         }
 }
