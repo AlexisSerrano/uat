@@ -11,7 +11,7 @@ use App\Models\VariablesPersona;
 class ResumenCarpetaController extends Controller
 
 {
-    public function showResumen($id){
+    public function showResumen(){
         $idCarpeta=session('carpeta');
         $carpeta=DB::table('carpeta')
         ->join('unidad','carpeta.idUnidad','=','unidad.id')
