@@ -92,7 +92,7 @@ Route::get('errorlogin', 'RegisterController@errorlogin')->name('error.login');
         
 Route::middleware(['auth'])->group(function () {
             
-    Route::get('/resumen', 'ResumenCarpetaController@showResumen')->name('carpeta.detalle');
+    Route::get('/resumen/{id}', 'ResumenCarpetaController@showResumen')->name('carpeta.detalle');
     Route::get('/resumen-denunciante', 'ResumenCarpetaController@detalleDenunciante')->name('resumen.denunciante');
     Route::get('/resumen-denunciado', 'ResumenCarpetaController@detalleDenunciado')->name('resumen.denunciado');
     Route::get('/resumen-acusaciones', 'ResumenCarpetaController@detalleAcusaciones')->name('resumen.acusaciones');
