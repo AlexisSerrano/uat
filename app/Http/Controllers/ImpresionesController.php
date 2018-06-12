@@ -55,7 +55,7 @@ class ImpresionesController extends Controller
             }
         }
         
-        public function storeDistrito(){
+        public function storeDistrito(Request $request){
            
             
             return view('fields.oficioDistrito')

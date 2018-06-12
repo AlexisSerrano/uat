@@ -15,17 +15,17 @@ class CreateOficioDistritosTable extends Migration
     {
         Schema::create('oficio_distritos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('entidad',200)
-            $table->string('localidad',200)
-            $table->string('fecha',200)
-            $table->string('denunciante',200)
-            $table->string('delito',200)
-            $table->string('denunciado',200)
-            $table->string('fiscalCordinador',200)
-            $table->string('fiscalDistrito',200)
-            $table->string('unidad')
-            $table->string('carpeta',200)
-            $table->string('fiscalAtendio',200)
+            $table->string('entidad');
+            $table->string('localidad');
+            $table->string('fecha');
+            $table->string('denunciante');
+            $table->string('delito');
+            $table->string('denunciado');
+            $table->string('fiscalCordinador'); 
+            $table->string('fiscalDistrito');
+            $table->string('unidad');
+            $table->string('carpeta');
+            $table->string('fiscalAtendio');
             $table->timestamps();
         });
     }
