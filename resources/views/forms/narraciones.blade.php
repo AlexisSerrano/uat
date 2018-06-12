@@ -74,7 +74,8 @@
 					<div class="form-group text-right">
 						<button type="submit" class="btn btn-primary">Guardar</button>
 						{{-- <a href="{{ url('resumen/'.$id)}}"  rel="tooltip" title="resumen" class="btn btn-secondary btn-simple btn-xs"> <i class="fa fa-times"></i> --}}
-						<button type="button" class="btn btn-primary" href="{{ url('resumen/'.$id)}}">resumen</button>
+						{{-- <button type="button" class="btn btn-primary" href="{{ url('resumen/'.$id)}}">resumen</button> --}}
+						<td><a class="btn btn-primary" href="{{ url('resumen/'.$id)}}"><i class="fa fa-check" aria-hidden="true"></i></a></td>
 					</div>
 					
 						
