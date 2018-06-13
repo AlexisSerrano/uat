@@ -111,19 +111,20 @@ class ImpresionesController extends Controller
             
             $datosAcuerdo = DB::table('oficio_distritos')->where('oficio_distritos.id', $id)
             ->join('cat_delito','cat_delito.id','=','oficio_distritos.delito')
-            ->join('zona','zona.id','=','oficio_distritos.localidad')
-            ->select('zona.descripcion as zona','oficio_distritos.fecha',
-            'oficio_distritos.denunciante','oficio_distritos.denunciado',
+            ->join('users','users.id','=','oficio_distritos.id')
+            ->select('oficio_distritos.id','oficio_distritos.localidad',
+            'oficio_distritos.denunciante','oficio_distritos.denunciado','oficio_distritos.fecha',
             'oficio_distritos.fiscalCordinador','oficio_distritos.fiscalDistrito','oficio_distritos.unidad','oficio_distritos.carpeta',
-            'oficio_distritos.fiscalAtendio','cat_delito.nombre as delito','oficio_distritos.localidad')
+            'oficio_distritos.fiscalAtendio','cat_delito.nombre as delito','users.puesto')
             ->first();
-            dd($datosAcuerdo);
+            // dd( $datosAcuerdo);
             // dd(Auth::user()->nombreC);
            // $fiscal = Auth::user()->nombreC;
-
+           $fechaactual = new Date( $datosAcuerdo->fecha);
+           $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
             $data = array('id' => $id,
             'localidad' => $datosAcuerdo->localidad,
-            'fecha' => $datosAcuerdo->fecha,
+            'fecha' => $fechahum,
             'denunciante' => $datosAcuerdo->denunciante,
             'delito' => $datosAcuerdo->delito,
             'denunciado' => $datosAcuerdo->denunciado,
@@ -131,7 +132,9 @@ class ImpresionesController extends Controller
             'fiscalDistrito' => $datosAcuerdo->fiscalDistrito,
             'unidad' => $datosAcuerdo->unidad,
             'carpeta' => $datosAcuerdo->carpeta,
-           'fiscalAtendio' => $datosAcuerdo->fiscalAtendio
+           'fiscalAtendio' => $datosAcuerdo->fiscalAtendio,
+           'puesto' => $datosAcuerdo->puesto,
+           'img' => asset('img/logo.png')
         //   'fiscal' =>  $caso->fiscalAtendio = Auth::user()->nombreC;
             );
             //dd(Auth::user()->nombreC);
@@ -166,7 +169,7 @@ class ImpresionesController extends Controller
             $acta->unidad = $request->unidadOficios;
             // $acta->carpeta = $request->carpeta;
             $acta->fiscalAtendio = Auth::user()->nombreC;
-            dd($acta);
+            // dd($acta);
             $acta->save();
 
             return view('documentos/acuerdo_fiscal')->with('id',$acta->id)->with('localidadAtiende',$localidadAtiende);
