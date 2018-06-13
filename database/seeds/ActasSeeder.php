@@ -424,10 +424,32 @@ class ActasSeeder extends Seeder
         Xalapa-Enríquez, Veracruz</p>',
         'unidad'=>'1'],
         
-        ]);
+      
+
+        ['nombre'  =>  'CARATULA DE LA CARPETA',
+        'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+        <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',  
+
+        'contenido' => '
+        {{$descripcion}}, VERACRUZ
+
+CARPETA DE INVESTIGACIÓN: {{$numeroCarpeta}}-{{$numeroF}}
+
+C. {{$denunciante}}
 
 
 
+Lic. {{$nombreC}}
+{{$puesto}}',
+            'unidad'=>'1',
+            'pie' =>  '<p>Circuito Rafael Guízar y<br />
+            Valencia No. 147,<br />
+            Colonia Reserva Territorial,<br />
+            C.P. 91096<br />
+            Teléfono: 01 (228) 8149428,<br />
+            Xalapa-Enríquez, Veracruz</p>',
+            'unidad'=>'1'],
+            ]);
 
     }
 }
