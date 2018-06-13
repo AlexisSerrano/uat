@@ -4,45 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Models\Carpeta;
 use Illuminate\Support\Facades\Auth;
 
 class CaratulaCarpetaController extends Controller
 {
     public function crearCaratula(){
 
-        $idCarpeta=session('carpeta');
-        $carpeta=DB::table('carpeta')
-        ->join('unidad','carpeta.idUnidad','=','unidad.id')
-        ->where('carpeta.id',$idCarpeta)
-        ->first();
-
-        $numeroCarpeta=$carpeta->numCarpeta;
-        
-        $denunciantes = DB::table('extra_denunciante')
-        ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-        ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-        ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-        ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-        ->first();
-        
-        
-        $fiscalAtiende=DB::table('users')
-        ->where('users.id', Auth::user()->id)
-        ->select('users.nombreC','users.puesto')
-        ->first();
-        
-        // dd($fiscalAtiende);
        
-    
 
-        $datos=array('id'=> $idCarpeta,
-        'numeroCarpeta'=>$numeroCarpeta,
-        'denunciante'=>$denunciantes,
-        'puesto'=>$fiscalAtiende->puesto,
-        'nombreC'=>$fiscalAtiende->nombreC);
+       
+        
+         //dd($fiscalAtiende, $denunciantes, $numeroCarpeta);
+       
+         return view('documentos.caratula');
 
-        return response()->json($datos);
-
+        // $datos=array('id'=> $idCarpeta,
+        // 'numeroCarpeta'=>$numeroCarpeta,
+        // 'denunciante'=>$denunciantes-,
+        // 'puesto'=>$fiscalAtiende->puesto,
+        // 'nombreC'=>$fiscalAtiende->nombreC);
+       
+        // return response()->json($datos);
+        // return view('documentos.caratula')->with('id',  $carpeta->id );
 
         // $word = new \PhpOffice\PhpWord\TemplateProcessor('formatos/CaratulaCarpeta.docx');
         // $word->setValue('carpeta',$carpeta->numCarpeta);
@@ -55,8 +39,40 @@ class CaratulaCarpetaController extends Controller
 
 public function imprimirCaratula(){
 
+
+    $idCarpeta=session('carpeta');
+    $carpeta=DB::table('carpeta')
+    ->join('unidad','carpeta.idUnidad','=','unidad.id')
+    ->where('carpeta.id',$idCarpeta)
+    ->first();
+
+    $numeroCarpeta=$carpeta->numCarpeta;
     
-    return view('documentos.caratula');
+    $denunciantes = DB::table('extra_denunciante')
+    ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+    ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+    ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+    ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+    ->first();
+    $nombre= $denunciantes->nombres.' '. $denunciantes->primerAp.' '. $denunciantes->segundoAp;
+    
+    $fiscalAtiende=DB::table('users')
+    ->join('unidad','unidad.id','=','users.id')
+    ->where('users.id', Auth::user()->id)
+    ->select('users.nombreC','users.puesto','users.numFiscal','unidad.descripcion')
+    ->first();
+
+    $datos=array('id'=> $idCarpeta,
+        'numeroCarpeta'=>$numeroCarpeta,
+        'denunciante'=>$nombre,
+        'puesto'=>$fiscalAtiende->puesto,
+        'numeroF'=> $fiscalAtiende->numFiscal,
+        'descripcion'=> $fiscalAtiende->descripcion,
+        'nombreC'=>$fiscalAtiende->nombreC);
+
+        return response()->json($datos);
+// dd($data);
+    // return view('documentos.caratula');
 
 
 }
