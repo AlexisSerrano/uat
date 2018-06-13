@@ -9,10 +9,10 @@
 
 	<ul class="nav nav-tabs" id="myTab" role="tablist">
 		<li class="nav-item">
-		  	<a class="nav-link active " id="personales-tab" data-toggle="tab" href="#personales" role="tab" aria-controls="personales" aria-selected="true">Medidas de Protección</a>
+		  	<a class="nav-link active " id="personales-tab" data-toggle="tab" href="#personales" role="tab" aria-controls="personales" aria-selected="true">Actas De Hechos</a>
 		</li>
 		<li class="nav-item">
-		  	<a class="nav-link " id="trabajo-tab" data-toggle="tab" href="#trabajo" role="tab" aria-controls="trabajo" aria-selected="false">Actas De Hechos</a>
+		  	<a class="nav-link " id="trabajo-tab" data-toggle="tab" href="#trabajo" role="tab" aria-controls="trabajo" aria-selected="false">Medidas de Protección</a>
 		</li>
 		<li class="nav-item">
 		  	<a class="nav-link " id="abogado-tab" data-toggle="tab" href="#abogado" role="tab" aria-controls="abogado" aria-selected="false">Periciales</a>
@@ -25,7 +25,7 @@
 	<div class="tab-content" id="myTabContent">
 		<div class="tab-pane fade show active " id="personales" role="tabpanel" aria-labelledby="personales-tab">
 			<div class="boxtwo">
-				@include('fields.medidas-ofi')
+				@include('tables.medidas-ofi')
 				{{-- botones --}}
 				<div class="row menu">	
 					<div class="col text-left">				
@@ -39,7 +39,7 @@
 		
 		<div class="tab-pane fade" id="trabajo" role="tabpanel" aria-labelledby="trabajo-tab">
 			<div class="boxtwo">
-				@include('fields.medidas-ofi')
+				@include('tables.medidas-ofi')
 					{{-- botones --}}
 				<div class="row menu">	
 					<div class="col text-left">				
@@ -54,7 +54,7 @@
 
 		<div class="tab-pane fade" id="abogado" role="tabpanel" aria-labelledby="abogado-tab">
 			<div class="boxtwo">
-				@include('fields.medidas-ofi')
+				@include('tables.medidas-ofi')
 				{{-- botones --}}
 				<div class="row menu">	
 					<div class="col text-left">
@@ -69,7 +69,7 @@
 
 		<div class="tab-pane fade" id="abogado2" role="tabpanel" aria-labelledby="abogado-tab2">
 			<div class="boxtwo">
-				@include('fields.medidas-ofi')
+				@include('tables.medidas-ofi')
 				{{-- botones --}}
 				<div class="row menu">	
 					{{-- <div class="col text-left">

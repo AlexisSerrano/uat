@@ -8,7 +8,7 @@
 				  
 			  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					  
-			    	<form class="form-inline my-2 my-lg-0" method="POST" action="{{ url('filtroactas') }}">
+			    	<form class="form-inline my-2 my-lg-0" method="POST" action="{{ url('filtro') }}">
 						@csrf
 						
 						
@@ -20,7 +20,7 @@
 					
 			    	</form>
 				  </div>
-				  <a href="{{url('listaActas')}}"><button class="btn btn-outline-secondary my-2 my-sm-0" type="button">Todos</button></a>
+				  <a href="{{url('lista-oficios')}}"><button class="btn btn-outline-secondary my-2 my-sm-0" type="button">Todos</button></a>
 			</nav>
 		</div>
 		<div class="col-12">
@@ -39,7 +39,7 @@
 					<td>UAT-XI/AH-{{$acta->folio}}/{{$year}}</td>
 					<td>{{$acta->nombre}} {{$acta->primer_ap}} {{$acta->segundo_ap}}</td>
 					<td>{{$acta->fiscal}}</td>
-					<td style="text-align:center;"><a href='{{url("descActas/$acta->id")}}'><button class="btn btn-secondary"><i class="fa fa-download"></i></button></a></td>
+					<td style="text-align:center;"><a href='{{url("actaoficio/$acta->id")}}'><button class="btn btn-secondary"><i class="fa fa-download"></i></button></a></td>
 				</tr>
 				@empty
 				@endforelse

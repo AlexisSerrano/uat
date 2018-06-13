@@ -8,19 +8,12 @@
 {{ csrf_field() }}
 <br>
 <div class="card">
-	<div class="card-header">
-		<div class="">
-			<div class="row">
-				<div class="col-4 text-left">
-					<div class="form-group">
-						{{-- {!! Form::label('idEstado', 'Estatus del vehiculo', ['class' => 'col-form-label-sm']) !!} 
-				
-						{!! Form::select('idEstado',array('INVOLUCRADO EN DELITO' => 'INVOLUCRADO EN DELITO', 
-						'ROBO DE VEHICULO' => ''), null,  ['class' => 'form-control form-control-sm', 'placeholder' => 'Estatus del vehiculo'])!!} --}}
-						<button class="btn btn-primary">Vehículo involucrado en robo</button>
-					</div>
-				</div>
-			</div>
+	<div class="card-header row">
+		<div class="col">
+			<button class="btn btn-primary form-control" onclick="mostrarCampos();">Vehículo involucrado</button>
+		</div>
+		<div class="col">
+			<button class="btn btn-primary form-control">Vehículo robado</button>
 		</div>
 	</div>
 	
@@ -53,10 +46,15 @@
 	<script src="{{ asset('js/selects/vehiculo.js') }}"></script>
     {{-- <script src="{{ asset('js/selects/vehiculo.js') }}"></script>--}}
 	<script src="{{ asset('js/vehiculos.js') }}"></script> 
+	<script>
+		function mostrarCampos() {
+			
+		}
+	</script>
 
 
 
-	@endpush
+@endpush
 
 
 {{-- @push('docready-js')

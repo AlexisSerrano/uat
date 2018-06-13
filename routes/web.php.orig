@@ -50,11 +50,9 @@ Route::get('/pruebasformatos', function(){
 Route::get('/pruebasactas','PruebasController@actas');
 Route::get('/pruebasmetodo/{id}','PruebasController@pruebas');
 
-Route::get('/impresion-Oficios','ImpresionesController@tablaOficios')->name('tabla.oficios');
-Route::get('/oficio-distrito','ImpresionesController@oficioDistrito')->name('fiscal.distrito'); 
-Route::get('fiscal/{id}', 'ImpresionesController@getfiscal')->name('get.fiscal');
-Route::post('imprimir/Oficio-distrito','ImpresionesController@storeDistrito')->name('store.oficioDistrito');
-Route::get('Datosfiscal/{id}', 'ImpresionesController@getDatos'); 
+// Route::get('/resumen', function(){
+//     return view('fields.resumen-carpeta.resumen-carpeta');  
+// });   
 
 
 
@@ -263,8 +261,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('carpetaNum','libroGobController@searchNumCarpeta')->name('filtro.carpetas');
     Route::post('libroGobierno','libroGobController@mostrarlibro')->name('libro.filtro');
     /* --------Rutas para Caratula de carpeta de investigacion----------- */
-    Route::get('caratula','CaratulaCarpetaController@crearCaratula')->name('caratula');
-    Route::get('caratula-impresion','CaratulaCarpetaController@imprimirCaratula')->name('caratula.imprimir');
+    Route::get('caratula','CaratulaCarpetaController@crearCaratula');
     
     
     /* --------Rutas para Periciales----------- */
@@ -286,12 +283,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getVehiculo/{id}', 'VehiculoController@getVh');
 
     /* -----------Ruta para Libro de Oficios------------ */
-    Route::get('lista-oficios','LibroOficioController@IndexOfi');
-    Route::post('/filtro', 'LibroOficioController@filtroactas');
-    Route::get('/filtro', 'LibroOficioController@filtroactas');  
+<<<<<<< HEAD
+    Route::get('lista-oficios','LibroOficioController@IndexOfi');  
+
+=======
+    Route::get('lista-oficios','LibroOficioController@medidas-ofi');  
     
     /* -----------Ruta para cambio de rol------------ */
     Route::get('rol','RegisterController@cambioRol')->name('cambioRol');  
+>>>>>>> 3561918ee08fe7ae01ffacde40875d7610d390fe
 
 });
 
