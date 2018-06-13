@@ -41,6 +41,7 @@ class CarpetaController extends Controller
             return redirect(url('carpetas'));    
         }else{
             session()->forget('terminada');
+            session()->forget('numCarpeta');
             session()->forget('carpeta');
             // Alert::info('No tiene ningún  caso abierto.');
             return redirect(url('carpetas'));
@@ -67,14 +68,14 @@ class CarpetaController extends Controller
             $usuario->idCarpeta=null;
             $usuario->save();
             
-
+            session()->forget('numCarpeta');
             session()->forget('carpeta');
             Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia');
             return redirect(url('carpetas'));
         }
         // $carpeta = Carpeta::find($idCarpeta);
         // $carpeta->delete();
-        
+        session()->forget('numCarpeta');
         session()->forget('carpeta');
         Alert::info('El caso ha sido cancelado con éxito.', 'Hecho');
         return redirect(url('carpetas'));
@@ -326,10 +327,13 @@ class CarpetaController extends Controller
             
             
             session(['carpeta' => $caso->id]);
-            $numcarpetare=Carpeta::find($caso->id);
-            $numcarpetare->numCarpeta = $unidad."/".Auth::user()->numFiscal."/".$caso->id."/".Carbon::now()->year;            
-            $numcarpetare->save();
+            
+            $numCarpeta=Carpeta::find($caso->id);
+            $numCarpeta->numCarpeta = $unidad."/".Auth::user()->numFiscal."/".$caso->id."/".Carbon::now()->year;            
+            $numCarpeta->save();
 
+            session(['numCarpeta' => $numCarpeta->numCarpeta]);
+            
             $usuario=User::find(Auth::user()->id);
             $usuario->idCarpeta=session('carpeta');
             $usuario->save();

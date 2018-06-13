@@ -10,16 +10,21 @@
 <div class="card">
 	<div class="card-header row">
 		<div class="col">
-			<button class="btn btn-primary form-control" onclick="mostrarCampos();">Vehículo involucrado</button>
+			<button type="button" class="btn btn-primary form-control" onclick="vehiculoInvolucrado();">Vehículo involucrado</button>
 		</div>
 		<div class="col">
-			<button class="btn btn-primary form-control">Vehículo robado</button>
+			<button type="button" class="btn btn-primary form-control" onclick="vehiculoRobado();">Vehículo robado</button>
 		</div>
 	</div>
 	
 	<div class=" card-body boxone">
 		<div class="row no-gutters">
 			<div class="col-12">
+				<div class="boxtwo" id="vrr">
+					<iframe src="http://localhost/vrr/public/ver-registro" width="100%" height="1000px">
+						<p>Tu navegador no soporta esta paguina por favor cambia de navegador o intentalo mas tarde.</p>
+					</iframe>
+				</div>
 				<div class="boxtwo" id="vehiculos">
 					<div class="row">
 						@include('fields.vehiculos')
@@ -47,8 +52,16 @@
     {{-- <script src="{{ asset('js/selects/vehiculo.js') }}"></script>--}}
 	<script src="{{ asset('js/vehiculos.js') }}"></script> 
 	<script>
-		function mostrarCampos() {
-			
+		$("#vrr").hide();
+		$("#vehiculos").hide();
+
+		function vehiculoInvolucrado() {
+			$("#vrr").hide();
+			$("#vehiculos").show();
+		}
+		function vehiculoRobado() {
+			$("#vrr").show();
+			$("#vehiculos").hide();
 		}
 	</script>
 

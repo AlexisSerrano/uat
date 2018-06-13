@@ -23,6 +23,16 @@
 		</span>
 	</div>
 	@endif
+	@if (!is_null(session('numCarpeta')))	
+	<div style="color:white;margin-left:20px;">
+		<span>
+			Número de carpeta: 
+			<strong>
+				{{session('numCarpeta')}}
+			</strong>
+		</span>
+	</div>
+	@endif
 	@if (!is_null(session('preregistro')))	
 	<div style="color:white;margin-left:20px;">
 		<span>
