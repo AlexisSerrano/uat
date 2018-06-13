@@ -34,6 +34,12 @@
                   
                 </td>                               
                 </tr>
+                <tr>
+                        <td>Oficio de Policía Ministerial</td>
+                        <td style="text-align:center;">
+                        <a href="{{ url('policia-ministarial')}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i> Imprimir</a>
+                        </td> 
+                    </tr>  
 
     
             </tbody>

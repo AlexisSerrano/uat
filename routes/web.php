@@ -57,7 +57,7 @@ Route::post('imprimir/Oficio-distrito','ImpresionesController@storeDistrito')->n
 Route::get('Datosfiscal/{id}', 'ImpresionesController@getDatos'); 
 
 
-
+Route::get('policia-ministerial','ImpresionesController@policiaMinisterial')->name('policia.ministerial');
 /**************************************************************/
 // -------------------------------------------------------------------
 
