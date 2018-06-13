@@ -1,9 +1,9 @@
 <div class="row">
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('idDenunciante', 'Denunciante', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::label('idDenunciante', 'Victima u ofendido', ['class' => 'col-form-label-sm']) !!}
 			<select name="idDenunciante" id="idDenunciante" class="form-control form-control-sm" required>
-				<option value="">Seleccione un denunciante</option>
+				<option value="">Seleccione una victima u ofendido</option>
 				@foreach($denunciantes as $denunciante)
 				<option value="{{ $denunciante->id }}">{{ $denunciante->nombres." ".$denunciante->primerAp." ".$denunciante->segundoAp }}</option>
 				@endforeach
@@ -23,9 +23,9 @@
 		</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('idDenuciado', 'Denunciado', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::label('idDenuciado', 'Investigado', ['class' => 'col-form-label-sm']) !!}
 			<select name="idDenunciado" id="idDenuncidoe" class="form-control form-control-sm" required>
-				<option value="">Seleccione un denunciado</option>
+				<option value="">Seleccione al investigado</option>
 				@foreach($denunciados as $denunciado)
 				<option value="{{ $denunciado->id }}">{{ $denunciado->nombres." ".$denunciado->primerAp." ".$denunciado->segundoAp }}</option>
 				@endforeach

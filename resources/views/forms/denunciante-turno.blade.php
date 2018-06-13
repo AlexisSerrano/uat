@@ -1,5 +1,5 @@
 @extends('template.form')
-@section('title', 'Agregar denunciante')
+@section('title', 'Agregar Víctima u ofendido')
 @section('content')
 @include('fields.errores')
 
@@ -28,7 +28,7 @@
 				{{-- Domicilio Notificaciones--}}
 				<a class="nav-item nav-link disabled" id="dirnotificacion-tab" data-toggle="tab" href="#dirnotificacion" role="tab" aria-controls="dirnotificacion" aria-selected="false">Domicilio para notificaciones <span><i class="fa fa-angle-down"></i></span></a>
 				{{-- Informacion deninciante  --}}
-				<a class="nav-item nav-link disabled" id="denunciante-tab" data-toggle="tab" href="#denunciante" role="tab" aria-controls="denunciante" aria-selected="false">Datos del denunciante <span><i class="fa fa-angle-down"></i></span></a>	 	
+				<a class="nav-item nav-link disabled" id="denunciante-tab" data-toggle="tab" href="#denunciante" role="tab" aria-controls="denunciante" aria-selected="false">Datos de la víctima u ofendido <span><i class="fa fa-angle-down"></i></span></a>	 	
 			</div>
 		</nav>
 		{{-- personales-orientador --}}

@@ -1,6 +1,6 @@
 @extends('template.form')
 
-@section('title', 'Agregar denunciado')
+@section('title', 'Agregar Víctima u ofendido')
 @section('css')
 <style>
 	.btn-success{

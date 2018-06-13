@@ -2,7 +2,7 @@
 <br>
 <div class="card">
         <div class="card-header">
-            <h6>Denunciantes</h6>
+            <h6>Víctima u ofendido</h6>
         </div>
 
 

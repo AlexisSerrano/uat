@@ -6,9 +6,9 @@
 <div class="table-responsive">
     <table class="table table-hover">
         <thead>
-            <th>Nombre denunciante</th>
+            <th>Nombre de la víctima u ofendido</th>
             <th>Delito</th>
-            <th>Nombre denunciado</th>
+            <th>Nombre del investigado</th>
             <th>Opciones</th>  
             {{-- <th>Opciones</th> --}}
         </thead>

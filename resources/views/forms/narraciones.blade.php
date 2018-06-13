@@ -66,7 +66,7 @@
 					<div class="form-group" id="divnarracion">		
 						<textarea name="narracion" id="areaNarracion" cols="30" rows="10" class="form-control form-control-sm">@if($ultimo != null){{ $ultimo->narracion}} @endif</textarea>
                         <div id="divText" style="display:none"></div>
-                        <input type="hidden" name="id" value="{{$id}}"
+                        <input type="hidden" name="id" value="{{$id}}">
 					 </div> 
                         <input id="input-id" type="file" class="file" name="file"  data-preview-file-type="text">
                
@@ -97,6 +97,10 @@
 @push('scritps')
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="{{ asset('public/js/funciones.js') }}"></script>
+{{-- <script src="{{ asset('plugins/fileinput/js/fileinput.min.js')}}" ></script>
+<script src="{{ asset('plugins/fileinput/themes/fa/theme.min.js')}}" ></script>
+<script src="{{ asset('plugins/fileinput/js/locales/es.js')}}" ></script>
+<script src="{{ asset('js/narraciones.js')}}" ></script> --}}
 <script>
 
 $.validate({
@@ -106,15 +110,15 @@ $.validate({
 // $("#input-id").fileinput();
 // $("#input-id").fileinput({'showUpload':false, 'previewFileType':'any'});
 
-$("#input-id").fileinput({
-       language:'es',
-       theme: 'fa',
-       browseClass: 'btn btn-info btn-block',
-       showCaption: true,
-       showRemove: true,
-       showUpload: false,
-       allowedFileExtensions: ['jpg','jpeg','png','gif','pdf']
-   });
+// $("#input-id").fileinput({
+//        language:'ES',
+//        theme: 'fa',
+//        browseClass: 'btn btn-info btn-block',
+//        showCaption: true,
+//        showRemove: true,
+//        showUpload: false,
+//        allowedFileExtensions: ['jpg','jpeg','png','gif','pdf']
+//    });
 
 
 </script>

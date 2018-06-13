@@ -1,6 +1,6 @@
 <div class="card">
         <div class="card-header">
-            <h6>Denunciados</h6>
+            <h6>Investigado</h6>
         </div>
 
 <div class="table-responsive">

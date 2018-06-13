@@ -83,6 +83,17 @@
   "hideMethod": "fadeOut"
 }
 
+ $("#input-id").fileinput({
+       language:'es',
+       theme: 'fa',
+       browseClass: 'btn btn-info btn-block',
+       showCaption: true,
+       showRemove: true,
+       showUpload: false,
+       allowedFileExtensions: ['jpg','jpeg','png','gif','pdf']
+   });
+
+
     
     </script>
 

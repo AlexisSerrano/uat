@@ -8,8 +8,8 @@ $barra = getNavCaso();
 }
 </style>
 <div class="btn-group col">
-	<a href="{{route('new.denunciante')}}" class="{{$barra['denunciante']}} form-control">Denunciante <span class="badge badge-info right">{{$barra['cdenunciante']}}</span></a>
-	<a href="{{route('new.denunciado')}}" class="{{$barra['denunciado']}} form-control">Denunciado <span class="badge badge-info right">{{$barra['cdenunciado']}}</span></a>
+	<a href="{{route('new.denunciante')}}" class="{{$barra['denunciante']}} form-control">Víctima u ofendido <span class="badge badge-info right">{{$barra['cdenunciante']}}</span></a>
+	<a href="{{route('new.denunciado')}}" class="{{$barra['denunciado']}} form-control">Investigado<span class="badge badge-info right">{{$barra['cdenunciado']}}</span></a>
 	<a href="{{route('new.abogado')}}" class="{{$barra['abogado']}} form-control">Abogado <span class="badge badge-info right">{{$barra['cabogado']}}</span></a>
 	<a href="{{route('new.autoridad')}}"  class="{{$barra['autoridad']}} form-control">Autoridad <span class="badge badge-info right">{{$barra['cautoridad']}}</span></a>
 	<a href="{{route('new.delito')}}" class="{{$barra['delitos']}} form-control">Delitos <span class="badge badge-info right">{{$barra['cdelitos']}}</span></a>

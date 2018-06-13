@@ -85,6 +85,9 @@
 @push('scritps')
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="{{ asset('js/borrar.js') }}"></script>
+<script src="{{ asset('plugins/fileinput/js/fileinput.min.js')}}" ></script>
+<script src="{{ asset('plugins/fileinput/themes/fa/theme.min.js')}}" ></script>
+<script src="{{ asset('plugins/fileinput/js/locales/es.js')}}" ></script>
 <script>
 
 $.validate({
