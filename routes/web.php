@@ -58,6 +58,12 @@ Route::get('Datosfiscal/{id}', 'ImpresionesController@getDatos');
 
 
 Route::get('policia-ministerial','ImpresionesController@policiaMinisterial')->name('policia.ministerial');
+
+Route::get('transporte-estado','ImpresionesController@transporteEdo')->name('oficio.transporte');
+Route::get('Oficiotransporte-estado','ImpresionesController@storeoficioTransporte')->name('storeoficio.Transporte');
+
+
+
 /**************************************************************/
 // -------------------------------------------------------------------
 

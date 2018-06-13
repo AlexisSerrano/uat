@@ -23,7 +23,7 @@
                 <tr>
                         <td>Oficio de Dirección Gral. Transporte</td>
                         <td style="text-align:center;">
-                        <a href="" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i> Imprimir</a>
+                        <a href=" {{ url('transporte-estado')}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i> Imprimir</a>
                         </td> 
                     </tr>   
                 <tr>

@@ -9,6 +9,10 @@ use DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Persona;
 use App\Models\Unidad;
+use App\Models\CatMarca;
+use App\Models\CatSubmarca;
+use App\Models\CatColor;
+use App\Models\CatTipoUso;
 use App\Models\OficioDistrito;
 use Alert;
 use Carbon\Carbon;
@@ -18,6 +22,53 @@ use App\Models\VariablesPersona;
 
 class ImpresionesController extends Controller
 {
+    public function storeoficioTransporte(){
+        $idCarpeta=session('carpeta');
+        $carpeta=DB::table('carpeta')
+        ->join('unidad','carpeta.idUnidad','=','unidad.id')
+        ->where('carpeta.id',$idCarpeta)->first();
+
+
+        $numCarpera=$carpeta->numCarpeta;
+
+        $vehiculo=DB::Table('vehiculo')
+        ->join('tipif_delito as delito','vehiculo.idTipifDelito','=','delito.id')
+        ->join('carpeta','delito.idCarpeta','=','carpeta.id')
+        ->where('carpeta.id',$idCarpeta)
+        ->select('vehiculo.id','vehiculo.idTipifDelito','vehiculo.placas','vehiculo.idSubmarca','vehiculo.modelo',
+        'vehiculo.nrpv','vehiculo.idColor','vehiculo.numSerie','vehiculo.numMotor','vehiculo.idTipoUso')
+        ->first();
+
+       
+        $color=CatColor::select('id','nombre')->where('id',$vehiculo->idColor)->first();
+        $marca=CatMarca::select('id','nombre')->where('id',$vehiculo->idColor)->first();
+        $submarca=CatSubmarca::select('id','nombre')->where('id',$vehiculo->idSubmarca)->first();
+        $uso=CatTipoUso::select('id','nombre')->where('id',$vehiculo->idTipoUso)->first();
+        
+
+       
+        
+        $data = array('id' => $vehiculo->id,
+        'numCarpeta'=>$carpeta->numCarpeta,
+        'fiscalAtendio'=>$carpeta->fiscalAtendio,
+        'marca'=>$marca->nombre,
+        'submarca'=>$submarca->nombre,
+        'color'=>$color->nombre,
+        'numSerie'=>$vehiculo->numSerie,
+        'modelo'=>$vehiculo->modelo,
+        'placas'=>$vehiculo->placas);
+        
+         //dd($data);
+       
+       return response()->json($data);
+    }
+
+    public function transporteEdo(){
+return view('documentos.fTransporte');
+    }
+
+
+
     public function tablaOficios(){
         $idCarpeta=session('carpeta');
         $carpeta=DB::table('carpeta')
