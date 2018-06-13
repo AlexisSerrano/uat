@@ -43,7 +43,15 @@ class PericialesController extends Controller
             $submarca =  CatSubmarca::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $tipo =  CatClaseVehiculo::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             // dd($estados);
-            $delits = CatDelito::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            // $delits = CatDelito::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $delits=DB::table('tipif_delito')
+            ->join('carpeta as caso','tipif_delito.idCarpeta','=','caso.id')
+            ->join('cat_delito','cat_delito.id','=','tipif_delito.idDelito')
+            ->where('caso.id',$idCarpeta)
+            ->select('cat_delito.id', 'cat_delito.nombre')
+            ->orderBy('nombre', 'ASC')
+            ->pluck('nombre', 'id');            
+            
             $victimas[''] = 'Seleccione una víctima/ofendido';
             $victimas2 = DB::table('variables_persona')
             ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')

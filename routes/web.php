@@ -263,7 +263,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('carpetaNum','libroGobController@searchNumCarpeta')->name('filtro.carpetas');
     Route::post('libroGobierno','libroGobController@mostrarlibro')->name('libro.filtro');
     /* --------Rutas para Caratula de carpeta de investigacion----------- */
-    Route::get('caratula','CaratulaCarpetaController@crearCaratula');
+    Route::get('caratula','CaratulaCarpetaController@crearCaratula')->name('caratula');
+    Route::get('caratula-impresion','CaratulaCarpetaController@imprimirCaratula')->name('caratula.imprimir');
     
     
     /* --------Rutas para Periciales----------- */

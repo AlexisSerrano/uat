@@ -3,6 +3,9 @@
 @include('fields.errores')
 @section('content')
 {!! Form::open(['route' => 'store.oficioDistrito', 'method' => 'POST'])  !!} 
+{{-- <input type="hidden" name="zona" value="{{$zona}}">
+<input type="hidden" name="ncarpeta" value="{{$carpeta->numCarpeta}}"> --}}
+
 <div class="col">
     <div class="card">
         <div class="card-body">

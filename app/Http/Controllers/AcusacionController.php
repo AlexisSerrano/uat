@@ -103,7 +103,7 @@ class AcusacionController extends Controller
 
     public function acuerdoInicio($id){
 
-    //     $id=session('carpeta');
+    //  ¿¿   $id=session('carpeta');
     //     $carpeta = Carpeta::find($id);
         $datos=DB::table('acusacion')
         ->where('acusacion.id','=',$id)
