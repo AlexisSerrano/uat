@@ -176,6 +176,10 @@ class ImpresionesController extends Controller
 
            
         }
+
+        public function policiaMinisterial(){
+            return view('documentos.policia-ministerial');
+        }
 }
 
 
