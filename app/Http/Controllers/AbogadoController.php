@@ -114,7 +114,7 @@ class AbogadoController extends Controller
             return redirect()->route('new.abogado');
         }catch (\PDOException $e){
             DB::rollBack();
-            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            Alert::error('Se presentó un problema al guardar sus datos, intente de nuevo', 'Error');
             return back()->withInput();
         }
     }
@@ -198,42 +198,46 @@ class AbogadoController extends Controller
 
 
     public function delete($id){
-        $ExtraAbogado =  ExtraAbogado::find($id);
-        $tipo=$ExtraAbogado->tipo;
-        $tipo = normaliza($tipo);
-        if ($tipo=="asesor juridico") {
-            
-            $denunciantes = DB::table('extra_denunciante')
-            ->where('idAbogado', '=', $id)
-            ->get();
-            // dd($denunciantes);
-            foreach ($denunciantes as $denunciante) {
-                $asesor= ExtraDenunciante::find($denunciante->id);
-                $asesor->idAbogado = null;
-                $asesor->save();
+        DB::beginTransaction();
+        try{
+            $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+            $ExtraAbogado =  ExtraAbogado::find($id);
+            $tipo=$ExtraAbogado->tipo;
+            $tipo = normaliza($tipo);
+            if ($tipo=="asesor juridico") {
+                $denunciantes = DB::table('extra_denunciante')
+                ->where('idAbogado', '=', $id)
+                ->get();
+                foreach ($denunciantes as $denunciante) {
+                    $asesor= ExtraDenunciante::find($denunciante->id);
+                    $asesor->idAbogado = null;
+                    $asesor->save();
+                    $bdbitacora->defensa = $bdbitacora->defensa-1;
+                    $bdbitacora->save();
+                }
+            } 
+            else {
+                $denunciados = DB::table('extra_denunciado')
+                ->where('idAbogado', '=', $id)
+                ->get();
+                foreach ($denunciados as $denunciado) {
+                    $abogado= ExtraDenunciado::find($denunciado->id);
+                    $abogado->idAbogado = null;
+                    $abogado->save();
+                    $bdbitacora->defensa = $bdbitacora->defensa-1;
+                    $bdbitacora->save();
+                }
             }
-
-        } else {
-            $denunciados = DB::table('extra_denunciado')
-            ->where('idAbogado', '=', $id)
-            ->get();
-            // dd($denunciantes);
-            foreach ($denunciados as $denunciado) {
-                $abogado= ExtraDenunciado::find($denunciado->id);
-                $abogado->idAbogado = null;
-                $abogado->save();
-            }
-
+            $ExtraAbogado->delete();
+            $bdbitacora->abogado = $bdbitacora->abogado-1;
+            $bdbitacora->save();
+            DB::commit();
+            Alert::success('Registro eliminado con éxito', 'Hecho');
+            return back();
+        }catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al eliminar sus datos, intente de nuevo', 'Error');
+            return back()->withInput();
         }
-        $ExtraAbogado->delete();
-        $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-        $bdbitacora->abogado = $bdbitacora->abogado-1;
-
-                
-        $bdbitacora->save();
-
-
-        Alert::success('Registro eliminado con éxito', 'Hecho');
-        return back();
     }
 }

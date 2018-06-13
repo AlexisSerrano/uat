@@ -25,6 +25,7 @@ use App\Models\Persona;
 use App\Models\VariablesPersona;
 use App\Models\ExtraDenunciante;
 use App\Models\BitacoraNavCaso;
+use App\Models\Acusacion;
 
 class DenuncianteController extends Controller
 {
@@ -231,8 +232,6 @@ public function showForm()
                 }
                 $narracion->tipo=0;
                 $narracion->save();
-
-
                 $ExtraDenunciante = new ExtraDenunciante();
                 $ExtraDenunciante->idVariablesPersona = $idVariablesPersona;
                 $ExtraDenunciante->idNotificacion = $idNotificacion;
@@ -362,23 +361,23 @@ public function showForm()
     public function delete($id){
         DB::beginTransaction();
         try{
+            $acusaciones = Acusacion::where('idCarpeta',session('carpeta'))->where('idDenunciante',$id)->count();
             $vpersonas = DB::table('extra_denunciante')
             ->join('variables_persona','variables_persona.id','=','extra_denunciante.idVariablesPersona')
             ->where('extra_denunciante.id', '=', $id)
             ->select('variables_persona.id as id')
             ->first();
-
             $ExtraDenunciante =  ExtraDenunciante::find($id);
             $ExtraDenunciante->delete();
-        
-                $vp= VariablesPersona::find($vpersonas->id);
-                $vp->idCarpeta = null;
-                $vp->save();
-
+            $vp= VariablesPersona::find($vpersonas->id);
+            $vp->idCarpeta = null;
+            $vp->save();
             $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-                $bdbitacora->denunciante = $bdbitacora->denunciante-1;
-                $bdbitacora->save();
-                DB::commit();
+            $bdbitacora->denunciante = $bdbitacora->denunciante-1;
+            $bdbitacora->defensa = $bdbitacora->defensa-1;
+            $bdbitacora->acusaciones = $bdbitacora->acusaciones-$acusaciones;
+            $bdbitacora->save();
+            DB::commit();
             Alert::success('Registrado eliminado con éxito', 'Hecho');
             return back();
         }

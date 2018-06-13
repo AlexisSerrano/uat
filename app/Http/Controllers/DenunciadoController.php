@@ -22,6 +22,7 @@ use App\Models\Domicilio;
 use App\Models\NarracionPersona;
 use App\Http\Requests\StoreDenunciado;
 use App\Models\BitacoraNavCaso;
+use App\Models\Acusacion;
 use Alert;
 use DB;
 use Carbon\Carbon;
@@ -216,8 +217,6 @@ class DenunciadoController extends Controller
                     $persona->save();
                     $idPersona = $persona->id;
                 }
-
-
                     $domicilio = new Domicilio();
                     if (!is_null($request->idMunicipio)){
                         $domicilio->idMunicipio = $request->idMunicipio;
@@ -239,7 +238,6 @@ class DenunciadoController extends Controller
                     }
                     $domicilio->save();
                     $idD1 = $domicilio->id;
-
                     $domicilio2 = new Domicilio();
                     if (!is_null($request->idMunicipio2)){
                         $domicilio2->idMunicipio = $request->idMunicipio2;
@@ -340,8 +338,6 @@ class DenunciadoController extends Controller
                     $VariablesPersona->representanteLegal = "NO APLICA";
                     $VariablesPersona->save();
                     $idVariablesPersona = $VariablesPersona->id;
-
-                    
                     $narracion = new NarracionPersona();
                     $narracion->idVariablesPersona=$idVariablesPersona;
                     if (!is_null($request->narracion)){
@@ -349,9 +345,6 @@ class DenunciadoController extends Controller
                     }
                     $narracion->tipo=0;
                     $narracion->save();
-
-
-
                     $ExtraDenunciado = new ExtraDenunciado();
                     $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
                     $ExtraDenunciado->idNotificacion = $idNotificacion;
@@ -417,7 +410,6 @@ class DenunciadoController extends Controller
                     }
                     $domicilio->save();
                     $idD1 = $domicilio->id;
-
                     $domicilio3 = new Domicilio();
                     if (!is_null($request->idMunicipio3)){
                         $domicilio3->idMunicipio = $request->idMunicipio3;
@@ -455,7 +447,6 @@ class DenunciadoController extends Controller
                     // }
                     $notificacion->save();
                     $idNotificacion = $notificacion->id;
-
                     $VariablesPersona = new VariablesPersona();
                     $VariablesPersona->idCarpeta = $request->idCarpeta;
                     $VariablesPersona->idPersona = $idPersona;
@@ -464,8 +455,6 @@ class DenunciadoController extends Controller
                     $VariablesPersona->representanteLegal = $request->representanteLegal;
                     $VariablesPersona->save();
                     $idVariablesPersona = $VariablesPersona->id;
-
-
                     $narracion = new NarracionPersona();
                     $narracion->idVariablesPersona=$idVariablesPersona;
                     if (!is_null($request->narracion)){
@@ -473,8 +462,6 @@ class DenunciadoController extends Controller
                     }
                     $narracion->tipo=0;
                     $narracion->save();
-
-
                     $ExtraDenunciado = new ExtraDenunciado();
                     $ExtraDenunciado->idVariablesPersona = $idVariablesPersona;
                     $ExtraDenunciado->idNotificacion = $idNotificacion;
@@ -497,6 +484,7 @@ class DenunciadoController extends Controller
     public function delete($id){
         DB::beginTransaction();
         try{
+            $acusaciones = Acusacion::where('idCarpeta',session('carpeta'))->where('idDenunciado',$id)->count();
             $vpersonas = DB::table('extra_denunciado')
             ->join('variables_persona','variables_persona.id','=','extra_denunciado.idVariablesPersona')
             ->where('extra_denunciado.id', '=', $id)
@@ -506,14 +494,16 @@ class DenunciadoController extends Controller
             $ExtraDenunciado =  ExtraDenunciado::find($id);
             $ExtraDenunciado->delete();
         
-                $vp= VariablesPersona::find($vpersonas->id);
-                $vp->idCarpeta = null;
-                $vp->save();
-
+            $vp= VariablesPersona::find($vpersonas->id);
+            $vp->idCarpeta = null;
+            $vp->save();
+            //$acusaciones = Acusacion::where('idCarpeta',$idCarpeta)->where('idTipifDelito',$id)->count();
             $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-                $bdbitacora->denunciado = $bdbitacora->denunciado-1;
-                $bdbitacora->save();
-                DB::commit();
+            $bdbitacora->denunciado = $bdbitacora->denunciado-1;
+            $bdbitacora->defensa = $bdbitacora->defensa-1;
+            $bdbitacora->acusaciones = $bdbitacora->acusaciones-$acusaciones;
+            $bdbitacora->save();
+            DB::commit();
             Alert::success('Registrado eliminado con éxito', 'Hecho');
             return back();
         }
@@ -524,11 +514,10 @@ class DenunciadoController extends Controller
         }
     }
 
-
     public function addbitacora(){
         $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-            $bdbitacora->denunciado = $bdbitacora->denunciado+1;
-            $bdbitacora->save();
+        $bdbitacora->denunciado = $bdbitacora->denunciado+1;
+        $bdbitacora->save();
     }
 
 }

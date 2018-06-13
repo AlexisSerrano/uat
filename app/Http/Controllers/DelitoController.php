@@ -8,7 +8,7 @@ use Alert;
 use Carbon\Carbon;
 use App\Models\CatAgrupacion1;
 use App\Models\CatAgrupacion2;
-use App\Models\Acusaciones;
+use App\Models\Acusacion;
 use App\Models\TipifDelito;
 use App\Models\CatMunicipio;
 use App\Models\CatLocalidad;
@@ -20,7 +20,8 @@ use App\Models\CatZona;
 use App\Models\Carpeta;
 use App\Models\CatDelito;
 use App\Http\Requests\StoreDelito;
-use App\Models\BitacoraNavCaso; 
+use App\Models\BitacoraNavCaso;
+use App\Models\VehiculoCarpeta;  
 
 class DelitoController extends Controller
 {
@@ -165,45 +166,41 @@ class DelitoController extends Controller
 
 
     public function delete($id){
-
-        $TipifDelito =  TipifDelito::find($id);
-        $TipifDelito->delete();
-        $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-        $bdbitacora->delitos = $bdbitacora->delitos-1;
-        $bdbitacora->save();
-        Alert::success('Registro eliminado con éxito', 'Hecho');
-        return redirect()->route('new.delito');
-
+        $idCarpeta=session('carpeta');
+        DB::beginTransaction();
+        try{
+            $vehiculos = VehiculoCarpeta::where('idTipifDelito',$id)->count();
+            $acusaciones = Acusacion::where('idCarpeta',$idCarpeta)->where('idTipifDelito',$id)->count();
+            $TipifDelito = TipifDelito::find($id);
+            $TipifDelito->delete();
+            $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+            $bdbitacora->delitos = $bdbitacora->delitos-1;
+            $bdbitacora->acusaciones = $bdbitacora->acusaciones-$acusaciones;
+            $bdbitacora->vehiculos = $bdbitacora->vehiculos-$vehiculos;
+            $bdbitacora->save();
+            DB::commit();
+            Alert::success('Registro eliminado con éxito', 'Hecho');
+            return redirect()->route('new.delito');
+        }
+        catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar los datos, intente de nuevo', 'Error');
+            return back()->withInput();
+        }
     }
 
-
-
-
-
     public function editar($id){
-        
-        
-       
-
-
-
         $delito = DB::table('tipif_delito')
         ->join('cat_delito', 'tipif_delito.idDelito','=','cat_delito.id') 
         ->where('tipif_delito.id',$id)
         ->select('tipif_delito.idDelito','tipif_delito.formaComision','tipif_delito.fecha', 'tipif_delito.hora',  'tipif_delito.conViolencia')
-        ->first();
-
-     
+        ->first();     
         return response()->json($delito);
-
-
     //   return view ('forms.modalDelitosEdit', compact ('TipifDelito','delits','delitos','estados','lugares','zonas','domicilio','direccionTB','municipio','coloniaRow','idMunicipioSelect','idEstadoSelect','idLocalidadSelect','idCodigoPostalSelect','idColoniaSelect','catMunicipios','catLocalidades','catColonias','catCodigoPostal'));
     }
 
     public function actualizar(Request $request, $id)
     {
-      
-      
         $domicilio = domicilio::find($id);
         $domicilio->idMunicipio=$request->idMunicipio;
         $domicilio->idLocalidad=$request->idLocalidad;
