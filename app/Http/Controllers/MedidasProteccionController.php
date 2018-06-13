@@ -40,6 +40,7 @@ class MedidasProteccionController extends Controller
             ->join('cat_providencia_precautoria', 'cat_providencia_precautoria.id', '=', 'providencias_precautorias.idProvidencia')
             ->join('ejecutor', 'ejecutor.id', '=', 'providencias_precautorias.idEjecutor')
             ->join('persona', 'persona.id', '=', 'providencias_precautorias.idPersona')
+            ->where('providencias_precautorias.idCarpeta',$idCarpeta)
             ->select('cat_providencia_precautoria.nombre as providencia', 'cat_providencia_precautoria.id as idprovidencia', 'providencias_precautorias.id as id',  'ejecutor.nombre as ejecutor','ejecutor.id as idejecutor',  DB::raw("CONCAT(`persona`.`nombres`,' ',CASE WHEN `persona`.`primerAp` IS NULL  THEN '' ELSE `persona`.`primerAp` END,' ',CASE WHEN `persona`.`segundoAp` IS NULL  THEN '' ELSE `persona`.`segundoAp` END) as nombre"), 'providencias_precautorias.observacion as observacion','providencias_precautorias.fechaInicio as fechainicio', 'providencias_precautorias.fechaFin as fechafin' )
             ->get();
 
@@ -150,6 +151,47 @@ class MedidasProteccionController extends Controller
         ->first();
         return response()->json($providencia);
     }
+
+
+    
+public function oficio($id){
+
+    $oficio = DB::table('providencias_precautorias')->where('providencias_precautorias.id', $id)
+    ->join('cat_providencia_precautoria', 'providencias_precautorias.idProvidencia','=', 'cat_providencia_precautoria.id')
+    ->join('ejecutor', 'providencias_precautorias.idEjecutor', '=', 'ejecutor.id')
+    ->join('persona', 'providencias_precautorias.idPersona', '=', 'persona.id')
+    ->join('variables_persona', 'persona.id', '=', 'variables_persona.idPersona')
+    ->join('domicilio', 'variables_persona.idDomicilio', '=', 'domicilio.id')
+    ->join('cat_municipio', 'domicilio.idMunicipio', '=', 'cat_municipio.id')
+    ->join('cat_localidad', 'domicilio.idLocalidad', '=', 'cat_localidad.id')
+    ->join('cat_colonia', 'domicilio.idColonia', '=', 'cat_colonia.id')
+    ->join('cat_estado', 'cat_municipio.idEstado', '=', 'cat_estado.id')
+    ->join('carpeta', 'providencias_precautorias.idCarpeta', '=', 'carpeta.id')
+  
+    ->select( DB::raw("CONCAT(`persona`.`nombres`,' ',CASE WHEN `persona`.`primerAp` IS NULL  THEN '' ELSE `persona`.`primerAp` END,' ',CASE WHEN `persona`.`segundoAp` IS NULL  THEN '' ELSE `persona`.`segundoAp` END) as nombre"),
+     'domicilio.calle', 'domicilio.numExterno', 'cat_colonia.nombre as colonia','cat_colonia.codigoPostal as cp','cat_municipio.nombre as municipio','cat_estado.nombre as estado',
+     'ejecutor.nombre as ejecutor', DB::raw("DATEDIFF(providencias_precautorias.fechaFin,providencias_precautorias.fechaInicio) AS VIGENCIA"), 'providencias_precautorias.id', 'providencias_precautorias.fechaInicio AS fecha','providencias_precautorias.idCarpeta as carpeta' , 'variables_persona.telefono as telefono')
+      
+      ->first();
+     
+    $data = array('nombre' => $oficio->nombre, 
+    'calle' => $oficio->calle, 
+    'numExterno' => $oficio->numExterno,
+    'colonia' => $oficio->colonia,
+    'cp' => $oficio->cp,
+    'municipio' => $oficio->municipio,
+    'estado' => $oficio->estado,
+    'ejecutor' => $oficio->ejecutor,
+    'vigencia' => $oficio->VIGENCIA,
+    'id' => $oficio->id,
+    'fecha' => $oficio->fecha,
+    'carpeta' => $oficio->carpeta,
+    'telefono' => $oficio->telefono,
+    'img' => asset('img/logo.png'),
+    'id' => $id);
+    return response()->json($data);
+    // dd($data);
+}
 
 
 }

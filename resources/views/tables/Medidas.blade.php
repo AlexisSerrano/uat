@@ -27,14 +27,11 @@
                         <td class="fechainicio">{{ $provide->fechainicio }}</td>  
                         <td class="fechafin">{{ $provide->fechafin }}</td>
                         <td class="ejecutor">{{ $provide->ejecutor }}</td>  
-                        <td class="persona">
-                            {{-- {{ $provide->persona}} --}}
-                        </td>  
+                        <td class="persona">{{ $provide->nombre}} </td>  
                         <td class="observacion">{{ $provide->observacion }}</td>  
                         <td>
                                 <a data-medida-id={{$provide->id}} title="Eliminar Registro" class="deleteBtn btn btn-default btn-simple btn-xs">
                                         <i  class="fa fa-times" style="color:black"></i></a>
-                                        <br>
                                 <button type="button" class="btn btn-default   btn-xs  btn-modal" title="Editar registro"  value={{$provide->id}} ><i class="fa fa-edit"></i></button>
                                     
                         </td>                           
