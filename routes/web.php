@@ -18,6 +18,11 @@ Route::get('/prueba', function () {
     return view('welcome');
 });
 /**********************Rutas de prueba***********************/
+Route::get('/iframe', function () {
+    return view('welcome');
+});
+
+
 Route::get('/acuerdo/{id}','AcusacionController@acuerdoInicio')->name('acuerdo-inicio');
 Route::get('/acuerdo-inicio/{id}','AcusacionController@acuerdoDocumento')->name('acuerdo-documento');
 

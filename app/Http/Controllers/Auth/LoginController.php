@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
+use App\Models\Carpeta;
+use Alert;
 use Session;
 /*fin pruebas*/
 /* inicio pruebas unidad */
@@ -87,7 +89,17 @@ class LoginController extends Controller
         session(['unidad' => $unidad->descripcion]);
         
         if (Auth::user()->grupo=='orientador') {
-            return redirect(route('indexcarpetas'));
+            $comprobar=Auth::user()->idCarpeta;
+            if($comprobar==null){
+                return redirect(route('indexcarpetas'));
+            }else{
+                $numCarpeta=Carpeta::find($comprobar);
+                $numCarpeta=$numCarpeta->numCarpeta;
+                session(['carpeta' => $comprobar]);
+                session(['numCarpeta' => $numCarpeta]);
+                Alert::info('Al cerrar sesión dejaste un caso abierto');
+                return redirect(route('new.denunciante'));
+            }
         }
         if (Auth::user()->grupo=='recepcion') {
             return redirect(route('predenuncias.index'));    

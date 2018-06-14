@@ -65,26 +65,20 @@ class LibroGobController extends Controller
     }
 
     public function buscar(){
-        $comprobar=Auth::user()->idCarpeta;
-        if($comprobar==null){
-            $carpetas = DB::table('carpeta')
-            ->join('cat_estatus_casos','carpeta.idEstadoCarpeta','=','cat_estatus_casos.id')
-            ->select('carpeta.id as id','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta','cat_estatus_casos.nombreEstatus as idEstadoCarpeta' )
-            ->where('idFiscal',Auth::user()->id)
-          // ->orwhere()
-            ->paginate('15');
-            // dd($carpetas);
-            return view('tables.carpetasEnGral')->with('carpetas',$carpetas);
-        }else{
-            session(['carpeta' => $comprobar]);
-            Alert::info('Al cerrar sesión dejaste un caso abierto');
-            return redirect(route('new.denunciante'));
-        }
+        $carpetas = DB::table('carpeta')
+        ->join('cat_estatus_casos','carpeta.idEstadoCarpeta','=','cat_estatus_casos.id')
+        ->select('carpeta.id as id','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta','cat_estatus_casos.nombreEstatus as idEstadoCarpeta' )
+        ->where('idFiscal',Auth::user()->id)
+        // ->orwhere()
+        ->paginate('15');
+        // dd($carpetas);
+        return view('tables.carpetasEnGral')->with('carpetas',$carpetas);
+        
         //    dd(session());
 
     }
 
-       public function terminadas(){
+    public function terminadas(){
       
         
         $carpterminadas = DB::table('acusacion')

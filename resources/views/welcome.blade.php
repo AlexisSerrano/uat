@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
 
         <title>Laravel</title>
 
@@ -90,6 +91,15 @@
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
+
+            <form action="" id="formDenuncia" name="formDenuncia">
+                <input type="text" name="session_id" id="session_id">
+                <input type="text" name="grupo" id="grupo">
+                <input type="text" name="idUser" id="idUser">
+                <input type="text" name="numCarpeta" id="numCarpeta">
+                <input type="text" name="idCarpeta" id="idCarpeta">
+                <input type="text" name="origen" id="origen">
+            </form>
         </div>
     </body>
 </html>
