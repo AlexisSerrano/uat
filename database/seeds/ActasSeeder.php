@@ -252,7 +252,7 @@ class ActasSeeder extends Seeder
            C.P. 91096<br />
            Teléfono: 01 (228) 8149428,<br />
            Xalapa-Enríquez, Veracruz</p>',
-           'unidad'=>'1']
+           'unidad'=>'1'],
 
 
             
