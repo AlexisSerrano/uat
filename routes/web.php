@@ -18,6 +18,11 @@ Route::get('/prueba', function () {
     return view('welcome');
 });
 /**********************Rutas de prueba***********************/
+Route::get('/iframe', function () {
+    return view('welcome');
+});
+
+
 Route::get('/acuerdo/{id}','AcusacionController@acuerdoInicio')->name('acuerdo-inicio');
 Route::get('/acuerdo-inicio/{id}','AcusacionController@acuerdoDocumento')->name('acuerdo-documento');
 
@@ -58,7 +63,7 @@ Route::get('Datosfiscal/{id}', 'ImpresionesController@getDatos');
 
 
 Route::get('policia-ministerial','ImpresionesController@policiaMinisterial')->name('policia.ministerial');
-
+Route::get('oficio-ministerial','ImpresionesController@getMinisterial');
 Route::get('transporte-estado','ImpresionesController@transporteEdo')->name('oficio.transporte');
 Route::get('Oficiotransporte-estado','ImpresionesController@storeoficioTransporte')->name('storeoficio.Transporte');
 
