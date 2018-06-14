@@ -1,30 +1,18 @@
-@extends('template.form')
-@section('title', 'Oficio a Centro de atención a víctimas')
-@section('content')
-{!! Form::open(['route' => 'store.oficioCavd', 'method' => 'POST'])  !!} 
-<div class="card">  
-    <div class="card-body">
-        <div class="row">
-    <div class="col-4">
-        <div class="form-group">
-            {!! Form::label('dirigidoA', 'Dirigido a:', ['class' => 'col-form-label-sm']) !!}
-            {!! Form::text('dirigidoA', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Persona a la que se dirige el oficio']) !!}
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{asset ('css/app.css')}}">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <oficio tipo="CAVD" url="{{url("oficio.cavd")}}"></oficio>
     </div>
-    
-    <div class="col-4">
-            <div class="form-group">
-                {!! Form::label('victima3', 'Víctima/Ofendido', ['class' => 'col-form-label-sm']) !!}
-                {!! Form::select('victima3', $victimas[0],null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
-            </div>
-    </div>
-</div>	
-    </div>
-</div>
-
-<div class="col text-right">
-
-        <button class="btn btn-primary">Imprimir Oficio</button>
-</div>
-
-@endsection
+</body>
+</html>
+<script src="{{asset ('js/jquery-3.2.1.min.js')}}">  </script>
+<script src="{{asset ('js/app.js')}}">  </script>
