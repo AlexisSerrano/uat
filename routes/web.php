@@ -63,7 +63,8 @@ Route::get('transporte-estado','ImpresionesController@transporteEdo')->name('ofi
 Route::get('Oficiotransporte-estado','ImpresionesController@storeoficioTransporte')->name('storeoficio.Transporte');
 
 
-
+Route::get('oficio-cavd','ImpresionesController@oficioCavd')->name('oficio.cavd');
+Route::get('imprimir-cavd','ImpresionesController@StoreCavd')->name('store.oficioCavd');
 /**************************************************************/
 // -------------------------------------------------------------------
 

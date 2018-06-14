@@ -21,7 +21,43 @@ use Jenssegers\Date\Date;
 use App\Models\VariablesPersona;
 
 class ImpresionesController extends Controller
+
+
 {
+
+    public function oficioCavd(){
+
+        $idCarpeta=session('carpeta');
+        $carpeta=DB::table('carpeta')
+        ->join('unidad','carpeta.idUnidad','=','unidad.id')
+        ->where('carpeta.id',$idCarpeta)->first();
+
+        $unidad = Unidad::select('id', 'descripcion')
+        ->where('abreviacion','!=','')
+        ->orderBy('descripcion', 'ASC')
+        ->pluck('descripcion', 'id');
+
+        $victimas[''] = 'Seleccione una víctima/ofendido';
+        $victimas2 = DB::table('variables_persona')
+        ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
+        ->join('extra_denunciante', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+        ->where('variables_persona.idCarpeta',$idCarpeta)
+        ->select('persona.nombres','persona.primerAp','persona.segundoAp', 'persona.id')
+        ->get();
+
+        foreach($victimas2 as $victima){
+            $victimas[$victima->nombres.'-'.$victima->primerAp.'-'.$victima->segundoAp] = $victima->nombres.' '.$victima->primerAp.' '.$victima->segundoAp;
+        }
+
+        //
+       // dd($victimas2);
+
+        return view('documentos.oficio-cavd')
+        ->with('carpeta',$carpeta)
+        ->with('victimas',$victimas2);
+
+    }
+
     public function storeoficioTransporte(){
         $idCarpeta=session('carpeta');
         $carpeta=DB::table('carpeta')
@@ -44,21 +80,31 @@ class ImpresionesController extends Controller
         $marca=CatMarca::select('id','nombre')->where('id',$vehiculo->idColor)->first();
         $submarca=CatSubmarca::select('id','nombre')->where('id',$vehiculo->idSubmarca)->first();
         $uso=CatTipoUso::select('id','nombre')->where('id',$vehiculo->idTipoUso)->first();
-        
 
+        $localidadAtiende= DB::table('users')
+            ->join('unidad','unidad.id','=','users.idUnidad')
+            ->join('zona','zona.id','=','unidad.idZona')
+            ->where('users.id',Auth::user()->id)
+            ->select('zona.descripcion')
+            ->first();
+        $fechaactual = date::now();
+        $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
+        $fiscalAtiende1='paola';
        
         
         $data = array('id' => $vehiculo->id,
         'numCarpeta'=>$carpeta->numCarpeta,
-        'fiscalAtendio'=>$carpeta->fiscalAtendio,
+        'fiscalAtiende'=>$fiscalAtiende1,
         'marca'=>$marca->nombre,
         'submarca'=>$submarca->nombre,
         'color'=>$color->nombre,
         'numSerie'=>$vehiculo->numSerie,
         'modelo'=>$vehiculo->modelo,
+        'entidad'=>$localidadAtiende->descripcion,
+        'fecha'=>$fechahum,
         'placas'=>$vehiculo->placas);
         
-         //dd($data);
+        //dd($data);
        
        return response()->json($data);
     }
