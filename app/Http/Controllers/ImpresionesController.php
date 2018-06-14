@@ -250,8 +250,13 @@ return view('documentos.fTransporte');
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-            ->first();
-            $nombre= $denunciantes->nombres.' '. $denunciantes->primerAp.' '. $denunciantes->segundoAp;
+            ->get();
+
+            $cadenaDenunciantes='';
+            foreach($denunciantes as $denunciante){
+                $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.', ';
+            }
+            // $nombre= $denunciantes->nombres.' '. $denunciantes->primerAp.' '. $denunciantes->segundoAp;
 
             $fiscalAtiende=DB::table('users')
             ->join('unidad','unidad.id','=','users.id')
@@ -275,7 +280,7 @@ return view('documentos.fTransporte');
             $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
             $datos=array('id'=> $idCarpeta,
             'numeroCarpeta'=> $carpeta->numCarpeta,
-            'denunciante'=>$nombre,
+            'denunciante'=> $cadenaDenunciantes,
             'fecha'=>$fechahum,
             'puesto'=>$fiscalAtiende->puesto,
             'delito'=>$TipifDelito->nombre,
@@ -289,8 +294,8 @@ return view('documentos.fTransporte');
             'estado'=>$TipifDelito->estado,
             'numeroF'=> $fiscalAtiende->numFiscal,
             'descripcion'=> $fiscalAtiende->descripcion,
-            'telefono'=> $denunciantes->telefono,
-            'narracion'=> $denunciantes->narracion,
+            'telefono'=> $denunciante->telefono,
+            'narracion'=> $denunciante->narracion,
             'img' => asset('img/logo.png'),
             'nombreC'=>$fiscalAtiende->nombreC);
         
