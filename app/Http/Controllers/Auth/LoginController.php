@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 /*inicio pruebas*/
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\User;
 use Session;
 /*fin pruebas*/
 /* inicio pruebas unidad */
@@ -51,22 +52,29 @@ class LoginController extends Controller
     {
         $request->session()->regenerate();
         $previous_session = Auth::User()->session_id;
+        // dd($previous_session);
         // inicio pruebas
         
-        // if(is_null($previous_session)){
-        //     Auth::user()->session_id = \Session::getId();
-        //     Auth::user()->save();
-        // }
+        if(is_null($previous_session)||$previous_session==''){
+            $user=User::find(Auth::User()->id);
+            $user->session_id = Session::getId();
+            $user->save();
 
-        // fin pruebas
-        if ($previous_session) {
-            \Session::getHandler()->destroy($previous_session);
+            $this->clearLoginAttempts($request);
+        }else{
+            // fin pruebas
+            
+            if ($previous_session) {
+                Session::getHandler()->destroy($previous_session);
+            }
+            $user=User::find(Auth::User()->id);
+            $user->session_id = Session::getId();
+            $user->save();
+            // Auth::user()->session_id = Session::getId();
+            // Auth::user()->save();
+            $this->clearLoginAttempts($request);
         }
-
-        Auth::user()->session_id = \Session::getId();
-        Auth::user()->save();
-        $this->clearLoginAttempts($request);
-
+            
         /* inicio alerta a soporte */
         if(is_null(Auth::User()->idUnidad) || Auth::User()->numFiscal==0){
             Auth::logout();
