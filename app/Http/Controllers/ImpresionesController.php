@@ -248,7 +248,7 @@ return view('documentos.fTransporte');
             $denunciantes = DB::table('extra_denunciante')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono')
+            ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
             ->where('variables_persona.idCarpeta', '=', $idCarpeta)
             ->first();
             $nombre= $denunciantes->nombres.' '. $denunciantes->primerAp.' '. $denunciantes->segundoAp;
@@ -265,9 +265,9 @@ return view('documentos.fTransporte');
             ->join('cat_municipio','cat_municipio.id','=','domicilio.idMunicipio')
             ->join('cat_localidad','cat_localidad.id','=','domicilio.idLocalidad')
             ->join('cat_colonia','cat_colonia.id','=','domicilio.idColonia')
-            // ->join('cat_estado','cat_estado.id','=','domicilio.idEstado')
+            ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')
             ->where('tipif_delito.idCarpeta',$idCarpeta)
-            ->select('cat_delito.nombre','domicilio.calle','domicilio.numExterno','domicilio.numInterno',
+            ->select('cat_delito.nombre','domicilio.calle','domicilio.numExterno','domicilio.numInterno','cat_estado.nombre as estado',
                       'cat_municipio.nombre as municipio','cat_localidad.nombre as localidad','cat_colonia.nombre as colonia','cat_colonia.codigoPostal')
             ->first();
 
@@ -286,11 +286,14 @@ return view('documentos.fTransporte');
             'localidad'=>$TipifDelito->localidad,
             'colonia'=>$TipifDelito->colonia,
             'CP'=>$TipifDelito->codigoPostal,
-            // 'estado'=>$TipifDelito->estado,
+            'estado'=>$TipifDelito->estado,
             'numeroF'=> $fiscalAtiende->numFiscal,
             'descripcion'=> $fiscalAtiende->descripcion,
             'telefono'=> $denunciantes->telefono,
+            'narracion'=> $denunciantes->narracion,
+            'img' => asset('img/logo.png'),
             'nombreC'=>$fiscalAtiende->nombreC);
+        
     
             return response()->json($datos);
 
