@@ -126,7 +126,7 @@ $('.btn-modal').bind('click', function(){
 		url: route("getMedidasAjax",idr),
 		type : 'GET',
 		success : function(json) {
-			$("#observaciones1").val(json.observacion);
+			$("#observaciones1").text(json.observacion);
 			$("#fechaInicio1").val(json.fechaInicio);
 			$("#fechaFinal1").val(json.fechaFin);
 			$("#tipo_medida2").val(json.nombre);

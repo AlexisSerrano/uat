@@ -28,7 +28,7 @@
                         <td class="fechafin">{{ $provide->fechafin }}</td>
                         <td class="ejecutor">{{ $provide->ejecutor }}</td>  
                         <td class="persona">{{ $provide->nombre}} </td>  
-                        <td class="observacion">{{ substr($provide->observacion, 0, 80) }}...</td>  
+                        <td class="observacion">{{ substr($provide->observacion, 0, 80) }}</td>  
                         <td>
                                 <a data-medida-id={{$provide->id}} title="Eliminar Registro" class="deleteBtn btn btn-default btn-simple btn-xs">
                                         <i  class="fa fa-times" style="color:black"></i></a>
@@ -112,7 +112,7 @@
                             <div class="col-xm-6">
                                     {!! Form::label('observaciones1', 'Observaciones', ['class' => 'col-form-label-sm']) !!}		
                                     {{-- <textarea name="ObservacionesM" id="ObservacionesM" cols="15" rows="5" class="form-control form-control-sm", data-validation= "required"></textarea>     --}}
-                            <input class="form-control " type="text" id="observaciones1" cols="15" rows="5" name="observaciones" placeholder="Observaciones">
+                            <textarea class="form-control " id="observaciones1" cols="15" rows="5" name="observaciones" placeholder="Observaciones"></textarea>
                             </div>
                           </div>
                 </div> 
@@ -136,6 +136,7 @@
              //  DenuncianteId = $(this).attr("data-denunciante-id");
              // alert("ok");
              $(".deleteBtn").on("click", function(e) {
+                var id = $(this).data("medida-id");
              e.preventDefault()
                  swal({
                      title: "¿Está seguro de eliminarlo?",
@@ -149,8 +150,8 @@
                      closeOnCancel: true },
                      function(isConfirm){
                  if (isConfirm) {
-                 var id = $(".deleteBtn").data("medida-id");
-                  window.location.href=route('delete.medidas',{id:id});
+                 
+                  window.location.href=route('delete.medida',{id:id});
                  //  window.location.href=route("agregar-denunciado/'.$denunciante->id.'/eliminar");
                  }
          });
