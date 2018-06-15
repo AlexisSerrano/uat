@@ -74,41 +74,13 @@
 
     <!--tabla providencias precautorias y/o protección-->
         {{-- @include('tables.medidasP') --}}
-         @include('tables.medidas')
+         @include('tables.Medidas')
 @endsection
 
 @section('css')
 	
-    <link rel="stylesheet" href="{{ asset('css/dataTables.min.css') }}">
 @endsection
 
 @push('scripts')
-	{{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script> --}}
-    <script src="{{ asset('js/dataTables.min.js') }}"></script>
-    <script src="{{ asset('js/borrar.js') }}"></script>
-    <script>
-        $(document).ready(function(){
-            $('#tablaprovidencias').DataTable({
-                //"dom": 'rtip',
-                "processing": true,
-                "serverSide": true,
-                "pageLength": 10,
-                "language": {
-                    "url": '{!! asset('/datatables/latino.json') !!}'
-                } ,
-                "ajax": "getMedidas",
-                "columns": [
-                    { data: 'providencia' , name: 'providencia'},
-                    { data: 'fechaInicio' , name: 'fechaInicio'},
-                    { data: 'fechaFin' , name: 'fechaFin'},
-                    { data: 'ejecutor' , name: 'ejecutor'},
-                    { data: 'nombre' , name: 'nombre'},
-                    { data: 'observacion' , name: 'observacion'},
-                    { data: null, "orderable": false,  render: function ( data, type, row ) {
-                        return "<a href='{{ url('deleteMedida') }}/"+ data.id +"' class='btn btn-xs btn-primary' >Eliminar</button>"  }  
-                    }
-                ]
-            });
-        });
-    </script>
+
 @endpush

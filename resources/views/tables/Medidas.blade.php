@@ -28,7 +28,7 @@
                         <td class="fechafin">{{ $provide->fechafin }}</td>
                         <td class="ejecutor">{{ $provide->ejecutor }}</td>  
                         <td class="persona">{{ $provide->nombre}} </td>  
-                        <td class="observacion">{{ $provide->observacion }}</td>  
+                        <td class="observacion">{{ substr($provide->observacion, 0, 80) }}...</td>  
                         <td>
                                 <a data-medida-id={{$provide->id}} title="Eliminar Registro" class="deleteBtn btn btn-default btn-simple btn-xs">
                                         <i  class="fa fa-times" style="color:black"></i></a>
