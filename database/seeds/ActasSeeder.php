@@ -182,6 +182,79 @@ class ActasSeeder extends Seeder
            Teléfono: 01 (228) 8149428,<br />
            Xalapa-Enríquez, Veracruz</p>',
            'unidad'=>'1'],
+
+           ['nombre'  =>  'CAVD',
+           'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+           <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />
+                       Distrito XI Xalapa, Veracruz“</p>', 
+           'contenido' => 
+           '<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">C.{{$dirigido}}</span></strong></span></span></p>
+
+           <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><em><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Directora del Centro de Atención a Víctimas</span></em></span></span></p>
+           
+           <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><em><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">de la Fiscalía General del Estado</span></em></span></span></p>
+           
+           <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><em><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Presente</span></em></span></span></p>
+           
+           <p>&nbsp;</p>
+           
+           <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-family:&quot;Neo Sans Pro Light&quot;,&quot;sans-serif&quot;">{{$entidad}}</span><span style="font-family:&quot;Neo Sans Pro Light&quot;,&quot;sans-serif&quot;">, Veracruz; a {{$fecha}}</span></span></span></p>
+           
+           <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-family:&quot;Neo Sans Pro Light&quot;,&quot;sans-serif&quot;">Oficio: UAT-XI/092/2018</span></span></span></p>
+           
+           <p>&nbsp;</p>
+           
+           <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Carpeta de Investigación: {{$numCarpeta}}</span></strong></span></span></p>
+           
+           <p>&nbsp;</p>
+           
+           <p>&nbsp;</p>
+           
+           <p style="text-align:justify"><span style="font-size:12pt"><span style="font-family:Verdana,sans-serif"><span style="font-size:11.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Con fundamento en lo dispuesto por los artículos 20 apartado C y 21 de la Constitución Política de los Estados Unidos Mexicanos;&nbsp; 109, 127, 131, 211 y demás relativos y aplicables del Código Nacional de Procedimientos Penales; 1, 2 y 4 párrafo segundo, 5 párrafo diecinueve, 7 fracciones XXIII, 62 fracción I de La Ley General de Víctimas; 5, 6, 7 y 40 de la Ley Orgánica de la Fiscalía General del Estado; 201 fracciones I y IV del Reglamento de la citada ley, &nbsp;por medio del presente me permito canalizar a usted a la C. {{$denunciante}}, con número telefónico {{telefono}}, solicitándole muy atentamente, tenga a bien girar sus apreciables instrucciones a quien corresponda, a efecto de que se le brinde la atención que necesita.</span></span></span></span></p>
+           
+           <p style="text-align:justify">&nbsp;</p>
+           
+           <p style="text-align:left"><span style="font-size:12pt"><span style="font-family:Verdana,sans-serif"><span style="font-size:11.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Lo anterior a fin de integrar la carpeta de investigación que al rubro superior derecho se indica.</span></span></span></span></p>
+           
+           <p style="text-align:left">&nbsp;</p>
+           
+           <p style="text-align:left"><span style="font-size:12pt"><span style="font-family:Verdana,sans-serif"><span style="font-size:11.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Sin otro particular le reitero mi consideración distinguida.</span></span></span></span></p>
+           
+           <p style="text-align:left">&nbsp;</p>
+           
+           <p style="text-align:left">&nbsp;</p>
+           
+           <p style="text-align:center">&nbsp;</p>
+           
+           <p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Atentamente.</span></span></span></p>
+           
+           <p style="text-align:center">&nbsp;</p>
+           
+           <p style="text-align:center">&nbsp;</p>
+           
+           <p style="text-align:center">&nbsp;</p>
+           
+           <p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">LIC. {{$fiscalAtendio}}</span></span></strong></span></span></p>
+           
+           <p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">{{$puesto}}</span></span></span></span></p>
+           
+           <p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Del XI Distrito Judicial en Xalapa, Veracruz</span></span></span></span></p>
+           
+           <p>&nbsp;</p>
+           
+           <p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></p>
+           
+           ',
+
+           'pie' =>  '<p>Circuito Rafael Guízar y<br />
+           Valencia No. 147,<br />
+           Colonia Reserva Territorial,<br />
+           C.P. 91096<br />
+           Teléfono: 01 (228) 8149428,<br />
+           Xalapa-Enríquez, Veracruz</p>',
+           'unidad'=>'1'],
+
+
             
             ['nombre'  =>  'pervehiculo',
             'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
@@ -507,113 +580,103 @@ Lic. {{$nombreC}}
             Teléfono: 01 (228) 8149428,<br />
             Xalapa-Enríquez, Veracruz</p>',
             'unidad'=>'1'],
-            
-        ['nombre'  =>  'MEDIDASP',
-        'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
-        <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',  
+           
+           
+           
+           
+            ['nombre'  =>  'POLICIA MINISTERIAL',
+            'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+            <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',
 
-        'contenido' => '<p style="text-align:justify"><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><strong><span style="font-size:12.0pt">NOTIFICACIÓN PERSONAL DE LA MEDIDA DE PROTECCIÓN</span></strong><span style="font-size:12.0pt">.- En la ciudad de Xalapa, Enríquez, Veracruz, siendo el día nueve de abril del año dos mil dieciocho, encontrándose presente el ciudadano {{$nombre}}<strong>,</strong> se le informa que con fundamento en el artículo </span><span style="font-size:12.0pt">137 fracciones VI, VII y VIII</span> <span style="font-size:12.0pt">del Código Nacional de Procedimientos Penales para el Estado de Veracruz, se decretó por parte de esta autoridad la medida u orden de protección,&nbsp; en su favor y de su familia consistente en: <strong>a)</strong> vigilancia a través de rondines en el domicilio que habita ubicado en la calle <strong><em>{{$calle}} {{$numExterno}} {{$colonia}}, {{$cp}}, {{$municipio}}, {{$estado}}; </em></strong>que es su lugar de domicilio; <strong>b)</strong> Protección Policial y <strong>c)</strong> la atención ante cualquier llamado de auxilio en su domicilio o en cualquier lugar que se encuentre; girándose al efecto &nbsp;Oficio <strong>{{$ejecutor}}</strong> con sede en esta ciudad, a fin de que comisione personal a su mando que corresponda y se dé cumplimiento a las medidas de protección antes mencionadas, medidas que tendrán una vigencia de <strong>{{$vigencia}} días a partir del día de hoy</strong>, así como las condiciones y limitantes para su aplicación y las circunstancias en que podrán ser revocadas, lo anterior para que manifieste lo que a su derecho convenga. Por lo que en uso de la voz el denunciante manifiesta: Que en relación a la medida de protección decretada a mi quiero señalar que estoy de acuerdo con la misma.- Con lo anterior se da por concluida&nbsp; la presente diligencia y previa lectura manifiesta que se encuentra de acuerdo con el contenido de la misma firmando al margen y al calce para constancia.- CONSTE.- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </span></span></span></p>
- 
-        <p style="text-align:justify">&nbsp;</p>
-        
-        <table align="center" border="1" cellspacing="0">
-            <tbody>
-                <tr>
-                    <td style="vertical-align:top; width:220.6pt">
-                    <p style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><strong><span style="font-size:12.0pt">{{$nombre}}</span></strong></span></span></p>
-                    </td>
-                    <td style="vertical-align:top; width:232.1pt">
-                    <p style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><strong><span style="font-size:12.0pt">LIC. BRENDA XIOVARA MORENO&nbsp; ESCALANTE</span></strong></span></span></p>
-        
-                    <p style="text-align:center">&nbsp;</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="vertical-align:top; width:220.6pt">
-                    <p style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><strong><span style="font-size:12.0pt">COMPARECIENTE</span></strong></span></span></p>
-                    </td>
-                    <td style="vertical-align:top; width:232.1pt">
-                    <p style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><strong><span style="font-size:12.0pt">FISCAL&nbsp; SEXTA ORIENTADORA DE LAUNIDAD DE ATENCIÓN TEMPRANA </span></strong></span></span></p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <p style="text-align:right">&nbsp;</p>
-        
-        <p style="text-align:right">&nbsp;</p>
-        
-        <p style="text-align:right">&nbsp;</p>
-        
-        <p style="text-align:right">&nbsp;</p>
-        
-        <p><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><strong><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">C. SECRETARIO DE SEGURIDAD PÚBLICA</span></strong></span></span></p>
-        
-        <p><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><strong><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">DEL ESTADO DE VERACRUZ </span></strong></span></span></p>
-        
-        <p><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><em><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">Ignacio Zaragoza sin número</span></em></span></span></p>
-        
-        <p><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><em><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">Zona Centro, C.P.91000</span></em></span></span></p>
-        
-        <p><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><em><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">Xalapa, Veracruz</span></em></span></span></p>
-        
-        <p><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><em><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">Presente</span></em></span></span></p>
-        
-        <p>&nbsp;</p>
-        
-        <p><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">Xalapa-Enríquez, Veracruz; a {{$fecha}}</span></span></span></p>
-        
-        <p><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">Oficio: UAT-XI/3,{{$id}}/2018</span></span></span></p>
-        
-        <p>&nbsp;</p>
-        
-        <p><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><strong><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">CARPETA DE INVESTIGACION: UAT/D-XI/{{$carpeta}}/2018-6°</span></strong></span></span></p>
-        
-        <p><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><strong><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">URGENTE</span></strong></span></span></p>
-        
-        <p>&nbsp;</p>
-        
-        <p style="text-align:justify"><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">Con fundamento en los artículos 20 Apartado C, fracción VI y 21 de la Constitución Política de los Estados Unidos Mexicanos; 54 de la Constitución Política Local;&nbsp; 108, 109 fracción I, XVI y XIX, 127, 131, 132, 137 fracción IV, VI y VIII del Código Nacional de Procedimientos Penales en vigor; 1, 2 y 4 párrafo primero, 5 párrafo diecinueve, 7 fracción XXIII, 62 fracción I de la Ley General de Víctimas; 154 Quáter del Código Penal vigente en el Estado; 4, 9 fracción X y 15 último párrafo de la Ley del Sistema Estatal de Seguridad Pública; 5, &nbsp;6 fracción I y IV, 7 fracción III, IV, V y VI y 40 de la Ley Orgánica de la Fiscalía General del Estado de Veracruz de Ignacio de la Llave; 201 fracciones I y IV&nbsp; del Reglamento de la citada Ley; por medio del pres</span><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">ente me permito solicitar a usted respetuosamente que en auxilio de esta Representación Social, designe personal a su mando, a efecto de que sea proporcionado lo siguiente:</span></span></span></p>
-        
-        <p style="text-align:justify">&nbsp;</p>
-        
-        <p style="text-align:justify"><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><strong><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">1).- Se preste la vigilancia debida a través de rondines en el domicilio que habita el C</span></strong> <strong><em><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">{{$nombre}} {{$numExterno}}, COLONIA {{$colonia}}, X.P.{{$cp}}, {{$municipio}}, {{$estado}}; </span></em></strong><strong><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">con número telefónico celular {{$telefono}}.</span></strong></span></span></p>
-        
-        <p style="text-align:justify"><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><strong><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">2).- Se brinde Protección Policial al agraviado </span></strong><strong><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">{{$nombre}}</span></strong><strong><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">.</span></strong></span></span></p>
-        
-        <p style="text-align:justify"><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><strong><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">3).- Atención ante cualquier llamado de auxilio en su domicilio, en su centro de trabajo o en cualquier lugar que se encuentre dicho agraviado. </span></strong></span></span></p>
-        
-        <p style="text-align:justify">&nbsp;</p>
-        
-        <p style="text-align:justify"><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">Lo anterior en virtud de que dicho agraviado, interpuso denuncia en contra de <strong>QUIEN O QUIENES RESULTEN RESPONSABLES</strong>, por el delito de<strong> AMENAZAS</strong>, por lo que en caso de que persona desconocida, intente o realice actos que pudieran ser constitutivos de delito en agravio de dichas víctimas, deberá proceder conforme a derecho corresponda. Así mismo no omito manifestarle que deberá informar sobre las acciones implementadas a la presente solicitud; medidas de protección que deberán comenzar a partir del día de la recepción del presente libelo y con duración de 60 días.</span></span></span></p>
-        
-        <p style="text-align:justify">&nbsp;</p>
-        
-        <p style="text-align:justify"><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">Sin otro particular por el momento le envío un cordial saludo.</span></span></span></p>
-        
-        <p style="text-align:justify">&nbsp;</p>
-        
-        <p style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">Atentamente.</span></span></span></p>
-        
-        <p style="text-align:center">&nbsp;</p>
-        
-        <p style="text-align:center">&nbsp;</p>
-        
-        <p style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><strong><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">LIC. BRENDA XIOVARA MORENO ESCALANTE</span></strong></span></span></p>
-        
-        <p style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">Fiscal Sexta Orientadora de la Unidad de Atención Temprana</span></span></span></p>
-        
-        <p style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif">Del XI Distrito Judicial en Xalapa, Veracruz</span></span></span></p>
-        
-        <p>&nbsp;</p>',
-            'unidad'=>'1',
-            'pie' =>  '<p>Circuito Rafael Guízar y<br />
-            Valencia No. 147,<br />
-            Colonia Reserva Territorial,<br />
-            C.P. 91096<br />
-            Teléfono: 01 (228) 8149428,<br />
-            Xalapa-Enríquez, Veracruz</p>',
-            'unidad'=>'1']
+
+           'contenido' => '
+           <p><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><strong><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">C. DELEGADO REGIONAL DE LA POLICÍA MINISTERIAL </span></strong></span></span></p>
+
+<p><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><em><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Zona Centro Xalapa</span></em></span></span></p>
+
+<p><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><em><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Presente</span></em></span></span></p>
+
+<p>&nbsp;</p>
+
+<p><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-family:&quot;Neo Sans Pro Light&quot;,&quot;sans-serif&quot;">{{$localidad}}</span><span style="font-family:&quot;Neo Sans Pro Light&quot;,&quot;sans-serif&quot;">, Veracruz; a {{$fecha}}</span></span></span></p>
+
+<p><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-family:&quot;Neo Sans Pro Light&quot;,&quot;sans-serif&quot;">Oficio: UAT-XI/2,821/2018</span></span></span></p>
+
+<p>&nbsp;</p>
+
+<p><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><strong><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">CARPETA DE INVESTIGACION: {{$numeroCarpeta}}-{{$numeroF}}°</span></strong></span></span></p>
+
+<p><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><strong><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">URGENTE</span></strong></span></span></p>
+
+<p style="text-align:justify">&nbsp;</p>
+
+<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Con fundamento en lo dispuesto por los artículos 14, 16 y 21 de la Constitución General de la República; 52 de la Constitución Política Local; 127,131, 132 y demás relativos y aplicables del&nbsp; Código Nacional de Procedimientos Penales en vigor; solicito a usted atentamente, designe personal a su cargo a efecto de que se aboquen a INVESTIGAR los hechos denunciados por el ciudadano <strong>{{$denunciante}}</strong> y por el <strong>C. TEOTL VILLARREAL MEZA </strong>con número de teléfono <strong>{{$telefono}}</strong>, ocurridos con domicilio en la calle <strong>{{$calle}} {{$numExterno}}, COLONIA {{$colonia}}, C.P.{{$CP}},</strong> de la ciudad de <strong>{{$municipio}}, VERACRUZ</strong>, por hechos que considero constitutivos del delito de <strong>{{$delito}}</strong> cometidos en contra de mi patrimonio y respecto a los hechos manifiesto</span><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">: </span></span><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">“<strong>. . . </strong></span><em><span style="font-size:9.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">{{$narracion}}<strong>. . .</strong></span></span></em><strong><em><span style="font-size:7.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">”;</span></span></em></strong><em> </em><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">para lo cual se deja a la vista la carpeta de investigación al rubro citada para su consulta.</span></span></span></p>
+
+<p style="text-align:justify">&nbsp;</p>
+
+<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Por lo que en virtud de lo anterior solicito a usted y al personal adscrito, que realice lo siguiente:</span></span></span></p>
+
+<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">a) <strong>Realice inspección ocular en el lugar de los hechos</strong>;&nbsp; debiendo entrevistar sobre los mismos al ciudadano <strong>C. TEOTL VILLARREAL MEZA, </strong>con domicilio en la calle <strong>Albatros número 25, colonia Zippor,</strong> de esta ciudad; quién deberá señalar si es su deseo presentar denuncia y/o querella.</span></span></span></p>
+
+<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">b) Se investiguen los nombres y domicilios de los posibles testigos presenciales de los hechos materia de esta Carpeta, debiendo de realizar las entrevistas correspondientes;</span></span></span></p>
+
+<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">c) Si existen cámaras de vigilancia en el lugar de los hechos o cerca del mismo, de ser afirmativo verifique los videos y de resultar datos que ayuden al esclarecimiento de los hechos, extraiga los mismos, en compañía de perito en la materia.</span></span></span></p>
+
+<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">d) Búsqueda del objeto robado en casa de empeño, tianguis y demás comercios, debiendo realizar las diligencias necesarias.</span></span></span></p>
+
+<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">e) Aporten datos que generen líneas de investigación que conlleven al esclarecimiento de los hechos;</span></span></span></p>
+
+<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">f) Aporte los datos de prueba que considere pertinentes para demostrar la responsabilidad de quien le resulte.</span></span></span></p>
+
+<p style="text-align:justify">&nbsp;</p>
+
+<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">No omitiendo señalar, que el informe respectivo deberá ser rendido con <strong>CARÁCTER URGENTE</strong>, para la debida integración de la carpeta de investigación al rubro referida, y debido esclarecimiento de los hechos puestos en conocimiento.</span></span></span></p>
+
+<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></p>
+
+<p style="text-align:center"><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Atentamente.</span></span></span></p>
+
+<p style="text-align:center">&nbsp;</p>
+
+<p style="text-align:center">&nbsp;</p>
+
+<p style="text-align:center"><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">LIC. {{$nombreC}}</span></span></strong></span></span></p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{$puesto}}<span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-size:10.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">, Veracruz</span></span></span></span></p>
+
+<p style="text-align:justify"><span style="font-size:12pt"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><strong><span style="font-size:5.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">&lt;</span></span></strong></span></span></p>
+
+<p style="text-align:justify"><span style="font-size:12pt"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><strong>&nbsp;</strong></span></span></p>
+
+<p><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><strong><span style="font-size:9.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">DELEGACIÓN POLICÍA MINISTERIAL</span></span></strong></span></span></p>
+
+<p><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-size:9.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">CALLE MIAMI NÚMERO 19</span></span></span></span></p>
+
+<p><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-size:9.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">COLONIA AGUACATAL</span></span></span></span></p>
+
+<p><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-size:9.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">XALAPA, VERACRUZ</span></span></span></span></p>
+
+<p><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-size:9.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">C.P.91130</span></span></span></span></p>
+
+<p><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-size:9.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">TEL: 01 (228) 8407186 </span></span></span></span></p>
+
+<p><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-size:9.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">HORARIO: ABIERTO LAS 24 HORAS</span></span></span></span></p>',
+
+
+           
+           
+'unidad'=>'1',
+'pie' =>  '<p>Circuito Rafael Guízar y<br />
+Valencia No. 147,<br />
+Colonia Reserva Territorial,<br />
+C.P. 91096<br />
+Teléfono: 01 (228) 8149428,<br />
+Xalapa-Enríquez, Veracruz</p>',
+'unidad'=>'1'],    
+           
+           
+           
+            
             ]);
 
     }

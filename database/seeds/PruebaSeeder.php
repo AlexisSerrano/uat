@@ -13,7 +13,7 @@ class PruebaSeeder extends Seeder
     {
         /************usuario para pruebas fuera de la fiscalia*************/
         DB::table('users')->insert([
-            ['idUnidad'   =>  25, 'idZona'=>8,  'username' =>  'admin','nombreC' =>  'Usuario Prueba Local', 'nombres' =>  'Usuario', 'apellidos' =>  'Prueba Local','grupo'=>'Facilitador','email'=>'admin@fiscaliaveracruz.gob.mx','password'=> bcrypt('admin'),'puesto'=>'Fiscal cuarto de la unidad de xalapa', 'numFiscal'=>4, 'numFiscalLetras'=>'Fiscal cuarto' ],
+            ['idUnidad'   =>  25, 'idZona'=>8,  'username' =>  'admin','nombreC' =>  'Usuario Prueba Local', 'nombres' =>  'Usuario', 'apellidos' =>  'Prueba Local','grupo'=>'orientador','email'=>'admin@fiscaliaveracruz.gob.mx','password'=> bcrypt('admin'),'puesto'=>'Fiscal cuarto de la unidad de xalapa', 'numFiscal'=>4, 'numFiscalLetras'=>'Cuarto' ],
         ]);
         /******************************************************************/
         DB::table('domicilio')->insert([

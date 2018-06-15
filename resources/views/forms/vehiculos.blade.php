@@ -13,18 +13,18 @@
 			<button type="button" class="btn btn-primary form-control" onclick="vehiculoInvolucrado();">Vehículo involucrado</button>
 		</div>
 		<div class="col">
-			<button type="button" class="btn btn-primary form-control" onclick="vehiculoRobado();">Vehículo robado</button>
+			<button type="button" name="botonRobados" class="btn btn-primary form-control" onclick="vehiculoRobado();">Vehículo robado</button>
 		</div>
 	</div>
+	
+	
+	{{-- <object type="text/html" data="http://localhost/vrr/public/ver-registro" name="systemVrr" id="systemVrr"  width="100%" height="1000px"> --}}
+	<object type="text/html" data="{{url('iframe')}}" name="systemVrr" id="systemVrr"  width="100%" height="1000px">
+	</object>
 	
 	<div class=" card-body boxone">
 		<div class="row no-gutters">
 			<div class="col-12">
-				<div class="boxtwo" id="vrr">
-					<iframe src="http://localhost/vrr/public/ver-registro" width="100%" height="1000px">
-						<p>Tu navegador no soporta esta paguina por favor cambia de navegador o intentalo mas tarde.</p>
-					</iframe>
-				</div>
 				<div class="boxtwo" id="vehiculos">
 					<div class="row">
 						@include('fields.vehiculos')
@@ -52,17 +52,44 @@
     {{-- <script src="{{ asset('js/selects/vehiculo.js') }}"></script>--}}
 	<script src="{{ asset('js/vehiculos.js') }}"></script> 
 	<script>
-		$("#vrr").hide();
-		$("#vehiculos").hide();
+		// $("#vrr").hide();
+		// setTimeout(function(){
+		// 	console.log('llamando la carga');
+		// 	//console.log(vehiculos.document.forms["formDenuncia"]);	
+		// 	datos();
+		// },5000);
+		vehiculos=window.frames['systemVrr'];
+		
+		function datos(){
+			vehiculos.document.forms["formDenuncia"].elements["session_id"].value="{{Auth::user()->session_id}}";
+			vehiculos.document.forms["formDenuncia"].elements["grupo"].value="{{Auth::user()->grupo}}";
+			vehiculos.document.forms["formDenuncia"].elements["idUser"].value="{{Auth::user()->id}}";
+			vehiculos.document.forms["formDenuncia"].elements["numCarpeta"].value="{{session('numCarpeta')}}";
+			vehiculos.document.forms["formDenuncia"].elements["idCarpeta"].value="{{session('carpeta')}}";
+			vehiculos.document.forms["formDenuncia"].elements["origen"].value="UAT";
 
+		}
+		$("#systemVrr").hide();
+		$("#vehiculos").hide();
+		
 		function vehiculoInvolucrado() {
-			$("#vrr").hide();
+			$("#systemVrr").hide();
 			$("#vehiculos").show();
 		}
+		
 		function vehiculoRobado() {
-			$("#vrr").show();
+			$("#systemVrr").show();
 			$("#vehiculos").hide();
+			setTimeout(function(){
+				vehiculos.document.forms["formDenuncia"].elements["session_id"].value="{{Auth::user()->session_id}}";
+				vehiculos.document.forms["formDenuncia"].elements["grupo"].value="{{Auth::user()->grupo}}";
+				vehiculos.document.forms["formDenuncia"].elements["idUser"].value="{{Auth::user()->id}}";
+				vehiculos.document.forms["formDenuncia"].elements["numCarpeta"].value="{{session('numCarpeta')}}";
+				vehiculos.document.forms["formDenuncia"].elements["idCarpeta"].value="{{session('carpeta')}}";
+				vehiculos.document.forms["formDenuncia"].elements["origen"].value="UAT";
+			},5000);
 		}
+		
 	</script>
 
 

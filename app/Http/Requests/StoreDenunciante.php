@@ -105,6 +105,8 @@ class StoreDenunciante extends FormRequest
             'calle3.max'=> 'La Calle de la dirección de notificaciones debe de tener como máximo 100 caracteres',
             'numExterno3.min'=> 'El número interno de la dirección de notificaciones debe de tener como mínimo 1 caracter',
             'numExterno3.max'=> 'El número interno de la dirección de notificaciones debe de tener como máximo 10 caracteres',
+            'narracion.min'=> 'El campo Descripción de hechos debe contener como mínimo 5 caracteres',
+            'narracion.max'=> 'El campo Descripción de hechos debe contener como máximo 2000 caracteres',
         ];
     }
 }

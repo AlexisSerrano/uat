@@ -18,6 +18,11 @@ Route::get('/prueba', function () {
     return view('welcome');
 });
 /**********************Rutas de prueba***********************/
+Route::get('/iframe', function () {
+    return view('welcome');
+});
+
+
 Route::get('/acuerdo/{id}','AcusacionController@acuerdoInicio')->name('acuerdo-inicio');
 Route::get('/acuerdo-inicio/{id}','AcusacionController@acuerdoDocumento')->name('acuerdo-documento');
 
@@ -63,9 +68,8 @@ Route::get('transporte-estado','ImpresionesController@transporteEdo')->name('ofi
 Route::get('Oficiotransporte-estado','ImpresionesController@storeoficioTransporte')->name('storeoficio.Transporte');
 
 
-
-
-/**************************************************************/
+Route::get('oficio-cavd','ImpresionesController@oficioCavd')->name('oficio.cavd');
+Route::get('cavd','ImpresionesController@storeOficio')->name('store.oficioCavd');/**************************************************************/
 // -------------------------------------------------------------------
 
 /* --------Ruta para obtener token oficios----------- */
@@ -287,7 +291,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getlesion/{id}','pericialesController@getlesion');
 
      /* --------Pruebas vehiculos----------- */
-    Route::get('/vehiculos-pruebas','VehiculoController@showform')->name('vehiculo.carpeta');
+    Route::get('/agregar-vehiculos','VehiculoController@showform')->name('vehiculo.carpeta');
     Route::get('submarcas/{id}', 'VehiculoController@getSubmarcas')->name('get.submarcas');
     Route::get('tipoVehiculos/{id}', 'VehiculoController@getTipoVehiculos')->name('get.tipovehiculos');
     Route::post('store-vehiculo', 'VehiculoController@storeVehiculo')->name('carpeta.vehiculo');
