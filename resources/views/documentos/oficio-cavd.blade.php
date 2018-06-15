@@ -15,7 +15,7 @@
     <div class="col-4">
             <div class="form-group">
                 {!! Form::label('victima3', 'Víctima/Ofendido', ['class' => 'col-form-label-sm']) !!}
-                {!! Form::select('victima3', $victimas[0],null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+                {!! Form::select('victima3', $victimas,null,['class' => 'form-control form-control-sm js-example-basic-multiple', 'data-validation'=>'required', 'multiple'=>'multiple']) !!}
             </div>
     </div>
 </div>	
@@ -28,3 +28,8 @@
 </div>
 
 @endsection
+<script>
+    $(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});
+</script>

@@ -25,6 +25,22 @@ class ImpresionesController extends Controller
 
 {
 
+    public function notActuaciones(){
+        $idCarpeta=session('carpeta');
+        $carpeta=DB::table('carpeta')
+        ->join('unidad','carpeta.idUnidad','=','unidad.id')
+        ->where('carpeta.id',$idCarpeta)->first();
+
+        $numCarpeta=$carpeta->numCarpeta;
+        $fiscalAtendio=$carpeta->fiscalAtendio;
+
+
+        dd($carpeta);
+
+
+return view('documentos.not-actiacion');
+    }
+
     public function oficioCavd(){
 
         $idCarpeta=session('carpeta');
@@ -37,7 +53,7 @@ class ImpresionesController extends Controller
         ->orderBy('descripcion', 'ASC')
         ->pluck('descripcion', 'id');
 
-        $victimas[''] = 'Seleccione una víctima/ofendido';
+        // $victimas[''] = 'Seleccione una víctima/ofendido';
         $victimas2 = DB::table('variables_persona')
         ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
         ->join('extra_denunciante', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
@@ -50,11 +66,11 @@ class ImpresionesController extends Controller
         }
 
         //
-       // dd($victimas2);
+       // dd($victimas);
 
         return view('documentos.oficio-cavd')
         ->with('carpeta',$carpeta)
-        ->with('victimas',$victimas2);
+        ->with('victimas',$victimas);
 
     }
 

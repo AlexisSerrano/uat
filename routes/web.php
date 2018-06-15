@@ -70,7 +70,11 @@ Route::get('Oficiotransporte-estado','ImpresionesController@storeoficioTransport
 
 Route::get('oficio-cavd','ImpresionesController@oficioCavd')->name('oficio.cavd');
 Route::get('imprimir-cavd','ImpresionesController@StoreCavd')->name('store.oficioCavd');
-/**************************************************************/
+
+Route::get('not-actuaciones','ImpresionesController@notActuaciones')->name('not.actuaciones');
+
+
+/**************************************************************/ 
 // -------------------------------------------------------------------
 
 /* --------Ruta para obtener token oficios----------- */
@@ -291,7 +295,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getlesion/{id}','pericialesController@getlesion');
 
      /* --------Pruebas vehiculos----------- */
-    Route::get('/agregar-vehiculos','VehiculoController@showform')->name('vehiculo.carpeta');
+    Route::get('/vehiculos-pruebas','VehiculoController@showform')->name('vehiculo.carpeta');
     Route::get('submarcas/{id}', 'VehiculoController@getSubmarcas')->name('get.submarcas');
     Route::get('tipoVehiculos/{id}', 'VehiculoController@getTipoVehiculos')->name('get.tipovehiculos');
     Route::post('store-vehiculo', 'VehiculoController@storeVehiculo')->name('carpeta.vehiculo');
