@@ -200,6 +200,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('agregar-medidas/{id}/eliminar', 'MedidasProteccionController@delete')->name('delete.medida');
     Route::post('agregar-medidas/editar', 'MedidasProteccionController@editar')->name('agregar-medidas');
     Route::get('getMedidasAjax/{id}', 'MedidasProteccionController@getMedidasAjax')->name("getMedidasAjax");
+    Route::get('getoficio/{id}','MedidasProteccionController@oficio');
     
     
     /*----------------medidas version2------------------*/

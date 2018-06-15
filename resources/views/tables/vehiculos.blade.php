@@ -26,7 +26,7 @@
                          <td>{{ $vehiculo->modelo }}</td>
                         <td>{{ $vehiculo->placas }}</td>   
                         <td>{{ $vehiculo->tipovehiculo }}</td>
-                        <td>{{ $vehiculo->color }}</td>    
+                        <td>{{ $vehiculo->color }}</td> 
                          {{-- <a href="{{ url('agregar-abogado/'.$abogado->id.'/eliminar')}}" title="Eliminar Registro" class="btn btn-secondary ">
                         <i class="fa fa-times"></i></td>   --}}
                         <td> 
