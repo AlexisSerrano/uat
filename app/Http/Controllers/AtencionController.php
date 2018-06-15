@@ -27,7 +27,10 @@ class AtencionController extends Controller
         DB::beginTransaction();
         try{
             $atencion = new Atencion;
-            $atencion->nombre = $request->nombre." ".$request->primer_ap." ".$request->segundo_ap;
+            $atencion->nombres = $request->nombre;
+            $atencion->primerAp = $request->primer_ap;
+            $atencion->segundoAp = $request->segundo_ap;
+            $atencion->telefono = $request->telefono;
             $atencion->idRedireccion = $request->redireccion;
             // $atencion->zona = session('zona');
             // $atencion->unidad = session('unidad');

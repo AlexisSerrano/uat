@@ -54,29 +54,30 @@ class ImpresionesController extends Controller
         // ->orderBy('descripcion', 'ASC')
         // ->pluck('descripcion', 'id');
 
-        $victimas[''] = 'Seleccione una víctima/ofendido';
+        // $victimas[''] = 'Seleccione una víctima/ofendido';
         $victimas2 = DB::table('extra_denunciante')
         ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
         ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
         ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
         ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+        ->orderBy('persona.nombres', 'ASC')
         ->get();
 
-        $cadenaDenunciantes='';
-        foreach($victimas2 as $victima2){
-            $cadenaDenunciantes .= $victima2->nombres.' '. $victima2->primerAp.' '. $victima2->segundoAp.', ';
-        }
+        // $cadenaDenunciantes='';
+        // foreach($victimas2 as $victima2){
+        //     $cadenaDenunciantes .= $victima2->nombres.' '. $victima2->primerAp.' '. $victima2->segundoAp.', ';
+        // }
 
         // foreach($victimas2 as $victima){
         //     $victimas[$victima->nombres.'-'.$victima->primerAp.'-'.$victima->segundoAp] = $victima->nombres.' '.$victima->primerAp.' '.$victima->segundoAp;
         // }
 
         
-      // dd($victimas2);
+        // dd($cadenaDenunciantes);
 
         return view('fields.oficio-cavd')
         // ->with('carpeta',$carpeta)
-        ->with('cadenaDenunciantes',$cadenaDenunciantes);
+        ->with( 'victimas2', $victimas2);
     }
 
     public function storeoficioTransporte(){

@@ -25,7 +25,13 @@
                     {!! Form::text('segundo_ap', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-6">
+                <div class="form-group">
+                    {!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
+                    {!! Form::text('telefono', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Teléfono', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+                </div>
+            </div>
+            <div class="col-6">
                 <div class="form-group">
                     {!! Form::label('redireccion', 'Modulo de atención', ['class' => 'col-form-label-sm']) !!}
                     {!! Form::select('redireccion', $modulos, null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
