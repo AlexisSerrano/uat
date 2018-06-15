@@ -8,6 +8,7 @@ use App\Models\Carpeta;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Persona;
+use App\Models\Cavd;
 use App\Models\Unidad;
 use App\Models\CatMarca;
 use App\Models\CatSubmarca;
@@ -53,6 +54,36 @@ class ImpresionesController extends Controller
     
 
     public function oficioCavd(){
+      
+        return view('documentos.oficio-cavd');
+    
+    }
+
+    public function storeOficio(){
+        $idCarpeta=session('carpeta');
+
+        $catalogo = cavd::orderBy('id', 'ASC')->pluck('nombre', 'id');
+       
+        $victimas2 = DB::table('extra_denunciante')
+        ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+        ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+        ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
+        ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+        ->orderBy('persona.nombres', 'ASC')
+        ->get();
+
+      
+        
+        // dd($cadenaDenunciantes);
+
+        return view('fields.oficio-cavd')
+        // ->with('carpeta',$carpeta)
+        ->with( 'victimas2', $victimas2)
+        ->with( 'catalogo', $catalogo);
+    }
+
+    public function getCavd(){
+
         $idCarpeta=session('carpeta');
         $carpeta=DB::table('carpeta')
         ->join('unidad','carpeta.idUnidad','=','unidad.id')
@@ -63,48 +94,23 @@ class ImpresionesController extends Controller
         ->orderBy('descripcion', 'ASC')
         ->pluck('descripcion', 'id');
 
-
-
-        return view('documentos.oficio-cavd');
-       
-
-    }
-
-    public function storeOficio(){
-        $idCarpeta=session('carpeta');
-        // $carpeta=DB::table('carpeta')
-        // ->join('unidad','carpeta.idUnidad','=','unidad.id')
-        // ->where('carpeta.id',$idCarpeta)->first();
-
-        // $unidad = Unidad::select('id', 'descripcion')
-        // ->where('abreviacion','!=','')
-        // ->orderBy('descripcion', 'ASC')
-        // ->pluck('descripcion', 'id');
-
-        // $victimas[''] = 'Seleccione una víctima/ofendido';
-        $victimas2 = DB::table('extra_denunciante')
-        ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-        ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-        ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
-        ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-        ->orderBy('persona.nombres', 'ASC')
-        ->get();
-
-        // $cadenaDenunciantes='';
-        // foreach($victimas2 as $victima2){
-        //     $cadenaDenunciantes .= $victima2->nombres.' '. $victima2->primerAp.' '. $victima2->segundoAp.', ';
-        // }
-
-        // foreach($victimas2 as $victima){
-        //     $victimas[$victima->nombres.'-'.$victima->primerAp.'-'.$victima->segundoAp] = $victima->nombres.' '.$victima->primerAp.' '.$victima->segundoAp;
-        // }
-
+        $data = array('id' => $vehiculo->id,
+        'numCarpeta'=>$carpeta->numCarpeta,
+        'fiscalAtiende'=>$fiscalAtiende1,
+        'marca'=>$marca->nombre,
+        'submarca'=>$submarca->nombre,
+        'color'=>$color->nombre,
+        'numSerie'=>$vehiculo->numSerie,
+        'modelo'=>$vehiculo->modelo,
+        'entidad'=>$localidadAtiende->descripcion,
+        'fecha'=>$fechahum,
+        'placas'=>$vehiculo->placas);
         
-        // dd($cadenaDenunciantes);
+        //dd($data);
+       
+       return response()->json($data);
 
-        return view('fields.oficio-cavd')
-        // ->with('carpeta',$carpeta)
-        ->with( 'victimas2', $victimas2);
+
     }
 
     public function storeoficioTransporte(){
