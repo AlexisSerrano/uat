@@ -14,14 +14,31 @@
 				{{-- <img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="Imagen de perfil" > --}}
 				<i class="fa fa-user-circle" aria-hidden="true" style="color:white; font-size:33px;"></i> 
 			</div>
-	
+			
 			<div class="info" style="padding-top:0;width: 100%;text-align: center;">
 				<a href="#" class="d-block">{{ Auth::user()->nombres }}</a>
 				<a href="#" class="d-block">{{ Auth::user()->apellidos }}</a>
 				<span style="color:white;font-size:13px;">Número de Fiscal: {{Auth::user()->numFiscal}}</span>
 			</div>
+			
 		</div>
-		
+		<div class="user-panel mt-3 pb-3 mb-3 d-flex" style="margin-bottom: -15px !important;margin-top: 3px !important;">
+			<div class="info" style="padding-top:0;padding-bottom:0;width: 100%;text-align: center;">
+				@if (Auth::user()->grupo=='recepcion')
+					<span style="color:white;font-size:15px;">Recepción</span>
+				@endif
+				@if (Auth::user()->grupo=='orientador')
+					<span style="color:white;font-size:15px;">Fiscal orientador</span>
+				@endif
+				@if (Auth::user()->grupo=='facilitador')
+					<span style="color:white;font-size:15px;">Fiscal facilitador</span>
+				@endif
+				@if (Auth::user()->grupo=='cordinador')
+					<span style="color:white;font-size:15px;">Fiscal coordinador</span>
+				@endif
+			</div>
+		</div>
+
 		<!-- Sidebar Menu -->
 		<nav class="mt-2">
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
