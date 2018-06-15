@@ -45,7 +45,13 @@
                     <td style="text-align:center;">
                     <a href="{{ url('oficio-cavd')}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i> Imprimir</a>
                     </td> 
-                </tr>  
+                </tr>
+                <tr>
+                    <td>Notificación de actuaciones a fiscal de distrito</td>
+                    <td style="text-align:center;">
+                    <a href="{{ url('not-actuaciones')}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i> Imprimir</a>
+                    </td> 
+                </tr>    
 
     
             </tbody>

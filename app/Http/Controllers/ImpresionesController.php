@@ -26,20 +26,31 @@ class ImpresionesController extends Controller
 {
 
     public function notActuaciones(){
+        
+       return view('documentos.not-actuacion');
+    }
+
+    public function impresionActuaciones(){
         $idCarpeta=session('carpeta');
         $carpeta=DB::table('carpeta')
         ->join('unidad','carpeta.idUnidad','=','unidad.id')
         ->where('carpeta.id',$idCarpeta)->first();
 
-        $numCarpeta=$carpeta->numCarpeta;
-        $fiscalAtendio=$carpeta->fiscalAtendio;
+       // $numCarpeta=$carpeta->numCarpeta;
+        //$fiscalAtendio=$carpeta->fiscalAtendio;
 
 
-        dd($carpeta);
-
-
-return view('documentos.not-actiacion');
+        //dd($carpeta);
+        $data = array('id' => $idCarpeta,
+        'numCarpeta'=>$carpeta->numCarpeta,
+        'fiscal'=>$carpeta->fiscalAtendio,
+        );
+        
+        //dd($data);
+       
+       return response()->json($data);
     }
+    
 
     public function oficioCavd(){
 
@@ -105,12 +116,13 @@ return view('documentos.not-actiacion');
             ->first();
         $fechaactual = date::now();
         $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
-        $fiscalAtiende1='paola';
+       
+       // $fiscalAtiende1='paola';
        
         
         $data = array('id' => $vehiculo->id,
         'numCarpeta'=>$carpeta->numCarpeta,
-        'fiscalAtiende'=>$fiscalAtiende1,
+       // 'fiscalAtiende'=>$fiscalAtiende1,
         'marca'=>$marca->nombre,
         'submarca'=>$submarca->nombre,
         'color'=>$color->nombre,

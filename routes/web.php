@@ -72,7 +72,7 @@ Route::get('oficio-cavd','ImpresionesController@oficioCavd')->name('oficio.cavd'
 Route::get('imprimir-cavd','ImpresionesController@StoreCavd')->name('store.oficioCavd');
 
 Route::get('not-actuaciones','ImpresionesController@notActuaciones')->name('not.actuaciones');
-
+Route::get('impresion-actuaciones','ImpresionesController@impresionActuaciones')->name('impresion.actuaciones');
 
 /**************************************************************/ 
 // -------------------------------------------------------------------

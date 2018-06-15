@@ -7,15 +7,15 @@
         <div class="row">
     <div class="col-4">
         <div class="form-group">
-            {!! Form::label('dirigidoA', 'Dirigido a:', ['class' => 'col-form-label-sm']) !!}
-            {!! Form::text('dirigidoA', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Persona a la que se dirige el oficio']) !!}
+            {!! Form::label('unidadCavd', 'Unidad a la que se dirige el oficio:', ['class' => 'col-form-label-sm']) !!}
+            {!! Form::text('unidadCavd', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Unidad a la que se dirige el oficio']) !!}
         </div>
     </div>
     
     <div class="col-4">
             <div class="form-group">
                 {!! Form::label('victima3', 'Víctima/Ofendido', ['class' => 'col-form-label-sm']) !!}
-                {!! Form::select('victima3', $victimas,null,['class' => 'form-control form-control-sm js-example-basic-multiple', 'data-validation'=>'required', 'multiple'=>'multiple']) !!}
+                {!! Form::select('victima3', $victimas,null,['class' => ' js-example-basic-multiple' ,'multiple'=>'multiple'   ]) !!}
             </div>
     </div>
 </div>	
@@ -28,8 +28,22 @@
 </div>
 
 @endsection
+@push('scripts')
 <script>
-    $(document).ready(function() {
-    $('.js-example-basic-multiple').select2();
-});
+  $(document).ready(function() {
+      $('#victima3').select2({
+             selectOnClose: true
+                  });
+       
+      
+  });
+//     $('.js-example-basic-multiple').select2();
+    
+//     $("#victima3").onclick(function(event){
+ 
+//             
+
+// });
+// });
 </script>
+@endpush
