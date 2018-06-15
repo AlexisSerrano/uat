@@ -518,6 +518,8 @@ class PreregistroAuxController extends Controller
         ->pluck('nombre','id');;
         // dd($municipioOrigen);  
        
+        
+        
         $caso = new Carpeta();
         $caso->fechaInicio = Carbon::now();
         $caso->idFiscal = Auth::user()->id;
@@ -526,6 +528,16 @@ class PreregistroAuxController extends Controller
         $caso->fechaDeterminacion = Carbon::now();
         $caso->save();
         $idCarpeta = $caso->id;
+        
+        $unidad=DB::table('unidad')->where('id',Auth::user()->idUnidad)->first();
+        $unidad=$unidad->abreviacion;
+        
+        $numCarpeta=Carpeta::find($caso->id);
+        $numCarpeta->numCarpeta = $unidad."/".Auth::user()->numFiscal."/".$caso->id."/".Carbon::now()->year;            
+        $numCarpeta->save();
+
+        session(['numCarpeta' => $numCarpeta->numCarpeta]);
+        
 
         $editpreregistro=Preregistro::find($id);
         $editpreregistro->idCarpeta= $idCarpeta;
@@ -667,6 +679,7 @@ class PreregistroAuxController extends Controller
         session()->forget('carpeta');
         session()->forget('preregistro');
         session()->forget('foliopreregistro');
+        session()->forget('numCarpeta');
          //dd($idCarpeta);
         //dd(session('carpeta'));
         
