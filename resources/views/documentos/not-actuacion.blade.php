@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="app">
-        <oficio tipo="CAVD" url="{{url("oficio.cavd")}}"></oficio>
+        <oficio tipo="NOT. ACTUACIONES FISCAL DISTRITO" url="{{url("impresion-actuaciones")}}"></oficio>
     </div>
 </body>
 </html>

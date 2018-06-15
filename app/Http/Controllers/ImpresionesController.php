@@ -25,6 +25,33 @@ class ImpresionesController extends Controller
 
 {
 
+    public function notActuaciones(){
+        
+       return view('documentos.not-actuacion');
+    }
+
+    public function impresionActuaciones(){
+        $idCarpeta=session('carpeta');
+        $carpeta=DB::table('carpeta')
+        ->join('unidad','carpeta.idUnidad','=','unidad.id')
+        ->where('carpeta.id',$idCarpeta)->first();
+
+       // $numCarpeta=$carpeta->numCarpeta;
+        //$fiscalAtendio=$carpeta->fiscalAtendio;
+
+
+        //dd($carpeta);
+        $data = array('id' => $idCarpeta,
+        'numCarpeta'=>$carpeta->numCarpeta,
+        'fiscal'=>$carpeta->fiscalAtendio,
+        );
+        
+        //dd($data);
+       
+       return response()->json($data);
+    }
+    
+
     public function oficioCavd(){
         $idCarpeta=session('carpeta');
         $carpeta=DB::table('carpeta')
@@ -54,29 +81,30 @@ class ImpresionesController extends Controller
         // ->orderBy('descripcion', 'ASC')
         // ->pluck('descripcion', 'id');
 
-        $victimas[''] = 'Seleccione una víctima/ofendido';
+        // $victimas[''] = 'Seleccione una víctima/ofendido';
         $victimas2 = DB::table('extra_denunciante')
         ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
         ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
         ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
         ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+        ->orderBy('persona.nombres', 'ASC')
         ->get();
 
-        $cadenaDenunciantes='';
-        foreach($victimas2 as $victima2){
-            $cadenaDenunciantes .= $victima2->nombres.' '. $victima2->primerAp.' '. $victima2->segundoAp.', ';
-        }
+        // $cadenaDenunciantes='';
+        // foreach($victimas2 as $victima2){
+        //     $cadenaDenunciantes .= $victima2->nombres.' '. $victima2->primerAp.' '. $victima2->segundoAp.', ';
+        // }
 
         // foreach($victimas2 as $victima){
         //     $victimas[$victima->nombres.'-'.$victima->primerAp.'-'.$victima->segundoAp] = $victima->nombres.' '.$victima->primerAp.' '.$victima->segundoAp;
         // }
 
         
-      // dd($victimas2);
+        // dd($cadenaDenunciantes);
 
         return view('fields.oficio-cavd')
         // ->with('carpeta',$carpeta)
-        ->with('cadenaDenunciantes',$cadenaDenunciantes);
+        ->with( 'victimas2', $victimas2);
     }
 
     public function storeoficioTransporte(){
@@ -110,12 +138,13 @@ class ImpresionesController extends Controller
             ->first();
         $fechaactual = date::now();
         $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
-        $fiscalAtiende1='paola';
+       
+       // $fiscalAtiende1='paola';
        
         
         $data = array('id' => $vehiculo->id,
         'numCarpeta'=>$carpeta->numCarpeta,
-        'fiscalAtiende'=>$fiscalAtiende1,
+       // 'fiscalAtiende'=>$fiscalAtiende1,
         'marca'=>$marca->nombre,
         'submarca'=>$submarca->nombre,
         'color'=>$color->nombre,

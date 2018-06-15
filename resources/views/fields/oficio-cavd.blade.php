@@ -5,19 +5,19 @@
 <div class="card">  
     <div class="card-body">
         <div class="row">
-    <div class="col-4">
+    {{-- <div class="col-4">
         <div class="form-group">
             {!! Form::label('dirigidoA', 'Dirigido a:', ['class' => 'col-form-label-sm']) !!}
             {!! Form::text('dirigidoA', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Persona a la que se dirige el oficio']) !!}
         </div>
-    </div>
+    </div> --}}
     
-    <div class="col-4">
-            <div class="form-group">
-                {!! Form::label('victima3', 'Víctima/Ofendido', ['class' => 'col-form-label-sm']) !!}
-                {!! Form::select('victima3', $cadenaDenunciantes,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
-            </div>
-    </div>
+    <select name="idDenunciante[]" id="idDenunciante" multiple="multiple" class="form-control form-control-sm" required>
+        <option value="">Seleccione una victima u ofendido</option>
+        @foreach($victimas2 as $victima)
+        <option value="{{ $victima->id }}">{{ $victima->nombres." ".$victima->primerAp." ".$victima->segundoAp }}</option>
+        @endforeach
+    </select>
 </div>	
     </div>
 </div>

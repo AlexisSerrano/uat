@@ -60,7 +60,7 @@
                 <div class="card">
                     <div class="card-header"><h6>Oficios guardados</h1></div>
                         <div class="col-12">    
-                            <div class=" panel panel-default">
+                            <div class=" panel panel-default scroll">
                                 <div class="panel-body">
                                     <table class="table table-hover tableOficios">
                                         <tbody id="listaOficios" >
@@ -93,9 +93,14 @@
     }
     .tableOficios{
         margin-top: 5px;
+        overflow: scroll;
+       
     }
     .margindown{
         padding-bottom: 10px;
+    }
+    .scroll{
+        overflow: auto;
     }
 </style>
 @push('scripts')
