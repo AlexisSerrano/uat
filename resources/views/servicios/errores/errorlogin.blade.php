@@ -22,7 +22,7 @@
                 <h3 class="text-uppercase">FALTA DE DATOS</h3>
                 <div class="col">
 
-                    <p class="text-uppercase text-muted">no te puedes loguear porque no tienes un número de fiscal asignado o no estas asignado a una unidad, favor de verificar su informacion con recursos humanos para que se refleje en el sistema o comunicarse con soporte tecnico del centro de inforamción de la fiscalia.</p>
+                    <p class="text-uppercase text-muted">No te puedes loguear porque no tienes un número de fiscal asignado o no estas asignado a una unidad, favor de verificar su información con recursos humanos para que se refleje en el sistema o comunicarse con soporte técnico del centro de información de la fiscalía.</p>
                     <p class="text-uppercase text-muted">Por favor inténtelo más tarde, gracias.</p>
                     
                     <a href="{{route('login')}}" class="btn btn-outline-dark btn-rounded waves-effect waves-light">Volver al Inicio</a>

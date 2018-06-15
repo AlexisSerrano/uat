@@ -83,7 +83,13 @@ class MedidasProteccionController extends Controller
                 Alert::error('Se presentó un problema al crear la medida de protección', 'Error');
             }
             DB::commit();
-            return redirect("medidas");
+             return view('documentos.medidas-proteccion')
+
+      
+              ->with('id',  $providenciaBD->id );
+
+            //   return redirect('medidas')
+           //  return redirect('getoficio/'.$providenciaBD->id.'/medida');
         }catch (\PDOException $e){
             DB::rollBack();
             Alert::error('Se presentó un problema al guardar los datos, intente de nuevo', 'Error');

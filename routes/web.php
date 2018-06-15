@@ -75,6 +75,7 @@ Route::get('not-actuaciones','ImpresionesController@notActuaciones')->name('not.
 Route::get('impresion-actuaciones','ImpresionesController@impresionActuaciones')->name('impresion.actuaciones');
 
 /**************************************************************/ 
+Route::get('cavd','ImpresionesController@storeOficio')->name('store.oficioCavd');/**************************************************************/
 // -------------------------------------------------------------------
 
 /* --------Ruta para obtener token oficios----------- */
@@ -209,6 +210,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('agregar-medidas/{id}/eliminar', 'MedidasProteccionController@delete')->name('delete.medida');
     Route::post('agregar-medidas/editar', 'MedidasProteccionController@editar')->name('agregar-medidas');
     Route::get('getMedidasAjax/{id}', 'MedidasProteccionController@getMedidasAjax')->name("getMedidasAjax");
+    Route::get('getoficio/{id}','MedidasProteccionController@oficio');
     
     
     /*----------------medidas version2------------------*/
