@@ -92,7 +92,7 @@
                 </div>
             </div>
 
-            <form action="" id="formDenuncia" name="formDenuncia">
+            <form action="" id="validacion" name="formDenuncia">
                 <input type="text" name="session_id" id="session_id">
                 <input type="text" name="grupo" id="grupo">
                 <input type="text" name="idUser" id="idUser">
