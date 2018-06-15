@@ -87,6 +87,8 @@ class MedidasProteccionController extends Controller
 
       
               ->with('id',  $providenciaBD->id );
+
+            //   return redirect('medidas')
            //  return redirect('getoficio/'.$providenciaBD->id.'/medida');
         }catch (\PDOException $e){
             DB::rollBack();
