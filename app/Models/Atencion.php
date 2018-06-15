@@ -9,6 +9,6 @@ class Atencion extends Model
     protected $table = 'atenciones';
 
     protected $fillable = [
-        'id', 'idRedireccion', 'nombre', 'updated_at', 'created_at'
+        'id', 'idRedireccion', 'nombres', 'primerAp', 'segundoAp', 'telefono', 'updated_at', 'created_at'
     ];
 }

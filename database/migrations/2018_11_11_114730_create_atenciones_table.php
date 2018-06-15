@@ -19,7 +19,10 @@ class CreateAtencionesTable extends Migration
             $table->integer('idUsuario')->unsigned();
             $table->integer('idZona')->unsigned();
             $table->integer('idUnidad')->unsigned();
-            $table->string('nombre',100);
+            $table->string('nombres',40);
+            $table->string('primerAp',30);
+            $table->string('segundoAp',30)->nullable();
+            $table->string('telefono',20);
             $table->foreign('idRedireccion')->references('id')->on('cat_redirecciones');
             $table->foreign('idUsuario')->references('id')->on('users');
             $table->foreign('idUnidad')->references('id')->on('unidad');

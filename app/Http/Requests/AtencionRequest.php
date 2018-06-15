@@ -26,8 +26,8 @@ class AtencionRequest extends FormRequest
         return [
             'nombre' => 'required',
             'primer_ap' => 'required',
-            'segundo_ap' => 'required',
             'redireccion' => 'required',
+            'telefono' => 'required',
         ];
     }
 
@@ -36,8 +36,8 @@ class AtencionRequest extends FormRequest
         return [
             'nombre.required' => 'Introduzca el campo Nombre',
             'primer_ap.required' => 'Introduzca el campo Primer Apellido',
-            'segundo_ap.required' => 'Introduzca el campo Segundo Apellido',
             'redireccion.required' => 'Introduzca el campo Modulo de atención',
+            'telefono.required' => 'Introduzca el campo Teléfono de atención',
         ];
     }
 }
