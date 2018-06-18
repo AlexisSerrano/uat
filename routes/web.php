@@ -68,15 +68,16 @@ Route::get('transporte-estado','ImpresionesController@transporteEdo')->name('ofi
 Route::get('Oficiotransporte-estado','ImpresionesController@storeoficioTransporte')->name('storeoficio.Transporte');
 
 
-Route::get('oficio-cavd','ImpresionesController@oficioCavd')->name('oficio.cavd');
-Route::get('imprimir-cavd','ImpresionesController@StoreCavd')->name('store.oficioCavd');
+Route::get('oficio-cavd','ImpresionesController@getCavd')->name('oficio.cavd');
+Route::get('show-oficioCavd','ImpresionesController@showOficio')->name('show.oficioCavd');
+Route::post('store-oficioCavd','ImpresionesController@storeOficio')->name('store.oficioCavd');
+Route::get('getcavd/{id}','ImpresionesController@getCavd');
+
 
 Route::get('not-actuaciones','ImpresionesController@notActuaciones')->name('not.actuaciones');
 Route::get('impresion-actuaciones','ImpresionesController@impresionActuaciones')->name('impresion.actuaciones');
 
-/**************************************************************/ 
-Route::get('cavd','ImpresionesController@storeOficio')->name('store.oficioCavd');/**************************************************************/
-// -------------------------------------------------------------------
+
 
 /* --------Ruta para obtener token oficios----------- */
 // Route::get('getToken/{id}','ActasHechosController@getToken')->name('getToken');
@@ -277,7 +278,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('libro','libroGobController@terminadas');
     Route::get('getCarpetas','libroGobController@getCarpetas');
     Route::get('carpetas','libroGobController@buscar')->name('indexcarpetas');
-    route::get('buscarcarpeta/{id}','libroGobController@showForm');
+    route::get('carpeta/{id}','ResumenCarpetaController@showForm')->name('ir.carpeta');
     Route::post('carpetaNum','libroGobController@searchNumCarpeta')->name('filtro.carpetas');
     Route::post('libroGobierno','libroGobController@mostrarlibro')->name('libro.filtro');
     /* --------Rutas para Caratula de carpeta de investigacion----------- */

@@ -18,8 +18,9 @@
 	</div>
 	
 	
-	{{-- <object type="text/html" data="http://localhost/vrr/public/ver-registro" name="systemVrr" id="systemVrr"  width="100%" height="1000px"> --}}
+	{{-- <object type="text/html" data="http://192.108.22.44:80/VRR/public/session_uatwf" name="systemVrr" id="systemVrr"  width="100%" height="500px"> --}}
 	<object type="text/html" data="{{url('iframe')}}" name="systemVrr" id="systemVrr"  width="100%" height="1000px">
+		
 	</object>
 	
 	<div class=" card-body boxone">
@@ -48,27 +49,20 @@
 	
 
 @push('scripts')
-	<script src="{{ asset('js/selects/vehiculo.js') }}"></script>
-    {{-- <script src="{{ asset('js/selects/vehiculo.js') }}"></script>--}}
-	<script src="{{ asset('js/vehiculos.js') }}"></script> 
-	<script>
+	
+
+<script src="{{ asset('js/selects/vehiculo.js') }}"></script>
+{{-- <script src="{{ asset('js/selects/vehiculo.js') }}"></script>--}}
+<script src="{{ asset('js/vehiculos.js') }}"></script> 
+<script>
+
 		// $("#vrr").hide();
 		// setTimeout(function(){
 		// 	console.log('llamando la carga');
 		// 	//console.log(vehiculos.document.forms["formDenuncia"]);	
 		// 	datos();
 		// },5000);
-		vehiculos=window.frames['systemVrr'];
 		
-		function datos(){
-			vehiculos.document.forms["formDenuncia"].elements["session_id"].value="{{Auth::user()->session_id}}";
-			vehiculos.document.forms["formDenuncia"].elements["grupo"].value="{{Auth::user()->grupo}}";
-			vehiculos.document.forms["formDenuncia"].elements["idUser"].value="{{Auth::user()->id}}";
-			vehiculos.document.forms["formDenuncia"].elements["numCarpeta"].value="{{session('numCarpeta')}}";
-			vehiculos.document.forms["formDenuncia"].elements["idCarpeta"].value="{{session('carpeta')}}";
-			vehiculos.document.forms["formDenuncia"].elements["origen"].value="UAT";
-
-		}
 		$("#systemVrr").hide();
 		$("#vehiculos").hide();
 		
@@ -76,19 +70,26 @@
 			$("#systemVrr").hide();
 			$("#vehiculos").show();
 		}
+		// localStorage.setItem('session_id', "{{Auth::user()->session_id}}");
 		
 		function vehiculoRobado() {
 			$("#systemVrr").show();
 			$("#vehiculos").hide();
+			
 			setTimeout(function(){
-				vehiculos.document.forms["formDenuncia"].elements["session_id"].value="{{Auth::user()->session_id}}";
-				vehiculos.document.forms["formDenuncia"].elements["grupo"].value="{{Auth::user()->grupo}}";
-				vehiculos.document.forms["formDenuncia"].elements["idUser"].value="{{Auth::user()->id}}";
-				vehiculos.document.forms["formDenuncia"].elements["numCarpeta"].value="{{session('numCarpeta')}}";
-				vehiculos.document.forms["formDenuncia"].elements["idCarpeta"].value="{{session('carpeta')}}";
-				vehiculos.document.forms["formDenuncia"].elements["origen"].value="UAT";
-			},5000);
+				var vehiculos=window.frames['systemVrr'];
+				console.log('Se ejecuto');
+
+				vehiculos.document.forms["validacion"].elements["session_id"].value="{{Auth::user()->session_id}}";
+				vehiculos.document.forms["validacion"].elements["grupo"].value="{{Auth::user()->grupo}}";
+				vehiculos.document.forms["validacion"].elements["idUser"].value="{{Auth::user()->id}}";
+				vehiculos.document.forms["validacion"].elements["numCarpeta"].value="{{session('numCarpeta')}}";
+				vehiculos.document.forms["validacion"].elements["idCarpeta"].value="{{session('carpeta')}}";
+				vehiculos.document.forms["validacion"].elements["origen"].value="UAT";
+				
+			},8000);
 		}
+
 		
 	</script>
 
@@ -96,12 +97,3 @@
 
 @endpush
 
-
-{{-- @push('docready-js')
-
-    $.validate({
-        validateOnEvent: true,
-		lang : 'es'
-    });
-
-@endpush --}}

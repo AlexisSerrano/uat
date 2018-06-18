@@ -28,14 +28,7 @@ class LibroGobController extends Controller
     
      
        
-    public function showForm($id){   
-        session(['carpeta' => $id]);
-        $numcarpeta=Carpeta::where('id',$id)->first();
-        $numcarpeta=$numcarpeta->numCarpeta;
-        // dd($numcarpeta);
-        session(['terminada' => $numcarpeta]);
-        return redirect(route('carpeta.detalle'));
-    }
+   
         
 
     public function searchNumCarpeta(Request $request)
