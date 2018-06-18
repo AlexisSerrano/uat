@@ -24419,7 +24419,7 @@ class SubmarcaSeeder extends Seeder
 			['id' =>24402,'idSubmarca' =>113204,'idMarca' =>4,'nombre' => 'GALAXY TITANIUM']
         ];
 
-		foreach (array_chunk($tsim_array,100) as $t) {
+		foreach (array_chunk($tsim_array,50) as $t) {
 
 	 		DB::table('cat_submarcas')->insert($t);
 
