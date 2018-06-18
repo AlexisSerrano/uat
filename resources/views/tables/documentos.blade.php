@@ -57,7 +57,14 @@ $oficios = getImpresiones();
                     <td style="text-align:center;">
                     <a href="{{ url('not-actuaciones')}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i> Imprimir</a>
                     </td> 
-                </tr>    
+                </tr> 
+                <tr>
+                        <td>Notificación de archivo temporal</td>
+                        <td style="text-align:center;">
+                        <a href="{{ url('impresion-temporal')}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i> Imprimir</a>
+                        </td> 
+                    </tr>    
+               
 
     
             </tbody>
