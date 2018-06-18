@@ -165,37 +165,37 @@ class ResumenCarpetaController extends Controller
             ->where('carpeta.id',$idCarpeta)->first();
             
             $denunciados=DB::table('extra_denunciado')
-                ->join('dirnotificacion','dirnotificacion.id','=','extra_denunciado.idNotificacion')
-                ->join('domicilio as notificacion','dirnotificacion.idDomicilio','=','notificacion.id')
-                ->join('cat_municipio as cat_municipio_notificacion','cat_municipio_notificacion.id','=','notificacion.idMunicipio')
-                ->join('cat_estado as cat_estado_notificacion','cat_estado_notificacion.id','=','cat_municipio_notificacion.idEstado')
-                ->join('cat_localidad as cat_localidad_notificacion','cat_localidad_notificacion.id','=','notificacion.idLocalidad')
-                ->join('cat_colonia as cat_colonia_notificacion','cat_colonia_notificacion.id','=','notificacion.idColonia')
+                ->leftJoin('dirnotificacion','dirnotificacion.id','=','extra_denunciado.idNotificacion')
+                ->leftJoin('domicilio as notificacion','dirnotificacion.idDomicilio','=','notificacion.id')
+                ->leftJoin('cat_municipio as cat_municipio_notificacion','cat_municipio_notificacion.id','=','notificacion.idMunicipio')
+                ->leftJoin('cat_estado as cat_estado_notificacion','cat_estado_notificacion.id','=','cat_municipio_notificacion.idEstado')
+                ->leftJoin('cat_localidad as cat_localidad_notificacion','cat_localidad_notificacion.id','=','notificacion.idLocalidad')
+                ->leftJoin('cat_colonia as cat_colonia_notificacion','cat_colonia_notificacion.id','=','notificacion.idColonia')
                 
-                ->join('variables_persona','variables_persona.id','=','extra_denunciado.idVariablesPersona')
-                ->join('cat_ocupacion','cat_ocupacion.id','=','variables_persona.idOcupacion')
-                ->join('cat_estado_civil','cat_estado_civil.id','=','variables_persona.idEstadoCivil')
-                ->join('cat_escolaridad','cat_escolaridad.id','=','variables_persona.idEscolaridad')
-                ->join('cat_religion','cat_religion.id','=','variables_persona.idReligion')
+                ->leftJoin('variables_persona','variables_persona.id','=','extra_denunciado.idVariablesPersona')
+                ->leftJoin('cat_ocupacion','cat_ocupacion.id','=','variables_persona.idOcupacion')
+                ->leftJoin('cat_estado_civil','cat_estado_civil.id','=','variables_persona.idEstadoCivil')
+                ->leftJoin('cat_escolaridad','cat_escolaridad.id','=','variables_persona.idEscolaridad')
+                ->leftJoin('cat_religion','cat_religion.id','=','variables_persona.idReligion')
                 
-                ->join('domicilio','variables_persona.idDomicilio','=','domicilio.id')
-                ->join('cat_municipio','cat_municipio.id','=','domicilio.idMunicipio')
-                ->join('cat_estado','cat_estado.id','=','cat_municipio.idEstado')
-                ->join('cat_localidad','cat_localidad.id','=','domicilio.idLocalidad')
-                ->join('cat_colonia','cat_colonia.id','=','domicilio.idColonia')
+                ->leftJoin('domicilio','variables_persona.idDomicilio','=','domicilio.id')
+                ->leftJoin('cat_municipio','cat_municipio.id','=','domicilio.idMunicipio')
+                ->leftJoin('cat_estado','cat_estado.id','=','cat_municipio.idEstado')
+                ->leftJoin('cat_localidad','cat_localidad.id','=','domicilio.idLocalidad')
+                ->leftJoin('cat_colonia','cat_colonia.id','=','domicilio.idColonia')
                 
-                ->join('domicilio as trabajo','variables_persona.idDomicilioTrabajo','=','trabajo.id')
-                ->join('cat_municipio as cat_municipio_trabajo','cat_municipio_trabajo.id','=','trabajo.idMunicipio')
-                ->join('cat_estado as cat_estado_trabajo','cat_estado_trabajo.id','=','cat_municipio_trabajo.idEstado')
+                ->leftJoin('domicilio as trabajo','variables_persona.idDomicilioTrabajo','=','trabajo.id')
+                ->leftJoin('cat_municipio as cat_municipio_trabajo','cat_municipio_trabajo.id','=','trabajo.idMunicipio')
+                ->leftJoin('cat_estado as cat_estado_trabajo','cat_estado_trabajo.id','=','cat_municipio_trabajo.idEstado')
                 ->leftJoin('cat_localidad as cat_localidad_trabajo','cat_localidad_trabajo.id','=','trabajo.idLocalidad')
                 ->leftJoin('cat_colonia as cat_colonia_trabajo','cat_colonia_trabajo.id','=','trabajo.idColonia')
                 
-                ->join('persona','variables_persona.idPersona','=','persona.id')
-                ->join('cat_etnia','cat_etnia.id','=','persona.idEtnia')
-                ->join('cat_lengua','cat_lengua.id','=','persona.idLengua')
-                ->join('cat_nacionalidad','cat_nacionalidad.id','=','persona.idNacionalidad')
-                ->join('cat_municipio as cat_municipio_origen','cat_municipio_origen.id','=','persona.idMunicipioOrigen')
-                ->join('cat_estado as cat_estado_origen','cat_estado_origen.id','=','cat_municipio_origen.idEstado')
+                ->leftJoin('persona','variables_persona.idPersona','=','persona.id')
+                ->leftJoin('cat_etnia','cat_etnia.id','=','persona.idEtnia')
+                ->leftJoin('cat_lengua','cat_lengua.id','=','persona.idLengua')
+                ->leftJoin('cat_nacionalidad','cat_nacionalidad.id','=','persona.idNacionalidad')
+                ->leftJoin('cat_municipio as cat_municipio_origen','cat_municipio_origen.id','=','persona.idMunicipioOrigen')
+                ->leftJoin('cat_estado as cat_estado_origen','cat_estado_origen.id','=','cat_municipio_origen.idEstado')
                 ->where('variables_persona.idCarpeta',$idCarpeta)
                 ->select(       
                     'persona.nombres as pernombres',
@@ -216,7 +216,6 @@ class ResumenCarpetaController extends Controller
                     'variables_persona.idPersona as variaidPersona',
                     'variables_persona.edad as variaedad',
                     'variables_persona.telefono as variatelefono',
-                    // 'variables_persona.motivoEstancia as variamotivoEstancia',
                     'cat_ocupacion.nombre as variaidOcupacion',
                     'cat_estado_civil.nombre as variaidEstadoCivil',
                     'cat_escolaridad.nombre as variaidEscolaridad',
@@ -229,12 +228,16 @@ class ResumenCarpetaController extends Controller
                     'variables_persona.telefonoTrabajo as variatelefonoTrabajo',
                     'variables_persona.representanteLegal as variarepresentanteLegal',
                     
-                    'extra_denunciado.id as denuncianteid',
-                    'extra_denunciado.idNotificacion as denuncianteidNotificacion',
-                    'extra_denunciado.idAbogado as denuncianteidAbogado',
-                    'extra_denunciado.reguardarIdentidad as denunciantereguardarIdentidad',
-                    'extra_denunciado.victima as denunciantevictima',
-                    'extra_denunciado.narracion as denunciantenarracion',
+                    'extra_denunciado.id as denunciadoid',
+                    'extra_denunciado.idNotificacion as denunciadoidNotificacion',
+                    'extra_denunciado.alias as denunciadoalias',
+                    'extra_denunciado.senasPartic as denunciadosenasPartic',
+                    'extra_denunciado.ingreso as denunciadoingreso',
+                    'extra_denunciado.periodoIngreso as denunciadoperiodoIngreso',
+                    'extra_denunciado.residenciaAnterior as denunciadoresidenciaAnterior',
+                    'extra_denunciado.idAbogado as denunciadoidAbogado',
+                    'extra_denunciado.vestimenta as denunciadovestimenta',
+                    'extra_denunciado.narracion as denunciadonarracion',
 
                     'dirnotificacion.idDomicilio as notifiidDomicilio',
                     'dirnotificacion.correo as notificorreo',
@@ -271,7 +274,7 @@ class ResumenCarpetaController extends Controller
                     'notificacion.numInterno as notifiNumInterno')
                 ->get();
                 
-            dd($denunciados);
+            // dd($denunciados);
     
             return view('fields.resumen-carpeta.resumen-denunciado')
             ->with('denunciados',$denunciados)
