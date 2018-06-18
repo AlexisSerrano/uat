@@ -229,6 +229,8 @@ class ImpresionesController extends Controller
              return view('tables.documentos')->with('carpeta',$carpeta);
      }
 
+    //  PARA OFICIO DE ACUERDO DE INICIO Y REMISION FISCAL DE DISTRITO
+
      public function oficioDistrito(){
             $idCarpeta=session('carpeta');
             $carpeta=DB::table('carpeta')
@@ -394,6 +396,17 @@ class ImpresionesController extends Controller
             ->where('carpeta.id',$idCarpeta)
             ->first();
 
+            $navCaso=DB::table('bitacora_navcaso')
+            ->where('idCaso',session('carpeta'))
+            ->first();
+
+            if ($navCaso->denunciante>1) {
+                $complemento1="los ciudadanos";
+            }
+            else{
+                $complemento1="el ciudadano";
+            }
+
            
 
             $denunciantes = DB::table('extra_denunciante')
@@ -449,6 +462,7 @@ class ImpresionesController extends Controller
             'telefono'=> $denunciante->telefono,
             'narracion'=> $denunciante->narracion,
             'img' => asset('img/logo.png'),
+            'complemento1'=>$complemento1,
             'nombreC'=>$fiscalAtiende->nombreC);
         
     
