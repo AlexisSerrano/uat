@@ -6,12 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cavd extends Model
 {
-    
-     protected $table = 'cavd';
+    public $table = 'cavd';
+
+
 
     protected $fillable = [
-        'id', 'idCavd', 'idVariablesPersona', 'idCarpeta'
+        'id', 'idCavd', 'idVariablesPersona', 'idCarpeta' 
     ];
+
+
 
 
 

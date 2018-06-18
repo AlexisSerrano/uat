@@ -12,7 +12,7 @@
 		</div>
 	</div>
     
-    <select name="idDenunciante[]" id="idDenunciante" multiple="multiple" class="form-control form-control-sm" required>
+    <select name="idDenunciante"  class="form-control form-control-sm" required>
         <option value="">Seleccione una victima u ofendido</option>
         @foreach($victimas2 as $victima)
         <option value="{{ $victima->id }}">{{ $victima->nombres." ".$victima->primerAp." ".$victima->segundoAp }}</option>
@@ -24,7 +24,16 @@
 
 <div class="col text-right">
 
-        <button class="btn btn-primary">Imprimir Oficio</button>
+        <button class="btn btn-primary">guadar</button>
 </div>
 
 @endsection
+
+{{-- @push('scripts')
+<script>
+  $(".form-control form-control-sm").select2({
+    placeholder: "Seleccione una victima u ofendido"
+});  
+</script>
+@endpush --}}
+

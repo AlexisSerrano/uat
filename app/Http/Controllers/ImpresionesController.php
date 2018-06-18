@@ -9,6 +9,7 @@ use DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Persona;
 use App\Models\Cavd;
+use App\Models\CatCavd;
 use App\Models\Unidad;
 use App\Models\CatMarca;
 use App\Models\CatSubmarca;
@@ -59,10 +60,10 @@ class ImpresionesController extends Controller
     
     }
 
-    public function storeOficio(){
-        $idCarpeta=session('carpeta');
-
-        $catalogo = cavd::orderBy('id', 'ASC')->pluck('nombre', 'id');
+    public function showOficio(){
+        // $idCarpeta=session('carpeta');
+        $idCarpeta= 1;
+        $catalogo = CatCavd::orderBy('unidad', 'ASC')->pluck('unidad','id');
        
         $victimas2 = DB::table('extra_denunciante')
         ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
@@ -74,7 +75,7 @@ class ImpresionesController extends Controller
 
       
         
-        // dd($cadenaDenunciantes);
+        // dd($victimas2,$catalogo);
 
         return view('fields.oficio-cavd')
         // ->with('carpeta',$carpeta)
@@ -82,29 +83,67 @@ class ImpresionesController extends Controller
         ->with( 'catalogo', $catalogo);
     }
 
-    public function getCavd(){
+    public function storeOficio(Request $request){
+        $idCarpeta= 1;
+        $denunciantes = DB::table('extra_denunciante')
+        ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+        ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+        ->select('extra_denunciante.idVariablesPersona')
+        ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+       
+        ->get();
 
-        $idCarpeta=session('carpeta');
-        $carpeta=DB::table('carpeta')
-        ->join('unidad','carpeta.idUnidad','=','unidad.id')
-        ->where('carpeta.id',$idCarpeta)->first();
 
-        $unidad = Unidad::select('id', 'descripcion')
-        ->where('abreviacion','!=','')
-        ->orderBy('descripcion', 'ASC')
-        ->pluck('descripcion', 'id');
 
-        $data = array('id' => $vehiculo->id,
-        'numCarpeta'=>$carpeta->numCarpeta,
-        'fiscalAtiende'=>$fiscalAtiende1,
-        'marca'=>$marca->nombre,
-        'submarca'=>$submarca->nombre,
-        'color'=>$color->nombre,
-        'numSerie'=>$vehiculo->numSerie,
-        'modelo'=>$vehiculo->modelo,
-        'entidad'=>$localidadAtiende->descripcion,
-        'fecha'=>$fechahum,
-        'placas'=>$vehiculo->placas);
+
+        // $idCarpeta=session('carpeta');
+        $idCarpeta= 1;
+        $Cavd = new Cavd();
+        $Cavd->idCavd = $request->idCavd;
+        $Cavd->idVariablesPersona =  $denunciantes;
+        $Cavd->idCarpeta = $idCarpeta;
+
+        $Cavd->save();
+        if( $Cavd->save()){
+            Alert::success('Registro guardado con éxito', 'Hecho');
+            // $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+            // $bdbitacora->medidas = $bdbitacora->medidas+1;
+            // $bdbitacora->save();
+        }
+          
+    //     
+        else{
+            Alert::error('Se presentó un problema al guardar el registro', 'Error');
+        }
+        DB::commit();
+        // dd( $idCarpeta);
+        return view('documentos.oficio-cavd') ->with('id',  $Cavd->id );
+
+    }
+
+    public function getCavd($id){
+        // $idCarpeta=session('carpeta');
+        // $carpeta=DB::table('carpeta')
+        // ->join('unidad','carpeta.idUnidad','=','unidad.id')
+        // ->select('carpeta.numCarpeta')
+        // ->where('carpeta.id',$idCarpeta)->first();
+
+        // $numCarpera=$carpeta->numCarpeta;
+
+
+        $cavd=DB::Table('cavd')
+        ->select('cavd.id','cavd.idCavd','cavd.idVariablesPersona','cavd.idCarpeta')
+        ->first();
+
+        $fechaactual = date::now();
+        $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
+
+        $data = array('id' =>  $cavd->id,
+        'id' =>  $cavd->idCavd,
+        'idVariablesPersona' =>  $cavd->idVariablesPersona,
+        'numCarpeta' => $cavd->idCarpeta,
+        'fecha' =>  $fechahum
+       );
         
         //dd($data);
        
