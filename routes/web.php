@@ -297,6 +297,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getVh/{id}','pericialesController@getVh');
     Route::get('getlesion/{id}','pericialesController@getlesion');
 
+    Route::get('getOficioM/{id}','pericialesController@getOficioM')->name('oficio.m');
+    Route::get('getOficioP/{id}','pericialesController@getOficioP')->name('oficio.P');
+    Route::get('getOficioV/{id}','pericialesController@getOficioV')->name('oficio.V');
+    Route::get('getOficioL/{id}','pericialesController@getOficioL')->name('oficio.L');
+
      /* --------Pruebas vehiculos----------- */
     Route::get('/vehiculos-pruebas','VehiculoController@showform')->name('vehiculo.carpeta');
     Route::get('submarcas/{id}', 'VehiculoController@getSubmarcas')->name('get.submarcas');

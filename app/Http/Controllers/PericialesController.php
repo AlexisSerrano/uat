@@ -28,11 +28,9 @@ use App\Models\formatos\Lesione;
 use App\Models\formatos\PerVehiculo;
 
 
-class PericialesController extends Controller
-{
+class PericialesController extends Controller{
  
-    public function pericialesindex()
-    {   
+    public function pericialesindex(){   
         $idCarpeta=session('carpeta');
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();
         if(count($carpetaNueva)>0){ 
@@ -42,8 +40,6 @@ class PericialesController extends Controller
             $marca =  CatMarca::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $submarca =  CatSubmarca::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $tipo =  CatClaseVehiculo::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            // dd($estados);
-            // $delits = CatDelito::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $delits=DB::table('tipif_delito')
             ->join('carpeta as caso','tipif_delito.idCarpeta','=','caso.id')
             ->join('cat_delito','cat_delito.id','=','tipif_delito.idDelito')
@@ -78,15 +74,13 @@ class PericialesController extends Controller
         }
     }
  
-
-    public function agregar(Request $request)
-    {   
+    public function agregar(Request $request){
         $NombreComp = explode("-",  $request->victima);
         DB::beginTransaction();
         try{
             $idCarpeta = session('carpeta');
             $PerMensaje = new PerMensaje;
-            $PerMensaje->idCarpeta = 1;
+            $PerMensaje->idCarpeta = $idCarpeta;
             $PerMensaje->nombre = $NombreComp[0];
             $PerMensaje->primerAp =$NombreComp[1];
             $PerMensaje->segundoAp = $NombreComp[2];
@@ -97,107 +91,110 @@ class PericialesController extends Controller
             $PerMensaje->telefono_destino = $request->numero2t;
             $PerMensaje->narracion = $request->narraciont;
             $PerMensaje->fecha = $request->fechamen;
-            if($PerMensaje->save()){
+            $PerMensaje->save();
+            // if($PerMensaje->save()){
+            //     Alert::success('Registro guardado con éxito', 'Hecho');
+            // }
+            // else{
+            //     Alert::error('Se presentó un problema al guardar el registro', 'Error');
+            // }
+           DB::commit();
+            //return redirect()->route('oficio.m', $PerMensaje->id);
+            echo $PerMensaje->id;
+        }catch (\PDOException $e){
+            DB::rollBack();
+            echo 0;
+            // Alert::error('Se presentó un problema al guardar el registro, intente de nuevo', 'Error');
+            // return back()->withInput();
+        }
+    }
+
+    public function getOficioM($id){
+    return view('documentos.per-mensajes')
+    ->with('id',  $id );
+    }
+    
+    public function getpericiales($id){
+        $pericial = DB::table('per_mensajes')->where('per_mensajes.id', $id)
+        ->select('per_mensajes.id','per_mensajes.idCarpeta','per_mensajes.nombre',
+        'per_mensajes.primerAp','per_mensajes.segundoAp','per_mensajes.marca',
+        'per_mensajes.imei','per_mensajes.compania','per_mensajes.telefono',
+        'per_mensajes.telefono_destino','per_mensajes.narracion','per_mensajes.fecha')
+        ->first();
+        $data = array('id' => $id,
+        'idCarpeta' => $pericial->idCarpeta,
+        'nombre' => $pericial->nombre.' '.$pericial->primerAp.' '.$pericial->segundoAp,
+        'marca' => $pericial->marca,
+        'imei' => $pericial->imei,
+        'compania' => $pericial->compania,
+        'telefono' => $pericial->telefono,
+        'telefono_destino' => $pericial->telefono_destino,
+        'narracion' => $pericial->narracion,
+        'fecha' => $pericial->fecha,
+        );   
+        return response()->json($data);
+    }
+
+
+    public function psico(Request $request) {        
+        $NombreComp2 = explode("-",  $request->victima8);
+        DB::beginTransaction();
+        try{
+            $idCarpeta = session('carpeta');
+            $Psicologo = new Psicologo;
+            $Psicologo->idCarpeta = 1;
+            $Psicologo->nombre = $NombreComp2[0];
+            $Psicologo->primerAp = $NombreComp2[1];
+            $Psicologo->segundoAp = $NombreComp2[2];
+            $Psicologo->numero = $request->numerop;
+            $Psicologo->fecha = $request->fecha_nac;
+            $Psicologo->delito = $request->idDelito;
+            if($Psicologo->save()){
                 Alert::success('Registro guardado con éxito', 'Hecho');
-                // $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-                // $bdbitacora->medidas = $bdbitacora->medidas+1;
-                // $bdbitacora->save();
-            }
+            } 
             else{
                 Alert::error('Se presentó un problema al guardar el registro', 'Error');
             }
             DB::commit();
-
-            // return redirect("periciales");
-            return view('documentos.per-mensajes')
-
-      
-            ->with('id',  $PerMensaje->id );
-            // ->with('folio',  $PerMensaje->id )
-            // ->with('folio2',  $PerMensaje->idCarpeta)
-            // ->with('narracion',  $PerMensaje->narracion )
-            // ->with('marca',  $PerMensaje->marca )
-            // ->with('imei',  $PerMensaje->imei )
-            // ->with('compania',  $PerMensaje->compania)
-            // ->with('numero',  $PerMensaje->telefono )
-            // ->with('numero2',  $PerMensaje->telefono_destino )
-            // ->with('nombre',  $PerMensaje->nombre )
-            // ->with('primerAp',  $PerMensaje->primerAp )
-            // ->with('segundoAp',  $PerMensaje->segundoAp )
-            // ->with('fecha',  $PerMensaje->fecha )
-            // ->with('fiscal',  "XXXXXXXXXXX" );
-    
-
-        }catch (\PDOException $e){
+            $delito = DB::table('cat_delito')
+            ->join('per_psicologos','per_psicologos.delito','=', 'cat_delito.id')
+            ->select('cat_delito.nombre as nombre')
+            ->where('cat_delito.id', $Psicologo->delito)
+            ->first();
+            return redirect()->route('oficio.P', $Psicologo->id);
+         
+        }
+        catch (\PDOException $e){
             DB::rollBack();
             Alert::error('Se presentó un problema al guardar el registro, intente de nuevo', 'Error');
             return back()->withInput();
         }
     }
+    public function getOficioP($id){
+    return view('documentos.per-psicologo')
+    ->with('id',  $id );
+    }
 
+    public function getpsico($id){
+        $psico = DB::table('per_psicologos')->where('per_psicologos.id', $id)
+        ->join('cat_delito','cat_delito.id','=','per_psicologos.delito')
+        ->select('per_psicologos.id','per_psicologos.idCarpeta','per_psicologos.nombre',
+        'per_psicologos.primerAp','per_psicologos.segundoAp','per_psicologos.numero','per_psicologos.fecha','cat_delito.nombre as delito')
+        ->first();
+        $data = array('id' => $id,
+        'idCarpeta' => $psico->idCarpeta,
+        'nombre' => $psico->nombre.' '.$psico->primerAp.' '.$psico->segundoAp,
+        'telefono' => $psico->numero,
+        'fecharealizacion' => $psico->fecha,
+        'delito' => $psico->delito);
+        return response()->json($data);
+    }
 
-        public function psico(Request $request) {   
-            
-        $NombreComp2 = explode("-",  $request->victima8);
-            DB::beginTransaction();
-            try{
-                $idCarpeta = session('carpeta');
-                $Psicologo = new Psicologo;
-                $Psicologo->idCarpeta = 1;
-                $Psicologo->nombre = $NombreComp2[0];
-                $Psicologo->primerAp = $NombreComp2[1];
-                $Psicologo->segundoAp = $NombreComp2[2];
-                $Psicologo->numero = $request->numerop;
-                $Psicologo->fecha = $request->fecha_nac;
-                $Psicologo->delito = $request->idDelito;
-                $Psicologo->save();
-              
-                
-                // dd($Psicologo);
-                if($Psicologo->save()){
-                    Alert::success('Registro guardado con éxito', 'Hecho');
-                    // $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-                    // $bdbitacora->medidas = $bdbitacora->medidas+1;
-                    // $bdbitacora->save();
-                }
-                  
-            //     
-                else{
-                    Alert::error('Se presentó un problema al guardar el registro', 'Error');
-                }
-                DB::commit();
-                $delito = DB::table('cat_delito')
-                ->join('per_psicologos','per_psicologos.delito','=', 'cat_delito.id')
-                ->select('cat_delito.nombre as nombre')
-                ->where('cat_delito.id', $Psicologo->delito)
-                ->first();
-                // return redirect("home");
-                // return view('documentos.periciales_psicologo')
-                
-                // ->with('delito',  $delito->nombre  )
-                // ->with('fecha',  $Psicologo->fecha  )
-                // ->with('folio',   $Psicologo->idCarpeta)
-                // ->with('numero',   $Psicologo->numero )
-                // ->with('nombre',  $Psicologo->nombre )
-                // ->with('primerAp',  $Psicologo->primerAp )
-                // ->with('segundoAp',  $Psicologo->segundoAp )
-                // ->with('fiscal',  "XXXXXXXXXXX" );
-                return view('documentos.per-psicologo')
-
-      
-                ->with('id',  $Psicologo->id );
-    
-            }catch (\PDOException $e){
-                DB::rollBack();
-                Alert::error('Se presentó un problema al guardar el registro, intente de nuevo', 'Error');
-                return back()->withInput();
-            }
-        }
     
         public function vehi(Request $request) {   
             $NombreComp3 = explode("-",  $request->victima3);
-            // DB::beginTransaction();
-            // try{
+             DB::beginTransaction();
+             try{
                 $idCarpeta = session('carpeta');
                 $vehiculo = new PerVehiculo;
                 $vehiculo->idCarpeta =  $idCarpeta;
@@ -229,7 +226,7 @@ class PericialesController extends Controller
                     // $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
                     // $bdbitacora->medidas = $bdbitacora->medidas+1;
                     // $bdbitacora->save();
-                }
+               
                
 
                 $catalogos = DB::table('per_vehiculos')
@@ -243,152 +240,27 @@ class PericialesController extends Controller
                 'cat_colonia.nombre as nombreColonia',
                 'cat_estado.nombre as nombreEstado',
                 'cat_colonia.codigoPostal')
-                ->first();
-                // else{
-                //     Alert::error('Se presentó un problema al guardar el registro', 'Error');
-                // }
-                // DB::commit();
-    // dd( $catalogos);
-                // return redirect("home");
-                return view('documentos.periciales_vehiculo')
-                ->with('id',   $vehiculo->id );
-          
-                //  ->with('folio',  $vehiculo->id  )
-                //  ->with('folio2',  $vehiculo->idCarpeta  )
-                //  ->with('marca',  $vehiculo->marca  )
-                //  ->with('linea',  $vehiculo->linea  )
-                //  ->with('modelo',  $vehiculo->modelo  )
-                //  ->with('color',  $vehiculo->color  )
-                //  ->with('serie',  $vehiculo->numero_serie  )
-                //  ->with('motor',  $vehiculo->motor  )
-                //  ->with('placas',  $vehiculo->placas  )
-                //  ->with('estado',  $vehiculo->entidad  )
-               
-                //  ->with('nombre',  $vehiculo->nombre )
-                //  ->with('primerAp',  $vehiculo->primerAp )
-                //  ->with('segundoAp',  $vehiculo->segundoAp ) 
-
-
-                //  ->with('cel',  $vehiculo->numero  )             
-                //  ->with('calle',  $vehiculo->calle  )
-                //  ->with('numero',  $vehiculo->num_ext  )
-                //  ->with('idEstado', $catalogos->nombreEstado)
-                //  ->with('idMunicipio', $catalogos->nombreMunicipio)
-                //  ->with('idLocalidad', $catalogos->nombreLocalidad)
-                //  ->with('idColonia', $catalogos->nombreColonia)
-                //  ->with('cp', $request->cp2)
-
-                // // ->with('folio',   $Psicologo->idCarpeta)
-               
-                // // ->with('nombre',  $Psicologo->nombre )
-                //  ->with('fiscal',  "XXXXXXXXXXX" );
-        
-    
-            // }catch (\PDOException $e){
-            //     DB::rollBack();
-            //     Alert::error('Se presentó un problema al guardar el registro, intente de nuevo', 'Error');
-            //     return back()->withInput();
-            // }
-         }
-
-    
-
-         public function lesiones(Request $request) {   
-            $NombreComp4 = explode("-",  $request->victima77);
-            DB::beginTransaction();
-            try{
-                $idCarpeta = session('carpeta');
-                $lesiones = new Lesione;
-                $lesiones->idCarpeta = 1;
-                $lesiones->nombre = $NombreComp4[0];
-                $lesiones->primerAp =$NombreComp4[1];
-                $lesiones->segundoAp = $NombreComp4[2];
-                $lesiones->fecha = $request->fecha_nac;
-               
-                if($lesiones->save()){
-                    Alert::success('Registro guardado con éxito', 'Hecho');
-                    // $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-                    // $bdbitacora->medidas = $bdbitacora->medidas+1;
-                    // $bdbitacora->save();
-                }
-                else{
-                    Alert::error('Se presentó un problema al guardar el registro', 'Error');
-                }
-                DB::commit();
-    
-                // return redirect("home");
-                // return view('documentos.periciales_lesiones')
-          
-                // ->with('fecha',  $lesiones->fecha  )
-                // ->with('folio',  $lesiones->idCarpeta)
-              
-                // ->with('nombre', $lesiones->nombre )
-                // ->with('primerAp', $lesiones->primerAp )
-                // ->with('segundoAp', $lesiones->segundoAp )
-                // ->with('fiscal',  "XXXXXXXXXXX" );
-                return view('documentos.per-lesiones')
-
-      
-                ->with('id',  $lesiones->id );
-    
-            }catch (\PDOException $e){
-                DB::rollBack();
-                Alert::error('Se presentó un problema al guardar el registro, intente de nuevo', 'Error');
-                return back()->withInput();
+                ->first(); }
+            else{
+                Alert::error('Se presentó un problema al guardar el registro', 'Error');
             }
+            DB::commit();
+            return redirect()->route('oficio.V', $vehiculo->id);
+
+                  
+        }catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar el registro, intente de nuevo', 'Error');
+            return back()->withInput();
         }
-    
-        public function getpericiales($id){
-
-            $pericial = DB::table('per_mensajes')->where('per_mensajes.id', $id)
-            ->select('per_mensajes.id','per_mensajes.idCarpeta','per_mensajes.nombre as nombrePersona',
-            'per_mensajes.primerAp','per_mensajes.segundoAp','per_mensajes.marca',
-            'per_mensajes.imei','per_mensajes.compania','per_mensajes.telefono',
-            'per_mensajes.telefono_destino','per_mensajes.narracion','per_mensajes.fecha')
-            ->first();
-
-            $nombre=$pericial->nombre.' '.$pericial->primerAp.' '.$pericial->segundoAp;
-
-            $data = array('id' => $id,
-            'idCarpeta' => $pericial->idCarpeta,
-            'nombre' => $nombre,
-            'marca' => $pericial->marca,
-            'imei' => $pericial->imei,
-            'compania' => $pericial->compania,
-            'telefono' => $pericial->telefono,
-            'telefono_destino' => $pericial->telefono_destino,
-            'narracion' => $pericial->narracion,
-            'fecha' => $pericial->fecha,
-        //   'fiscal' =>  $caso->fiscalAtendio = Auth::user()->nombreC;
-        );
-            
-            return response()->json($data);
          }
-    
-         public function getpsico($id){
-            $psico = DB::table('per_psicologos')->where('per_psicologos.id', $id)
-            ->join('cat_delito','cat_delito.id','=','per_psicologos.delito')
-            ->select('per_psicologos.id','per_psicologos.idCarpeta','per_psicologos.nombre',
-            'per_psicologos.primerAp','per_psicologos.segundoAp','per_psicologos.numero','per_psicologos.fecha','cat_delito.nombre as delito')
-            ->first();
 
-            $nombre2=$psico->nombre.' '.$psico->primerAp.' '.$psico->segundoAp;
-
-            $data = array('id' => $id,
-            'idCarpeta' => $psico->idCarpeta,
-            'nombre' => $nombre2,
-            'telefono' => $psico->numero,
-            'fecharealizacion' => $psico->fecha,
-            'delito' => $psico->delito,
-    
-        );
-            
-            return response()->json($data);
+         public function getOficioV($id){
+         return view('documentos.periciales_vehiculo')
+         ->with('id',   $id ); 
          }
 
          public function getVh($id){
-
-           
             $vehiculo = DB::table('per_vehiculos')
             ->where('per_vehiculos.id', $id)
             ->join('cat_marca','cat_marca.id','=','per_vehiculos.idMarca')
@@ -410,7 +282,6 @@ class PericialesController extends Controller
             'per_vehiculos.primerAp','per_vehiculos.segundoAp','per_vehiculos.numero',
             'per_vehiculos.calle','per_vehiculos.num_ext','per_vehiculos.num_int','per_vehiculos.fecha')
             ->first();
-
             $data = array('id' => $id,
             'idCarpeta' => $vehiculo->idCarpeta,
             'marca' => $vehiculo->marca,
@@ -432,27 +303,57 @@ class PericialesController extends Controller
             'Colonia' => $vehiculo->nombreColonia,
             'CP' => $vehiculo->codigoPostal,
             'fecha' => $vehiculo->fecha);
-        
-        
             return response()->json($data);
+        }
 
-         }
-
-         public function getlesion($id){
-            $lesion = DB::table('per_lesiones')->where('per_lesiones.id', $id)
-            ->select('per_lesiones.id','per_lesiones.idCarpeta','per_lesiones.nombre',
-            'per_lesiones.primerAp','per_lesiones.segundoAp','per_lesiones.fecha')
-            ->first();
-
-            $data = array('id' => $id,
-            'idCarpeta' =>  $lesion->idCarpeta,
-            'nombre' => $lesion->nombrePersona.' '.$lesion->primerAp.' '.$lesion->segundoAp,
-            'fecha realizacion' =>  $lesion->fecha,
-          
-    
-        );
-            
-            return response()->json($data);
-
-         }
+    public function lesiones(Request $request) {   
+        $NombreComp4 = explode("-",  $request->victima77);
+        DB::beginTransaction();
+        try{
+            $idCarpeta = session('carpeta');
+            $lesiones = new Lesione;
+            $lesiones->idCarpeta = 1;
+            $lesiones->nombre = $NombreComp4[0];
+            $lesiones->primerAp =$NombreComp4[1];
+            $lesiones->segundoAp = $NombreComp4[2];
+            $lesiones->fecha = $request->fecha_nac;        
+            if($lesiones->save()){
+                Alert::success('Registro guardado con éxito', 'Hecho');
+              
+            }
+            else{
+                Alert::error('Se presentó un problema al guardar el registro', 'Error');
+            }
+            DB::commit();
+            return redirect()->route('oficio.L', $lesiones->id);
+           
+        }catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al guardar el registro, intente de nuevo', 'Error');
+            return back()->withInput();
+        }
     }
+
+    public function getOficioL($id){
+        return view('documentos.per-lesiones')
+            ->with('id',  $id );
+        }
+    
+    public function getlesion($id){
+        $lesion = DB::table('per_lesiones')->where('per_lesiones.id', $id)
+        ->select('per_lesiones.id','per_lesiones.idCarpeta','per_lesiones.nombre',
+        'per_lesiones.primerAp','per_lesiones.segundoAp','per_lesiones.fecha')
+        ->first();
+        $data = array('id' => $id,
+        'idCarpeta' =>  $lesion->idCarpeta,
+        'nombre' => $lesion->nombre.' '.$lesion->primerAp.' '.$lesion->segundoAp,
+        'fecha' =>  $lesion->fecha,
+        );
+        return response()->json($data);
+    }
+
+
+   
+
+  
+}

@@ -1,12 +1,10 @@
-{!! Form::open(['route' => 'store.agregar', 'method' => 'POST'])  !!} 
+{!! Form::open(['route' => 'store.agregar', 'method' => 'POST', 'id' => 'submitMensaje'])  !!} 
 <div class="row">
-	
-
 	<div class="col-4">
-			<div class="form-group">
-				{!! Form::label('victima', 'Víctima/Ofendido', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('victima', $victimas,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
-			</div>
+		<div class="form-group">
+			{!! Form::label('victima', 'Víctima/Ofendido', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('victima', $victimas,null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+		</div>
 	</div>		
 	<div class="col-4">
 		<div class="form-group">
@@ -63,3 +61,32 @@
 </div>
 </div>
 {!! Form::close() !!}
+@push('scripts')
+<script>
+	$('#submitMensaje').on('submit', function(){
+		var parametros = {
+			"victima" : $("#victima").val(),
+			"marcat" : $("#marcat").val(),
+			"imeit": $("#imeit").val(),
+			"compat" : $("#compat").val(),
+			"numerot" : $("#numerot").val(),
+			"numero2t": $("#numero2t").val(),
+			"fechamen": $("#fechamen").val(),
+			"narraciont":$("#narraciont").text()
+		};
+		$.ajax({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
+			url: route("store.agregar",parametros),
+			type : 'POST',
+			success : function(json) {
+				console.log(json);       
+			},
+			error : function(xhr, status) {
+			}
+		});
+		return false;
+	});
+</script>
+@endpush 
