@@ -49,7 +49,7 @@ $oficios = getImpresiones();
                 <tr>
                     <td>Oficio de Centro de atención a víctimas</td>
                     <td style="text-align:center;">
-                    <a href="{{ url('oficio-cavd')}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i> Imprimir</a>
+                    <a href="{{ url('show-oficioCavd')}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i> Imprimir</a>
                     </td> 
                 </tr>
                 <tr>
