@@ -219,12 +219,14 @@ class ResumenCarpetaController extends Controller
                     'variables_persona.idDomicilioTrabajo as variaidDomicilioTrabajo',
                     'variables_persona.telefonoTrabajo as variatelefonoTrabajo',
                     'variables_persona.representanteLegal as variarepresentanteLegal',
+                    
                     'extra_denunciado.id as denuncianteid',
                     'extra_denunciado.idNotificacion as denuncianteidNotificacion',
                     'extra_denunciado.idAbogado as denuncianteidAbogado',
                     'extra_denunciado.reguardarIdentidad as denunciantereguardarIdentidad',
                     'extra_denunciado.victima as denunciantevictima',
                     'extra_denunciado.narracion as denunciantenarracion',
+
                     'dirnotificacion.idDomicilio as notifiidDomicilio',
                     'dirnotificacion.correo as notificorreo',
                     'dirnotificacion.telefono as notifitelefono',
