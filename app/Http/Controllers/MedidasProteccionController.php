@@ -83,10 +83,12 @@ class MedidasProteccionController extends Controller
                 Alert::error('Se presentó un problema al crear la medida de protección', 'Error');
             }
             DB::commit();
-             return view('documentos.medidas-proteccion')
+            $request->session()->flash('redirectoficio', url("medidaoficio/$providenciaBD->id"));
+            return redirect('medidas');
+            //  return view('documentos.medidas-proteccion')
 
       
-              ->with('id',  $providenciaBD->id );
+            //   ->with('id',  $providenciaBD->id );
 
             //   return redirect('medidas')
            //  return redirect('getoficio/'.$providenciaBD->id.'/medida');
@@ -96,6 +98,11 @@ class MedidasProteccionController extends Controller
             return back()->withInput();
         }
     }
+
+    public function medidaoficio($id){
+        return view("documentos.medidas-proteccion")->with('id',$id);
+    }
+
 
     public function getMedidas(){
         $idCarpeta = session('carpeta');

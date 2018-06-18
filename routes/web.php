@@ -213,6 +213,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getMedidasAjax/{id}', 'MedidasProteccionController@getMedidasAjax')->name("getMedidasAjax");
     Route::get('getoficio/{id}','MedidasProteccionController@oficio');
     
+    Route::get('medidaoficio/{id}', 'MedidasProteccionController@medidaoficio')->name('medidaoficio');
     
     /*----------------medidas version2------------------*/
     // Route::get('medidas2', 'MedidasController@index')->name('medidas2');
@@ -296,6 +297,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getpsico/{id}','pericialesController@getpsico');
     Route::get('getVh/{id}','pericialesController@getVh');
     Route::get('getlesion/{id}','pericialesController@getlesion');
+
+   
+
 
      /* --------Pruebas vehiculos----------- */
     Route::get('/vehiculos-pruebas','VehiculoController@showform')->name('vehiculo.carpeta');
