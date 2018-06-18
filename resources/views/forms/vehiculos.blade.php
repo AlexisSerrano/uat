@@ -88,23 +88,8 @@
 			setTimeout(function() {
 				var vehiculos = document.getElementById('systemVrr'); 
 				vehiculos.contentWindow.postMessage( JSON.stringify(data_vrr) , 'http://192.108.22.44');
-				// console.log("{{Auth::user()->session_id}}"); 
 			},5000);
-			// frame.contentWindow.postMessage(/*any variable or object here*/, '*'); 
-
-
-			// setTimeout(function(){
-			// 	var vehiculos=window.frames['systemVrr'];
-			// 	console.log('Se ejecuto');
-
-			// 	vehiculos.document.forms["validacion"].elements["session_id"].value="{{Auth::user()->session_id}}";
-			// 	vehiculos.document.forms["validacion"].elements["grupo"].value="{{Auth::user()->grupo}}";
-			// 	vehiculos.document.forms["validacion"].elements["idUser"].value="{{Auth::user()->id}}";
-			// 	vehiculos.document.forms["validacion"].elements["numCarpeta"].value="{{session('numCarpeta')}}";
-			// 	vehiculos.document.forms["validacion"].elements["idCarpeta"].value="{{session('carpeta')}}";
-			// 	vehiculos.document.forms["validacion"].elements["origen"].value="UAT";
-				
-			// },8000);
+			
 		}
 
 		

@@ -491,6 +491,40 @@ class ImpresionesController extends Controller
 
         }
 
+        public function archivoTemporal(){
+            $idCarpeta=session('carpeta');
+            $carpeta=DB::table('carpeta')
+            ->join('unidad','carpeta.idUnidad','=','unidad.id')
+            ->select('carpeta.fechaInicio','carpeta.numCarpeta')
+            ->where('carpeta.id',$idCarpeta)
+            ->first();
+
+            $fiscalAtiende=DB::table('users')
+            ->join('unidad','unidad.id','=','users.id')
+            ->join('unidad as unid','unid.id','=','users.idUnidad')
+            ->where('users.id', Auth::user()->id)
+            ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra')
+            ->first();
+
+
+            
+
+            $datos=array('id'=> $idCarpeta,
+            'numeroCarpeta'=> $carpeta->numCarpeta,
+            'numeroF'=> $fiscalAtiende->numFiscal,
+            'descripcion'=> $fiscalAtiende->descripcion,
+            'fiscalLetras'=>$fiscalAtiende->letra,
+            'nombreC'=>$fiscalAtiende->nombreC);
+
+            //dd($datos);
+            return response()->json($datos);
+            
+        }
+        
+        public function archivoTemporalImp(){
+            
+            return view('documentos.archivoTemporal');
+        }
 }
 
 
