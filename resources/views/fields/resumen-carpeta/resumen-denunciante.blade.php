@@ -3,7 +3,7 @@
 <div class="card">
     <div class="card-header">
         <div class="row">
-            <div class="col text-left"><h5>Denunciante</h5></div>
+            <div class="col text-left"><h5>Victima u ofendido</h5></div>
             <div class="col text-right">
                 
             </div>
@@ -382,7 +382,7 @@
                         
                         <div class="col-12" style="text-align:center">                                    
                             <p>
-                                <h5 class="detalle">Datos del denunciante</h5>
+                                <h5 class="detalle">Datos de la victima u ofendido</h5>
                             </p>
                         </div>
                         @if (!is_null($denunciante->denunciantereguardarIdentidad))

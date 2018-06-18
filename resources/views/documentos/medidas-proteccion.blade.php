@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="app">
-        <oficio tipo="MEDIDASP" url="{{url("getoficio/$id/medida")}}"></oficio>
+        <oficio tipo="MEDIDASP" url="{{url("getoficio/$id")}}"></oficio>
     </div>
 </body>
 </html>
