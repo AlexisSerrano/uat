@@ -169,43 +169,53 @@ class ImpresionesController extends Controller
         'vehiculo.nrpv','vehiculo.idColor','vehiculo.numSerie','vehiculo.numMotor','vehiculo.idTipoUso')
         ->first();
 
-       
-        $color=CatColor::select('id','nombre')->where('id',$vehiculo->idColor)->first();
-        $marca=CatMarca::select('id','nombre')->where('id',$vehiculo->idColor)->first();
-        $submarca=CatSubmarca::select('id','nombre')->where('id',$vehiculo->idSubmarca)->first();
-        $uso=CatTipoUso::select('id','nombre')->where('id',$vehiculo->idTipoUso)->first();
+        if ($vehiculo==null) {
+            
+        return view('carpetas');
+        }
 
-        $localidadAtiende= DB::table('users')
-            ->join('unidad','unidad.id','=','users.idUnidad')
-            ->join('zona','zona.id','=','unidad.idZona')
-            ->where('users.id',Auth::user()->id)
-            ->select('zona.descripcion')
-            ->first();
-        $fechaactual = date::now();
-        $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
+        else{
+
+
+            
+            $color=CatColor::select('id','nombre')->where('id',$vehiculo->idColor)->first();
+            $submarca=CatSubmarca::select('id','nombre')->where('idSubmarca',$vehiculo->idSubmarca)->first();
+            $uso=CatTipoUso::select('id','nombre')->where('id',$vehiculo->idTipoUso)->first();
+            $marca=CatMarca::select('id','nombre')
+            ->join('cat_submarcas as submarcas','marca.id','=','submarcas.idMarca')
+            ->where('submarcas.idSubmarca',$vehiculo->idSubmarca)->first();
+            
+            dd($marca);
+    //     $localidadAtiende= DB::table('users')
+    //         ->join('unidad','unidad.id','=','users.idUnidad')
+    //         ->join('zona','zona.id','=','unidad.idZona')
+    //         ->where('users.id',Auth::user()->id)
+    //         ->select('zona.descripcion')
+    //         ->first();
+    //     $fechaactual = date::now();
+    //     $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
        
-       // $fiscalAtiende1='paola';
+    //    // $fiscalAtiende1='paola';
        
         
-        $data = array('id' => $vehiculo->id,
-        'numCarpeta'=>$carpeta->numCarpeta,
-       // 'fiscalAtiende'=>$fiscalAtiende1,
-        'marca'=>$marca->nombre,
-        'submarca'=>$submarca->nombre,
-        'color'=>$color->nombre,
-        'numSerie'=>$vehiculo->numSerie,
-        'modelo'=>$vehiculo->modelo,
-        'entidad'=>$localidadAtiende->descripcion,
-        'fecha'=>$fechahum,
-        'placas'=>$vehiculo->placas);
+    //     $data = array('id' => $vehiculo->id,
+    //     'numCarpeta'=>$carpeta->numCarpeta,
+    //     'fiscalAtiende'=>$fiscalAtiende1,
+    //     //'marca'=>$marca->nombre,
+    //     //'submarca'=>$submarca->nombre,
+    //     'color'=>$color->nombre,
+    //     'numSerie'=>$vehiculo->numSerie,
+    //     'modelo'=>$vehiculo->modelo,
+    //     'entidad'=>$localidadAtiende->descripcion,
+    //     'fecha'=>$fechahum,
+    //     'placas'=>$vehiculo->placas);
         
-        //dd($data);
        
-       return response()->json($data);
+       //return response()->json($data);
+       return view('documentos.fTransporte');}
     }
 
     public function transporteEdo(){
-return view('documentos.fTransporte');
     }
 
 
@@ -218,6 +228,8 @@ return view('documentos.fTransporte');
        // dd($carpeta);
              return view('tables.documentos')->with('carpeta',$carpeta);
      }
+
+    //  PARA OFICIO DE ACUERDO DE INICIO Y REMISION FISCAL DE DISTRITO
 
      public function oficioDistrito(){
             $idCarpeta=session('carpeta');
@@ -384,6 +396,17 @@ return view('documentos.fTransporte');
             ->where('carpeta.id',$idCarpeta)
             ->first();
 
+            $navCaso=DB::table('bitacora_navcaso')
+            ->where('idCaso',session('carpeta'))
+            ->first();
+
+            if ($navCaso->denunciante>1) {
+                $complemento1="los ciudadanos";
+            }
+            else{
+                $complemento1="el ciudadano";
+            }
+
            
 
             $denunciantes = DB::table('extra_denunciante')
@@ -439,6 +462,7 @@ return view('documentos.fTransporte');
             'telefono'=> $denunciante->telefono,
             'narracion'=> $denunciante->narracion,
             'img' => asset('img/logo.png'),
+            'complemento1'=>$complemento1,
             'nombreC'=>$fiscalAtiende->nombreC);
         
     

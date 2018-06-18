@@ -385,6 +385,7 @@ class CarpetaController extends Controller
                 $usuario->save();
 
                 $request->session()->forget('carpeta');
+                $request->session()->forget('numCarpeta');
                 if (session('preregistro')!=null) {
                     $request->session()->forget('preregistro');
                     $request->session()->forget('foliopreregistro');
