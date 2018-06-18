@@ -470,6 +470,17 @@ function getNavCaso(){
 	return $barra;
 }
 
+
+function getImpresiones(){
+	$navCaso=DB::table('bitacora_navcaso')
+		->where('idCaso',session('carpeta'))
+		->first();
+		$url = Request::path();
+		$oficio['vehiculos']=($navCaso->vehiculos>0)?$navCaso->vehiculos:'';
+
+
+}
+
 function normaliza ($cadena){
 	$originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞ
 ßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
