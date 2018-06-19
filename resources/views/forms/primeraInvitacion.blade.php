@@ -9,10 +9,11 @@
             {!! Form::label('idDenunciante', 'Seleccione al investigado', ['class' => 'col-form-label-sm']) !!}
             <select name="idDenunciante"  class="form-control form-control-sm" required>
                 <option value="">Seleccione al investigado</option>
-                {{-- @foreach($victimas2 as $victima)
-                <option value="{{ $victima->id }}">{{ $victima->nombres." ".$victima->primerAp." ".$victima->segundoAp }}</option>
-                @endforeach --}}
-            </select>
+                 @foreach($denunciado2 as $denunciado)
+                <option value="{{ $denunciado->id }}">{{ $denunciado->nombres." ".$denunciado->primerAp." ".$denunciado->segundoAp }}</option>
+                {{-- {!! Form::select('idDenunciante', $denunciado, null, ['class' => 'form-control form-control-sm select2','required', 'id'=>'idDelito2']) !!} --}}
+                @endforeach 
+             </select>
             </div>
             <div class="col-2">
                     <div class="form-group">
