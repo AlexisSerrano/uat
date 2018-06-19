@@ -135,7 +135,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name('store.denunciante');
     Route::get('agregar-denunciante/{id}/eliminar', 'DenuncianteController@delete')->name('delete.denunciante');
     Route::get('/atender/{id}', 'PreregistroAuxController@atender');
-    Route::get('/turno/{id}', 'PreregistroAuxController@turno');
+    Route::get('/turno/{id}/{tipo}', 'PreregistroAuxController@turno')->name('tomar.turno');
     Route::get('/Traerturno', 'PreregistroAuxController@Traerturno')->name('turno.denunciante');
     Route::get('/devolver/{id}', 'PreregistroAuxController@devolverturno')->name('devolver');
     /*****************************Rutas para modulo recepción****************************************/
