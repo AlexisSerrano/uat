@@ -81,8 +81,8 @@ Route::get('impresion-archivoTemporal','ImpresionesController@archivoTemporal')-
 Route::get('impresion-temporal','ImpresionesController@archivoTemporalImp')->name('impresion.temporal');
 
 Route::get('primera-invitacion','ImpresionesController@primeraInvitacion')->name('primera.invitacion');
-Route::get('impresion-invitacion','ImpresionesController@impresionInvitacion')->name('impresion.invitacion');
-
+Route::get('impresion-invitacion','ImpresionesController@mostrarOficio');
+Route::get('json-invitacion/{id}','ImpresionesController@getInvitacion');
 
 
 
