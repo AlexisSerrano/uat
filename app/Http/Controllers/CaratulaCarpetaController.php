@@ -43,6 +43,7 @@ public function imprimirCaratula(){
     $idCarpeta=session('carpeta');
     $carpeta=DB::table('carpeta')
     ->join('unidad','carpeta.idUnidad','=','unidad.id')
+    ->select('unidad.descripcion')
     ->where('carpeta.id',$idCarpeta)
     ->first();
 
@@ -59,7 +60,7 @@ public function imprimirCaratula(){
     $fiscalAtiende=DB::table('users')
     ->join('unidad','unidad.id','=','users.id')
     ->where('users.id', Auth::user()->id)
-    ->select('users.nombreC','users.puesto','users.numFiscal','unidad.descripcion')
+    ->select('users.nombreC','users.puesto','users.numFiscal')
     ->first();
 
     $datos=array('id'=> $idCarpeta,
@@ -67,7 +68,7 @@ public function imprimirCaratula(){
         'denunciante'=>$nombre,
         'puesto'=>$fiscalAtiende->puesto,
         'numeroF'=> $fiscalAtiende->numFiscal,
-        'descripcion'=> $fiscalAtiende->descripcion,
+        'descripcion'=> $carpeta->descripcion,
         'nombreC'=>$fiscalAtiende->nombreC);
 
         return response()->json($datos);

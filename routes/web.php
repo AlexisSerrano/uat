@@ -299,7 +299,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getpsico/{id}','pericialesController@getpsico');
     Route::get('getVh/{id}','pericialesController@getVh');
     Route::get('getlesion/{id}','pericialesController@getlesion');
+    Route::get('oficioFinanzas','pericialesController@getOficioF');
 
+    Route::get('OficioF-impresion/{id}','pericialesController@getVhFinanzas');
     Route::get('getOficioM/{id}','pericialesController@getOficioM')->name('oficio.m');
     Route::get('getOficioP/{id}','pericialesController@getOficioP')->name('oficio.P');
     Route::get('getOficioV/{id}','pericialesController@getOficioV')->name('oficio.V');

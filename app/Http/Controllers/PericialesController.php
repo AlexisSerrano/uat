@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
+use Jenssegers\Date\Date;
 use Carbon\Carbon;
 use App\Http\Requests\StoreAbogado;
 use App\Models\Carpeta;
@@ -354,6 +355,80 @@ class PericialesController extends Controller{
     }
 
 
+    public function getOficioF(){
+        return view('documentos.oficioFinanzas'); 
+        }
+
+        public function getVhFinanzas($id){
+
+
+            //$id=session('carpeta');
+            $carpeta=DB::table('carpeta')
+            ->join('unidad','carpeta.idUnidad','=','unidad.id')
+            ->select('carpeta.fechaInicio','carpeta.numCarpeta')
+            ->where('carpeta.id',$id)
+            ->first();
+
+            $fiscalAtiende=DB::table('users')
+            ->join('unidad','unidad.id','=','users.id')
+            ->join('unidad as unid','unid.id','=','users.idUnidad')
+            ->where('users.id', Auth::user()->id)
+            ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra')
+            ->first();
+
+            $vehiculo = DB::table('per_vehiculos')
+            ->where('per_vehiculos.idCarpeta', $id)
+            ->join('cat_marca','cat_marca.id','=','per_vehiculos.idMarca')
+         //    ->join('cat_submarcas','cat_submarcas.id','=','per_vehiculos.idSubmarca')
+         //    ->join('cat_clase_vehiculo','cat_clase_vehiculo.id','=','per_vehiculos.idClase')
+         //    ->join('cat_municipio','cat_municipio.id','=','per_vehiculos.idMunicipio')
+             ->join('cat_localidad','cat_localidad.id','=','per_vehiculos.idLocalidad')
+         //    ->join('cat_colonia','cat_colonia.id','=','per_vehiculos.idColonia')
+            ->join('cat_estado','cat_estado.id','=','per_vehiculos.idEstado')
+            ->select( 
+         //     'cat_municipio.nombre as nombreMunicipio',
+             'cat_localidad.nombre as nombreLocalidad',
+         //    'cat_colonia.nombre as nombreColonia',
+            'cat_estado.nombre as nombreEstado','per_vehiculos.id',
+            'per_vehiculos.placas','per_vehiculos.linea','cat_marca.nombre as marca')
+         //    'cat_colonia.codigoPostal',
+         //    'per_vehiculos.id','per_vehiculos.idCarpeta','cat_marca.nombre as marca',
+         //    'cat_submarcas.nombre as submarca','cat_clase_vehiculo.nombre as clase','per_vehiculos.linea',
+         //    'per_vehiculos.modelo','per_vehiculos.color','per_vehiculos.numero_serie',
+         //    'per_vehiculos.lugar_fabricacion','per_vehiculos.placas','per_vehiculos.nombre',
+         //    'per_vehiculos.primerAp','per_vehiculos.segundoAp','per_vehiculos.numero',
+         //    'per_vehiculos.calle','per_vehiculos.num_ext','per_vehiculos.num_int','per_vehiculos.fecha')
+            ->first();
+
+           $fechaactual = new Date($carpeta->fechaInicio);
+           $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
+           $data = array('id' =>$id,
+           'numCarpeta' => $carpeta->numCarpeta,
+           'marca' => $vehiculo->marca,
+        //    'submarca' => $vehiculo->submarca,
+        //    'clase' => $vehiculo->clase,
+           'linea' => $vehiculo->linea,
+           'numeroF'=> $fiscalAtiende->numFiscal,
+        //    'modelo' => $vehiculo->modelo,
+        //    'color' => $vehiculo->color,
+        //    'numero_serie' => $vehiculo->numero_serie,
+        //    'lugar_fabricacion' => $vehiculo->lugar_fabricacion,
+           'placas' => $vehiculo->placas,
+        //    'nombre' => $vehiculo->nombre.' '.$vehiculo->primerAp.' '.$vehiculo->segundoAp,
+        //    'telefono' => $vehiculo->numero,
+        //    'num_ext' => $vehiculo->num_ext,
+        //    'num_int' => $vehiculo->num_int,
+           'Estado' => $vehiculo->nombreEstado,
+           'fiscalAtendio'=>$fiscalAtiende->nombreC,
+           'puestoF'=>$fiscalAtiende->puesto,
+           'numF'=>$fiscalAtiende->numFiscal,
+        //    'Municipio' => $vehiculo->nombreMunicipio,
+            'Localidad' => $vehiculo->nombreLocalidad,
+        //    'Colonia' => $vehiculo->nombreColonia,
+        //    'CP' => $vehiculo->codigoPostal,
+           'fecha' => $fechahum);
+           return response()->json($data);
+       }
    
 
   
