@@ -558,6 +558,11 @@ class ImpresionesController extends Controller
             
             return view('documentos.archivoTemporal');
         }
+
+        function primeraInvitacion(){
+
+            return view('forms.primeraInvitacion');
+        }
 }
 
 

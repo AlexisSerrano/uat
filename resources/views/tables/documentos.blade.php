@@ -70,7 +70,13 @@ $oficios = getImpresiones();
                         <a href="{{ url('impresion-temporal')}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i> Imprimir</a>
                         </td> 
                     </tr>    
-               
+                <tr>
+                        <td>Invitacion Inicial</td>
+                        <td style="text-align:center;">
+                        <a href="{{ url('primera-invitacion')}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i> Imprimir</a>
+                        </td> 
+                 </tr>    
+                    
 
     
             </tbody>
