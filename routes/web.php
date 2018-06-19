@@ -80,6 +80,11 @@ Route::get('impresion-actuaciones','ImpresionesController@impresionActuaciones')
 Route::get('impresion-archivoTemporal','ImpresionesController@archivoTemporal')->name('impresion.archivoTemporal');
 Route::get('impresion-temporal','ImpresionesController@archivoTemporalImp')->name('impresion.temporal');
 
+Route::get('primera-invitacion','ImpresionesController@primeraInvitacion')->name('primera.invitacion');
+Route::get('impresion-invitacion','ImpresionesController@impresionInvitacion')->name('impresion.invitacion');
+
+
+
 
 /* --------Ruta para obtener token oficios----------- */
 // Route::get('getToken/{id}','ActasHechosController@getToken')->name('getToken');
