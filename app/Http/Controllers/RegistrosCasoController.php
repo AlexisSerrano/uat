@@ -37,8 +37,8 @@ class RegistrosCasoController extends Controller
         ->join('razones','razones.id','=','preregistros.idRazon')
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')        
         ->where('statusCola', null)
-        ->where('tipoActa', null)
-        ->where('razones.nombre','!=' ,'SOLICITUD DE CONSTANCIA DE EXTRAVIO')
+        // ->where('tipoActa', null)
+        // ->where('razones.nombre','!=' ,'SOLICITUD DE CONSTANCIA DE EXTRAVIO')
         ->orderBy('id','desc')
         ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
         'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',

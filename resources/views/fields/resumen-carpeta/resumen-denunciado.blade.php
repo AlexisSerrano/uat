@@ -333,7 +333,7 @@
                                             <div class="form-group">
                                                 {!! Form::label('direccionTrabajo', 'Direccion del trabajo: ', ['class' => 'col-form-label-sm detalle']) !!}
                                                 {!! Form::label('entidadFederativa', $denunciado->TrabajoEstado, ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::label('',$denunciado->TrabajoMunicipio , ['class' => 'col-form-label-sm ']) !!}
+                                                {!! Form::label('', $denunciado->TrabajoMunicipio , ['class' => 'col-form-label-sm ']) !!}
                                                 {!! Form::label('', $denunciado->TrabajoLocalidad, ['class' => 'col-form-label-sm']) !!}
                                                 {!! Form::label('', $denunciado->TrabajoColonia, ['class' => 'col-form-label-sm']) !!}
                                                 

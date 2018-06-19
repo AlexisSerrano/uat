@@ -943,9 +943,81 @@ Colonia Reserva Territorial,<br />
 C.P. 91096<br />
 Teléfono: 01 (228) 8149428,<br />
 Xalapa-Enríquez, Veracruz</p>',
-'unidad'=>'1']
+'unidad'=>'1'],
             
-            ]);
+           
+       
+       ['nombre'  =>  'OFICIO FINANZAS',
+   'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+   <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',
+       
+   'contenido' => '<p>&nbsp;</p>
+
+   <p style="text-align:center">&nbsp;</p>
+   
+   <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">C. SUBDIRECTOR DE REGISTRO Y CONTROL </span></span></strong></span></span></p>
+   
+   <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">DE OBLIGACIONES DE LA SEFIPLAN</span></span></strong></span></span></p>
+   
+   <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><em><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Presente</span></span></em></span></span></p>
+   
+   <p>&nbsp;</p>
+   
+   <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro Light&quot;,&quot;sans-serif&quot;">{{$Localidad}}, Veracruz; a {{$fecha}}</span></span></span></span></p>
+   
+   <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro Light&quot;,&quot;sans-serif&quot;">Oficio: UAT-XI/046/2018</span></span></span></span></p>
+   
+   <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro Light&quot;,&quot;sans-serif&quot;">Carpeta de Investigación: {{$numCarpeta}}-{{$numF}}°</span></span></span></span></p>
+   
+   <p style="text-align:justify">&nbsp;</p>
+   
+   <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Con fundamento en lo dispuesto por los artículos 21 de la Constitución General de la República; 54 de&nbsp; la Constitución Política Local; 108, 109, 127, 131, 212, 213, 221, y demás relativos y aplicables del Código Nacional de Procedimientos Penales vigente en la entidad; 5 párrafo primero, 6, 7 de la Ley Orgánica de la Fiscalía General del Estado de Veracruz, y 201 del Reglamento de la citada Ley; por medio del presente me permito solicitar gire sus instrucciones a quien corresponda, a efecto de que se informe a esta Autoridad lo siguiente:</span></span></span></span></p>
+   
+   <p style="text-align:justify">&nbsp;</p>
+   
+   <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">1.- NOMBRE Y DOMICILIO DEL PROPIETARIO DEL VEHÍCULO&nbsp; MARCA {{$marca}}, LÍNEA {{$linea}}, CON PLACAS DE CIRCULACIÓN {{$placas}}, PARTICULARES DEL ESTADO DE {{$Estado}}.</span></span></strong></span></span></p>
+   
+   <p style="text-align:justify">&nbsp;</p>
+   
+   <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">DEBIENDO REMITIR COPIA DEBIDAMENTE CERTIFICADA DE LA DOCUMENTACIÓN QUE AVALE SU INFORMACIÓN.</span></span></strong></span></span></p>
+   
+   <p style="text-align:justify">&nbsp;</p>
+   
+   <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Lo anterior, por resultar necesario para la integración de la carpeta de investigación correspondiente.</span></span></span></span></p>
+   
+   <p style="text-align:justify">&nbsp;</p>
+   
+   <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Sin otro particular, le agradezco de antemano la atención que se sirva brindar al presente.</span></span></span></span></p>
+   
+   <p style="text-align:center">&nbsp;</p>
+   
+   <p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Atentamente.</span></span></span></span></p>
+   
+   <p style="text-align:center">&nbsp;</p>
+   
+   <p style="text-align:center">&nbsp;</p>
+   
+   <p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">LIC. {{$fiscalAtendio}}</span></span></strong></span></span></p>
+   
+   <p style="text-align:center"><span style="font-size:12pt"><span style="font-family:Neo Sans Pro,sans-serif">{{$puestoF}}</span></span><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif; font-size:12pt">, Veracruz</span></p>
+   ' ,
+       
+   'unidad'=>'1',
+   'pie' =>  '<p>Circuito Rafael Guízar y<br />
+   Valencia No. 147,<br />
+   Colonia Reserva Territorial,<br />
+   C.P. 91096<br />
+   Teléfono: 01 (228) 8149428,<br />
+   Xalapa-Enríquez, Veracruz</p>',
+   'unidad'=>'1'],
+       
+       
+       
+       ]);
+
+
+
+
 
     }
 }
