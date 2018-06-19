@@ -24,7 +24,7 @@ $oficios = getImpresiones();
                     <a href="{{ url('oficio-distrito')}}" title="imprimir"  class=" btn-secondary btn-lg "><i class="fa fa-print"></i> Imprimir</a>
                     </td> 
                 </tr> 
-                @if($oficios['vehiculos']>0)
+                @if($oficios['vehiculos']>=0)
                 <tr>
                         <td>Oficio de Dirección Gral. Transporte</td>
                         <td style="text-align:center;">
