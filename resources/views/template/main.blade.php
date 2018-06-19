@@ -33,7 +33,7 @@
 	@yield('csss')
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" onload="deshabilitaRetroceso()">
 <div class="wrapper">
 	<!-- Navbar -->
 	@include('template.partials.navbar')
@@ -149,7 +149,11 @@
 	$('select').select2();
 
 	
-
+	function deshabilitaRetroceso(){
+		window.location.hash="$";	
+		window.location.hash="$+"; //chrome
+		window.onhashchange=function(){window.location.hash="$";}
+	}
 
 </script>
 @routes
