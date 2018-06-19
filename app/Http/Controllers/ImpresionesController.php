@@ -508,6 +508,7 @@ class ImpresionesController extends Controller
         }
 
         public function archivoTemporal(){
+        //dd('werwerwer');
             $idCarpeta=session('carpeta');
             $carpeta=DB::table('carpeta')
             ->join('unidad','carpeta.idUnidad','=','unidad.id')
@@ -522,19 +523,35 @@ class ImpresionesController extends Controller
             ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra')
             ->first();
 
+            $denunciantes = DB::table('extra_denunciante')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+            ->get();
 
+            $cadenaDenunciantes='';
+            foreach($denunciantes as $denunciante){
+                $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.', ';
+            }
             
-
+            $numFiscalLetras= $fiscalAtiende->letra;
+            $numFiscalLetras = strtr(strtoupper($numFiscalLetras),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+            $nombreC=$fiscalAtiende->nombreC;
+            $nombreC = strtr(strtoupper($nombreC),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+            
+            
             $datos=array('id'=> $idCarpeta,
             'numeroCarpeta'=> $carpeta->numCarpeta,
             'numeroF'=> $fiscalAtiende->numFiscal,
             'descripcion'=> $fiscalAtiende->descripcion,
-            'fiscalLetras'=>$fiscalAtiende->letra,
-            'nombreC'=>$fiscalAtiende->nombreC);
-
-            //dd($datos);
-            return response()->json($datos);
+            'numFiscalLetras'=>$numFiscalLetras,
+            'nombreC'=>$nombreC,
+            'notificado'=>$cadenaDenunciantes);
             
+            //dd($datos);
+            //'puesto'=>$puesto,
+            return response()->json($datos);
         }
         
         public function archivoTemporalImp(){
