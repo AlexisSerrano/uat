@@ -56,17 +56,19 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-3">
+            <div class="col-3">
                 <div class="card">
                     <div class="card-header"><h6>Oficios guardados</h1></div>
-                        <div class="col-12">    
-                            <div class=" panel panel-default ">
-                                <div class="panel-body scroll">
-                                    <table class="table table-hover tableOficios">
+                         {{-- <div class="">  --}}
+                            <div class=" panel panel-default scroll">
+                                <div class="panel-body">
+                                    <table class="table tableOficios">
                                         <tbody id="listaOficios" >
                                             @forelse($oficios as $oficio)
                                             <tr>
-                                                <td class="btn btn-primary itemoficio" id="{{$oficio->id}}"><span>{{$oficio->nombre}}</span></td>
+                                                <td style="padding:0;text-align:left;">
+                                                <a style="width:100%;text-align:center; font-size:12px; color:black" class="btn btn-default  itemoficio" id="{{$oficio->id}}"><span>{{$oficio->nombre}}</span></a>
+                                                </td>
                                             </tr>
                                             @empty
                                             
@@ -75,7 +77,7 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
+                         {{-- </div>  --}}
                     </div>
                 </div>
             </div>
@@ -83,27 +85,26 @@
     </div>
 </div>
 @endsection
-<style>
-    .btns{
+ <style>
+    /* .btns{
         margin-top:20px; 
-        width:49%;
+        width:39%;
     }
     .itemoficio{
-
-    }
+        width:100%;
+    } */
     .tableOficios{
         margin-top: 5px;
         overflow: scroll;
+        width:100%;
        
-    }
-    .margindown{
+     }
+    /* .margindown{
         padding-bottom: 10px;
     }
     .scroll{
         overflow: auto;
-        height: 1500px;
-    }
-
+    }  */
 </style>
 @push('scripts')
 <script>
