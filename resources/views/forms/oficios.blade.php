@@ -5,80 +5,71 @@
  <div class="col">
     <div class="row">
         <div class="col-sm-12 col-md-9">
-            <div class="card">
-                 <div class="card-header"><h6>Nuevo oficio</h6>
-             <br>
+            <div class="card contoficio">
+                <div class="card-header"><h6>Nuevo oficio</h6>
+                    <br>
                     <nav>
-                        <div class="nav nav-pills" id="pills-tab" role="tablist">
-                            
+                        <div class="nav nav-pills" id="pills-tab" role="tablist">            
                             <a class="nav-link  " id="pills-encab-tab" data-toggle="pill" href="#pills-encab" role="tab" aria-controls="pills-encab" aria-selected="true">Encabezado</a>
                             <a class="nav-link active " id="pills-content-tab" data-toggle="pill" href="#pills-content" role="tab" aria-controls="pills-content" aria-selected="false">Contenido</a>
                             <a class="nav-link" id="pills-pie-tab" data-toggle="pill" href="#pills-pie" role="tab" aria-controls="pills-pie" aria-selected="false">Pie</a>
                         </div>
-                     </nav>
+                    </nav>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        {!! Form::label('oficio', 'Oficio', ['class' => 'col-form-label-sm']) !!}
+                        {!! Form::text('oficio', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del oficio','data-validation'=>'required' ]) !!}
                     </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            {!! Form::label('oficio', 'Oficio', ['class' => 'col-form-label-sm']) !!}
-                            {!! Form::text('oficio', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del oficio','data-validation'=>'required' ]) !!}
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane" id="pills-encab" role="tabpanel" aria-labelledby="encab-tab" style="height:70%;">
+                            <div class="form-group margindown">
+                                <label for="encabezado" class="col-form-label-sm">Encabezado</label>
+                                <textarea name="encabezado" id="encabezado" class="form-control form-control-sm ckeditor" data-validation="required"></textarea>
+                            </div>
                         </div>
-                        <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane" id="pills-encab" role="tabpanel" aria-labelledby="encab-tab" style="height:70%;">
-                                <div class="form-group margindown">
-                                    <label for="encabezado" class="col-form-label-sm">Encabezado</label>
-                                    <textarea name="encabezado" id="encabezado" class="form-control form-control-sm ckeditor" data-validation="required"></textarea>
-
-                                </div>
+                        <div class="tab-pane show active" id="pills-content" role="tabpanel" aria-labelledby="pills-content-tab" style="height:70%;">
+                            <div class="form-group margindown">
+                                <label for="contenido" class="col-form-label-sm">Contenido</label>
+                                <textarea name="contenido" id="contenido" class="form-control form-control-sm ckeditor" data-validation="required"></textarea>
                             </div>
-                            <div class="tab-pane show active" id="pills-content" role="tabpanel" aria-labelledby="pills-content-tab" style="height:70%;">
-                                <div class="form-group margindown">
-                                    <label for="contenido" class="col-form-label-sm">Contenido</label>
-                                    <textarea name="contenido" id="contenido" class="form-control form-control-sm ckeditor" data-validation="required"></textarea>
-                                </div>
+                        </div>
+                        <div class="tab-pane " id="pills-pie" role="tabpanel" aria-labelledby="pills-pie-tab" style="height:70%;">
+                            <div class="form-group margindown">
+                                <label for="pie" class="col-form-label-sm">Pie</label>
+                                <textarea name="pie" id="pie" class="form-control form-control-sm ckeditor" data-validation="required"></textarea>
                             </div>
-                
-                            <div class="tab-pane " id="pills-pie" role="tabpanel" aria-labelledby="pills-pie-tab" style="height:70%;">
-                                <div class="form-group margindown">
-                                    <label for="pie" class="col-form-label-sm">Pie</label>
-                                    <textarea name="pie" id="pie" class="form-control form-control-sm ckeditor" data-validation="required"></textarea>
-
-    
-                                </div>
-                            </div>
-                            
-                        
+                        </div>
                         <div class="form-group">
                             <button id="guardarOficio" class="btn btn-primary btns"> Guardar nuevo oficio </button>
                             <button id="editarOficio" class="btn btn-primary btns"> Editar oficio </button>   
-                        
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>
-            <div class="col-3">
-                <div class="card">
-                    <div class="card-header"><h6>Oficios guardados</h1></div>
-                         {{-- <div class="">  --}}
-                            <div class=" panel panel-default scroll">
-                                <div class="panel-body">
-                                    <table class="table tableOficios">
-                                        <tbody id="listaOficios" >
-                                            @forelse($oficios as $oficio)
-                                            <tr>
-                                                <td style="padding:0;text-align:left;">
-                                                <a style="width:100%;text-align:center; font-size:12px; color:black" class="btn btn-default  itemoficio" id="{{$oficio->id}}"><span>{{$oficio->nombre}}</span></a>
-                                                </td>
-                                            </tr>
-                                            @empty
-                                            
-                                            @endforelse
-                                        </tbody>
-                                    </table>
-                                </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-header"><h6>Oficios guardados</h1></div>
+                        {{-- <div class="">  --}}
+                        <div class=" panel panel-default scroll">
+                            <div class="panel-body">
+                                <table class="table tableOficios">
+                                    <tbody id="listaOficios" >
+                                        @forelse($oficios as $oficio)
+                                        <tr>
+                                            <td style="padding:0;text-align:left;">
+                                            <a style="width:100%;text-align:center; font-size:12px; color:black" class="btn btn-default  itemoficio" id="{{$oficio->id}}"><span>{{$oficio->nombre}}</span></a>
+                                            </td>
+                                        </tr>
+                                        @empty
+                                        
+                                        @endforelse
+                                    </tbody>
+                                </table>
                             </div>
-                         {{-- </div>  --}}
-                    </div>
+                        </div>
+                        {{-- </div>  --}}
                 </div>
             </div>
         </div>
@@ -86,56 +77,23 @@
 </div>
 @endsection
  <style>
-    /* .btns{
-        margin-top:20px; 
+    .btns{
+        margin-top:80px; 
         width:39%;
     }
-    .itemoficio{
-        width:100%;
-    } */
+    .contoficio{
+        height: 1300px;
+    }
     .tableOficios{
         margin-top: 5px;
         overflow: scroll;
         width:100%;
        
      }
-    /* .margindown{
-        padding-bottom: 10px;
-    }
-    .scroll{
-        overflow: auto;
-    }  */
 </style>
 @push('scripts')
 <script>
-//    $('#pills-encab').hide();
-//    $('#pills-content').hide();
-//    $('#pills-pie').hide();
-
-
- $('#pills-encab-tab').on('click', function (e) {
-
-    CKEDITOR.replace('encabezado', { height: 500 });
-    console.log('encab');
-
- 
- })
- $('#pills-content-tab').on('click', function (e) {
-
-    CKEDITOR.replace('contenido', { height: 500 });
-    console.log('contenido');
- })
-
- $('#pills-pie-tab').on('click', function (e) {
-
-    CKEDITOR.replace('pie', { height: 500 }); 
-
-    console.log('pie');
- })
 var oficio = '';
-
-
- 
 $("#listaOficios").on("click", ".itemoficio", function(){
     var id = $(this).attr("id");
     $.ajax({
