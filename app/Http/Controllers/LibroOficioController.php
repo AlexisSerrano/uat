@@ -16,7 +16,7 @@ class LibroOficioController extends Controller
     {    
         $actas = ActasHechos::orderBy('id','desc')->paginate('15');
         $year = Date::now()->format('Y');
-         return view('forms.libOficios')
+         return view('tables.libOficios')
          -> with("actas", $actas)
          -> with("year", $year);  
     }

@@ -309,6 +309,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('tipoVehiculos/{id}', 'VehiculoController@getTipoVehiculos')->name('get.tipovehiculos');
     Route::post('store-vehiculo', 'VehiculoController@storeVehiculo')->name('carpeta.vehiculo');
     Route::get('getVehiculo/{id}', 'VehiculoController@getVh');
+    Route::get('vehiculo/{id}/eliminar', 'VehiculoController@delete')->name('delete.vehiculo');
+
+    Route::get('getVehiuculoAjax/{id}', 'VehiculoController@getVehiculoAjax')->name("getVehiculoAjax");
 
     /* -----------Ruta para Libro de Oficios------------ */
     Route::get('lista-oficios','LibroOficioController@IndexOfi');
