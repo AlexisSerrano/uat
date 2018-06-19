@@ -6,15 +6,14 @@
     <div class="card-body">
         <div class="row">
             <div class="col-6">
-            {!! Form::label('idDenunciante', 'Seleccione al investigado', ['class' => 'col-form-label-sm']) !!}
-            <select name="idDenunciante"  class="form-control form-control-sm" required>
-                <option value="">Seleccione al investigado</option>
-                 @foreach($denunciado2 as $denunciado)
-                <option value="{{ $denunciado->id }}">{{ $denunciado->nombres." ".$denunciado->primerAp." ".$denunciado->segundoAp }}</option>
-                {{-- {!! Form::select('idDenunciante', $denunciado, null, ['class' => 'form-control form-control-sm select2','required', 'id'=>'idDelito2']) !!} --}}
-                @endforeach 
-             </select>
-            </div>
+                {!! Form::label('idDenunciante', 'Seleccione al investigado', ['class' => 'col-form-label-sm']) !!}
+                <select name="idDenunciante"  class="form-control form-control-sm" required>
+                    <option value="">Seleccione al investigado</option>
+                    @foreach($denunciantes as $denunciante)
+                    <option value="{{ $denunciante->id }}">{{ $denunciante->nombres." ".$denunciante->primerAp." ".$denunciante->segundoAp }}</option>
+                    @endforeach
+                </select>
+                </div>
             <div class="col-2">
                     <div class="form-group">
                         {!! Form::label('fechaInvitacion', 'Fecha de invitación', ['class' => 'col-form-label-sm']) !!}
