@@ -75,6 +75,7 @@ class PericialesController extends Controller{
     }
  
     public function agregar(Request $request){
+        //echo $request->narraciont;
         $NombreComp = explode("-",  $request->victima);
         DB::beginTransaction();
         try{

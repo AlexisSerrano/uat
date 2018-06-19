@@ -16260,6 +16260,9 @@ var browser = detect();
         },
         tipo: {
             default: false
+        },
+        id: {
+            id: false
         }
     },
     mounted: function mounted() {
@@ -16270,7 +16273,7 @@ var browser = detect();
             var _this = this;
 
             var urlTemplate = '../oficios';
-            var urlPeticion = this.url;
+            var urlPeticion = this.url + "/" + this.id;
             axios.post(urlTemplate, {
                 tipo: this.tipo
             }).then(function (response) {
@@ -16362,7 +16365,8 @@ var browser = detect();
                         "html": $(".editable").html(),
                         "token": _this2.token,
                         "fiscal": info['fiscal'],
-                        "id_oficio": _this2.tipoOficio
+                        "id_oficio": _this2.tipoOficio,
+                        "id_tabla": _this2.id
                     }).then(function (response) {
                         window.print();
                         _this2.$refs.canvas.width = _this2.$refs.canvas.width;
@@ -16372,7 +16376,8 @@ var browser = detect();
                 axios.post("../intentos", {
                     "html": $(".editable").html(),
                     "fiscal": info['fiscal'],
-                    "id_oficio": this.tipoOficio
+                    "id_oficio": this.tipoOficio,
+                    "id_tabla": this.id
                 }).then(function (response) {});
             }
         }

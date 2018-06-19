@@ -60,8 +60,8 @@
                 <div class="card">
                     <div class="card-header"><h6>Oficios guardados</h1></div>
                         <div class="col-12">    
-                            <div class=" panel panel-default scroll">
-                                <div class="panel-body">
+                            <div class=" panel panel-default ">
+                                <div class="panel-body scroll">
                                     <table class="table table-hover tableOficios">
                                         <tbody id="listaOficios" >
                                             @forelse($oficios as $oficio)
@@ -89,7 +89,7 @@
         width:49%;
     }
     .itemoficio{
-        width:100%;
+
     }
     .tableOficios{
         margin-top: 5px;
@@ -101,7 +101,9 @@
     }
     .scroll{
         overflow: auto;
+        height: 1500px;
     }
+
 </style>
 @push('scripts')
 <script>
@@ -112,22 +114,22 @@
 
  $('#pills-encab-tab').on('click', function (e) {
 
-    //CKEDITOR.replace('encabezado', { height: 200 });
- console.log('encab');
+    CKEDITOR.replace('encabezado', { height: 500 });
+    console.log('encab');
 
  
  })
  $('#pills-content-tab').on('click', function (e) {
 
-    //CKEDITOR.replace('contenido', { height: 500 });
-console.log('contenido');
+    CKEDITOR.replace('contenido', { height: 500 });
+    console.log('contenido');
  })
 
  $('#pills-pie-tab').on('click', function (e) {
 
-    //CKEDITOR.replace('pie', { height: 200 }); 
+    CKEDITOR.replace('pie', { height: 500 }); 
 
-console.log('pie');
+    console.log('pie');
  })
 var oficio = '';
 
