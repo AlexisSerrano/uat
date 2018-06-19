@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="app">
-        <oficio tipo="CAVD" url="{{url("getcavd/$id")}}"></oficio>
+        <oficio tipo="INVITACION" url="{{url("json-invitacion")}}" id="{{session('carpeta')}}"></oficio>
     </div>
 </body>
 </html>

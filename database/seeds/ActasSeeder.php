@@ -849,9 +849,175 @@ Xalapa-Enríquez, Veracruz</p>',
        C.P. 91096<br />
        Teléfono: 01 (228) 8149428,<br />
        Xalapa-Enríquez, Veracruz</p>',
-       'unidad'=>'1']
+       'unidad'=>'1'],
+
+       ['nombre'  =>  'NOTIFICACIÓN DE ARCHIVO TEMPORAL',
+            'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+            <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',
+
+
+           'contenido' => '<p style="text-align:center"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">FISCALÍA GENERAL&nbsp; DEL ESTADO DE VERACRUZ-LLAVE</span></span></span></p>
+
+           <p style="text-align:center"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">UNIDAD DE ATENCIÓN TEMPRANA</span></span></span></p>
+           
+           <p style="text-align:center"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">DECIMOPRIMER DISTRITO JUDICIAL, XALAPA, VERACRUZ.</span></span></span></p>
+           
+           <p>&nbsp;</p>
+           
+           <p>&nbsp;</p>
+           
+           <table align="center" border="1" cellspacing="0" style="width:669px">
+               <tbody>
+                   <tr>
+                       <td style="height:22.7pt; width:663px">
+                       <p style="text-align:center"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">CARPETA DE INVESTIGACIÓN: </span><strong><span style="font-size:11.5pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">{{$numeroCarpeta}}<span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><strong><span style="font-size:11.5pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">-{{$numeroF}}°</span></span></strong></span></span></span></span></strong></span></span></p>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td style="height:22.7pt; width:663px">
+                       <p style="text-align:center"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">FISCAL {{$</span></span></span>numFiscalLetras}}<span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"> ORIENTADORA</span></span></span></p>
+                       </td>
+                   </tr>
+               </tbody>
+           </table>
+           
+           <p style="text-align:center">&nbsp;</p>
+           
+           <p style="text-align:center">&nbsp;</p>
+           
+           <p style="text-align:center"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><strong><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">NOTIFICACIÓN DE ARCHIVO TEMPORAL: </span></strong></span></span></p>
+           
+           <p style="text-align:center">&nbsp;</p>
+           
+           <p style="text-align:center">&nbsp;</p>
+           
+           <table align="center" border="1" cellspacing="0">
+               <tbody>
+                   <tr>
+                       <td style="vertical-align:top; width:505.6pt">
+                       <p style="text-align:justify"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">Estando en las oficinas de esta Fiscalía Sexta Orientadora, me es notificado y puesto a la vista el acuerdo recaído en esta fecha, en el cual se determinó el <strong>ARCHIVO TEMPORAL</strong> de la carpeta de investigación {{$numeroCarpeta}}<span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><strong><span style="font-size:11.5pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">-{{$numeroF}}°</span></span></strong><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">, cuyo contenido leí íntegramente, quedando archivada temporalmente la presente carpeta ÚNICA Y EXCLUSIVAMENTE en cuanto se tenga alguna línea de investigación que nos permita continuar con la misma; misma determinación de la cual me doy por enterado, quedando debidamente notificado de manera personal estando de acuerdo con la forma y modo de notificación, asimismo, quedo enterado del término que establece el artículo 258 del Código Nacional de Procedimientos Penales para impugnar dicho acuerdo, sin embargo no es mi deseo hacerlo por estar ajustado a derecho, asimismo, recibo copia de la presente notificación.- Es todo lo que tiene que decir.- CONSTE. - - - - - - - - - - -&nbsp; </span></span></span></span></span></span></p>
+           
+                       <p style="text-align:justify"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;</span></span></p>
+                       </td>
+                   </tr>
+               </tbody>
+           </table>
+           
+           <p style="text-align:center">&nbsp;</p>
+           
+           <p style="text-align:center">&nbsp;</p>
+           
+           <p style="text-align:center"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">NOTIFICADO:</span></span></span></p>
+           
+           <p style="text-align:center">&nbsp;</p>
+           
+           <p style="text-align:center"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">______________________________________</span></span></span></p>
+           
+           <p style="text-align:center"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><strong>C. {{$notificado}}</strong></span></span></p>
+           
+           <p>&nbsp;</p>
+           
+           <p>&nbsp;</p>
+           
+           <p>&nbsp;</p>
+           
+           <p><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><strong><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">NOTIFICA.</span></strong></span></span></p>
+           
+           <p style="text-align:justify">&nbsp;</p>
+           
+           <p style="text-align:justify">&nbsp;</p>
+           
+           <p style="text-align:justify"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><strong><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">LIC. {{$nombreC}}</span></strong></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">FISCAL {{$</span></span></span>numFiscalLetras}}<span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"> ORIENTADORA EN LA </span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">UNIDAD DE ATENCIÓN TEMPRANA</span></span></span></p>',
+
+
+           
+           
+'unidad'=>'1',
+'pie' =>  '<p>Circuito Rafael Guízar y<br />
+Valencia No. 147,<br />
+Colonia Reserva Territorial,<br />
+C.P. 91096<br />
+Teléfono: 01 (228) 8149428,<br />
+Xalapa-Enríquez, Veracruz</p>',
+'unidad'=>'1'],
             
-            ]);
+           
+       
+       ['nombre'  =>  'OFICIO FINANZAS',
+   'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+   <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',
+       
+   'contenido' => '<p>&nbsp;</p>
+
+   <p style="text-align:center">&nbsp;</p>
+   
+   <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">C. SUBDIRECTOR DE REGISTRO Y CONTROL </span></span></strong></span></span></p>
+   
+   <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">DE OBLIGACIONES DE LA SEFIPLAN</span></span></strong></span></span></p>
+   
+   <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><em><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Presente</span></span></em></span></span></p>
+   
+   <p>&nbsp;</p>
+   
+   <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro Light&quot;,&quot;sans-serif&quot;">{{$Localidad}}, Veracruz; a {{$fecha}}</span></span></span></span></p>
+   
+   <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro Light&quot;,&quot;sans-serif&quot;">Oficio: UAT-XI/046/2018</span></span></span></span></p>
+   
+   <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro Light&quot;,&quot;sans-serif&quot;">Carpeta de Investigación: {{$numCarpeta}}-{{$numF}}°</span></span></span></span></p>
+   
+   <p style="text-align:justify">&nbsp;</p>
+   
+   <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Con fundamento en lo dispuesto por los artículos 21 de la Constitución General de la República; 54 de&nbsp; la Constitución Política Local; 108, 109, 127, 131, 212, 213, 221, y demás relativos y aplicables del Código Nacional de Procedimientos Penales vigente en la entidad; 5 párrafo primero, 6, 7 de la Ley Orgánica de la Fiscalía General del Estado de Veracruz, y 201 del Reglamento de la citada Ley; por medio del presente me permito solicitar gire sus instrucciones a quien corresponda, a efecto de que se informe a esta Autoridad lo siguiente:</span></span></span></span></p>
+   
+   <p style="text-align:justify">&nbsp;</p>
+   
+   <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">1.- NOMBRE Y DOMICILIO DEL PROPIETARIO DEL VEHÍCULO&nbsp; MARCA {{$marca}}, LÍNEA {{$linea}}, CON PLACAS DE CIRCULACIÓN {{$placas}}, PARTICULARES DEL ESTADO DE {{$Estado}}.</span></span></strong></span></span></p>
+   
+   <p style="text-align:justify">&nbsp;</p>
+   
+   <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">DEBIENDO REMITIR COPIA DEBIDAMENTE CERTIFICADA DE LA DOCUMENTACIÓN QUE AVALE SU INFORMACIÓN.</span></span></strong></span></span></p>
+   
+   <p style="text-align:justify">&nbsp;</p>
+   
+   <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Lo anterior, por resultar necesario para la integración de la carpeta de investigación correspondiente.</span></span></span></span></p>
+   
+   <p style="text-align:justify">&nbsp;</p>
+   
+   <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Sin otro particular, le agradezco de antemano la atención que se sirva brindar al presente.</span></span></span></span></p>
+   
+   <p style="text-align:center">&nbsp;</p>
+   
+   <p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Atentamente.</span></span></span></span></p>
+   
+   <p style="text-align:center">&nbsp;</p>
+   
+   <p style="text-align:center">&nbsp;</p>
+   
+   <p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">LIC. {{$fiscalAtendio}}</span></span></strong></span></span></p>
+   
+   <p style="text-align:center"><span style="font-size:12pt"><span style="font-family:Neo Sans Pro,sans-serif">{{$puestoF}}</span></span><span style="font-family:&quot;Neo Sans Pro&quot;,sans-serif; font-size:12pt">, Veracruz</span></p>
+   ' ,
+       
+   'unidad'=>'1',
+   'pie' =>  '<p>Circuito Rafael Guízar y<br />
+   Valencia No. 147,<br />
+   Colonia Reserva Territorial,<br />
+   C.P. 91096<br />
+   Teléfono: 01 (228) 8149428,<br />
+   Xalapa-Enríquez, Veracruz</p>',
+   'unidad'=>'1'],
+       
+       
+       
+       ]);
+
+
+
+
 
     }
 }

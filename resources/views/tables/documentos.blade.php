@@ -49,7 +49,7 @@ $oficios = getImpresiones();
                 <tr>
                     <td>Oficio de Centro de atención a víctimas</td>
                     <td style="text-align:center;">
-                    <a href="{{ url('oficio-cavd')}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i> Imprimir</a>
+                    <a href="{{ url('show-oficioCavd')}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i> Imprimir</a>
                     </td> 
                 </tr>
                 <tr>
@@ -57,7 +57,26 @@ $oficios = getImpresiones();
                     <td style="text-align:center;">
                     <a href="{{ url('not-actuaciones')}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i> Imprimir</a>
                     </td> 
-                </tr>    
+                </tr> 
+                <tr>
+                    <td>Oficio Finanzas</td>
+                    <td style="text-align:center;">
+                    <a href="{{ url('oficioFinanzas')}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i> Imprimir</a>
+                    </td> 
+                </tr> 
+                <tr>
+                        <td>Notificación de archivo temporal</td>
+                        <td style="text-align:center;">
+                        <a href="{{ url('impresion-temporal')}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i> Imprimir</a>
+                        </td> 
+                    </tr>    
+                <tr>
+                        <td>Invitacion Inicial</td>
+                        <td style="text-align:center;">
+                        <a href="{{ url('primera-invitacion')}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i> Imprimir</a>
+                        </td> 
+                 </tr>    
+                    
 
     
             </tbody>

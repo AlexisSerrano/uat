@@ -68,7 +68,7 @@ Route::get('transporte-estado','ImpresionesController@transporteEdo')->name('ofi
 Route::get('Oficiotransporte-estado','ImpresionesController@storeoficioTransporte')->name('storeoficio.Transporte');
 
 
-Route::get('oficio-cavd','ImpresionesController@getCavd')->name('oficio.cavd');
+Route::get('oficio-cavd/{id}','ImpresionesController@oficioCavd')->name('oficio.cavd');
 Route::get('show-oficioCavd','ImpresionesController@showOficio')->name('show.oficioCavd');
 Route::post('store-oficioCavd','ImpresionesController@storeOficio')->name('store.oficioCavd');
 Route::get('getcavd/{id}','ImpresionesController@getCavd');
@@ -76,6 +76,13 @@ Route::get('getcavd/{id}','ImpresionesController@getCavd');
 
 Route::get('not-actuaciones','ImpresionesController@notActuaciones')->name('not.actuaciones');
 Route::get('impresion-actuaciones','ImpresionesController@impresionActuaciones')->name('impresion.actuaciones');
+
+Route::get('impresion-archivoTemporal','ImpresionesController@archivoTemporal')->name('impresion.archivoTemporal');
+Route::get('impresion-temporal','ImpresionesController@archivoTemporalImp')->name('impresion.temporal');
+
+Route::get('primera-invitacion','ImpresionesController@primeraInvitacion')->name('primera.invitacion');
+Route::get('impresion-invitacion','ImpresionesController@mostrarOficio');
+Route::get('json-invitacion/{id}','ImpresionesController@getInvitacion');
 
 
 
@@ -133,7 +140,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name('store.denunciante');
     Route::get('agregar-denunciante/{id}/eliminar', 'DenuncianteController@delete')->name('delete.denunciante');
     Route::get('/atender/{id}', 'PreregistroAuxController@atender');
-    Route::get('/turno/{id}', 'PreregistroAuxController@turno');
+    Route::get('/turno/{id}/{tipo}', 'PreregistroAuxController@turno')->name('tomar.turno');
     Route::get('/Traerturno', 'PreregistroAuxController@Traerturno')->name('turno.denunciante');
     Route::get('/devolver/{id}', 'PreregistroAuxController@devolverturno')->name('devolver');
     /*****************************Rutas para modulo recepción****************************************/
@@ -297,7 +304,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getpsico/{id}','pericialesController@getpsico');
     Route::get('getVh/{id}','pericialesController@getVh');
     Route::get('getlesion/{id}','pericialesController@getlesion');
+    Route::get('oficioFinanzas','pericialesController@getOficioF');
 
+    Route::get('OficioF-impresion/{id}','pericialesController@getVhFinanzas');
     Route::get('getOficioM/{id}','pericialesController@getOficioM')->name('oficio.m');
     Route::get('getOficioP/{id}','pericialesController@getOficioP')->name('oficio.P');
     Route::get('getOficioV/{id}','pericialesController@getOficioV')->name('oficio.V');

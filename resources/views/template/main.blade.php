@@ -33,7 +33,7 @@
 	@yield('csss')
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" onload="deshabilitaRetroceso()">
 <div class="wrapper">
 	<!-- Navbar -->
 	@include('template.partials.navbar')
@@ -135,7 +135,7 @@
 <!-- ChartJS 1.0.1 -->
 <script src="{{ asset('admin/plugins/chartjs/Chart.min.js') }}"></script>
 
- <script src="{{ asset('ckeditor/ckeditor.js') }}"></script> 
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script> 
 
 <script>
 	$("input:text").focusout(function() {
@@ -149,7 +149,11 @@
 	$('select').select2();
 
 	
-
+	function deshabilitaRetroceso(){
+		window.location.hash="$";	
+		window.location.hash="$+"; //chrome
+		window.onhashchange=function(){window.location.hash="$";}
+	}
 
 </script>
 @routes

@@ -72,13 +72,22 @@
 			"numerot" : $("#numerot").val(),
 			"numero2t": $("#numero2t").val(),
 			"fechamen": $("#fechamen").val(),
-			"narraciont":$("#narraciont").text()
+			"narraciont": $("#narraciont").val()
 		};
 		$.ajax({
 			headers: {
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			},
-			url: route("store.agregar",parametros),
+			url: route("store.agregar",{
+				"victima" : $("#victima").val(),
+				"marcat" : $("#marcat").val(),
+				"imeit": $("#imeit").val(),
+				"compat" : $("#compat").val(),
+				"numerot" : $("#numerot").val(),
+				"numero2t": $("#numero2t").val(),
+				"fechamen": $("#fechamen").val(),
+				"narraciont": $("#narraciont").val()
+			}),
 			type : 'POST',
 			success : function(json) {
 				console.log(json);       

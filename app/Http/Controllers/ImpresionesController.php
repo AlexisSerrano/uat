@@ -54,15 +54,15 @@ class ImpresionesController extends Controller
     }
     
 
-    public function oficioCavd(){
+    public function oficioCavd($id){
       
-        return view('documentos.oficio-cavd');
+        return view('documentos.oficio-cavd')->with('id',  $id );
     
     }
 
     public function showOficio(){
-        // $idCarpeta=session('carpeta');
-        $idCarpeta= 1;
+         $idCarpeta=session('carpeta');
+        // $idCarpeta= 1;
         $catalogo = CatCavd::orderBy('unidad', 'ASC')->pluck('unidad','id');
        
         $victimas2 = DB::table('extra_denunciante')
@@ -84,65 +84,102 @@ class ImpresionesController extends Controller
     }
 
     public function storeOficio(Request $request){
-        $idCarpeta= 1;
-        $denunciantes = DB::table('extra_denunciante')
-        ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-        ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-        ->select('extra_denunciante.idVariablesPersona')
-        ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-       
-        ->get();
+        $idCarpeta=session('carpeta');
+
+      
 
 
-
-
-        // $idCarpeta=session('carpeta');
-        $idCarpeta= 1;
+        // $idCarpeta= 1;
+    //   foreach($request->idDenunciante as $idDenunciante){
         $Cavd = new Cavd();
         $Cavd->idCavd = $request->idCavd;
-        $Cavd->idVariablesPersona =  $denunciantes;
+        $Cavd->idVariablesPersona = $request->idDenunciante;
         $Cavd->idCarpeta = $idCarpeta;
-
         $Cavd->save();
+    //   }
+        
+        
         if( $Cavd->save()){
             Alert::success('Registro guardado con éxito', 'Hecho');
-            // $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+            //     $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
             // $bdbitacora->medidas = $bdbitacora->medidas+1;
             // $bdbitacora->save();
         }
           
-    //     
+        
         else{
             Alert::error('Se presentó un problema al guardar el registro', 'Error');
         }
         DB::commit();
         // dd( $idCarpeta);
-        return view('documentos.oficio-cavd') ->with('id',  $Cavd->id );
+        $data = DB::table('cavd')
+        ->join('cat_cavd','cat_cavd.id','=','cavd.idCavd')
+        ->select('cat_cavd.unidad')
+        ->first();
+        $victimas2 = DB::table('extra_denunciante')
+        ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+        ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+        ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+        ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+        ->orderBy('persona.nombres', 'ASC')
+        ->first();
+        return redirect("show-oficioCavd/".$request->id)->with(' data', $data)->with(' victimas2',  $victimas2); 
 
     }
 
     public function getCavd($id){
-        // $idCarpeta=session('carpeta');
-        // $carpeta=DB::table('carpeta')
-        // ->join('unidad','carpeta.idUnidad','=','unidad.id')
-        // ->select('carpeta.numCarpeta')
-        // ->where('carpeta.id',$idCarpeta)->first();
+        $idCarpeta=session('carpeta');
+        $carpeta=DB::table('carpeta')
+        ->join('unidad','carpeta.idUnidad','=','unidad.id')
+        ->select('carpeta.numCarpeta')
+        ->where('carpeta.id',$idCarpeta)->first();
 
-        // $numCarpera=$carpeta->numCarpeta;
+        $numCarpeta=$carpeta->numCarpeta;
 
 
-        $cavd=DB::Table('cavd')
-        ->select('cavd.id','cavd.idCavd','cavd.idVariablesPersona','cavd.idCarpeta')
+        $datos=DB::Table('cavd')
+        ->join('cat_cavd','cat_cavd.id','=','cavd.idCavd')
+        ->select('cavd.id','cavd.idCavd','cavd.idVariablesPersona','cavd.idCarpeta','cat_cavd.nombreDirector')
         ->first();
+
+        $denunciantes = DB::table('extra_denunciante')
+        ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+        ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+        ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
+        ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+        ->first();
+
+        // $cadenaDenunciantes='';
+        // foreach($denunciantes as $denunciante){
+        //     $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.', ';
+        // }
+        // $telefonos='';
+        // foreach($denunciantes as $denunciante){
+        //     $telefonos .= $denunciante->telefono.', ';
+        // }
+
+        $fiscalAtiende=DB::table('users')
+        ->join('unidad','unidad.id','=','users.id')
+        ->join('unidad as unid','unid.id','=','users.idUnidad')
+        ->where('users.id', Auth::user()->id)
+        ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion')
+        ->first();
+
 
         $fechaactual = date::now();
         $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
 
-        $data = array('id' =>  $cavd->id,
-        'id' =>  $cavd->idCavd,
-        'idVariablesPersona' =>  $cavd->idVariablesPersona,
-        'numCarpeta' => $cavd->idCarpeta,
-        'fecha' =>  $fechahum
+        $data = array('id' => $id,
+        'idCavd' =>  $datos->idCavd,
+        'idVariablesPersona' =>  $datos->idVariablesPersona,
+        'numCarpeta' =>$carpeta->numCarpeta,
+        'denunciante' => $denunciantes ->nombres.' '. $denunciantes ->primerAp.' '. $denunciantes ->segundoAp,
+        'fecha' =>  $fechahum,
+        'telefono' => $denunciantes->telefono,
+        'fiscalAtiende' => $fiscalAtiende->nombreC,
+        'puestoFiscal' => $fiscalAtiende->puesto,
+        'unidad' => $fiscalAtiende->descripcion,
+        'nombreDirector' =>$datos->nombreDirector
        );
         
         //dd($data);
@@ -151,7 +188,6 @@ class ImpresionesController extends Controller
 
 
     }
-
     public function storeoficioTransporte(){
         $idCarpeta=session('carpeta');
         $carpeta=DB::table('carpeta')
@@ -471,6 +507,100 @@ class ImpresionesController extends Controller
 
         }
 
+        public function archivoTemporal(){
+        //dd('werwerwer');
+            $idCarpeta=session('carpeta');
+            $carpeta=DB::table('carpeta')
+            ->join('unidad','carpeta.idUnidad','=','unidad.id')
+            ->select('carpeta.fechaInicio','carpeta.numCarpeta')
+            ->where('carpeta.id',$idCarpeta)
+            ->first();
+
+            $fiscalAtiende=DB::table('users')
+            ->join('unidad','unidad.id','=','users.id')
+            ->join('unidad as unid','unid.id','=','users.idUnidad')
+            ->where('users.id', Auth::user()->id)
+            ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra')
+            ->first();
+
+            $denunciantes = DB::table('extra_denunciante')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+            ->get();
+
+            $cadenaDenunciantes='';
+            foreach($denunciantes as $denunciante){
+                $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.', ';
+            }
+            
+            $numFiscalLetras= $fiscalAtiende->letra;
+            $numFiscalLetras = strtr(strtoupper($numFiscalLetras),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+            $nombreC=$fiscalAtiende->nombreC;
+            $nombreC = strtr(strtoupper($nombreC),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+            
+            
+            $datos=array('id'=> $idCarpeta,
+            'numeroCarpeta'=> $carpeta->numCarpeta,
+            'numeroF'=> $fiscalAtiende->numFiscal,
+            'descripcion'=> $fiscalAtiende->descripcion,
+            'numFiscalLetras'=>$numFiscalLetras,
+            'nombreC'=>$nombreC,
+            'notificado'=>$cadenaDenunciantes);
+            
+            //dd($datos);
+            //'puesto'=>$puesto,
+            return response()->json($datos);
+        }
+        
+        public function archivoTemporalImp(){
+            
+            return view('documentos.archivoTemporal');
+        }
+
+        public function primeraInvitacion(){
+
+            $idCarpeta=session('carpeta');
+            // $carpeta=DB::table('carpeta')
+            // ->join('unidad','carpeta.idUnidad','=','unidad.id')
+            // ->select('carpeta.fechaInicio','carpeta.numCarpeta')
+            // ->where('carpeta.id',$idCarpeta)
+            // ->first();
+
+            $denunciantes = DB::table('variables_persona')
+            ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
+            ->join('extra_denunciado', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->where('variables_persona.idCarpeta',$idCarpeta)
+            ->select('persona.nombres','persona.primerAp','persona.segundoAp', 'persona.id')
+            ->get();
+
+            return view('forms.primeraInvitacion')->with('denunciantes',$denunciantes);
+        }
+
+        public function mostrarOficio(){
+            return view('documentos.invitaciones'); 
+            }
+
+           public function getInvitacion($id){
+            $carpeta=DB::table('carpeta')
+            ->join('unidad','carpeta.idUnidad','=','unidad.id')
+            ->select('carpeta.fechaInicio','carpeta.numCarpeta')
+            ->where('carpeta.id',$id)
+            ->first();
+
+            $fiscalAtiende=DB::table('users')
+            ->join('unidad','unidad.id','=','users.id')
+            ->join('unidad as unid','unid.id','=','users.idUnidad')
+            ->where('users.id', Auth::user()->id)
+            ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra')
+            ->first();
+
+            
+
+
+
+           }
 }
 
 
