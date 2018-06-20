@@ -323,7 +323,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getVehiculo/{id}', 'VehiculoController@getVh');
     Route::get('vehiculo/{id}/eliminar', 'VehiculoController@delete')->name('delete.vehiculo');
 
-    Route::get('getVehiuculoAjax/{id}', 'VehiculoController@getVehiculoAjax')->name("getVehiculoAjax");
+    Route::get('getVehiculoAjax/{id}', 'VehiculoController@getVehiculoAjax')->name("getVehiculoAjax");
 
     /* -----------Ruta para Libro de Oficios------------ */
     Route::get('lista-oficios','LibroOficioController@IndexOfi');

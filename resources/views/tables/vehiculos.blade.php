@@ -66,12 +66,13 @@
                                     <div class="col-4">
                                             <div class="form-group">
                                                 {!! Form::label('idTipifDelito', 'Delito', ['class' => 'col-form-label-sm']) !!}
-                                                <select name="idTipifDelito" id="idTipifDelito" class="form-control form-control-sm" required>
+                                                <select name="idTipifDelito" id="idTipifDelito1" class="form-control form-control-sm" required>
                                                         <option value="">Seleccione un delito</option>
                                                         @foreach($tipifdelitos as $tipifdelito)
                                                         <option value="{{ $tipifdelito->id }}">{{ $tipifdelito->delito." ".$tipifdelito->desagregacion1." ".$tipifdelito->desagregacion2}}</option>
                                                         @endforeach
                                                     </select>
+                                                     {{-- {!! Form::select('delito1', $tipifdelitos,['class' => 'form-control form-control-sm', 'data-validation'=>'required' ,'id'=>"delito1"]) !!} --}}
                                             </div>
                                         </div>
                                         
@@ -79,7 +80,7 @@
                                             <div class="form-group">
                                                 {!! Form::label('placas', 'Placas', ['class' => 'col-form-label-sm']) !!}
                                                 {!! Form::text('placas', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las placas' ]) !!}	
-                                        
+                                                {{-- <input class="form-control" type="text" id="placas"  name="tipo_medi" placeholder="Tipo de medida" > --}}
                                                 
                                             </div>
                                         </div>
@@ -218,6 +219,7 @@
         });
         });
   </script>  
+  <script src="{{asset('js/ajaxVehiculo.js')}}"></script>
 @endpush
     
 
