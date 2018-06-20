@@ -129,7 +129,6 @@
 
 	$('#botonCancelar').on('click', function(){
 		this.preventDefault;
-		console.log(numero);
 		swal({
 				title: "¿Seguro que desea cancelar el registro?",
 				text: "No podrá deshacer este paso.",
@@ -151,7 +150,6 @@
 		this.preventDefault;
 		elemento=this;
 		numero=elemento.dataset.valordevolver;
-		console.log(numero);
 		swal({
 				title: "¿Seguro que desea devolver el turno tomado?",
 				text: "No podrá deshacer este paso.",
