@@ -155,7 +155,8 @@
 				
 						@if (is_null(session('terminada')))
 							<li class="nav-item has-treeview">
-								<a href='{{route("cancelar.caso")}}' class="nav-link">
+								{{-- <a href='{{route("cancelar.caso")}}' class="nav-link"> --}}
+								<a href='#' onclick="cancelarCaso" id="botonCancelar" class="nav-link">
 									<i class="nav-icon fa fa-ban"></i>
 									<p>
 										Cancelar registro
