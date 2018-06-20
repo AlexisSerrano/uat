@@ -1012,6 +1012,136 @@ Xalapa-Enríquez, Veracruz</p>',
    'unidad'=>'1'],
        
        
+
+   ['nombre'  =>  'INVITACION INICIAL',
+   'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+   <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',
+
+
+'contenido' =>'<table align="right" cellspacing="0" style="width:503.45pt">
+<tbody>
+    <tr>
+        <td style="border-color:black; vertical-align:top; width:184.0pt">
+        <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif">&nbsp;</span></span></p>
+
+        <p>&nbsp;</p>
+        </td>
+        <td style="border-color:black; vertical-align:top; width:319.4pt">
+        <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">INVITACIÓN INICIAL</span></span></strong></span></span></p>
+
+        <p>&nbsp;</p>
+
+        <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">No. Carpeta de Investigación:<strong>&nbsp;{{$numCarpeta}}-{{NF}}° </strong></span></span></span></span></p>
+
+        <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Número de invitaciones:<strong> PRIMERA</strong></span></span></span></span></p>
+
+        <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><em><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">&nbsp;Xalapa, Veracruz; a 6 de abril de 2018</span></em></span></span></p>
+        </td>
+    </tr>
+</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">DATOS DEL INVESTIGADO:</span></span></strong></span></span></p>
+
+<table border="1" cellspacing="0" style="width:503.45pt">
+<tbody>
+    <tr>
+        <td style="border-color:black; height:30.6pt; vertical-align:top; width:503.45pt">
+        <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Nombre: NANCY RUTH SANCHEZ PEREZ</span></span></strong></span></span></p>
+
+        <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Domicilio: SAN CIPRIANO ESQUINA SAN MIGUEL NÚMERO 33, FRACCIONAMIENTO LOMAS DE SANTA FE, XALAPA, VERACRUZ</span></span></strong></span></span></p>
+        </td>
+    </tr>
+</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Por medio del presente y con fundamento en los artículos 184, 189 del Código Nacional de Procedimientos Penales, 5, 6, 14 y 15 de la Ley Nacional de Mecanismos Alternativos de Solución de Controversias en Materia Penal, y derivado de la solicitud realizada por el <strong>C. FRANCISCO HUERTA PEREZ</strong>, para solucionar a través de un método alterno el conflicto que tiene con usted en relación a<strong> DAÑOS</strong>; se le invita cordialmente a participar en una entrevista inicial que se verificará el próximo<strong> MARTES 10 DE ABRIL DE 2018</strong>, a las<strong> 10:30</strong> horas, en las instalaciones ubicadas en<strong> Circuito Guizar y Valencia No. 147, Col. Reserva Territorial, Xalapa Veracruz</strong> durante la cual se le podrá explicar lo relacionado al mecanismo alternativo y los servicios que ofrece esta Institución.</span></span></span></span></p>
+
+<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Se hace de su conocimiento que los métodos alternos, tales como la mediación, conciliación y junta restaurativa, son mecanismos pacíficos de solución de conflictos regulados por la Ley Nacional de Mecanismos Alternativos de Solución de Controversias en Materia Penal, enfocados a resolver las controversias de los particulares, a través del dialogo y el entendimiento, con el apoyo de un tercero neutral e imparcial, para llegar a un acuerdo voluntario entre las partes que ponga fin al conflicto planteado. Como tal, el Órgano Especializado en Mecanismos Alternativos de Solución de Controversias de la Fiscalía General del Estado ofrece este servicio de manera gratuita y confidencial. </span></span></span></span></p>
+
+<p style="text-align:justify">&nbsp;</p>
+
+<p><span style="font-size:12pt"><span style="font-family:Cambria,serif"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Se le solicita que a la entrevista acuda con identificación oficial de la manera siguiente:</span></span></span></p>
+
+<p>&nbsp;</p>
+
+<table border="1" cellspacing="0" style="width:498.35pt">
+<tbody>
+    <tr>
+        <td style="border-color:black; vertical-align:top; width:497.8pt">
+        <ul>
+            <li style="text-align:justify"><span style="font-size:12pt"><span style="font-family:Cambria,serif"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Credencial de elector o;</span></span></span></li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-color:black; vertical-align:top; width:497.8pt">
+        <ul>
+            <li style="text-align:justify"><span style="font-size:12pt"><span style="font-family:Cambria,serif"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Pasaporte vigente;</span></span></span></li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-color:black; vertical-align:top; width:497.8pt">
+        <ul>
+            <li style="text-align:justify"><span style="font-size:12pt"><span style="font-family:Cambria,serif"><em><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">En caso de ser extranjero</span></em><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;"> deberá traer la forma migratoria que acredite su legal estancia en el país;</span></span></span></li>
+        </ul>
+        </td>
+    </tr>
+    <tr>
+        <td style="border-color:black; vertical-align:top; width:497.8pt">
+        <ul>
+            <li style="text-align:justify"><span style="font-size:12pt"><span style="font-family:Cambria,serif"><em><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">En caso de comparecer como representante o apoderado</span></em><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;"> de persona física o persona jurídica, deberá traer copia certificada de los documentos que acrediten su carácter.</span></span></span></li>
+        </ul>
+        </td>
+    </tr>
+</tbody>
+</table>
+
+<p style="text-align:justify">&nbsp;</p>
+
+<p style="text-align:justify"><span style="font-size:12pt"><span style="font-family:Cambria,serif"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Se le informa que se ha designado como servidor público para la atención de este servicio, a la <strong>LIC. MARÍA DEL CARMEN MORENO MUNGUÍA, Facilitadora Quinta en la Unidad de Atención Temprana en el Distrito XI Judicial en Xalapa</strong>, con quien deberá tener contacto previo a la entrevista para confirmar su asistencia, o bien señalar nueva fecha, lo cual podrá hacer directamente en las instalaciones previamente indicadas o al teléfono <strong>228-8149428</strong>. <strong>Acudir a la cita con identificación oficial (credencial para votar, CURP, acta de nacimiento y/o pasaporte en original para cotejo y copia simple de la misma.</strong></span></span></span></p>
+
+<p style="text-align:justify">&nbsp;</p>
+
+<p style="text-align:center">&nbsp;</p>
+
+<p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:14.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Atentamente.</span></span></span></span></p>
+
+<p style="text-align:center">&nbsp;</p>
+
+<p style="text-align:center">&nbsp;</p>
+
+<p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">LIC. BRENDA XIOVARA MORENO ESCALANTE</span></span></strong></span></span></p>
+
+<p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Fiscal Sexta Orientadora de la Unidad de Atención Temprana</span></span></span></span></p>
+
+<p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Del XI Distrito Judicial en Xalapa</span></span><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">, Veracruz</span></span></span></span></p>
+',
+
+'unidad'=>'1',
+   'pie' =>  '<p>Circuito Rafael Guízar y<br />
+   Valencia No. 147,<br />
+   Colonia Reserva Territorial,<br />
+   C.P. 91096<br />
+   Teléfono: 01 (228) 8149428,<br />
+   Xalapa-Enríquez, Veracruz</p>',
+   'unidad'=>'1'],
+
+
+
+
+
+
+
+
+
+
+
        
        ]);
 

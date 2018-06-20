@@ -92,6 +92,7 @@
      }
 </style>
 @push('scripts')
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script> 
 <script>
 var oficio = '';
 $("#listaOficios").on("click", ".itemoficio", function(){

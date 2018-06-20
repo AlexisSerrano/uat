@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="app">
-        <oficio tipo="circunstanciada" url="{{url("getcircunstanciada/$id")}}"></oficio>
+        <oficio tipo="circunstanciada" url="{{url("getcircunstanciada")}}" id="{{$id}}"></oficio>
     </div>
 </body>
 </html>

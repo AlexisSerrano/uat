@@ -1,7 +1,7 @@
 
 <aside class="main-sidebar  elevation-4 barra-izquierda " id="barra">
 	<!-- Brand Logo -->
-	<a href="predenuncias" class="brand-link">
+	<a href="{{url('home')}}" class="brand-link">
 		<img src="{{asset('img/escudo.png')}}" alt="FGELogo" height="" class="brand-image img-circle elevation-3" style="opacity: .8">
 		<span class="brand-text font-weight-light">FGE | Veracruz</span>
 	</a>
@@ -144,7 +144,8 @@
 
 					@if(!is_null(session('preregistro')))
 						<li class="nav-item has-treeview">
-							<a href="{{route('devolver', session('preregistro') )}}" class="nav-link">
+							{{-- <a href="{{route('devolver', session('preregistro') )}}" id="botonDevolverturno" class="nav-link"> --}}
+							<a href="#" id="botonDevolverturno" class="nav-link" data-valorDevolver="{{session('preregistro')}}">
 								<i class="nav-icon fa fa-reply"></i>
 								<p>
 									Devolver turno
@@ -155,7 +156,8 @@
 				
 						@if (is_null(session('terminada')))
 							<li class="nav-item has-treeview">
-								<a href='{{route("cancelar.caso")}}' class="nav-link">
+								{{-- <a href='{{route("cancelar.caso")}}' class="nav-link"> --}}
+								<a href='#' onclick="cancelarCaso" id="botonCancelar" va class="nav-link">
 									<i class="nav-icon fa fa-ban"></i>
 									<p>
 										Cancelar registro
@@ -230,9 +232,16 @@
 					</li>
 
 					<li class="nav-item has-treeview ">
-						<a href="{{url('carpetas')}}" class="nav-link {{ Request::is( 'carpetas') ? 'active' : '' }}">
+						<a href="{{route('indexcarpetas')}}" class="nav-link {{ Request::is( 'carpetas') ? 'active' : '' }}">
 							<i class="nav-icon  fa fa-archive"></i>
 							<p>Carpetas</p>
+						</a>
+					</li>
+					
+					<li class="nav-item has-treeview ">
+						<a href="{{route('carpetas.reserva')}}" class="nav-link {{ Request::is( 'carpetasReserva') ? 'active' : '' }}">
+							<i class="nav-icon  fa fa-archive"></i>
+							<p>Carpetas en reserva</p>
 						</a>
 					</li>
 

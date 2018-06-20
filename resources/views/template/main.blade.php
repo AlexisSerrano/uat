@@ -68,41 +68,13 @@
 			<div class="container-fluid">
 				
 				@yield('contenido')
-				{{--
-				<div class="row">
-					<div class="col-md-12">
-						<div class="card card-primary">
-							<div class="card-header">
-								<h5 class="card-title">@yield('title', 'Inicio')</h5>
-							</div>
-							<!-- /.card-header -->
-							<div class="card-body">
-								@yield('card-content')
-							</div>
-							<!-- ./card-body -->
-							<div class="card-footer">
-								@yield('card-foot')
-							</div>
-							<!-- /.card-footer -->
-						</div>
-						<!-- /.card -->
-					</div>
-					<!-- /.col -->
-				</div>
-				<!-- /.row -->
-				--}}
+	
 			</div><!--/. container-fluid -->
 		</section>
 
 		<!-- /.content -->	
 	</div>
-	<!-- /.content-wrapper -->
-
-	<!-- Control Sidebar (a secondary optional sidebar) -->
-	{{-- @include('template.partials.sidebar2') --}}
-	<!-- /.control-sidebar -->
-
-	<!-- Main Footer -->
+	
 	@include('template.partials.footer')
 </div>
 <!-- ./wrapper -->
@@ -132,10 +104,9 @@
 <script src="{{ asset('admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 <!-- SlimScroll 1.3.0 -->
 <script src="{{ asset('admin/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
-<!-- ChartJS 1.0.1 -->
-<script src="{{ asset('admin/plugins/chartjs/Chart.min.js') }}"></script>
+{{-- <!-- ChartJS 1.0.1 -->
+<script src="{{ asset('admin/plugins/chartjs/Chart.min.js') }}"></script> --}}
 
-<script src="{{ asset('ckeditor/ckeditor.js') }}"></script> 
 
 <script>
 	$("input:text").focusout(function() {
@@ -154,6 +125,47 @@
 		window.location.hash="$+"; //chrome
 		window.onhashchange=function(){window.location.hash="$";}
 	}
+
+	$('#botonCancelar').on('click', function(){
+		this.preventDefault;
+		swal({
+				title: "¿Seguro que desea cancelar el registro?",
+				text: "No podrá deshacer este paso.",
+				type: "warning",
+				showCancelButton: true,
+				cancelButtonText: "Cancelar",
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Confirmar",
+				closeOnConfirm: false
+		}, function(isConfirm){
+			if (isConfirm) {
+				window.location=route("cancelar.caso");
+			}
+
+		});
+	});
+
+	$('#botonDevolverturno').on('click', function(){
+		this.preventDefault;
+		elemento=this;
+		numero=elemento.dataset.valordevolver;
+		swal({
+				title: "¿Seguro que desea devolver el turno tomado?",
+				text: "No podrá deshacer este paso.",
+				type: "warning",
+				showCancelButton: true,
+				cancelButtonText: "Cancelar",
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Confirmar",
+				closeOnConfirm: false
+		}, function(isConfirm){
+			if (isConfirm) {
+				window.location=route('devolver', numero );
+			}
+
+		});
+	});
+
 
 </script>
 @routes
