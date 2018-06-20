@@ -3,28 +3,29 @@
 url = window.location;
 
 
-
-$('.btn-modal').bind('click', function(){
-	$ ('#myModal1').modal('show');
-	var idr = $(this).val();
-	$.ajax({
-		//url : "getMedidasAjax/"+idr,
-		url: route("getMedidasAjax",idr),
-		type : 'GET',
-		success : function(json) {
-			$("#observaciones1").text(json.observacion);
-			$("#fechaInicio1").val(json.fechaInicio);
-			$("#fechaFinal1").val(json.fechaFin);
-			$("#tipo_medida2").val(json.nombre);
-			$('#quienEjecuta1').val(json.idEjecutor).trigger('change.select2');
-			$('#victima1').val(json.idPersona).trigger('change.select2');
-			$('#idr').val(json.id);           
-		},
-		error : function(xhr, status) {
-		}
-	});
-	});
-	
+	$('.btn-modal').bind('click', function(){
+		$ ('#myModal1').modal('show');
+		var idr = $(this).val();
+		$.ajax({
+			//url : "getMedidasAjax/"+idr,
+			url: route("getVehiculoAjax",idr),
+			type : 'GET',
+			success : function(json) {
+				console.log(json);
+				$('#idTipifDelito1').val(json.Delito).trigger('change.select2');
+				$("#placas").val(json.Placas);
+				// console.log();
+				// $("#fechaInicio1").val(json.fechaInicio);
+				// $("#fechaFinal1").val(json.fechaFin);
+				// $("#tipo_medida2").val(json.nombre);
+				// $('#quienEjecuta1').val(json.idEjecutor).trigger('change.select2');
+				// $('#victima1').val(json.idPersona).trigger('change.select2');
+				$('#idr').val(json.id);           
+			},
+			error : function(xhr, status) {
+			}
+		});
+		});
 //para mandar los datos ala base de datos 
 
 	$('#guardar').bind('click', function(){

@@ -230,7 +230,7 @@ public function getVh($id){
     ->join('cat_procedencia', 'vehiculo.idProcedencia', '=', 'cat_procedencia.id')
     ->join('cat_aseguradoras', 'vehiculo.idAseguradora', '=', 'cat_aseguradoras.id')
     ->where('vehiculo.id', '=', $id)
-    ->select('cat_delito.nombre as Delito', 'vehiculo.placas as Placas', 'cat_estado.nombre as Estado', 'cat_submarcas.nombre as Submarca', 'vehiculo.modelo as Modelo', 'vehiculo.nrpv as nrpv',
+    ->select('vehiculo.idTipifDelito as Delito', 'vehiculo.placas as Placas', 'cat_estado.nombre as Estado', 'cat_submarcas.nombre as Submarca', 'vehiculo.modelo as Modelo', 'vehiculo.nrpv as nrpv',
             'cat_color.nombre as Color', 'vehiculo.permiso as Permiso', 'vehiculo.numSerie as Serie', 'vehiculo.numMotor as Motor', 'cat_tipo_vehiculo.nombre as TipoVehiculo', 'cat_tipo_uso.nombre as TipoUso', 'vehiculo.senasPartic as SParticulares', 
             'cat_procedencia.nombre as Procedencia', 'cat_aseguradoras.nombre' )
     ->first();
