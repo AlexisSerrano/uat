@@ -216,19 +216,6 @@ class PreregistroController extends Controller
     
     }
 
-//     public function enviar(){
-
-
-        
-//         $correo = 'ingvasquez@gmail.com';
-//         Mail::to($correo)->send(new sendMail());
-//         //Alert::success('correo enviado', 'Salir')->persistent("Aceptar");
-//         return redirect('store');
-//    }
-   
-
-
-
     public function fiscal()
     {
         $razones=Razon::orderBy('nombre', 'ASC')
@@ -362,11 +349,8 @@ class PreregistroController extends Controller
                 if (!is_null($request->numInterno1)){
                     $domicilio->numInterno = $request->numInterno1;
                 }
-                
                 $domicilio->save();
-                $idD1 = $domicilio->id;
-                
-                
+                $idD1 = $domicilio->id; 
                 $preregistro = new Preregistro();
                 $preregistro->nombre = $request->nombre1;
                 $preregistro->idDireccion = $idD1;
@@ -383,20 +367,15 @@ class PreregistroController extends Controller
                 // $preregistro->conViolencia = $request->Violencia;
                 $preregistro->save();
                 $id = $preregistro->id;
-                
-                
                 // return view('Email.emailmodel');
             if (!is_null($request->correo)) {
                 $correo = $request->correo;
                 session(['idpreregistro' => $id]);
                 Mail::to($correo)->send(new sendMail());
                 // Mail::to($correo)->send(new EnviarCorreo($id));
-                // Mail::to($correo)->send('FormatoRegistro/'.$id);
-                    
+                // Mail::to($correo)->send('FormatoRegistro/'.$id);       
+                }
             }
-            
-            }
-       
             DB::commit();
             return redirect('FormatoRegistro/'.$id);
         }catch (\PDOException $e){
@@ -404,11 +383,9 @@ class PreregistroController extends Controller
             Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
             return back()->withInput();
         }
-    
     }
 
-    public function estado($id,$tipo)
-    {
+    public function estado($id,$tipo){
         $estado = Preregistro::find($id);
         $estado->statusCancelacion = 1;
         if($tipo==99){
