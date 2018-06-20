@@ -173,6 +173,14 @@
 									</p>
 								</a>
 							</li>		
+							<li class="nav-item has-treeview">
+								<a href='{{route("carpeta.detalle")}}' class="nav-link">
+									<i class="nav-icon fa fa-share"></i>
+									<p>
+										Regresar a detalle
+									</p>
+								</a>
+							</li>		
 						@endif	
 					@endif
 

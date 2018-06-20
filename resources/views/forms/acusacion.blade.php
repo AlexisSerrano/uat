@@ -21,7 +21,7 @@
 		</div>
 	</div>
 	{!! Form::close() !!}
-	
+	<br>
 		@include('tables.acusaciones')
 	
 @endsection
