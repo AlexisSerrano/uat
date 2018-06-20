@@ -43,6 +43,17 @@
 		</span>
 	</div>
 	@endif
+	{{-- puede que se quite en el futuro --}}
+	@if (isset($acta->folio)&&Request::path()=='atender-acta/'.$acta->id)	
+	<div style="color:white;margin-left:20px;">
+		<span>
+			Folio de pre-registro: 
+			<strong>
+				{{$acta->folio}}
+			</strong>
+		</span>
+	</div>
+	@endif
 		
 	<!-- Right navbar links -->
 	<ul class="navbar-nav ml-auto">

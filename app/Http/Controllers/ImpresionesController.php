@@ -508,6 +508,7 @@ class ImpresionesController extends Controller
         }
 
         public function archivoTemporal(){
+        //dd('werwerwer');
             $idCarpeta=session('carpeta');
             $carpeta=DB::table('carpeta')
             ->join('unidad','carpeta.idUnidad','=','unidad.id')
@@ -522,25 +523,84 @@ class ImpresionesController extends Controller
             ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra')
             ->first();
 
+            $denunciantes = DB::table('extra_denunciante')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+            ->get();
 
+            $cadenaDenunciantes='';
+            foreach($denunciantes as $denunciante){
+                $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.', ';
+            }
             
-
+            $numFiscalLetras= $fiscalAtiende->letra;
+            $numFiscalLetras = strtr(strtoupper($numFiscalLetras),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+            $nombreC=$fiscalAtiende->nombreC;
+            $nombreC = strtr(strtoupper($nombreC),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+            
+            
             $datos=array('id'=> $idCarpeta,
             'numeroCarpeta'=> $carpeta->numCarpeta,
             'numeroF'=> $fiscalAtiende->numFiscal,
             'descripcion'=> $fiscalAtiende->descripcion,
-            'fiscalLetras'=>$fiscalAtiende->letra,
-            'nombreC'=>$fiscalAtiende->nombreC);
-
-            //dd($datos);
-            return response()->json($datos);
+            'numFiscalLetras'=>$numFiscalLetras,
+            'nombreC'=>$nombreC,
+            'notificado'=>$cadenaDenunciantes);
             
+            //dd($datos);
+            //'puesto'=>$puesto,
+            return response()->json($datos);
         }
         
         public function archivoTemporalImp(){
             
             return view('documentos.archivoTemporal');
         }
+
+        public function primeraInvitacion(){
+
+            $idCarpeta=session('carpeta');
+            // $carpeta=DB::table('carpeta')
+            // ->join('unidad','carpeta.idUnidad','=','unidad.id')
+            // ->select('carpeta.fechaInicio','carpeta.numCarpeta')
+            // ->where('carpeta.id',$idCarpeta)
+            // ->first();
+
+            $denunciantes = DB::table('variables_persona')
+            ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
+            ->join('extra_denunciado', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->where('variables_persona.idCarpeta',$idCarpeta)
+            ->select('persona.nombres','persona.primerAp','persona.segundoAp', 'persona.id')
+            ->get();
+
+            return view('forms.primeraInvitacion')->with('denunciantes',$denunciantes);
+        }
+
+        public function mostrarOficio(){
+            return view('documentos.invitaciones'); 
+            }
+
+           public function getInvitacion($id){
+            $carpeta=DB::table('carpeta')
+            ->join('unidad','carpeta.idUnidad','=','unidad.id')
+            ->select('carpeta.fechaInicio','carpeta.numCarpeta')
+            ->where('carpeta.id',$id)
+            ->first();
+
+            $fiscalAtiende=DB::table('users')
+            ->join('unidad','unidad.id','=','users.id')
+            ->join('unidad as unid','unid.id','=','users.idUnidad')
+            ->where('users.id', Auth::user()->id)
+            ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra')
+            ->first();
+
+            
+
+
+
+           }
 }
 
 

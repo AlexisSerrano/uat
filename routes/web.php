@@ -80,6 +80,11 @@ Route::get('impresion-actuaciones','ImpresionesController@impresionActuaciones')
 Route::get('impresion-archivoTemporal','ImpresionesController@archivoTemporal')->name('impresion.archivoTemporal');
 Route::get('impresion-temporal','ImpresionesController@archivoTemporalImp')->name('impresion.temporal');
 
+Route::get('primera-invitacion','ImpresionesController@primeraInvitacion')->name('primera.invitacion');
+Route::get('impresion-invitacion','ImpresionesController@mostrarOficio');
+Route::get('json-invitacion/{id}','ImpresionesController@getInvitacion');
+
+
 
 /* --------Ruta para obtener token oficios----------- */
 // Route::get('getToken/{id}','ActasHechosController@getToken')->name('getToken');
@@ -135,7 +140,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name('store.denunciante');
     Route::get('agregar-denunciante/{id}/eliminar', 'DenuncianteController@delete')->name('delete.denunciante');
     Route::get('/atender/{id}', 'PreregistroAuxController@atender');
-    Route::get('/turno/{id}', 'PreregistroAuxController@turno');
+    Route::get('/turno/{id}/{tipo}', 'PreregistroAuxController@turno')->name('tomar.turno');
     Route::get('/Traerturno', 'PreregistroAuxController@Traerturno')->name('turno.denunciante');
     Route::get('/devolver/{id}', 'PreregistroAuxController@devolverturno')->name('devolver');
     /*****************************Rutas para modulo recepción****************************************/
@@ -299,7 +304,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getpsico/{id}','pericialesController@getpsico');
     Route::get('getVh/{id}','pericialesController@getVh');
     Route::get('getlesion/{id}','pericialesController@getlesion');
+    Route::get('oficioFinanzas','pericialesController@getOficioF');
 
+    Route::get('OficioF-impresion/{id}','pericialesController@getVhFinanzas');
     Route::get('getOficioM/{id}','pericialesController@getOficioM')->name('oficio.m');
     Route::get('getOficioP/{id}','pericialesController@getOficioP')->name('oficio.P');
     Route::get('getOficioV/{id}','pericialesController@getOficioV')->name('oficio.V');
@@ -311,6 +318,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('tipoVehiculos/{id}', 'VehiculoController@getTipoVehiculos')->name('get.tipovehiculos');
     Route::post('store-vehiculo', 'VehiculoController@storeVehiculo')->name('carpeta.vehiculo');
     Route::get('getVehiculo/{id}', 'VehiculoController@getVh');
+    Route::get('vehiculo/{id}/eliminar', 'VehiculoController@delete')->name('delete.vehiculo');
+
+    Route::get('getVehiuculoAjax/{id}', 'VehiculoController@getVehiculoAjax')->name("getVehiculoAjax");
 
     /* -----------Ruta para Libro de Oficios------------ */
     Route::get('lista-oficios','LibroOficioController@IndexOfi');

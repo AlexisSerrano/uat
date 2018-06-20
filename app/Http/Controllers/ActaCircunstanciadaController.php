@@ -15,6 +15,7 @@ use App\Models\CatMunicipio;
 use App\Models\catIdentificacion;
 use App\Models\ActaCircunstanciada;
 use App\Http\Requests\ActaCircRequest;
+use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
 use Carbon\Carbon;
@@ -67,7 +68,7 @@ class ActaCircunstanciadaController extends Controller
             $acta = new ActaCircunstanciada;
             $acta->hora = Date::now()->format('H:i:s');
             $acta->fecha = Date::now()->format('Y-m-d');
-            $acta->fiscal = "xxxxxx";
+            $acta->fiscal = Auth::user()->id;
             $acta->nombre = $request->nombre2;
             $acta->primer_ap = $request->primerAp;
             $acta->segundo_ap = $request->segundoAp;
@@ -189,6 +190,9 @@ class ActaCircunstanciadaController extends Controller
         $fechanachum = $date->format('j').' de '.$date->format('F').' del año '.$date->format('Y');
         $fechasep = explode("-", $catalogos->fecha_nac);
         $edad = Date::createFromDate($fechasep[0],$fechasep[1],$fechasep[2])->age;
+
+
+
         $data = array('estado' => $catalogos->nombreEstado, 
         'municipio' => $catalogos->nombreMunicipio, 
         'localidad' => $catalogos->nombreLocalidad,

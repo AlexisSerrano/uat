@@ -1,7 +1,7 @@
 
 <aside class="main-sidebar  elevation-4 barra-izquierda " id="barra">
 	<!-- Brand Logo -->
-	<a href="predenuncias" class="brand-link">
+	<a href="{{url('home')}}" class="brand-link">
 		<img src="{{asset('img/escudo.png')}}" alt="FGELogo" height="" class="brand-image img-circle elevation-3" style="opacity: .8">
 		<span class="brand-text font-weight-light">FGE | Veracruz</span>
 	</a>

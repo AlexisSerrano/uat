@@ -25,7 +25,7 @@
 </head>
 <body>
 
-  @include('template.partials.nav2')
+  @include('servicios.preregistro.templates.nav2')
 
 
          <section class="content">
@@ -34,7 +34,7 @@
             </div>
           </section>
 
-          @include('template.partials.footer2')
+          @include('servicios.preregistro.templates.footer2')
   <!-- jQuery -->
 @routes
 <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>

@@ -218,6 +218,61 @@ public function getVh($id){
  }
 
 
+ public function getVehiculoAjax($id){
+      $vehiculo = DB::table('vehiculo')
+    ->join('tipif_delito', 'vehiculo.idTipifDelito', '=', 'tipif_delito.id')
+    ->join('cat_delito', 'tipif_delito.idDelito', '=', 'cat_delito.id')
+    ->join('cat_estado', 'vehiculo.idEstado', '=', 'cat_estado.id')
+    ->join('cat_submarcas', 'vehiculo.idSubmarca', '=', 'cat_submarcas.id')
+    ->join('cat_color', 'vehiculo.idColor', '=', 'cat_color.id')
+    ->join('cat_tipo_vehiculo', 'vehiculo.idTipoVehiculo', '=', 'cat_tipo_vehiculo.id')
+    ->join('cat_tipo_uso', 'vehiculo.idTipoUso', '=', 'cat_tipo_uso.id')
+    ->join('cat_procedencia', 'vehiculo.idProcedencia', '=', 'cat_procedencia.id')
+    ->join('cat_aseguradoras', 'vehiculo.idAseguradora', '=', 'cat_aseguradoras.id')
+    ->where('vehiculo.id', '=', $id)
+    ->select('cat_delito.nombre as Delito', 'vehiculo.placas as Placas', 'cat_estado.nombre as Estado', 'cat_submarcas.nombre as Submarca', 'vehiculo.modelo as Modelo', 'vehiculo.nrpv as nrpv',
+            'cat_color.nombre as Color', 'vehiculo.permiso as Permiso', 'vehiculo.numSerie as Serie', 'vehiculo.numMotor as Motor', 'cat_tipo_vehiculo.nombre as TipoVehiculo', 'cat_tipo_uso.nombre as TipoUso', 'vehiculo.senasPartic as SParticulares', 
+            'cat_procedencia.nombre as Procedencia', 'cat_aseguradoras.nombre' )
+    ->first();
+
+
+    return response()->json($vehiculo);
+}
+
+
+public function delete($id){
+    DB::beginTransaction();
+    try{
+        // $acusaciones = Acusacion::where('idCarpeta',session('carpeta'))->where('idDenunciante',$id)->count();
+        // $vpersonas = DB::table('extra_denunciante')
+        // ->join('variables_persona','variables_persona.id','=','extra_denunciante.idVariablesPersona')
+        // ->where('extra_denunciante.id', '=', $id)
+        // ->select('variables_persona.id as id')
+        // ->first();
+        $vehiculo =  VehiculoCarpeta::find($id);
+        $vehiculo->delete();
+        // $vp= VariablesPersona::find($vpersonas->id);
+        // $vp->idCarpeta = null;
+        // $vp->save();
+        $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+        $bdbitacora->vehiculos = $bdbitacora->vehiculos-1;
+        $bdbitacora->save();
+        DB::commit();
+        Alert::success('Registrado eliminado con éxito', 'Hecho');
+        return back();
+    }
+    catch (\PDOException $e){
+        DB::rollBack();
+        Alert::error('Se presentó un problema al guardar los datos, intente de nuevo', 'Error');
+        return back()->withInput();
+    }
+}
+
+
+
+
+
+
 
 
 }

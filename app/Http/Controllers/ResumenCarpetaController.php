@@ -322,6 +322,9 @@ class ResumenCarpetaController extends Controller
     }
     public function detalleDelito(){
         $idCarpeta=session('carpeta');
+
+
+
         $carpeta=DB::table('carpeta')
         ->join('unidad','carpeta.idUnidad','=','unidad.id')
         ->where('carpeta.id',$idCarpeta)->first();
@@ -331,6 +334,9 @@ class ResumenCarpetaController extends Controller
     }
     public function detalleAcusaciones(){
         $idCarpeta=session('carpeta');
+
+        
+
         $carpeta=DB::table('carpeta')
         ->join('unidad','carpeta.idUnidad','=','unidad.id')
         ->where('carpeta.id',$idCarpeta)->first();

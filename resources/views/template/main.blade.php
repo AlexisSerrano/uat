@@ -33,7 +33,7 @@
 	@yield('csss')
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" onload="deshabilitaRetroceso()">
 <div class="wrapper">
 	<!-- Navbar -->
 	@include('template.partials.navbar')
@@ -68,41 +68,13 @@
 			<div class="container-fluid">
 				
 				@yield('contenido')
-				{{--
-				<div class="row">
-					<div class="col-md-12">
-						<div class="card card-primary">
-							<div class="card-header">
-								<h5 class="card-title">@yield('title', 'Inicio')</h5>
-							</div>
-							<!-- /.card-header -->
-							<div class="card-body">
-								@yield('card-content')
-							</div>
-							<!-- ./card-body -->
-							<div class="card-footer">
-								@yield('card-foot')
-							</div>
-							<!-- /.card-footer -->
-						</div>
-						<!-- /.card -->
-					</div>
-					<!-- /.col -->
-				</div>
-				<!-- /.row -->
-				--}}
+	
 			</div><!--/. container-fluid -->
 		</section>
 
 		<!-- /.content -->	
 	</div>
-	<!-- /.content-wrapper -->
-
-	<!-- Control Sidebar (a secondary optional sidebar) -->
-	{{-- @include('template.partials.sidebar2') --}}
-	<!-- /.control-sidebar -->
-
-	<!-- Main Footer -->
+	
 	@include('template.partials.footer')
 </div>
 <!-- ./wrapper -->
@@ -149,7 +121,11 @@
 	$('select').select2();
 
 	
-
+	function deshabilitaRetroceso(){
+		window.location.hash="$";	
+		window.location.hash="$+"; //chrome
+		window.onhashchange=function(){window.location.hash="$";}
+	}
 
 </script>
 @routes
