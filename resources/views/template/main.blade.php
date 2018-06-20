@@ -129,8 +129,6 @@
 
 	$('#botonCancelar').on('click', function(){
 		this.preventDefault;
-		nombre=this.name;
-		numero=this.value;
 		console.log(numero);
 		swal({
 				title: "¿Seguro que desea cancelar el registro?",
@@ -144,6 +142,28 @@
 		}, function(isConfirm){
 			if (isConfirm) {
 				window.location=route("cancelar.caso");
+			}
+
+		});
+	});
+
+	$('#botonDevolverturno').on('click', function(){
+		this.preventDefault;
+		elemento=this;
+		numero=elemento.dataset.valordevolver;
+		console.log(numero);
+		swal({
+				title: "¿Seguro que desea devolver el turno tomado?",
+				text: "No podrá deshacer este paso.",
+				type: "warning",
+				showCancelButton: true,
+				cancelButtonText: "Cancelar",
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Confirmar",
+				closeOnConfirm: false
+		}, function(isConfirm){
+			if (isConfirm) {
+				window.location=route('devolver', numero );
 			}
 
 		});
