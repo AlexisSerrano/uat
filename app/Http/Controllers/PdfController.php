@@ -16,12 +16,15 @@ class PDFcontroller extends Controller
 		->leftJoin('cat_municipio','domicilio.idMunicipio','=','cat_municipio.id')
 		->leftJoin('cat_ocupacion','preregistros.idOcupacion','=','cat_ocupacion.id')
 		->leftJoin('cat_identificacion','preregistros.docIdentificacion','=','cat_identificacion.id')
-		->select('preregistros.id as id', 'esEmpresa', 'cat_ocupacion.nombre as ocupacion', 'razones.nombre as razon','cat_municipio.nombre as municipio',  'preregistros.nombre as nombre', 'primerAp', 'segundoAp', 'rfc', 'cat_identificacion.documento as docIdentificacion',  'folio', 'representanteLegal', 'preregistros.created_at')
+		->select('preregistros.id as id', 'preregistros.esEmpresa as esEmpresa', 'cat_ocupacion.nombre as ocupacion', 'razones.nombre as razon',
+		'cat_municipio.nombre as municipio',  'preregistros.nombre as nombre', 'primerAp', 'segundoAp', 'rfc',
+		 'cat_identificacion.documento as docIdentificacion',  'folio', 'representanteLegal', 'preregistros.created_at')
 		->where ('preregistros.id', '=', $id)
 		->first();
+	
 
 		
-		//dd($DatosRegistros);
+		//dd($DatosRegistros->esEmpresa);
 		$data = ['DatosRegistros' => $DatosRegistros];
 		
 		$pdf = PDF::loadView('servicios.pdf.pdf-preregistro', $data)->setPaper('letter', 'landscape');//->save('E:\NUEVO.pdf');

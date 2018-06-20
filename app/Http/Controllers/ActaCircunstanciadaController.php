@@ -220,6 +220,7 @@ class ActaCircunstanciadaController extends Controller
         'img' => asset('img/logo.png'),
         'id' => $id);
         return response()->json($data);
+        
     }
 
 }

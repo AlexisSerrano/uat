@@ -682,14 +682,6 @@ class PreregistroAuxController extends Controller
         return view('servicios.email.indexboton');
     }
 
-    
-    public function enviar(){
-        $correo = 'championsjvd95@hotmail.com';
-        Mail::to($correo)->send(new sendMail());
-        Alert::success('correo enviado', 'Salir');
-        return redirect('correo');
-    }
-
     public function rfcMoral(Request $request)
    {
        $nombre = $request->nombre;

@@ -19,7 +19,7 @@ $form = oldFormActas();
                 @isset($acta)
                     @include('fields.actas-atender')
                 @else
-                    {{-- @include('fields.tipo-persona') --}}
+                    @include('fields.tipo-persona')
                     @include('fields.actas')
                 @endisset
             </div>
@@ -42,5 +42,5 @@ $form = oldFormActas();
 <script src="{{ asset('js/actas.js') }}"></script>
 {{-- <script src="{{ asset('js/curp.js') }}"></script> 
 	<script src="{{ asset('js/rfcFisico.js') }}"></script> --}}
-{{-- <script src="{{ asset('js/actas-hechos.js') }}"></script> --}}
+<script src="{{ asset('js/actas-hechos.js') }}"></script>
 @endpush
