@@ -232,9 +232,16 @@
 					</li>
 
 					<li class="nav-item has-treeview ">
-						<a href="{{url('carpetas')}}" class="nav-link {{ Request::is( 'carpetas') ? 'active' : '' }}">
+						<a href="{{route('indexcarpetas')}}" class="nav-link {{ Request::is( 'carpetas') ? 'active' : '' }}">
 							<i class="nav-icon  fa fa-archive"></i>
 							<p>Carpetas</p>
+						</a>
+					</li>
+					
+					<li class="nav-item has-treeview ">
+						<a href="{{route('carpetas.reserva')}}" class="nav-link {{ Request::is( 'carpetasReserva') ? 'active' : '' }}">
+							<i class="nav-icon  fa fa-archive"></i>
+							<p>Carpetas en reserva</p>
 						</a>
 					</li>
 
