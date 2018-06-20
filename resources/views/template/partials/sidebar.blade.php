@@ -144,7 +144,8 @@
 
 					@if(!is_null(session('preregistro')))
 						<li class="nav-item has-treeview">
-							<a href="{{route('devolver', session('preregistro') )}}" class="nav-link">
+							{{-- <a href="{{route('devolver', session('preregistro') )}}" id="botonDevolverturno" class="nav-link"> --}}
+							<a href="#" id="botonDevolverturno" class="nav-link" data-valorDevolver="{{session('preregistro')}}">
 								<i class="nav-icon fa fa-reply"></i>
 								<p>
 									Devolver turno
@@ -155,7 +156,8 @@
 				
 						@if (is_null(session('terminada')))
 							<li class="nav-item has-treeview">
-								<a href='{{route("cancelar.caso")}}' class="nav-link">
+								{{-- <a href='{{route("cancelar.caso")}}' class="nav-link"> --}}
+								<a href='#' onclick="cancelarCaso" id="botonCancelar" va class="nav-link">
 									<i class="nav-icon fa fa-ban"></i>
 									<p>
 										Cancelar registro

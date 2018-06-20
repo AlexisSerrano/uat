@@ -58,7 +58,7 @@ public function showForm()
                 ->with('religiones', $religiones);
         }
         else{
-            return redirect(url('registros'));
+            return redirect(route('home'));
         }
     }
 
