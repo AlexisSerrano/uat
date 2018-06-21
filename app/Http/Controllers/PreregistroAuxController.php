@@ -320,8 +320,6 @@ class PreregistroAuxController extends Controller
         $registros = DB::table('preregistros')
         ->join('razones','razones.id','=','preregistros.idRazon')
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion') 
-        ->where('tipoActa', null)
-        ->where('razones.nombre','!=' ,'OLICITUD DE CONSTANCIA DE EXTRAVIO')
         ->where('statusCola', $prioridad)
         ->where(function($query) use ($folio){
             $query
@@ -508,7 +506,7 @@ class PreregistroAuxController extends Controller
                 $unidad=$unidad->abreviacion;
                 
                 $numCarpeta=Carpeta::find($caso->id);
-                $numCarpeta->numCarpeta = $unidad."/".Auth::user()->numFiscal."/".$caso->id."/".Carbon::now()->year;            
+                $numCarpeta->numCarpeta = $unidad."/".$caso->id."/".Carbon::now()->year."-".Auth::user()->numFiscal;            
                 $numCarpeta->save();
         
                 session(['numCarpeta' => $numCarpeta->numCarpeta]);

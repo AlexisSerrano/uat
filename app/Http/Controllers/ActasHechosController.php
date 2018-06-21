@@ -25,7 +25,7 @@ class ActasHechosController extends Controller
 {
 
     public function actasPendientes(){
-        $actas=Preregistro::where('tipoActa','!=',null)
+        $actas=Preregistro::where('idRazon','=',4)
         ->where('statusCola',null)
         ->paginate(10);
         return view('tables.actas-hechos')->with('actas',$actas);
@@ -146,7 +146,7 @@ class ActasHechosController extends Controller
         // ->orderBy('id','desc')
         // ->paginate(10);
 
-        $actas = Preregistro::where('tipoActa','!=',null)
+        $actas = Preregistro::where('idRazon','=',4)
        ->where('statusCola',null)
        ->where(function($query) use ($folio){
            $query

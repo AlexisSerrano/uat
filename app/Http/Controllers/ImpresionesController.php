@@ -188,79 +188,72 @@ class ImpresionesController extends Controller
 
 
     }
-    public function storeoficioTransporte(){
-        $idCarpeta=session('carpeta');
+    public function storeoficioTransporte($id){
+        // $idCarpeta=session('carpeta');
         $carpeta=DB::table('carpeta')
         ->join('unidad','carpeta.idUnidad','=','unidad.id')
-        ->where('carpeta.id',$idCarpeta)->first();
+        ->where('carpeta.id',$id)->first();
 
 
-        $numCarpera=$carpeta->numCarpeta;
+        $numCarpeta=$carpeta->numCarpeta;
 
         $vehiculo=DB::Table('vehiculo')
-        ->join('tipif_delito as delito','vehiculo.idTipifDelito','=','delito.id')
-        ->join('carpeta','delito.idCarpeta','=','carpeta.id')
-        ->where('carpeta.id',$idCarpeta)
-        ->select('vehiculo.id','vehiculo.idTipifDelito','vehiculo.placas','vehiculo.idSubmarca','vehiculo.modelo',
-        'vehiculo.nrpv','vehiculo.idColor','vehiculo.numSerie','vehiculo.numMotor','vehiculo.idTipoUso')
+        ->join('tipif_delito','vehiculo.idTipifDelito','=','tipif_delito.id')
+        ->join('cat_delito','cat_delito.id','=','tipif_delito.id')
+        ->join('cat_submarcas','cat_submarcas.id','=','vehiculo.idSubmarca')
+        ->join('cat_color','cat_color.id','=','vehiculo.idColor')
+        ->join('cat_tipo_uso','cat_tipo_uso.id','=','vehiculo.idTipoUso')
+         ->join('cat_marca','cat_marca.id','=','cat_submarcas.idMarca')
+        ->where('vehiculo.id',$id)
+        ->select('vehiculo.id','cat_marca.nombre as marca','vehiculo.created_at as fecha','cat_delito.nombre as delito','vehiculo.placas','cat_submarcas.nombre as submarca','vehiculo.modelo',
+        'vehiculo.nrpv','cat_color.nombre as color','vehiculo.numSerie','vehiculo.numMotor','cat_tipo_uso.nombre as TipoUso')
         ->first();
 
-        if ($vehiculo==null) {
-            
-        return view('carpetas');
-        }
+        $fiscalAtiende=DB::table('users')
+        ->join('unidad','unidad.id','=','users.id')
+        ->join('unidad as unid','unid.id','=','users.idUnidad')
+        ->where('users.id', Auth::user()->id)
+        ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion')
+        ->first();
 
-        else{
-
-
-            
-            $color=CatColor::select('id','nombre')->where('id',$vehiculo->idColor)->first();
-            $submarca=CatSubmarca::select('id','nombre')->where('idSubmarca',$vehiculo->idSubmarca)->first();
-            $uso=CatTipoUso::select('id','nombre')->where('id',$vehiculo->idTipoUso)->first();
-            $marca=CatMarca::select('id','nombre')
-            ->join('cat_submarcas as submarcas','marca.id','=','submarcas.idMarca')
-            ->where('submarcas.idSubmarca',$vehiculo->idSubmarca)->first();
-            
-            dd($marca);
-    //     $localidadAtiende= DB::table('users')
-    //         ->join('unidad','unidad.id','=','users.idUnidad')
-    //         ->join('zona','zona.id','=','unidad.idZona')
-    //         ->where('users.id',Auth::user()->id)
-    //         ->select('zona.descripcion')
-    //         ->first();
-    //     $fechaactual = date::now();
-    //     $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
+        $puesto=$fiscalAtiende->puesto;
+        $puesto = strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
        
-    //    // $fiscalAtiende1='paola';
        
+        $fechaactual = new Date( $vehiculo->fecha);
+        $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
+        $data = array('id' => $id,
+        'numCarpeta'=>$numCarpeta,
+        'fiscalAtendio'=>$fiscalAtiende->nombreC,
+        'puestoFiscal'=>$puesto,
+        'marca'=>$vehiculo->marca,
+        'submarca'=>$vehiculo->submarca,
+        'color'=>$vehiculo->color,
+        'numSerie'=>$vehiculo->numSerie,
+        'modelo'=>$vehiculo->modelo,
+
+        // 'entidad'=>$localidadAtiende->descripcion,
+        'fecha'=>$fechahum,
+        'placas'=>$vehiculo->placas);
         
-    //     $data = array('id' => $vehiculo->id,
-    //     'numCarpeta'=>$carpeta->numCarpeta,
-    //     'fiscalAtiende'=>$fiscalAtiende1,
-    //     //'marca'=>$marca->nombre,
-    //     //'submarca'=>$submarca->nombre,
-    //     'color'=>$color->nombre,
-    //     'numSerie'=>$vehiculo->numSerie,
-    //     'modelo'=>$vehiculo->modelo,
-    //     'entidad'=>$localidadAtiende->descripcion,
-    //     'fecha'=>$fechahum,
-    //     'placas'=>$vehiculo->placas);
-        
-       
-       //return response()->json($data);
-       return view('documentos.fTransporte');}
+        // }
+       return response()->json($data);
+      
     }
 
-    public function transporteEdo(){
+    public function transporteEdo($id){
+
+        return view('documentos.fTransporte')->with('id',$id);
     }
 
 
 
-    public function tablaOficios(){
+    public function tablaOficios($id){
+
         $idCarpeta=session('carpeta');
         $carpeta=DB::table('carpeta')
         ->join('unidad','carpeta.idUnidad','=','unidad.id')
-        ->where('carpeta.id',$idCarpeta)->first();
+        ->where('carpeta.id',$id)->first();
        // dd($carpeta);
              return view('tables.documentos')->with('carpeta',$carpeta);
      }
@@ -412,18 +405,24 @@ class ImpresionesController extends Controller
             // dd($acta);
             $acta->save();
 
-            return view('documentos/acuerdo_fiscal')->with('id',$acta->id)->with('localidadAtiende',$localidadAtiende);
+            return redirect()->route('oficio.funcion', $acta->carpeta);
+            
+           
 
            
         }
 
-        public function policiaMinisterial(){
-
-        
-            return view('documentos.policia-ministerial');
+        public function docDistrito($id){
+            return view('documentos/acuerdo_fiscal')->with('id',$id);
         }
 
-        public function getMinisterial(){
+        public function policiaMinisterial($id){
+
+        
+            return view('documentos.policia-ministerial')->with('id',$id);
+        }
+
+        public function getMinisterial($id){
 
             $idCarpeta=session('carpeta');
             $carpeta=DB::table('carpeta')
@@ -507,7 +506,7 @@ class ImpresionesController extends Controller
 
         }
 
-        public function archivoTemporal(){
+        public function archivoTemporal($id){
         //dd('werwerwer');
             $idCarpeta=session('carpeta');
             $carpeta=DB::table('carpeta')
@@ -537,6 +536,7 @@ class ImpresionesController extends Controller
             
             $numFiscalLetras= $fiscalAtiende->letra;
             $numFiscalLetras = strtr(strtoupper($numFiscalLetras),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+           
             $nombreC=$fiscalAtiende->nombreC;
             $nombreC = strtr(strtoupper($nombreC),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
             
@@ -554,9 +554,10 @@ class ImpresionesController extends Controller
             return response()->json($datos);
         }
         
-        public function archivoTemporalImp(){
+        public function archivoTemporalImp($id){
             
-            return view('documentos.archivoTemporal');
+            return view('documentos.archivoTemporal')
+            ->with('id',$id);
         }
 
         public function primeraInvitacion(){

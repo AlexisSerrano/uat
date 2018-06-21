@@ -329,7 +329,7 @@ class CarpetaController extends Controller
             session(['carpeta' => $caso->id]);
             
             $numCarpeta=Carpeta::find($caso->id);
-            $numCarpeta->numCarpeta = $unidad."/".Auth::user()->numFiscal."/".$caso->id."/".Carbon::now()->year;            
+            $numCarpeta->numCarpeta = $unidad."/".$caso->id."/".Carbon::now()->year."-".Auth::user()->numFiscal;            
             $numCarpeta->save();
 
             session(['numCarpeta' => $numCarpeta->numCarpeta]);

@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="app">
-        <oficio tipo="PERMENSAJE" url="{{url("getpericiales/$id")}}"></oficio>
+        <oficio tipo="PERMENSAJE" url="{{url("getpericiales")}}" id="{{$id}}"></oficio>
     </div>
 </body>
 </html>

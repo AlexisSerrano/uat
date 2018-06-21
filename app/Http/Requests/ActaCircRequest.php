@@ -44,4 +44,29 @@ class ActaCircRequest extends FormRequest
           
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'nombre2.required' => 'Introduzca el campo Nombre',
+            'primerAp.required' => 'Introduzca el campo Primer Apellido',
+            'segundoAp.required' => 'Introduzca el campo Segundo Apellido',
+            'docIdentificacion.required' => 'Introduzca el campo Documento de indentificación',
+            'numDocIdentificacion.required' => 'Introduzca el campo Número de indentificación',
+            'expedido.required' => 'Introduzca el campo Expedido por',
+            'fecha_nac.required' => 'Introduzca el campo Fecha de nacimiento',
+            'telefono.required' => 'Introduzca el campo Teléfono',
+            'idEstado2.required' => 'Introduzca el campo Estado',
+            'idMunicipio2.required' => 'Introduzca el campo Municipio',
+            'idLocalidad2.required' => 'Introduzca el campo Localidad',
+            'cp2.required' => 'Introduzca el campo CP',
+            'idColonia2.required' => 'Introduzca el campo Colonia',
+            'calle2.required' => 'Introduzca el campo Calle',
+            'numExterno2.required' => 'Introduzca el campo Numero externo',
+            'estadoCivilActa1.required' => 'Introduzca el campo Estado civil',
+            'escActa1.required' => 'Introduzca el campo Escolaridad',
+            'ocupActa1.required' => 'Introduzca el campo Ocupación',
+           
+        ];
+    }
 }

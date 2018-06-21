@@ -45,7 +45,7 @@ class LdapAttributeHandler
         }
         // dd($facilitador);
         if ($cordinador==1) {
-            $grupoad = 'cordinador';
+            $grupoad = 'coordinador';
         }else{
             if ($facilitador==1) {
                 $grupoad = 'facilitador';
@@ -67,6 +67,7 @@ class LdapAttributeHandler
         // }
 
         $texto = array(
+            'Coordinador-0' => 'coordinador',
             'Sexagésimo-60' => 'sexagesimo',
             'Quincuagésimo noveno-59' => 'quincuagesimo noveno',
             'Quincuagésimo octavo-58' => 'quincuagesimo octavo',
