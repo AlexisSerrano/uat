@@ -172,12 +172,11 @@ class PreregistroController extends Controller
                 $domicilio->save();
                 $idD1 = $domicilio->id;
                 
-                
+                // dd($request);
                 $preregistro = new Preregistro();
                 $preregistro->nombre = $request->nombre1;
                 $preregistro->idDireccion = $idD1;
-                //$preregistro->idRazon = $request->idRazon1;
-                $preregistro->idRazon = 2;
+                $preregistro->idRazon = $request->idRazon1;
                 $preregistro->rfc = $request->rfc1 . $request->homo1;
                 $preregistro->esEmpresa = 1;
                 $preregistro->telefono = $request->telefono1;
@@ -186,7 +185,7 @@ class PreregistroController extends Controller
                 $preregistro->folio = $folio;
                 $preregistro->statusCancelacion = 0;
                 $preregistro->representanteLegal = $request->repLegal;
-                // $preregistro->conViolencia = $request->Violencia;
+                
                 $preregistro->save();
                 $id = $preregistro->id;
                 
