@@ -63,8 +63,8 @@ Route::post('imprimir/Oficio-distrito','ImpresionesController@storeDistrito')->n
 Route::get('Datosfiscal/{id}', 'ImpresionesController@getDatos'); 
 
 
-Route::get('policia-ministerial','ImpresionesController@policiaMinisterial')->name('policia.ministerial');
-Route::get('oficio-ministerial','ImpresionesController@getMinisterial');
+Route::get('policia-ministerial/{id}','ImpresionesController@policiaMinisterial')->name('policia.ministerial');
+Route::get('oficio-ministerial/{id}','ImpresionesController@getMinisterial');
 Route::get('transporte-estado/{id}','ImpresionesController@transporteEdo')->name('oficio.transporte');
 Route::get('Oficiotransporte-estado/{id}','ImpresionesController@storeoficioTransporte')->name('storeoficio.Transporte');
 

@@ -416,13 +416,13 @@ class ImpresionesController extends Controller
             return view('documentos/acuerdo_fiscal')->with('id',$id);
         }
 
-        public function policiaMinisterial(){
+        public function policiaMinisterial($id){
 
         
-            return view('documentos.policia-ministerial');
+            return view('documentos.policia-ministerial')->with('id',$id);
         }
 
-        public function getMinisterial(){
+        public function getMinisterial($id){
 
             $idCarpeta=session('carpeta');
             $carpeta=DB::table('carpeta')
