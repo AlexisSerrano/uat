@@ -18,7 +18,9 @@
 			<div class="info" style="padding-top:0;width: 100%;text-align: center;">
 				<a href="#" class="d-block">{{ Auth::user()->nombres }}</a>
 				<a href="#" class="d-block">{{ Auth::user()->apellidos }}</a>
+				@if (Auth::user()->grupo!='coordinador')
 				<span style="color:white;font-size:13px;">Número de Fiscal: {{Auth::user()->numFiscal}}</span>
+				@endif
 			</div>
 			
 		</div>
@@ -33,7 +35,7 @@
 				@if (Auth::user()->grupo=='facilitador')
 					<span style="color:white;font-size:15px;">Fiscal facilitador</span>
 				@endif
-				@if (Auth::user()->grupo=='cordinador')
+				@if (Auth::user()->grupo=='coordinador')
 					<span style="color:white;font-size:15px;">Fiscal coordinador</span>
 				@endif
 			</div>
@@ -226,46 +228,62 @@
 					@endif
 					
 					@if (Auth::user()->grupo=='orientador')
-					<li class="nav-item has-treeview">
-						<a href="{{route('actaspendientes')}}" class="nav-link {{ Request::is( 'actas-pendientes') ? 'active' : '' }}">
-							<i class="nav-icon  fa fa-file-text-o"></i>
-							<p>Actas de hechos</p>
-						</a>
-					</li>
-					<li class="nav-item has-treeview">
-						<a href="{{route('new.actacircunstanciada')}}" class="nav-link {{ Request::is( 'actacircunstanciada') ? 'active' : '' }}">
-							<i class="nav-icon  fa fa-file-text"></i>
-							<p>Actas circunstanciales</p>
-						</a>
-					</li>
-
-					<li class="nav-item has-treeview ">
-						<a href="{{route('indexcarpetas')}}" class="nav-link {{ Request::is( 'carpetas') ? 'active' : '' }}">
-							<i class="nav-icon  fa fa-archive"></i>
-							<p>Carpetas</p>
-						</a>
-					</li>
-					
-					<li class="nav-item has-treeview ">
-						<a href="{{route('carpetas.reserva')}}" class="nav-link {{ Request::is( 'carpetasReserva') ? 'active' : '' }}">
-							<i class="nav-icon  fa fa-archive"></i>
-							<p>Carpetas en reserva</p>
-						</a>
-					</li>
-
-					<li class="nav-item has-treeview">
-						<a href="{{url('libro')}}" class="nav-link {{ Request::is( 'libro') ? 'active' : '' }}">
-							<i class="nav-icon  fa fa-book"></i>
-							<p>Libro de gobierno</p>
-						</a>
-					</li>
-
-					<li class="nav-item has-treeview">
-						<a href="{{url('libro-acta')}}" class="nav-link {{ Request::is( 'libro-acta') ? 'active' : '' }}">
-							<i class="nav-icon  fa fa-book"></i>
-							<p>Libro de actas circunstanciales</p>
-						</a>
-					</li>
+						<li class="nav-item has-treeview">
+							<a href="{{route('actaspendientes')}}" class="nav-link {{ Request::is( 'actas-pendientes') ? 'active' : '' }}">
+								<i class="nav-icon  fa fa-file-text-o"></i>
+								<p>Actas de hechos</p>
+							</a>
+						</li>
+					@endif
+				
+					@if (Auth::user()->grupo=='orientador')
+						<li class="nav-item has-treeview">
+							<a href="{{route('new.actacircunstanciada')}}" class="nav-link {{ Request::is( 'actacircunstanciada') ? 'active' : '' }}">
+								<i class="nav-icon  fa fa-file-text"></i>
+								<p>Actas circunstanciales</p>
+							</a>
+						</li>
+					@endif
+				
+					@if (Auth::user()->grupo=='orientador')
+						<li class="nav-item has-treeview ">
+							<a href="{{route('indexcarpetas')}}" class="nav-link {{ Request::is( 'carpetas') ? 'active' : '' }}">
+								<i class="nav-icon  fa fa-archive"></i>
+								<p>Carpetas</p>
+							</a>
+						</li>
+					@endif
+					@if (Auth::user()->grupo=='coordinador')
+						<li class="nav-item has-treeview ">
+							<a href="{{route('indexcarpetas')}}" class="nav-link {{ Request::is( 'carpetas') ? 'active' : '' }}">
+								<i class="nav-icon  fa fa-archive"></i>
+								<p>Carpetas de la unidad</p>
+							</a>
+						</li>
+					@endif
+					@if (Auth::user()->grupo=='orientador')
+						<li class="nav-item has-treeview ">
+							<a href="{{route('carpetas.reserva')}}" class="nav-link {{ Request::is( 'carpetasReserva') ? 'active' : '' }}">
+								<i class="nav-icon  fa fa-archive"></i>
+								<p>Carpetas en reserva</p>
+							</a>
+						</li>
+					@endif
+					@if (Auth::user()->grupo=='coordinador')
+						<li class="nav-item has-treeview">
+							<a href="{{url('libro')}}" class="nav-link {{ Request::is( 'libro') ? 'active' : '' }}">
+								<i class="nav-icon  fa fa-book"></i>
+								<p>Libro de gobierno</p>
+							</a>
+						</li>
+					@endif
+					@if (Auth::user()->grupo=='coordinador')
+						<li class="nav-item has-treeview">
+							<a href="{{url('libro-acta')}}" class="nav-link {{ Request::is( 'libro-acta') ? 'active' : '' }}">
+								<i class="nav-icon  fa fa-book"></i>
+								<p>Libro de actas circunstanciales</p>
+							</a>
+						</li>
 					@endif		
 				@endif		
 				
@@ -289,7 +307,7 @@
 				<li class="nav-item has-treeview">
 					<a href="{{url('getOficios')}}" class="nav-link {{ Request::is( 'getOficios') ? 'active' : '' }}">
 						<i class="nav-icon fa fa-font"></i>
-						<p>Oficios</p>
+						<p>Crear Oficios Nuevos</p>
 					</a>
 				</li>
 				
