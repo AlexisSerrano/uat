@@ -3,6 +3,7 @@
 url = window.location;
 
 
+
 	$('.btn-modal').bind('click', function(){
 		$ ('#myModal1').modal('show');
 		var idr = $(this).val();
@@ -13,9 +14,30 @@ url = window.location;
 			success : function(json) {
 				console.log(json);
 				$('#idTipifDelito1').val(json.Delito).trigger('change.select2');
-				$("#placas").val(json.Placas);
-				// console.log();
-				// $("#fechaInicio1").val(json.fechaInicio);
+				$("#placasv").val(json.Placas);
+				$('#estadov').val(json.Delito).trigger('change.select2');
+				$('#marcav').val(json.Marca).trigger('change.select2');
+				var idr2 = $.get(route('get.submarcas', json.Marca), function(response, marca){
+					$("#submarcav").empty();
+					$("#submarcav").append("<option value=''>Seleccione una submarca</option>");
+					for(i=0; i<response.length; i++){
+						$("#submarcav").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+					}
+				});
+				console.log(idr2);
+				$('submarcav').val(idr2).trigger('change.select2');
+
+				$('#modelov').val(json.Modelo);
+				$('#colorv').val(json.Color).trigger('change.select2');
+				$('#nrpvv').val(json.nrpv);
+				$('#numseriev').val(json.Serie);
+				$('#motorv').val(json.Motor);
+				$('#permisov').val(json.Permiso);
+				$('#tipousov').val(json.TipoUso).trigger('change.select2');
+
+				$('#procev').val(json.Procedencia).trigger('change.select2');
+				$('#asegurav').val(json.Aseguradora).trigger('change.select2');
+				$('#senasv').val(json.SParticulares).trigger('change.select2');
 				// $("#fechaFinal1").val(json.fechaFin);
 				// $("#tipo_medida2").val(json.nombre);
 				// $('#quienEjecuta1').val(json.idEjecutor).trigger('change.select2');
@@ -65,6 +87,30 @@ url = window.location;
 		});
 });
 	
+$("#idclase").change(function(event){
+	if(event.target.value!=""){
+		$.get(route('get.tipovehiculos', event.target.value), function(response, tipo){
+			$("#tipovv").empty();
+			$("#tipovv").append("<option value=''>Seleccione un tipo de vehículo</option>");
+			for(i=0; i<response.length; i++){
+				$("#tipovv").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+			}
+		});
+	}
+});
+
+$("#marcav").change(function(event){
+	if(event.target.value!=""){
+		$.get(route('get.submarcas', event.target.value), function(response, marca){
+			$("#submarcav").empty();
+			$("#submarcav").append("<option value=''>Seleccione una submarca</option>");
+			for(i=0; i<response.length; i++){
+				$("#submarcav").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+			}
+		});
+	}
+});
+
 	
 
 	

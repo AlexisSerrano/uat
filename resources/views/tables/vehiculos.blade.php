@@ -79,7 +79,7 @@
                                         <div class="col-4">
                                             <div class="form-group">
                                                 {!! Form::label('placas', 'Placas', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::text('placas', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las placas' ]) !!}	
+                                                {!! Form::text('placas',  null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las placas', 'id'=>'placasv' ]) !!}	
                                                 {{-- <input class="form-control" type="text" id="placas"  name="tipo_medi" placeholder="Tipo de medida" > --}}
                                                 
                                             </div>
@@ -87,94 +87,94 @@
                                         <div class="col-4">
                                             <div class="form-group">
                                                 {!! Form::label('idEstado', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::select('idEstado', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa']) !!}
+                                                {!! Form::select('idEstado', $estados, '30', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa' ,'id'=>'estadov' ]) !!}
                                             </div>
                                         </div>
                                         <div class="col-2">
                                             <div class="form-group">
                                                 {!! Form::label('idMarca', 'Marca', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::select('idMarca', $marcas, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una marca']) !!}
+                                                {!! Form::select('idMarca', $marcas, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una marca', 'id'=>'marcav']) !!}
                                             </div>
                                         </div>
                                         <div class="col-2">
                                             <div class="form-group">
                                                 {!! Form::label('idSubmarca', 'Submarca', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::select('idSubmarca', ['' => 'Seleccione una submarca'], null, ['class' => 'form-control form-control-sm']) !!}
+                                                {!! Form::select('idSubmarca',   ['' => 'Seleccione una submarca'], null, ['class' => 'form-control form-control-sm',  'id'=>'submarcav']) !!}
                                             </div>
                                         </div>
                                         
                                         <div class="col-2">
                                             <div class="form-group">
                                                 {!! Form::label('modelo', 'Modelo', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::number('modelo', 0, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el modelo']) !!}
+                                                {!! Form::number('modelo', 0, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el modelo', 'id'=>'modelov']) !!}
                                             </div>
                                         </div>
                                         <div class="col-2">
                                             <div class="form-group">
                                                 {!! Form::label('idColor', 'Color', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::select('idColor', $colores, 25, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un color']) !!}
+                                                {!! Form::select('idColor', $colores, 25, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un color', 'id'=>'colorv']) !!}
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
                                                 {!! Form::label('nrpv', 'NRPV', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::text('nrpv', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el NRPV']) !!}	
+                                                {!! Form::text('nrpv', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el NRPV', 'id'=>'nrpvv']) !!}	
                                                         
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
                                                 {!! Form::label('numSerie', 'Número de serie', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::text('numSerie', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de serie']) !!}	
+                                                {!! Form::text('numSerie', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de serie', 'id'=>'numseriev']) !!}	
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
                                                 {!! Form::label('numMotor', 'Número de motor', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::text('numMotor', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de motor']) !!}	
+                                                {!! Form::text('numMotor', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número de motor', 'id'=>'motorv']) !!}	
                                         </div>
                                         </div>
                                         
                                         <div class="col-4">
                                             <div class="form-group">
                                                 {!! Form::label('permiso', 'Permiso', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::text('permiso', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el permiso']) !!}	
+                                                {!! Form::text('permiso', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el permiso', 'id'=>'permisov']) !!}	
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
                                                 {!! Form::label('idClaseVehiculo', 'Clase de vehículo', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::select('idClaseVehiculo', $clasesveh, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una clase de vehículo']) !!}
+                                                {!! Form::select('idClaseVehiculo', $clasesveh, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una clase de vehículo','id'=>'idclase' ]) !!}
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
                                                 {!! Form::label('idTipoVehiculo', 'Tipo de vehículo', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::select('idTipoVehiculo', ['' => 'Seleccione un tipo de vehículo'], null, ['class' => 'form-control form-control-sm']) !!}
+                                                {!! Form::select('idTipoVehiculo', ['' => 'Seleccione un tipo de vehículo'], null, ['class' => 'form-control form-control-sm','id'=>'tipovv']) !!}
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
                                                 {!! Form::label('idTipoUso', 'Tipo de uso', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::select('idTipoUso', $tiposuso, 22, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un tipo de uso']) !!}
+                                                {!! Form::select('idTipoUso', $tiposuso, 22, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un tipo de uso', 'id'=>'tipousov']) !!}
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
                                                 {!! Form::label('idProcedencia', 'Procedencia', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::select('idProcedencia', $procedencias, 4, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione procedencia']) !!}
+                                                {!! Form::select('idProcedencia', $procedencias, 4, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione procedencia', 'id'=>'procev']) !!}
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
                                                 {!! Form::label('idAseguradora', 'Aseguradora', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::select('idAseguradora', $aseguradoras, 25, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una aseguradora']) !!}
+                                                {!! Form::select('idAseguradora', $aseguradoras, 25, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una aseguradora',  'id'=>'asegurav']) !!}
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 {!! Form::label('senasPartic', 'Señas particulares', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::textarea('senasPartic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3']) !!}
+                                                {!! Form::textarea('senasPartic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3',  'id'=>'senasv']) !!}
                                             </div>
                                         </div>
                                 </div>
@@ -220,6 +220,7 @@
         });
   </script>  
   <script src="{{asset('js/ajaxVehiculo.js')}}"></script>
+ 
 @endpush
     
 
