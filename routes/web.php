@@ -65,8 +65,8 @@ Route::get('Datosfiscal/{id}', 'ImpresionesController@getDatos');
 
 Route::get('policia-ministerial','ImpresionesController@policiaMinisterial')->name('policia.ministerial');
 Route::get('oficio-ministerial','ImpresionesController@getMinisterial');
-Route::get('transporte-estado','ImpresionesController@transporteEdo')->name('oficio.transporte');
-Route::get('Oficiotransporte-estado','ImpresionesController@storeoficioTransporte')->name('storeoficio.Transporte');
+Route::get('transporte-estado/{id}','ImpresionesController@transporteEdo')->name('oficio.transporte');
+Route::get('Oficiotransporte-estado/{id}','ImpresionesController@storeoficioTransporte')->name('storeoficio.Transporte');
 
 
 Route::get('oficio-cavd/{id}','ImpresionesController@oficioCavd')->name('oficio.cavd');
@@ -308,7 +308,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getpsico/{id}','pericialesController@getpsico');
     Route::get('getVh/{id}','pericialesController@getVh');
     Route::get('getlesion/{id}','pericialesController@getlesion');
-    Route::get('oficioFinanzas','pericialesController@getOficioF');
+    Route::get('oficioFinanzas/{id}','pericialesController@getOficioF')->name('show.ofFinanzas');
 
     Route::get('OficioF-impresion/{id}','pericialesController@getVhFinanzas');
     Route::get('getOficioM/{id}','pericialesController@getOficioM')->name('oficio.m');

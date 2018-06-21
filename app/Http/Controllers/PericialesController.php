@@ -362,7 +362,7 @@ class PericialesController extends Controller{
         public function getVhFinanzas($id){
 
 
-            //$id=session('carpeta');
+            $id=session('carpeta');
             $carpeta=DB::table('carpeta')
             ->join('unidad','carpeta.idUnidad','=','unidad.id')
             ->select('carpeta.fechaInicio','carpeta.numCarpeta')
