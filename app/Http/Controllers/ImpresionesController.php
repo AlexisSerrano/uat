@@ -514,7 +514,7 @@ class ImpresionesController extends Controller
 
         }
 
-        public function archivoTemporal(){
+        public function archivoTemporal($id){
         //dd('werwerwer');
             $idCarpeta=session('carpeta');
             $carpeta=DB::table('carpeta')
@@ -544,6 +544,7 @@ class ImpresionesController extends Controller
             
             $numFiscalLetras= $fiscalAtiende->letra;
             $numFiscalLetras = strtr(strtoupper($numFiscalLetras),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+           
             $nombreC=$fiscalAtiende->nombreC;
             $nombreC = strtr(strtoupper($nombreC),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
             
@@ -561,9 +562,10 @@ class ImpresionesController extends Controller
             return response()->json($datos);
         }
         
-        public function archivoTemporalImp(){
+        public function archivoTemporalImp($id){
             
-            return view('documentos.archivoTemporal');
+            return view('documentos.archivoTemporal')
+            ->with('id',$id);
         }
 
         public function primeraInvitacion(){
