@@ -57,6 +57,7 @@ Route::get('/pruebasmetodo/{id}','PruebasController@pruebas');
 
 Route::get('/impresion-Oficios/{id}','ImpresionesController@tablaOficios')->name('tabla.oficios');
 Route::get('/oficio-distrito','ImpresionesController@oficioDistrito')->name('fiscal.distrito'); 
+Route::get('/oficio-funcion/{id}','ImpresionesController@docDistrito')->name('oficio.funcion'); 
 Route::get('fiscal/{id}', 'ImpresionesController@getfiscal')->name('get.fiscal');
 Route::post('imprimir/Oficio-distrito','ImpresionesController@storeDistrito')->name('store.oficioDistrito');
 Route::get('Datosfiscal/{id}', 'ImpresionesController@getDatos'); 
@@ -293,7 +294,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('carpetasReserva','libroGobController@indexCarpetasReserva')->name('carpetas.reserva');
     Route::post('carpetasReserva','libroGobController@filtroCarpetaReserva')->name('filtro.carpetasReserva');
     /* --------Rutas para Caratula de carpeta de investigacion----------- */
-    Route::get('caratula','CaratulaCarpetaController@crearCaratula')->name('caratula');
+    Route::get('caratula/{id}','CaratulaCarpetaController@crearCaratula')->name('caratula');
     Route::get('caratula-impresion','CaratulaCarpetaController@imprimirCaratula');
     
     

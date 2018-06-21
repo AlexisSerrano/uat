@@ -21,7 +21,7 @@ $oficios = getImpresiones();
                 <tr>
                     <td>Acuerdo de inicio y remisión fiscal de distrito</td>
                     <td style="text-align:center;">
-                    <a href="{{ url('oficio-distrito')}}" title="imprimir"  class=" btn-secondary btn-lg "><i class="fa fa-print"></i> Imprimir</a>
+                    <a href="{{ route("fiscal.distrito",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg "><i class="fa fa-print"></i> Imprimir</a>
                     </td> 
                 </tr> 
                 @if($oficios['vehiculos']>=0)
@@ -36,7 +36,7 @@ $oficios = getImpresiones();
                 
                     <td>Caratula de carpeta de información</td>
                    <td style="text-align:center;">
-                       <a href="{{ url('caratula')}}" title="imprimir" class="btn-lg btn-secondary"><i class="fa fa-print"></i> imprimir</a>
+                       <a href="{{ route("caratula",session('carpeta'))}}" title="imprimir" class="btn-lg btn-secondary"><i class="fa fa-print"></i> imprimir</a>
                   
                 </td>                               
                 </tr>

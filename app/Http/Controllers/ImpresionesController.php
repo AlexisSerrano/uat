@@ -413,9 +413,15 @@ class ImpresionesController extends Controller
             // dd($acta);
             $acta->save();
 
-            return view('documentos/acuerdo_fiscal')->with('id',$acta->id)->with('localidadAtiende',$localidadAtiende);
+            return redirect()->route('oficio.funcion', $acta->carpeta);
+            
+           
 
            
+        }
+
+        public function docDistrito($id){
+            return view('documentos/acuerdo_fiscal')->with('id',$id);
         }
 
         public function policiaMinisterial(){
