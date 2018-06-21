@@ -78,7 +78,7 @@ Route::get('getcavd/{id}','ImpresionesController@getCavd');
 Route::get('not-actuaciones','ImpresionesController@notActuaciones')->name('not.actuaciones');
 Route::get('impresion-actuaciones','ImpresionesController@impresionActuaciones')->name('impresion.actuaciones');
 
-Route::get('impresion-archivoTemporal','ImpresionesController@archivoTemporal')->name('impresion.archivoTemporal');
+Route::get('impresion-archivoTemporal/{id}','ImpresionesController@archivoTemporal')->name('impresion.archivoTemporal');
 Route::get('impresion-temporal/{id}','ImpresionesController@archivoTemporalImp')->name('impresion.temporal');
 
 Route::get('primera-invitacion','ImpresionesController@primeraInvitacion')->name('primera.invitacion');
