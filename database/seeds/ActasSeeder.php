@@ -106,83 +106,164 @@ class ActasSeeder extends Seeder
             'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
             <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />
                         Distrito XI Xalapa, Veracruz“</p>', 
-           'contenido' =>'En la ciudad de Xalapa, Veracruz, siendo las {{$hora}} horas del día {{$fecha}}, ante la
-            presencia de la C. {{$fiscal}}, Fiscal Sexta Orientadora en la Unidad de Atención Temprana 
-            en el Distrito XI Judicial en Xalapa, se presenta el C. {{$nombre}}, identificándose 
-            con  {{$identificacion}} número {{$numIdentificacion}}, a quien en este momento se le pone
-            en conocimiento de las penas con que la ley castiga el declarar con falsedad ante la autoridad,
-            como lo prevé el artículo 333 del código penal vigente para el estado de Veracruz, al cual se le da
-            lectura, y previa la protesta que otorga de decir la verdad, bajo su única y exclusiva responsabilidad
-            por sus generales dijo: llamarse como ha quedado escrito, ser de {{$edad}} años de edad, nació en fecha 
-            {{$fechaNacimiento}},  originario de {{$municipioOrigen}}, {{$estadoOrigen}}, con domicilio en la calle
-            {{$calle}} {{$numExterno}}, Colonia {{$colonia}}, C.P. {{$cp}}, ocupación {{$ocupacion}}, estado civil
-            {{$estadoCivil}}, grado de escolaridad {{$escolaridad}}, número telefónico {{$telefono}}, identificado
-            como corresponde, esta fiscalía hace del conocimiento a quien comparece los derechos de la víctima u 
-            ofendido consagrados en la Constitución Política de los Estados Unidos Mexicanos y el Código Nacional 
-            de Procedimientos Penales: - - - - - - - - - - - - - - - - - - - -
+           'contenido' =>'<p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">ACTA CIRCUNSTANCIADA No. UAT-XI/AC-134/2017</span></span></strong></span></span></p>
 
-           Artículo 20, apartado C de la Constitución Política de los Estados Unidos Mexicanos:
-           C. De los derechos de la víctima o del ofendido:
-           I. Recibir asesoría jurídica; ser informado de los derechos que en su favor establece la Constitución y, cuando lo solicite, ser informado del desarrollo del procedimiento penal;
-           II. Coadyuvar con el Ministerio Público; a que se le reciban todos los datos o elementos de prueba con los que cuente, tanto en la investigación como en el proceso, a que se desahoguen las diligencias correspondientes, y a intervenir en el juicio e interponer los recursos en los términos que prevea la ley. Cuando el Ministerio Público considere que no es necesario el desahogo de la diligencia, deberá fundar y motivar su negativa;
-           III. Recibir, desde la comisión del delito, atención médica y psicológica de urgencia;
-           IV. Que se le repare el daño. En los casos en que sea procedente, el Ministerio Público estará obligado a solicitar la reparación del daño, sin menoscabo de que la víctima u ofendido lo pueda solicitar directamente, y el juzgador no podrá absolver al sentenciado de dicha reparación si ha emitido una sentencia condenatoria.
-           La ley fijará procedimientos ágiles para ejecutar las sentencias en materia de reparación del daño;
-           V. Al resguardo de su identidad y otros datos personales en los siguientes casos: cuando sean menores de edad; cuando se trate de delitos de violación, secuestro o delincuencia organizada; y cuando a juicio del juzgador sea necesario para su protección, salvaguardando en todo caso los derechos de la defensa.
-           El Ministerio Público deberá garantizar la protección de víctimas, ofendidos, testigos y en general todas los sujetos que intervengan en el proceso. Los jueces deberán vigilar el buen cumplimiento de esta obligación;
-           VI. Solicitar las medidas cautelares y providencias necesarias para la protección y restitución de sus derechos, y
-           VII. Impugnar ante autoridad judicial las omisiones del Ministerio Público en la investigación de los delitos, así como las resoluciones de reserva, no ejercicio, desistimiento de la acción penal o suspensión del procedimiento cuando no esté satisfecha la reparación del daño.
+           <table style="width:340.3pt">
+               <tbody>
+                   <tr>
+                       <td style="height:39.2pt; vertical-align:top; width:103.15pt">&nbsp;</td>
+                       <td style="height:39.2pt; vertical-align:top; width:237.15pt">
+                       <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><em><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Unidad de Atención Temprana del Distrito Judicial XI de Xalapa</span></span></em></strong></span></span></p>
+                       </td>
+                   </tr>
+               </tbody>
+           </table>
            
-           Artículo 109 del Código Nacional de Procedimientos Penales.
-           En los procedimientos previstos en este Código, la víctima u ofendido tendrán los siguientes derechos:
-           I. A ser informado de los derechos que en su favor le reconoce la Constitución;
-           II. A que el Ministerio Público y sus auxiliares así como el Órgano jurisdiccional les faciliten el acceso a la justicia y les presten los servicios que constitucionalmente tienen encomendados con legalidad, honradez, lealtad, imparcialidad, profesionalismo, eficiencia y eficacia y con la debida diligencia;
-           III. A contar con información sobre los derechos que en su beneficio existan, como ser atendidos por personal del mismo sexo, o del sexo que la víctima elija, cuando así lo requieran y recibir desde la comisión del delito atención médica y psicológica de urgencia, así como asistencia jurídica a través de un Asesor jurídico;
-           IV. A comunicarse, inmediatamente después de haberse cometido el delito con un familiar, e incluso con su Asesor jurídico;
-           V. A ser informado, cuando así lo solicite, del desarrollo del procedimiento penal por su Asesor jurídico, el Ministerio Público y/o, en su caso, por el Juez o Tribunal;
-           VI. A ser tratado con respeto y dignidad;
-           VII. A contar con un Asesor jurídico gratuito en cualquier etapa del procedimiento, en los términos de la legislación aplicable;
-           VIII. A recibir trato sin discriminación a fin de evitar que se atente contra la dignidad humana y se anulen o menoscaben sus derechos y libertades, por lo que la protección de sus derechos se hará sin distinción alguna;
-           IX. A acceder a la justicia de manera pronta, gratuita e imparcial respecto de sus denuncias o querellas;
-           X. A participar en los mecanismos alternativos de solución de controversias;
-           XI. A recibir gratuitamente la asistencia de un intérprete o traductor desde la denuncia hasta la conclusión del procedimiento penal, cuando la víctima u ofendido pertenezca a un grupo étnico o pueblo indígena o no conozca o no comprenda el idioma español;
-           XII. En caso de tener alguna discapacidad, a que se realicen los ajustes al procedimiento penal que sean necesarios para salvaguardar sus derechos;
-           XIII. A que se le proporcione asistencia migratoria cuando tenga otra nacionalidad;
-           XIV. A que se le reciban todos los datos o elementos de prueba pertinentes con los que cuente, tanto en la investigación como en el proceso, a que se desahoguen las diligencias correspondientes, y a intervenir en el juicio e interponer los recursos en los términos que establece este Código;
-            XV. A intervenir en todo el procedimiento por sí o a través de su Asesor jurídico, conforme lo dispuesto en este Código;
-           XVI. A que se le provea protección cuando exista riesgo para su vida o integridad personal;
-           XVII.A solicitar la realización de actos de investigación que en su caso correspondan, salvo que el Ministerio Público considere que no es necesario, debiendo fundar y motivar su negativa;
-           XVIII. A recibir atención médica y psicológica o a ser canalizado a instituciones que le proporcionen estos servicios, así como a recibir protección especial de su integridad física y psíquica cuando así lo solicite, o cuando se trate de delitos que así lo requieran;
-           XIX. A solicitar medidas de protección, providencias precautorias y medidas cautelares;
-           XX. A solicitar el traslado de la autoridad al lugar en donde se encuentre, para ser interrogada o participar en el acto para el cual fue citada, cuando por su edad, enfermedad grave o por alguna otra imposibilidad física o psicológica se dificulte su comparecencia, a cuyo fin deberá requerir la dispensa, por sí o por un tercero, con anticipación;
-           XXI. A impugnar por sí o por medio de su representante, las omisiones o negligencia que cometa el Ministerio Público en el desempeño de sus funciones de investigación, en los términos previstos en este Código y en las demás disposiciones legales aplicables;
-           XXII. A tener acceso a los registros de la investigación durante el procedimiento, así como a obtener copia gratuita de éstos, salvo que la información esté sujeta a reserva así determinada por el Órgano jurisdiccional;
-           XXIII. A ser restituido en sus derechos, cuando éstos estén acreditados;
-           XXIV. A que se le garantice la reparación del daño durante el procedimiento en cualquiera de las formas previstas en este Código;
-           XXV. A que se le repare el daño causado por la comisión del delito, pudiendo solicitarlo directamente al Órgano jurisdiccional, sin perjuicio de que el Ministerio Público lo solicite;
-           XXVI. Al resguardo de su identidad y demás datos personales cuando sean menores de edad, se trate de delitos de violación contra la libertad y el normal desarrollo psicosexual, violencia familiar, secuestro, trata de personas o cuando a juicio del Órgano jurisdiccional sea necesario para su protección, salvaguardando en todo caso los derechos de la defensa;
-           XXVII. A ser notificado del desistimiento de la acción penal y de todas las resoluciones que finalicen el procedimiento, de conformidad con las reglas que establece este Código;
-           XXVIII. A solicitar la reapertura del proceso cuando se haya decretado su suspensión, y
-           XXIX. Los demás que establezcan este Código y otras leyes aplicables.
-           En el caso de que las víctimas sean personas menores de dieciocho años, el Órgano jurisdiccional o el Ministerio Público tendrán en cuenta los principios del interés superior de los niños o adolescentes, la prevalencia de sus derechos, su protección integral y los derechos consagrados en la Constitución, en los Tratados, así como los previstos en el presente Código.
-           Para los delitos que impliquen violencia contra las mujeres, se deberán observar todos los derechos que en su favor establece la Ley General de Acceso de las Mujeres a una Vida Libre de Violencia y demás disposiciones aplicables.
-           Hecho lo anterior, bajo protesta de decir verdad, considerando el motivo de su comparecencia hacer del conocimiento de esta representación lo siguiente: - - - - - - - - - - - -  - - - - - - - - - - - - - - - -- - - - - - - “Narración de Hechos” - - - - - - - - - - - - - - - - - - - - - - - - {{$narracion}}
-           CONSTE. - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - . 
+           <p style="text-align:justify">&nbsp;</p>
            
-           En términos de los artículos 21 de la Constitución Política de los Estados Unidos Mexicanos; 5, 6 fracción XI, 7 fracción II, y 40 de la Ley Orgánica de la Fiscalía General del Estado de Veracruz de Ignacio de la Llave; 34 apartado A, fracción II, 195 y 201 fracción V del Reglamento de la precitada Ley Orgánica, en relación con la Circular 01/2015 inciso “a” fracción IV, V y VI emitida por el Fiscal General del Estado, esta Fiscalía Orientadora a mi cargo, tiene a bien levantar la presente, firmando por duplicado los que en ella intervienen.- - - - - - - - - - - - - - - - - - - - - - -
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">En la ciudad de Xalapa, Veracruz, siendo las<strong>&nbsp;{{$hora}}</strong>&nbsp;horas del día {{$fecha}}, ante la presencia de la C. {{$fiscal}}</span></span><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">, Fiscal Sexta Orientadora en la Unidad de Atención Temprana en el Distrito XI Judicial en Xalapa</span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">, se presenta el <strong>C. {{$nombre}}</strong>,<strong> </strong>identificándose con <strong>&nbsp;{{$identificacion}}</strong>&nbsp;número<strong>&nbsp;{{$numIdentificacion}}</strong>, a quien en este momento se le pone en conocimiento de las penas con que la ley castiga el declarar con falsedad ante la autoridad, como lo prevé el artículo 333 del código penal vigente para el estado de Veracruz, al cual se le da lectura, y previa la protesta que otorga de decir la verdad, bajo su única y exclusiva responsabilidad por sus generales dijo: llamarse como ha quedado escrito, ser de<strong>&nbsp;{{$edad}}</strong>&nbsp;años de edad, nació en fecha<strong>&nbsp;{{$fechaNacimiento}}</strong>, &nbsp;originario de<strong>&nbsp;{{$municipioOrigen}}, {{$estadoOrigen}}</strong>, con domicilio en la calle<strong>&nbsp;{{$calle}}&nbsp;{{$numExterno}}, Colonia {{$colonia}}, C.P. {{$cp}}</strong>, ocupación<strong>&nbsp;{{$ocupacion}}</strong>, estado civil<strong>&nbsp;{{$estadoCivil}}</strong>, grado de escolaridad<strong>&nbsp;{{$escolaridad}}</strong>, número telefónico</span></span><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">&nbsp;{{$telefono}}</span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">,&nbsp;identificado como corresponde, esta fiscalía hace del conocimiento a quien comparece los derechos de la víctima u ofendido consagrados en la <strong><em>Constitución Política de los Estados Unidos Mexicanos y el Código Nacional de Procedimientos Penales</em>: - - - - - - - - - - - - - - - - - - - -</strong></span></span></span></span></p>
            
-           <p style="text-align:center">Firma del Compareciente:</p>
-
-           <p style="text-align:center">______________________________&nbsp;<br />
-           <strong>C.&nbsp;</strong>{{$nombre}}</p>
-
-           <p style="text-align:center">__________________________________________&nbsp;<br />
-           <strong>LIC. </strong>{{$fiscal}}</p>
-
-           <p style="text-align:center">Fiscal Sexta Orientadora de la Unidad de Atención Temprana&nbsp;<br />
-           Del XI Distrito Judicial en Xalapa, Veracruz</p>
-
-           <p style="text-align:center">&nbsp;</p>',
+           <p style="text-align:justify">&nbsp;</p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Artículo 20, apartado C de la Constitución Política de los Estados Unidos Mexicanos:</span></span></strong></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">C.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> De los derechos de la víctima o del ofendido:</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">I.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> Recibir asesoría jurídica; ser informado de los derechos que en su favor establece la Constitución y, cuando lo solicite, ser informado del desarrollo del procedimiento penal;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">II.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> Coadyuvar con el Ministerio Público; a que se le reciban todos los datos o elementos de prueba con los que cuente, tanto en la investigación como en el proceso, a que se desahoguen las diligencias correspondientes, y a intervenir en el juicio e interponer los recursos en los términos que prevea la ley. Cuando el Ministerio Público considere que no es necesario el desahogo de la diligencia, deberá fundar y motivar su negativa;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">III.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> Recibir, desde la comisión del delito, atención médica y psicológica de urgencia;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">IV.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> Que se le repare el daño. En los casos en que sea procedente, el Ministerio Público estará obligado a solicitar la reparación del daño, sin menoscabo de que la víctima u ofendido lo pueda solicitar directamente, y el juzgador no podrá absolver al sentenciado de dicha reparación si ha emitido una sentencia condenatoria.</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">La ley fijará procedimientos ágiles para ejecutar las sentencias en materia de reparación del daño;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">V.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> Al resguardo de su identidad y otros datos personales en los siguientes casos: cuando sean menores de edad; cuando se trate de delitos de violación, secuestro o delincuencia organizada; y cuando a juicio del juzgador sea necesario para su protección, salvaguardando en todo caso los derechos de la defensa.</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">El Ministerio Público deberá garantizar la protección de víctimas, ofendidos, testigos y en general todas los sujetos que intervengan en el proceso. Los jueces deberán vigilar el buen cumplimiento de esta obligación;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">VI.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> Solicitar las medidas cautelares y providencias necesarias para la protección y restitución de sus derechos, y</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">VII.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> Impugnar ante autoridad judicial las omisiones del Ministerio Público en la investigación de los delitos, así como las resoluciones de reserva, no ejercicio, desistimiento de la acción penal o suspensión del procedimiento cuando no esté satisfecha la reparación del daño.</span></span></span></span></p>
+           
+           <p style="text-align:justify">&nbsp;</p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Artículo 109 del Código Nacional de Procedimientos Penales.</span></span></strong></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">En los procedimientos previstos en este Código, la víctima u ofendido tendrán los siguientes derechos:</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">I.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A ser informado de los derechos que en su favor le reconoce la Constitución;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">II.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A que el Ministerio Público y sus auxiliares así como el Órgano jurisdiccional les faciliten el acceso a la justicia y les presten los servicios que constitucionalmente tienen encomendados con legalidad, honradez, lealtad, imparcialidad, profesionalismo, eficiencia y eficacia y con la debida diligencia;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">III.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A contar con información sobre los derechos que en su beneficio existan, como ser atendidos por personal del mismo sexo, o del sexo que la víctima elija, cuando así lo requieran y recibir desde la comisión del delito atención médica y psicológica de urgencia, así como asistencia jurídica a través de un Asesor jurídico;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">IV.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A comunicarse, inmediatamente después de haberse cometido el delito con un familiar, e incluso con su Asesor jurídico;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">V.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A ser informado, cuando así lo solicite, del desarrollo del procedimiento penal por su Asesor jurídico, el Ministerio Público y/o, en su caso, por el Juez o Tribunal;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">VI.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A ser tratado con respeto y dignidad;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">VII.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A contar con un Asesor jurídico gratuito en cualquier etapa del procedimiento, en los términos de la legislación aplicable;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">VIII.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A recibir trato sin discriminación a fin de evitar que se atente contra la dignidad humana y se anulen o menoscaben sus derechos y libertades, por lo que la protección de sus derechos se hará sin distinción alguna;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">IX.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A acceder a la justicia de manera pronta, gratuita e imparcial respecto de sus denuncias o querellas;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">X.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A participar en los mecanismos alternativos de solución de controversias;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XI.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A recibir gratuitamente la asistencia de un intérprete o traductor desde la denuncia hasta la conclusión del procedimiento penal, cuando la víctima u ofendido pertenezca a un grupo étnico o pueblo indígena o no conozca o no comprenda el idioma español;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XII.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> En caso de tener alguna discapacidad, a que se realicen los ajustes al procedimiento penal que sean necesarios para salvaguardar sus derechos;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XIII.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A que se le proporcione asistencia migratoria cuando tenga otra nacionalidad;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XIV.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A que se le reciban todos los datos o elementos de prueba pertinentes con los que cuente, tanto en la investigación como en el proceso, a que se desahoguen las diligencias correspondientes, y a intervenir en el juicio e interponer los recursos en los términos que establece este Código;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">&nbsp;<strong>XV.</strong> A intervenir en todo el procedimiento por sí o a través de su Asesor jurídico, conforme lo dispuesto en este Código;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XVI.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A que se le provea protección cuando exista riesgo para su vida o integridad personal;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XVII.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">A solicitar la realización de actos de investigación que en su caso correspondan, salvo que el Ministerio Público considere que no es necesario, debiendo fundar y motivar su negativa;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XVIII. </span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">A recibir atención médica y psicológica o a ser canalizado a instituciones que le proporcionen estos servicios, así como a recibir protección especial de su integridad física y psíquica cuando así lo solicite, o cuando se trate de delitos que así lo requieran;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XIX.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A solicitar medidas de protección, providencias precautorias y medidas cautelares;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XX.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A solicitar el traslado de la autoridad al lugar en donde se encuentre, para ser interrogada o participar en el acto para el cual fue citada, cuando por su edad, enfermedad grave o por alguna otra imposibilidad física o psicológica se dificulte su comparecencia, a cuyo fin deberá requerir la dispensa, por sí o por un tercero, con anticipación;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XXI.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A impugnar por sí o por medio de su representante, las omisiones o negligencia que cometa el Ministerio Público en el desempeño de sus funciones de investigación, en los términos previstos en este Código y en las demás disposiciones legales aplicables;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XXII. </span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">A tener acceso a los registros de la investigación durante el procedimiento, así como a obtener copia gratuita de éstos, salvo que la información esté sujeta a reserva así determinada por el Órgano jurisdiccional;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XXIII.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A ser restituido en sus derechos, cuando éstos estén acreditados;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XXIV.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A que se le garantice la reparación del daño durante el procedimiento en cualquiera de las formas previstas en este Código;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XXV. </span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">A que se le repare el daño causado por la comisión del delito, pudiendo solicitarlo directamente al Órgano jurisdiccional, sin perjuicio de que el Ministerio Público lo solicite;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XXVI.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> Al resguardo de su identidad y demás datos personales cuando sean menores de edad, se trate de delitos de violación contra la libertad y el normal desarrollo psicosexual, violencia familiar, secuestro, trata de personas o cuando a juicio del Órgano jurisdiccional sea necesario para su protección, salvaguardando en todo caso los derechos de la defensa;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XXVII.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A ser notificado del desistimiento de la acción penal y de todas las resoluciones que finalicen el procedimiento, de conformidad con las reglas que establece este Código;</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XXVIII.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A solicitar la reapertura del proceso cuando se haya decretado su suspensión, y</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XXIX.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> Los demás que establezcan este Código y otras leyes aplicables.</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">En el caso de que las víctimas sean personas menores de dieciocho años, el Órgano jurisdiccional o el Ministerio Público tendrán en cuenta los principios del interés superior de los niños o adolescentes, la prevalencia de sus derechos, su protección integral y los derechos consagrados en la Constitución, en los Tratados, así como los previstos en el presente Código.</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Para los delitos que impliquen violencia contra las mujeres, se deberán observar todos los derechos que en su favor establece la Ley General de Acceso de las Mujeres a una Vida Libre de Violencia y demás disposiciones aplicables.</span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Hecho lo anterior, bajo protesta de decir verdad, considerando el motivo de su comparecencia hacer del conocimiento de esta representación lo siguiente: - - - - - - - - - - - -&nbsp; - - - - - - - - - - - - - - - -- - - - - - - <strong><em>“Narración de Hechos”</em> </strong>- - - - - - - - - - - - - - - - - - - - - - - -<strong>&nbsp;{{$narracion}}</strong></span></span></span></span></p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">CONSTE. - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - .</span></span></strong><em> </em></span></span></p>
+           
+           <p style="text-align:justify">&nbsp;</p>
+           
+           <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">En términos de los artículos 21 de la Constitución Política de los Estados Unidos Mexicanos; 5, 6 fracción XI, 7 fracción II, y 40 de la Ley Orgánica de la Fiscalía General del Estado de Veracruz de Ignacio de la Llave; 34 apartado A, fracción II, 195 y 201 fracción V del Reglamento de la precitada Ley Orgánica, en relación con la Circular 01/2015 inciso “a” fracción IV, V y VI emitida por el Fiscal General del Estado, esta Fiscalía Orientadora a mi cargo, tiene a bien levantar la presente, firmando por duplicado los que en ella intervienen.- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </span></span></span></span></p>
+           
+           <p style="text-align:center">&nbsp;</p>
+           
+           <table style="width:436.85pt">
+               <tbody>
+                   <tr>
+                       <td style="vertical-align:top; width:436.85pt">
+                       <p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Firma del Compareciente</span></span></span></span></p>
+           
+                       <p style="text-align:center">&nbsp;</p>
+           
+                       <p style="text-align:center"><br />
+                       <span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"><strong>__________________________________</strong></span></span></span></span></p>
+           
+                       <p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">{{$nombre}}</span></span></strong></span></span></p>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td style="vertical-align:top; width:436.85pt">&nbsp;</td>
+                   </tr>
+               </tbody>
+           </table>
+           
+           <p style="text-align:center">&nbsp;</p>
+           
+           <table style="width:436.85pt">
+               <tbody>
+                   <tr>
+                       <td style="vertical-align:top; width:436.85pt">
+                       <p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">__________________________________</span></span></strong></span></span></p>
+           
+                       <p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Lic. {{$fiscal}}</span></span></strong></span></span></p>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td style="vertical-align:top; width:436.85pt">
+                       <p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">&nbsp;Fiscal Sexta Orientadora en la Unidad de Atención Temprana en el Distrito XI Judicial en Xalapa </span></span></strong></span></span></p>
+                       </td>
+                   </tr>
+               </tbody>
+           </table>
+           ',
            'pie' =>  '<p>Circuito Rafael Guízar y<br />
            Valencia No. 147,<br />
            Colonia Reserva Territorial,<br />
@@ -269,28 +350,89 @@ class ActasSeeder extends Seeder
             <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />
                         Distrito XI Xalapa, Veracruz“</p>', 
             'contenido' => 
-            '<strong>LIC. DIRECTOR GENERAL DE LOS SERVICIOS</strong>
-            <strong>PERICIALES EN EL ESTADO.</strong>
-            <strong>P R E S E N T E.</strong>
-            
-            Con fundamento en lo dispuesto por los artículos 14, 16 y 21 de la Constitución Política de los Estados
-            Unidos Mexicanos; 52 y 67 fracción I de la Constitución Política Local; 2°, 127,130, 131 fracción,
-            132, 212, 214, 272, 273, 368, 369 y demás relativos y aplicables del Código Nacional de 
-            Procedimientos Penales en vigor; 2, 5, 6, 7, 39, 40 y 43 de la Ley Orgánica de la Fiscalía General del
-            Estado de Veracruz de Ignacio de la Llave, 1, 4, 34, 126, 128, 150, 195 y 201 del Reglamento de la
-            Ley en cita, solicito a Usted designe perito en la materia a fin de que realice peritaje de avalúo de 
-            daños que presenta la unidad TIPO {{$clase}}, MARCA {{$marca}},SUBMARCA {{$submarca}}, LÍNEA {{$linea}}, MODELO {{$modelo}}, COLOR {{$color}},
-            CON NÚMERO DE SERIE {{$numero_serie}}, MOTOR HECHO EN {{$lugar_fabricacion}}, CON PLACAS DE CIRCULACIÓN
-            {{$placas}} PARTICULARES DEL ESTADO DE {{$Estado}}, propiedad del C. {{$nombre}}, número de celular {{$telefono}},
-            vehículo que se encuentra en SU DOMICILIO ubicado en la calle {{$calle}} {{$num_ext}}, LOCALIDAD {{$Localidad}},
-            COLONIA {{$Colonia}}, C.P.{{$CP}}, {{$Municipio}}, {{$Estado}}; a efecto de que el perito designado, realice lo ya indicado.
-            No omitiendo señalar, que el dictamen respectivo deberá ser rendido a la mayor brevedad posible a esta Unidad de
-            Atención Temprana, para la debida integración de la Carpeta de Investigación al rubro referida.
-            
-            <p style="text-align:center">Atentamente:</p>
+            '<p style="text-align:right"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><em><span style="font-size:12.0pt"><span style="font-family:&quot;Aparajita&quot;,&quot;sans-serif&quot;">Unidad de Atención Temprana del Distrito Judicial XI de Xalapa</span></span></em></strong></span></span></p>
 
-            <p style="text-align:center">__________________________________________&nbsp;<br />
-            <strong>LIC. </strong>{{$fiscal}}</p>',
+            <table cellspacing="0" style="width:454.5pt">
+                <tbody>
+                    <tr>
+                        <td rowspan="3" style="border-color:black; vertical-align:top; width:95.25pt">
+                        <p>&nbsp;</p>
+                        </td>
+                        <td style="vertical-align:top; width:205.2pt">
+                        <p style="text-align:right"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">OFICIO No.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span></span></p>
+                        </td>
+                        <td style="border-color:black; vertical-align:top; width:163.95pt">
+                        <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">&nbsp;UAT-XI/045/2018</span></span></strong></span></span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:top; width:205.2pt">
+                        <p style="text-align:right"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">No. Carpeta de Investigación:</span></span></span></span></p>
+                        </td>
+                        <td style="vertical-align:top; width:163.95pt">
+                        <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">UAT/D-XI/021/2018-6°</span></span></strong></span></span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:top; width:205.2pt">
+                        <p style="text-align:right"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Asunto derivador por:</span></span></span></span></p>
+                        </td>
+                        <td style="vertical-align:top; width:163.95pt">
+                        <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:8.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Se solicita peritaje que se indica</span></span></span></span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border-color:black; vertical-align:top; width:95.25pt">
+                        <p>&nbsp;</p>
+                        </td>
+                        <td style="vertical-align:top; width:205.2pt">
+                        <p style="text-align:right">&nbsp;</p>
+                        </td>
+                        <td style="vertical-align:top; width:163.95pt">
+                        <p>&nbsp;</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p style="text-align:right"><span style="font-size:10pt"><span style="font-family:&quot;Courier New&quot;"><em><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Xalapa, Veracruz, a 3 de enero de 2018</span></em></span></span></p>
+            
+            <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">LIC. DIRECTOR GENERAL DE LOS SERVICIOS</span></strong><br />
+            <strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">PERICIALES EN EL ESTADO.</span></strong></span></span></p>
+            
+            <p style="text-align:left"><span style="font-size:10pt"><span style="font-family:&quot;Courier New&quot;"><strong><span style="font-size:11.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">P R E S E N T E.</span></span></strong></span></span></p>
+            
+            <p style="text-align:right">&nbsp;</p>
+            
+            <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Con fundamento en lo dispuesto por los artículos 14, 16 y 21 de la Constitución Política de los Estados Unidos Mexicanos; 52 y 67 fracción I de la Constitución Política Local; 2°, 127,130, 131 fracción, 132, 212, 214, 272, 273, 368, 369 y demás relativos y aplicables del Código Nacional de Procedimientos Penales en vigor; 2, 5, 6, 7, 39, 40 y 43 de la Ley Orgánica de la Fiscalía General del Estado de Veracruz de Ignacio de la Llave, 1, 4, 34, 126, 128, 150, 195 y 201 del Reglamento de la Ley en cita, solicito a Usted designe perito en la materia a fin de que realice peritaje de avalúo de daños que presenta la unidad <strong>TIPO</strong> {{$clase}} <strong>MARCA {{</strong>$marca<strong>}}, SUBMARCA {{</strong>$submarca<strong>}}, LÍNEA {{</strong>$linea<strong>}}, MODELO {{</strong>$modelo<strong>}}, COLOR {{</strong>$color<strong>}}, CON NÚMERO DE SERIE {{</strong>$numero_serie<strong>}}, MOTOR HECHO EN {{</strong>$lugar_fabricacion<strong>}}, CON PLACAS DE CIRCULACIÓN {{</strong>$placas<strong>}} PARTICULARES DEL ESTADO DE {{</strong>$Estado<strong>}}, </strong>propiedad del <strong>C. {{</strong>$nombre<strong>}}, </strong>número de celular <strong>{{</strong>$telefono<strong>}}</strong>, vehículo que se encuentra en SU DOMICILIO ubicado en la calle<strong> {{</strong>$calle<strong>}} {{</strong>$num_ext<strong>}}, LOCALIDAD {{</strong>$Localidad<strong>}}, COLONIA {{</strong>$Colonia<strong>}}, C.P.{{</strong>$CP<strong>}}, {{</strong>$Municipio<strong>}}, {{</strong>$Estado<strong>}}</strong></span><strong><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">; </span></strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">a efecto de que el perito designado, realice lo ya indicado.</span></span></span></p>
+            
+            <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">No omitiendo señalar, que el dictamen respectivo deberá ser rendido a la mayor brevedad posible a esta<strong> Unidad de Atención Temprana</strong>, para la debida integración de la Carpeta de Investigación al rubro referida.</span></span></span></p>
+            
+            <p style="text-align:right">&nbsp;</p>
+            
+            <p style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Courier New&quot;"><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Atentamente</span></strong></span></span></p>
+            
+            <p style="text-align:center">&nbsp;</p>
+            
+            <p style="text-align:center">&nbsp;</p>
+            
+            <p style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Courier New&quot;"><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">___________________________</span></strong></span></span></p>
+            
+            <table cellspacing="0" style="width:448.85pt">
+                <tbody>
+                    <tr>
+                        <td style="border-color:black; vertical-align:top; width:458.75pt">
+                        <p style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Courier New&quot;"><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Lic. Brenda Xiovara Moreno Escalante</span></strong></span></span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border-color:black; vertical-align:top; width:458.75pt">
+                        <p style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Courier New&quot;"><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Fiscal Sexta Orientadora en la Unidad de Atención Temprana en el Distrito XI Judicial en Xalapa</span></strong></span></span></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            ',
 
             'pie' =>  '<p>Circuito Rafael Guízar y<br />
             Valencia No. 147,<br />
@@ -541,17 +683,16 @@ class ActasSeeder extends Seeder
                     Distrito XI Xalapa, Veracruz“</p>',  
 
         'contenido' => '
-        ACUERDO.- EN LA CIUDAD DE {{$localidad}}, VERACRUZ; A  {{$fecha}}. - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  VISTO: El estado actual que guarda la presente Carpeta de Investigación, iniciada con motivo de la denuncia presentada por el ciudadano {{$denunciante}}, quien pone en conocimiento de esta autoridad hechos constitutivos del delito de {{$delito}}, en agravio de mi integridad física, en contra de {{$denunciado}}, con fundamento en lo dispuesto por los artículos 21 de la Constitución Política de los Estados Unidos Mexicanos, 54 de la Constitución Política local, 1°, 16, 127, 128, 131 y demás relativos y aplicables del Código Nacional de Procedimientos penales vigente en este Distrito Judicial; 5 párrafo primero, 6 fracción I y IV, 7 fracción III, IV, V, VI de la Ley Orgánica de la Fiscalía General del Estado de Veracruz de Ignacio de la Llave; 34 Apartado A fracción I, Apartado B fracción I y Apartado C fracciones I: II; III y IV, 201 fracción II y IV  207 Fracción I del Reglamento de la citada Ley, la suscrita:- - - - - - - - -  - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -D I S P O N E - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ÚNICO.- Remítase por conducto de la C. Licenciada ALEJANDRA EDITH RIVERA HERNÁNDEZ, Fiscal Coordinadora de la Unidad de Atención Temprana Distrito XI Xalapa, la presente carpeta de Investigación número {{$carpeta}}, al Licenciado MTRO. FERNANDO PENSADO ORTEGA, C. Fiscal de Distrito de la Unidad Integral de Procuración de Justicia de este Distrito Judicial, a efecto de que turne e instruya al C. Fiscal que corresponda para que se continúe con su integración y perfeccionamiento hasta su determinación que en derecho proceda.- CÚMPLASE.- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        ACUERDO.- EN LA CIUDAD DE {{$localidad}}, VERACRUZ; A {{$fecha}}. - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  VISTO: El estado actual que guarda la presente Carpeta de Investigación, iniciada con motivo de la denuncia presentada por el ciudadano {{$denunciante}}quien pone en conocimiento de esta autoridad hechos constitutivos del delito de {{$delito}}, en agravio de mi integridad física, en contra de {{$denunciado}}, con fundamento en lo dispuesto por los artículos 21 de la Constitución Política de los Estados Unidos Mexicanos, 54 de la Constitución Política local, 1°, 16, 127, 128, 131 y demás relativos y aplicables del Código Nacional de Procedimientos penales vigente en este Distrito Judicial; 5 párrafo primero, 6 fracción I y IV, 7 fracción III, IV, V, VI de la Ley Orgánica de la Fiscalía General del Estado de Veracruz de Ignacio de la Llave; 34 Apartado A fracción I, Apartado B fracción I y Apartado C fracciones I: II; III y IV, 201 fracción II y IV  207 Fracción I del Reglamento de la citada Ley, la suscrita:- - - - - - - - -  - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -D I S P O N E - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ÚNICO.- Remítase por conducto de la C. Licenciada ALEJANDRA EDITH RIVERA HERNÁNDEZ, Fiscal Coordinadora de la Unidad de Atención Temprana Distrito XI Xalapa, la presente carpeta de Investigación número {{$carpeta}}, al Licenciado MTRO. FERNANDO PENSADO ORTEGA, C. Fiscal de Distrito de la Unidad Integral de Procuración de Justicia de este Distrito Judicial, a efecto de que turne e instruya al C. Fiscal que corresponda para que se continúe con su integración y perfeccionamiento hasta su determinación que en derecho proceda.- CÚMPLASE.- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-        Atentamente.
-        
-        
-        
-        
-        
-        LIC. {{$fiscalAtendio}}
-        
-        {{$puesto}}, Veracruz',
+
+Atentamente.
+
+
+
+LIC. {{$fiscalAtendio}}
+{{$puesto}}, Veracruz
+',
 
         
         'unidad'=>'1',
@@ -570,16 +711,19 @@ class ActasSeeder extends Seeder
         <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',  
 
         'contenido' => '
-        {{$descripcion}}, VERACRUZ
+       
 
-CARPETA DE INVESTIGACIÓN: {{$numeroCarpeta}}-{{$numeroF}}
+{{$descripcion}}, VERACRUZ
+
+CARPETA DE INVESTIGACIÓN: {{$numeroCarpeta}}-{{$numeroF}}°
 
 C. {{$denunciante}}
 
 
 
 Lic. {{$nombreC}}
-{{$puesto}}',
+{{$puesto}}
+',
             'unidad'=>'1',
             'pie' =>  '<p>Circuito Rafael Guízar y<br />
             Valencia No. 147,<br />
