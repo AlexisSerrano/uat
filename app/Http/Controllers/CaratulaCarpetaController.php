@@ -15,7 +15,7 @@ class CaratulaCarpetaController extends Controller
 
        
         
-         dd($id);
+         //dd($id);
        
          return view('documentos.caratula')
          ->with('id',$id);
@@ -38,13 +38,13 @@ class CaratulaCarpetaController extends Controller
 
     }
 
-public function imprimirCaratula(){
+public function imprimirCaratula($id){
 
 
     $idCarpeta=session('carpeta');
     $carpeta=DB::table('carpeta')
     ->join('unidad','carpeta.idUnidad','=','unidad.id')
-    ->select('unidad.descripcion')
+    ->select('unidad.descripcion','carpeta.numCarpeta')
     ->where('carpeta.id',$idCarpeta)
     ->first();
 

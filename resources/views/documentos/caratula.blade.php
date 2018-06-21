@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="app">
-        <oficio tipo="CARATULA DE LA CARPETA" url="{{url("caratula-impresion")}}" id="{{$id}}"></oficio>
+        <oficio tipo="CARATULA DE LA CARPETA" url="{{url("caratula-impresion")}}" id="{{session('carpeta')}}"></oficio>
     </div>
 </body>
 </html>
