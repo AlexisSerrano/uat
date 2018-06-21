@@ -55,7 +55,7 @@ Route::get('/pruebasformatos', function(){
 Route::get('/pruebasactas','PruebasController@actas');
 Route::get('/pruebasmetodo/{id}','PruebasController@pruebas');
 
-Route::get('/impresion-Oficios','ImpresionesController@tablaOficios')->name('tabla.oficios');
+Route::get('/impresion-Oficios/{id}','ImpresionesController@tablaOficios')->name('tabla.oficios');
 Route::get('/oficio-distrito','ImpresionesController@oficioDistrito')->name('fiscal.distrito'); 
 Route::get('fiscal/{id}', 'ImpresionesController@getfiscal')->name('get.fiscal');
 Route::post('imprimir/Oficio-distrito','ImpresionesController@storeDistrito')->name('store.oficioDistrito');
@@ -78,7 +78,7 @@ Route::get('not-actuaciones','ImpresionesController@notActuaciones')->name('not.
 Route::get('impresion-actuaciones','ImpresionesController@impresionActuaciones')->name('impresion.actuaciones');
 
 Route::get('impresion-archivoTemporal','ImpresionesController@archivoTemporal')->name('impresion.archivoTemporal');
-Route::get('impresion-temporal','ImpresionesController@archivoTemporalImp')->name('impresion.temporal');
+Route::get('impresion-temporal/{id}','ImpresionesController@archivoTemporalImp')->name('impresion.temporal');
 
 Route::get('primera-invitacion','ImpresionesController@primeraInvitacion')->name('primera.invitacion');
 Route::get('impresion-invitacion','ImpresionesController@mostrarOficio');

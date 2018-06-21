@@ -256,11 +256,12 @@ class ImpresionesController extends Controller
 
 
 
-    public function tablaOficios(){
+    public function tablaOficios($id){
+
         $idCarpeta=session('carpeta');
         $carpeta=DB::table('carpeta')
         ->join('unidad','carpeta.idUnidad','=','unidad.id')
-        ->where('carpeta.id',$idCarpeta)->first();
+        ->where('carpeta.id',$id)->first();
        // dd($carpeta);
              return view('tables.documentos')->with('carpeta',$carpeta);
      }

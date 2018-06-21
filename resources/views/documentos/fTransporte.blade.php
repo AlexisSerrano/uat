@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="app">
-        <oficio tipo="DIRECCION GRAL TRANSITO" url="{{url("Oficiotransporte-estado")}}"></oficio>
+        <oficio tipo="DIRECCION GRAL TRANSITO" url="{{url("Oficiotransporte-estado")}}" id="{{$id}}"></oficio>
     </div>
 </body>
 </html>
