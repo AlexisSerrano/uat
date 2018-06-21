@@ -118,6 +118,7 @@ function getRandValue(){
 
 
 
+
 $('.btn-modal').bind('click', function(){
 	$ ('#myModal1').modal('show');
 	var idr = $(this).val();
@@ -138,6 +139,7 @@ $('.btn-modal').bind('click', function(){
 		}
 	});
 	});
+	
 	
 //para mandar los datos ala base de datos 
 

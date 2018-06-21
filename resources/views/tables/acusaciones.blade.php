@@ -1,4 +1,3 @@
-<br>
 <div class="card">
         <div class="card-header">
             <h6>Acusaciones</h6>

@@ -104,10 +104,9 @@
 <script src="{{ asset('admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 <!-- SlimScroll 1.3.0 -->
 <script src="{{ asset('admin/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
-<!-- ChartJS 1.0.1 -->
-<script src="{{ asset('admin/plugins/chartjs/Chart.min.js') }}"></script>
+{{-- <!-- ChartJS 1.0.1 -->
+<script src="{{ asset('admin/plugins/chartjs/Chart.min.js') }}"></script> --}}
 
-<script src="{{ asset('ckeditor/ckeditor.js') }}"></script> 
 
 <script>
 	$("input:text").focusout(function() {

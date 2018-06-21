@@ -14,10 +14,18 @@ class ResumenCarpetaController extends Controller
     public function showForm($id){   
         session(['carpeta' => $id]);
         $numcarpeta=Carpeta::where('id',$id)->first();
+        $estado=$numcarpeta->idEstadoCarpeta;
         $numcarpeta=$numcarpeta->numCarpeta;
         // dd($numcarpeta);
-        session(['terminada' => $numcarpeta]);
-        return redirect(route('carpeta.detalle'));
+        // dd($numcarpeta);
+        if (is_null($estado)) {
+            session(['numCarpeta' => $numcarpeta]);
+            return redirect(route('new.denunciante'));
+        } else {
+            session(['terminada' => $numcarpeta]);
+            return redirect(route('carpeta.detalle'));
+        }
+        
     }
 
     public function showResumen(){
@@ -334,15 +342,13 @@ class ResumenCarpetaController extends Controller
     }
     public function detalleAcusaciones(){
         $idCarpeta=session('carpeta');
-
-        
-
         $carpeta=DB::table('carpeta')
         ->join('unidad','carpeta.idUnidad','=','unidad.id')
         ->where('carpeta.id',$idCarpeta)->first();
+        $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
         // dd($carpeta);
         
-        return view('fields.resumen-carpeta.resumen-acusaciones')->with('carpeta',$carpeta);
+        return view('fields.resumen-carpeta.resumen-acusaciones')->with('carpeta',$carpeta)->with('acusaciones',$acusaciones);
     }
 
 
