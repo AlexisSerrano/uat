@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="app">
-        <oficio tipo="NOTIFICACIÓN DE ARCHIVO TEMPORAL" url="{{url("impresion-archivoTemporal")}}" id="{{$id}}"></oficio>
+        <oficio tipo="NOTIFICACIÓN DE ARCHIVO TEMPORAL" url="{{url("impresion-archivoTemporal")}}" id="{{session('carpeta')}}"></oficio>
     </div>
 </body>
 </html>
