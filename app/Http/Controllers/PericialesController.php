@@ -355,14 +355,14 @@ class PericialesController extends Controller{
     }
 
 
-    public function getOficioF(){
-        return view('documentos.oficioFinanzas'); 
+    public function getOficioF($id){
+        return view('documentos.oficioFinanzas')->with('id',$id); 
         }
 
         public function getVhFinanzas($id){
 
 
-            $id=session('carpeta');
+             $id=session('carpeta');
             $carpeta=DB::table('carpeta')
             ->join('unidad','carpeta.idUnidad','=','unidad.id')
             ->select('carpeta.fechaInicio','carpeta.numCarpeta')
@@ -377,7 +377,7 @@ class PericialesController extends Controller{
             ->first();
 
             $vehiculo = DB::table('per_vehiculos')
-            ->where('per_vehiculos.idCarpeta', $id)
+            ->where('per_vehiculos.id', $id)
             ->join('cat_marca','cat_marca.id','=','per_vehiculos.idMarca')
          //    ->join('cat_submarcas','cat_submarcas.id','=','per_vehiculos.idSubmarca')
          //    ->join('cat_clase_vehiculo','cat_clase_vehiculo.id','=','per_vehiculos.idClase')
@@ -400,6 +400,9 @@ class PericialesController extends Controller{
          //    'per_vehiculos.calle','per_vehiculos.num_ext','per_vehiculos.num_int','per_vehiculos.fecha')
             ->first();
 
+            $puesto=$fiscalAtiende->puesto;
+            $puesto = strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+
            $fechaactual = new Date($carpeta->fechaInicio);
            $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
            $data = array('id' =>$id,
@@ -420,7 +423,7 @@ class PericialesController extends Controller{
         //    'num_int' => $vehiculo->num_int,
            'Estado' => $vehiculo->nombreEstado,
            'fiscalAtendio'=>$fiscalAtiende->nombreC,
-           'puestoF'=>$fiscalAtiende->puesto,
+           'puestoF'=>$puesto,
            'numF'=>$fiscalAtiende->numFiscal,
         //    'Municipio' => $vehiculo->nombreMunicipio,
             'Localidad' => $vehiculo->nombreLocalidad,

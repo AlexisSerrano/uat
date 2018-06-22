@@ -27,25 +27,53 @@ class ImpresionesController extends Controller
 
 {
 
-    public function notActuaciones(){
+    public function notActuaciones($id){
         
-       return view('documentos.not-actuacion');
+       return view('documentos.not-actuacion')->with('id',$id);
     }
 
-    public function impresionActuaciones(){
+    public function impresionActuaciones($id){
         $idCarpeta=session('carpeta');
-        $carpeta=DB::table('carpeta')
-        ->join('unidad','carpeta.idUnidad','=','unidad.id')
-        ->where('carpeta.id',$idCarpeta)->first();
+            $carpeta=DB::table('carpeta')
+            ->join('unidad','carpeta.idUnidad','=','unidad.id')
+            ->select('carpeta.fechaInicio','carpeta.numCarpeta')
+            ->where('carpeta.id',$idCarpeta)
+            ->first();
+
+            $fiscalAtiende=DB::table('users')
+            ->join('unidad','unidad.id','=','users.id')
+            ->join('unidad as unid','unid.id','=','users.idUnidad')
+            // ->join('unidad as uni','uni.idZona','=','zona.id')
+            ->where('users.id', Auth::user()->id)
+            ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra')
+            ->first();
+
+            $victimas2 = DB::table('extra_denunciante')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
+            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+             ->orderBy('persona.nombres', 'ASC')
+            ->first();
+
+          
+            $puesto=$fiscalAtiende->puesto;
+            $puesto = strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
 
        // $numCarpeta=$carpeta->numCarpeta;
         //$fiscalAtendio=$carpeta->fiscalAtendio;
 
 
         //dd($carpeta);
+        $fechaactual = date::now();
+        $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
         $data = array('id' => $idCarpeta,
         'numCarpeta'=>$carpeta->numCarpeta,
-        'fiscal'=>$carpeta->fiscalAtendio,
+        'fiscal'=>$fiscalAtiende->nombreC,
+        'puesto'=>$puesto,
+        'notificado'=> $victimas2->nombres.' '. $victimas2->primerAp.' '. $victimas2->segundoAp,
+        // 'zona'=> $fiscalAtiende->zona,
+        'fecha'=>$fechahum
         );
         
         //dd($data);
@@ -212,8 +240,9 @@ class ImpresionesController extends Controller
         $fiscalAtiende=DB::table('users')
         ->join('unidad','unidad.id','=','users.id')
         ->join('unidad as unid','unid.id','=','users.idUnidad')
+        ->join('zona','zona.id','=','users.idZona')
         ->where('users.id', Auth::user()->id)
-        ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion')
+        ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','zona.descripcion as zona')
         ->first();
 
         $puesto=$fiscalAtiende->puesto;
@@ -229,6 +258,7 @@ class ImpresionesController extends Controller
         'marca'=>$vehiculo->marca,
         'submarca'=>$vehiculo->submarca,
         'color'=>$vehiculo->color,
+        'zona'=>$fiscalAtiende->zona,
         'numSerie'=>$vehiculo->numSerie,
         'modelo'=>$vehiculo->modelo,
 
@@ -416,13 +446,13 @@ class ImpresionesController extends Controller
             return view('documentos/acuerdo_fiscal')->with('id',$id);
         }
 
-        public function policiaMinisterial(){
+        public function policiaMinisterial($id){
 
         
-            return view('documentos.policia-ministerial');
+            return view('documentos.policia-ministerial')->with('id',$id);
         }
 
-        public function getMinisterial(){
+        public function getMinisterial($id){
 
             $idCarpeta=session('carpeta');
             $carpeta=DB::table('carpeta')
@@ -476,13 +506,16 @@ class ImpresionesController extends Controller
                       'cat_municipio.nombre as municipio','cat_localidad.nombre as localidad','cat_colonia.nombre as colonia','cat_colonia.codigoPostal')
             ->first();
 
+            $puesto=$fiscalAtiende->puesto;
+            $puesto = strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+
             $fechaactual = new Date($carpeta->fechaInicio);
             $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
             $datos=array('id'=> $idCarpeta,
             'numeroCarpeta'=> $carpeta->numCarpeta,
             'denunciante'=> $cadenaDenunciantes,
             'fecha'=>$fechahum,
-            'puesto'=>$fiscalAtiende->puesto,
+            'puesto'=>$puesto,
             'delito'=>$TipifDelito->nombre,
             'calle'=>$TipifDelito->calle,
             'numExterno'=>$TipifDelito->numExterno,

@@ -35,7 +35,7 @@ class ActaRequest extends FormRequest
             'calle2' => 'required',
             'numExterno2' => 'required',
             'tipoActa' => 'required',
-        ];
+        ];  
     }
 
     public function messages()

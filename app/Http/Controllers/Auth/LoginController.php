@@ -78,7 +78,7 @@ class LoginController extends Controller
         }
             
         /* inicio alerta a soporte */
-        if(is_null(Auth::User()->idUnidad) || Auth::User()->numFiscal==0){
+        if(is_null(Auth::User()->idUnidad) || Auth::User()->numFiscal==0 && Auth::user()->grupo!='coordinador'){
             Auth::logout();
             return redirect(route('error.login'));
         }
@@ -88,7 +88,7 @@ class LoginController extends Controller
         // dd($unidad->descripcion);
         session(['unidad' => $unidad->descripcion]);
         
-        if (Auth::user()->grupo=='orientador') {
+        if (Auth::user()->grupo=='orientador'||Auth::user()->grupo=='coordinador') {
             $comprobar=Auth::user()->idCarpeta;
             if($comprobar==null){
                 return redirect(route('indexcarpetas'));

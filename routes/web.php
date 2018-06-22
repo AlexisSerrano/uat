@@ -63,8 +63,8 @@ Route::post('imprimir/Oficio-distrito','ImpresionesController@storeDistrito')->n
 Route::get('Datosfiscal/{id}', 'ImpresionesController@getDatos'); 
 
 
-Route::get('policia-ministerial','ImpresionesController@policiaMinisterial')->name('policia.ministerial');
-Route::get('oficio-ministerial','ImpresionesController@getMinisterial');
+Route::get('policia-ministerial/{id}','ImpresionesController@policiaMinisterial')->name('policia.ministerial');
+Route::get('oficio-ministerial/{id}','ImpresionesController@getMinisterial');
 Route::get('transporte-estado/{id}','ImpresionesController@transporteEdo')->name('oficio.transporte');
 Route::get('Oficiotransporte-estado/{id}','ImpresionesController@storeoficioTransporte')->name('storeoficio.Transporte');
 
@@ -75,8 +75,8 @@ Route::post('store-oficioCavd','ImpresionesController@storeOficio')->name('store
 Route::get('getcavd/{id}','ImpresionesController@getCavd');
 
 
-Route::get('not-actuaciones','ImpresionesController@notActuaciones')->name('not.actuaciones');
-Route::get('impresion-actuaciones','ImpresionesController@impresionActuaciones')->name('impresion.actuaciones');
+Route::get('not-actuaciones/{id}','ImpresionesController@notActuaciones')->name('not.actuaciones');
+Route::get('impresion-actuaciones/{id}','ImpresionesController@impresionActuaciones')->name('impresion.actuaciones');
 
 Route::get('impresion-archivoTemporal/{id}','ImpresionesController@archivoTemporal')->name('impresion.archivoTemporal');
 Route::get('impresion-temporal/{id}','ImpresionesController@archivoTemporalImp')->name('impresion.temporal');
@@ -360,6 +360,7 @@ Route::get('codigos/{id}', 'RegisterController@getCodigos')->name('get.codigo');
 Route::get('colonias/{cp}', 'RegisterController@getColonias')->name('get.colonia');
 Route::get('colonias2/{id}', 'RegisterController@getColonias2')->name('get.colonia2');
 Route::get('codigos2/{id}', 'RegisterController@getCodigos2')->name('get.codigo2');
+Route::get('listas/{id}', 'RegisterController@getListas')->name('get.listas');
 
 /********************generar pdf**********************************/
 
