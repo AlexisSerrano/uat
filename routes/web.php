@@ -55,17 +55,18 @@ Route::get('/pruebasformatos', function(){
 Route::get('/pruebasactas','PruebasController@actas');
 Route::get('/pruebasmetodo/{id}','PruebasController@pruebas');
 
-Route::get('/impresion-Oficios','ImpresionesController@tablaOficios')->name('tabla.oficios');
+Route::get('/impresion-Oficios/{id}','ImpresionesController@tablaOficios')->name('tabla.oficios');
 Route::get('/oficio-distrito','ImpresionesController@oficioDistrito')->name('fiscal.distrito'); 
+Route::get('/oficio-funcion/{id}','ImpresionesController@docDistrito')->name('oficio.funcion'); 
 Route::get('fiscal/{id}', 'ImpresionesController@getfiscal')->name('get.fiscal');
 Route::post('imprimir/Oficio-distrito','ImpresionesController@storeDistrito')->name('store.oficioDistrito');
 Route::get('Datosfiscal/{id}', 'ImpresionesController@getDatos'); 
 
 
-Route::get('policia-ministerial','ImpresionesController@policiaMinisterial')->name('policia.ministerial');
-Route::get('oficio-ministerial','ImpresionesController@getMinisterial');
-Route::get('transporte-estado','ImpresionesController@transporteEdo')->name('oficio.transporte');
-Route::get('Oficiotransporte-estado','ImpresionesController@storeoficioTransporte')->name('storeoficio.Transporte');
+Route::get('policia-ministerial/{id}','ImpresionesController@policiaMinisterial')->name('policia.ministerial');
+Route::get('oficio-ministerial/{id}','ImpresionesController@getMinisterial');
+Route::get('transporte-estado/{id}','ImpresionesController@transporteEdo')->name('oficio.transporte');
+Route::get('Oficiotransporte-estado/{id}','ImpresionesController@storeoficioTransporte')->name('storeoficio.Transporte');
 
 
 Route::get('oficio-cavd/{id}','ImpresionesController@oficioCavd')->name('oficio.cavd');
@@ -77,8 +78,8 @@ Route::get('getcavd/{id}','ImpresionesController@getCavd');
 Route::get('not-actuaciones','ImpresionesController@notActuaciones')->name('not.actuaciones');
 Route::get('impresion-actuaciones','ImpresionesController@impresionActuaciones')->name('impresion.actuaciones');
 
-Route::get('impresion-archivoTemporal','ImpresionesController@archivoTemporal')->name('impresion.archivoTemporal');
-Route::get('impresion-temporal','ImpresionesController@archivoTemporalImp')->name('impresion.temporal');
+Route::get('impresion-archivoTemporal/{id}','ImpresionesController@archivoTemporal')->name('impresion.archivoTemporal');
+Route::get('impresion-temporal/{id}','ImpresionesController@archivoTemporalImp')->name('impresion.temporal');
 
 Route::get('primera-invitacion','ImpresionesController@primeraInvitacion')->name('primera.invitacion');
 Route::get('impresion-invitacion','ImpresionesController@mostrarOficio');
@@ -293,8 +294,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('carpetasReserva','libroGobController@indexCarpetasReserva')->name('carpetas.reserva');
     Route::post('carpetasReserva','libroGobController@filtroCarpetaReserva')->name('filtro.carpetasReserva');
     /* --------Rutas para Caratula de carpeta de investigacion----------- */
-    Route::get('caratula','CaratulaCarpetaController@crearCaratula')->name('caratula');
-    Route::get('caratula-impresion','CaratulaCarpetaController@imprimirCaratula');
+    Route::get('caratula/{id}','CaratulaCarpetaController@crearCaratula')->name('caratula');
+    Route::get('caratula-impresion/{id}','CaratulaCarpetaController@imprimirCaratula');
     
     
     /* --------Rutas para Periciales----------- */
@@ -307,7 +308,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getpsico/{id}','pericialesController@getpsico');
     Route::get('getVh/{id}','pericialesController@getVh');
     Route::get('getlesion/{id}','pericialesController@getlesion');
-    Route::get('oficioFinanzas','pericialesController@getOficioF');
+    Route::get('oficioFinanzas/{id}','pericialesController@getOficioF')->name('show.ofFinanzas');
 
     Route::get('OficioF-impresion/{id}','pericialesController@getVhFinanzas');
     Route::get('getOficioM/{id}','pericialesController@getOficioM')->name('oficio.m');

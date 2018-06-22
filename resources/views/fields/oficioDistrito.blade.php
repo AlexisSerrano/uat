@@ -50,8 +50,8 @@
     </div>
 </div>
         <div class="col text-right">
-
-                <button class="btn btn-primary">Imprimir Oficio</button>
+            
+        <button class="btn btn-primary" >Imprimir Oficio</button>
 </div>
 
 

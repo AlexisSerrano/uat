@@ -17,7 +17,11 @@ $form = oldFormActas();
             <div class="row" id="actas">
                 {{-- DATOS DE TODO TIPO DE ACTAS --}}
                 @isset($acta)
-                    @include('fields.actas-atender')
+                    @if ($acta->esEmpresa==1)
+                        @include('servicios.actas.actas-atender-empresa')
+                    @else
+                        @include('servicios.actas.actas-atender-persona')
+                    @endif
                 @else
                     @include('fields.tipo-persona')
                     @include('fields.actas')

@@ -58,14 +58,24 @@ class LibroGobController extends Controller
     }
 
     public function buscar(){
-        $carpetas = DB::table('carpeta')
-        ->join('cat_estatus_casos','carpeta.idEstadoCarpeta','=','cat_estatus_casos.id')
-        ->select('carpeta.id as id','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta','cat_estatus_casos.nombreEstatus as idEstadoCarpeta' )
-        ->where('idFiscal',Auth::user()->id)
-        // ->orwhere()
-        ->paginate('15');
-        // dd($carpetas);
-        return view('tables.carpetasEnGral')->with('carpetas',$carpetas);
+        if(Auth::user()->grupo=='coordinador'){
+            $carpetas = DB::table('carpeta')
+            ->where('carpeta.idUnidad',Auth::user()->idUnidad)
+            ->join('cat_estatus_casos','carpeta.idEstadoCarpeta','=','cat_estatus_casos.id')
+            ->select('carpeta.id as id','carpeta.idUnidad','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta','cat_estatus_casos.nombreEstatus as idEstadoCarpeta' )
+            ->paginate('15');
+            // dd($carpetas);
+            return view('tables.carpetasEnGral')->with('carpetas',$carpetas);
+        }else{
+            $carpetas = DB::table('carpeta')
+            ->join('cat_estatus_casos','carpeta.idEstadoCarpeta','=','cat_estatus_casos.id')
+            ->select('carpeta.id as id','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta','cat_estatus_casos.nombreEstatus as idEstadoCarpeta' )
+            ->where('idFiscal',Auth::user()->id)
+            // ->orwhere()
+            ->paginate('15');
+            // dd($carpetas);
+            return view('tables.carpetasEnGral')->with('carpetas',$carpetas);
+        }
         
         //    dd(session());
 

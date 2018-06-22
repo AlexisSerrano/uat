@@ -9,15 +9,16 @@ use Illuminate\Support\Facades\Auth;
 
 class CaratulaCarpetaController extends Controller
 {
-    public function crearCaratula(){
+    public function crearCaratula($id){
 
        
 
        
         
-         //dd($fiscalAtiende, $denunciantes, $numeroCarpeta);
+         //dd($id);
        
-         return view('documentos.caratula');
+         return view('documentos.caratula')
+         ->with('id',$id);
 
         // $datos=array('id'=> $idCarpeta,
         // 'numeroCarpeta'=>$numeroCarpeta,
@@ -37,13 +38,13 @@ class CaratulaCarpetaController extends Controller
 
     }
 
-public function imprimirCaratula(){
+public function imprimirCaratula($id){
 
 
     $idCarpeta=session('carpeta');
     $carpeta=DB::table('carpeta')
     ->join('unidad','carpeta.idUnidad','=','unidad.id')
-    ->select('unidad.descripcion')
+    ->select('unidad.descripcion','carpeta.numCarpeta')
     ->where('carpeta.id',$idCarpeta)
     ->first();
 

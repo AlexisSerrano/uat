@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="app">
-        <oficio tipo="POLICIA MINISTERIAL" url="{{url("oficio-ministerial")}}"></oficio>
+        <oficio tipo="POLICIA MINISTERIAL" url="{{url("oficio-ministerial")}}" id="{{$id}}"></oficio>
     </div>
 </body>
 </html>

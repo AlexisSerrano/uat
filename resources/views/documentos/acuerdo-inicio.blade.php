@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="app">
-        <oficio tipo="ACUERDO DE INICIO" url="{{url("/acuerdo/$id")}}"></oficio>
+        <oficio tipo="ACUERDO DE INICIO" url="{{url("/acuerdo")}}" id="{{$id}}"></oficio>
     </div>
 </body>
 </html>

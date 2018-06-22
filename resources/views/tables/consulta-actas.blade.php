@@ -14,14 +14,9 @@
 					  
 			    	<form class="form-inline my-2 my-lg-0" method="POST" action="{{ url('filtroactas') }}">
 						@csrf
-						
-						
 						  <input class="form-control mr-sm-2" type="text" name="filtro" id="filtro" placeholder="Buscar" aria-label="Buscar">
 						  
 						  <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-							
-						
-					
 			    	</form>
 				  </div>
 				  <a href="{{url('listaActas')}}"><button class="btn btn-outline-secondary my-2 my-sm-0" type="button">Todos</button></a>
