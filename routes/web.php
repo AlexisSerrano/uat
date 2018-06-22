@@ -85,6 +85,9 @@ Route::get('primera-invitacion','ImpresionesController@primeraInvitacion')->name
 Route::get('impresion-invitacion','ImpresionesController@mostrarOficio');
 Route::get('json-invitacion/{id}','ImpresionesController@getInvitacion');
 
+Route::get('oficio-inicio/{id}','ImpresionesController@oficioInicio')->name('oficio.inicio');
+Route::get('impresion-inicio/{id}','ImpresionesController@impresionInicio')->name('impresion.acuerdoInicio');
+
 
 
 /* --------Ruta para obtener token oficios----------- */

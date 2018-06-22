@@ -15,13 +15,10 @@ $oficios = getImpresiones();
                                              
             </thead>
             <tbody>
-               
-                {{-- <tr><td colspan="5" class="text-center">Sin registros</td></tr> --}}
-              
                 <tr>
-                    <td>Acuerdo de inicio y remisión fiscal de distrito</td>
+                    <td>Acuerdo de inicio</td>
                     <td style="text-align:center;">
-                    <a href="{{ route("fiscal.distrito",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg "><i class="fa fa-print"></i> Imprimir</a>
+                    <a href="{{ route("impresion.acuerdoInicio",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg "><i class="fa fa-print"></i> Imprimir</a>
                     </td> 
                 </tr> 
                 @if($oficios['vehiculos']>=0)
@@ -69,7 +66,13 @@ $oficios = getImpresiones();
                         <td style="text-align:center;">
                         <a href="{{ route("impresion.temporal",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i> Imprimir</a>
                         </td> 
-                    </tr>    
+                    </tr>
+                    <tr>
+                        <td>Remisión fiscal de distrito</td>
+                        <td style="text-align:center;">
+                        <a href="{{ route("fiscal.distrito",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg "><i class="fa fa-print"></i> Imprimir</a>
+                        </td> 
+                    </tr>  
                 {{-- <tr>
                         <td>Invitacion Inicial</td>
                         <td style="text-align:center;">
