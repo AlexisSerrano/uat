@@ -166,7 +166,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/estado', 'PreregistroController@estadourgente')->name('estado');
     
     //Route::resource('/predenuncias','PreregistroAuxController');
-    Route::get('/predenuncias', 'PreregistroAuxController@index')->name('predenuncias.index'); //ver formulario
+    Route::get('/preregistros', 'PreregistroAuxController@index')->name('predenuncias.index'); //ver formulario
     Route::get('/predenuncias/{id}/edit', 'PreregistroAuxController@edit')->name('predenuncias.edit'); //ver formulario
     Route::post('/predenuncias/{id}/update', 'PreregistroAuxController@update')->name('predenuncias.update'); //registar
     
@@ -186,9 +186,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('agregar-denunciado', 'DenunciadoController@showForm')->name('new.denunciado');
     Route::post('storedenunciado', 'DenunciadoController@storeDenunciado')->name('store.denunciado');
     Route::get('agregar-denunciado/{id}/eliminar', 'DenunciadoController@delete')->name('delete.denunciado');
-    
-    /*---------Rutas de preregistro orientador-------------*/
-    Route::get('preregistros', 'PreregistroAuxController@orientador');
     
 	
     /*---------Rutas para las notificaciones-------------*/
