@@ -75,8 +75,8 @@ Route::post('store-oficioCavd','ImpresionesController@storeOficio')->name('store
 Route::get('getcavd/{id}','ImpresionesController@getCavd');
 
 
-Route::get('not-actuaciones','ImpresionesController@notActuaciones')->name('not.actuaciones');
-Route::get('impresion-actuaciones','ImpresionesController@impresionActuaciones')->name('impresion.actuaciones');
+Route::get('not-actuaciones/{id}','ImpresionesController@notActuaciones')->name('not.actuaciones');
+Route::get('impresion-actuaciones/{id}','ImpresionesController@impresionActuaciones')->name('impresion.actuaciones');
 
 Route::get('impresion-archivoTemporal/{id}','ImpresionesController@archivoTemporal')->name('impresion.archivoTemporal');
 Route::get('impresion-temporal/{id}','ImpresionesController@archivoTemporalImp')->name('impresion.temporal');
@@ -84,6 +84,9 @@ Route::get('impresion-temporal/{id}','ImpresionesController@archivoTemporalImp')
 Route::get('primera-invitacion','ImpresionesController@primeraInvitacion')->name('primera.invitacion');
 Route::get('impresion-invitacion','ImpresionesController@mostrarOficio');
 Route::get('json-invitacion/{id}','ImpresionesController@getInvitacion');
+
+Route::get('oficio-inicio/{id}','ImpresionesController@oficioInicio')->name('oficio.inicio');
+Route::get('impresion-inicio/{id}','ImpresionesController@impresionInicio')->name('impresion.acuerdoInicio');
 
 
 
@@ -357,6 +360,7 @@ Route::get('codigos/{id}', 'RegisterController@getCodigos')->name('get.codigo');
 Route::get('colonias/{cp}', 'RegisterController@getColonias')->name('get.colonia');
 Route::get('colonias2/{id}', 'RegisterController@getColonias2')->name('get.colonia2');
 Route::get('codigos2/{id}', 'RegisterController@getCodigos2')->name('get.codigo2');
+Route::get('listas/{id}', 'RegisterController@getListas')->name('get.listas');
 
 /********************generar pdf**********************************/
 

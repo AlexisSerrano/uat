@@ -55,6 +55,16 @@ class RegisterController extends Controller
         }
     }
 
+    public function getListas(Request $request,$id){
+        if($request->ajax()){
+            $localidades = CatLocalidad::localidades($id);
+            $colonias = CatColonia::colonias2($id);
+            $codigos = CatColonia::codigos($id);
+            $lista = array($localidades,$colonias,$codigos);
+            return response()->json($lista);
+        }
+    }
+
     
     public function errorlogin()
     {
