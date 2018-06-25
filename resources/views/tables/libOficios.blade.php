@@ -39,7 +39,7 @@
 		
 		<div class="tab-pane fade" id="trabajo" role="tabpanel" aria-labelledby="trabajo-tab">
 			<div class="boxtwo">
-				@include('tables.medidas-ofi')
+				@include('tables.actas-ofi')
 					{{-- botones --}}
 				<div class="row menu">	
 					<div class="col text-left">				
@@ -54,7 +54,7 @@
 
 		<div class="tab-pane fade" id="abogado" role="tabpanel" aria-labelledby="abogado-tab">
 			<div class="boxtwo">
-				@include('tables.medidas-ofi')
+				@include('tables.actas-ofi')
 				{{-- botones --}}
 				<div class="row menu">	
 					<div class="col text-left">
@@ -69,7 +69,7 @@
 
 		<div class="tab-pane fade" id="abogado2" role="tabpanel" aria-labelledby="abogado-tab2">
 			<div class="boxtwo">
-				@include('tables.medidas-ofi')
+				@include('tables.actas-ofi')
 				{{-- botones --}}
 				<div class="row menu">	
 					{{-- <div class="col text-left">
