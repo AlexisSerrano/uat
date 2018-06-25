@@ -408,7 +408,7 @@ class PreregistroController extends Controller
         }
         if ($tipo==99) {
             Alert::success('Registro descartado con éxito', 'Hecho');
-            return redirect('predenuncias');
+            return redirect(route('predenuncias.index'));
         }
     }
 
