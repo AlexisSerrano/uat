@@ -18,10 +18,9 @@
     <table class="table table-hover" id="tablacarpetas">
         <thead class="table-active">
             <tr>
-                {{-- <th >N.</th> --}}
-                <th >ID</th>
-                <th >Fecha</th>
-                <th >Hora de intervención</th>
+                <th >Fiscal que atendio</th>
+                <th >Fecha de inicio</th>
+                <th >Hora</th>
                 {{-- <th >Victima/Querellante</th>
                 <th >Ofensor/Q.R.R</th> --}}
                 {{-- <th >Carpeta de investigación</th>  --}}
@@ -42,20 +41,12 @@
             @else
                 @foreach($carpetas as $carpeta)
                 <tr>
-                    <td>{{ $carpeta->id}}</td> 
+                    <td>{{ $carpeta->fiscalAtendio}}</td> 
                     <td>{{ $carpeta->fechaInicio}}</td>
                     <td>{{ $carpeta->horaIntervencion}}</td>
-                    {{-- <td>{{ $acusacion->denunciante }}</td>
-                    <td>{{ $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2 }}</td>  --}}
-                    {{-- <td>{{ $carpeta->numCarpeta }}</td> --}}
-                    {{-- <td>{{ $acusacion->delito }}</td> --}}
-                    {{-- <td>{{ $acusacion->formaComision }}</td>  --}}
-                    {{-- <td>{{ $carpeta->idEstadoCarpeta}}</td> --}}
                     <td>
-                        <a href="{{ route('ir.carpeta',$carpeta->id)}}"   rel="tooltip" title="Editar Registro" class="btn btn-secondary btn-simple btn-xs">
+                        <a href="{{ route('carpeta.reserva',$carpeta->id)}}"   rel="tooltip" title="Editar Registro" class="btn btn-secondary btn-simple btn-xs">
                         <i class="fa fa-pencil"></i></a>
-                        {{-- <a href="{{ url('turnar/'.$carpeta->id)}}"   rel="tooltip" title="Turnar" class="btn btn-secondary btn-simple btn-xs">
-                        <i class="fa fa-child"></i></a> --}}
                     </td>                     
                 </tr>
                 @endforeach

@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Carpeta;
 use DB;
+use Carbon\Carbon;
+
 use App\Models\Persona;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\VariablesPersona;
 class ResumenCarpetaController extends Controller
@@ -16,6 +19,42 @@ class ResumenCarpetaController extends Controller
         $numcarpeta=Carpeta::where('id',$id)->first();
         $estado=$numcarpeta->idEstadoCarpeta;
         $numcarpeta=$numcarpeta->numCarpeta;
+        // dd($numcarpeta);
+        // dd($numcarpeta);
+        if (is_null($estado)) {
+            session(['numCarpeta' => $numcarpeta]);
+            return redirect(route('new.denunciante'));
+        } else {
+            session(['terminada' => $numcarpeta]);
+            return redirect(route('carpeta.detalle'));
+        }
+        
+    }
+
+    public function showFormReserva($id){   
+        $unidad=DB::table('unidad')->where('id',Auth::user()->idUnidad)->first();
+        $unidad=$unidad->abreviacion;
+
+        $NuevoNumCarpeta = $unidad."/1/".Carbon::now()->year."-".Auth::user()->numFiscal;
+        $buscarConsecutivo = Carpeta::where('numCarpeta',$NuevoNumCarpeta)->get();
+        while ($buscarConsecutivo->isNotEmpty()) {
+            $buscarConsecutivo=$buscarConsecutivo[0];
+            $partesNumero=explode("/", $buscarConsecutivo->numCarpeta);
+            // dd($buscarConsecutivo);
+            $consecutivo=$partesNumero[2] + 1;
+            $NuevoNumCarpeta = $partesNumero[0].'/'.$partesNumero[1].'/'.$consecutivo.'/'.$partesNumero[3];                
+            $buscarConsecutivo = Carpeta::where('numCarpeta',$NuevoNumCarpeta)->get();
+        }
+        
+        $numcarpeta=Carpeta::find($id);
+        $numcarpeta->numCarpeta=$NuevoNumCarpeta;
+        $numcarpeta->save();
+        $idCarpeta=$numcarpeta->id;
+        $estado=$numcarpeta->idEstadoCarpeta;
+        $numcarpeta=$numcarpeta->numCarpeta;
+        
+        session(['carpeta' => $idCarpeta]);
+        
         // dd($numcarpeta);
         // dd($numcarpeta);
         if (is_null($estado)) {
