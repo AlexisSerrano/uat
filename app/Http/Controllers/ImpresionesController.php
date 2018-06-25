@@ -711,6 +711,81 @@ class ImpresionesController extends Controller
            }
 
 
+           public function docRemision($id){
+            
+            return view('documentos.acuerdoRemision')
+            ->with('id',$id);
+            
+
+           }
+
+           public function getRemision($id){
+
+            $idCarpeta=session('carpeta');
+            $carpeta=DB::table('carpeta')
+            ->join('unidad','carpeta.idUnidad','=','unidad.id')
+            ->select('carpeta.fechaInicio','carpeta.numCarpeta')
+            ->where('carpeta.id',$idCarpeta)
+            ->first();
+
+            $fiscalAtiende=DB::table('users')
+            ->join('unidad','unidad.id','=','users.id')
+            ->join('unidad as unid','unid.id','=','users.idUnidad')
+            ->join('zona as localidad','localidad.id','=','unid.idZona')
+            ->where('users.id', Auth::user()->id)
+            ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra', 'localidad.descripcion as ciudad')
+            ->first();
+
+            $denunciantes = DB::table('variables_persona')
+            ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
+            ->join('extra_denunciante', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->where('variables_persona.idCarpeta',$idCarpeta)
+            ->select('persona.nombres','persona.primerAp','persona.segundoAp', 'persona.id')
+            ->get();
+            $cadenaDenunciantes='';
+            foreach($denunciantes as $denunciante){
+                $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.', ';
+            }
+            $denunciado2= DB::table('variables_persona')
+            ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
+            ->join('extra_denunciado', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->where('variables_persona.idCarpeta',$idCarpeta)
+            ->select( 'persona.id','persona.nombres','persona.primerAp','persona.segundoAp')
+            ->get();
+            $denunciados='';
+            foreach($denunciado2 as $denunciado){
+                $denunciados .= $denunciado->nombres.' '.$denunciado->primerAp.' '.$denunciado->segundoAp.',';
+            }
+            $TipifDelito=DB::table('tipif_delito')
+            ->join('cat_delito','cat_delito.id','=','tipif_delito.idDelito')
+            ->where('tipif_delito.idCarpeta',$idCarpeta)
+            ->select('cat_delito.nombre as delito')
+            ->first();
+
+            $nombreC=$fiscalAtiende->nombreC;
+            $nombreC = strtr(strtoupper($nombreC),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+
+            $hora=Carbon::now()->format('H:i');
+            $fechaactual = date::now();
+            $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
+
+            $datos=array('id'=> $idCarpeta,
+            'fiscalAtendio'=>$nombreC,
+            'ciudad'=>$fiscalAtiende->ciudad,
+            'puesto'=>$fiscalAtiende->puesto,
+            'denunciante'=>$cadenaDenunciantes,
+            'denunciado'=>$denunciados,
+            'delito'=>$TipifDelito->delito,
+            'numCarpeta'=>$carpeta->numCarpeta,
+            'fecha'=>$fechahum,
+             'hora'=>$hora
+                );
+           
+            //dd($datos);
+            return response()->json($datos);
+
+
+           }
 }
 
 

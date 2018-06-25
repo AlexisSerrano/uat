@@ -73,6 +73,12 @@ $oficios = getImpresiones();
                         <a href="{{ route("fiscal.distrito",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg "><i class="fa fa-print"></i> Imprimir</a>
                         </td> 
                     </tr>  
+                    <tr>
+                        <td>Acuerdo de remisión </td>
+                        <td style="text-align:center;">
+                        <a href="{{ route("oficio.remision",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg "><i class="fa fa-print"></i> Imprimir</a>
+                        </td> 
+                    </tr>  
                 {{-- <tr>
                         <td>Invitacion Inicial</td>
                         <td style="text-align:center;">

@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="app">
-        <oficio tipo="ACUERDO REMISION" url="{{url("show.oficioRemision")}}" id="{{session('carpeta')}}"></oficio>
+        <oficio tipo="ACUERDO REMISION" url="{{url("impresion-remision")}}" id="{{session('carpeta')}}"></oficio>
     </div>
 </body>
 </html>
