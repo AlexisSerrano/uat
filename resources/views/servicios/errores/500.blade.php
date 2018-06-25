@@ -13,14 +13,14 @@
         <link rel="stylesheet" href="{{asset('errors/style.css')}}">
         <!-- tipografía oficial -->
         <link rel="stylesheet" href="{{asset('errors/css/font-neosans.css')}}">
-        <title>Error 404</title>
+        <title>Error 500</title>
     </head>
 <body class="error-notf">
         <div>
                 <div class="error-body text-center">
-                    <h1 class="not-found">404</h1>
-                    <h3 class="text-uppercase">Página No Localizada</h3>
-                    <p class="text-uppercase text-muted">El contenido que busca puede que haya cambiado de lugar o que no esté disponible actualmente.</p>
+                    <h1 class="not-found">500</h1>
+                    <h3 class="text-uppercase">Error interno en el servidor</h3>
+                    <p class="text-uppercase text-muted">La pagina no esta disponible actualmente.</p>
                     <p class="text-uppercase text-muted">Por favor inténtelo más tarde.</p>
                     <a href="{{route('home')}}" class="btn btn-outline-dark btn-rounded waves-effect waves-light">Volver al Inicio</a> </div>
              </div>
