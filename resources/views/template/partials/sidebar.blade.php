@@ -84,7 +84,7 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item has-treeview  ">
-									<a href="{{url('predenuncias')}}" class="nav-link {{ Request::is( 'predenuncias') ? 'active' : '' }}">
+									<a href="{{route('predenuncias.index')}}" class="nav-link {{ Request::is( 'predenuncias') ? 'active' : '' }}">
 										{{-- <i class="nav-icon fa fa-user-times"></i> --}}
 										<p>
 											Todos los registros
