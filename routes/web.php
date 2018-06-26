@@ -294,8 +294,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('libroGobierno','libroGobController@mostrarlibro')->name('libro.filtro');
     /*-------------Carpetas en Reserva----------------------*/
     route::get('carpetaReserva/{id}','ResumenCarpetaController@showFormReserva')->name('carpeta.reserva');
-    Route::get('carpetasReserva','libroGobController@indexCarpetasReserva')->name('carpetas.reserva');
-    Route::post('carpetasReserva','libroGobController@filtroCarpetaReserva')->name('filtro.carpetasReserva');
+    Route::get('carpetasReserva','CarpetaController@indexCarpetasReserva')->name('carpetas.reserva');
+    Route::post('carpetasReserva','CarpetaController@filtroCarpetaReserva')->name('filtro.carpetasReserva');
     /* --------Rutas para Caratula de carpeta de investigacion----------- */
     Route::get('caratula/{id}','CaratulaCarpetaController@crearCaratula')->name('caratula');
     Route::get('caratula-impresion/{id}','CaratulaCarpetaController@imprimirCaratula');

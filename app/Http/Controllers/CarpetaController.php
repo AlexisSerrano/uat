@@ -126,6 +126,42 @@ class CarpetaController extends Controller
         }
     }
 
+    public function indexCarpetasReserva(){
+        $carpetas = DB::table('carpeta')
+        ->select('carpeta.id as id','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta','carpeta.fiscalAtendio' )
+        ->where('idFiscal',Auth::user()->id)
+        ->whereNull('idEstadoCarpeta')
+        ->paginate('10');
+        // dd($carpetas);
+        return view('tables.carpetasReserva')->with('carpetas',$carpetas);
+        
+        //    dd(session());
+        
+    }
+
+    public function filtroCarpetaReserva(Request $request){
+        $carpeta=$request->search;
+        
+        $carpetas = DB::table('carpeta')
+        ->select('carpeta.id','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta','carpeta.fiscalAtendio' )
+        ->where('idFiscal',Auth::user()->id)
+        ->where(function($query) use ($carpeta){
+            $query
+            ->orwhere('numCarpeta','like','%'.$carpeta.'%')
+            ->orwhere('horaIntervencion','like','%'.$carpeta.'%')
+            ->orwhere('fechaInicio','like','%'.$carpeta.'%')
+            ->orwhere('fiscalAtendio','like','%'.$carpeta.'%');
+          })
+        ->whereNull('idEstadoCarpeta')
+        ->paginate('10');
+        // dd( $carpetas);
+        // return Datatables::of($carpetas)->make(true);
+        return view('tables.carpetasReserva')->with('carpetas',$carpetas);
+
+
+    }
+
+
     public function verDetalle($id){
         $carpetaNueva = Carpeta::where('id', $id)->where('idFiscal', Auth::user()->id)->get();
         if(count($carpetaNueva)>0){
