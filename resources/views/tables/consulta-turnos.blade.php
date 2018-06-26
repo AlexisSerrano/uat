@@ -21,9 +21,8 @@
     <tbody>    
         {{-- <tr><td colspan="5" class="text-center">Sin registros</td></tr> --}}
         @foreach ($fiscales as $fiscal)
-        
         <tr>
-            <td>{{$fiscal->nombres}}</td>
+            <td>{{$fiscal->nombreC}}</td>
             @if (Jenssegers\Date\Date::parse($fiscal->updated_at)->diffForHumans()=='hace 1 segundo')
             <td colspan="3">Disponible</td>
             @else
@@ -33,11 +32,9 @@
             @endif
             <td >
                 @if (is_null($fiscal->idCarpeta))
-                    
-                <a href="" title="libre" class="btn "><i  style="color:#138c13;" class="fa fa-circle"></i></a>
+                    <a href="" aria-disabled="true" title="libre" style="background: #138c13;" class="btn btn-sm "><i  style="color:#138c13;" class="fa fa-circle"></i></a>
                 @else
-                <a href="" title="atendiendo"  class="btn "><i style="color:#8c1333;" class="fa fa-circle"></i></a>
-                    
+                    <a href="" aria-disabled="true" title="atendiendo" style="background: #8c1333;" class="btn btn-sm "><i style="color:#8c1333;" class="fa fa-circle"></i></a>
                 @endif
             </td> 
         </tr>   
