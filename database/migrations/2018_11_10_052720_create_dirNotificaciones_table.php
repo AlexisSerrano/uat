@@ -13,7 +13,7 @@ class CreateDirNotificacionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('dirNotificacion', function (Blueprint $table) {
+        Schema::create('dirnotificacion', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idDomicilio')->unsigned();
             $table->string('correo', 100)->default("SIN INFORMACION");

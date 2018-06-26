@@ -302,22 +302,22 @@ Route::middleware(['auth'])->group(function () {
     
     
     /* --------Rutas para Periciales----------- */
-    Route::get('periciales','pericialesController@pericialesindex');
-    Route::post('periciales/agregar','pericialesController@agregar')->name('store.agregar');
-    Route::post('periciales/psicologo','pericialesController@psico')->name('store.psicologo');
-    Route::post('periciales/vehiculo','pericialesController@vehi')->name('store.vehiculo');
-    Route::post('periciales/lesiones','pericialesController@lesiones')->name('store.lesiones');
-    Route::get('getpericiales/{id}','pericialesController@getpericiales');
-    Route::get('getpsico/{id}','pericialesController@getpsico');
-    Route::get('getVh/{id}','pericialesController@getVh');
-    Route::get('getlesion/{id}','pericialesController@getlesion');
-    Route::get('oficioFinanzas/{id}','pericialesController@getOficioF')->name('show.ofFinanzas');
+    Route::get('periciales','PericialesController@pericialesindex');
+    Route::post('periciales/agregar','PericialesController@agregar')->name('store.agregar');
+    Route::post('periciales/psicologo','PericialesController@psico')->name('store.psicologo');
+    Route::post('periciales/vehiculo','PericialesController@vehi')->name('store.vehiculo');
+    Route::post('periciales/lesiones','PericialesController@lesiones')->name('store.lesiones');
+    Route::get('getpericiales/{id}','PericialesController@getpericiales');
+    Route::get('getpsico/{id}','PericialesController@getpsico');
+    Route::get('getVh/{id}','PericialesController@getVh');
+    Route::get('getlesion/{id}','PericialesController@getlesion');
+    Route::get('oficioFinanzas/{id}','PericialesController@getOficioF')->name('show.ofFinanzas');
 
-    Route::get('OficioF-impresion/{id}','pericialesController@getVhFinanzas');
-    Route::get('getOficioM/{id}','pericialesController@getOficioM')->name('oficio.m');
-    Route::get('getOficioP/{id}','pericialesController@getOficioP')->name('oficio.P');
-    Route::get('getOficioV/{id}','pericialesController@getOficioV')->name('oficio.V');
-    Route::get('getOficioL/{id}','pericialesController@getOficioL')->name('oficio.L');
+    Route::get('OficioF-impresion/{id}','PericialesController@getVhFinanzas');
+    Route::get('getOficioM/{id}','PericialesController@getOficioM')->name('oficio.m');
+    Route::get('getOficioP/{id}','PericialesController@getOficioP')->name('oficio.P');
+    Route::get('getOficioV/{id}','PericialesController@getOficioV')->name('oficio.V');
+    Route::get('getOficioL/{id}','PericialesController@getOficioL')->name('oficio.L');
 
      /* --------Pruebas vehiculos----------- */
     Route::get('/vehiculos-pruebas','VehiculoController@showform')->name('vehiculo.carpeta');
