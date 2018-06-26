@@ -30,7 +30,7 @@ class CreateExtraDenunciadosTable extends Migration
             $table->string('narracion',2000)->default("SIN INFORMACION");
 
             $table->foreign('idVariablesPersona')->references('id')->on('variables_persona')->onDelete('cascade');
-            $table->foreign('idNotificacion')->references('id')->on('dirNotificacion')->onDelete('cascade');
+            $table->foreign('idNotificacion')->references('id')->on('dirnotificacion')->onDelete('cascade');
             //$table->foreign('idPuesto')->references('id')->on('cat_puesto')->onDelete('cascade');
             $table->foreign('idAbogado')->references('id')->on('extra_abogado')->onDelete('cascade');
 

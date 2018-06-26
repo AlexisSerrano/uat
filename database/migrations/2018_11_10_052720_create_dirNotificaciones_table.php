@@ -34,6 +34,6 @@ class CreateDirNotificacionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dirNotificacion');
+        Schema::dropIfExists('dirnotificacion');
     }
 }

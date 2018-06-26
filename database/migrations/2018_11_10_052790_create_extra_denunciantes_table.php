@@ -25,7 +25,7 @@ class CreateExtraDenunciantesTable extends Migration
             $table->softDeletes();
             
             $table->foreign('idVariablesPersona')->references('id')->on('variables_persona')->onDelete('cascade');
-            $table->foreign('idNotificacion')->references('id')->on('dirNotificacion')->onDelete('cascade');
+            $table->foreign('idNotificacion')->references('id')->on('dirnotificacion')->onDelete('cascade');
             $table->foreign('idAbogado')->references('id')->on('extra_abogado')->onDelete('cascade');
         });
     }
