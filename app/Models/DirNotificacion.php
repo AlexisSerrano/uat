@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DirNotificacion extends Model
 {
-    protected $table = 'dirNotificacion';
+    protected $table = 'dirnotificacion';
 
     protected $fillable = [
         'id', 'idDomicilio', 'correo', 'telefono', 
