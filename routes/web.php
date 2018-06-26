@@ -264,8 +264,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('agregar-autoridad/{id}/eliminar', 'AutoridadController@delete')->name('delete.autoridad');
     
     /* --------Rutas para Turnar----------- */
-    Route::get('turnar/{id}','EstadoController@index');
-    Route::post('/turnar/actualizar','EstadoController@editar')->name('estado.edit');
+    Route::get('estadoCarpeta','EstadoController@index')->name('turnar.carpeta');
+    Route::post('estadoCarpeta','EstadoController@editar')->name('estado.edit');
     
     /* --------Rutas para Actas de hechos----------- */
     Route::get('actas','ActasHechosController@showform')->name('new.actahechos');

@@ -45,27 +45,24 @@ class EstadoController extends Controller
 
 
 
-    public function index($id){
-    // $idCarpeta=session('carpeta');
-     
-    // $casoNuevo = Carpeta::where($id, $idCarpeta)->get();
-    // $carpetaNueva = Carpeta::find($idCarpeta);
-// dd($carpetaNueva);
-
-//    $idEstadocarpeta = $carpetaNueva->idEstadoCarpeta;//id direccion
-
-  
+    public function index(){
+        $id=session('carpeta');
         
-        
-    $estatus=DB::table('carpeta') //id's de domicilios (municipio,localidad)
-       ->join('cat_estatus_casos','cat_estatus_casos.id','=','carpeta.idEstadoCarpeta') 
-       ->select('cat_estatus_casos.nombreEstatus as estatus', 'carpeta.id as id')
-       ->where('carpeta.id','=', $id)
-        ->get();
-        
+        // $casoNuevo = Carpeta::where($id, $idCarpeta)->get();
+        // $carpetaNueva = Carpeta::find($idCarpeta);
+        // dd($carpetaNueva);
+        //    $idEstadocarpeta = $carpetaNueva->idEstadoCarpeta;//id direccion
+            
+        $estatus=DB::table('carpeta') //id's de domicilios (municipio,localidad)
+            ->join('cat_estatus_casos','cat_estatus_casos.id','=','carpeta.idEstadoCarpeta') 
+            ->select('cat_estatus_casos.nombreEstatus as estatus', 'carpeta.id as id')
+            ->where('carpeta.id','=', $id)
+            ->get();
+            
 
-      $informacion = CatEstatusCaso::orderBy('nombreEstatus', 'ASC')
-      ->pluck('nombreEstatus','id');
+        $informacion = CatEstatusCaso::orderBy('nombreEstatus', 'ASC')
+            ->pluck('nombreEstatus','id');
+        
         return view('forms.turnar-carpeta')->with('informacion', $informacion)->with('estatus', $estatus);
     }
 
@@ -75,8 +72,9 @@ class EstadoController extends Controller
 
         // DB::beginTransaction();
         // try{
-             //Sacar el id del select  //EstadoCarpeta es variable del select
-            $idCarpeta=$request->idCarpeta;  //id de Variable de sesion
+            //  Sacar el id del select  //EstadoCarpeta es variable del select
+            // $idCarpeta=$request->idCarpeta;  //id de Variable de sesion
+            $idCarpeta=session('carpeta');  //id de Variable de sesion
             //$idCarpeta=session('carpeta');  //id de Variable de sesion
             //dd($idCarpeta);
             $id = Carpeta::find($idCarpeta); //seleccinar toda la fila del primer id con  el valor de idCarpeta 
@@ -282,16 +280,16 @@ class EstadoController extends Controller
                         $concarpeta= new ConCarpeta;
                         $concarpeta->idUnidad = 11;
                         $concarpeta->fechaInicio = $carpeta->fechaInicio;
-                        $concarpeta->conDetenido = $carpeta->conDetenido;
+                        $concarpeta->conDetenido = false;
                         $concarpeta->esRelevante = $carpeta->esRelevante;
                         $concarpeta->idEstadoCarpeta = $carpeta->idEstadoCarpeta;
                         $concarpeta->horaIntervencion = $carpeta->horaIntervencion;
-                        $concarpeta->npd = $carpeta->npd;
+                        $concarpeta->npd = false;
                         $concarpeta->fechaIph = $carpeta->fechaIph;
-                        $concarpeta->numIph = $carpeta->numIph;
-                        $concarpeta->narracionIph = $carpeta->narracionIph;
+                        $concarpeta->numIph = 'SIN INFORMACION';
+                        $concarpeta->narracionIph = 'SIN INFORMACION';
                         $concarpeta->descripcionHechos = $carpeta->descripcionHechos;
-                        $concarpeta->nombreFiscalUat = Auth::user()->nombres;
+                        $concarpeta->nombreFiscalUat = Auth::user()->nombreC;
                         $concarpeta->numCarpetaUat = $carpeta->numCarpeta;
                         $concarpeta->asignada = 0;
                         $concarpeta->observacionesEstatus = $carpeta->observacionesEstatus;
@@ -656,7 +654,7 @@ class EstadoController extends Controller
                     
                     DB::commit();
                     Alert::success('La carpeta con número '.$carpeta->numCarpeta.' ha sido turnada con éxito','Hecho')->persistent('Aceptar');
-                    return redirect(route('indexcarpetas'));
+                    return redirect(route('carpeta.detalle'));
                 }catch (\PDOException $e){
                     DB::rollBack();
                     Alert::error('Se presentó un problema al guardar los datos, intente de nuevo', 'Error');
@@ -665,7 +663,7 @@ class EstadoController extends Controller
             }
                 // DB::commit();
                 Alert::success('Registro modificado con éxito','Hecho');
-                return redirect(route('indexcarpetas'));
+                return redirect(route('carpeta.detalle'));
                 //return back();
 
         // }catch (\PDOException $e){

@@ -327,6 +327,13 @@
 						</a>
 					</li>
 				
+					<li class="nav-item has-treeview">
+						<a href="{{ route('turnar.carpeta')}}" class="nav-link {{ Request::is('turnar') ? 'active' : '' }}">
+							<i class="nav-icon fa fa-folder-open-o"></i>
+							<p>Estado de la Carpeta</p>
+						</a>
+					</li>
+				
 				@endif
 				
 				<li class="nav-item has-treeview">

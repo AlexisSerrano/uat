@@ -9106,6 +9106,7 @@ class ColoniasVeracruzSeeder extends Seeder
             ['idMunicipio' => 2299, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
             ['idMunicipio' => 2493, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0],
             ['idMunicipio' => 2496, 'nombre' => 'SIN INFORMACION', 'codigoPostal' => 0]
+
             
         ]);
     }
