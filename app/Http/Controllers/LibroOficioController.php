@@ -38,7 +38,7 @@ class LibroOficioController extends Controller
             where(DB::raw("CONCAT(nombre,' ',primer_ap,' ',segundo_ap)"), 'LIKE', '%' . $filtro . '%')
             ->orwhere('folio','like','%'.$filtro.'%')
             ->paginate('15');
-            return view('forms.libOficios')
+            return view('tables.libOficios')
             -> with("actas", $actas)
             -> with("year", $year);  
         }

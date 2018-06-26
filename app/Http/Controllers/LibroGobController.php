@@ -39,11 +39,14 @@ class LibroGobController extends Controller
         $carpetas = DB::table('carpeta')
         ->join('cat_estatus_casos','carpeta.idEstadoCarpeta','=','cat_estatus_casos.id')
         ->select('carpeta.id','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta','cat_estatus_casos.nombreEstatus as idEstadoCarpeta' )
-        
+        ->where('idFiscal',Auth::user()->id)
         // ->orwhere('idEstadoCarpeta','=',1)
-        ->orwhere('numCarpeta','like','%'.$carpeta.'%')
-        ->orwhere('horaIntervencion','like','%'.$carpeta.'%')
-        ->orwhere('fechaInicio','like','%'.$carpeta.'%')
+        ->where(function($query) use ($carpeta){
+            $query
+            ->orwhere('numCarpeta','like','%'.$carpeta.'%')
+            ->orwhere('horaIntervencion','like','%'.$carpeta.'%')
+            ->orwhere('fechaInicio','like','%'.$carpeta.'%');
+          })
         ->paginate('15');
     
        
@@ -83,10 +86,10 @@ class LibroGobController extends Controller
     
     public function indexCarpetasReserva(){
         $carpetas = DB::table('carpeta')
-        ->select('carpeta.id as id','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta' )
+        ->select('carpeta.id as id','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta','carpeta.fiscalAtendio' )
         ->where('idFiscal',Auth::user()->id)
         ->whereNull('idEstadoCarpeta')
-        ->paginate('15');
+        ->paginate('10');
         // dd($carpetas);
         return view('tables.carpetasReserva')->with('carpetas',$carpetas);
         
@@ -97,12 +100,17 @@ class LibroGobController extends Controller
         $carpeta=$request->search;
         
         $carpetas = DB::table('carpeta')
-        ->select('carpeta.id','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta' )
-        ->orwhere('numCarpeta','like','%'.$carpeta.'%')
-        ->orwhere('horaIntervencion','like','%'.$carpeta.'%')
-        ->orwhere('fechaInicio','like','%'.$carpeta.'%')
+        ->select('carpeta.id','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta','carpeta.fiscalAtendio' )
+        ->where('idFiscal',Auth::user()->id)
+        ->where(function($query) use ($carpeta){
+            $query
+            ->orwhere('numCarpeta','like','%'.$carpeta.'%')
+            ->orwhere('horaIntervencion','like','%'.$carpeta.'%')
+            ->orwhere('fechaInicio','like','%'.$carpeta.'%')
+            ->orwhere('fiscalAtendio','like','%'.$carpeta.'%');
+          })
         ->whereNull('idEstadoCarpeta')
-        ->paginate('15');
+        ->paginate('10');
         // dd( $carpetas);
         // return Datatables::of($carpetas)->make(true);
         return view('tables.carpetasReserva')->with('carpetas',$carpetas);

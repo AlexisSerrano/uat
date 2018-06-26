@@ -73,8 +73,10 @@ class CarpetaController extends Controller
             Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia');
             return redirect(url('carpetas'));
         }
-        // $carpeta = Carpeta::find($idCarpeta);
-        // $carpeta->delete();
+        $carpeta = Carpeta::find($idCarpeta);
+        $carpeta->numCarpeta=null;
+        $carpeta->save();
+        
         session()->forget('numCarpeta');
         session()->forget('carpeta');
         Alert::info('El caso ha sido cancelado con éxito.', 'Hecho');
@@ -327,11 +329,27 @@ class CarpetaController extends Controller
             
             
             session(['carpeta' => $caso->id]);
+            /* inicio generacion numCarpeta consecutivo */
+            
+            $NuevoNumCarpeta = $unidad."/1/".Carbon::now()->year."-".Auth::user()->numFiscal;
+            $buscarConsecutivo = Carpeta::where('numCarpeta',$NuevoNumCarpeta)->get();
+            
+            while ($buscarConsecutivo->isNotEmpty()) {
+                $buscarConsecutivo=$buscarConsecutivo[0];
+                $partesNumero=explode("/", $buscarConsecutivo->numCarpeta);
+                // dd($buscarConsecutivo);
+                $consecutivo=$partesNumero[2] + 1;
+                $NuevoNumCarpeta = $partesNumero[0].'/'.$partesNumero[1].'/'.$consecutivo.'/'.$partesNumero[3];                
+                $buscarConsecutivo = Carpeta::where('numCarpeta',$NuevoNumCarpeta)->get();
+            }
+            
+            
             
             $numCarpeta=Carpeta::find($caso->id);
-            $numCarpeta->numCarpeta = $unidad."/".$caso->id."/".Carbon::now()->year."-".Auth::user()->numFiscal;            
+            $numCarpeta->numCarpeta = $NuevoNumCarpeta;            
             $numCarpeta->save();
-
+            /* fin generacion numCarpeta consecutivo */
+            
             session(['numCarpeta' => $numCarpeta->numCarpeta]);
             
             $usuario=User::find(Auth::user()->id);

@@ -33,7 +33,7 @@
 	@yield('csss')
 </head>
 
-<body class="hold-transition sidebar-mini" onload="deshabilitaRetroceso()">
+<body class="hold-transition sidebar-mini sidebar-collapse" onload="deshabilitaRetroceso()">
 <div class="wrapper">
 	<!-- Navbar -->
 	@include('template.partials.navbar')

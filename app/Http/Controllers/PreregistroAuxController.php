@@ -44,9 +44,7 @@ class PreregistroAuxController extends Controller
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')
         ->join('razones','razones.id','=','preregistros.idRazon')
         ->orderBy('id','desc')
-        ->where('tipoActa', null)
-        ->where('razones.nombre','!=' ,'SOLICITUD DE CONSTANCIA DE EXTRAVIO')
-        ->where('statusCola', null)
+        ->whereNull('statusCola')
         ->select('preregistros.id as id','idDireccion','idRazon','esEmpresa','preregistros.nombre as nombre',
         'primerAp','segundoAp','rfc','fechaNac','edad','sexo','curp','telefono',
         'cat_identificacion.documento as docIdentificacion','numDocIdentificacion','conViolencia','narracion','folio','representanteLegal',
@@ -505,8 +503,23 @@ class PreregistroAuxController extends Controller
                 $unidad=DB::table('unidad')->where('id',Auth::user()->idUnidad)->first();
                 $unidad=$unidad->abreviacion;
                 
+
+                $NuevoNumCarpeta = $unidad."/1/".Carbon::now()->year."-".Auth::user()->numFiscal;
+                $buscarConsecutivo = Carpeta::where('numCarpeta',$NuevoNumCarpeta)->get();
+                
+                while ($buscarConsecutivo->isNotEmpty()) {
+                    $buscarConsecutivo=$buscarConsecutivo[0];
+                    $partesNumero=explode("/", $buscarConsecutivo->numCarpeta);
+                    // dd($buscarConsecutivo);
+                    $consecutivo=$partesNumero[2] + 1;
+                    $NuevoNumCarpeta = $partesNumero[0].'/'.$partesNumero[1].'/'.$consecutivo.'/'.$partesNumero[3];                
+                    $buscarConsecutivo = Carpeta::where('numCarpeta',$NuevoNumCarpeta)->get();
+                }
+                
+
+
                 $numCarpeta=Carpeta::find($caso->id);
-                $numCarpeta->numCarpeta = $unidad."/".$caso->id."/".Carbon::now()->year."-".Auth::user()->numFiscal;            
+                $numCarpeta->numCarpeta = $NuevoNumCarpeta;            
                 $numCarpeta->save();
         
                 session(['numCarpeta' => $numCarpeta->numCarpeta]);
@@ -572,7 +585,7 @@ class PreregistroAuxController extends Controller
                 break;
             
             default:
-                
+                return redirect(url('registros'));
                 break;
         }
                 
@@ -594,14 +607,14 @@ class PreregistroAuxController extends Controller
                     $estado->statusCola = 21;
                     $estado->save();
                     session(['enturno' => 'urgente']);
-                    return redirect("turno/$urgente->id");
+                    return redirect(url('turno').'/'.$urgente->id.'/'.$estado->idRazon);
                 }
                 else{
                     $estado = Preregistro::find($cola->id);
                     $estado->statusCola = 20;
                     $estado->save();
                     session(['enturno' => 'cola']);
-                    return redirect("turno/$cola->id");
+                    return redirect(url('turno').'/'.$cola->id.'/'.$estado->idRazon);
                 }
             }
             else{
@@ -611,28 +624,28 @@ class PreregistroAuxController extends Controller
                     $estado->statusCola = 20;
                     $estado->save();
                     session(['enturno' => 'cola']);
-                    return redirect("turno/$cola->id");
+                    return redirect(url('turno').'/'.$cola->id.'/'.$estado->idRazon);
                 }
                 else if($anterior=='urgente'&&$urgente){
                     $estado = Preregistro::find($urgente->id);
                     $estado->statusCola = 21;
                     $estado->save();
                     session(['enturno' => 'cola']);
-                    return redirect("turno/$urgente->id");
+                    return redirect(url('turno').'/'.$urgente->id.'/'.$estado->idRazon);
                 }
                 else if($anterior=='cola'&&$urgente){
                     $estado = Preregistro::find($urgente->id);
                     $estado->statusCola = 21;
                     $estado->save();
                     session(['enturno' => 'cola']);
-                    return redirect("turno/$urgente->id");
+                    return redirect(url('turno').'/'.$urgente->id.'/'.$estado->idRazon);
                 }
                 else if($anterior=='cola'&&$cola){
                     $estado = Preregistro::find($cola->id);
                     $estado->statusCola = 20;
                     $estado->save();
                     session(['enturno' => 'cola']);
-                    return redirect("turno/$cola->id");
+                    return redirect(url('turno').'/'.$cola->id.'/'.$estado->idRazon);
                 }
             }
         }
@@ -651,8 +664,9 @@ class PreregistroAuxController extends Controller
 
         //dd($idCarpeta);
         
-        //$carpeta = Carpeta::find($idCarpeta);
-        // Carpeta::destroy($idCarpeta);
+        $carpeta = Carpeta::find($idCarpeta);
+        $carpeta->numCarpeta = null;
+        $carpeta->save();
         //dd($carpeta);
         //$carpeta->delete();
         

@@ -65,8 +65,6 @@ class RegistrosCasoController extends Controller
         ->join('razones','razones.id','=','preregistros.idRazon')
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')        
         ->where('statusCola', null)
-        ->where('tipoActa', null)
-        ->where('razones.nombre','!=' ,'SOLICITUD DE CONSTANCIA DE EXTRAVIO')
         ->orderBy('horaLlegada','asc')
         ->where(function($query) use ($folio){
             $query

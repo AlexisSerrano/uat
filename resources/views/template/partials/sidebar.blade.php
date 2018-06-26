@@ -1,5 +1,5 @@
 
-<aside class="main-sidebar  elevation-4 barra-izquierda " id="barra">
+<aside class="main-sidebar  elevation-4 barra-izquierda collapsado" id="barra">
 	<!-- Brand Logo -->
 	<a href="{{url('home')}}" class="brand-link">
 		<img src="{{asset('img/escudo.png')}}" alt="FGELogo" height="" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -84,7 +84,7 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item has-treeview  ">
-									<a href="{{url('predenuncias')}}" class="nav-link {{ Request::is( 'predenuncias') ? 'active' : '' }}">
+									<a href="{{route('predenuncias.index')}}" class="nav-link {{ Request::is( 'predenuncias') ? 'active' : '' }}">
 										{{-- <i class="nav-icon fa fa-user-times"></i> --}}
 										<p>
 											Todos los registros
@@ -287,7 +287,7 @@
 					@endif		
 				@endif		
 				
-				@if (!is_null(session('carpeta'))/*&&!is_null(session('terminada'))*/)
+				@if (!is_null(session('carpeta'))&&!is_null(session('terminada')))
 					<li class="nav-item has-treeview">
 						<a href="{{url('periciales')}}" class="nav-link {{ Request::is( 'periciales') ? 'active' : '' }}">
 							<i class="nav-icon  fa fa-files-o"></i>

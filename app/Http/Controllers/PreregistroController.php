@@ -137,6 +137,7 @@ class PreregistroController extends Controller
                     $preregistro->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa;
                 }
                 
+               
                 $preregistro->save();
                 $id = $preregistro->id;
                 
@@ -317,6 +318,7 @@ class PreregistroController extends Controller
                 }
                 
                 $preregistro->save();
+                
                 $id = $preregistro->id;
                 
                 if (!is_null($request->correo2)) {
@@ -330,23 +332,23 @@ class PreregistroController extends Controller
                 
             }elseif($request->esEmpresa==1){
                 $domicilio = new Domicilio();
-                if (!is_null($request->idMunicipio1)){
-                    $domicilio->idMunicipio = $request->idMunicipio1;
+                if (!is_null($request->idMunicipio)){
+                    $domicilio->idMunicipio = $request->idMunicipio;
                 }
-                if (!is_null($request->idLocalidad1)){
-                    $domicilio->idLocalidad = $request->idLocalidad1;
+                if (!is_null($request->idLocalidad)){
+                    $domicilio->idLocalidad = $request->idLocalidad;
                 }
-                if (!is_null($request->idColonia1)){
-                    $domicilio->idColonia = $request->idColonia1;
+                if (!is_null($request->idColonia)){
+                    $domicilio->idColonia = $request->idColonia;
                 }
-                if (!is_null($request->calle1)){
-                    $domicilio->calle = $request->calle1;
+                if (!is_null($request->calle)){
+                    $domicilio->calle = $request->calle;
                 }
-                if (!is_null($request->numExterno1)){
-                    $domicilio->numExterno = $request->numExterno1;
+                if (!is_null($request->numExterno)){
+                    $domicilio->numExterno = $request->numExterno;
                 }
-                if (!is_null($request->numInterno1)){
-                    $domicilio->numInterno = $request->numInterno1;
+                if (!is_null($request->numInterno)){
+                    $domicilio->numInterno = $request->numInterno;
                 }
                 $domicilio->save();
                 $idD1 = $domicilio->id; 
@@ -365,6 +367,7 @@ class PreregistroController extends Controller
                 $preregistro->representanteLegal = $request->repLegal;
                 // $preregistro->conViolencia = $request->Violencia;
                 $preregistro->save();
+               // dd($preregistro);
                 $id = $preregistro->id;
                 // return view('Email.emailmodel');
             if (!is_null($request->correo)) {
@@ -405,7 +408,7 @@ class PreregistroController extends Controller
         }
         if ($tipo==99) {
             Alert::success('Registro descartado con éxito', 'Hecho');
-            return redirect('predenuncias');
+            return redirect(route('predenuncias.index'));
         }
     }
 

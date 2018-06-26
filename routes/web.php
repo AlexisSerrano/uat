@@ -75,8 +75,8 @@ Route::post('store-oficioCavd','ImpresionesController@storeOficio')->name('store
 Route::get('getcavd/{id}','ImpresionesController@getCavd');
 
 
-Route::get('not-actuaciones','ImpresionesController@notActuaciones')->name('not.actuaciones');
-Route::get('impresion-actuaciones','ImpresionesController@impresionActuaciones')->name('impresion.actuaciones');
+Route::get('not-actuaciones/{id}','ImpresionesController@notActuaciones')->name('not.actuaciones');
+Route::get('impresion-actuaciones/{id}','ImpresionesController@impresionActuaciones')->name('impresion.actuaciones');
 
 Route::get('impresion-archivoTemporal/{id}','ImpresionesController@archivoTemporal')->name('impresion.archivoTemporal');
 Route::get('impresion-temporal/{id}','ImpresionesController@archivoTemporalImp')->name('impresion.temporal');
@@ -85,6 +85,11 @@ Route::get('primera-invitacion','ImpresionesController@primeraInvitacion')->name
 Route::get('impresion-invitacion','ImpresionesController@mostrarOficio');
 Route::get('json-invitacion/{id}','ImpresionesController@getInvitacion');
 
+Route::get('oficio-inicio/{id}','ImpresionesController@oficioInicio')->name('oficio.inicio');
+Route::get('impresion-inicio/{id}','ImpresionesController@impresionInicio')->name('impresion.acuerdoInicio');
+
+Route::get('oficio-remision/{id}','ImpresionesController@docRemision')->name('oficio.remision');
+Route::get('impresion-remision/{id}','ImpresionesController@getRemision')->name('impresion.remision');
 
 
 /* --------Ruta para obtener token oficios----------- */
@@ -163,7 +168,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/estado', 'PreregistroController@estadourgente')->name('estado');
     
     //Route::resource('/predenuncias','PreregistroAuxController');
-    Route::get('/predenuncias', 'PreregistroAuxController@index')->name('predenuncias.index'); //ver formulario
+    Route::get('/preregistros', 'PreregistroAuxController@index')->name('predenuncias.index'); //ver formulario
     Route::get('/predenuncias/{id}/edit', 'PreregistroAuxController@edit')->name('predenuncias.edit'); //ver formulario
     Route::post('/predenuncias/{id}/update', 'PreregistroAuxController@update')->name('predenuncias.update'); //registar
     
@@ -183,9 +188,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('agregar-denunciado', 'DenunciadoController@showForm')->name('new.denunciado');
     Route::post('storedenunciado', 'DenunciadoController@storeDenunciado')->name('store.denunciado');
     Route::get('agregar-denunciado/{id}/eliminar', 'DenunciadoController@delete')->name('delete.denunciado');
-    
-    /*---------Rutas de preregistro orientador-------------*/
-    Route::get('preregistros', 'PreregistroAuxController@orientador');
     
 	
     /*---------Rutas para las notificaciones-------------*/
@@ -288,9 +290,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getCarpetas','libroGobController@getCarpetas');
     Route::get('carpetas','libroGobController@buscar')->name('indexcarpetas');
     route::get('carpeta/{id}','ResumenCarpetaController@showForm')->name('ir.carpeta');
-    Route::post('carpetaNum','libroGobController@searchNumCarpeta')->name('filtro.carpetas');
+    Route::post('carpetas','libroGobController@searchNumCarpeta')->name('filtro.carpetas');
     Route::post('libroGobierno','libroGobController@mostrarlibro')->name('libro.filtro');
     /*-------------Carpetas en Reserva----------------------*/
+    route::get('carpetaReserva/{id}','ResumenCarpetaController@showFormReserva')->name('carpeta.reserva');
     Route::get('carpetasReserva','libroGobController@indexCarpetasReserva')->name('carpetas.reserva');
     Route::post('carpetasReserva','libroGobController@filtroCarpetaReserva')->name('filtro.carpetasReserva');
     /* --------Rutas para Caratula de carpeta de investigacion----------- */
@@ -358,6 +361,7 @@ Route::get('codigos/{id}', 'RegisterController@getCodigos')->name('get.codigo');
 Route::get('colonias/{cp}', 'RegisterController@getColonias')->name('get.colonia');
 Route::get('colonias2/{id}', 'RegisterController@getColonias2')->name('get.colonia2');
 Route::get('codigos2/{id}', 'RegisterController@getCodigos2')->name('get.codigo2');
+Route::get('listas/{id}', 'RegisterController@getListas')->name('get.listas');
 
 /********************generar pdf**********************************/
 
