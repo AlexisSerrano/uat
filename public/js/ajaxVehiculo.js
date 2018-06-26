@@ -42,7 +42,7 @@ url = window.location;
 				// $("#tipo_medida2").val(json.nombre);
 				// $('#quienEjecuta1').val(json.idEjecutor).trigger('change.select2');
 				// $('#victima1').val(json.idPersona).trigger('change.select2');
-				$('#idr').val(json.id);           
+				$('#idr').val(idr);           
 			},
 			error : function(xhr, status) {
 			}
@@ -53,19 +53,37 @@ url = window.location;
 	$('#guardar').bind('click', function(){
 		var datos = {
 			'idr' : $('#idr').val(),
-			// 'tipo_medida2'  : $('#tipoProvidencia1').select2('val'),
-			'fechaInicio1' : $('#fechaInicio1').val(),
-			'fechaFinal1' : $('#fechaFinal1').val(),
-			'quienEjecuta1'  : $('#quienEjecuta1').select2('val'),
-			'victima1'  : $('#victima1').select2('val'),
-			'observaciones1' : $('#observaciones1').val(),
+			// // 'tipo_medida2'  : $('#tipoProvidencia1').select2('val'),
+			// 'fechaInicio1' : $('#fechaInicio1').val(),
+			// 'fechaFinal1' : $('#fechaFinal1').val(),
+			// 'quienEjecuta1'  : $('#quienEjecuta1').select2('val'),
+			// 'victima1'  : $('#victima1').select2('val'),
+			// 'observaciones1' : $('#observaciones1').val(),
+
+			'idTipifDelito1' :$('#idTipifDelito1').select2('val'),
+				'placasv' :$("#placasv").val(),
+				'estadov' :$('#estadov').select2('val'),
+				'submarcav' :$('#submarcav').select2('val'),
+
+				'modelov'	:$('#modelov').val(),
+				'colorv'	:$('#colorv').select2('val'),
+				'nrpvv' :$('#nrpvv').val(),
+				'numseriev'	:$('#numseriev').val(),
+				'motorv'	:$('#motorv').val(),
+				'permisov' :$('#permisov').val(),
+
+			'tipousov'	:$('#tipousov').select2('val' ),
+
+			'procev'	:$('#procev').select2('val' ),
+			'asegurav'	:$('#asegurav').select2('val' ),
+			'senasv'	:$('#senasv').val(),
 		}
 		$.ajax({
 			headers: {
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 			},
 			//url : "agregar-medidas/editar",
-			url: route('agregar-medidas'),
+			url: route('agregar-vehiculo'),
 			data : datos,
 			type : 'POST',
 			success : function(json) {

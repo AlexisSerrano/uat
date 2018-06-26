@@ -325,6 +325,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('vehiculo/{id}/eliminar', 'VehiculoController@delete')->name('delete.vehiculo');
 
     Route::get('getVehiculoAjax/{id}', 'VehiculoController@getVehiculoAjax')->name("getVehiculoAjax");
+    Route::post('vehiculo/editar', 'VehiculoController@editar')->name('agregar-vehiculo');
 
     /* -----------Ruta para Libro de Oficios------------ */
     Route::get('lista-oficios','LibroOficioController@IndexOfi');

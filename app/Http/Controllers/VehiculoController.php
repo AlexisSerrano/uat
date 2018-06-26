@@ -273,7 +273,31 @@ public function delete($id){
 
 
 
-
+public function editar(Request $request ){
+    $vehi = VehiculoCarpeta::find($request->input('idr')); 
+    $vehi->idTipifDelito = $request->idTipifDelito1;
+    $vehi->placas = $request->placasv;
+    $vehi->idEstado = $request->estadov;
+    $vehi->idSubmarca = $request->submarcav;
+    $vehi->modelo = $request->modelov;
+    $vehi->nrpv = $request->nrpvv;
+    $vehi->idColor = $request->colorv;
+    $vehi->permiso = $request->permisov;
+    $vehi->numSerie = $request->numseriev;
+    $vehi->numMotor = $request->motorv;
+    $vehi->idTipoVehiculo = $request->tipovv;
+    $vehi->idTipoUso = $request->tipousov;
+    $vehi->senasPartic = $request->senasv;
+    $vehi->idProcedencia = $request->procev;
+    $vehi->idAseguradora = $request->aegurav;
+    $vehi->save(); 
+   if ($vehi->save()){
+       return 1;
+   }
+   else{
+       return 0;
+   }
+ }
 
 }
 

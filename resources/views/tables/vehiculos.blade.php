@@ -59,7 +59,7 @@
         
                         <!--Contenido del modal-->
                         <div class="modal-body">
-                                <input class="form-control" type="text" id="idr" name="idr" hidden>
+                                <input class="form-control" type="text" id="idr" name="idr" >
                             <div class="form-group">
 
                                 <div class="row">
