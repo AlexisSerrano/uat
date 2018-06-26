@@ -74,7 +74,7 @@
 					@endif
 
 					@if (Auth::user()->grupo=='recepcion')
-						<li class="nav-item has-treeview">
+						{{-- <li class="nav-item has-treeview">
 							<a href="#" class="nav-link ">
 								<i class="nav-icon fa fa-user-o"></i>
 								<p>
@@ -82,7 +82,7 @@
 									<i class="right fa fa-angle-left"></i>
 								</p>
 							</a>
-							<ul class="nav nav-treeview">
+							<ul class="nav nav-treeview"> --}}
 								<li class="nav-item has-treeview  ">
 									<a href="{{route('predenuncias.index')}}" class="nav-link {{ Request::is( 'predenuncias') ? 'active' : '' }}">
 											<i class="nav-icon fa fa-angle-right "></i>
@@ -112,12 +112,14 @@
 								
 								<li class="nav-item has-treeview">
 									<a href="{{url('recepcionista')}}" class="nav-link {{ Request::is( 'recepcionista') ? 'active' : '' }}">
-											<i class="nav-icon fa fa-angle-right "></i>
-											<p>
-											Agregar
+										<i class="nav-icon fa fa-angle-right "></i>
+										<p>
+											Agregar pre-registro	
 										</p>
 									</a>
 								</li>
+					@endif
+					@if (Auth::user()->grupo=='coordinador')
 									
 								<li class="nav-item has-treeview">
 									<a href="{{route('disponibilidad.fiscal')}}" class="nav-link {{ Request::is( 'turnos-pruebas') ? 'active' : '' }}">
@@ -125,9 +127,9 @@
 										<p>Turnos tomados</p>
 									</a>
 								</li>
-							</ul>
-						</li>
 					@endif
+								{{-- </ul>
+						</li> --}}
 					
 					@if (Auth::user()->grupo=='orientador')
 					
