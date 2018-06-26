@@ -1,6 +1,7 @@
 <?php
 use App\Models\BitacoraSesiones;
 use Carbon\Carbon;
+
 /*La siguiente función recibe un usuario, contraseña y grupo al que pertenece en active directory por parámetros, autentifica y 
 devuelve el status: 0 = usuario o contraseña inválidos, 1 = datos correctos pero no pertenece al grupo, 2 = autentificación correcta, 
 3 = sin autorización, no tiene información en el active*/
@@ -480,6 +481,67 @@ function getImpresiones(){
 
 
 }
+
+function getOficiosImpresos(){
+	$acuerdoInicioc=DB::table('oficios_hechos')
+		->join('oficios','oficios.id','=','oficios_hechos.idOficio')
+		->where('idTabla',session('carpeta'))
+		->where('idOficio',18)
+		->count();
+	$gralTransporte=DB::table('oficios_hechos')
+		->join('oficios','oficios.id','=','oficios_hechos.idOficio')
+		->where('idTabla',session('carpeta'))
+		->where('idOficio',9)
+		->count();
+	$caratulaC=DB::table('oficios_hechos')
+		->join('oficios','oficios.id','=','oficios_hechos.idOficio')
+		->where('idTabla',session('carpeta'))
+		->where('idOficio',11)
+		->count();
+	$policiaMinC=DB::table('oficios_hechos')
+		->join('oficios','oficios.id','=','oficios_hechos.idOficio')
+		->where('idTabla',session('carpeta'))
+		->where('idOficio',12)
+		->count();
+	$cavdC=DB::table('oficios_hechos')
+		->join('oficios','oficios.id','=','oficios_hechos.idOficio')
+		->where('idTabla',session('carpeta'))
+		->where('idOficio',4)
+		->count();
+	$actuacionesC=DB::table('oficios_hechos')
+		->join('oficios','oficios.id','=','oficios_hechos.idOficio')
+		->where('idTabla',session('carpeta'))
+		->where('idOficio',13)
+		->count();
+	$temporalC=DB::table('oficios_hechos')
+		->join('oficios','oficios.id','=','oficios_hechos.idOficio')
+		->where('idTabla',session('carpeta'))
+		->where('idOficio',15)
+		->count();
+	$finanzasC=DB::table('oficios_hechos')
+		->join('oficios','oficios.id','=','oficios_hechos.idOficio')
+		->where('idTabla',session('carpeta'))
+		->where('idOficio',16)
+		->count();
+
+	$data=array(
+		'acuerdoInicioc'=>$acuerdoInicioc,
+		'gralTransporte'=>$gralTransporte,
+		'caratulaC'=>$caratulaC,
+		'policiaMinC'=>$policiaMinC,
+		'cavdC'=>$cavdC,
+		'actuacionesC'=>$actuacionesC,
+		'temporalC'=>$temporalC,
+		'finanzasC'=>$finanzasC
+
+	);
+		return $data;
+	}
+	
+
+		
+
+
 
 function normaliza ($cadena){
 	$originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞ
