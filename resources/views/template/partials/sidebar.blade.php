@@ -47,8 +47,8 @@
 				@if (is_null(session('carpeta')))
 					@if (Auth::user()->grupo=='orientador')
 					
-						<li class="nav-item has-treeview">
-							<a href="#" class="nav-link">
+						<li class="nav-item has-treeview  {{ Request::is( 'registros') ? 'menu-open' : '' }}">
+							<a href="#" class="nav-link ">
 								<i class="nav-icon fa fa-users"></i>
 								<p>
 									Pre-registros
@@ -58,14 +58,14 @@
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
 									<a href="{{url('preregistro')}}" class="nav-link {{ Request::is( 'preregistro') ? 'active' : '' }}">
-										<i class="fa fa-user-plus nav-icon"></i>
+											<i class="nav-icon fa fa-angle-right "></i>
 										<p>Nuevo pre-registro</p>
 									</a>
 								</li>
 
 								<li class="nav-item">
 									<a href='{{url("registros")}}' class="nav-link {{ Request::is( 'registros') ? 'active' : '' }}">
-										<i class="fa fa-pencil nav-icon"></i>
+											<i class="nav-icon fa fa-angle-right "></i>
 										<p>Consulta de pre-registros</p>
 									</a>
 								</li>
@@ -85,7 +85,7 @@
 							<ul class="nav nav-treeview">
 								<li class="nav-item has-treeview  ">
 									<a href="{{route('predenuncias.index')}}" class="nav-link {{ Request::is( 'predenuncias') ? 'active' : '' }}">
-										{{-- <i class="nav-icon fa fa-user-times"></i> --}}
+											<i class="nav-icon fa fa-angle-right "></i>
 										<p>
 											Todos los registros
 										</p>
@@ -94,7 +94,7 @@
 									
 								<li class="nav-item has-treeview">
 									<a href="{{url('encola')}}" class="nav-link {{ Request::is( 'encola') ? 'active' : '' }}">
-										{{-- <i class="nav-icon fa fa-user-times"></i> --}}
+											<i class="nav-icon fa fa-angle-right "></i>
 										<p>
 											Registros en cola
 										</p>
@@ -103,7 +103,7 @@
 										
 								<li class="nav-item has-treeview">
 									<a href="{{url('urgentes')}}" class="nav-link {{ Request::is( 'urgentes') ? 'active' : '' }}">
-										{{-- <i class="nav-icon fa fa-user-times"></i> --}}
+											<i class="nav-icon fa fa-angle-right "></i>
 										<p>
 											Urgentes
 										</p>
@@ -112,8 +112,8 @@
 								
 								<li class="nav-item has-treeview">
 									<a href="{{url('recepcionista')}}" class="nav-link {{ Request::is( 'recepcionista') ? 'active' : '' }}">
-										{{-- <i class="nav-icon fa fa-user-times"></i> --}}
-										<p>
+											<i class="nav-icon fa fa-angle-right "></i>
+											<p>
 											Agregar
 										</p>
 									</a>
@@ -121,7 +121,7 @@
 									
 								<li class="nav-item has-treeview">
 									<a href="{{route('disponibilidad.fiscal')}}" class="nav-link {{ Request::is( 'turnos-pruebas') ? 'active' : '' }}">
-										{{-- <i class="nav-icon  fa fa-print"></i> --}}
+											<i class="nav-icon fa fa-angle-right "></i>
 										<p>Turnos tomados</p>
 									</a>
 								</li>
@@ -204,7 +204,7 @@
 					
 					<li class="nav-item has-treeview">
 						<a href="{{url('crear-caso')}}" class="nav-link {{ Request::is( 'crear-caso') ? 'active' : '' }}">
-							<i class="fa fa-folder-open nav-icon"></i>
+							<i class="fa fa-address-card nav-icon"></i>
 							<p>Nuevo caso</p>
 						</a>
 					</li>
@@ -228,46 +228,71 @@
 					@endif
 					
 					@if (Auth::user()->grupo=='orientador')
-						<li class="nav-item has-treeview">
-							<a href="{{route('actaspendientes')}}" class="nav-link {{ Request::is( 'actas-pendientes') ? 'active' : '' }}">
-								<i class="nav-icon  fa fa-file-text-o"></i>
-								<p>Actas de hechos</p>
+					
+					<li class="nav-item has-treeview active {{ Request::is( 'actas-pendientes') ? 'menu-open' : '' }}">
+							<a href="#" class="nav-link">
+								<i class="nav-icon fa fa-file-text"></i>
+								<p>
+									Actas
+									<i class="right fa fa-angle-left"></i>
+								</p>
 							</a>
-						</li>
-					@endif
+						<ul class="nav nav-treeview">
+							<li class="nav-item has-treeview">
+								<a href="{{route('actaspendientes')}}" class="nav-link {{ Request::is( 'actas-pendientes') ? 'active' : '' }}">
+										<i class="nav-icon  fa fa-angle-right"></i>
+										<p>Actas de hechos</p>
+									</a>
+							</li>
+						@endif
+						
+						@if (Auth::user()->grupo=='orientador')
+							
+							<li class="nav-item has-treeview">
+								<a href="{{route('new.actacircunstanciada')}}" class="nav-link {{ Request::is( 'actacircunstanciada') ? 'active' : '' }}">
+										<i class="nav-icon  fa fa-angle-right"></i>
+										<p>Actas circunstanciales</p>
+									</a>
+								</li>
+							</ul>
+					</li>
+							@endif
 				
 					@if (Auth::user()->grupo=='orientador')
-						<li class="nav-item has-treeview">
-							<a href="{{route('new.actacircunstanciada')}}" class="nav-link {{ Request::is( 'actacircunstanciada') ? 'active' : '' }}">
-								<i class="nav-icon  fa fa-file-text"></i>
-								<p>Actas circunstanciales</p>
-							</a>
-						</li>
-					@endif
-				
-					@if (Auth::user()->grupo=='orientador')
-						<li class="nav-item has-treeview ">
-							<a href="{{route('indexcarpetas')}}" class="nav-link {{ Request::is( 'carpetas') ? 'active' : '' }}">
-								<i class="nav-icon  fa fa-archive"></i>
-								<p>Carpetas</p>
-							</a>
-						</li>
-					@endif
-					@if (Auth::user()->grupo=='coordinador')
-						<li class="nav-item has-treeview ">
-							<a href="{{route('indexcarpetas')}}" class="nav-link {{ Request::is( 'carpetas') ? 'active' : '' }}">
-								<i class="nav-icon  fa fa-archive"></i>
-								<p>Carpetas de la unidad</p>
-							</a>
-						</li>
-					@endif
-					@if (Auth::user()->grupo=='orientador')
-						<li class="nav-item has-treeview ">
-							<a href="{{route('carpetas.reserva')}}" class="nav-link {{ Request::is( 'carpetasReserva') ? 'active' : '' }}">
-								<i class="nav-icon  fa fa-archive"></i>
-								<p>Carpetas en reserva</p>
-							</a>
-						</li>
+					<li class="nav-item has-treeview {{ Request::is('carpetas') ? 'menu-open' : '' }}">
+							<a href="#" class="nav-link ">
+									<i class="nav-icon fa fa-archive"></i>
+									<p>
+										Carpetas
+										<i class="right fa fa-angle-left"></i>
+									</p>
+								</a>
+						
+						<ul class="nav nav-treeview">
+							<li class="nav-item has-treeview ">
+								<a href="{{route('indexcarpetas')}}" class="nav-link {{ Request::is( 'carpetas') ? 'active' : '' }}">
+										<i class="nav-icon  fa fa-angle-right"></i>
+										<p>Carpetas terminadas</p>
+									</a>
+								</li>
+							@endif
+							@if (Auth::user()->grupo=='coordinador')
+							<li class="nav-item has-treeview ">
+								<a href="{{route('indexcarpetas')}}" class="nav-link {{ Request::is( 'carpetas') ? 'active' : '' }}">
+										<i class="nav-icon  fa fa-angle-right"></i>
+										<p>Carpetas de la unidad</p>
+									</a>
+								</li>
+								@endif
+								@if (Auth::user()->grupo=='orientador')
+								<li class="nav-item has-treeview ">
+									<a href="{{route('carpetas.reserva')}}" class="nav-link {{ Request::is( 'carpetasReserva') ? 'active' : '' }}">
+											<i class="nav-icon  fa fa-angle-right"></i>
+											<p>Carpetas en reserva</p>
+										</a>
+									</li>
+								</ul>
+					</li>
 					@endif
 					@if (Auth::user()->grupo=='coordinador')
 						<li class="nav-item has-treeview">
