@@ -22,11 +22,11 @@
     {{ Form::close() }}
     <br>
     <div class="card">
-    <table class="table table-hover" id="tablacarpetas">
+    <table class="table table-hover text-center" id="tablacarpetas">
         <thead class="table-active">
             <tr>
                 {{-- <th >N.</th> --}}
-                <th >ID</th>
+                {{-- <th >ID</th> --}}
                 <th >Fecha</th>
                 <th >Hora de intervención</th>
                 {{-- <th >Victima/Querellante</th>
@@ -40,7 +40,8 @@
                 {{-- <th>Resultado final</th>
                 <th>Oficio turno a fiscal de distrito</th>
                 <th >Nuevo numero de carpeta UIPJ</th> --}}
-                <th>Ver detalles</th>
+                {{-- <th>Ver detalles</th> --}}
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -49,7 +50,7 @@
             @else
                 @foreach($carpetas as $carpeta)
                 <tr>
-                    <td>{{ $carpeta->id}}</td> 
+                    {{-- <td>{{ $carpeta->id}}</td>  --}}
                     <td>{{ $carpeta->fechaInicio}}</td>
                     <td>{{ $carpeta->horaIntervencion}}</td>
                     {{-- <td>{{ $acusacion->denunciante }}</td>
@@ -60,9 +61,11 @@
                     <td>{{ $carpeta->idEstadoCarpeta}}</td>
                     <td>
                         <a href="{{ route('ir.carpeta',$carpeta->id)}}"   rel="tooltip" title="Editar Registro" class="btn btn-secondary btn-simple btn-xs">
-                        <i class="fa fa-pencil"></i></a>
-                        <a href="{{ url('turnar/'.$carpeta->id)}}"   rel="tooltip" title="Turnar" class="btn btn-secondary btn-simple btn-xs">
-                        <i class="fa fa-child"></i></a>
+                            {{-- <i class="fa fa-pencil"></i>  --}}
+                            Ver detalle 
+                        </a>
+                        {{-- <a href="{{ route('turnar.carpeta',$carpeta->id)}}"   rel="tooltip" title="Turnar" class="btn btn-secondary btn-simple btn-xs">
+                        <i class="fa fa-child"></i></a> --}}
                     </td>                     
                 </tr>
                 @endforeach

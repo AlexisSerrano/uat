@@ -15,7 +15,7 @@
     {{ Form::close() }}
     <br>
     <div class="card">
-    <table class="table table-hover" id="tablacarpetas">
+    <table class="table table-hover text-center" id="tablacarpetas">
         <thead class="table-active">
             <tr>
                 <th >Fiscal que atendio</th>

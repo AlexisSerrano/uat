@@ -328,7 +328,7 @@ body::-webkit-scrollbar-thumb {
 	color: #5a6268
  }
  .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
- background-color: #212529;
+	background-color: #6b6b6b;
 		
 		}
 		.btn-info {
@@ -336,3 +336,4 @@ body::-webkit-scrollbar-thumb {
 			background-color: black;
 			border-color: black;
 		}
+

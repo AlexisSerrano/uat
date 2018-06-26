@@ -25639,7 +25639,7 @@ class LocalidadesVeracruzSeeder extends Seeder
             ['idMunicipio' => 2298, 'nombre' => 'SIN INFORMACION'],
             ['idMunicipio' => 2299, 'nombre' => 'SIN INFORMACION'],
             ['idMunicipio' => 2493, 'nombre' => 'SIN INFORMACION']
-            
+                        
         ]);
     }
 }

@@ -45,13 +45,12 @@ Route::get('/pruebasconsulta', function(){
 Route::get('/formatos-pruebas', function(){
     return view('tables.formatos');
 });
-Route::get('/fiscales', 'PreregistroController@estadoFiscales')->name('disponibilidad.fiscal');
 
 
 Route::get('/pruebasformatos', function(){
     return view('tables.formatos');
-    });
-    
+});
+
 Route::get('/pruebasactas','PruebasController@actas');
 Route::get('/pruebasmetodo/{id}','PruebasController@pruebas');
 
@@ -120,9 +119,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 /*--------------------Ruta error en login----------------------------------*/
 Route::get('errorlogin', 'RegisterController@errorlogin')->name('error.login');
 //////////////////////////////////////////////////        
-        
+
 Route::middleware(['auth'])->group(function () {
-            
+    
+    Route::get('/fiscales', 'PreregistroController@estadoFiscales')->name('disponibilidad.fiscal');
+    
     Route::get('/resumen', 'ResumenCarpetaController@showResumen')->name('carpeta.detalle');
     Route::get('/resumen-denunciante', 'ResumenCarpetaController@detalleDenunciante')->name('resumen.denunciante');
     Route::get('/resumen-denunciado', 'ResumenCarpetaController@detalleDenunciado')->name('resumen.denunciado');
@@ -264,8 +265,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('agregar-autoridad/{id}/eliminar', 'AutoridadController@delete')->name('delete.autoridad');
     
     /* --------Rutas para Turnar----------- */
-    Route::get('turnar/{id}','EstadoController@index');
-    Route::post('/turnar/actualizar','EstadoController@editar')->name('estado.edit');
+    Route::get('estadoCarpeta','EstadoController@index')->name('turnar.carpeta');
+    Route::post('estadoCarpeta','EstadoController@editar')->name('estado.edit');
     
     /* --------Rutas para Actas de hechos----------- */
     Route::get('actas','ActasHechosController@showform')->name('new.actahechos');
@@ -364,5 +365,4 @@ Route::get('codigos2/{id}', 'RegisterController@getCodigos2')->name('get.codigo2
 Route::get('listas/{id}', 'RegisterController@getListas')->name('get.listas');
 
 /********************generar pdf**********************************/
-
 Route::get('FormatoRegistro/{id}', 'PdfController@datos');

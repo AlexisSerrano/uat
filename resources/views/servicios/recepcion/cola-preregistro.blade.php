@@ -58,7 +58,9 @@
 			      		<td><a class="btn btn-primary" href="{{url("predenuncias/".$registro->id."/edit")}}"><i class="fa fa-check" aria-hidden="true"></i></a></td>
 			    	</tr>
 					@empty
-
+					<tr>
+						<td style="text-align:center;" colspan="7">Sin Registros</th>
+					</tr>
 			  		@endforelse
 			  	</tbody>
 			</table>
