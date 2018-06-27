@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('email', 100)->unique();
             $table->string('password', 100);
             $table->integer('idCarpeta')->unsigned()->nullable();
+            $table->integer('idPreregistro')->unsigned()->nullable();
             $table->string('session_id')->default(null);
             $table->string('puesto');
             $table->string('numFiscal');
