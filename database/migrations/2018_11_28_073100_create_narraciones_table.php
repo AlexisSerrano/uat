@@ -16,7 +16,7 @@ class CreateNarracionesTable extends Migration
         Schema::create('narraciones', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idCarpeta')->unsigned();
-            $table->Text('narracion');
+            $table->text('narracion');
             $table->tinyInteger('tipo');
             $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
             $table->timestamps();

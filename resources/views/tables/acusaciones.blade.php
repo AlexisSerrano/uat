@@ -1,6 +1,6 @@
 <div class="card">
         <div class="card-header">
-            <h6>Acusaciones</h6>
+            <h6>Denuncias</h6>
         </div>
 <div class="table-responsive">
     <table class="table table-hover">
@@ -50,8 +50,9 @@
             // alert("ok");
             $(".deleteBtn").on("click", function(e) {
                 var id = $(this).data("acusacion-id");
-            e.preventDefault()
-                swal({
+                e.preventDefault()
+                swal(
+                    {
                     title: "¿Está seguro de eliminarlo?",
                     text: "¡No podrá recuperar este registro!",
                     type: "warning",
@@ -62,13 +63,14 @@
                     closeOnConfirm: true,
                     closeOnCancel: true },
                     function(isConfirm){
-                if (isConfirm) {
-              
-                 window.location.href=route('delete.acusacion',id);
-                //  window.location.href=route("agregar-denunciado/'.$denunciante->id.'/eliminar");
-                }
-        });
-        });
+                        if (isConfirm) {
+                    
+                        window.location.href=route('delete.acusacion',id);
+                        //  window.location.href=route("agregar-denunciado/'.$denunciante->id.'/eliminar");
+                        }
+                    }
+                );
+            });
         });
   </script>  
 @endpush
