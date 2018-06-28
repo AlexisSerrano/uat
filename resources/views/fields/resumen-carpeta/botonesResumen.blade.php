@@ -65,7 +65,7 @@ $barra = getNavCaso();
                             <tr>
                                 <td style="padding:0;text-align:left;">
                                     <a style="width:100%;text-align:left;" class="{{ Request::is( 'resumen-acusaciones') ? 'active1' : '' }} btn btn-default acusaciones" href="{{route('resumen.acusaciones')}}">
-                                        <span class="badge badge-info right">{{$barra['cacusaciones']}}</span> Acusaciones
+                                        <span class="badge badge-info right">{{$barra['cacusaciones']}}</span> Denuncias
                                     </a>
                                 </td>
                             </tr>
@@ -83,7 +83,7 @@ $barra = getNavCaso();
                             <tr>
                                 <td style="padding:0;text-align:left;">
                                     <a style="width:100%;text-align:left;" class="{{ Request::is( 'resumen-vehiculo') ? 'active1' : '' }} btn btn-default vehiculos" href="{{route('resumen.observaciones')}}">
-                                        <span class="badge badge-info right">0{{$barra['cdefensa']}}</span> Vehiculos
+                                        <span class="badge badge-info right">{{$barra['cvehiculos']}}</span> Vehiculos
                                     </a>
                                 </td>
                             </tr>
