@@ -303,6 +303,8 @@ Route::middleware(['auth'])->group(function () {
     
     
     /* --------Rutas para Periciales----------- */
+
+    Route::get('solicitudes/periciales','PericialesController@getMensajesP');
     Route::get('periciales','PericialesController@pericialesindex');
     Route::post('periciales/agregar','PericialesController@agregar')->name('store.agregar');
     Route::post('periciales/psicologo','PericialesController@psico')->name('store.psicologo');

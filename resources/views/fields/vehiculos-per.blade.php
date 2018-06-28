@@ -177,3 +177,6 @@
 </div>
 </div>
 {!! Form::close() !!}
+
+<br>
+@include('tables.solicitudVehic')

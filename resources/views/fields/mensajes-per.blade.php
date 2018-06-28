@@ -61,6 +61,10 @@
 </div>
 </div>
 {!! Form::close() !!}
+<br>
+@include('tables.solicitudMensajes')
+
+
 @push('scripts')
 <script>
 	$('#submitMensaje').on('submit', function(){

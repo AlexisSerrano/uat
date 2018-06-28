@@ -60,6 +60,35 @@ class PericialesController extends Controller{
             foreach($victimas2 as $victima){
                 $victimas[$victima->nombres.'-'.$victima->primerAp.'-'.$victima->segundoAp] = $victima->nombres.' '.$victima->primerAp.' '.$victima->segundoAp;
             }
+
+           // $idCarpeta=1;
+       
+            $psicoSolicitud=DB::table('per_psicologos')
+            ->where('per_psicologos.idCarpeta',$idCarpeta)
+            ->select('per_psicologos.created_at as fecha','per_psicologos.nombre','per_psicologos.primerAp','per_psicologos.segundoAp')
+            ->get();
+            $solicitudV=DB::table('per_vehiculos')
+            ->join('cat_marca as marca','marca.id','=','per_vehiculos.idMarca')
+            ->where('per_vehiculos.idCarpeta',$idCarpeta)
+            ->select('per_vehiculos.created_at as fecha','marca.nombre as marca','per_vehiculos.modelo',
+            'per_vehiculos.placas','per_vehiculos.nombre','per_vehiculos.primerAp',
+            'per_vehiculos.segundoAp','per_vehiculos.color')
+            ->get();
+            $soliLesiones=db::table('per_lesiones')
+            ->where('per_lesiones.idCarpeta',$idCarpeta)
+            ->select('per_lesiones.created_at as fecha','per_lesiones.nombre','per_lesiones.primerAp',
+            'per_lesiones.segundoAp')
+            ->get();
+            $soliMensaje=db::table('per_mensajes')
+            ->where('per_mensajes.idCarpeta',$idCarpeta)
+            ->select('per_mensajes.created_at as fecha','per_mensajes.nombre','per_mensajes.primerAp','per_mensajes.segundoAp')
+            ->get();
+    
+           //dd($solicitudV);
+            //dd($idCarpeta);
+            // return view('forms.periciales')
+           // return view('forms.periciales')
+            
             
             return view('forms.periciales')->with('idCarpeta', $idCarpeta)
                 ->with('abogados', $abogados)
@@ -69,7 +98,11 @@ class PericialesController extends Controller{
                 ->with('marca', $marca)
                 ->with('submarca', $submarca)
                 ->with('tipo', $tipo)
-                ->with('estadoscivil', $estadoscivil);
+                ->with('estadoscivil', $estadoscivil)
+                ->with('psicoSolicitud',$psicoSolicitud)
+                ->with('solicitudV',$solicitudV)
+                ->with('soliMensaje',$soliMensaje)
+                ->with('soliLesiones',$soliLesiones);
         }else{
             return redirect()->route('home');
         }
@@ -92,7 +125,7 @@ class PericialesController extends Controller{
             $PerMensaje->telefono = $request->numerot;
             $PerMensaje->telefono_destino = $request->numero2t;
             $PerMensaje->narracion = $request->narraciont;
-            $PerMensaje->fecha = $request->fechamen;
+
             $PerMensaje->save();
             // if($PerMensaje->save()){
             //     Alert::success('Registro guardado con éxito', 'Hecho');
@@ -121,7 +154,7 @@ class PericialesController extends Controller{
         ->select('per_mensajes.id','per_mensajes.idCarpeta','per_mensajes.nombre',
         'per_mensajes.primerAp','per_mensajes.segundoAp','per_mensajes.marca',
         'per_mensajes.imei','per_mensajes.compania','per_mensajes.telefono',
-        'per_mensajes.telefono_destino','per_mensajes.narracion','per_mensajes.fecha')
+        'per_mensajes.telefono_destino','per_mensajes.narracion','per_mensajes.created_at as fecha')
         ->first();
         $data = array('id' => $id,
         'idCarpeta' => $pericial->idCarpeta,
@@ -144,12 +177,11 @@ class PericialesController extends Controller{
         try{
             $idCarpeta = session('carpeta');
             $Psicologo = new Psicologo;
-            $Psicologo->idCarpeta = 1;
+            $Psicologo->idCarpeta = session('carpeta');
             $Psicologo->nombre = $NombreComp2[0];
             $Psicologo->primerAp = $NombreComp2[1];
             $Psicologo->segundoAp = $NombreComp2[2];
             $Psicologo->numero = $request->numerop;
-            $Psicologo->fecha = $request->fecha_nac;
             $Psicologo->delito = $request->idDelito;
             if($Psicologo->save()){
                 Alert::success('Registro guardado con éxito', 'Hecho');
@@ -181,7 +213,7 @@ class PericialesController extends Controller{
         $psico = DB::table('per_psicologos')->where('per_psicologos.id', $id)
         ->join('cat_delito','cat_delito.id','=','per_psicologos.delito')
         ->select('per_psicologos.id','per_psicologos.idCarpeta','per_psicologos.nombre',
-        'per_psicologos.primerAp','per_psicologos.segundoAp','per_psicologos.numero','per_psicologos.fecha','cat_delito.nombre as delito')
+        'per_psicologos.primerAp','per_psicologos.segundoAp','per_psicologos.numero','per_psicologos.created_at as fecha','cat_delito.nombre as delito')
         ->first();
         $data = array('id' => $id,
         'idCarpeta' => $psico->idCarpeta,
@@ -282,7 +314,7 @@ class PericialesController extends Controller{
             'per_vehiculos.modelo','per_vehiculos.color','per_vehiculos.numero_serie',
             'per_vehiculos.lugar_fabricacion','per_vehiculos.placas','per_vehiculos.nombre',
             'per_vehiculos.primerAp','per_vehiculos.segundoAp','per_vehiculos.numero',
-            'per_vehiculos.calle','per_vehiculos.num_ext','per_vehiculos.num_int','per_vehiculos.fecha')
+            'per_vehiculos.calle','per_vehiculos.num_ext','per_vehiculos.num_int','per_vehiculos.created_at as fecha')
             ->first();
             $data = array('id' => $id,
             'idCarpeta' => $vehiculo->idCarpeta,
@@ -314,11 +346,10 @@ class PericialesController extends Controller{
         try{
             $idCarpeta = session('carpeta');
             $lesiones = new Lesione;
-            $lesiones->idCarpeta = 1;
+            $lesiones->idCarpeta = session('carpeta');
             $lesiones->nombre = $NombreComp4[0];
             $lesiones->primerAp =$NombreComp4[1];
-            $lesiones->segundoAp = $NombreComp4[2];
-            $lesiones->fecha = $request->fecha_nac;        
+            $lesiones->segundoAp = $NombreComp4[2];        
             if($lesiones->save()){
                 Alert::success('Registro guardado con éxito', 'Hecho');
               
@@ -344,7 +375,7 @@ class PericialesController extends Controller{
     public function getlesion($id){
         $lesion = DB::table('per_lesiones')->where('per_lesiones.id', $id)
         ->select('per_lesiones.id','per_lesiones.idCarpeta','per_lesiones.nombre',
-        'per_lesiones.primerAp','per_lesiones.segundoAp','per_lesiones.fecha')
+        'per_lesiones.primerAp','per_lesiones.segundoAp','per_lesiones.created_at as fecha')
         ->first();
         $data = array('id' => $id,
         'idCarpeta' =>  $lesion->idCarpeta,
@@ -432,6 +463,24 @@ class PericialesController extends Controller{
            'fecha' => $fechahum);
            return response()->json($data);
        }
+
+    //    public function getMensajesP(){
+
+    //    //$idCarpeta=session('carpeta');
+    //    $idCarpeta=1;
+       
+    //     $mensajesSol=DB::table('per_psicologos')
+    //     ->where('per_psicologos.idCarpeta',$idCarpeta)
+    //     ->select('per_psicologos.fecha','per_psicologos.nombre','per_psicologos.primerAp','per_psicologos.segundoAp')
+    //     ->get();
+
+
+    //    //dd($mensajesSol);
+    //     //dd('hola');
+    //     return view('forms.periciales')
+    //    // return view('forms.periciales')
+    //     ->with('mensajesSol',$mensajesSol);
+    //     } 
    
 
   

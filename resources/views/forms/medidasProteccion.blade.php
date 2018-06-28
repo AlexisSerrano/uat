@@ -4,7 +4,7 @@
 @include('fields.errores')
 {!!Form::open(['route' => 'addMedidas', 'id'=>'form'])!!}
 
- @include('fields.buttons-navegacion')
+ {{-- @include('fields.buttons-navegacion') --}}
  @include('fields.botonborrar')
  <br>
 

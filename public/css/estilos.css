@@ -336,4 +336,10 @@ body::-webkit-scrollbar-thumb {
 			background-color: black;
 			border-color: black;
 		}
+.pendiente{
+color: #dda61e;
 
+}
+.recibido{
+	color:#138c13
+}

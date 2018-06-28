@@ -25,7 +25,7 @@ class CreatePerMensajesTable extends Migration
             $table->string('telefono',15);
             $table->string('telefono_destino',15);
             $table->string('narracion',300);
-            $table->date('fecha');
+           
             // $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
             // $table->foreign('idPersona')->references('id')->on('persona');
             $table->timestamps();

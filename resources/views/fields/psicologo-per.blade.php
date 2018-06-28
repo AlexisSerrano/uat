@@ -46,3 +46,6 @@
 	
 </div>
 {!! Form::close() !!}
+
+<br>
+@include('tables.psicologosSolicitud')
