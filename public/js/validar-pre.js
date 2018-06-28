@@ -158,6 +158,113 @@ if ($('#idRazon2').val().length == 0){
 //    // window.location.href=route('preregistro.create');   
 // }
 
+ //modulo empresa
+if ($('#nombre1').val().length == 0){
+    completo=1;
+    console.log("esta vacio");
+     return false;
+   // window.location.href=route('preregistro.create');   
+}
+
+// if ($('#fechaAltaEmpresa').val().length == 0){
+//  completo=1;
+//  console.log("esta vacio");
+//   return false;
+// // window.location.href=route('preregistro.create');   
+// }
+// if ($('#rfc1').val().length == 0){
+//  completo=1;
+//  console.log("esta vacio");
+//   return false;
+// // window.location.href=route('preregistro.create');   
+// }
+// if ($('#homo1').val().length == 0){
+//     completo=1;
+//     console.log("esta vacio");
+//      return false;
+//    // window.location.href=route('preregistro.create');   
+//    }
+//    if ($('#repLegal').val().length == 0){
+//     completo=1;
+//     console.log("esta vacio");
+//      return false;
+//    // window.location.href=route('preregistro.create');   
+//    }
+//    if ($('#telefono1').val().length == 0){
+//     completo=1;
+//     console.log("esta vacio");
+//      return false;
+//    // window.location.href=route('preregistro.create');   
+//    }
+//    if ($('#idEstado').val().length == 0){
+//     completo=1;
+//     console.log("esta vacio");
+//      return false;
+//    // window.location.href=route('preregistro.create');   
+//    }
+// if ($('#idMunicipio').val().length == 0){
+//  completo=1;
+//  console.log("esta vacio");
+//   return false;
+// // window.location.href=route('preregistro.create');   
+// }
+// if ($('#idLocalidad').val().length == 0){
+//  completo=1;
+//  console.log("esta vacio");
+//   return false;
+// // window.location.href=route('preregistro.create');   
+// }
+
+// if ($('#idColonia').val().length == 0){
+//  completo=1;
+//  console.log("esta vacio");
+//   return false;
+// // window.location.href=route('preregistro.create');   
+// }
+// if ($('#cp').val().length == 0){
+//  completo=1;
+//  console.log("esta vacio");
+//   return false;
+// // window.location.href=route('preregistro.create');   
+// }
+
+// if ($('#calle1').val().length == 0){
+//  completo=1;
+//  console.log("esta vacio");
+//   return false;
+// // window.location.href=route('preregistro.create');   
+// }
+// if ($('#numExterno1').val().length == 0){
+//  completo=1;
+//  console.log("esta vacio");
+//   return false;
+// // window.location.href=route('preregistro.create');   
+// }
+// if ($('#numInterno1').val().length == 0){
+//  completo=1;
+//  console.log("esta vacio");
+//   return false;
+// // window.location.href=route('preregistro.create');   
+// }
+// // if ($('#correo2').val().length == 0){
+// //     completo=1;
+// //     console.log("esta vacio");
+// //      return false;
+// //    // window.location.href=route('preregistro.create');   
+// // }
+// if ($('#idRazon1').val().length == 0){
+//  completo=1;
+//  console.log("esta vacio");
+//   return false;
+// // window.location.href=route('preregistro.create');   
+// }
+// // if ($('#tipoActa').val().length == 0){
+// //     completo=1;
+// //     console.log("esta vacio");
+// //      return false;
+// //    // window.location.href=route('preregistro.create');   
+// // }
+
    else{
        console.log("esta bien ");
            	$("#pantalla").removeClass("loadPage");
@@ -170,7 +277,7 @@ if ($('#idRazon2').val().length == 0){
 $(document).ready(function(){
 
     // $("#prueba").click(function(){
-        $("form").submit(function(){
+        $("#form.registro").submit(function(){
         validar();
     });
 
