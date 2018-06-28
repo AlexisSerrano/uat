@@ -27,9 +27,9 @@ class CreateActasHechosTable extends Migration
             $table->string('expedido');
             $table->date('fecha_nac');
             $table->integer('idDomicilio')->unsigned()->default(1);
-            $table->integer('idOcupacion')->unsigned();
-            $table->integer('idEstadoCivil')->unsigned();
-            $table->integer('idEscolaridad')->unsigned();
+            $table->integer('idOcupacion')->unsigned()->default(2941);
+            $table->integer('idEstadoCivil')->unsigned()->default(7);
+            $table->integer('idEscolaridad')->unsigned()->default(1);
             $table->string('telefono');
             $table->string('tipoActa');
             $table->Text('narracion');

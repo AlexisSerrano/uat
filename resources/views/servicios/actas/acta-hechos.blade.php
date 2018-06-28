@@ -44,7 +44,9 @@ $form = oldFormActas();
 @endsection
 @push('scripts')
 <script src="{{ asset('js/actas.js') }}"></script>
-<script src="{{ asset('js/curp.js') }}"></script> 
-	<script src="{{ asset('js/rfcFisico.js') }}"></script>
+<script src="{{ asset('js/rfcMoral-f.js') }}"></script>
+	<script src="{{ asset('js/rfcFisico-f.js') }}"></script>
+	<script src="{{ asset('js/curp-f.js') }}"></script>
+	<script src="{{ asset('js/selectsDirecciones.js') }}"></script>
 <script src="{{ asset('js/actas-hechos.js') }}"></script>
 @endpush
