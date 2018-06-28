@@ -18,6 +18,10 @@ class CreateUsersTable extends Migration
             $table->integer('idUnidad')->unsigned()->nullable();
             $table->integer('idZona')->nullable();
             $table->string('grupo')->nullable();
+            $table->boolean('grecepcion')->default(0);
+            $table->boolean('gorientador')->default(0);
+            $table->boolean('gfacilitador')->default(0);
+            $table->boolean('gcoordinador')->default(0);
             $table->string('username', 20);
             $table->string('nombreC', 100);
             $table->string('nombres', 100);

@@ -94,7 +94,7 @@
 				<div class="col">   
 					<div class="text-right">
 							<!--<a href="http://fiscaliaveracruz.gob.mx/" title="" class="btn btn-secondary">Cancelar</a>-->
-							<a href="{{url('predenuncias')}}" title="" class="btn btn-secondary">Cancelar</a>
+							<a href="{{route('predenuncias.index')}}" title="" class="btn btn-secondary">Cancelar</a>
 							{!!Form::submit('Guardar',array('class' => 'btn btn-primary'))!!}
 					
 					</div>

@@ -496,7 +496,7 @@ class PreregistroAuxController extends Controller
                 $caso->idFiscal = Auth::user()->id;
                 $caso->idUnidad = Auth::user()->idUnidad;
                 $caso->horaIntervencion = Carbon::now();
-                $caso->fechaDeterminacion = Carbon::now();
+                $caso->fiscalAtendio = Auth::user()->nombreC;
                 $caso->save();
                 $idCarpeta = $caso->id;
                 

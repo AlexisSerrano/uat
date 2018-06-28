@@ -34,6 +34,7 @@ use App\Models\CatLengua;
 use App\Models\CatNacionalidad;
 use App\Models\CatOcupacion;
 use App\Models\CatEstatusCaso;
+use App\Models\CatTipoDeterminacion;
 use Illuminate\Support\Facades\Session;
 use App\Models\Admin;
 use DB;
@@ -59,11 +60,22 @@ class EstadoController extends Controller
             ->where('carpeta.id','=', $id)
             ->get();
             
+        $tipoDeterminacion=CatTipoDeterminacion::where('nombre','!=','ARCHIVO TEMPORAL')
+        ->orderBy('nombre', 'ASC')
+        ->pluck('nombre','id');
 
+        $tipoArchivo=CatTipoDeterminacion::where('nombre','like','%archivo%')
+        ->orderBy('nombre', 'ASC')
+        ->pluck('nombre','id');
+        
         $informacion = CatEstatusCaso::orderBy('nombreEstatus', 'ASC')
             ->pluck('nombreEstatus','id');
         
-        return view('forms.turnar-carpeta')->with('informacion', $informacion)->with('estatus', $estatus);
+        return view('forms.turnar-carpeta')
+        ->with('informacion', $informacion)
+        ->with('tipoDeterminacion', $tipoDeterminacion)
+        ->with('tipoArchivo', $tipoArchivo)
+        ->with('estatus', $estatus);
     }
 
 

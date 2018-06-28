@@ -1,5 +1,5 @@
 @extends('template.form')
-@section('title', 'Agregar acusación')
+@section('title', 'Agregar denuncia')
 @section('content')
 @include('fields.buttons-navegacion')
 @include('fields.botonborrar')

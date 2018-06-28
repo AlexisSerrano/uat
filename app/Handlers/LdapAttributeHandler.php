@@ -31,7 +31,7 @@ class LdapAttributeHandler
                 $grupo4 = 'CN=FCoordinador,OU=UAT,OU=GRUPOS DE APLICACIONES,OU=FGE,DC=fiscaliaveracruz,DC=gob,DC=mx';
                 if ($grupo1==$grupo) {
                     $facilitador=1;
-                } 
+                }
                 if ($grupo2==$grupo) {
                     $orientador=1;
                 } 
@@ -63,11 +63,11 @@ class LdapAttributeHandler
             }
 
         }
-        // if($facilitador==0&&$orientador==0&&$recepcion==0&&$cordinador==0){
-        // }
 
         $texto = array(
+            'Recepcion-0' => 'recepcion',
             'Coordinador-0' => 'coordinador',
+            'Coordinadora-0' => 'coordinadora',
             'Sexagésimo-60' => 'sexagesimo',
             'Quincuagésimo noveno-59' => 'quincuagesimo noveno',
             'Quincuagésimo octavo-58' => 'quincuagesimo octavo',
@@ -290,6 +290,7 @@ class LdapAttributeHandler
             'Primera-1' => 'primera'
         );
 
+        //sacar el numero del fiscal en numero y letra
         $cadena = $ldapUser->title[0];
         $cadena = normaliza($cadena);
         foreach($texto as $text => $valor){
@@ -301,10 +302,7 @@ class LdapAttributeHandler
                 break;
             }
         }
-        
-        // echo $letra."<br>".$numero;
-        // dd('intento');
-        // dd($ldapUser);
+        //guardar los atributos del usuatio en la base de datos
         $eloquentUser->email = $ldapUser->userprincipalname[0];
         $eloquentUser->username  = $ldapUser->samaccountname[0];
         $eloquentUser->nombreC = $ldapUser->cn[0];
@@ -312,6 +310,10 @@ class LdapAttributeHandler
         $eloquentUser->apellidos = $ldapUser->sn[0];
         $eloquentUser->idUnidad = $ldapUser->extensionattribute2[0];
         $eloquentUser->grupo = $grupoad;
+        $eloquentUser->grecepcion = $recepcion;
+        $eloquentUser->gorientador = $orientador;
+        $eloquentUser->gfacilitador = $facilitador;
+        $eloquentUser->gcoordinador = $cordinador;
         $eloquentUser->idZona = $ldapUser->extensionattribute1[0];
         $eloquentUser->puesto = $ldapUser->title[0]." de la ".$ldapUser->department[0];
         if(isset($numero)&&isset($letra)){

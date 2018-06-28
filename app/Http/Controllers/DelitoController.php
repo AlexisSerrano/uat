@@ -73,13 +73,17 @@ class DelitoController extends Controller
             $domicilio->idMunicipio = $request->idMunicipio;
             $domicilio->idLocalidad = $request->idLocalidad;
             $domicilio->idColonia = $request->idColonia;
-            $domicilio->calle = $request->calle;
-            if ($request->numInterno==null) {
+            if (is_null($request->numInterno)) {
+                $domicilio->calle = $request->calle;
+            }else{
+                $domicilio->calle = 'SIN INFORMACION';
+            }
+            if (is_null($request->numInterno)) {
                 $domicilio->numExterno = 'S/N';
             }else{
                 $domicilio->numExterno = $request->numExterno;
             }
-            if ($request->numInterno==null) {
+            if (is_null($request->numInterno)) {
                 $domicilio->numInterno = 'S/N';
             }else{
                 $domicilio->numInterno = $request->numInterno;
@@ -97,36 +101,28 @@ class DelitoController extends Controller
             } else {
                 $tipifDelito->conViolencia = 0;
             }
-            
-            // if ($request->conViolencia==="1"){
-            //     $tipifDelito->conViolencia = 1;
-            //     $tipifDelito->idArma = $request->idArma;
-            //     $tipifDelito->idPosibleCausa = $request->idPosibleCausa;
-            // }
-            // $tipifDelito->idModalidad = $request->idModalidad;
-            $tipifDelito->formaComision = $request->formaComision;
-            // $tipifDelito->consumacion = $request->consumacion;
+           $tipifDelito->formaComision = $request->formaComision;
             $tipifDelito->fecha = $request->fecha;
             $tipifDelito->hora = $request->hora;
             $tipifDelito->idLugar = $request->idLugar;
             $tipifDelito->idZona = $request->idZona;
             $tipifDelito->idDomicilio = $idD1;
-            if ($request->entreCalle==null) {
+            if (is_null($request->entreCalle)) {
                 $tipifDelito->entreCalle = 'SIN INFORMACION';
             } else {
                 $tipifDelito->entreCalle = $request->entreCalle;
             }
-            if ($request->yCalle==null) {
+            if (is_null($request->yCalle)) {
                 $tipifDelito->yCalle = 'SIN INFORMACION';
             } else {
                 $tipifDelito->yCalle = $request->yCalle;
             }
-            if ($request->calleTrasera==null) {
+            if (is_null($request->calleTrasera)) {
                 $tipifDelito->calleTrasera = 'SIN INFORMACION';
             } else {
                 $tipifDelito->calleTrasera = $request->calleTrasera;
             }
-            if ($request->puntoReferencia==null) {
+            if (is_null($request->puntoReferencia)) {
                 $tipifDelito->puntoReferencia = 'SIN INFORMACION';
             } else {
                 $tipifDelito->puntoReferencia = $request->puntoReferencia;

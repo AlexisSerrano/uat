@@ -42,7 +42,7 @@
                 $('#direccion').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
                 $('#direccion').addClass("show");
                 completo=2;
-                console.log("todo bien!")
+                console.log("todo bien hecho en todos lo sentidos!")
             }
         }   
 

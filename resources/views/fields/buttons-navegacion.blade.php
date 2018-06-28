@@ -13,7 +13,7 @@ $barra = getNavCaso();
 	<a href="{{route('new.abogado')}}" class="{{$barra['abogado']}} form-control">Abogado <span class="badge badge-info right">{{$barra['cabogado']}}</span></a>
 	<a href="{{route('new.autoridad')}}"  class="{{$barra['autoridad']}} form-control">Autoridad <span class="badge badge-info right">{{$barra['cautoridad']}}</span></a>
 	<a href="{{route('new.delito')}}" class="{{$barra['delitos']}} form-control">Delitos <span class="badge badge-info right">{{$barra['cdelitos']}}</span></a>
-	<a href="{{route('new.acusacion')}}" class="{{$barra['acusaciones']}} form-control">Acusaciones <span class="badge badge-info right">{{$barra['cacusaciones']}}</span></a>
+	<a href="{{route('new.acusacion')}}" class="{{$barra['acusaciones']}} form-control">Denuncia <span class="badge badge-info right">{{$barra['cacusaciones']}}</span></a>
 	<a href="{{route('new.defensa')}}"  class="{{$barra['defensa']}} form-control">Defensa <span class="badge badge-info right">{{$barra['cdefensa']}}</span></a>
 	<a href="{{route('vehiculo.carpeta')}}"  class="{{$barra['vehiculos']}} form-control">Vehiculos <span class="badge badge-info right">{{$barra['cvehiculos']}}</span></a>
     <a href="{{route('observaciones')}}" class="{{$barra['hechos']}} form-control">Observaciones </a>

@@ -90,7 +90,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ColorSeeder::class);
         $this->call(ProcedenciaSeeder::class);
         $this->call(TipoUsoSeeder::class);
-        $this->call(ActasSeeder::class);
+        $this->call(OficiosSeeder::class);
         $this->call(ClaseVehiculoSeeder::class);
         $this->call(CavdSeeder::class);
         $this->call(MarcaSeeder::class);       

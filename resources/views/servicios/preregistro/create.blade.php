@@ -1,4 +1,4 @@
-{{-- 
+
 <style type="text/css">
 	.loadPage{
 		display: block;
@@ -27,7 +27,7 @@
 		.oculto{
 			display: none;
 		}
-	</style> --}}
+	</style>
 @extends('servicios.preregistro.templates.form2')
 
 @section('content')
@@ -46,7 +46,7 @@
 
 	
 
-{!!Form::open(['route' => 'preregistro.store'])!!}
+{!!Form::open(['route' => 'preregistro.store', 'id'=>'form.registro'])!!}
 
 <br>
 	<p class="lead" align="center">
@@ -54,9 +54,9 @@
 				PRE-REGISTRO
 
 	</p>
-	{{-- <span id="pantalla" class="oculto" >
+	<span id="pantalla" class="oculto" >
 		<p>Cargando...</p>
-	</span> --}}
+	</span>
 	<div>
 		@include('servicios.preregistro.fields.tipo-persona')
 	</div>
@@ -138,7 +138,9 @@
 							<div class="text-center">
 								<br>
 									<a href="http://fiscaliaveracruz.gob.mx/" title="" class="btn btn-primary">Cancelar</a>
+								
 									{!!Form::submit('Guardar',array('class' => 'btn btn-primary ', 'id'=>'cargando'))!!}
+									{!!Form::submit('Prueba',array('class' => 'btn btn-primary ', 'id'=>'prueba'))!!}
 									{{-- <button id="prueba" type="button" class="btn btn-primary">prueba</button> --}}
 								<br>
 							
@@ -179,57 +181,11 @@
 	<script src="{{ asset('js/curp.js') }}"></script> 
 	<script src="{{ asset('js/rfcFisico.js') }}"></script>
 	<script src="{{ asset('js/rfcMoral.js') }}"></script>
+	<script src="{{ asset('js/validar-pre.js') }}"></script>
 	<script src="{{ asset('js/jquery.disableAutoFill.min.js')}}" ></script>
 	
 	{{-- <script src="{{ asset('js/rfcMoral.js') }}"></script> --}}
 	<script>
-	$(document).ready(function(){
-		$("#cargando").click(function(event){
-			console.log("entro");
-
-		});
-	});
-
-			
-	// 		console.log("entro");
-	// 			$("#pantalla").removeClass("loadPage");
-	//  			$("#pantalla").removeClass("oculto");
-	// 			 $("#pantalla").addClass("loadPage");
-    // 	});
-	// });
-/////////////////////////////////////////////////////////////////LO DE ARRINA SI SIRVE
-
-
-	// $(window).load(function(){
-	// 			$("#loadPage").delay(5000).fadeOut("slow");
-	// 		});
-
-	// 	 $('#direccion-tab').addClass("active");//Agrego la clase active al tab actual
-	// 	 $('.tab-pane').removeClass("active");
-		
-
-	// 		window.onload = function(){
-	// 			var contenedor = document.getElementById('
-	// 			loadPage');
-	// 			contenedor.removeClass("loadPage");
-	// 			contenedor.removeClass("oculto");
-	// 			 contenedor.addClass("oculto");
-	// 			}
-
-
-
-		//   function cargando(){
-				
-		// 		var contenedor2 = document.getElementById('
-		//  	loadPage');
-		// 			contenedor2.removeClass("loadPage");
-		// 	 	contenedor2.removeClass("oculto");
-		// 	 	contenedor2.addClass("loadPage");
-		// 	 }
-
-			
-
-
 	</script>
 		
 @endpush

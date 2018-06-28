@@ -20,10 +20,10 @@
 			@endif
 				<div class="row">
 					<div class=" input-group col-4 text-right">
-							<div class="input-group-prepend">
-								<button class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></button>
-							</div>
-							<input type="text" id="folio" name="folio" class="form-control" placeholder="buscar" aria-describedby="basic-addon1">
+						<div class="input-group-prepend">
+							<button class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></button>
+						</div>
+						<input type="text" id="folio" name="folio" class="form-control" placeholder="buscar" aria-describedby="basic-addon1">
 						
 					</div>
 				</div>
