@@ -360,7 +360,6 @@ class CarpetaController extends Controller
             $caso->fechaInicio = Carbon::now();
             $caso->horaIntervencion = Carbon::now();
             $caso->fiscalAtendio = Auth::user()->nombreC;
-            //$caso->fechaDeterminacion = Carbon::now();
             $caso->save();
             
             

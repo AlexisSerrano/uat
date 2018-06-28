@@ -68,11 +68,11 @@
                     <div class="row">
                         <div class="col">
                             {!! Form::label('rfc1', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
-                            {!! Form::text('rfc2', null, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
+                            {!! Form::text('rfc1', null, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
                         </div>
                         <div class="col">
                                 {!! Form::label('homo1', 'Homo', ['class' => 'col-form-label-sm']) !!}
-                            {!! Form::text('homo2',null, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
+                            {!! Form::text('homo1',null, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
                         </div>
                     </div>
                 </div>
@@ -97,6 +97,174 @@
                 {!! Form::select('ocupActa1',$ocupaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una ocupación','data-validation'=>'required']) !!}
             </div>
         </div>
+
+        <div class="col-4">
+            <div class="form-group">
+                {!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
+                {!! Form::text('telefono', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+            </div>
+        </div>
+        
+        <div class="col-4">
+            <div class="form-group">
+                {!! Form::label('idEstado2', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
+                {!! Form::select('idEstado2', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required']) !!}
+            </div>
+        </div>
+        
+        <div class="col-4">
+            <div class="form-group">
+                {!! Form::label('idMunicipio2', 'Municipio', ['class' => 'col-form-label-sm']) !!}
+                @if(isset($form['catMunicipios'], $form['idMunicipio2']))
+                {!! Form::select('idMunicipio2',  $form['catMunicipios'], $form['idMunicipio2'], ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+                @else
+                {!! Form::select('idMunicipio2', [''=>'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+                @endif
+            </div>
+        </div>
+        
+        <div class="col-4">
+            <div class="form-group">
+                {!! Form::label('idLocalidad2', 'Localidad', ['class' => 'col-form-label-sm']) !!}
+                @if(isset($form['catLocalidades'],$form['idLocalidad2']))
+                {!! Form::select('idLocalidad2',  $form['catLocalidades'], $form['idLocalidad2'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+                @else
+                {!! Form::select('idLocalidad2', [ '' => 'Seleccione una localidad'], null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+                @endif
+            </div>
+        </div>
+        
+        <div class="col-2">
+            <div class="form-group">
+                {!! Form::label('idColonia2', 'Colonia', ['class' => 'col-form-label-sm']) !!}
+                @if(isset($form['catColonias'],$form['idColonia2']))
+                {!! Form::select('idColonia2', $form['catColonias'], $form['idColonia2'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+                @else
+                {!! Form::select('idColonia2', ['' => 'colonia'], null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+                @endif
+            </div>
+        </div>
+        
+        <div class="col-2">
+            <div class="form-group">
+                {!! Form::label('cp2', 'Código postal', ['class' => 'col-form-label-sm']) !!}
+                @if(isset($form['catCodigoPostal'],$form['cp2']))
+                {!! Form::select('cp2', $form['catCodigoPostal'], $form['cp2'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+                @else
+                {!! Form::select('cp2', ['' => 'Seleccione CP'], null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+                @endif
+            </div>
+        </div>
+        
+        
+        <div class="col-4">
+            <div class="form-group">
+                {!! Form::label('calle', 'Calle', ['class' => 'col-form-label-sm']) !!}
+                {!! Form::text('calle', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle', 'data-validation'=>'required']) !!}
+            </div>
+        </div>
+        
+        <div class="col-2">
+            <div class="form-group">
+                {!! Form::label('numExterno', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
+                {!! Form::text('numExterno', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Exterior','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+            </div>
+        </div>
+        
+        <div class="col-2">
+            <div class="form-group">
+                {!! Form::label('numInterno', 'Número interior', ['class' => 'col-form-label-sm']) !!}
+                {!! Form::text('numInterno', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Interior', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        <div class="col-4">
+            <div class="form-group" >
+                {!! Form::label('docIdentificacion', 'Seleccione el documento de identificación:', ['class' => 'col-form-label-sm']) !!}
+                {!! Form::select('docIdentificacion', array('CREDENCIAL PARA VOTAR' => 'CREDENCIAL PARA VOTAR', 
+                'PASAPORTE' => 'PASAPORTE',
+                'CEDULA PROFESIONAL' => 'CÉDULA PROFESIONAL',
+                'CARTILLA DEL SERVICIO MILITAR NACIONAL' => 'CARTILLA DEL SERVICIO MILITAR NACIONAL',
+                'TARJETA UNICA DE IDENTIDAD MILITAR' => 'TARJETA ÚNICA DE IDENTIDAD MILITAR',
+                'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES' => 'TARJETA DE AFILIACIÓN AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES',
+                'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL' => 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL',
+                'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR' => 'CREDENCIALES DE EDUCACIÓN MEDIA SUPERIOR Y SUPERIOR',
+                'LICENCIA DE CONDUCIR' => 'LICENCIA DE CONDUCIR',
+                'CERTIFICADO DE MATRICULA CONSULAR' => 'CERTIFICADO DE MATRÍCULA CONSULAR',
+                'ACTA DE NACIMIENTO' => 'ACTA DE NACIMIENTO',
+                'CURP' => 'CURP',
+                'CONSTANCIA DE RESIDENCIA' => 'CONSTANCIA DE RESIDENCIA',
+                'CREDENCIAL DE TRABAJO' => 'CREDENCIAL DE TRABAJO',
+                ), null, ['class' => 'form-control form-control-sm','placeholder'=>'Seleccione el documento de identificación','data-validation'=>'required']) !!}
+            </div>
+        </div>
+        
+        
+        <div class="col-4">
+            <div class="form-group">
+                {!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
+                {!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación','data-validation'=>'required' ]) !!}
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        
+        <div id="ocultar" class="col">
+            <div class="form-group">
+                {!! Form::label('expedido', 'Expedido por', ['class' => 'col-form-label-sm expedido']) !!}
+                {!! Form::text('expedido', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Expedido por']) !!}
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="col-4"  >
+                <div class="form-group" >
+                    {!! Form::label('tipoActa', 'Seleccione el tipo de acta de hechos que requiere:', ['class' => 'col-form-label-sm']) !!}
+                    {!! Form::select('tipoActa', array('PASAPORTE' => 'PASAPORTE', 
+                    'CREDENCIAL DE TRABAJO/GAFFETE' => 'CREDENCIAL DE TRABAJO/GAFFETE',
+                    'TARJETA DE CREDITO/DEBITO' => 'TARJETA DE CRÉDITO/DÉBITO',
+                    'TELEFONO CELULAR' => 'TELÉFONO CELULAR',
+                    'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)' => 'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)',
+                    'PERMISO DE TRANSITO PARA EMPLACAMIENTO DE TAXIS' => 'PERMISO DE TRÁNSITO PARA EMPLACAMIENTO DE TAXIS',
+                    'FACTURA DE VEHICULO/MOTOCICLETA' => 'FACTURA DE VEHÍCULO/MOTOCICLETA',
+                    'TARJETA DE CIRCULACION' => 'TARJETA DE CIRCULACIÓN',
+                    'PLACAS DE CIRCULACION' => 'PLACAS DE CIRCULACIÓN',
+                    'LICENCIA DE CONDUCIR ESTATAL' => 'LICENCIA DE CONDUCIR ESTATAL',
+                    'LICENCIA DE CONDUCIR FEDERAL' => 'LICENCIA DE CONDUCIR FEDERAL',
+                    'DOCUMENTO/BIEN EXTRAVIADO O ROBADO' => 'DOCUMENTO/BIEN EXTRAVIADO O ROBADO',
+                    'CERTIFICADO DE ALUMBRAMIENTO' => 'CERTIFICADO DE ALUMBRAMIENTO',
+                    'OTROS DOCUMENTOS' => 'OTROS DOCUMENTOS'), null, ['class' => 'form-control form-control-sm','placeholder'=>'Seleccione un tipo de acta','data-validation'=>'required']) !!}
+                </div>
+            </div>
+            <div class="col-4 otros">
+                <div class="form-group">
+                    {!! Form::label('otro', 'Especifique', ['class' => 'col-form-label-sm']) !!}
+                    {!! Form::text('otro', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Especifique', 'data-validation'=>'required']) !!}
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>	
+        
+        <div class="col-12">
+            <div class="form-group">        
+                <label for="narracion" class="col-form-label-sm">Descripción de hechos</label>
+                @if(isset($form['narracion']))
+                {{ Form::textarea('narracion', $form['narracion'], ['class' => 'form-control form-control-sm', 'size' => '30x10', 'required']) }}
+                @else
+                {{ Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'size' => '30x10', 'required']) }}
+                @endif
+                {{-- <textarea name="narracion" id="narracion" cols="30" rows="10" class="form-control form-control-sm" required=>
+                    @if(isset($form['narracion']))
+                    {{$form['narracion']}}
+                    @endif
+                </textarea> --}}
+            </div>
+        {{-- </div> --}}
+        {{-- </div> --}}
+        </div>
+
+
 </div>
 
 
@@ -107,7 +275,7 @@
                 <div class="col-8">
                     <div class="form-group">
                         {!! Form::label('nombres2', 'Nombre de la empresa', ['class' => 'col-form-label-sm']) !!}
-                        {!! Form::text('nombres2',null, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}
+                        {!! Form::text('nombre2',null, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}
                     </div>
                 </div>
     
@@ -137,66 +305,66 @@
                 <div class="col-8">
                     <div class="form-group">
                         {!! Form::label('representanteLegal', 'Representante legal', ['class' => 'col-form-label-sm']) !!}
-                        {!! Form::text('representanteLegal', null, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal','data-validation'=>'required']) !!}
+                        {!! Form::text('representanteLegal2', null, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal','data-validation'=>'required']) !!}
                     </div>
                 </div>
-</div>
+{{-- </div> --}}
 
-<div class="row" id="extras">
+{{-- <div class="row" id="extras"> --}}
 <div class="col-4">
     <div class="form-group">
         {!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('telefono', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+        {!! Form::text('telefono2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
     </div>
 </div>
 
 <div class="col-4">
     <div class="form-group">
-        {!! Form::label('idEstado2', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::select('idEstado2', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required']) !!}
+        {!! Form::label('idEstado', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::select('idEstado', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required']) !!}
     </div>
 </div>
 
 <div class="col-4">
     <div class="form-group">
-        {!! Form::label('idMunicipio2', 'Municipio', ['class' => 'col-form-label-sm']) !!}
-        @if(isset($form['catMunicipios'], $form['idMunicipio2']))
-        {!! Form::select('idMunicipio2',  $form['catMunicipios'], $form['idMunicipio2'], ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+        {!! Form::label('idMunicipio', 'Municipio', ['class' => 'col-form-label-sm']) !!}
+        @if(isset($form['catMunicipios'], $form['idMunicipio']))
+        {!! Form::select('idMunicipio',  $form['catMunicipios'], $form['idMunicipio2'], ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
         @else
-        {!! Form::select('idMunicipio2', [''=>'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+        {!! Form::select('idMunicipio', [''=>'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
         @endif
     </div>
 </div>
 
 <div class="col-4">
     <div class="form-group">
-        {!! Form::label('idLocalidad2', 'Localidad', ['class' => 'col-form-label-sm']) !!}
-        @if(isset($form['catLocalidades'],$form['idLocalidad2']))
-        {!! Form::select('idLocalidad2',  $form['catLocalidades'], $form['idLocalidad2'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+        {!! Form::label('idLocalidad', 'Localidad', ['class' => 'col-form-label-sm']) !!}
+        @if(isset($form['catLocalidades'],$form['idLocalidad']))
+        {!! Form::select('idLocalidad',  $form['catLocalidades'], $form['idLocalidad2'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
         @else
-        {!! Form::select('idLocalidad2', [ '' => 'Seleccione una localidad'], null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+        {!! Form::select('idLocalidad', [ '' => 'Seleccione una localidad'], null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
         @endif
     </div>
 </div>
 
 <div class="col-2">
     <div class="form-group">
-        {!! Form::label('idColonia2', 'Colonia', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::label('idColonia', 'Colonia', ['class' => 'col-form-label-sm']) !!}
         @if(isset($form['catColonias'],$form['idColonia2']))
-        {!! Form::select('idColonia2', $form['catColonias'], $form['idColonia2'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+        {!! Form::select('idColonia', $form['catColonias'], $form['idColonia'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
         @else
-        {!! Form::select('idColonia2', ['' => 'colonia'], null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+        {!! Form::select('idColonia', ['' => 'colonia'], null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
         @endif
     </div>
 </div>
 
 <div class="col-2">
     <div class="form-group">
-        {!! Form::label('cp2', 'Código postal', ['class' => 'col-form-label-sm']) !!}
-        @if(isset($form['catCodigoPostal'],$form['cp2']))
-        {!! Form::select('cp2', $form['catCodigoPostal'], $form['cp2'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+        {!! Form::label('cp', 'Código postal', ['class' => 'col-form-label-sm']) !!}
+        @if(isset($form['catCodigoPostal'],$form['cp']))
+        {!! Form::select('cp', $form['catCodigoPostal'], $form['cp'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
         @else
-        {!! Form::select('cp2', ['' => 'Seleccione CP'], null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+        {!! Form::select('cp', ['' => 'Seleccione CP'], null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
         @endif
     </div>
 </div>
@@ -229,7 +397,7 @@
 <div class="col-4">
     <div class="form-group" >
         {!! Form::label('docIdentificacion', 'Seleccione el documento de identificación:', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::select('docIdentificacion', array('CREDENCIAL PARA VOTAR' => 'CREDENCIAL PARA VOTAR', 
+        {!! Form::select('docIdentificacion2', array('CREDENCIAL PARA VOTAR' => 'CREDENCIAL PARA VOTAR', 
         'PASAPORTE' => 'PASAPORTE',
         'CEDULA PROFESIONAL' => 'CÉDULA PROFESIONAL',
         'CARTILLA DEL SERVICIO MILITAR NACIONAL' => 'CARTILLA DEL SERVICIO MILITAR NACIONAL',
@@ -251,22 +419,22 @@
 <div class="col-4">
     <div class="form-group">
         {!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación','data-validation'=>'required' ]) !!}
+        {!! Form::text('numDocIdentificacion2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación','data-validation'=>'required' ]) !!}
         <div class="help-block with-errors"></div>
     </div>
 </div>
 
-<div id="ocultar" class="col">
+{{-- <div id="ocultar" class="col">
     <div class="form-group">
         {!! Form::label('expedido', 'Expedido por', ['class' => 'col-form-label-sm expedido']) !!}
-        {!! Form::text('expedido', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Expedido por']) !!}
+        {!! Form::text('expedido2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Expedido por']) !!}
         <div class="help-block with-errors"></div>
     </div>
-</div>
+</div> --}}
 <div class="col-4"  >
         <div class="form-group" >
             {!! Form::label('tipoActa', 'Seleccione el tipo de acta de hechos que requiere:', ['class' => 'col-form-label-sm']) !!}
-            {!! Form::select('tipoActa', array('PASAPORTE' => 'PASAPORTE', 
+            {!! Form::select('tipoActa2', array('PASAPORTE' => 'PASAPORTE', 
             'CREDENCIAL DE TRABAJO/GAFFETE' => 'CREDENCIAL DE TRABAJO/GAFFETE',
             'TARJETA DE CREDITO/DEBITO' => 'TARJETA DE CRÉDITO/DÉBITO',
             'TELEFONO CELULAR' => 'TELÉFONO CELULAR',
@@ -285,7 +453,7 @@
     <div class="col-4 otros">
         <div class="form-group">
             {!! Form::label('otro', 'Especifique', ['class' => 'col-form-label-sm']) !!}
-            {!! Form::text('otro', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Especifique', 'data-validation'=>'required']) !!}
+            {!! Form::text('otro2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Especifique', 'data-validation'=>'required']) !!}
             <div class="help-block with-errors"></div>
         </div>
     </div>	
@@ -300,10 +468,10 @@
 <div class="col-12">
     <div class="form-group">        
         <label for="narracion" class="col-form-label-sm">Descripción de hechos</label>
-        @if(isset($form['narracion']))
-        {{ Form::textarea('narracion', $form['narracion'], ['class' => 'form-control form-control-sm', 'size' => '30x10', 'required']) }}
+        @if(isset($form['narracion2']))
+        {{ Form::textarea('narracion2', $form['narracion'], ['class' => 'form-control form-control-sm', 'size' => '30x10', 'required']) }}
         @else
-        {{ Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'size' => '30x10', 'required']) }}
+        {{ Form::textarea('narracion2', null, ['class' => 'form-control form-control-sm', 'size' => '30x10', 'required']) }}
         @endif
         {{-- <textarea name="narracion" id="narracion" cols="30" rows="10" class="form-control form-control-sm" required=>
             @if(isset($form['narracion']))

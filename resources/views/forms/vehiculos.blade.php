@@ -1,5 +1,5 @@
 @extends('template.form')
-@section('title', 'Agregar vehículo')
+@section('title', 'Agregar vehículo involucrado')
 @section('content')
 @include('fields.buttons-navegacion')
 
@@ -8,7 +8,7 @@
 {{ csrf_field() }}
 <br>
 <div class="card">
-	<div class="card-header row">
+	{{-- <div class="card-header row">
 		<div class="col">
 			<button type="button" class="btn btn-primary form-control" onclick="vehiculoInvolucrado();">Vehículo involucrado</button>
 		</div>
@@ -16,12 +16,12 @@
 			<button type="button" name="botonRobados" class="btn btn-primary form-control" onclick="vehiculoRobado();">Vehículo robado</button>
 		</div>
 	</div>
+	 --}}
 	
-	
-	<object type="text/html" data="http://192.108.22.44:80/VRR/public/session_uatwf" name="systemVrr" id="systemVrr"  width="100%" height="500px">
+	{{-- <object type="text/html" data="http://192.168.137.1/VRR/public/session_uatwf" name="systemVrr" id="systemVrr"  width="100%" height="500px"> --}}
 	{{-- <object type="text/html" data="{{url('iframe')}}" name="systemVrr" id="systemVrr"  width="100%" height="1000px"> --}}
 		
-	</object>
+	{{-- </object> --}}
 	
 	<div class=" card-body boxone">
 		<div class="row no-gutters">
@@ -63,34 +63,35 @@
 		// 	datos();
 		// },5000);
 		
-		$("#systemVrr").hide();
-		$("#vehiculos").hide();
+		// $("#systemVrr").hide();
+		// $("#vehiculos").hide();
 		
-		function vehiculoInvolucrado() {
-			$("#systemVrr").hide();
-			$("#vehiculos").show();
-		}
+		// function vehiculoInvolucrado() {
+		// 	$("#systemVrr").hide();
+		// 	$("#vehiculos").show();
+		// }
 		// localStorage.setItem('session_id', "{{Auth::user()->session_id}}");
 		
-		function vehiculoRobado() {
-			$("#systemVrr").show();
-			$("#vehiculos").hide();
+		// function vehiculoRobado() {
+		// 	// frames['systemVrr'].location.reload();
+		// 	$("#systemVrr").show();
+		// 	$("#vehiculos").hide();
 			
-			var data_vrr={
-				"session_id":"{{Auth::user()->session_id}}",
-				"grupo":"{{Auth::user()->grupo}}",
-				"idUser":"{{Auth::user()->id}}",
-				"numCarpeta":"{{session('numCarpeta')}}",
-				"idCarpeta":"{{session('carpeta')}}",
-				"origen":"UAT"
-			};
+		// 	var data_vrr={
+		// 		"session_id":"{{Auth::user()->session_id}}",
+		// 		"grupo":"{{Auth::user()->grupo}}",
+		// 		"idUser":"{{Auth::user()->id}}",
+		// 		"numCarpeta":"{{session('numCarpeta')}}",
+		// 		"idCarpeta":"{{session('carpeta')}}",
+		// 		"origen":"UAT"
+		// 	};
 
-			setTimeout(function() {
-				var vehiculos = document.getElementById('systemVrr'); 
-				vehiculos.contentWindow.postMessage( JSON.stringify(data_vrr) , 'http://192.108.22.44');
-			},5000);
+		// 	setTimeout(function() {
+		// 		var vehiculos = document.getElementById('systemVrr'); 
+		// 		vehiculos.contentWindow.postMessage( JSON.stringify(data_vrr) , 'http://192.168.137.1');
+		// 	},5000);
 			
-		}
+		// }
 
 		
 	</script>

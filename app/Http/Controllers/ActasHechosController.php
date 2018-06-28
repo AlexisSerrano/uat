@@ -163,16 +163,17 @@ class ActasHechosController extends Controller
     public function addActas2(ActaRequest $request){
         DB::beginTransaction();
         try{
+            if($request->esEmpresa==0){
             $acta = new ActasHechos;
             $direccion = new Domicilio;
             $direccion->idMunicipio = $request->idMunicipio2;
             $direccion->idLocalidad = $request->idLocalidad2;
             $direccion->idColonia = $request->idColonia2;
-            $direccion->calle = $request->calle2;   
-            if($request->numInterno2!=''){
-                $direccion->numInterno = $request->numInterno2;
+            $direccion->calle = $request->calle;   
+            if($request->numInterno!=''){
+                $direccion->numInterno = $request->numInterno;
             }
-            $direccion->numExterno = $request->numExterno2;
+            $direccion->numExterno = $request->numExterno;
             $direccion->save();
             $ultimo = ActasHechos::orderBy('id','desc')->first();
             if($ultimo){
@@ -232,11 +233,93 @@ class ActasHechosController extends Controller
                 $acta->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa;
             }
             $acta->save();
+            dd($acta);
             if (!is_null($request->idPreregistro)){
                 $preregistro = Preregistro::find($request->idPreregistro);
                 $preregistro->statusCola = 22;
                 $preregistro->save();
             }
+        }elseif($request->esEmpresa==1){
+
+            $acta = new ActasHechos;
+            $direccion = new Domicilio;
+            $direccion->idMunicipio = $request->idMunicipio;
+            $direccion->idLocalidad = $request->idLocalidad;
+            $direccion->idColonia = $request->idColonia;
+            $direccion->calle = $request->calle2;   
+            if($request->numInterno2!=''){
+                $direccion->numInterno = $request->numInterno2;
+            }
+            $direccion->numExterno = $request->numExterno2;
+            $direccion->save();
+            $ultimo = ActasHechos::orderBy('id','desc')->first();
+            if($ultimo){
+                $new = $ultimo->folio+1;
+            }
+            else{
+                $new = 1;
+            }
+            $acta->folio = $new;
+            $acta->hora = Date::now()->format('H:i:s');
+            $acta->fecha = Date::now()->format('Y-m-d');
+            $acta->fiscal = Auth::user()->nombreC;
+            $acta->nombre = $request->nombre2;
+            $acta->esEmpresa = 1;
+            // $acta->primer_ap = $request->primerAp;
+            // $acta->segundo_ap = $request->segundoAp;
+            $acta->identificacion = $request->docIdentificacion2;
+            $acta->num_identificacion = $request->numDocIdentificacion2;
+            $acta->fecha_nac = $request->fechaAltaEmpresa;
+            $acta->idDomicilio = $direccion->id;
+            // $acta->idOcupacion = $request->ocupActa1;
+            // $acta->idEstadoCivil = $request->estadoCivilActa1;
+            // $acta->idEscolaridad = $request->escActa1;
+            $acta->telefono = $request->telefono2;
+            $acta->narracion = $request->narracion2;
+            
+            switch ($request->docIdentificacion2) {
+                case 'CREDENCIAL PARA VOTAR': $acta->expedido2 ="INSTITUTO NACIONAL ELECTORAL";
+                break;
+                case 'PASAPORTE':$acta->expedido2 ="SECRETARÍA DE RELACIONES EXTERIORES";
+                break;
+                case 'CEDULA PROFESIONAL':$acta->expedido2 ="DIRECCIÓN GENERAL DE PROFESIONES";
+                break;
+                case 'CARTILLA DEL SERVICIO MILITAR NACIONAL':$acta->expedido2 ="SECRETARÍA DE LA DEFENSA NACIONAL";
+                break;
+                case 'TARJETA UNICA DE IDENTIDAD MILITAR':$acta->expedido2 ="DISPOSICIONES DE CARÁCTER GENERAL";
+                break;
+                case 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES':$acta->expedido2 ="INAPAM";
+                break;
+                case 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL':$acta->expedido2 ="IMSS";
+                break;
+                case 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR':$acta->expedido2 ="DIRECCIÓN GENERAL DE ACREDITACIÓN, INCORPORACIÓN Y REVALIDACIÓN";
+                break;
+                case 'LICENCIA DE CONDUCIR':$acta->expedido2 ="SECRETARÍA DE COMUNICACIONES Y TRANSPORTES";
+                break;
+                case 'CERTIFICADO DE MATRICULA CONSULAR':$acta->expedido2 ="CERTIFICADO DE MATRICULA CONSULAR";
+                break;
+                case 'ACTA DE NACIMIENTO':$acta->expedido2 ="REGISTRO NACIONAL DE POBLACIÓN";
+                break;
+                case 'CURP':$acta->expedido2 ="REGISTRO NACIONAL DE POBLACIÓN";
+                break;
+                case 'CONSTANCIA DE RESIDENCIA':$acta->expedido2 ="SERVICIO DE ADMINISTRACIÓN TRIBUTARIA";
+                break;
+                default:$acta->expedido2 = $request->expedido2;
+                break;
+            }
+            if (!is_null($request->tipoActa2)){
+                $acta->tipoActa2 = (!is_null($request->otro))?$request->otro:$request->tipoActa2;
+            }
+            $acta->save();
+            dd($acta);
+            if (!is_null($request->idPreregistro)){
+                $preregistro = Preregistro::find($request->idPreregistro);
+                $preregistro->statusCola = 22;
+                $preregistro->save();
+            }
+        }
+
+
             DB::commit();
             $request->session()->flash('redirectoficio', url("actaoficio/$acta->id"));
             return redirect("actas-pendientes");

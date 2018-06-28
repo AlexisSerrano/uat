@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ActasSeeder extends Seeder
+class OficiosSeeder extends Seeder
 {
     /**
      * Run the database seeds.
