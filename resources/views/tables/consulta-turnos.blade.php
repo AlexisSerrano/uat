@@ -26,7 +26,7 @@
             @if (Jenssegers\Date\Date::parse($fiscal->updated_at)->diffForHumans()=='hace 1 segundo')
             <td colspan="3">Disponible</td>
             @else
-            <td>{{$fiscal->nombre."".$fiscal->primerAp."".$fiscal->segundoAp}}</td>
+            <td>{{$fiscal->nombre." ".$fiscal->primerAp." ".$fiscal->segundoAp}}</td>
             <td>{{$fiscal->folio}}</td>
             <td>Ocupado desde {{Jenssegers\Date\Date::parse($fiscal->updated_at)->diffForHumans()}}</td>
             @endif

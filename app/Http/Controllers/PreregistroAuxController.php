@@ -653,6 +653,7 @@ class PreregistroAuxController extends Controller
 
     public function devolverturno($id){  
         $turno = Preregistro::find($id);
+        $turno->idCarpeta=null;
         $status = $turno->statusCola;
         if ($status==23) {
             $turno->statusCola = null;
@@ -663,18 +664,31 @@ class PreregistroAuxController extends Controller
         $idCarpeta=session('carpeta');
 
         //dd($idCarpeta);
+        $usuario=User::find(Auth::user()->id);
+        $usuario->idCarpeta=null;
+        $usuario->save();
         
-        $carpeta = Carpeta::find($idCarpeta);
-        $carpeta->numCarpeta = null;
-        $carpeta->save();
+        $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
+        $contero=$bdbitacora->denunciado+$bdbitacora->denunciante+$bdbitacora->abogado+$bdbitacora->autoridad+$bdbitacora->delitos+$bdbitacora->acusaciones+$bdbitacora->defensa;
+
+        if($contero>0){
+            $carpeta = Carpeta::find($idCarpeta);
+            $carpeta->numCarpeta=null;
+            $carpeta->save();
+        }else{
+            $carpeta = Carpeta::find($idCarpeta);
+            $carpeta->delete();
+
+        }
+        
+        // $carpeta = Carpeta::find($idCarpeta);
+        // $carpeta->numCarpeta = null;
+        // $carpeta->save();
         //dd($carpeta);
         //$carpeta->delete();
         
         //$carpeta->delete();
 
-        $usuario=User::find(Auth::user()->id);
-        $usuario->idCarpeta=null;
-        $usuario->save();
         
         session()->forget('carpeta');
         session()->forget('preregistro');

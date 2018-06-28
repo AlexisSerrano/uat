@@ -73,9 +73,19 @@ class CarpetaController extends Controller
             Alert::info('No tiene ningún  caso en proceso.', 'Advertiencia');
             return redirect(url('carpetas'));
         }
-        $carpeta = Carpeta::find($idCarpeta);
-        $carpeta->numCarpeta=null;
-        $carpeta->save();
+        
+        $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
+        $contero=$bdbitacora->denunciado+$bdbitacora->denunciante+$bdbitacora->abogado+$bdbitacora->autoridad+$bdbitacora->delitos+$bdbitacora->acusaciones+$bdbitacora->defensa;
+
+        if($contero>0){
+            $carpeta = Carpeta::find($idCarpeta);
+            $carpeta->numCarpeta=null;
+            $carpeta->save();
+        }else{
+            $carpeta = Carpeta::find($idCarpeta);
+            $carpeta->delete();
+
+        }
         
         session()->forget('numCarpeta');
         session()->forget('carpeta');
