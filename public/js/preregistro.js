@@ -29,7 +29,7 @@ $(document).ready(function(){
             $('#collapsePersonales1').show();
             $('#collapsePersonales2').hide();
             $('#tipodeActa').hide();
-            mostrarpersonal()
+            mostrarpersonal();
             paraActadeHechos2();
         }
     });

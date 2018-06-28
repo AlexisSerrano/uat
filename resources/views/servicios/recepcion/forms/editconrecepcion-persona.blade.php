@@ -43,7 +43,7 @@
     
     <div class="row">
         <div class="text-left col">
-            <a href="{{url('predenuncias')}}" title="" class="btn btn-secondary ">Regresar</a>
+            <a href="{{route('predenuncias.index')}}" title="" class="btn btn-secondary ">Regresar</a>
         </div>       
         <div class="text-right col">
             <a href="{{url('estado/'.$preregistro->id.'/99')}}" title="button1" class="btn  btn-secondary btnEnCola" id="{{$preregistro->id}}">Descartar</a>

@@ -14,40 +14,42 @@
         {{-- @include('recepcion.tipo-p-edit') --}}
         <input type="hidden" name="esEmpresa" value="1">
     </div>
-        <div class="card-header lead" align="center">
-            Datos personales
+    
+    <div class="card-header lead" align="center">
+        Datos personales
+    </div>
+    
+    <div class="boxtwo">
+        <div class="col">
+        @include('servicios.recepcion.fields.empresa-edit')
         </div>
-            <div class="boxtwo">
-                <div class="col">
-                @include('servicios.recepcion.fields.empresa-edit')
-                </div>
-                <div class="form-group">
-                    <div class="col-12">
-                        <label for="narracion" class="col-form-label-sm">Descripción de hechos </label>
-                        {!!Form::label('nombre',$preregistro->narracion ,['class'=> 'col-form-label-sm labelCambioNarracion'])!!}
-                        <div class="input-group inputOculto" id="inputNarracion">
-                            {{ Form::textarea('narracion', $preregistro->narracion, ['class'=>'form-control form-control-sm','size' => '30x5']) }}
-                            <!--textarea name="narracion" id="" cols="30" rows="10" class="form-control form-control-sm" ></textarea-->
-                            <input type="button" id="botonCambioNarracion" value="Cancelar" class="btn btn-sm btn-danger">
-                        </div>
-                    </div>
+        <div class="form-group">
+            <div class="col-12">
+                <label for="narracion" class="col-form-label-sm">Descripción de hechos </label>
+                {!!Form::label('nombre',$preregistro->narracion ,['class'=> 'col-form-label-sm labelCambioNarracion'])!!}
+                <div class="input-group inputOculto" id="inputNarracion">
+                    {{ Form::textarea('narracion', $preregistro->narracion, ['class'=>'form-control form-control-sm','size' => '30x5']) }}
+                    <!--textarea name="narracion" id="" cols="30" rows="10" class="form-control form-control-sm" ></textarea-->
+                    <input type="button" id="botonCambioNarracion" value="Cancelar" class="btn btn-sm btn-danger">
                 </div>
             </div>
-                
-        <div class="boxtwo">
-            <div class="row">
-                <div class="text-left col">
-                    <a href="{{url('predenuncias')}}" title="" class="btn btn-secondary ">Regresar</a>
-                </div>       
-                <div class="text-right col">
-                    <a href="{{url('estado/'.$preregistro->id.'/99')}}" title="button1" class="btn  btn-secondary ">Descartar</a>
-                    <a href="{{url('estado/'.$preregistro->id.'/0')}}" title="button1" class="btn  btn-secondary ">En cola</a>
-                    <a href="#" title="" class="btn btn-secondary btnEnUrgente" id="{{$preregistro->id}}">Urgente</a>
-                    {!!Form::submit('Guardar',array('class' => 'btn  btn-primary'))!!}
-                </div>
-                <meta name="csrf-token" content="{{ csrf_token() }}">
-            </div>
         </div>
+    </div>
+            
+    <div class="boxtwo">
+        <div class="row">
+            <div class="text-left col">
+                <a href="{{route('predenuncias.index')}}" title="" class="btn btn-secondary ">Regresar</a>
+            </div>       
+            <div class="text-right col">
+                <a href="{{url('estado/'.$preregistro->id.'/99')}}" title="button1" class="btn  btn-secondary ">Descartar</a>
+                <a href="{{url('estado/'.$preregistro->id.'/0')}}" title="button1" class="btn  btn-secondary ">En cola</a>
+                <a href="#" title="" class="btn btn-secondary btnEnUrgente" id="{{$preregistro->id}}">Urgente</a>
+                {!!Form::submit('Guardar',array('class' => 'btn  btn-primary'))!!}
+            </div>
+            <meta name="csrf-token" content="{{ csrf_token() }}">
+        </div>
+    </div>
 
 
     {!!Form::close()!!}
