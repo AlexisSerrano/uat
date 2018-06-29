@@ -20,7 +20,7 @@
                 @else
                     @foreach($vehiculos as $vehiculo)
                             <tr id="{{$vehiculo->id}}">
-                            <td>{{ $vehiculo->delito }}</td>
+                            <td>{{ $vehiculo->delito.' '.$vehiculo->desagregacion1.' '.$vehiculo->desagregacion2 }}</td>
                             <td>{{ $vehiculo->marca }}</td>
                             <td>{{ $vehiculo->modelo }}</td>
                             <td>{{ $vehiculo->placas }}</td>   

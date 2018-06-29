@@ -279,30 +279,21 @@ class CarpetaController extends Controller
         return $autoridades;
     }
 
-    public static function getFamiliares($id){
-        $familiaresDenunciado = DB::table('familiar')
-            ->join('cat_ocupacion', 'cat_ocupacion.id', '=', 'familiar.idOcupacion')
-            ->join('persona', 'persona.id', '=', 'familiar.idPersona')
-            ->join('variables_persona', 'variables_persona.idPersona', '=', 'persona.id')
-            ->join('extra_denunciado', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
-            ->select('familiar.nombres as familiarNombre','familiar.primerAp as familiarPrimerAp', 'familiar.segundoAp as familiarSegundoAp', 'familiar.parentesco', 'cat_ocupacion.nombre as ocupacion' , 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('variables_persona.idCarpeta', '=', $id);
-        $familiares = DB::table('familiar')
-            ->join('cat_ocupacion', 'cat_ocupacion.id', '=', 'familiar.idOcupacion')
-            ->join('persona', 'persona.id', '=', 'familiar.idPersona')
-            ->join('variables_persona', 'variables_persona.idPersona', '=', 'persona.id')
-            ->join('extra_denunciante', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-            ->select('familiar.nombres as familiarNombre','familiar.primerAp as familiarPrimerAp', 'familiar.segundoAp as familiarSegundoAp', 'familiar.parentesco', 'cat_ocupacion.nombre as ocupacion' , 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-            ->where('variables_persona.idCarpeta', '=', $id)
-            ->union($familiaresDenunciado)
-            ->get();
-        return $familiares;
-    }
 
     public static function getDelitos($id){
         $delitos = DB::table('tipif_delito')
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
-            ->select('tipif_delito.id', 'cat_delito.id as idDelito', 'cat_delito.nombre as delito', 'tipif_delito.formaComision as modalidad', 'tipif_delito.fecha', 'tipif_delito.hora')
+            ->join('cat_agrupacion1', 'cat_agrupacion1.id', '=', 'tipif_delito.idAgrupacion1')
+            ->join('cat_agrupacion2', 'cat_agrupacion2.id', '=', 'tipif_delito.idAgrupacion2')
+            ->select(
+                'tipif_delito.id', 
+                'cat_delito.id as idDelito', 
+                'cat_delito.nombre as delito',
+                DB::raw('(CASE WHEN cat_agrupacion1.nombre = "SIN AGRUPACION" THEN "" ElSE cat_agrupacion1.nombre END) AS desagregacion1'),
+                DB::raw('(CASE WHEN cat_agrupacion2.nombre = "SIN AGRUPACION" THEN "" ElSE cat_agrupacion2.nombre END) AS desagregacion2'),
+                'tipif_delito.formaComision as modalidad', 
+                'tipif_delito.fecha', 
+                'tipif_delito.hora')
             ->where('tipif_delito.idCarpeta', '=', $id)
             ->get();
         return $delitos;
@@ -344,11 +335,21 @@ class CarpetaController extends Controller
         $vehiculos = DB::table('vehiculo')
             ->join('tipif_delito', 'tipif_delito.id', '=', 'vehiculo.idTipifDelito')
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+            ->join('cat_agrupacion1', 'cat_agrupacion1.id', '=', 'tipif_delito.idAgrupacion1')
+            ->join('cat_agrupacion2', 'cat_agrupacion2.id', '=', 'tipif_delito.idAgrupacion2')
             ->join('cat_submarcas', 'cat_submarcas.id', '=', 'vehiculo.idSubmarca')
             ->join('cat_marca', 'cat_marca.id', '=', 'cat_submarcas.idMarca')
             ->join('cat_tipo_vehiculo', 'cat_tipo_vehiculo.id', '=', 'vehiculo.idTipoVehiculo')
             ->join('cat_color', 'cat_color.id', '=', 'vehiculo.idColor')
-            ->select('vehiculo.id', 'cat_delito.nombre as delito', 'cat_marca.nombre as marca', 'vehiculo.modelo', 'vehiculo.placas', 'cat_tipo_vehiculo.nombre as tipovehiculo', 'cat_color.nombre as color')
+            ->select('vehiculo.id', 
+                'cat_delito.nombre as delito',
+                DB::raw('(CASE WHEN cat_agrupacion1.nombre = "SIN AGRUPACION" THEN "" ElSE cat_agrupacion1.nombre END) AS desagregacion1'),
+                DB::raw('(CASE WHEN cat_agrupacion2.nombre = "SIN AGRUPACION" THEN "" ElSE cat_agrupacion2.nombre END) AS desagregacion2'),
+                'cat_marca.nombre as marca', 
+                'vehiculo.modelo', 
+                'vehiculo.placas', 
+                'cat_tipo_vehiculo.nombre as tipovehiculo', 
+                'cat_color.nombre as color')
             ->where('tipif_delito.idCarpeta', '=', $id)
             ->get();
         return $vehiculos;

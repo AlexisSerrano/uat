@@ -18,7 +18,7 @@
             @else
                 @foreach($delitos as $delito)
                     <tr id="{{$delito->id}}">
-                        <td>{{ $delito->delito }}</td>
+                        <td>{{ $delito->delito.' '.$delito->desagregacion1.' '.$delito->desagregacion2 }}</td>
                         <td>{{ $delito->modalidad }}</td>
                         <td>{{ $delito->fecha }}</td>
                         <td>{{ $delito->hora }}</td>
