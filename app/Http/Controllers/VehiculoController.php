@@ -111,6 +111,8 @@ public function storeVehiculo(Request $request)
     }
     if (!is_null($request->placas)) {    
         $vehiculo->placas = $request->placas;
+    }else{
+        $vehiculo->placas = 'XXXXXXX';
     }
     if (!is_null($request->idEstado)) {    
         $vehiculo->idEstado = $request->idEstado;

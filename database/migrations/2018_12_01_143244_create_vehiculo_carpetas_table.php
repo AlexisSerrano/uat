@@ -19,7 +19,7 @@ class CreateVehiculoCarpetasTable extends Migration
             $table->string('placas', 9)->default("XXXXXXX");
             $table->integer('idEstado')->unsigned()->default(33);
             $table->integer('idSubmarca')->unsigned()->default(24403);
-            $table->integer('modelo')->default(0000);
+            $table->integer('modelo')->default(0);
             $table->string('nrpv', 50)->default("SIN INFORMACION");
             $table->integer('idColor')->unsigned()->default(25);
             $table->string('permiso', 50)->default("SIN INFORMACION");
