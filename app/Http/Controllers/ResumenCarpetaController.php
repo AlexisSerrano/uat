@@ -339,14 +339,57 @@ class ResumenCarpetaController extends Controller
         return view('fields.resumen-carpeta.resumen-autoridad')->with('carpeta',$carpeta);
     }
     
-    public function detalleObservaciones(){
+    public function detalleVehiculo(){
         $idCarpeta=session('carpeta');
         $carpeta=DB::table('carpeta')
         ->join('unidad','carpeta.idUnidad','=','unidad.id')
         ->where('carpeta.id',$idCarpeta)->first();
         // dd($carpeta);
+
+        $vehiculos=DB::table('vehiculo')
+        ->join('tipif_delito','tipif_delito.id','=','vehiculo.idTipifDelito')
+        ->join('cat_delito','tipif_delito.idDelito','=','cat_delito.id')
+        ->join('cat_agrupacion1','tipif_delito.idAgrupacion1','=','cat_agrupacion1.id')
+        ->join('cat_agrupacion2','tipif_delito.idAgrupacion2','=','cat_agrupacion2.id')
+        ->join('cat_estado','vehiculo.idEstado','=','cat_estado.id')
+        ->join('cat_aseguradoras','vehiculo.idAseguradora','=','cat_aseguradoras.id')
+        ->join('cat_color','vehiculo.idColor','=','cat_color.id')
+        ->join('cat_procedencia','vehiculo.idProcedencia','=','cat_procedencia.id')
+        ->join('cat_submarcas','vehiculo.idSubmarca','=','cat_submarcas.id')
+        ->join('cat_marca','cat_submarcas.idMarca','=','cat_marca.id')
+        ->join('cat_tipo_uso','vehiculo.idTipoUso','=','cat_tipo_uso.id')
+        ->join('cat_tipo_vehiculo','vehiculo.idTipoVehiculo','=','cat_tipo_vehiculo.id')
+        ->where('tipif_delito.idCarpeta',$idCarpeta)
+        ->select(
+            'vehiculo.id as idVehiculo',
+            'cat_delito.nombre as delito',
+            DB::raw('(CASE WHEN cat_agrupacion1.nombre = "SIN AGRUPACION" THEN "" ElSE cat_agrupacion1.nombre END) AS agregacion1'),
+            DB::raw('(CASE WHEN cat_agrupacion2.nombre = "SIN AGRUPACION" THEN "" ElSE cat_agrupacion2.nombre END) AS agregacion2'),
+            'vehiculo.placas as placas',
+            'vehiculo.modelo as modelo',
+            'vehiculo.nrpv as nrpv',
+            'vehiculo.permiso as permiso',
+            'vehiculo.numSerie as numSerie',
+            'vehiculo.numMotor as numMotor',
+            'cat_estado.nombre as estado',
+            'cat_aseguradoras.nombre as aseguradoras',
+            'cat_color.nombre as color',
+            'cat_procedencia.nombre as procedencia',
+            'cat_submarcas.nombre as submarcas',
+            'cat_marca.nombre as marca',
+            'cat_tipo_uso.nombre as tipo_uso',
+            'cat_tipo_vehiculo.nombre as tipo_vehiculo',
+            'vehiculo.senasPartic as senasPartic'
+            // 'vehiculo. as ',
+            // 'vehiculo. as '
+        )
+        ->get();
+        // ->first();
+        // dd($vehiculos);
         
-        return view('fields.resumen-carpeta.resumen-observaciones')->with('carpeta',$carpeta);
+        return view('fields.resumen-carpeta.resumen-vehiculo')
+        ->with('vehiculos',$vehiculos)
+        ->with('carpeta',$carpeta);
     }
     public function detalleDefensa(){
 
@@ -387,8 +430,8 @@ class ResumenCarpetaController extends Controller
         ->leftJoin('cat_localidad','cat_localidad.id','=','domicilio.idLocalidad')
         ->leftJoin('cat_colonia','cat_colonia.id','=','domicilio.idColonia')
         ->join('cat_delito','tipif_delito.idDelito','=','cat_delito.id')
-        ->join('cat_agrupacion1','cat_agrupacion1.idCatDelito','=','cat_delito.id')
-        ->join('cat_agrupacion2','cat_agrupacion2.idAgrupacion1','=','cat_agrupacion1.id')
+        ->join('cat_agrupacion1','tipif_delito.idAgrupacion1','=','cat_agrupacion1.id')
+        ->join('cat_agrupacion2','tipif_delito.idAgrupacion2','=','cat_agrupacion2.id')
         ->join('cat_lugar','tipif_delito.idLugar','=','cat_lugar.id')
         ->join('cat_zona','tipif_delito.idZona','=','cat_zona.id')
         ->select(
@@ -416,6 +459,7 @@ class ResumenCarpetaController extends Controller
             'cat_zona.nombre as zona',
             'tipif_delito.puntoReferencia as puntoReferencia'
         )
+        ->where('idCarpeta',session('carpeta'))
         ->get();
         // ->first();
 
@@ -425,6 +469,7 @@ class ResumenCarpetaController extends Controller
         ->with('delitos',$delitos)
         ->with('carpeta',$carpeta);
     }
+
     public function detalleAcusaciones(){
         $idCarpeta=session('carpeta');
         $carpeta=DB::table('carpeta')
@@ -436,11 +481,4 @@ class ResumenCarpetaController extends Controller
         return view('fields.resumen-carpeta.resumen-acusaciones')->with('carpeta',$carpeta)->with('acusaciones',$acusaciones);
     }
 
-
-    // public function tablaOficios(){
-
-    //     return view('tables.documentos');
-    // }
-
-    // 
 }

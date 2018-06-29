@@ -107,8 +107,7 @@ Route::post('getOficio', 'OficioController@getOficio')->name('getOficio');
 Route::post('addOficio', 'OficioController@addOficio')->name('addOficio');
 Route::post('updateOficio', 'OficioController@updateOficio')->name('updateOficio');
 
-Route::get('actaoficio/{id}', 'ActasHechosController@actaoficio')->name('actaoficio');
-Route::get('getoficioah/{id}', 'ActasHechosController@getoficioah');
+
 
 
 /**NO TOCAR***/
@@ -125,14 +124,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/fiscales', 'PreregistroController@estadoFiscales')->name('disponibilidad.fiscal');
     
     Route::get('/resumen', 'ResumenCarpetaController@showResumen')->name('carpeta.detalle');
-    Route::get('/resumen-denunciante', 'ResumenCarpetaController@detalleDenunciante')->name('resumen.denunciante');
-    Route::get('/resumen-denunciado', 'ResumenCarpetaController@detalleDenunciado')->name('resumen.denunciado');
-    Route::get('/resumen-acusaciones', 'ResumenCarpetaController@detalleAcusaciones')->name('resumen.acusaciones');
-    Route::get('/resumen-delito', 'ResumenCarpetaController@detalleDelito')->name('resumen.delito');
-    Route::get('/resumen-abogado', 'ResumenCarpetaController@detalleAbogado')->name('resumen.abogado');
-    Route::get('/resumen-autoridad', 'ResumenCarpetaController@detalleAutoridad')->name('resumen.autoridad');
-    Route::get('/resumen-observaciones', 'ResumenCarpetaController@detalleObservaciones')->name('resumen.observaciones');
-    Route::get('/resumen-defensa', 'ResumenCarpetaController@detalleDefensa')->name('resumen.defensa');
+    Route::get('/resumen/denunciante', 'ResumenCarpetaController@detalleDenunciante')->name('resumen.denunciante');
+    Route::get('/resumen/denunciado', 'ResumenCarpetaController@detalleDenunciado')->name('resumen.denunciado');
+    Route::get('/resumen/acusaciones', 'ResumenCarpetaController@detalleAcusaciones')->name('resumen.acusaciones');
+    Route::get('/resumen/delito', 'ResumenCarpetaController@detalleDelito')->name('resumen.delito');
+    Route::get('/resumen/abogado', 'ResumenCarpetaController@detalleAbogado')->name('resumen.abogado');
+    Route::get('/resumen/autoridad', 'ResumenCarpetaController@detalleAutoridad')->name('resumen.autoridad');
+    // Route::get('/resumen/observaciones', 'ResumenCarpetaController@detalleObservaciones')->name('resumen.observaciones');
+    Route::get('/resumen/defensa', 'ResumenCarpetaController@detalleDefensa')->name('resumen.defensa');
+    Route::get('/resumen/vehiculos', 'ResumenCarpetaController@detalleVehiculo')->name('resumen.vehiculo');
             
     
     /************Rutas para formulario de solicitante/victima/denunciante*************/
@@ -278,6 +278,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/filtroactas', 'ActasHechosController@filtroactas');
     Route::get('/filtroactas', 'ActasHechosController@filtroactas');
     Route::get('/descActas/{id}', 'ActasHechosController@descActas');
+    /* --------Rutas para imprimir oficiio acta de hechos moral y fisica----------- */
+    Route::get('actaoficio/{id}', 'ActasHechosController@actaoficio')->name('actaoficio');
+    Route::get('getoficioah/{id}', 'ActasHechosController@getoficioah');
+    Route::get('actaoficioM/{id}', 'ActasHechosController@actaOficioMoral')->name('actaoficioM');
+    Route::get('getoficioahm/{id}', 'ActasHechosController@getoficioahm');
     
     Route::post('/folioActa', 'ActasHechosController@filtroActasPendientes')->name('filtroactapendiente');
     
