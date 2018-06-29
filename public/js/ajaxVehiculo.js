@@ -12,32 +12,31 @@ url = window.location;
 			url: route("getVehiculoAjax",idr),
 			type : 'GET',
 			success : function(json) {
-				console.log(json);
+				console.log(json.vehiculo);
 				$('#idTipifDelito1').val(json.Delito).trigger('change.select2');
-				$("#placasv").val(json.Placas);
-				$('#estadov').val(json.Delito).trigger('change.select2');
-				$('#marcav').val(json.Marca).trigger('change.select2');
-				var idr2 = $.get(route('get.submarcas', json.Marca), function(response, marca){
-					$("#submarcav").empty();
-					$("#submarcav").append("<option value=''>Seleccione una submarca</option>");
-					for(i=0; i<response.length; i++){
-						$("#submarcav").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+				$("#placasv").val(json.vehiculo.Placas);
+				$('#estadov').val(json.vehiculo.Delito).trigger('change.select2');
+				$('#marcav').val(json.vehiculo.Marca).trigger('change.select2');
+				var html = '';
+				for (var clave in json.submarcas){
+					if (json.submarcas.hasOwnProperty(clave)) {
+					  html += "<option value='"+clave+"'> "+json.submarcas[clave]+"</option>";
 					}
-				});
-				console.log(idr2);
-				$('submarcav').val(idr2).trigger('change.select2');
+				}
+				$("#submarcav").html(html);
+				$('#submarcav').val(json.vehiculo.Submarca).trigger('change.select2');
 
-				$('#modelov').val(json.Modelo);
-				$('#colorv').val(json.Color).trigger('change.select2');
-				$('#nrpvv').val(json.nrpv);
-				$('#numseriev').val(json.Serie);
-				$('#motorv').val(json.Motor);
-				$('#permisov').val(json.Permiso);
-				$('#tipousov').val(json.TipoUso).trigger('change.select2');
+				$('#modelov').val(json.vehiculo.Modelo);
+				$('#colorv').val(json.vehiculo.Color).trigger('change.select2');
+				$('#nrpvv').val(json.vehiculo.nrpv);
+				$('#numseriev').val(json.vehiculo.Serie);
+				$('#motorv').val(json.vehiculo.Motor);
+				$('#permisov').val(json.vehiculo.Permiso);
+				$('#tipousov').val(json.vehiculo.TipoUso).trigger('change.select2');
 
-				$('#procev').val(json.Procedencia).trigger('change.select2');
-				$('#asegurav').val(json.Aseguradora).trigger('change.select2');
-				$('#senasv').val(json.SParticulares).trigger('change.select2');
+				$('#procev').val(json.vehiculo.Procedencia).trigger('change.select2');
+				$('#asegurav').val(json.vehiculo.Aseguradora).trigger('change.select2');
+				$('#senasv').val(json.vehiculo.SParticulares).trigger('change.select2');
 				// $("#fechaFinal1").val(json.fechaFin);
 				// $("#tipo_medida2").val(json.nombre);
 				// $('#quienEjecuta1').val(json.idEjecutor).trigger('change.select2');

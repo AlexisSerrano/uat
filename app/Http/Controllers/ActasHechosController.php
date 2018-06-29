@@ -240,7 +240,7 @@ class ActasHechosController extends Controller
             }
           
         
-    }elseif($request->esEmpresa==1){
+        }elseif($request->esEmpresa==1){
 
         $acta = new ActasHechos;
         $direccion = new Domicilio;

@@ -35,7 +35,8 @@ function habilitarPersona(){
     $("#calle2").prop('disabled', true); 
     $("#numExterno2").prop('disabled', true); 
     $("#numInterno2").prop('disabled', true); 
-    $("#docIdentificacion2").prop('disabled', true); 
+    $("#docIdentificacion2").prop('disabled', true);
+    $("#expedido2").prop('disabled', true); 
     $("#numDocIdentificacion2").prop('disabled', true); 
     $("#tipoActa2").prop('disabled', true); 
     $("#otro2").prop('disabled', true);  
@@ -120,6 +121,7 @@ function habilitarEmpresa(){
     $("#numExterno2").prop('disabled', false); 
     $("#numInterno2").prop('disabled', false); 
     $("#docIdentificacion2").prop('disabled',false); 
+    $("#expedido2").prop('disabled', true);
     $("#numDocIdentificacion2").prop('disabled', false); 
     $("#tipoActa2").prop('disabled', false); 
     $("#otro2").prop('disabled', false); 

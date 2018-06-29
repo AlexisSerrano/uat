@@ -234,9 +234,11 @@ public function getVh($id){
             'vehiculo.idColor as Color', 'vehiculo.permiso as Permiso', 'vehiculo.numSerie as Serie', 'vehiculo.numMotor as Motor', 'vehiculo.idTipoVehiculo as TipoVehiculo', 'vehiculo.idTipoUso as TipoUso', 'vehiculo.senasPartic as SParticulares', 
             'vehiculo.idProcedencia as Procedencia', 'vehiculo.idAseguradora as Aseguradora' )
     ->first();
+    $submarcas = CatSubmarca::where('idMarca',$vehiculo->Marca)
+    ->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+    $data = array('vehiculo'=>$vehiculo,'submarcas'=>$submarcas);
 
-
-    return response()->json($vehiculo);
+    return response()->json($data);
 }
 
 
