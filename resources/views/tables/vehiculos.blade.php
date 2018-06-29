@@ -30,10 +30,11 @@
                             <i class="fa fa-times"></i></td>   --}}
                             <td> 
                                 @if(is_null(session('terminada')))
-                                <a data-vehiculo-id={{$vehiculo->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
-                                        <i class="fa fa-times"></i>
-                            </a>
+                          
                                 <button type="button" class="btn btn-default   btn-xs  btn-modal" title="Editar registro"  value={{$vehiculo->id}} ><i class="fa fa-edit"></i></button>
+                                <a data-vehiculo-id={{$vehiculo->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
+                                    <i class="fa fa-times"></i>
+                        </a>
                                 @endif             
                             </td>
                                                             
@@ -59,7 +60,7 @@
         
                         <!--Contenido del modal-->
                         <div class="modal-body">
-                                <input class="form-control" type="text" id="idr" name="idr" >
+                                <input class="form-control" type="text" id="idr" name="idr" hidden >
                             <div class="form-group">
 
                                 <div class="row">

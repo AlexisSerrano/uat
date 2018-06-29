@@ -12,8 +12,8 @@ url = window.location;
 			url: route("getVehiculoAjax",idr),
 			type : 'GET',
 			success : function(json) {
-				console.log(json.vehiculo);
-				$('#idTipifDelito1').val(json.Delito).trigger('change.select2');
+				console.log(json.tipovehiculo);
+				$('#idTipifDelito1').val(json.vehiculo.Delito).trigger('change.select2');
 				$("#placasv").val(json.vehiculo.Placas);
 				$('#estadov').val(json.vehiculo.Delito).trigger('change.select2');
 				$('#marcav').val(json.vehiculo.Marca).trigger('change.select2');
@@ -24,7 +24,7 @@ url = window.location;
 					}
 				}
 				$("#submarcav").html(html);
-				$('#submarcav').val(json.vehiculo.Submarca).trigger('change.select2');
+				// $('#submarcav').val(json.vehiculo.Submarca).trigger('change.select2');
 
 				$('#modelov').val(json.vehiculo.Modelo);
 				$('#colorv').val(json.vehiculo.Color).trigger('change.select2');
@@ -32,8 +32,15 @@ url = window.location;
 				$('#numseriev').val(json.vehiculo.Serie);
 				$('#motorv').val(json.vehiculo.Motor);
 				$('#permisov').val(json.vehiculo.Permiso);
+				$('#idclase').val(json.vehiculo.ClaseVehiculo).trigger('change.select2');
+				var html2 = '';
+				for (var clave in json.tipovehiculo){
+					if (json.tipovehiculo.hasOwnProperty(clave)) {
+					  html2 += "<option value='"+clave+"'> "+json.tipovehiculo[clave]+"</option>";
+					}
+				}
+				$('#tipovv').html(html2);
 				$('#tipousov').val(json.vehiculo.TipoUso).trigger('change.select2');
-
 				$('#procev').val(json.vehiculo.Procedencia).trigger('change.select2');
 				$('#asegurav').val(json.vehiculo.Aseguradora).trigger('change.select2');
 				$('#senasv').val(json.vehiculo.SParticulares).trigger('change.select2');
@@ -71,12 +78,14 @@ url = window.location;
 				'motorv'	:$('#motorv').val(),
 				'permisov' :$('#permisov').val(),
 
+			'tipovv'	:$('#tipovv').select2('val'),
 			'tipousov'	:$('#tipousov').select2('val' ),
 
 			'procev'	:$('#procev').select2('val' ),
 			'asegurav'	:$('#asegurav').select2('val' ),
 			'senasv'	:$('#senasv').val(),
 		}
+		console.log(datos);
 		$.ajax({
 			headers: {
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
