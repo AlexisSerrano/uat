@@ -44,8 +44,8 @@ class ActaRequest extends FormRequest
             // 'fechaAltaEmpresa'
             'rfc2' => 'alpha_num|min:8|max:13',
             // 'homo2'
-            'representanteLegal2' => 'string|min:4|max:100',
-            'telefono2' => 'numeric|min:7',
+            'representanteLegal2' => 'nullable|string|min:4|max:100',
+            'telefono2' => 'nullable|numeric|min:7',
             'calle2' => 'string|min:1|max:100',
             'numExterno2' => 'nullable|string|min:1|max:10',
             'numInterno2' => 'nullable|string|max:10',

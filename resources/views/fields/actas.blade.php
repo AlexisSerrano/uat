@@ -261,6 +261,29 @@
     
         <div class="col-4">
             <div class="form-group">
+                {!! Form::label('nombre2', 'Nombre', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
+                {!! Form::text('nombre2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}
+                <div class="help-block with-errors"></div> 
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="form-group">
+                {!! Form::label('primerAp2', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
+                {!! Form::text('primerAp2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','data-validation'=>'required']) !!}
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="form-group">
+                {!! Form::label('segundoAp2', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
+                {!! Form::text('segundoAp2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="form-group">
                 {!! Form::label('fechaAltaEmpresa', 'Fecha de alta de la empresa', ['class' => 'col-form-label-sm']) !!}
                 <input type="date" id="fechaAltaEmpresa" value="" name="fechaAltaEmpresa" class="turnoempresa form-control form-control-sm" data-validation="required">
                 <div class="help-block with-errors"></div>	
@@ -307,7 +330,7 @@
             <div class="form-group">
                 {!! Form::label('idMunicipio', 'Municipio', ['class' => 'col-form-label-sm']) !!}
                 @if(isset($form['catMunicipios'], $form['idMunicipio']))
-                {!! Form::select('idMunicipio',  $form['catMunicipios'], $form['idMunicipio2'], ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+                {!! Form::select('idMunicipio',  $form['catMunicipios'], $form['idMunicipio'], ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
                 @else
                 {!! Form::select('idMunicipio', [''=>'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
                 @endif
@@ -318,7 +341,7 @@
             <div class="form-group">
                 {!! Form::label('idLocalidad', 'Localidad', ['class' => 'col-form-label-sm']) !!}
                 @if(isset($form['catLocalidades'],$form['idLocalidad']))
-                {!! Form::select('idLocalidad',  $form['catLocalidades'], $form['idLocalidad2'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+                {!! Form::select('idLocalidad',  $form['catLocalidades'], $form['idLocalidad'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
                 @else
                 {!! Form::select('idLocalidad', [ '' => 'Seleccione una localidad'], null, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
                 @endif

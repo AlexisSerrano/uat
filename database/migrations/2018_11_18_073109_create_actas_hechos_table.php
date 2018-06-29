@@ -19,6 +19,7 @@ class CreateActasHechosTable extends Migration
             $table->time('hora');
             $table->date('fecha');
             $table->string('fiscal');
+            $table->string('nombreEmpresa');
             $table->string('nombre');
             $table->string('primer_ap');
             $table->string('segundo_ap');
@@ -32,6 +33,7 @@ class CreateActasHechosTable extends Migration
             $table->integer('idEscolaridad')->unsigned()->default(1);
             $table->string('telefono');
             $table->string('tipoActa');
+            $table->integer('esEmpresa');
             $table->Text('narracion');
             $table->timestamps();
             $table->softDeletes();

@@ -31,6 +31,7 @@ function habilitarPersona(){
     $("#idLocalidad").prop('disabled', true); 
     $("#idColonia").prop('disabled', true); 
     $("#cp").prop('disabled', true); 
+    $("#fechaAltaEmpresa").prop('disabled', true);
     $("#calle2").prop('disabled', true); 
     $("#numExterno2").prop('disabled', true); 
     $("#numInterno2").prop('disabled', true); 
@@ -114,13 +115,14 @@ function habilitarEmpresa(){
     $("#idLocalidad").prop('disabled', false); 
     $("#idColonia").prop('disabled', false); 
     $("#cp").prop('disabled', false); 
+    $("#fechaAltaEmpresa").prop('disabled',false );
     $("#calle2").prop('disabled', false ); 
     $("#numExterno2").prop('disabled', false); 
     $("#numInterno2").prop('disabled', false); 
     $("#docIdentificacion2").prop('disabled',false); 
     $("#numDocIdentificacion2").prop('disabled', false); 
     $("#tipoActa2").prop('disabled', false); 
-    $("#otro2").prop('disabled', true); 
+    $("#otro2").prop('disabled', false); 
     
 
     
