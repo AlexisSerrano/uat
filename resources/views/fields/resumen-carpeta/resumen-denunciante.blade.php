@@ -13,20 +13,11 @@
     <ul class="nav nav-tabs" id="myTab" aria-orientation="vertical" role="tablist">
         @foreach ($denunciantes as $denunciante)
             <li class="nav-item">
-                {{-- <div class="row">
-                    <div class="col"> --}}
-                        <a class="nav-link" id="denunciante{{$denunciante->denuncianteid}}-tab" data-toggle="tab" href="#denunciante{{$denunciante->denuncianteid}}" role="tab" aria-controls="denunciante{{$denunciante->denuncianteid}}" aria-selected="false">
-                            {{$denunciante->pernombres." ".$denunciante->perprimerAp." ".$denunciante->persegundoAp}}
-                        </a>
-
-                    {{-- </div> --}}
-                    {{-- <div class="col"> --}}
-
-                    {{-- </div>
-                </div> --}}
+                <a class="nav-link" id="denunciante{{$denunciante->denuncianteid}}-tab" data-toggle="tab" href="#denunciante{{$denunciante->denuncianteid}}" role="tab" aria-controls="denunciante{{$denunciante->denuncianteid}}" aria-selected="false">
+                    {{$denunciante->pernombres." ".$denunciante->perprimerAp." ".$denunciante->persegundoAp}}
+                </a>
             </li>
         @endforeach
-        
     </ul>
     
     <div class="card-body">
