@@ -349,13 +349,18 @@ class ResumenCarpetaController extends Controller
         return view('fields.resumen-carpeta.resumen-observaciones')->with('carpeta',$carpeta);
     }
     public function detalleDefensa(){
+
         $idCarpeta=session('carpeta');
+        
         $carpeta=DB::table('carpeta')
         ->join('unidad','carpeta.idUnidad','=','unidad.id')
         ->where('carpeta.id',$idCarpeta)->first();
-        // dd($carpeta);
+
+        $defensas = CarpetaController::getDefensas($idCarpeta);
         
-        return view('fields.resumen-carpeta.resumen-defensa')->with('carpeta',$carpeta);
+        return view('fields.resumen-carpeta.resumen-defensa')
+        ->with('defensas', $defensas)
+        ->with('carpeta',$carpeta);
     
     }
     public function detalleAbogado(){
@@ -370,14 +375,55 @@ class ResumenCarpetaController extends Controller
     public function detalleDelito(){
         $idCarpeta=session('carpeta');
 
-
-
         $carpeta=DB::table('carpeta')
         ->join('unidad','carpeta.idUnidad','=','unidad.id')
         ->where('carpeta.id',$idCarpeta)->first();
         // dd($carpeta);
         
-        return view('fields.resumen-carpeta.resumen-delitos')->with('carpeta',$carpeta);
+        $delitos=DB::table('tipif_delito')
+        ->join('domicilio','tipif_delito.idDomicilio','=','domicilio.id')
+        ->leftJoin('cat_municipio','cat_municipio.id','=','domicilio.idMunicipio')
+        ->leftJoin('cat_estado','cat_estado.id','=','cat_municipio.idEstado')
+        ->leftJoin('cat_localidad','cat_localidad.id','=','domicilio.idLocalidad')
+        ->leftJoin('cat_colonia','cat_colonia.id','=','domicilio.idColonia')
+        ->join('cat_delito','tipif_delito.idDelito','=','cat_delito.id')
+        ->join('cat_agrupacion1','cat_agrupacion1.idCatDelito','=','cat_delito.id')
+        ->join('cat_agrupacion2','cat_agrupacion2.idAgrupacion1','=','cat_agrupacion1.id')
+        ->join('cat_lugar','tipif_delito.idLugar','=','cat_lugar.id')
+        ->join('cat_zona','tipif_delito.idZona','=','cat_zona.id')
+        ->select(
+            'tipif_delito.id as idDelito',
+            'cat_delito.nombre as delito',
+            DB::raw('(CASE WHEN cat_agrupacion1.nombre = "SIN AGRUPACION" THEN "" ElSE cat_agrupacion1.nombre END) AS agregacion1'),
+            DB::raw('(CASE WHEN cat_agrupacion2.nombre = "SIN AGRUPACION" THEN "" ElSE cat_agrupacion2.nombre END) AS agregacion2'),
+            'tipif_delito.formaComision as formaComision',
+            'tipif_delito.fecha as fecha',
+            'tipif_delito.hora as hora',
+            DB::raw('(CASE WHEN tipif_delito.conViolencia = 1 THEN "SI" ElSE "NO" END) AS conViolencia'),
+            'domicilio.id as idDomicilio',
+            'cat_estado.nombre as estado',
+            'cat_municipio.nombre as municipio',
+            'cat_localidad.nombre as localidad',
+            'cat_colonia.nombre as colonia',
+            'cat_colonia.codigoPostal as codigoPostal',
+            'domicilio.calle as calle',
+            'domicilio.numExterno as numExterno',
+            'domicilio.numInterno as numInterno',
+            'tipif_delito.entreCalle',
+            'tipif_delito.yCalle',
+            'tipif_delito.calleTrasera',
+            'cat_lugar.nombre as lugar',
+            'cat_zona.nombre as zona',
+            'tipif_delito.puntoReferencia as puntoReferencia'
+        )
+        ->get();
+        // ->first();
+
+        // dd($delitos);
+
+        return view('fields.resumen-carpeta.resumen-delitos')
+        ->with('delitos',$delitos)
+        ->with('carpeta',$carpeta);
     }
     public function detalleAcusaciones(){
         $idCarpeta=session('carpeta');
