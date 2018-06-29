@@ -24,20 +24,21 @@ class AtencionRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required',
-            'primer_ap' => 'required',
+            'nombre' => 'nullable|string|min:3|max:200',
+            'primer_ap' => 'nullable|string|min:3|max:50',
+            'segundo_ap' => 'nullable|string|min:3|max:50',
             'redireccion' => 'required',
-            'telefono' => 'required',
+            'telefono' => 'nullable|numeric|min:7',
         ];
     }
 
     public function messages()
     {
         return [
-            'nombre.required' => 'Introduzca el campo Nombre',
-            'primer_ap.required' => 'Introduzca el campo Primer Apellido',
-            'redireccion.required' => 'Introduzca el campo Modulo de atención',
-            'telefono.required' => 'Introduzca el campo Teléfono de atención',
+            // 'nombre.required' => 'Introduzca el campo Nombre',
+            // 'primer_ap.required' => 'Introduzca el campo Primer Apellido',
+            // 'redireccion.required' => 'Introduzca el campo Modulo de atención',
+            // 'telefono.required' => 'Introduzca el campo Teléfono de atención',
         ];
     }
 }
