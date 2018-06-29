@@ -56,6 +56,9 @@
 	</p>
 	<span id="pantalla" class="oculto" >
 		<p>Cargando...</p>
+		<center> 
+			<img src="{{asset('img/Cargando.gif')}}" border=0> 
+			</center> 
 	</span>
 	<div>
 		@include('servicios.preregistro.fields.tipo-persona')
