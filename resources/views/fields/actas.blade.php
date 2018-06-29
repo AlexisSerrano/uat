@@ -261,7 +261,7 @@
     
         <div class="col-4">
             <div class="form-group">
-                {!! Form::label('nombre2', 'Nombre', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
+                {!! Form::label('nombre2', 'Nombre del representante', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
                 {!! Form::text('nombre2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}
                 <div class="help-block with-errors"></div> 
             </div>
@@ -302,13 +302,6 @@
                         {!! Form::text('homo2',null, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
                     </div>
                 </div>
-            </div>
-        </div>
-    
-        <div class="col-8">
-            <div class="form-group">
-                {!! Form::label('representanteLegal', 'Representante legal', ['class' => 'col-form-label-sm']) !!}
-                {!! Form::text('representanteLegal2', null, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el nombre del representante legal','data-validation'=>'required']) !!}
             </div>
         </div>
 

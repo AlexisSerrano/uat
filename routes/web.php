@@ -107,8 +107,7 @@ Route::post('getOficio', 'OficioController@getOficio')->name('getOficio');
 Route::post('addOficio', 'OficioController@addOficio')->name('addOficio');
 Route::post('updateOficio', 'OficioController@updateOficio')->name('updateOficio');
 
-Route::get('actaoficio/{id}', 'ActasHechosController@actaoficio')->name('actaoficio');
-Route::get('getoficioah/{id}', 'ActasHechosController@getoficioah');
+
 
 
 /**NO TOCAR***/
@@ -278,6 +277,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/filtroactas', 'ActasHechosController@filtroactas');
     Route::get('/filtroactas', 'ActasHechosController@filtroactas');
     Route::get('/descActas/{id}', 'ActasHechosController@descActas');
+    /* --------Rutas para imprimir oficiio acta de hechos moral y fisica----------- */
+    Route::get('actaoficio/{id}', 'ActasHechosController@actaoficio')->name('actaoficio');
+    Route::get('getoficioah/{id}', 'ActasHechosController@getoficioah');
+    Route::get('actaoficioM/{id}', 'ActasHechosController@actaOficioMoral')->name('actaoficioM');
+    Route::get('getoficioahm/{id}', 'ActasHechosController@getoficioahm');
     
     Route::post('/folioActa', 'ActasHechosController@filtroActasPendientes')->name('filtroactapendiente');
     
