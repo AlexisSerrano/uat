@@ -15,6 +15,7 @@
 <div class="card">
     <div class="card-header" style="text-align:right;">
         <a href="{{route('carpeta.detalle')}}" class="btn btn-secondary" >Resumen de la carpeta</a>    
+        <a href="{{route('historial.carpeta')}}" class="btn btn-secondary" >Historial de la carpeta</a>    
         {{-- <button class="btn btn-secondary">Resumen de la carpeta</button> --}}
     </div>
     <div class="card-body">

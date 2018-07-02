@@ -75,6 +75,26 @@ class ResumenCarpetaController extends Controller
         // dd($carpeta);
         return view('fields.resumen-carpeta.resumen-carpeta')->with('carpeta',$carpeta);
     }
+    
+    public function detalleHistorial(){
+        $idCarpeta=session('carpeta');
+        $carpetas=DB::table('historial_carpeta')
+        ->join('cat_estatus_casos','historial_carpeta.idEstatusCarpeta','=','cat_estatus_casos.id')
+        ->join('carpeta','carpeta.id','=','historial_carpeta.idCarpeta')
+        ->join('cat_tipo_determinacion','cat_tipo_determinacion.id','=','carpeta.idTipoDeterminacion')
+        ->join('unidad','carpeta.idUnidad','=','unidad.id')
+        ->where('carpeta.id',$idCarpeta)
+        ->select('historial_carpeta.fecha as fecha',
+            'historial_carpeta.fiscal as fiscal',
+            'historial_carpeta.observacion as observacion',
+            'cat_estatus_casos.nombreEstatus as estatus',
+            'cat_tipo_determinacion.nombre as determinacion',
+            'unidad.descripcion as unidad')
+        ->paginate(10);
+        // ->first();
+        // dd($carpetas);
+        return view('fields.resumen-carpeta.historialCarpeta')->with('carpetas',$carpetas);
+    }
 
     public function detalleDenunciante(){
         $idCarpeta=session('carpeta');
@@ -391,6 +411,7 @@ class ResumenCarpetaController extends Controller
         ->with('vehiculos',$vehiculos)
         ->with('carpeta',$carpeta);
     }
+    
     public function detalleDefensa(){
 
         $idCarpeta=session('carpeta');
@@ -406,6 +427,7 @@ class ResumenCarpetaController extends Controller
         ->with('carpeta',$carpeta);
     
     }
+    
     public function detalleAbogado(){
         $idCarpeta=session('carpeta');
         $carpeta=DB::table('carpeta')
@@ -415,6 +437,7 @@ class ResumenCarpetaController extends Controller
         
         return view('fields.resumen-carpeta.resumen-abogado')->with('carpeta',$carpeta);
     }
+    
     public function detalleDelito(){
         $idCarpeta=session('carpeta');
 

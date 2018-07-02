@@ -130,9 +130,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/resumen/delito', 'ResumenCarpetaController@detalleDelito')->name('resumen.delito');
     Route::get('/resumen/abogado', 'ResumenCarpetaController@detalleAbogado')->name('resumen.abogado');
     Route::get('/resumen/autoridad', 'ResumenCarpetaController@detalleAutoridad')->name('resumen.autoridad');
-    // Route::get('/resumen/observaciones', 'ResumenCarpetaController@detalleObservaciones')->name('resumen.observaciones');
     Route::get('/resumen/defensa', 'ResumenCarpetaController@detalleDefensa')->name('resumen.defensa');
     Route::get('/resumen/vehiculos', 'ResumenCarpetaController@detalleVehiculo')->name('resumen.vehiculo');
+    Route::get('/carpeta/historial', 'ResumenCarpetaController@detalleHistorial')->name('historial.carpeta');
             
     
     /************Rutas para formulario de solicitante/victima/denunciante*************/

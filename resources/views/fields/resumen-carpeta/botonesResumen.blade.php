@@ -88,7 +88,7 @@ $barra = getNavCaso();
                                 </td>
                             </tr>
                             @endisset
-                            @if($barra['chechos']>0)
+                            {{-- @if($barra['chechos']>0)
                             <tr>
                                 <td style="padding:0;text-align:left;">
                                     <a style="width:100%;text-align:center;" class="{{ Request::is( 'resumen/observaciones') ? 'active1' : '' }} btn btn-default observaciones" href="{{route('resumen.observaciones')}}">
@@ -96,7 +96,7 @@ $barra = getNavCaso();
                                     </a>
                                 </td>
                             </tr>
-                            @endisset
+                            @endisset --}}
                             {{-- @empty --}}
 
                             {{-- @endforelse --}}
