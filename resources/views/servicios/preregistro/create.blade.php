@@ -27,6 +27,15 @@
 		.oculto{
 			display: none;
 		}
+		#logo{
+position:fixed;
+width:98px;
+height:98px;
+left:50%;
+top:50%;
+margin-left:-45px;
+margin-top:-100px;
+}
 	</style>
 @extends('servicios.preregistro.templates.form2')
 
@@ -55,10 +64,9 @@
 
 	</p>
 	<span id="pantalla" class="oculto" >
-		<p>Cargando...</p>
-		<center> 
-			<img src="{{asset('img/Cargando.gif')}}" border=0> 
-			</center> 
+	
+			<img id= "logo" src="{{asset('img/Cargando.gif')}}" > 
+			 
 	</span>
 	<div>
 		@include('servicios.preregistro.fields.tipo-persona')
@@ -143,7 +151,7 @@
 									<a href="http://fiscaliaveracruz.gob.mx/" title="" class="btn btn-primary">Cancelar</a>
 								
 									{!!Form::submit('Guardar',array('class' => 'btn btn-primary ', 'id'=>'cargando'))!!}
-									{!!Form::submit('Prueba',array('class' => 'btn btn-primary ', 'id'=>'prueba'))!!}
+									{{-- {!!Form::submit('Prueba',array('class' => 'btn btn-primary ', 'id'=>'prueba'))!!} --}}
 									{{-- <button id="prueba" type="button" class="btn btn-primary">prueba</button> --}}
 								<br>
 							

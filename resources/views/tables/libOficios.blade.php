@@ -18,14 +18,14 @@
 		  	<a class="nav-link " id="abogado-tab" data-toggle="tab" href="#abogado" role="tab" aria-controls="abogado" aria-selected="false">Periciales</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " id="abogado-tab2" data-toggle="tab" href="#abogado2" role="tab" aria-controls="abogado2" aria-selected="false">Lesiones</a>
+            <a class="nav-link " id="abogado-tab2" data-toggle="tab" href="#abogado2" role="tab" aria-controls="abogado2" aria-selected="false">Otros</a>
         </li>
 	</ul>
 	
 	<div class="tab-content" id="myTabContent">
 		<div class="tab-pane fade show active " id="personales" role="tabpanel" aria-labelledby="personales-tab">
 			<div class="boxtwo">
-				@include('tables.medidas-ofi')
+				@include('tables.medidas-}ofi')
 				{{-- botones --}}
 				<div class="row menu">	
 					<div class="col text-left">				
