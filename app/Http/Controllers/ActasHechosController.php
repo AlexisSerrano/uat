@@ -407,7 +407,9 @@ class ActasHechosController extends Controller
     }
 
     public function getoficioahm($id){
-        $catalogos = DB::table('actas_hechos')->where('actas_hechos.esEmpresa', 1)
+        $catalogos = DB::table('actas_hechos')
+        ->where('actas_hechos.id', $id)
+        ->where('actas_hechos.esEmpresa', 1)
         ->join('domicilio','actas_hechos.idDomicilio','=','domicilio.id')
         ->join('cat_municipio','domicilio.idMunicipio','=','cat_municipio.id')
         ->join('cat_localidad','domicilio.idLocalidad','=','cat_localidad.id')
