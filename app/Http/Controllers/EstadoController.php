@@ -120,8 +120,6 @@ class EstadoController extends Controller
                     $id->observacionesEstatus = $request->narracion;  
                     $id->idTipoDeterminacion = $request->selectDetermina;  
                     $id->save();   // para guardar el registro
-                    
-                    $determinacion=TipoDeterminacion::find($request->selectDetermina);
 
                     $idCarpetaAux=$idCarpeta;
                     $motivo=$id->observacionesEstatus;
@@ -129,7 +127,7 @@ class EstadoController extends Controller
                     $historial= new HistorialCarpeta;
                     $historial->idCarpeta = $idCarpetaAux;
                     $historial->idEstatusCarpeta = 2;
-                    $historial->observacion = $motivo;
+                    $historial->idTipoDeterminacion = $request->selectDetermina;
                     $historial->observacion = $motivo;
                     $historial->fiscal = Auth::user()->nombreC;
                     $historial->fecha = Carbon::now();
@@ -751,6 +749,7 @@ class EstadoController extends Controller
                     $historial->idCarpeta = $idCarpetaAux;
                     $historial->idEstatusCarpeta = 4;
                     $historial->observacion = $motivo;
+                    $historial->idTipoDeterminacion = $request->selectArchivo;
                     $historial->fiscal = Auth::user()->nombreC;
                     $historial->fecha = Carbon::now();
                     $historial->save();
