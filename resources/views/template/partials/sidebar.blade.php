@@ -231,7 +231,7 @@
 					
 					@if (Auth::user()->grupo=='orientador')
 					
-					<li class="nav-item has-treeview active {{ Request::is( 'actas-pendientes') ? 'menu-open' : '' }}">
+						<li class="nav-item has-treeview active {{ Request::is( 'actas-pendientes') ? 'menu-open' : '' }}">
 							<a href="#" class="nav-link">
 								<i class="nav-icon fa fa-file-text"></i>
 								<p>

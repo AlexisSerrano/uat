@@ -1,4 +1,10 @@
 @extends('template.form')
+@if ($preregistro->statusCola==0)
+	@section('title', 'Registros en cola')
+@else
+	@section('title', 'Registros urgentes')
+@endif
+
 @section('content')
 @include('fields.errores')
  
@@ -39,12 +45,24 @@
     <div class="boxtwo">
         <div class="row">
             <div class="text-left col">
-                <a href="{{route('predenuncias.index')}}" title="" class="btn btn-secondary ">Regresar</a>
+                <a href="{{redirect()->getUrlGenerator()->previous()}}" title="" class="btn btn-secondary ">Regresar</a>
             </div>       
             <div class="text-right col">
-                <a href="{{url('estado/'.$preregistro->id.'/99')}}" title="button1" class="btn  btn-secondary ">Descartar</a>
-                <a href="{{url('estado/'.$preregistro->id.'/0')}}" title="button1" class="btn  btn-secondary ">En cola</a>
-                <a href="#" title="" class="btn btn-secondary btnEnUrgente" id="{{$preregistro->id}}">Urgente</a>
+                @if(is_null($preregistro->statusCola))
+                    <a href="{{url('estado/'.$preregistro->id.'/0')}}" title="button1" class="btn  btn-secondary ">En cola</a>
+                    <a href="#" title="" class="btn btn-secondary btnEnUrgente" id="{{$preregistro->id}}">Urgente</a>
+                @endif
+                @if($preregistro->statusCola=="0")   
+                    <a href="{{url('estado/'.$preregistro->id.'/99')}}" title="button1" class="btn  btn-secondary ">Descartar</a>
+                    <a href="#" title="" class="btn btn-secondary btnEnUrgente" id="{{$preregistro->id}}">Urgente</a>
+                @endif
+                @if($preregistro->statusCola==1)    
+                    <a href="{{url('estado/'.$preregistro->id.'/99')}}" title="button1" class="btn  btn-secondary ">Descartar</a>
+                    <a href="{{url('estado/'.$preregistro->id.'/0')}}" title="button1" class="btn  btn-secondary ">En cola</a>
+                @endif
+{{--                    
+                        <a href="{{url('estado/'.$preregistro->id.'/99')}}" title="button1" class="btn  btn-secondary ">Descartar</a>
+                 --}}
                 {!!Form::submit('Guardar',array('class' => 'btn  btn-primary'))!!}
             </div>
             <meta name="csrf-token" content="{{ csrf_token() }}">
