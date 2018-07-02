@@ -12,6 +12,7 @@ use App\User;
 use App\Models\Unidad;
 use App\Models\CatTipoDeterminacion;
 use App\Models\BitacoraNavCaso;
+use App\Models\HistorialCarpeta;
 
 class CarpetaController extends Controller
 {
@@ -44,11 +45,12 @@ class CarpetaController extends Controller
             session()->forget('numCarpeta');
             session()->forget('carpeta');
             // Alert::info('No tiene ningún  caso abierto.');
-            return redirect(url('carpetas'));
+            return redirect(route('indexcarpetas'));
         }
-        
+        session()->forget('terminada');
+        session()->forget('numCarpeta');
         session()->forget('carpeta');
-        return redirect(url('carpetas'));
+        return redirect(route('indexcarpetas'));
     }
 
     public function cancelarCaso(){
@@ -56,7 +58,7 @@ class CarpetaController extends Controller
         $comprobar= Carpeta::where('id',$idCarpeta)->get();
         if(is_null($idCarpeta)){
             Alert::info('No tiene ningún caso en proceso.', 'Advertiencia');
-            return redirect(url('carpetas'));    
+            return redirect(route('indexcarpetas'));    
         }
         
         $usuario=User::find(Auth::user()->id);
@@ -440,6 +442,17 @@ class CarpetaController extends Controller
                 $carpeta->idEstadoCarpeta = 1;
                 $carpeta->save();
 
+                $idCarpetaAux=$carpeta->id;
+                $motivo=$carpeta->descripcionHechos;
+                
+                $historial= new HistorialCarpeta;
+                $historial->idCarpeta = $idCarpetaAux;
+                $historial->idEstatusCarpeta = 1;
+                $historial->observacion = $motivo;
+                $historial->fiscal = Auth::user()->nombreC;
+                $historial->fecha = Carbon::now();
+                $historial->save();
+                
                 $bdbitacora = BitacoraNavCaso::where('idCaso',$id)->first();
                 $bdbitacora->terminada = 1;
                 $bdbitacora->save();

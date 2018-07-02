@@ -17,10 +17,13 @@ class CreateHistorialCarpetaTable extends Migration
             $table->increments('id');
             $table->integer('idCarpeta')->unsigned();
             $table->integer('idEstatusCarpeta')->unsigned();
+            $table->integer('idTipoDeterminacion')->unsigned()->default(5);//->nullable();// en vez del nullable
             $table->string('observacion',255);
+            $table->string('fiscal',255);
             $table->date('fecha');
             $table->timestamps();
-
+            
+            $table->foreign('idTipoDeterminacion')->references('id')->on('cat_tipo_determinacion')->onDelete('cascade');
             $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
             $table->foreign('idEstatusCarpeta')->references('id')->on('cat_estatus_casos')->onDelete('cascade');
 
