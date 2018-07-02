@@ -68,7 +68,7 @@ class ActaCircunstanciadaController extends Controller
             $acta = new ActaCircunstanciada;
             $acta->hora = Date::now()->format('H:i:s');
             $acta->fecha = Date::now()->format('Y-m-d');
-            $acta->fiscal = Auth::user()->id;
+            $acta->fiscal = Auth::user()->nombreC;
             $acta->nombre = $request->nombre2;
             $acta->primer_ap = $request->primerAp;
             $acta->segundo_ap = $request->segundoAp;
@@ -190,7 +190,10 @@ class ActaCircunstanciadaController extends Controller
         $fechanachum = $date->format('j').' de '.$date->format('F').' del año '.$date->format('Y');
         $fechasep = explode("-", $catalogos->fecha_nac);
         $edad = Date::createFromDate($fechasep[0],$fechasep[1],$fechasep[2])->age;
+        $puestoFiscal = Auth::user()->puesto;
 
+        
+        $puestoFiscal = strtr(strtoupper($puestoFiscal),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
 
 
         $data = array('estado' => $catalogos->nombreEstado, 
@@ -206,6 +209,7 @@ class ActaCircunstanciadaController extends Controller
         'hora' => $date->parse($catalogos->hora)->format('H:i'),
         'fecha' => $fechahum,
         'fiscal' => $catalogos->fiscal,
+        'puestoFiscal' => $puestoFiscal,
         'nombre' => $catalogos->nombrePersona.' '.$catalogos->primer_ap.' '.$catalogos->segundo_ap,
         'identificacion' => $catalogos->identificacion,
         'numIdentificacion' => $catalogos->num_identificacion,
