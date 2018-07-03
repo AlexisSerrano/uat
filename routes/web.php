@@ -145,14 +145,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('agregar-denunciante', 'DenuncianteController@showForm')->name('new.denunciante');
     Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name('store.denunciante');
     Route::get('agregar-denunciante/{id}/eliminar', 'DenuncianteController@delete')->name('delete.denunciante');
+    
+    /**control de turno para la carpeta**/
     Route::get('/atender/{id}', 'PreregistroAuxController@atender');
     Route::get('/turno/{id}/{tipo}', 'PreregistroAuxController@turno')->name('tomar.turno');
     Route::get('/Traerturno', 'PreregistroAuxController@Traerturno')->name('turno.denunciante');
     Route::get('/devolver/{id}', 'PreregistroAuxController@devolverturno')->name('devolver');
     
     /*****************************Rutas para modulo recepción****************************************/
-    
-    
     Route::post('/showbyfolio', 'PreregistroAuxController@showbyfolio');
     Route::get('/showbyfolio', 'PreregistroAuxController@showbyfolio');
     
@@ -165,29 +165,28 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/estado/{id}/{tipo}', 'PreregistroController@estado');
     Route::post('/estado', 'PreregistroController@estadourgente')->name('estado');
     
-    //Route::resource('/predenuncias','PreregistroAuxController');
     Route::get('/preregistros', 'PreregistroAuxController@index')->name('predenuncias.index'); //ver formulario
     Route::get('/predenuncias/{id}/edit', 'PreregistroAuxController@edit')->name('predenuncias.edit'); //ver formulario
     Route::post('/predenuncias/{id}/update', 'PreregistroAuxController@update')->name('predenuncias.update'); //registar
-    
-    
+        
     Route::get('/preregistroWeb/pre-auxiliar', 'PreregistroAuxController@create'); //ver formulario
     Route::post('/preregistroWeb', 'PreregistroAuxController@store'); //registar
     
     /*-----------------descripcion de Hechos------------------------------*/
     Route::get('observaciones', 'NarracionController@descripcionHechos')->name('observaciones');
     Route::post('storeDescripcionHechos', 'NarracionController@storeDescripcionHechos')->name('store.descripcionHechos');
+    
     /*---------Rutas narración-------------*/
     Route::get('narracion/{id}', 'NarracionController@index')->name('narracion');
     Route::post('addnarracion/{id}', 'NarracionController@addNarracion')->name('new.narracion');
     Route::get('getnarracion/{id}', 'NarracionController@getNarracion')->name('getnarracion');
     Route::get('mostrardoc/{id}', 'NarracionController@mostrarDoc');
+    
     /*---------Rutas denunciado-------------*/
     Route::get('agregar-denunciado', 'DenunciadoController@showForm')->name('new.denunciado');
     Route::post('storedenunciado', 'DenunciadoController@storeDenunciado')->name('store.denunciado');
     Route::get('agregar-denunciado/{id}/eliminar', 'DenunciadoController@delete')->name('delete.denunciado');
     
-	
     /*---------Rutas para las notificaciones-------------*/
     Route::get('notificaciones', 'NotificacionesController@getNotificacionesCola')->name("notificaciones");
     
@@ -204,8 +203,6 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('recepcionista','PreregistroController@fiscal');
     Route::post('/recepcionista/create','PreregistroController@fiscalcreate')->name('fiscal');
-    
-    
     
     /*---------Atención rápida------------*/
     Route::get('atencion', 'AtencionController@index');
