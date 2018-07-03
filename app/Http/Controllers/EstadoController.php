@@ -97,6 +97,7 @@ class EstadoController extends Controller
                 case '1':
                     $id = Carpeta::find($idCarpeta); //seleccinar toda la fila del primer id con  el valor de idCarpeta 
                     $id->idEstadoCarpeta = $request->EstadoCarpeta;  //cambiar el campo idEstadpCarpeta por el valor $nombre
+                    $id->idTipoDeterminacion = 5;  
                     $id->observacionesEstatus = $request->narracion;  
                     $id->save();   // para guardar el registro
                     
@@ -746,6 +747,7 @@ class EstadoController extends Controller
                     $id = Carpeta::find($idCarpeta); //seleccinar toda la fila del primer id con  el valor de idCarpeta 
                     $id->idEstadoCarpeta = $request->EstadoCarpeta;  //cambiar el campo idEstadpCarpeta por el valor $nombre
                     $id->observacionesEstatus = $request->narracion;  
+                    $id->idTipoDeterminacion = $request->selectArchivo;  
                     $id->save();   // para guardar el registro
                     
                     $idCarpetaAux=$idCarpeta;
