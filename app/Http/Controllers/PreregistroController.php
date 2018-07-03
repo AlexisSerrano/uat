@@ -379,7 +379,9 @@ class PreregistroController extends Controller
                 }
             }
             DB::commit();
-            return redirect('FormatoRegistro/'.$id);
+            Alert::success('Registro creado exitosamente.<br> <h5>Folio: '.$preregistro->folio.'</h5><br><br><a href="'.url('FormatoRegistro/'.$id).'" target="_blank" >Ver formato</a> ','Hecho')->html()->persistent("Aceptar");
+            return redirect()->route('predenuncias.index');
+            // return redirect('FormatoRegistro/'.$id);
         }catch (\PDOException $e){
             DB::rollBack();
             Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');

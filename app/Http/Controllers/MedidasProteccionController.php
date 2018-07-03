@@ -9,6 +9,7 @@ use App\Models\CatProvidencias;
 use Yajra\DataTables\Datatables;
 use App\Models\Carpeta;
 use App\Models\BitacoraNavCaso;
+use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
 use App\Http\Requests\MedidasRequest;
@@ -168,7 +169,7 @@ class MedidasProteccionController extends Controller
 
     
 public function oficio($id){
-
+   
     $oficio = DB::table('providencias_precautorias')->where('providencias_precautorias.id', $id)
     ->join('cat_providencia_precautoria', 'providencias_precautorias.idProvidencia','=', 'cat_providencia_precautoria.id')
     ->join('ejecutor', 'providencias_precautorias.idEjecutor', '=', 'ejecutor.id')
@@ -183,9 +184,33 @@ public function oficio($id){
   
     ->select( DB::raw("CONCAT(`persona`.`nombres`,' ',CASE WHEN `persona`.`primerAp` IS NULL  THEN '' ELSE `persona`.`primerAp` END,' ',CASE WHEN `persona`.`segundoAp` IS NULL  THEN '' ELSE `persona`.`segundoAp` END) as nombre"),
      'domicilio.calle', 'domicilio.numExterno', 'cat_colonia.nombre as colonia','cat_colonia.codigoPostal as cp','cat_municipio.nombre as municipio','cat_estado.nombre as estado',
-     'ejecutor.nombre as ejecutor', DB::raw("DATEDIFF(providencias_precautorias.fechaFin,providencias_precautorias.fechaInicio) AS VIGENCIA"), 'providencias_precautorias.id', 'providencias_precautorias.fechaInicio AS fecha','providencias_precautorias.idCarpeta as carpeta' , 'variables_persona.telefono as telefono')
+     'ejecutor.nombre as ejecutor', DB::raw("DATEDIFF(providencias_precautorias.fechaFin,providencias_precautorias.fechaInicio) AS VIGENCIA"), 'providencias_precautorias.id', 'providencias_precautorias.fechaInicio AS fecha','carpeta.numCarpeta as carpeta' , 'variables_persona.telefono as telefono')
       
       ->first();
+
+      $denunciado2= DB::table('variables_persona')
+      ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
+      ->join('extra_denunciado', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+      ->where('variables_persona.id',$id)
+      ->select('persona.nombres','persona.primerAp','persona.segundoAp', 'persona.id')
+      ->first();
+
+      $fiscalAtiende=DB::table('users')
+        ->join('unidad','unidad.id','=','users.id')
+        ->join('unidad as unid','unid.id','=','users.idUnidad')
+        ->join('zona','zona.id','=','users.idZona')
+        ->where('users.id', Auth::user()->id)
+        ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','zona.descripcion as zona')
+        ->first();
+
+        $TipifDelito=DB::table('tipif_delito')
+        ->join('cat_delito','cat_delito.id','=','tipif_delito.idDelito')
+        ->where('tipif_delito.id',$id)
+        ->select('cat_delito.nombre as delito')
+        ->first();
+
+        $puesto=$fiscalAtiende->puesto;
+        $puesto = strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
      
     $data = array('nombre' => $oficio->nombre, 
     'calle' => $oficio->calle, 
@@ -199,7 +224,13 @@ public function oficio($id){
     'id' => $oficio->id,
     'fecha' => $oficio->fecha,
     'carpeta' => $oficio->carpeta,
+    'fiscalAtiende' =>  $fiscalAtiende->nombreC,
+    'NF' => $fiscalAtiende->numFiscal,
+    'puestoFiscal' => $puesto,
     'telefono' => $oficio->telefono,
+    // 'delito' => $TipifDelito->delito,
+    'zona' => $fiscalAtiende->zona,
+    // 'denunciado' => $denunciado2->nombres.' '.$denunciado2->primerAp.' '.$denunciado2->segundoAp,
     'img' => asset('img/logo.png'),
     'id' => $id);
     return response()->json($data);
