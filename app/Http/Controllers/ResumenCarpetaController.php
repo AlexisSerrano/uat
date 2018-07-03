@@ -81,11 +81,12 @@ class ResumenCarpetaController extends Controller
         $carpetas=DB::table('historial_carpeta')
         ->join('cat_estatus_casos','historial_carpeta.idEstatusCarpeta','=','cat_estatus_casos.id')
         ->join('carpeta','carpeta.id','=','historial_carpeta.idCarpeta')
-        ->join('cat_tipo_determinacion','cat_tipo_determinacion.id','=','carpeta.idTipoDeterminacion')
+        ->join('cat_tipo_determinacion','cat_tipo_determinacion.id','=','historial_carpeta.idTipoDeterminacion')
         ->join('unidad','carpeta.idUnidad','=','unidad.id')
         ->where('carpeta.id',$idCarpeta)
         ->select('historial_carpeta.fecha as fecha',
             'historial_carpeta.fiscal as fiscal',
+            'historial_carpeta.numCarpeta as numCarpeta',
             'historial_carpeta.observacion as observacion',
             'cat_estatus_casos.nombreEstatus as estatus',
             'cat_tipo_determinacion.nombre as determinacion',

@@ -102,12 +102,14 @@ class EstadoController extends Controller
                     
                     $idCarpetaAux=$idCarpeta;
                     $motivo=$id->observacionesEstatus;
-                    
+                    $numCarpetaAux=$id->numCarpeta;
+
                     $historial= new HistorialCarpeta;
                     $historial->idCarpeta = $idCarpetaAux;
                     $historial->idEstatusCarpeta = 1;
                     $historial->observacion = $motivo;
                     $historial->fiscal = Auth::user()->nombreC;
+                    $historial->numCarpeta = $numCarpetaAux;
                     $historial->fecha = Carbon::now();
                     $historial->save();
                    
@@ -122,6 +124,7 @@ class EstadoController extends Controller
                     $id->save();   // para guardar el registro
 
                     $idCarpetaAux=$idCarpeta;
+                    $numCarpetaAux=$id->numCarpeta;
                     $motivo=$id->observacionesEstatus;
                     
                     $historial= new HistorialCarpeta;
@@ -129,6 +132,7 @@ class EstadoController extends Controller
                     $historial->idEstatusCarpeta = 2;
                     $historial->idTipoDeterminacion = $request->selectDetermina;
                     $historial->observacion = $motivo;
+                    $historial->numCarpeta = $numCarpetaAux;
                     $historial->fiscal = Auth::user()->nombreC;
                     $historial->fecha = Carbon::now();
                     $historial->save();
@@ -143,12 +147,14 @@ class EstadoController extends Controller
                     $id->save();   // para guardar el registro
 
                     $idCarpetaAux=$idCarpeta;
+                    $numCarpetaAux=$id->numCarpeta;
                     $motivo=$id->observacionesEstatus;
                     
                     $historial= new HistorialCarpeta;
                     $historial->idCarpeta = $idCarpetaAux;
                     $historial->idEstatusCarpeta = 3;
                     $historial->observacion = $motivo;
+                    $historial->numCarpeta = $numCarpetaAux;
                     $historial->fiscal = Auth::user()->nombreC;
                     $historial->fecha = Carbon::now();
                     $historial->save();
@@ -744,11 +750,13 @@ class EstadoController extends Controller
                     
                     $idCarpetaAux=$idCarpeta;
                     $motivo=$id->observacionesEstatus;
+                    $numCarpetaAux=$id->numCarpeta;
                     
                     $historial= new HistorialCarpeta;
                     $historial->idCarpeta = $idCarpetaAux;
                     $historial->idEstatusCarpeta = 4;
                     $historial->observacion = $motivo;
+                    $historial->numCarpeta = $numCarpetaAux;
                     $historial->idTipoDeterminacion = $request->selectArchivo;
                     $historial->fiscal = Auth::user()->nombreC;
                     $historial->fecha = Carbon::now();

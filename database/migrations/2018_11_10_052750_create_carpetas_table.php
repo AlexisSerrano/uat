@@ -22,11 +22,11 @@ class CreateCarpetasTable extends Migration
             $table->boolean('esRelevante')->default(false);
             $table->integer('idEstadoCarpeta')->unsigned()->nullable(); // $table->string('estadoCarpeta',50)->default("INICIO");
             $table->time('horaIntervencion')->nullable();
-            $table->string('descripcionHechos',500)->default("SIN OBSERVACIONES");
+            $table->string('descripcionHechos',5000)->default("SIN OBSERVACIONES");
             $table->string('fiscalAtendio',200);
             $table->integer('idTipoDeterminacion')->unsigned()->default(5);//->nullable();// en vez del nullable
             $table->date('fechaDeterminacion')->nullable();
-            $table->string('observacionesEstatus',2000)->default("SIN OBSERVACIONES");
+            $table->string('observacionesEstatus',5000)->default("SIN OBSERVACIONES");
             $table->timestamps();
             $table->softDeletes();
             

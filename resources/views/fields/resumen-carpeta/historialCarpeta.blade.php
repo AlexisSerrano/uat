@@ -4,6 +4,8 @@
 @section('contenido')
 
 <div class="table">
+        <a href="{{route('carpeta.detalle')}}"  class="float-right btn btn-secondary" >Regresar a detalle de carpeta</a>    
+<br>
     {{-- {{ Form::open(['route' => ['filtro.carpetas'], 'method' => 'POST']) }}
     
         <div class="input-group mb-6 col-4" style="margin-left: -8px;">
@@ -14,11 +16,12 @@
         </div> 
     {{ Form::close() }} --}}
     <br>
-    <div class="card">
-        <table class="table table-hover text-center" id="tablacarpetas">
+    <div class="card table-responsive">
+        <table class="table table-sm text-center" id="tablacarpetas">
             <thead class="table-active">
                 <tr>
                     <th>Fecha</th>
+                    <th>Número de Carpeta</th>
                     <th>Fiscal</th> 
                     <th>Observación/Motivo</th>
                     <th>Estatus</th>
@@ -30,6 +33,7 @@
                 @forelse ($carpetas as $carpeta)
                     <tr>
                         <td>{{Jenssegers\Date\Date::parse($carpeta->fecha)->format('l j \\d\\e F \\d\\e Y') }}</td>
+                        <td>{{ $carpeta->numCarpeta}}</td>
                         <td>{{ $carpeta->fiscal}}</td>
                         <td>{{ $carpeta->observacion}}</td>
                         <td>{{ $carpeta->estatus}}</td>
