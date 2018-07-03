@@ -194,7 +194,6 @@ $('.btn-modal-delito').bind('click', function(){
 			$('#formaComision2').val(json.formaComision).trigger('change.select2');
 			$("#fecha2").val(json.fecha);
 			$("#hora2").val(json.hora);
-			$()
 			console.log(json);
 			// $("#observaciones1").val(json.observacion);
 			// $("#fechaInicio1").val(json.fechaInicio);

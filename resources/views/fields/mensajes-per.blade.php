@@ -1,4 +1,4 @@
-{!! Form::open(['route' => 'store.agregar', 'method' => 'POST', 'id' => 'submitMensaje'])  !!} 
+{!! Form::open(['route' => 'store.agregar', 'method' => 'POST'])  !!}  {{--, , 'id' => 'submitMensaje'--}} 
 <div class="row">
 	<div class="col-4">
 		<div class="form-group">

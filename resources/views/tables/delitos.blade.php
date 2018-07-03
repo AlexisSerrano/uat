@@ -25,8 +25,9 @@
                         <td>
                        {{-- <a href="{{ url('delito/'.$delito->id.'/eliminar')}}"  rel="tooltip" title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
                        <i class="fa fa-edit"></i></a> --}} 
-                            {{-- <button type="button" class="btn btn-secondary btn-simple btn-xs btn-modal-delito"  value={{$delito->id}} data-toggle="modal" data-target="#myModal-delito" id="open"> <i class="fa fa-edit"></i</button> --}}
+                          
                             @if(is_null(session('terminada')))
+                            <button type="button" class="btn btn-secondary btn-simple btn-xs btn-modal-delito"  value={{$delito->id}} data-toggle="modal" data-target="#myModal-delito" id="open"> <i class="fa fa-edit"></i></button>
                             <a data-delito-id={{$delito->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
                                 <i class="fa fa-times"></i>
                             </a>
@@ -48,7 +49,7 @@
 {{-- APARTADO DE MODAL PARA EDITAR EL DELITO --}}
 @csrf
 <!-- Modal -->
-{{-- <div class="modal fade" id="myModal-delito" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal-delito" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -72,14 +73,14 @@
                   
                   
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                {{-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> --}}
                 <button type="submit" class="btn btn-primary save">Save changes</button>
               
             
             </div>
         
     </div>
-</div> --}}
+</div>
 
 
 

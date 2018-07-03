@@ -127,20 +127,20 @@ class PericialesController extends Controller{
             $PerMensaje->narracion = $request->narraciont;
 
             $PerMensaje->save();
-            // if($PerMensaje->save()){
-            //     Alert::success('Registro guardado con éxito', 'Hecho');
-            // }
-            // else{
-            //     Alert::error('Se presentó un problema al guardar el registro', 'Error');
-            // }
+            if($PerMensaje->save()){
+                Alert::success('Registro guardado con éxito', 'Hecho');
+            }
+            else{
+                Alert::error('Se presentó un problema al guardar el registro', 'Error');
+            }
            DB::commit();
-            //return redirect()->route('oficio.m', $PerMensaje->id);
+            return redirect()->route('oficio.m', $PerMensaje->id);
             echo $PerMensaje->id;
         }catch (\PDOException $e){
             DB::rollBack();
             echo 0;
-            // Alert::error('Se presentó un problema al guardar el registro, intente de nuevo', 'Error');
-            // return back()->withInput();
+            Alert::error('Se presentó un problema al guardar el registro, intente de nuevo', 'Error');
+            return back()->withInput();
         }
     }
 
