@@ -71,7 +71,7 @@
                 <div class="row" id="observacion">
                     <div class="col-12">
                         <label for="narracion" class="col-form-label-sm">Observaciones</label>
-                        {{ Form::textarea('narracion',null, ['class' => 'form-control form-control-sm', 'size' => '30x10']) }}
+                        {{ Form::textarea('narracion',null, ['class' => 'form-control form-control-sm', 'size' => '30x10' , 'data-validation'=>'length', 'data-validation-length'=>'10-5000']) }}
                     </div>
                 </div>
 

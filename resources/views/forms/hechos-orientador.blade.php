@@ -61,9 +61,9 @@
 					@csrf
 					<div class="form-group" id="divnarracion">
 						@isset($narracion)
-							{{ Form::textarea('descripcionHechos', $narracion, ['class' => 'form-control']) }}
+							{{ Form::textarea('descripcionHechos', $narracion, ['class' => 'form-control' , 'data-validation'=>'length', 'data-validation-length'=>'10-5000']) }}
 						@else	
-							{{ Form::textarea('descripcionHechos', null, ['class' => 'form-control']) }}
+							{{ Form::textarea('descripcionHechos', null, ['class' => 'form-control','data-validation'=>'length', 'data-validation-length'=>'10-5000']) }}
 						@endisset		
 						{{-- <textarea name="narracion" id="areaNarracion" cols="30" rows="10" class="form-control form-control-sm"></textarea> --}}
 						{{-- <div id="divText" style="display:none"></div> --}}

@@ -29,7 +29,7 @@
 	<div class="col-12">
 		<div class="form-group">
 			{!! Form::label('senasParticC', 'Señas particulares', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::textarea('senasParticC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3','data-validation'=>'custom', 'data-validation'=>'length', 'data-validation-length'=>'min10','data-validation-error-msg'=>'Las señas particulasres debe contener al menos 10 caracteres']) !!}
+			{!! Form::textarea('senasParticC', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3', 'data-validation'=>'length', 'data-validation-length'=>'10-5000']) !!}
 		</div>
 	</div>
 </div>

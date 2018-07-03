@@ -64,7 +64,7 @@
 				<form action="{{route('new.narracion', $id)}}" method="post" id="formNarracion" enctype="multipart/form-data">
 					@csrf
 					<div class="form-group" id="divnarracion">		
-						<textarea name="narracion" id="areaNarracion" cols="30" rows="10" class="form-control form-control-sm">@if($ultimo != null){{ $ultimo->narracion}} @endif</textarea>
+						<textarea name="narracion" id="areaNarracion" cols="30" rows="10" class="form-control form-control-sm" data-validation='length' data-validation-length='10-5000'>@if($ultimo != null){{ $ultimo->narracion}} @endif</textarea>
                         <div id="divText" style="display:none"></div>
                         <input type="hidden" name="id" value="{{$id}}">
 					 </div> 
