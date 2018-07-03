@@ -110,6 +110,15 @@ $data= getOficiosImpresos();
                     <a href="{{ route("oficio.remision",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg "><i class="fa fa-print"></i></a>
                     </td> 
                 </tr> 
+                <tr>
+                    <td>Para reporte de robo </td>
+                    <td style="text-align:center;">
+                        <span class="badge badge-info right"></span>
+                    </td>
+                    <td style="text-align:center;">
+                    <a href="{{ route("oficio.impRobo",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg "><i class="fa fa-print"></i></a>
+                    </td> 
+                </tr> 
             </tbody>
         </table>
        

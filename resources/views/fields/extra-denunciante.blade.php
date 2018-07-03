@@ -32,9 +32,9 @@
 		<div class="form-group">
 			{!! Form::label('narracion', 'Descripción de hechos', ['class' => 'col-form-label-sm']) !!}
 			@isset($preregistro)
-				{!! Form::textarea('narracion', $preregistro->narracion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la descripción de los hechos', 'rows' => '5', 'data-validation'=> 'required']) !!}
+				{!! Form::textarea('narracion', $preregistro->narracion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la descripción de los hechos', 'rows' => '5', 'data-validation'=> 'required,length','data-validation-length'=>'10-5000']) !!}
 			@else	
-				{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la descripcón de los hechos', 'rows' => '5', 'data-validation'=> 'required']) !!}
+				{!! Form::textarea('narracion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la descripcón de los hechos', 'rows' => '5', 'data-validation'=> 'required,length','data-validation-length'=>'10-5000']) !!}
 			@endisset
 		</div>
 	</div>

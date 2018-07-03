@@ -444,11 +444,13 @@ class CarpetaController extends Controller
 
                 $idCarpetaAux=$carpeta->id;
                 $motivo=$carpeta->descripcionHechos;
+                $numCarpetaAux=$carpeta->numCarpeta;
                 
                 $historial= new HistorialCarpeta;
                 $historial->idCarpeta = $idCarpetaAux;
                 $historial->idEstatusCarpeta = 1;
                 $historial->observacion = $motivo;
+                $historial->numCarpeta = $numCarpetaAux;
                 $historial->fiscal = Auth::user()->nombreC;
                 $historial->fecha = Carbon::now();
                 $historial->save();

@@ -27,7 +27,7 @@ class CreateVehiculoCarpetasTable extends Migration
             $table->string('numMotor', 50)->default("SIN INFORMACION");
             $table->integer('idTipoVehiculo')->unsigned()->default(25);
             $table->integer('idTipoUso')->unsigned()->default(22);
-            $table->string('senasPartic', 100)->default("SIN INFORMACION");
+            $table->string('senasPartic', 5000)->default("SIN INFORMACION");
             $table->integer('idProcedencia')->unsigned()->default(4);
             $table->integer('idAseguradora')->unsigned()->default(25);
             

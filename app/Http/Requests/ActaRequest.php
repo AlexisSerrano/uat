@@ -50,7 +50,7 @@ class ActaRequest extends FormRequest
             'numExterno2' => 'nullable|string|min:1|max:10',
             'numInterno2' => 'nullable|string|max:10',
             // 'numDocIdentificacion2',
-            'narracion' => 'string|min:5|max:2000',
+            'narracion' => 'string|min:5|max:5000',
 
         ];  
     }

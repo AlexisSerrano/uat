@@ -15,6 +15,7 @@ class CreateBitacoraNavcasoTable extends Migration
     {
         Schema::create('bitacora_navcaso', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('idCaso')->unsigned();
             $table->tinyInteger('denunciante');
             $table->tinyInteger('denunciado');
             $table->tinyInteger('abogado');
@@ -26,7 +27,7 @@ class CreateBitacoraNavcasoTable extends Migration
             $table->tinyInteger('medidas');
             $table->tinyInteger('vehiculos');
             $table->tinyInteger('terminada');
-            $table->integer('idCaso')->unsigned();
+            $table->tinyInteger('determinada');
             $table->foreign('idCaso')->references('id')->on('carpeta')->onDelete('cascade');
             $table->timestamps();
         });

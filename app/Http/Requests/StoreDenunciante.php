@@ -37,7 +37,7 @@ class StoreDenunciante extends FormRequest
            // 'correo' => 'nullable|email',
             'telefonoN' => 'numeric|min:7',
             // 'fax' => 'numeric',
-            'narracion' => 'string|min:5|max:2000',
+            'narracion' => 'string|min:5|max:5000',
 
             'nombres' => 'string|min:3|max:200',
             'primerAp' => 'string|min:3|max:50',

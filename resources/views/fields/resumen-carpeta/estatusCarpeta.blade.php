@@ -71,7 +71,7 @@
                 <div class="row" id="observacion">
                     <div class="col-12">
                         <label for="narracion" class="col-form-label-sm">Observaciones</label>
-                        {{ Form::textarea('narracion',null, ['class' => 'form-control form-control-sm', 'size' => '30x10']) }}
+                        {{ Form::textarea('narracion',null, ['class' => 'form-control form-control-sm', 'size' => '30x10' , 'data-validation'=>'length', 'data-validation-length'=>'10-5000']) }}
                     </div>
                 </div>
 
@@ -111,10 +111,10 @@
                 case "1":
                     $('#determinacion').hide();
                     $('#archivo').hide();
-                    $('#observacion').hide();
+                    $('#observacion').show();
                     $('#selectDetermina').prop('disabled', true);
                     $('#selectArchivo').prop('disabled', true);
-                    $('#narracion').prop('disabled', true);
+                    $('#narracion').prop('disabled', false);
                     break;
             
                 case "2":
@@ -143,6 +143,15 @@
                     $('#selectArchivo').prop('disabled', false);
                     $('#narracion').prop('disabled', false);
                     break;
+            
+                // case "5":
+                //     $('#archivo').hide();
+                //     $("#observacion").show();
+                //     $("#determinacion").hide();
+                //     $('#selectDetermina').prop('disabled', true);
+                //     $('#selectArchivo').prop('disabled', true);
+                //     $('#narracion').prop('disabled', false);
+                //     break;
             
                 default:
                     $('#determinacion').hide();
