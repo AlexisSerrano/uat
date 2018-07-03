@@ -400,12 +400,15 @@ class PericialesController extends Controller{
             ->where('carpeta.id',$id)
             ->first();
 
+            
             $fiscalAtiende=DB::table('users')
             ->join('unidad','unidad.id','=','users.id')
             ->join('unidad as unid','unid.id','=','users.idUnidad')
             ->where('users.id', Auth::user()->id)
             ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra')
             ->first();
+
+            dd('hello');
 
             $vehiculo = DB::table('per_vehiculos')
             ->where('per_vehiculos.id', $id)
@@ -461,8 +464,11 @@ class PericialesController extends Controller{
         //    'Colonia' => $vehiculo->nombreColonia,
         //    'CP' => $vehiculo->codigoPostal,
            'fecha' => $fechahum);
-           return response()->json($data);
+          // return response()->json($data);
+
+          return view('tables.pruebas')->with('fiscalAtiende',$fiscalAtiende);
        }
+
 
     //    public function getMensajesP(){
 

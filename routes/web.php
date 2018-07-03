@@ -22,7 +22,7 @@ Route::get('/pruebasmetodo/{id}','PruebasController@pruebas');
 
 Route::get('/pruebas/caso','PruebasController@create');
 Route::get('/pruebas/hechos','PruebasController@hechos');
-Route::get('/pruebas/delitos','PruebasController@delitos');
+Route::get('pruebas','PericialesController@getVhFinanzas');
 Route::get('/pruebas/impresion','PruebasController@impresion');
 Route::get('/pruebas/alfred','PruebasController@alfred');
 
@@ -30,8 +30,8 @@ Route::get('/libro-acta', function(){
     return view('tables.libro-actas');
 });
 
-Route::get('/pruebaMedidas', function () {
-    return view('forms.medidasProteccion');
+Route::get('/pruebasf', function () {
+    return view('tables.pruebas');
 });
 Route::get('/pruebasconsulta', function(){
     return view('tables.consulta-actas');

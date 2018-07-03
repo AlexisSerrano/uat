@@ -36,18 +36,7 @@
 			{!! Form::text('numero2t', null, ['class' => 'persona form-control form-control-sm', 'placeholder' => 'Ingrese el número destino', 'data-validation'=>'required']) !!}
 		</div>
 	</div>
-	<div class="col-4">
-		<div class="form-group">
-		{!! Form::label('fechamen', 'Fecha de elaboración', ['class' => 'col-form-label-sm']) !!}
-			<div class="input-group date" id="fechamen" data-target-input="nearest">
-				@if(isset($form['fechamen']))
-				<input type="date" id="fechamen" name="fechamen" value="{{ $form['fechamen'] }}" class="form-control form-control-sm", data-validation="required">
-				@else
-				<input type="date" id="fechamen" name="fechamen" class="form-control form-control-sm", data-validation="required">
-				@endif
-			</div>
-		</div>
-	</div>
+	
 	<div class="col-12">
 		<div class="form-group">
 			{!! Form::label('narraciont', 'Narración', ['class' => 'col-form-label-sm']) !!}		
