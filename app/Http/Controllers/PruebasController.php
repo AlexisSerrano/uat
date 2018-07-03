@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Auth;
 use Alert;
 use DATEDIFF;
 use Carbon\Carbon;
@@ -161,7 +162,26 @@ public function actas()
 }
 
 public function impresion(){
-    return view('impresion');
+    $fiscalAtiende=DB::table('users')
+            ->join('unidad','unidad.id','=','users.id')
+            ->join('unidad as unid','unid.id','=','users.idUnidad')
+            ->where('users.id', Auth::user()->id)
+            ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra')
+            ->first();
+
+            
+            $arr = explode(" ",$fiscalAtiende->descripcion);
+            $aux=9;
+            $localidad="";
+            // dd(count($arr)-1);
+            while(count($arr)-1 >= $aux){
+                $localidad=$localidad." ".$arr[$aux];
+                $aux=$aux+1;
+            }
+            dd($localidad);
+
+            
+            return view('tables.pruebas')->with('fiscalAtiende',$fiscalAtiende);
 }
 
 
