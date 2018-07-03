@@ -10,21 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*******************Rutas para probar vistas*************************** */
+/*******************INICIO DE RUTAS PARA PROBAR VISTAS O METODOS*************************** */
 Route::get('/', function () {
     return redirect('home');
 });
 Route::get('/prueba', function () {
     return view('welcome');
 });
-/**********************Rutas de prueba***********************/
-Route::get('/iframe', function () {
-    return view('welcome');
-});
-
-
-Route::get('/acuerdo/{id}','AcusacionController@acuerdoInicio')->name('acuerdo-inicio');
-Route::get('/acuerdo-inicio/{id}','AcusacionController@acuerdoDocumento')->name('acuerdo-documento');
+Route::get('/pruebasactas','PruebasController@actas');
+Route::get('/pruebasmetodo/{id}','PruebasController@pruebas');
 
 Route::get('/pruebas/caso','PruebasController@create');
 Route::get('/pruebas/hechos','PruebasController@hechos');
@@ -51,65 +45,7 @@ Route::get('/pruebasformatos', function(){
     return view('tables.formatos');
 });
 
-Route::get('/pruebasactas','PruebasController@actas');
-Route::get('/pruebasmetodo/{id}','PruebasController@pruebas');
-
-Route::get('/impresion-Oficios/{id}','ImpresionesController@tablaOficios')->name('tabla.oficios');
-Route::get('/oficio-distrito','ImpresionesController@oficioDistrito')->name('fiscal.distrito'); 
-Route::get('/oficio-funcion/{id}','ImpresionesController@docDistrito')->name('oficio.funcion'); 
-Route::get('fiscal/{id}', 'ImpresionesController@getfiscal')->name('get.fiscal');
-Route::post('imprimir/Oficio-distrito','ImpresionesController@storeDistrito')->name('store.oficioDistrito');
-Route::get('Datosfiscal/{id}', 'ImpresionesController@getDatos'); 
-
-
-Route::get('policia-ministerial/{id}','ImpresionesController@policiaMinisterial')->name('policia.ministerial');
-Route::get('oficio-ministerial/{id}','ImpresionesController@getMinisterial');
-Route::get('transporte-estado/{id}','ImpresionesController@transporteEdo')->name('oficio.transporte');
-Route::get('Oficiotransporte-estado/{id}','ImpresionesController@storeoficioTransporte')->name('storeoficio.Transporte');
-
-
-Route::get('oficio-cavd/{id}','ImpresionesController@oficioCavd')->name('oficio.cavd');
-Route::get('show-oficioCavd','ImpresionesController@showOficio')->name('show.oficioCavd');
-Route::post('store-oficioCavd','ImpresionesController@storeOficio')->name('store.oficioCavd');
-Route::get('getcavd/{id}','ImpresionesController@getCavd');
-
-
-Route::get('not-actuaciones/{id}','ImpresionesController@notActuaciones')->name('not.actuaciones');
-Route::get('impresion-actuaciones/{id}','ImpresionesController@impresionActuaciones')->name('impresion.actuaciones');
-
-Route::get('impresion-archivoTemporal/{id}','ImpresionesController@archivoTemporal')->name('impresion.archivoTemporal');
-Route::get('impresion-temporal/{id}','ImpresionesController@archivoTemporalImp')->name('impresion.temporal');
-
-Route::get('primera-invitacion','ImpresionesController@primeraInvitacion')->name('primera.invitacion');
-Route::get('impresion-invitacion','ImpresionesController@mostrarOficio');
-Route::get('json-invitacion/{id}','ImpresionesController@getInvitacion');
-
-Route::get('oficio-inicio/{id}','ImpresionesController@oficioInicio')->name('oficio.inicio');
-Route::get('impresion-inicio/{id}','ImpresionesController@impresionInicio')->name('impresion.acuerdoInicio');
-
-Route::get('oficio-remision/{id}','ImpresionesController@docRemision')->name('oficio.remision');
-Route::get('impresion-remision/{id}','ImpresionesController@getRemision')->name('impresion.remision');
-
-
-/* --------Ruta para obtener token oficios----------- */
-// Route::get('getToken/{id}','ActasHechosController@getToken')->name('getToken');
-// Route::get('oficioah/{id}','ActasHechosController@getoficioah')->name('oficioah');  
-// Route::post('saveOficio','ActasHechosController@saveOficio')->name('saveOficio');
-// Route::get('getoficioah2/{id}','ActasHechosController@getoficioah2')->name('getoficioah');
-
-
-Route::post('oficios', 'OficioController@oficios')->name('oficios');
-Route::post('getToken', 'OficioController@getToken')->name('getToken');
-Route::post('saveOficio', 'OficioController@saveOficio')->name('saveOficio');
-Route::post('intentos', 'OficioController@intentos')->name('intentos');
-Route::get('getOficios', 'OficioController@getOficios')->name('getOficios');
-Route::post('getOficio', 'OficioController@getOficio')->name('getOficio');
-Route::post('addOficio', 'OficioController@addOficio')->name('addOficio');
-Route::post('updateOficio', 'OficioController@updateOficio')->name('updateOficio');
-
-
-
-
+/**********************FIN RUTAS PARA PROBAR VISTAS O METODOS***********************/
 /**NO TOCAR***/
 Auth::routes();
 
@@ -120,9 +56,73 @@ Route::get('errorlogin', 'RegisterController@errorlogin')->name('error.login');
 //////////////////////////////////////////////////        
 
 Route::middleware(['auth'])->group(function () {
+
+
+    Route::get('/impresion-Oficios/{id}','ImpresionesController@tablaOficios')->name('tabla.oficios');
+    Route::get('/oficio-distrito','ImpresionesController@oficioDistrito')->name('fiscal.distrito'); 
+    Route::get('/oficio-funcion/{id}','ImpresionesController@docDistrito')->name('oficio.funcion'); 
+    Route::get('fiscal/{id}', 'ImpresionesController@getfiscal')->name('get.fiscal');
+    Route::post('imprimir/Oficio-distrito','ImpresionesController@storeDistrito')->name('store.oficioDistrito');
+    Route::get('Datosfiscal/{id}', 'ImpresionesController@getDatos'); 
+
+
+    Route::get('policia-ministerial/{id}','ImpresionesController@policiaMinisterial')->name('policia.ministerial');
+    Route::get('oficio-ministerial/{id}','ImpresionesController@getMinisterial');
+    Route::get('transporte-estado/{id}','ImpresionesController@transporteEdo')->name('oficio.transporte');
+    Route::get('Oficiotransporte-estado/{id}','ImpresionesController@storeoficioTransporte')->name('storeoficio.Transporte');
+
+
+    Route::get('oficio-cavd/{id}','ImpresionesController@oficioCavd')->name('oficio.cavd');
+    Route::get('show-oficioCavd','ImpresionesController@showOficio')->name('show.oficioCavd');
+    Route::post('store-oficioCavd','ImpresionesController@storeOficio')->name('store.oficioCavd');
+    Route::get('getcavd/{id}','ImpresionesController@getCavd');
+
+
+    Route::get('not-actuaciones/{id}','ImpresionesController@notActuaciones')->name('not.actuaciones');
+    Route::get('impresion-actuaciones/{id}','ImpresionesController@impresionActuaciones')->name('impresion.actuaciones');
+
+    Route::get('impresion-archivoTemporal/{id}','ImpresionesController@archivoTemporal')->name('impresion.archivoTemporal');
+    Route::get('impresion-temporal/{id}','ImpresionesController@archivoTemporalImp')->name('impresion.temporal');
+
+    Route::get('primera-invitacion','ImpresionesController@primeraInvitacion')->name('primera.invitacion');
+    Route::get('impresion-invitacion','ImpresionesController@mostrarOficio');
+    Route::get('json-invitacion/{id}','ImpresionesController@getInvitacion');
+
+    Route::get('oficio-inicio/{id}','ImpresionesController@oficioInicio')->name('oficio.inicio');
+    Route::get('impresion-inicio/{id}','ImpresionesController@impresionInicio')->name('impresion.acuerdoInicio');
+
+    Route::get('oficio-remision/{id}','ImpresionesController@docRemision')->name('oficio.remision');
+    Route::get('impresion-remision/{id}','ImpresionesController@getRemision')->name('impresion.remision');
+
+
+    /* --------Ruta para obtener token oficios----------- */
+    // Route::get('getToken/{id}','ActasHechosController@getToken')->name('getToken');
+    // Route::get('oficioah/{id}','ActasHechosController@getoficioah')->name('oficioah');  
+    // Route::post('saveOficio','ActasHechosController@saveOficio')->name('saveOficio');
+    // Route::get('getoficioah2/{id}','ActasHechosController@getoficioah2')->name('getoficioah');
+
+
+
     
+    /********MODULO DE OFICIOS***********/    
+    Route::post('oficios', 'OficioController@oficios')->name('oficios');
+    Route::post('getToken', 'OficioController@getToken')->name('getToken');
+    Route::post('saveOficio', 'OficioController@saveOficio')->name('saveOficio');
+    Route::post('intentos', 'OficioController@intentos')->name('intentos');
+    Route::get('getOficios', 'OficioController@getOficios')->name('getOficios');
+    Route::post('getOficio', 'OficioController@getOficio')->name('getOficio');
+    Route::post('addOficio', 'OficioController@addOficio')->name('addOficio');
+    Route::post('updateOficio', 'OficioController@updateOficio')->name('updateOficio');
+
+    /**-- acuerdo de inicio --**/
+    Route::get('/acuerdo/{id}','AcusacionController@acuerdoInicio')->name('acuerdo-inicio');
+    Route::get('/acuerdo-inicio/{id}','AcusacionController@acuerdoDocumento')->name('acuerdo-documento');
+    
+
+    /**--interfaz para ver fiscales disponibres--**/
     Route::get('/fiscales', 'PreregistroController@estadoFiscales')->name('disponibilidad.fiscal');
     
+    /***--resumen de la carpeta hunto con el historial de la carpeta--***/
     Route::get('/resumen', 'ResumenCarpetaController@showResumen')->name('carpeta.detalle');
     Route::get('/resumen/denunciante', 'ResumenCarpetaController@detalleDenunciante')->name('resumen.denunciante');
     Route::get('/resumen/denunciado', 'ResumenCarpetaController@detalleDenunciado')->name('resumen.denunciado');
@@ -135,14 +135,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/carpeta/historial', 'ResumenCarpetaController@detalleHistorial')->name('historial.carpeta');
             
     
-    /************Rutas para formulario de solicitante/victima/denunciante*************/
+    /**--control de la carpeta--**/
     Route::get('/crear-caso', 'CarpetaController@crearCaso')->name('inicio.caso');
     Route::get('cancelar-caso', 'CarpetaController@cancelarCaso')->name('cancelar.caso');
     Route::get('terminar', 'CarpetaController@terminar')->name('terminar.caso');
     Route::get('salir', 'CarpetaController@salirCaso')->name('salir.caso');
-    //Route::post('storecarpeta', 'CarpetaController@storeCarpeta')->name('store.carpeta');
-    //Route::get('/carpeta-inicial/{id}', 'CarpetaController@index')->name('carpeta');
     
+    /************Rutas para formulario de solicitante/victima/denunciante*************/
     Route::get('agregar-denunciante', 'DenuncianteController@showForm')->name('new.denunciante');
     Route::post('storedenunciante', 'DenuncianteController@storeDenunciante')->name('store.denunciante');
     Route::get('agregar-denunciante/{id}/eliminar', 'DenuncianteController@delete')->name('delete.denunciante');
@@ -150,10 +149,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/turno/{id}/{tipo}', 'PreregistroAuxController@turno')->name('tomar.turno');
     Route::get('/Traerturno', 'PreregistroAuxController@Traerturno')->name('turno.denunciante');
     Route::get('/devolver/{id}', 'PreregistroAuxController@devolverturno')->name('devolver');
+    
     /*****************************Rutas para modulo recepción****************************************/
-    
-    
-    //Route::resource('/preregistro','PreregistroController');
     
     
     Route::post('/showbyfolio', 'PreregistroAuxController@showbyfolio');
@@ -225,11 +222,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getoficio/{id}','MedidasProteccionController@oficio');
     
     Route::get('medidaoficio/{id}', 'MedidasProteccionController@medidaoficio')->name('medidaoficio');
-    
-    /*----------------medidas version2------------------*/
-    // Route::get('medidas2', 'MedidasController@index')->name('medidas2');
-    // Route::post('addMedidas2', 'MedidasController@addMedidas2')->name('addMedidas2');
-    // Route::get('getMedidas2', 'MedidasController@getMedidas2')->name('getMedidas2');
     
     
     /*---------Rutas  Delitos Controller------------*/
