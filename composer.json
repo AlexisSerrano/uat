@@ -6,7 +6,6 @@
     "type": "project",
     "require": {
         "php": "^7.1.3",
-        "simplesoftwareio/simple-qrcode": "~2",
         "adldap2/adldap2-laravel": "^4.0",
         "barryvdh/laravel-dompdf": "^0.8.1",
         "fideloper/proxy": "^4.0",
@@ -18,6 +17,8 @@
         "nainlobato/rfc": "dev-master",
         "nesbot/carbon": "~1.18",
         "phpoffice/phpword": "^0.14.0",
+        "simplesoftwareio/simple-qrcode": "~2",
+        "spatie/laravel-permission": "^2.12",
         "tightenco/ziggy": "^0.6.6",
         "uxweb/sweet-alert": "^1.4",
         "yajra/laravel-datatables-oracle": "^8.4"

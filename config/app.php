@@ -162,20 +162,20 @@ return [
         
 
         //Provider incluidos
-        Laraveles\Spanish\SpanishServiceProvider::class,
+        Laraveles\Spanish\SpanishServiceProvider::class,//laravel en español
         Collective\Html\HtmlServiceProvider::class,
-        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
-        Yajra\DataTables\DataTablesServiceProvider::class,
-        Barryvdh\DomPDF\ServiceProvider::class,
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,//sweetAlert
+        Yajra\DataTables\DataTablesServiceProvider::class,//datatables
+        Barryvdh\DomPDF\ServiceProvider::class,//generacion de pdf
         Jenssegers\Date\DateServiceProvider::class,//pasar fechas en español
-        Tightenco\Ziggy\ZiggyServiceProvider::class,
+        Tightenco\Ziggy\ZiggyServiceProvider::class,//route en js
 
-        Adldap\Laravel\AdldapServiceProvider::class,
-        Adldap\Laravel\AdldapAuthServiceProvider::class,
+        Adldap\Laravel\AdldapServiceProvider::class,//conexion active directory
+        Adldap\Laravel\AdldapAuthServiceProvider::class,//conexion active directory
 
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,//generacion de qr
-        Barryvdh\Debugbar\ServiceProvider::class,
-        
+        Barryvdh\Debugbar\ServiceProvider::class,//debug bar para laravel
+        Spatie\Permission\PermissionServiceProvider::class,//roles y permisos
     ],
 
     /*
