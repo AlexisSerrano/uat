@@ -68,6 +68,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('policia-ministerial/{id}','ImpresionesController@policiaMinisterial')->name('policia.ministerial');
     Route::get('oficio-ministerial/{id}','ImpresionesController@getMinisterial');
+    ///////////////////////////// oficio a direccion general de transporte del estado
     Route::get('transporte-estado/{id}','ImpresionesController@transporteEdo')->name('oficio.transporte');
     Route::get('Oficiotransporte-estado/{id}','ImpresionesController@storeoficioTransporte')->name('storeoficio.Transporte');
 

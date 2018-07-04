@@ -216,8 +216,10 @@ class ImpresionesController extends Controller
 
 
     }
+// Oficio para direccion gral transporte estado
+
     public function storeoficioTransporte($id){
-        // $idCarpeta=session('carpeta');
+        $id=session('carpeta');
         $carpeta=DB::table('carpeta')
         ->join('unidad','carpeta.idUnidad','=','unidad.id')
         ->where('carpeta.id',$id)->first();
@@ -232,7 +234,7 @@ class ImpresionesController extends Controller
         ->join('cat_color','cat_color.id','=','vehiculo.idColor')
         ->join('cat_tipo_uso','cat_tipo_uso.id','=','vehiculo.idTipoUso')
          ->join('cat_marca','cat_marca.id','=','cat_submarcas.idMarca')
-        ->where('vehiculo.id',$id)
+        ->where('tipif_delito.idCarpeta',$id)
         ->select('vehiculo.id','cat_marca.nombre as marca','vehiculo.created_at as fecha','cat_delito.nombre as delito','vehiculo.placas','cat_submarcas.nombre as submarca','vehiculo.modelo',
         'vehiculo.nrpv','cat_color.nombre as color','vehiculo.numSerie','vehiculo.numMotor','cat_tipo_uso.nombre as TipoUso')
         ->first();
@@ -244,13 +246,23 @@ class ImpresionesController extends Controller
         ->where('users.id', Auth::user()->id)
         ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','zona.descripcion as zona')
         ->first();
-
+        $arr = explode(" ",$fiscalAtiende->descripcion);
+        $aux=9;
+        $localidad="";
+        // dd(count($arr)-1);
+        while(count($arr)-1 >= $aux){
+            $localidad=$localidad." ".$arr[$aux];
+            $aux=$aux+1;
+        }
+        
+        $oficio="PENDIENTE";
         $puesto=$fiscalAtiende->puesto;
         $puesto = strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
        
        
         $fechaactual = new Date( $vehiculo->fecha);
         $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
+        $fechahum= strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
         $data = array('id' => $id,
         'numCarpeta'=>$numCarpeta,
         'fiscalAtendio'=>$fiscalAtiende->nombreC,
@@ -258,10 +270,10 @@ class ImpresionesController extends Controller
         'marca'=>$vehiculo->marca,
         'submarca'=>$vehiculo->submarca,
         'color'=>$vehiculo->color,
-        'zona'=>$fiscalAtiende->zona,
+        'zona'=>$localidad,
         'numSerie'=>$vehiculo->numSerie,
         'modelo'=>$vehiculo->modelo,
-
+        'oficio'=>$oficio,
         // 'entidad'=>$localidadAtiende->descripcion,
         'fecha'=>$fechahum,
         'placas'=>$vehiculo->placas);
@@ -636,6 +648,8 @@ class ImpresionesController extends Controller
 
            }
 
+// ACUERDO DE INICIO
+
            public function oficioInicio($id){
             $idCarpeta=session('carpeta');
             $carpeta=DB::table('carpeta')
@@ -651,6 +665,16 @@ class ImpresionesController extends Controller
             ->where('users.id', Auth::user()->id)
             ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra', 'localidad.descripcion as ciudad')
             ->first();
+
+             
+            $arr = explode(" ",$fiscalAtiende->descripcion);
+            $aux=9;
+            $localidad="";
+            while(count($arr)-1 >= $aux){
+                $localidad=$localidad." ".$arr[$aux];
+                $aux=$aux+1;
+            }
+           // dd($localidad);
 
             $denunciantes = DB::table('variables_persona')
             ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
@@ -687,7 +711,7 @@ class ImpresionesController extends Controller
            
             $datos=array('id'=> $idCarpeta,
             'nombreC'=>$fiscalAtiende->nombreC,
-            'ciudad'=>$fiscalAtiende->ciudad,
+            'ciudad'=>$localidad,
             'puesto'=>$fiscalAtiende->puesto,
             'denunciante'=>$cadenaDenunciantes,
             'delitos'=>$TipifDelito->nombre,

@@ -178,7 +178,20 @@ public function impresion(){
                 $localidad=$localidad." ".$arr[$aux];
                 $aux=$aux+1;
             }
-            dd($localidad);
+            $id=session('carpeta');
+            $vehiculo=DB::Table('vehiculo')
+            ->join('tipif_delito','vehiculo.idTipifDelito','=','tipif_delito.id')
+            ->join('cat_delito','cat_delito.id','=','tipif_delito.id')
+            ->join('cat_submarcas','cat_submarcas.id','=','vehiculo.idSubmarca')
+            ->join('cat_color','cat_color.id','=','vehiculo.idColor')
+            ->join('cat_tipo_uso','cat_tipo_uso.id','=','vehiculo.idTipoUso')
+             ->join('cat_marca','cat_marca.id','=','cat_submarcas.idMarca')
+            ->where('tipif_delito.idCarpeta',$id)
+            ->select('vehiculo.id','cat_marca.nombre as marca','vehiculo.created_at as fecha','cat_delito.nombre as delito','vehiculo.placas','cat_submarcas.nombre as submarca','vehiculo.modelo',
+            'vehiculo.nrpv','cat_color.nombre as color','vehiculo.numSerie','vehiculo.numMotor','cat_tipo_uso.nombre as TipoUso')
+            ->first();
+
+            dd($vehiculo);
 
             
             return view('tables.pruebas')->with('fiscalAtiende',$fiscalAtiende);
