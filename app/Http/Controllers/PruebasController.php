@@ -162,36 +162,16 @@ public function actas()
 }
 
 public function impresion(){
-    $fiscalAtiende=DB::table('users')
-            ->join('unidad','unidad.id','=','users.id')
-            ->join('unidad as unid','unid.id','=','users.idUnidad')
-            ->where('users.id', Auth::user()->id)
-            ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra')
-            ->first();
+    
+    $id=session('carpeta');
+    $carpeta=DB::table('carpeta')
+    ->join('unidad','carpeta.idUnidad','=','unidad.id')
+   // ->select('unidad.descripcion','carpeta.numCarpeta')
+    ->where('carpeta.id',$id)
+    ->first();
+    
 
-            
-            $arr = explode(" ",$fiscalAtiende->descripcion);
-            $aux=9;
-            $localidad="";
-            // dd(count($arr)-1);
-            while(count($arr)-1 >= $aux){
-                $localidad=$localidad." ".$arr[$aux];
-                $aux=$aux+1;
-            }
-            $id=session('carpeta');
-            $vehiculo=DB::Table('vehiculo')
-            ->join('tipif_delito','vehiculo.idTipifDelito','=','tipif_delito.id')
-            ->join('cat_delito','cat_delito.id','=','tipif_delito.id')
-            ->join('cat_submarcas','cat_submarcas.id','=','vehiculo.idSubmarca')
-            ->join('cat_color','cat_color.id','=','vehiculo.idColor')
-            ->join('cat_tipo_uso','cat_tipo_uso.id','=','vehiculo.idTipoUso')
-             ->join('cat_marca','cat_marca.id','=','cat_submarcas.idMarca')
-            ->where('tipif_delito.idCarpeta',$id)
-            ->select('vehiculo.id','cat_marca.nombre as marca','vehiculo.created_at as fecha','cat_delito.nombre as delito','vehiculo.placas','cat_submarcas.nombre as submarca','vehiculo.modelo',
-            'vehiculo.nrpv','cat_color.nombre as color','vehiculo.numSerie','vehiculo.numMotor','cat_tipo_uso.nombre as TipoUso')
-            ->first();
-
-            dd($vehiculo);
+            dd($carpeta);
 
             
             return view('tables.pruebas')->with('fiscalAtiende',$fiscalAtiende);
