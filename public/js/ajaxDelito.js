@@ -31,7 +31,8 @@ $('.btn-modal-delito').bind('click', function(){
 	});
 	});
 
-		
+	
+	//para select multiples en formulario de estado localidad municipico
 
 	$("#idEstadoD").change(function(event){
 		if(event.target.value!=""){
@@ -74,5 +75,29 @@ $('.btn-modal-delito').bind('click', function(){
 	});
 
 	
-
-		
+//para select de agrpupacion
+	$("#idDelito2").change(function(event){
+		if(event.target.value!=""){
+			$.get(route('get.agregacion1',event.target.value), function(response, delito){
+				$("#idAgrupacionD1").empty();
+				console.log(response);
+				$("#idAgrupacionD1").append("<option value=''>Seleccione una desagregación</option>");
+				for(i=0; i<response.length; i++){
+					$("#idAgrupacionD1").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+				}
+		});
+	}
+	});
+	
+	$("#idAgrupacionD1").change(function(event){
+		if(event.target.value!=""){
+			$.get(route('get.agregacion2',event.target.value), function(response, agrupacion1){
+				$("#idAgrupacionD2").empty();
+				console.log(response);
+				$("#idAgrupacionD2").append("<option value=''>Seleccione una desagregación</option>");
+				for(i=0; i<response.length; i++){
+					$("#idAgrupacionD2").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+				}
+			});
+		}
+	});

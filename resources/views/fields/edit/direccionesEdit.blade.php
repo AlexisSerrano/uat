@@ -50,20 +50,20 @@
 		</div>
 		<div class="col-4">
 			<div class="form-group">
-				{!! Form::label('calle', 'Calle', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('calle', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle','data-validation'=>'required']) !!}
+				{!! Form::label('calleD', 'Calle', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::text('calleD', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle','data-validation'=>'required']) !!}
 			</div>
 		</div>
 		<div class="col-2">
 			<div class="form-group">
-				{!! Form::label('numExterno', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('numExterno', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número exterior','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+				{!! Form::label('numExternoD', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::text('numExternoD', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número exterior','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 			</div>
 		</div>
 		<div class="col-2">
 			<div class="form-group">
-				{!! Form::label('numInterno', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('numInterno', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+				{!! Form::label('numInternoD', 'Número interior', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::text('numInternoD', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 			</div>
 		</div>
 	</div>
