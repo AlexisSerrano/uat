@@ -1011,24 +1011,20 @@ Xalapa-Enríquez, Veracruz</p>',
 
            'contenido' => '<p style="text-align:center"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">FISCALÍA GENERAL&nbsp; DEL ESTADO DE VERACRUZ-LLAVE</span></span></span></p>
 
-           <p style="text-align:center"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">UNIDAD DE ATENCIÓN TEMPRANA</span></span></span></p>
-           
-           <p style="text-align:center"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">DECIMOPRIMER DISTRITO JUDICIAL, XALAPA, VERACRUZ.</span></span></span></p>
+           <p style="text-align:center"><span style="font-family:Trebuchet MS, sans-serif"><span style="font-size:16px">{{$unidad}}</span></span></p>
            
            <p>&nbsp;</p>
            
-           <p>&nbsp;</p>
-           
-           <table align="center" border="1" cellspacing="0" style="width:669px">
+           <table align="center" border="1" cellspacing="0" style="width:695px">
                <tbody>
                    <tr>
-                       <td style="height:22.7pt; width:663px">
-                       <p style="text-align:center"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">CARPETA DE INVESTIGACIÓN: </span><strong><span style="font-size:11.5pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">{{$numeroCarpeta}}<span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><strong><span style="font-size:11.5pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">-{{$numeroF}}°</span></span></strong></span></span></span></span></strong></span></span></p>
+                       <td style="height:22.7pt; width:689px">
+                       <p style="text-align:center"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">CARPETA DE INVESTIGACIÓN: </span><strong><span style="font-size:11.5pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">{{$numeroCarpeta}}<span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><strong><span style="font-size:11.5pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">°</span></span></strong></span></span></span></span></strong></span></span></p>
                        </td>
                    </tr>
                    <tr>
-                       <td style="height:22.7pt; width:663px">
-                       <p style="text-align:center"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">FISCAL {{$</span></span></span>numFiscalLetras}}<span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"> ORIENTADORA</span></span></span></p>
+                       <td style="height:22.7pt; width:689px">
+                       <p style="text-align:center"><span style="font-family:Trebuchet MS, sans-serif"><span style="font-size:16px">{{$puesto}}</span></span></p>
                        </td>
                    </tr>
                </tbody>
@@ -1044,11 +1040,11 @@ Xalapa-Enríquez, Veracruz</p>',
            
            <p style="text-align:center">&nbsp;</p>
            
-           <table align="center" border="1" cellspacing="0">
+           <table align="center" border="1" cellspacing="0" style="width:723px">
                <tbody>
                    <tr>
-                       <td style="vertical-align:top; width:505.6pt">
-                       <p style="text-align:justify"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">Estando en las oficinas de esta Fiscalía Sexta Orientadora, me es notificado y puesto a la vista el acuerdo recaído en esta fecha, en el cual se determinó el <strong>ARCHIVO TEMPORAL</strong> de la carpeta de investigación {{$numeroCarpeta}}<span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><strong><span style="font-size:11.5pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">-{{$numeroF}}°</span></span></strong><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">, cuyo contenido leí íntegramente, quedando archivada temporalmente la presente carpeta ÚNICA Y EXCLUSIVAMENTE en cuanto se tenga alguna línea de investigación que nos permita continuar con la misma; misma determinación de la cual me doy por enterado, quedando debidamente notificado de manera personal estando de acuerdo con la forma y modo de notificación, asimismo, quedo enterado del término que establece el artículo 258 del Código Nacional de Procedimientos Penales para impugnar dicho acuerdo, sin embargo no es mi deseo hacerlo por estar ajustado a derecho, asimismo, recibo copia de la presente notificación.- Es todo lo que tiene que decir.- CONSTE. - - - - - - - - - - -&nbsp; </span></span></span></span></span></span></p>
+                       <td style="vertical-align:top; width:717px">
+                       <p style="text-align:justify"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">Estando en las oficinas de esta Fiscalía Sexta Orientadora, me es notificado y puesto a la vista el acuerdo recaído en esta fecha, en el cual se determinó el <strong>ARCHIVO TEMPORAL</strong> de la carpeta de investigación {{$numeroCarpeta}}<span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><strong><span style="font-size:11.5pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">°</span></span></strong><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">, cuyo contenido leí íntegramente, quedando archivada temporalmente la presente carpeta ÚNICA Y EXCLUSIVAMENTE en cuanto se tenga alguna línea de investigación que nos permita continuar con la misma; misma determinación de la cual me doy por enterado, quedando debidamente notificado de manera personal estando de acuerdo con la forma y modo de notificación, asimismo, quedo enterado del término que establece el artículo 258 del Código Nacional de Procedimientos Penales para impugnar dicho acuerdo, sin embargo no es mi deseo hacerlo por estar ajustado a derecho, asimismo, recibo copia de la presente notificación.- Es todo lo que tiene que decir.- CONSTE. - - - - - - - - - - -&nbsp; </span></span></span></span></span></span></p>
            
                        <p style="text-align:justify"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;</span></span></p>
                        </td>
@@ -1082,9 +1078,8 @@ Xalapa-Enríquez, Veracruz</p>',
            
            <p style="text-align:justify"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><strong><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">LIC. {{$nombreC}}</span></strong></span></span></p>
            
-           <p style="text-align:justify"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">FISCAL {{$</span></span></span>numFiscalLetras}}<span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"> ORIENTADORA EN LA </span></span></span></p>
-           
-           <p style="text-align:justify"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">UNIDAD DE ATENCIÓN TEMPRANA</span></span></span></p>',
+           <p style="text-align:justify"><span style="font-family:Trebuchet MS, sans-serif"><span style="font-size:16px">{{$puesto}}</span></span></p>
+           ',
 
 
            

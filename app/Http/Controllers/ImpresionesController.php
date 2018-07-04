@@ -584,12 +584,14 @@ class ImpresionesController extends Controller
             $nombreC=$fiscalAtiende->nombreC;
             $nombreC = strtr(strtoupper($nombreC),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
             
+           $puesto =$fiscalAtiende->puesto;
+           $puesto=strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
             
             $datos=array('id'=> $idCarpeta,
             'numeroCarpeta'=> $carpeta->numCarpeta,
             'numeroF'=> $fiscalAtiende->numFiscal,
-            'descripcion'=> $fiscalAtiende->descripcion,
-            'numFiscalLetras'=>$numFiscalLetras,
+            'puesto'=> $puesto,
+            'unidad'=> $fiscalAtiende->$descripcion,
             'nombreC'=>$nombreC,
             'notificado'=>$cadenaDenunciantes);
             
