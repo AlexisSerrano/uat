@@ -1,6 +1,9 @@
 <?php
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 
 class PruebaSeeder extends Seeder
 {
@@ -15,9 +18,25 @@ class PruebaSeeder extends Seeder
             ['id'=>1 ,'idMunicipio'  =>  2493,  'idLocalidad'   =>  106783,  'idColonia' =>  49115,  'calle' =>  'SIN INFORMACION', 'numExterno'    =>  'S/N',  'numInterno'    =>  'S/N']            
         ]);
         /************usuario para pruebas fuera de la fiscalia*************/
-        DB::table('users')->insert([
-            ['idUnidad'   =>  25, 'idZona'=>8,  'username' =>  'admin','nombreC' =>  'Usuario Prueba Local', 'nombres' =>  'Usuario', 'apellidos' =>  'Prueba Local','grupo'=>'orientador','email'=>'admin@fiscaliaveracruz.gob.mx','password'=> bcrypt('admin'),'puesto'=>'Fiscal cuarto de la unidad de xalapa', 'numFiscal'=>4, 'numFiscalLetras'=>'Cuarto' ],
+        $user=App\User::create([
+            'idUnidad'   =>  25, 
+            'idZona'=>8,  
+            'username' =>  'admin',
+            'nombreC' =>  'Usuario Prueba Local', 
+            'nombres' =>  'Usuario', 
+            'apellidos' =>  'Prueba Local',
+            'grupo'=>'orientador',
+            'grecepcion'=>1,
+            'gorientador'=>1,
+            'gfacilitador'=>1,
+            'gcoordinador'=>1,
+            'email'=>'admin@fiscaliaveracruz.gob.mx',
+            'password'=> bcrypt('admin'),
+            'puesto'=>'Fiscal cuarto de la unidad de xalapa', 
+            'numFiscal'=>4, 
+            'numFiscalLetras'=>'Cuarto'
         ]);
+        $user->assignRole('orientador');
         /******************************************************************/
         DB::table('domicilio')->insert([
             ['idMunicipio'  =>  2091,  'idLocalidad'   =>  82005,  'idColonia' =>  40657,  'calle' =>  'CALLE DE ALGUN LUGAR', 'numExterno'    =>  '5',  'numInterno'    =>  'S/N'],

@@ -11,6 +11,7 @@ use App\User;
 use App\Models\Carpeta;
 use Alert;
 use Session;
+use DB;
 /*fin pruebas*/
 /* inicio pruebas unidad */
 use App\Models\Unidad;
@@ -61,7 +62,7 @@ class LoginController extends Controller
             $user=User::find(Auth::User()->id);
             $user->session_id = Session::getId();
             $user->save();
-
+            $grupoad=$user->grupo;
             $this->clearLoginAttempts($request);
         }else{
             // fin pruebas
@@ -72,11 +73,74 @@ class LoginController extends Controller
             $user=User::find(Auth::User()->id);
             $user->session_id = Session::getId();
             $user->save();
+            $grupoad=$user->grupo;
             // Auth::user()->session_id = Session::getId();
             // Auth::user()->save();
             $this->clearLoginAttempts($request);
         }
+        
+        $comprobarRol=DB::table('model_has_roles')
+        ->join('users','users.id','=','model_has_roles.model_id')
+        ->get();
+
+        if ($comprobarRol->IsEmpty()) {
+            switch ($grupoad) {
+                case 'coordinador':
+                    // $user->syncRoles(['coordinador']);
+                    $user->assignRole(['coordinador']);
+                    break;
+                
+                case 'facilitador':
+                    // $user->syncRoles(['facilitador']);
+                    $user->assignRole(['facilitador']);
+                    break;
+                
+                case 'orientador':
+                    // $user->syncRoles(['orientador']);
+                    $user->assignRole(['orientador']);
+                    break;
+                
+                case 'recepcion':
+                    // $user->syncRoles(['recepcion']);
+                    $user->assignRole(['recepcion']);
+                    break;
+                
+                default:
+                    Auth::logout();
+                    return redirect(route('login'));
+                    break;
+            }
+        } else {
+            switch ($grupoad) {
+                case 'coordinador':
+                    $user->syncRoles(['coordinador']);
+                    // $user->assignRole(['coordinador']);
+                    break;
+                
+                case 'facilitador':
+                    $user->syncRoles(['facilitador']);
+                    // $user->assignRole(['facilitador']);
+                    break;
+                
+                case 'orientador':
+                    $user->syncRoles(['orientador']);
+                    // $user->assignRole(['orientador']);
+                    break;
+                
+                case 'recepcion':
+                    $user->syncRoles(['recepcion']);
+                    // $user->assignRole(['recepcion']);
+                    break;
+                
+                default:
+                    Auth::logout();
+                    return redirect(route('login'));
+                    break;
+            }
             
+        }
+        
+
         /* inicio alerta a soporte */
         if(is_null(Auth::User()->idUnidad) || Auth::User()->numFiscal==0 && Auth::user()->grupo!='coordinador'){
             Auth::logout();

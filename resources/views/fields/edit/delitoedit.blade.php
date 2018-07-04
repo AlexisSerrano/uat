@@ -8,14 +8,26 @@
 			{!! Form::select('idDelito2', $delits, null, ['class' => 'form-control form-control-sm select2', 'placeholder' => 'Seleccione un delito', 'required', 'id'=>'idDelito2']) !!}
 		</div>
 	</div>
-
+	<div class="col-sm-4">
+			<div class="form-group">
+				{!! Form::label('idAgrupacionD1', ' Primera desagregación', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('idAgrupacionD1', ['placeholder'=>'Seleccione una desagregación'], null, ['class' => 'form-control form-control-sm select2', 'required']) !!}
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="form-group">
+				{!! Form::label('idAgrupacionD2', ' Segunda desagregación', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('idAgrupacionD2', ['placeholder'=>'Seleccione una desagregación'], null, ['class' => 'form-control form-control-sm select2', 'required']) !!}
+			</div>
+		</div>
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('formaComision2', 'Forma de comisión', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('formaComision2', ['CULPOSO' => 'CULPOSO', 'DOLOSO' => 'DOLOSO'],  '$TipifDelito->formaComision', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una forma de comisión', 'required', 'id'=>'formaComision2']) !!}
+			{!! Form::label('formaComisionD2', 'Forma de comisión', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::select('formaComisionD2', ['CULPOSO' => 'CULPOSO', 'DOLOSO' => 'DOLOSO'],  '$TipifDelito->formaComision', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una forma de comisión', 'required', 'id'=>'formaComision2']) !!}
 		</div>
 	</div>
 
+{{-- 
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('fecha2', 'Fecha', ['class' => 'col-form-label-sm']) !!}
@@ -26,8 +38,8 @@
 				</span>
 			</div>
 		</div>
-	</div>
-	<div class="col-4">
+	</div> --}}
+	{{-- <div class="col-4">
 		<div class="form-group">
 			{!! Form::label('hora2', 'Hora', ['class' => 'col-form-label-sm']) !!}
 			<div class="input-group date" id="horadeli" data-target-input="nearest">
@@ -37,7 +49,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --}}
 	<div class="col-4">
 		<p class="col-form-label-sm">¿Con violencia?</p>
 		<div class="form-group">

@@ -231,7 +231,13 @@ Route::middleware(['auth'])->group(function () {
     /*---------Rutas para obtener delitos y desagregaciones------------*/
     Route::get('agrupaciones1/{id}', 'DelitoController@getAgrupaciones1')->name('get.agregacion1');
     Route::get('agrupaciones2/{id}', 'DelitoController@getAgrupaciones2')->name('get.agregacion2');
-    
+
+    /*----------------AJAX DELITO -------------*/
+    Route::get('getVehiculoAjax/{id}', 'VehiculoController@getVehiculoAjax')->name("getVehiculoAjax");
+    Route::post('vehiculo/editar', 'VehiculoController@editar')->name('agregar-vehiculo');
+
+
+    /*------------------------------------------------------------*/
     Route::get('acusacion', 'AcusacionController@showForm')->name('new.acusacion');
     Route::post('storeacusacion', 'AcusacionController@storeAcusacion')->name('store.acusacion');
     Route::get('agregar-acusacion/{id}/eliminar', 'AcusacionController@delete')->name('delete.acusacion');
