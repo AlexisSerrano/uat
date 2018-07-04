@@ -282,12 +282,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getcircunstanciada/{id}','ActaCircunstanciadaController@getcircunstanciada');
     
     /* --------Rutas para Libro de gobierno----------- */
-    Route::get('libro','libroGobController@terminadas');
-    Route::get('getCarpetas','libroGobController@getCarpetas');
-    Route::get('carpetas','libroGobController@buscar')->name('indexcarpetas');
+    Route::get('libro','LibroGobController@terminadas');
+    Route::get('getCarpetas','LibroGobController@getCarpetas');
+    Route::get('carpetas','LibroGobController@buscar')->name('indexcarpetas');
     route::get('carpeta/{id}','ResumenCarpetaController@showForm')->name('ir.carpeta');
-    Route::post('carpetas','libroGobController@searchNumCarpeta')->name('filtro.carpetas');
-    Route::post('libroGobierno','libroGobController@mostrarlibro')->name('libro.filtro');
+    Route::post('carpetas','LibroGobController@searchNumCarpeta')->name('filtro.carpetas');
+    Route::post('libroGobierno','LibroGobController@mostrarlibro')->name('libro.filtro');
     /*-------------Carpetas en Reserva----------------------*/
     route::get('carpetaReserva/{id}','ResumenCarpetaController@showFormReserva')->name('carpeta.reserva');
     Route::get('carpetasReserva','CarpetaController@indexCarpetasReserva')->name('carpetas.reserva');
