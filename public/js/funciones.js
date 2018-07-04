@@ -180,34 +180,3 @@ $('.btn-modal').bind('click', function(){
 		});
 });
 	
-	
-$('.btn-modal-delito').bind('click', function(){
-	$ ('#myModal-delito').modal('show');
-	var IdFilaTabla = $(this).val();
-	$.ajax({
-		//url : "editar/"+IdFilaTabla,
-		url: route('editar',IdFilaTabla),
-		type : 'GET',
-		success : function(json) {
-			$('#idr').val(json.id); 
-            $('#idDelito2').val(json.idDelito).trigger('change.select2');
-			$('#formaComision2').val(json.formaComision).trigger('change.select2');
-			$("#fecha2").val(json.fecha);
-			$("#hora2").val(json.hora);
-			console.log(json);
-			// $("#observaciones1").val(json.observacion);
-			// $("#fechaInicio1").val(json.fechaInicio);
-			// $("#fechaFinal1").val(json.fechaFin);
-			// $("#tipo_medida2").val(json.nombre);
-			// $('#quienEjecuta1').val(json.idEjecutor).trigger('change.select2');
-			// $('#victima1').val(json.idPersona).trigger('change.select2');
-		
-
-		},
-		error : function(xhr, status) {
-		}
-	});
-	});
-	
-
-		

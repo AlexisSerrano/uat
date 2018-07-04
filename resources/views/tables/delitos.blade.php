@@ -27,7 +27,7 @@
                        <i class="fa fa-edit"></i></a> --}} 
                           
                             @if(is_null(session('terminada')))
-                            <button type="button" class="btn btn-secondary btn-simple btn-xs btn-modal-delito"  value={{$delito->id}} data-toggle="modal" data-target="#myModal-delito" id="open"> <i class="fa fa-edit"></i></button>
+                            <button type="button" class="btn btn-secondary btn-simple btn-xs btn-modal-delito"  value={{$delito->id}} data-toggle="modal"  id="open"> <i class="fa fa-edit"></i></button>
                             <a data-delito-id={{$delito->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
                                 <i class="fa fa-times"></i>
                             </a>
@@ -85,6 +85,7 @@
 
 
 @push('scripts')
+<script src="{{asset('js/ajaxDelito.js')}}"></script>
    <script> 
         $(document).ready(function() {
             
@@ -112,7 +113,8 @@
         });
         });
         });
-  </script>  
+  </script> 
+  
 @endpush
 		
 	{{-- {!! Form::close() !!} --}}
