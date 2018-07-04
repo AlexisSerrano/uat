@@ -669,7 +669,7 @@ class PreregistroAuxController extends Controller
         $usuario->save();
         
         $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
-        $contero=$bdbitacora->denunciado+$bdbitacora->denunciante+$bdbitacora->abogado+$bdbitacora->autoridad+$bdbitacora->delitos+$bdbitacora->acusaciones+$bdbitacora->defensa;
+        $contero=$bdbitacora->denunciante+$bdbitacora->autoridad;
 
         if($contero>0){
             $carpeta = Carpeta::find($idCarpeta);

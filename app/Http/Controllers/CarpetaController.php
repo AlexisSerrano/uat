@@ -77,7 +77,7 @@ class CarpetaController extends Controller
         }
         
         $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
-        $contero=$bdbitacora->denunciado+$bdbitacora->denunciante+$bdbitacora->abogado+$bdbitacora->autoridad+$bdbitacora->delitos+$bdbitacora->acusaciones+$bdbitacora->defensa;
+        $contero=$bdbitacora->denunciante+$bdbitacora->autoridad;
 
         if($contero>0){
             $carpeta = Carpeta::find($idCarpeta);
@@ -139,10 +139,22 @@ class CarpetaController extends Controller
     }
 
     public function indexCarpetasReserva(){
+        
         $carpetas = DB::table('carpeta')
-        ->select('carpeta.id as id','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta','carpeta.fiscalAtendio' )
+        ->join('variables_persona','variables_persona.idCarpeta','=','carpeta.id')
+        ->leftJoin('extra_autoridad','extra_autoridad.idVariablesPersona','=','variables_persona.id')
+        ->leftJoin('extra_denunciante','extra_denunciante.idVariablesPersona','=','variables_persona.id')
+        ->join('extra_denunciado','extra_denunciado.idVariablesPersona','!=','variables_persona.id')
+        ->join('extra_abogado','extra_abogado.idVariablesPersona','!=','variables_persona.id')
+        ->join('persona','persona.id','=','variables_persona.idPersona')
+        ->select('carpeta.id as id',
+        'carpeta.fechaInicio',
+        DB::raw("CONCAT(`persona`.`nombres`,' ',CASE WHEN `persona`.`primerAp` IS NULL  THEN '' ELSE `persona`.`primerAp` END,' ',CASE WHEN `persona`.`segundoAp` IS NULL  THEN '' ELSE `persona`.`segundoAp` END) as nombre"),
+        'carpeta.horaIntervencion',
+        'carpeta.fiscalAtendio' )
         ->where('idFiscal',Auth::user()->id)
         ->whereNull('idEstadoCarpeta')
+        // ->whereNull('extra_autoridad.idVariablesPersona')
         ->paginate('10');
         // dd($carpetas);
         return view('tables.carpetasReserva')->with('carpetas',$carpetas);
@@ -155,14 +167,27 @@ class CarpetaController extends Controller
         $carpeta=$request->search;
         
         $carpetas = DB::table('carpeta')
-        ->select('carpeta.id','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta','carpeta.fiscalAtendio' )
+        ->join('variables_persona','variables_persona.idCarpeta','=','carpeta.id')
+        ->leftJoin('extra_autoridad','extra_autoridad.idVariablesPersona','=','variables_persona.id')
+        ->leftJoin('extra_denunciante','extra_denunciante.idVariablesPersona','=','variables_persona.id')
+        ->join('extra_denunciado','extra_denunciado.idVariablesPersona','!=','variables_persona.id')
+        ->join('extra_abogado','extra_abogado.idVariablesPersona','!=','variables_persona.id')
+        ->join('persona','persona.id','=','variables_persona.idPersona')
+        ->select('carpeta.id as id',
+        'carpeta.fechaInicio',
+        DB::raw("CONCAT(`persona`.`nombres`,' ',CASE WHEN `persona`.`primerAp` IS NULL  THEN '' ELSE `persona`.`primerAp` END,' ',CASE WHEN `persona`.`segundoAp` IS NULL  THEN '' ELSE `persona`.`segundoAp` END) as nombre"),
+        'carpeta.horaIntervencion',
+        'carpeta.fiscalAtendio' )
         ->where('idFiscal',Auth::user()->id)
         ->where(function($query) use ($carpeta){
             $query
-            ->orwhere('numCarpeta','like','%'.$carpeta.'%')
-            ->orwhere('horaIntervencion','like','%'.$carpeta.'%')
-            ->orwhere('fechaInicio','like','%'.$carpeta.'%')
-            ->orwhere('fiscalAtendio','like','%'.$carpeta.'%');
+            ->orwhere('persona.nombres','like','%'.$carpeta.'%')
+            ->orwhere('persona.primerAp','like','%'.$carpeta.'%')
+            ->orwhere('persona.segundoAp','like','%'.$carpeta.'%')
+            ->orwhere('carpeta.numCarpeta','like','%'.$carpeta.'%')
+            ->orwhere('carpeta.horaIntervencion','like','%'.$carpeta.'%')
+            ->orwhere('carpeta.fechaInicio','like','%'.$carpeta.'%')
+            ->orwhere('carpeta.fiscalAtendio','like','%'.$carpeta.'%');
           })
         ->whereNull('idEstadoCarpeta')
         ->paginate('10');

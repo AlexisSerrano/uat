@@ -18,6 +18,7 @@
     <table class="table table-hover text-center" id="tablacarpetas">
         <thead class="table-active">
             <tr>
+                <th >Solicitante</th>
                 <th >Fiscal que atendio</th>
                 <th >Fecha de inicio</th>
                 <th >Hora</th>
@@ -41,6 +42,7 @@
             @else
                 @foreach($carpetas as $carpeta)
                 <tr>
+                    <td>{{ $carpeta->nombre}}</td> 
                     <td>{{ $carpeta->fiscalAtendio}}</td> 
                     <td>{{ $carpeta->fechaInicio}}</td>
                     <td>{{ $carpeta->horaIntervencion}}</td>
