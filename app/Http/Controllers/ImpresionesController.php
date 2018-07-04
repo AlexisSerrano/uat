@@ -521,6 +521,7 @@ class ImpresionesController extends Controller
 
             $fechaactual = new Date($carpeta->fechaInicio);
             $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
+            $fechahum=strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
             $datos=array('id'=> $idCarpeta,
             'numeroCarpeta'=> $carpeta->numCarpeta,
             'denunciante'=> $cadenaDenunciantes,
