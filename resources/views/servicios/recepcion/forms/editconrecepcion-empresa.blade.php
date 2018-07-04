@@ -15,8 +15,8 @@
         </div>
 
 
-{!!Form::model($preregistro, array('route' => array('predenuncias.update', $preregistro->id), 'method' => 'PUT' )) !!}
-    <div>
+{!!Form::model($preregistro, array('route' => array('predenuncias.update', $preregistro->id), 'method' => 'POST')) !!}
+        <div>
         {{-- @include('recepcion.tipo-p-edit') --}}
         <input type="hidden" name="esEmpresa" value="1">
     </div>
@@ -49,19 +49,19 @@
             </div>       
             <div class="text-right col">
                 @if(is_null($preregistro->statusCola))
-                    <a href="{{url('estado/'.$preregistro->id.'/0')}}" class="btn  btn-secondary ">En cola</a>
+                    <a href="{{url('estado/'.$preregistro->id.'/0')}}" title="" class="btn  btn-secondary ">En cola</a>
                     <a href="#" title="" class="btn btn-secondary btnEnUrgente" id="{{$preregistro->id}}">Urgente</a>
                 @endif
                 @if($preregistro->statusCola=="0")   
-                    <a href="{{url('estado/'.$preregistro->id.'/99')}}" class="btn  btn-secondary ">Descartar</a>
+                    <a href="{{url('estado/'.$preregistro->id.'/99')}}" title="" class="btn  btn-secondary ">Descartar</a>
                     <a href="#" title="" class="btn btn-secondary btnEnUrgente" id="{{$preregistro->id}}">Urgente</a>
                 @endif
                 @if($preregistro->statusCola==1)    
-                    <a href="{{url('estado/'.$preregistro->id.'/99')}}" class="btn  btn-secondary ">Descartar</a>
-                    <a href="{{url('estado/'.$preregistro->id.'/0')}}" class="btn  btn-secondary ">En cola</a>
+                    <a href="{{url('estado/'.$preregistro->id.'/99')}}" title="" class="btn  btn-secondary ">Descartar</a>
+                    <a href="{{url('estado/'.$preregistro->id.'/0')}}" title="" class="btn  btn-secondary ">En cola</a>
                 @endif
 {{--                    
-                        <a href="{{url('estado/'.$preregistro->id.'/99')}}" class="btn  btn-secondary ">Descartar</a>
+                        <a href="{{url('estado/'.$preregistro->id.'/99')}}" title="button1" class="btn  btn-secondary ">Descartar</a>
                  --}}
                 {!!Form::submit('Guardar',array('class' => 'btn  btn-primary'))!!}
             </div>
@@ -70,7 +70,7 @@
     </div>
 
 
-    {!!Form::close()!!}
+{!!Form::close()!!}
     <br><br><br><br>
 @endsection
 

@@ -25,7 +25,7 @@
 	<div class="tab-content" id="myTabContent">
 		<div class="tab-pane fade show active " id="personales" role="tabpanel" aria-labelledby="personales-tab">
 			<div class="boxtwo">
-				@include('tables.medidas-}ofi')
+				@include('tables.medidas-ofi')
 				{{-- botones --}}
 				<div class="row menu">	
 					<div class="col text-left">				
