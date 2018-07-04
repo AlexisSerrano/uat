@@ -4,7 +4,7 @@ url = window.location;
 
 	
 $('.btn-modal-delito').bind('click', function(){
-	$ ('#myModal-delito').modal('show');
+	$ ('#myModal1').modal('show');
 	var IdFilaTabla = $(this).val();
 	$.ajax({
 		//url : "editar/"+IdFilaTabla,
@@ -30,7 +30,6 @@ $('.btn-modal-delito').bind('click', function(){
 		}
 	});
 	});
-	
 
 		
 

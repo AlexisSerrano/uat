@@ -27,7 +27,7 @@
                        <i class="fa fa-edit"></i></a> --}} 
                           
                             @if(is_null(session('terminada')))
-                            <button type="button" class="btn btn-secondary btn-simple btn-xs btn-modal-delito"  value={{$delito->id}} data-toggle="modal"  id="open"> <i class="fa fa-edit"></i></button>
+                            <button type="button" class="btn btn-secondary btn-simple btn-xs btn-modal-delito"  value={{$delito->id}}  > <i class="fa fa-edit"></i></button>
                             <a data-delito-id={{$delito->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
                                 <i class="fa fa-times"></i>
                             </a>
@@ -47,16 +47,19 @@
 
 
 {{-- APARTADO DE MODAL PARA EDITAR EL DELITO --}}
-@csrf
-<!-- Modal -->
-<div class="modal fade" id="myModal-delito" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+<div id="myModal1" class="modal fade" role="dialog">
+   
+        <div class="modal-dialog modal-lg">
+          <!-- Modal content-->
+          <div class="modal-content"> 
+            <!--Cabecera del modal-->
             <div class="modal-header">
-               
-                 <h3 class="modal-title" id="myModalLabel">EDITAR</h3>
+                <h4 class="modal-title">Actualizar</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div> 
 
-            </div>
+            <form class="modalForm" id="mediformu">
+
             <div class="modal-body">
                     <input class="form-control" type="text" id="idr" name="idr" hidden>
                 <div role="tabpanel">
@@ -73,16 +76,18 @@
                   
                   
             <div class="modal-footer">
-                {{-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> --}}
-                <button type="submit" class="btn btn-primary save">Save changes</button>
-              
-            
-            </div>
-        
+              <button type="button" id="guardar" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Editar</button>
+                </div>
+      
+             </form>
+             <!-- FORMULARIO - END -->
+      
+          </div>
+        </div>
+   
     </div>
-</div>
 
-
+{!! Form::close() !!}
 
 @push('scripts')
 <script src="{{asset('js/ajaxDelito.js')}}"></script>

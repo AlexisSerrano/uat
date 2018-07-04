@@ -33,6 +33,7 @@
                                 <a data-medida-id={{$provide->id}} title="Eliminar Registro" class="deleteBtn btn btn-default btn-simple btn-xs">
                                         <i  class="fa fa-times" style="color:black"></i></a>
                                 <button type="button" class="btn btn-default   btn-xs  btn-modal" title="Editar registro"  value={{$provide->id}} ><i class="fa fa-edit"></i></button>
+                               
                                 <a href="{{url("medidaoficio/$provide->id")}}" type="button" rel="tooltip" title="Editar Producto" class="btn btn-default btn-simple btn-xs">
                                     <i class="fa fa-download" style="color:black"></i>
                                 </a>

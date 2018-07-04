@@ -1,7 +1,8 @@
 <div class="row">
 	<div class="col-4">
 		<div class="form-group">
-			{!! Form::label('entreCalle', null,  ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese una calle perpendicular','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+			{!! Form::label('entreCalle', null,  ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('entreCalle', null , ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle perpendicular','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
 		</div>
 	</div>
 	<div class="col-4">
