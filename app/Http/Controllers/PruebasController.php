@@ -162,17 +162,17 @@ public function actas()
 }
 
 public function impresion(){
-    
-    $id=session('carpeta');
-    $carpeta=DB::table('carpeta')
-    ->join('unidad','carpeta.idUnidad','=','unidad.id')
-   // ->select('unidad.descripcion','carpeta.numCarpeta')
-    ->where('carpeta.id',$id)
-    ->first();
-    
+    $id=2;
+    $datosAcuerdo = DB::table('oficio_distritos')->where('oficio_distritos.id', $id)
+            ->join('cat_delito','cat_delito.id','=','oficio_distritos.delito')
+            ->join('users','users.id','=','oficio_distritos.id')
+            ->select('oficio_distritos.id','oficio_distritos.localidad',
+            'oficio_distritos.denunciante','oficio_distritos.denunciado','oficio_distritos.fecha',
+            'oficio_distritos.fiscalCordinador','oficio_distritos.fiscalDistrito','oficio_distritos.unidad','oficio_distritos.carpeta',
+            'oficio_distritos.fiscalAtendio','cat_delito.nombre as delito','users.puesto')
+            ->first();
 
-            dd($carpeta);
-
+            dd($datosAcuerdo);
             
             return view('tables.pruebas')->with('fiscalAtiende',$fiscalAtiende);
 }

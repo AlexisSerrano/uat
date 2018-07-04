@@ -64,11 +64,11 @@
                     <input class="form-control" type="text" id="idr" name="idr" hidden>
                 <div role="tabpanel">
                     
-                         <div role="tabpanel" class="tab-pane active" id="delito">DELITO</div>
+                         <div role="tabpanel" class="tab-pane active" id="delito"></div>
                         @include('fields.edit.delitoedit')
-                        <div role="tabpanel" class="tab-pane active" id="delito">DIRECCION</div>
+                        <div role="tabpanel" class="tab-pane active" id="delito"></div>
                       @include('fields.edit.direccionesedit') 
-                      <div role="tabpanel" class="tab-pane active" id="delito">LUGAR DE HECHOS</div>
+                      <div role="tabpanel" class="tab-pane active" id="delito"></div>
                         @include('fields.edit.lugar-hechosedit')
                        
                     </div>
@@ -87,7 +87,6 @@
    
     </div>
 
-{!! Form::close() !!}
 
 @push('scripts')
 <script src="{{asset('js/ajaxDelito.js')}}"></script>
