@@ -391,82 +391,66 @@ class PericialesController extends Controller{
         }
 
         public function getVhFinanzas($id){
-
-
-             $id=session('carpeta');
+            $id=session('carpeta');
             $carpeta=DB::table('carpeta')
             ->join('unidad','carpeta.idUnidad','=','unidad.id')
             ->select('carpeta.fechaInicio','carpeta.numCarpeta')
             ->where('carpeta.id',$id)
             ->first();
 
-            
             $fiscalAtiende=DB::table('users')
             ->join('unidad','unidad.id','=','users.id')
             ->join('unidad as unid','unid.id','=','users.idUnidad')
             ->where('users.id', Auth::user()->id)
             ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra')
             ->first();
-
-            dd('hello');
-
-            $vehiculo = DB::table('per_vehiculos')
-            ->where('per_vehiculos.id', $id)
-            ->join('cat_marca','cat_marca.id','=','per_vehiculos.idMarca')
-         //    ->join('cat_submarcas','cat_submarcas.id','=','per_vehiculos.idSubmarca')
-         //    ->join('cat_clase_vehiculo','cat_clase_vehiculo.id','=','per_vehiculos.idClase')
-         //    ->join('cat_municipio','cat_municipio.id','=','per_vehiculos.idMunicipio')
-             ->join('cat_localidad','cat_localidad.id','=','per_vehiculos.idLocalidad')
-         //    ->join('cat_colonia','cat_colonia.id','=','per_vehiculos.idColonia')
-            ->join('cat_estado','cat_estado.id','=','per_vehiculos.idEstado')
-            ->select( 
-         //     'cat_municipio.nombre as nombreMunicipio',
-             'cat_localidad.nombre as nombreLocalidad',
-         //    'cat_colonia.nombre as nombreColonia',
-            'cat_estado.nombre as nombreEstado','per_vehiculos.id',
-            'per_vehiculos.placas','per_vehiculos.linea','cat_marca.nombre as marca')
-         //    'cat_colonia.codigoPostal',
-         //    'per_vehiculos.id','per_vehiculos.idCarpeta','cat_marca.nombre as marca',
-         //    'cat_submarcas.nombre as submarca','cat_clase_vehiculo.nombre as clase','per_vehiculos.linea',
-         //    'per_vehiculos.modelo','per_vehiculos.color','per_vehiculos.numero_serie',
-         //    'per_vehiculos.lugar_fabricacion','per_vehiculos.placas','per_vehiculos.nombre',
-         //    'per_vehiculos.primerAp','per_vehiculos.segundoAp','per_vehiculos.numero',
-         //    'per_vehiculos.calle','per_vehiculos.num_ext','per_vehiculos.num_int','per_vehiculos.fecha')
+            $arr = explode(" ",$fiscalAtiende->descripcion);
+            $aux=9;
+            $localidad="";
+            while(count($arr)-1 >= $aux){
+                $localidad=$localidad." ".$arr[$aux];
+                $aux=$aux+1;
+            }
+            $vehiculo=DB::Table('vehiculo')
+            ->join('tipif_delito','vehiculo.idTipifDelito','=','tipif_delito.id')
+            ->join('cat_delito','cat_delito.id','=','tipif_delito.id')
+            ->join('cat_submarcas','cat_submarcas.id','=','vehiculo.idSubmarca')
+            ->join('cat_color','cat_color.id','=','vehiculo.idColor')
+            ->join('cat_tipo_uso','cat_tipo_uso.id','=','vehiculo.idTipoUso')
+             ->join('cat_marca','cat_marca.id','=','cat_submarcas.idMarca')
+             ->join('cat_procedencia','cat_procedencia.id','=','vehiculo.idProcedencia')
+            ->where('tipif_delito.idCarpeta',$id)
+            ->select('vehiculo.id','cat_marca.nombre as marca','cat_submarcas.nombre as submarca','vehiculo.created_at as fecha','cat_delito.nombre as delito','vehiculo.placas','cat_submarcas.nombre as submarca','vehiculo.modelo',
+            'vehiculo.nrpv','cat_color.nombre as color','vehiculo.numSerie','vehiculo.numMotor','cat_tipo_uso.nombre as TipoUso','vehiculo.modelo',
+            'cat_procedencia.nombre as lugar_fabricacion')
             ->first();
+           
 
             $puesto=$fiscalAtiende->puesto;
             $puesto = strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
 
            $fechaactual = new Date($carpeta->fechaInicio);
            $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
-           $data = array('id' =>$id,
-           'numCarpeta' => $carpeta->numCarpeta,
-           'marca' => $vehiculo->marca,
-        //    'submarca' => $vehiculo->submarca,
-        //    'clase' => $vehiculo->clase,
-           'linea' => $vehiculo->linea,
-           'numeroF'=> $fiscalAtiende->numFiscal,
-        //    'modelo' => $vehiculo->modelo,
-        //    'color' => $vehiculo->color,
-        //    'numero_serie' => $vehiculo->numero_serie,
-        //    'lugar_fabricacion' => $vehiculo->lugar_fabricacion,
-           'placas' => $vehiculo->placas,
-        //    'nombre' => $vehiculo->nombre.' '.$vehiculo->primerAp.' '.$vehiculo->segundoAp,
-        //    'telefono' => $vehiculo->numero,
-        //    'num_ext' => $vehiculo->num_ext,
-        //    'num_int' => $vehiculo->num_int,
-           'Estado' => $vehiculo->nombreEstado,
-           'fiscalAtendio'=>$fiscalAtiende->nombreC,
-           'puestoF'=>$puesto,
-           'numF'=>$fiscalAtiende->numFiscal,
-        //    'Municipio' => $vehiculo->nombreMunicipio,
-            'Localidad' => $vehiculo->nombreLocalidad,
-        //    'Colonia' => $vehiculo->nombreColonia,
-        //    'CP' => $vehiculo->codigoPostal,
-           'fecha' => $fechahum);
-          // return response()->json($data);
 
-          return view('tables.pruebas')->with('fiscalAtiende',$fiscalAtiende);
+           $data = array('id' =>$id,
+                'numCarpeta' => $carpeta->numCarpeta,
+                'marca' => $vehiculo->marca,
+                'submarca' => $vehiculo->submarca,
+                'numeroF'=> $fiscalAtiende->numFiscal,
+                'modelo' => $vehiculo->modelo,
+                'color' => $vehiculo->color,
+                'numero_serie' => $vehiculo->numSerie,
+                'lugar_fabricacion' => $vehiculo->lugar_fabricacion,
+                'placas' => $vehiculo->placas,
+                'Estado' => $vehiculo->nombreEstado,
+                'fiscalAtendio'=>$fiscalAtiende->nombreC,
+                'puestoF'=>$puesto,
+                'Localidad' => $localidad,
+                'fecha' => $fechahum);
+
+           return response()->json($data);
+
+          //return view('tables.pruebas')->with('fiscalAtiende',$fiscalAtiende);
        }
 
 
