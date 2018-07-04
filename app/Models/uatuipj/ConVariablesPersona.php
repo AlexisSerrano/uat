@@ -91,7 +91,7 @@ class ConVariablesPersona extends Model
     // }
     // public function identificacion()
     // {
-    //     return $this->belongsTo('app/Models/catIdentificacion');
+    //     return $this->belongsTo('app/Models/CatIdentificacion');
     // }
     
 }

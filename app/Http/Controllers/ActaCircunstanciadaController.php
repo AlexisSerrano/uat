@@ -12,7 +12,7 @@ use App\Models\CatOcupacion;
 use App\Models\CatNacionalidad;
 use App\Models\Preregistro;
 use App\Models\CatMunicipio;
-use App\Models\catIdentificacion;
+use App\Models\CatIdentificacion;
 use App\Models\ActaCircunstanciada;
 use App\Http\Requests\ActaCircRequest;
 use Illuminate\Support\Facades\Auth;

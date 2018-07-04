@@ -13,7 +13,7 @@ use App\Models\CatOcupacion;
 use App\Models\CatNacionalidad;
 use App\Models\Preregistro;
 use App\Models\Oficio;
-use App\Models\catIdentificacion;
+use App\Models\CatIdentificacion;
 use App\Models\CatMunicipio;
 use App\Http\Requests\ActaRequest;
 use DB;
