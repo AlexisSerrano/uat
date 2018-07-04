@@ -27,7 +27,7 @@ $data= getOficiosImpresos();
                         <a href="{{ route("impresion.acuerdoInicio",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg "><i class="fa fa-print"></i></a>
                     </td> 
                 </tr> 
-                @if($oficios['vehiculos']>=0)
+                @if($oficios['vehiculos']>=1)
                 <tr>
                     <td style="text-align:left;">Oficio de Dirección Gral. Transporte</td>
                     <td style="text-align:center;">

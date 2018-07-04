@@ -233,8 +233,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('agrupaciones2/{id}', 'DelitoController@getAgrupaciones2')->name('get.agregacion2');
 
     /*----------------AJAX DELITO -------------*/
-    Route::get('getVehiculoAjax/{id}', 'VehiculoController@getVehiculoAjax')->name("getVehiculoAjax");
-    Route::post('vehiculo/editar', 'VehiculoController@editar')->name('agregar-vehiculo');
+    Route::get('getDelitoAjax/{id}', 'DelitoController@getDelitoAjax')->name("getDelitoAjax");
+    Route::post('Delito/editar', 'DelitoController@editarDelitoAjax')->name('agregar-Delito');
 
 
     /*------------------------------------------------------------*/
