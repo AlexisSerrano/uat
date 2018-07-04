@@ -242,7 +242,7 @@ class PreregistroAuxController extends Controller
                 $domicilio->save();
                 $idD1 = $domicilio->id;
                 
-                $preregistro =Preregistro::find($idDireccion);
+                $preregistro =Preregistro::find($id);
                 $preregistro->esEmpresa = 1;    
                 $preregistro->nombre = $request->nombres;
                 $preregistro->idDireccion = $idD1;
