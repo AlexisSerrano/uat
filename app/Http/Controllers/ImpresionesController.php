@@ -300,7 +300,7 @@ class ImpresionesController extends Controller
              return view('tables.documentos')->with('carpeta',$carpeta);
      }
 
-    //  PARA OFICIO DE ACUERDO DE INICIO Y REMISION FISCAL DE DISTRITO
+    //  PARA OFICIO FISCAL DE DISTRITO
 
      public function oficioDistrito(){
             $idCarpeta=session('carpeta');
@@ -408,9 +408,7 @@ class ImpresionesController extends Controller
             'unidad' => $datosAcuerdo->unidad,
             'carpeta' => $datosAcuerdo->carpeta,
            'fiscalAtendio' => $datosAcuerdo->fiscalAtendio,
-           'puesto' => $datosAcuerdo->puesto,
-           'img' => asset('img/logo.png')
-        //   'fiscal' =>  $caso->fiscalAtendio = Auth::user()->nombreC;
+           'puesto' => $datosAcuerdo->puesto
             );
             //dd(Auth::user()->nombreC);
             return response()->json($data);
@@ -523,6 +521,7 @@ class ImpresionesController extends Controller
 
             $fechaactual = new Date($carpeta->fechaInicio);
             $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
+            $fechahum=strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
             $datos=array('id'=> $idCarpeta,
             'numeroCarpeta'=> $carpeta->numCarpeta,
             'denunciante'=> $cadenaDenunciantes,
