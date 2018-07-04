@@ -168,8 +168,8 @@ class PreregistroAuxController extends Controller
         $idDireccion=$idDireccion[0]->idDireccion;
         //dd($idDireccion);
         
-        DB::beginTransaction();
-        try{
+        // DB::beginTransaction();
+        // try{
             if ($request->esEmpresa==0){
                 $domicilio = Domicilio::find($idDireccion);
                 if (!is_null($request->idMunicipio)){
@@ -238,14 +238,11 @@ class PreregistroAuxController extends Controller
                 if (!is_null($request->numInterno)){
                     $domicilio->numInterno = $request->numInterno;
                 }
-                if (!is_null($request->idRazon)){
-                    $domicilio->idRazon = $request->idRazon;
-                }
                 
                 $domicilio->save();
                 $idD1 = $domicilio->id;
                 
-                $preregistro =Preregistro::find($idDireccion);
+                $preregistro =Preregistro::find($id);
                 $preregistro->esEmpresa = 1;    
                 $preregistro->nombre = $request->nombres;
                 $preregistro->idDireccion = $idD1;
@@ -254,17 +251,20 @@ class PreregistroAuxController extends Controller
                 $preregistro->telefono = $request->telefono;
                 $preregistro->conViolencia = $request->conViolencia;
                 $preregistro->narracion = $request->narracion;
+                if (!is_null($request->idRazon)){
+                    $preregistro->idRazon = $request->idRazon;
+                }
                 $preregistro->save();
                 $id = $preregistro->id;   
             }
-            DB::commit();
+            // DB::commit();
             Alert::success('Registro modificado con éxito','Hecho');
-            return redirect('predenuncias/'.$id.'/edit');
-        }catch (\PDOException $e){
-            DB::rollBack();
-            Alert::error('Se presentó un problema al guardar los datos, intente de nuevo', 'Error');
-            return back()->withInput();
-        }
+            return redirect()->route('predenuncias.edit',$id);
+        // }catch (\PDOException $e){
+        //     DB::rollBack();
+        //     Alert::error('Se presentó un problema al guardar los datos, intente de nuevo', 'Error');
+        //     return back()->withInput();
+        // }
     }
 
 

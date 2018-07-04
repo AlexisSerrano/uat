@@ -93,6 +93,7 @@ class OficiosSeeder extends Seeder
 <p style="text-align:justify"><strong><strong><strong><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong></span></span></strong></strong></strong></p>
 
 <p style="text-align:justify"><strong><strong><strong><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">CONSTANCIA.- En la misma fecha la presente Carpeta de Investigación queda registrada bajo el número {{$carpeta}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">
+            
             ',  
             'pie' =>  '<p>Circuito Rafael Guízar y<br />
             Valencia No. 147,<br />
@@ -621,49 +622,48 @@ class OficiosSeeder extends Seeder
             <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />
                         Distrito XI Xalapa, Veracruz“</p>',  
     
-            'contenido' => '
-            <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">C. DIRECTOR GENERAL DE TRANSPORTE DEL ESTADO</span></span></strong></span></span></p>
+            'contenido' => '<p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:11pt"><strong><span style="font-size:12.0pt">C. DIRECTOR GENERAL DE TRANSPORTE DEL ESTADO</span></strong></span></span></p>
 
-<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><em><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Presente</span></span></em></span></span></p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro Light&quot;,&quot;sans-serif&quot;">{{$zona}}, Veracruz; a {{$fecha}}</span></span></span></span></p>
-
-<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro Light&quot;,&quot;sans-serif&quot;">Oficio: UAT-XI/2,669/2017</span></span></span></span></p>
-
-<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro Light&quot;,&quot;sans-serif&quot;">Carpeta de Investigación: {{$numCarpeta}}</span></span></span></span></p>
-
-<p style="text-align:justify">&nbsp;</p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Por medio del presente y con fundamento en lo establecido por los artículos 21 de la Constitución Política de los Estados Unidos Mexicanos, 52 de la Constitución Política del Estado de Veracruz de Ignacio de la Llave, 131, 132 y demás aplicables del Código Nacional de Procedimientos Penales;&nbsp; solicito a usted atenta y respetuosamente, tenga a bien instruir personal a su cargo a efecto de que informe a esta Representación Social en un <strong>término de tres</strong> días hábiles, el nombre y domicilio del <strong>propietario y conductor</strong> de la unidad vehicular: <strong>MARCA</strong> <strong>{{$marca}}, LÍNEA {{$submarca}}, COLOR {{$color}}, NÚMERO DE SERIE {{$numSerie}}, MODELO {{$modelo}},&nbsp;PLACAS DE CIRCULACIÓN {{$placas}},</strong>&nbsp;del cual se desconoce más datos; debiendo remitir copia certificada del expediente de dicha unidad y de los registro de los conductores.</span></span></span></span></p>
-
-<p>&nbsp;</p>
-
-<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Sin más por el momento agradezco la atención que se sirva brindar al presente.</span></span></span></span></p>
-
-<p style="text-align:center">&nbsp;</p>
-
-<p style="text-align:center">&nbsp;</p>
-
-<p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:14.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Atentamente.</span></span></span></span></p>
-
-<p style="text-align:center">&nbsp;</p>
-
-<p style="text-align:center">&nbsp;</p>
-
-<p style="text-align:center">&nbsp;</p>
-
-<p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">LIC. {{$fiscalAtendio}}</span></span></strong></span></span></p>
-
-<p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">{{$puestoFiscal}}</span></span></span></span></p>
-
-<p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">, Veracruz</span></span></span></span></p>
-
-<p style="text-align:center">&nbsp;</p>
-           ',
+            <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:11pt"><em><span style="font-size:12.0pt">Presente</span></em></span></span></p>
+            
+            <p>&nbsp;</p>
+            
+            <p>&nbsp;</p>
+            
+            <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:11pt"><span style="font-size:12.0pt">{{$zona}}, VERACRUZ; A&nbsp;{{$fecha}}</span></span></span></p>
+            
+            <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:11pt"><span style="font-size:12.0pt">OFICIO: {{$oficio}}</span></span></span></p>
+            
+            <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:11pt"><span style="font-size:12.0pt">CARPETA DE INVESTIGACIÓN: {{$numCarpeta}}</span></span></span></p>
+            
+            <p style="text-align:justify">&nbsp;</p>
+            
+            <p style="text-align:justify"><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:11pt"><span style="font-size:12.0pt">Por medio del presente y con fundamento en lo establecido por los artículos 21 de la Constitución Política de los Estados Unidos Mexicanos, 52 de la Constitución Política del Estado de Veracruz de Ignacio de la Llave, 131, 132 y demás aplicables del Código Nacional de Procedimientos Penales;&nbsp; solicito a usted atenta y respetuosamente, tenga a bien instruir personal a su cargo a efecto de que informe a esta Representación Social en un <strong>término de tres</strong> días hábiles, el nombre y domicilio del <strong>propietario y conductor</strong> de la unidad vehicular: <strong>MARCA</strong> <strong>{{$marca}}, LÍNEA {{$submarca}}, COLOR {{$color}}, NÚMERO DE SERIE {{$numSerie}}, MODELO {{$modelo}},&nbsp;PLACAS DE CIRCULACIÓN {{$placas}},</strong>&nbsp;del cual se desconoce más datos; debiendo remitir copia certificada del expediente de dicha unidad y de los registro de los conductores.</span></span></span></p>
+            
+            <p>&nbsp;</p>
+            
+            <p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:11pt"><span style="font-size:12.0pt">Sin más por el momento agradezco la atención que se sirva brindar al presente.</span></span></span></p>
+            
+            <p style="text-align:center">&nbsp;</p>
+            
+            <p style="text-align:center">&nbsp;</p>
+            
+            <p style="text-align:center"><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:11pt"><span style="font-size:14.0pt">Atentamente.</span></span></span></p>
+            
+            <p style="text-align:center">&nbsp;</p>
+            
+            <p style="text-align:center">&nbsp;</p>
+            
+            <p style="text-align:center">&nbsp;</p>
+            
+            <p style="text-align:center"><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:11pt"><strong><span style="font-size:12.0pt">LIC. {{$fiscalAtendio}}</span></strong></span></span></p>
+            
+            <p style="text-align:center"><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:11pt"><span style="font-size:12.0pt">{{$puestoFiscal}}</span></span></span></p>
+            
+            <p style="text-align:center">&nbsp;</p>
+            
+            <p style="text-align:center">&nbsp;</p>
+            ',
     
             
             'unidad'=>'1',
@@ -708,19 +708,34 @@ LIC. {{$fiscalAtendio}}
         'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
         <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',  
 
-        'contenido' => '
+        'contenido' => '<table align="center" cellpadding="1" cellspacing="1" style="width:500px">
+        <tbody>
+            <tr>
+                <td style="text-align:center">{{$descripcion}},</td>
+            </tr>
+            <tr>
+                <td style="text-align:center">VERACRUZ CARPETA DE INVESTIGACIÓN:{{$numeroCarpeta}}°</td>
+            </tr>
+            <tr>
+                <td style="text-align:center">C. {{$denunciante}}</td>
+            </tr>
+            <tr>
+                <td style="text-align:center">Lic. {{$nombreC}}</td>
+            </tr>
+            <tr>
+                <td style="text-align:center">{{$puesto}}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <p>&nbsp;</p>
+    
+    <p>&nbsp;</p>
+    
+    <p>&nbsp;</p>
        
 
-{{$descripcion}}, VERACRUZ
 
-CARPETA DE INVESTIGACIÓN: {{$numeroCarpeta}}-{{$numeroF}}°
-
-C. {{$denunciante}}
-
-
-
-Lic. {{$nombreC}}
-{{$puesto}}
 ',
             'unidad'=>'1',
             'pie' =>  '<p>Circuito Rafael Guízar y<br />

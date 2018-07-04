@@ -41,20 +41,18 @@ class CaratulaCarpetaController extends Controller
 public function imprimirCaratula($id){
 
 
-    $idCarpeta=session('carpeta');
+    //$idCarpeta=session('carpeta');
     $carpeta=DB::table('carpeta')
     ->join('unidad','carpeta.idUnidad','=','unidad.id')
     ->select('unidad.descripcion','carpeta.numCarpeta')
-    ->where('carpeta.id',$idCarpeta)
+    ->where('carpeta.id',$id)
     ->first();
-
-    $numeroCarpeta=$carpeta->numCarpeta;
     
     $denunciantes = DB::table('extra_denunciante')
     ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
     ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
     ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-    ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+    ->where('variables_persona.idCarpeta', '=', $id)
     ->first();
     $nombre= $denunciantes->nombres.' '. $denunciantes->primerAp.' '. $denunciantes->segundoAp;
     
@@ -64,8 +62,8 @@ public function imprimirCaratula($id){
     ->select('users.nombreC','users.puesto','users.numFiscal')
     ->first();
 
-    $datos=array('id'=> $idCarpeta,
-        'numeroCarpeta'=>$numeroCarpeta,
+    $datos=array('id'=> $id,
+        'numeroCarpeta'=>$carpeta->numCarpeta,
         'denunciante'=>$nombre,
         'puesto'=>$fiscalAtiende->puesto,
         'numeroF'=> $fiscalAtiende->numFiscal,
