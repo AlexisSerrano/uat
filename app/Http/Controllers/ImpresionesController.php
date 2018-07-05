@@ -552,25 +552,25 @@ class ImpresionesController extends Controller
 
         public function archivoTemporal($id){
         //dd('werwerwer');
-            $idCarpeta=session('carpeta');
+            //$idCarpeta=session('carpeta');
             $carpeta=DB::table('carpeta')
             ->join('unidad','carpeta.idUnidad','=','unidad.id')
             ->select('carpeta.fechaInicio','carpeta.numCarpeta')
-            ->where('carpeta.id',$idCarpeta)
+            ->where('carpeta.id',$id)
             ->first();
 
             $fiscalAtiende=DB::table('users')
             ->join('unidad','unidad.id','=','users.id')
             ->join('unidad as unid','unid.id','=','users.idUnidad')
             ->where('users.id', Auth::user()->id)
-            ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra')
+            ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion as unidad','users.numFiscalLetras as letra')
             ->first();
 
             $denunciantes = DB::table('extra_denunciante')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
-            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+            ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
 
             $cadenaDenunciantes='';
@@ -578,20 +578,19 @@ class ImpresionesController extends Controller
                 $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.', ';
             }
             
-            $numFiscalLetras= $fiscalAtiende->letra;
-            $numFiscalLetras = strtr(strtoupper($numFiscalLetras),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+            
            
             $nombreC=$fiscalAtiende->nombreC;
             $nombreC = strtr(strtoupper($nombreC),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
             
-           $puesto =$fiscalAtiende->puesto;
-           $puesto=strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+           $puestoF =$fiscalAtiende->puesto;
+           $puestoF=strtr(strtoupper($puestoF),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
             
-            $datos=array('id'=> $idCarpeta,
+            $datos=array('id'=> $id,
             'numeroCarpeta'=> $carpeta->numCarpeta,
             'numeroF'=> $fiscalAtiende->numFiscal,
-            'puesto'=> $puesto,
-            'unidad'=> $fiscalAtiende->$descripcion,
+            'puesto'=> $puestoF,
+            'unidad'=> $fiscalAtiende->unidad,
             'nombreC'=>$nombreC,
             'notificado'=>$cadenaDenunciantes);
             

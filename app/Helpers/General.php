@@ -523,7 +523,16 @@ function getOficiosImpresos(){
 		->where('idTabla',session('carpeta'))
 		->where('idOficio',16)
 		->count();
-
+	$remicionC=DB::table('oficios_hechos')
+	->join('oficios','oficios.id','=','oficios_hechos.idOficio')
+	->where('idTabla',session('carpeta'))
+	->where('idOficio',19)
+	->count();
+	$acuerdoRemisionC=DB::table('oficios_hechos')
+	->join('oficios','oficios.id','=','oficios_hechos.idOficio')
+	->where('idTabla',session('carpeta'))
+	->where('idOficio',10)
+	->count();
 	$data=array(
 		'acuerdoInicioc'=>$acuerdoInicioc,
 		'gralTransporte'=>$gralTransporte,
@@ -532,7 +541,9 @@ function getOficiosImpresos(){
 		'cavdC'=>$cavdC,
 		'actuacionesC'=>$actuacionesC,
 		'temporalC'=>$temporalC,
-		'finanzasC'=>$finanzasC
+		'finanzasC'=>$finanzasC,
+		'remicionC'=>$remicionC,
+		'acuerdoRemisionC'=>$acuerdoRemisionC
 
 	);
 		return $data;
