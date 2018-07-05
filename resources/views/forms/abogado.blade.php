@@ -1,6 +1,6 @@
-@php
+{{-- @php
 $form = oldFormAbogado();
-@endphp
+@endphp --}}
 @extends('template.form')
 
 @section('title', 'Agregar Abogado')

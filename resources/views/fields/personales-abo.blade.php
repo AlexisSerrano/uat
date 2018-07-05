@@ -21,11 +21,12 @@
 	<div class="col-3">
 		<div class="form-group">
 			{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
-			@if(isset($form['fechaNacimiento']))
+			{{-- @if(isset($form['fechaNacimiento']))
 			<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="{{ $form['fechaNacimiento'] }}" class=" <persona form-control form-control-sm">
-				@else
-			<input type="date" id="fechaNacimiento" name="fechaNacimiento" class="persona form-control form-control-sm">
-			@endif	
+				@else --}}
+			
+				<input type="date" value="{{ old('fechaNacimiento') }}" id="fechaNacimiento" name="fechaNacimiento" class="persona form-control form-control-sm">
+			{{-- @endif	 --}}
 			{{-- {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'data-validation'=>'required', 'placeholder' => 'AAAA/MM/DD']) !!} --}}		
 		</div>
 	</div>

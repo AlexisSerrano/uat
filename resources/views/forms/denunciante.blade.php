@@ -1,6 +1,6 @@
-@php
+{{-- @php
 $form = oldFormDenunciante();
-@endphp
+@endphp --}}
 
 @extends('template.form')
 

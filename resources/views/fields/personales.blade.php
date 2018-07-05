@@ -22,12 +22,12 @@
 		<div class="col-3">
 			<div class="form-group">
 				{!! Form::label('fechaNacimiento', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
-				@if(isset($form['fechaNacimiento']))
+				{{-- @if(isset($form['fechaNacimiento']))
 						<input type="date" id="fechaNacimiento" name="fechaNacimiento" value="{{ $form['fechaNacimiento']}}" class="form-control form-control-sm">
-						@else
-				<input type="date" id="fechaNacimiento" name="fechaNacimiento" class="persona form-control form-control-sm", "required">
+						@else --}}
+				<input type="date" value="{{ old('fechaNacimiento') }}" id="fechaNacimiento" name="fechaNacimiento" class="persona form-control form-control-sm", "required">
 					{{-- {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac', 'required', 'placeholder' => 'AAAA-MM-DD']) !!} --}}
-					@endif
+					{{-- @endif --}}
 			</div>
 		</div>
 		<div class="col-3">
@@ -167,11 +167,11 @@
 			<div class="col-4">
 					<div class="form-group">
 						{!! Form::label('fechaAltaEmpresa', 'Fecha de alta de la empresa', ['class' => 'col-form-label-sm']) !!}
-						@if(isset($form['fechaAltaEmpresa']))
+						{{-- @if(isset($form['fechaAltaEmpresa']))
 						<input type="date" id="fechaAltaEmpresa" name="fechaAltaEmpresa" value="{{ $form['fechaAltaEmpresa'] }}" class="form-control form-control-sm">
-						@else
-						<input type="date" id="fechaAltaEmpresa" name="fechaAltaEmpresa" class="form-control form-control-sm" >
-						@endif
+						@else --}}
+						<input type="date" value="{{ old('fechaAltaEmpresa') }}" id="fechaAltaEmpresa" name="fechaAltaEmpresa" class="form-control form-control-sm" >
+						{{-- @endif --}}
 							{{-- {!! Form::text('fechaNacimiento', null, ['class' => 'form-control form-control-sm datetimepicker-input', 'data-target' => '#fechanac','data-validation'=>'birthdate', 'data-validation-format'=>'dd/mm/yyyy', 'data-validation'=>'required', 'placeholder' => 'DD/MM/AAAA']) !!} --}}
 						<div class="help-block with-errors"></div>	
 					</div>
