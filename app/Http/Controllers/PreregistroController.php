@@ -68,17 +68,14 @@ class PreregistroController extends Controller
             $comprobacionFolio=0;
             $folio=$comprobacionFolio;
             while ($comprobacionFolio == $folio) {
-            
                 $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
                 $charactersLength = strlen($characters);
                 $folio = '';
                 for ($i = 0; $i < 6; $i++) {
                     $folio .= $characters[rand(0, $charactersLength - 1)];
                 }
-
-                $comprobacionFolio=Preregistro::where('folio','=',$folio);
-                
-                
+                $comprobacionFolio=Preregistro::select('folio')->where('folio','=',$folio)->first();
+                // dd($comprobacionFolio);
             }
             //dd($folio);
             //dd($request);
@@ -256,10 +253,7 @@ class PreregistroController extends Controller
                 for ($i = 0; $i < 6; $i++) {
                     $folio .= $characters[rand(0, $charactersLength - 1)];
                 }
-
-                $comprobacionFolio=Preregistro::where('folio','=',$folio);
-               
-                
+                $comprobacionFolio=Preregistro::select('folio')->where('folio','=',$folio)->first();
             }
             //dd($folio);
             //dd($request);

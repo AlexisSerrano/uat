@@ -38,20 +38,57 @@ class ActasHechosController extends Controller
         ->join('domicilio','preregistros.idDireccion','=','domicilio.id')
         ->join('cat_colonia','domicilio.idColonia','=','cat_colonia.id')
         ->join('cat_municipio','domicilio.idMunicipio','=','cat_municipio.id')
-        ->select('preregistros.id as id','idRazon','esEmpresa',
-        'preregistros.nombre as nombre','primerAp','segundoAp','rfc','fechaNac',
-        'idEscolaridad','idEstadoCivil','idOcupacion','edad','sexo','curp','telefono',
-        'cat_identificacion.documento as docIdentificacion','numDocIdentificacion',
-        'conViolencia','narracion','folio','tipoActa','representanteLegal',
-        'statusCancelacion','statusOrigen','statusCola','domicilio.idMunicipio','domicilio.idLocalidad',
-        'domicilio.idColonia','cat_municipio.idEstado','horaLlegada','domicilio.calle as calle',
-        'domicilio.numInterno as numInterno','domicilio.numExterno as numExterno', 'cat_colonia.codigoPostal' )
+        ->join('cat_municipio as morienge','preregistros.idMunicipioOrigen','=','morienge.id')
+        ->select(
+            'preregistros.id as id',
+            'idRazon',
+            'esEmpresa',
+            'preregistros.nombre as nombre',
+            'primerAp',
+            'segundoAp',
+            'rfc',
+            'fechaNac',
+            'idEscolaridad',
+            'idEstadoCivil', 
+            'idMunicipioOrigen',
+            'morienge.idEstado as idEstadoOrigen',
+            'idOcupacion',
+            'edad',
+            'sexo',
+            'curp',
+            'telefono',
+            'cat_identificacion.documento as docIdentificacion',
+            'numDocIdentificacion',
+            'conViolencia',
+            'narracion',
+            'folio',
+            'tipoActa',
+            'representanteLegal',
+            'statusCancelacion',
+            'statusOrigen',
+            'statusCola',
+            'domicilio.idMunicipio',
+            'domicilio.idLocalidad',
+            'domicilio.idColonia',
+            'cat_municipio.idEstado',
+            'horaLlegada',
+            'domicilio.calle as calle',
+            'domicilio.numInterno as numInterno',
+            'domicilio.numExterno as numExterno', 
+            'cat_colonia.codigoPostal' 
+            )
         ->where('preregistros.id',$id)->where('preregistros.idRazon',4)->get();
         $acta=$acta[0];
-        //dd($acta);
+        // dd($acta);
 
         $estados = DB::table('cat_estado')->pluck('nombre','id');
-		$catMunicipios=DB::table('cat_municipio')
+        
+        $catMunicipioOrigen=DB::table('cat_municipio')
+		->where('cat_municipio.idEstado','=',$acta->idEstadoOrigen)
+		->orderBy('nombre','asc')
+		->pluck('nombre','id');
+        
+        $catMunicipios=DB::table('cat_municipio')
 		->where('cat_municipio.idEstado','=',$acta->idEstado)
 		->orderBy('nombre','asc')
 		->pluck('nombre','id');
@@ -76,7 +113,7 @@ class ActasHechosController extends Controller
         ->pluck('nombre', 'id');
         $escolaridades = CatEscolaridad::orderBy('id', 'ASC')
         ->pluck('nombre', 'id');
-        return view('servicios.actas.acta-hechos',compact('ocupaciones','escolaridades','estadocivil','estados','acta','catMunicipios','catLocalidades','catColonias','catCodigoPostal'));
+        return view('servicios.actas.acta-hechos',compact('catMunicipioOrigen','ocupaciones','escolaridades','estadocivil','estados','acta','catMunicipios','catLocalidades','catColonias','catCodigoPostal'));
     }
     
 
@@ -92,6 +129,7 @@ class ActasHechosController extends Controller
         $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')
         ->pluck('nombre', 'id');
         $municipios = CatMunicipio::orderBy('nombre', 'ASC')
+        ->where('idEstado',30)
         ->pluck('nombre', 'id');
         return view('servicios.actas.acta-hechos',compact('ocupaciones','escolaridades','estadocivil','nacionalidades','estados','municipios'));
     }

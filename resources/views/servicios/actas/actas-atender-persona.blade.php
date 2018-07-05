@@ -3,8 +3,8 @@ $form = oldFormActas();
 @endphp
 <div class="col-4">
     <div class="form-group">
-        {!! Form::label('nombre2', 'Nombre', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
-        {!! Form::text('nombre2', $acta->nombre, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required',]) !!}
+        {!! Form::label('nombres', 'Nombre', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
+        {!! Form::text('nombres', $acta->nombre, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required',]) !!}
         <div class="help-block with-errors"></div> 
     </div>
 </div>
@@ -79,13 +79,29 @@ $form = oldFormActas();
     {!! Form::label('fecha_nac', 'Fecha de nacimiento', ['class' => 'col-form-label-sm']) !!}
         <div class="input-group date" id="fecha_nac" data-target-input="nearest">
             @if(isset($form['fecha_nac']))
-            <input type="date" id="fecha_nac" name="fecha_nac" value="{{ $form['fecha_nac'] }}" class="form-control form-control-sm", "required">
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="{{ $form['fechaNacimiento'] }}" class="form-control form-control-sm", "required">
             @else
-            <input type="date" id="fecha_nac" name="fecha_nac" value="{{$acta->fechaNac}}" class="form-control form-control-sm","required">
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="{{$acta->fechaNac}}" class="form-control form-control-sm","required">
             @endif
         </div>
     </div>
 </div>
+
+<div class="col-4">
+    <div class="form-group">
+        {!! Form::label('idEstadoOrigen', 'Estado de origen', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::select('idEstadoOrigen', $estados, $acta->idEstadoOrigen, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required','required']) !!}
+    </div>
+</div>
+
+<div class="col-4">
+    <div class="form-group">
+        {!! Form::label('idMunicipioOrigen', 'Municipio de origen', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::select('idMunicipioOrigen', $catMunicipioOrigen, $acta->idMunicipioOrigen, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un municipio','data-validation'=>'required','required']) !!}
+    </div>
+</div>
+
+
 <div class="col-4">
     <div class="form-group">
         {!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
@@ -147,22 +163,22 @@ $form = oldFormActas();
 
 <div class="col-4">
     <div class="form-group">
-        {!! Form::label('calle2', 'Calle', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('calle2', $acta->calle, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle', 'data-validation'=>'required']) !!}
+        {!! Form::label('calle', 'Calle', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::text('calle', $acta->calle, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle', 'data-validation'=>'required']) !!}
     </div>
 </div>
 
 <div class="col-2">
     <div class="form-group">
         {!! Form::label('erno2', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('numExterno2', $acta->numExterno, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Exterior', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+        {!! Form::text('numExterno', $acta->numExterno, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Exterior', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
     </div>
 </div>
 
 <div class="col-2">
     <div class="form-group">
-        {!! Form::label('numInterno2', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('numInterno2', $acta->numInterno, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Interior','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+        {!! Form::label('numInterno', 'Número interior', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::text('numInterno', $acta->numInterno, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Interior','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
     </div>
 </div>
 

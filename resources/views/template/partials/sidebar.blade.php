@@ -262,38 +262,40 @@
 				
 					@if (Auth::user()->grupo=='orientador')
 					<li class="nav-item has-treeview {{ Request::is('carpetas') ? 'menu-open' : '' }}">
-							<a href="#" class="nav-link ">
-									<i class="nav-icon fa fa-archive"></i>
-									<p>
-										Carpetas
-										<i class="right fa fa-angle-left"></i>
-									</p>
-								</a>
+						<a href="#" class="nav-link ">
+							<i class="nav-icon fa fa-archive"></i>
+							<p>
+								Carpetas
+								<i class="right fa fa-angle-left"></i>
+							</p>
+						</a>
 						
 						<ul class="nav nav-treeview">
-							<li class="nav-item has-treeview ">
-								<a href="{{route('indexcarpetas')}}" class="nav-link {{ Request::is( 'carpetas') ? 'active' : '' }}">
+							@if (Auth::user()->grupo=='orientador')
+								<li class="nav-item has-treeview ">
+									<a href="{{route('indexcarpetas')}}" class="nav-link {{ Request::is( 'carpetas') ? 'active' : '' }}">
 										<i class="nav-icon  fa fa-angle-right"></i>
 										<p>Carpetas terminadas</p>
 									</a>
 								</li>
 							@endif
+							@endif
 							@if (Auth::user()->grupo=='coordinador')
-							<li class="nav-item has-treeview ">
-								<a href="{{route('indexcarpetas')}}" class="nav-link {{ Request::is( 'carpetas') ? 'active' : '' }}">
+								<li class="nav-item has-treeview ">
+									<a href="{{route('indexcarpetas')}}" class="nav-link {{ Request::is( 'carpetas') ? 'active' : '' }}">
 										<i class="nav-icon  fa fa-angle-right"></i>
 										<p>Carpetas de la unidad</p>
 									</a>
 								</li>
-								@endif
-								@if (Auth::user()->grupo=='orientador')
-								<li class="nav-item has-treeview ">
-									<a href="{{route('carpetas.reserva')}}" class="nav-link {{ Request::is( 'carpetasReserva') ? 'active' : '' }}">
-											<i class="nav-icon  fa fa-angle-right"></i>
-											<p>Carpetas en reserva</p>
-										</a>
-									</li>
-								</ul>
+							@endif
+							@if (Auth::user()->grupo=='orientador')
+							<li class="nav-item has-treeview ">
+								<a href="{{route('carpetas.reserva')}}" class="nav-link {{ Request::is( 'carpetasReserva') ? 'active' : '' }}">
+									<i class="nav-icon  fa fa-angle-right"></i>
+									<p>Carpetas en reserva</p>
+								</a>
+							</li>
+						</ul>
 					</li>
 					@endif
 					@if (Auth::user()->grupo=='coordinador')
@@ -338,22 +340,24 @@
 				
 				@endif
 				
-				<li class="nav-item has-treeview">
-					<a href="{{url('getOficios')}}" class="nav-link {{ Request::is( 'getOficios') ? 'active' : '' }}">
-						<i class="nav-icon fa fa-font"></i>
-						<p>Crear Oficios Nuevos</p>
-					</a>
-				</li>
-				
-				@if (Auth::user()->grupo=='orientador')
+				@if (is_null(session('carpeta'))&&is_null(session('terminada')))
 					<li class="nav-item has-treeview">
-						<a href="{{route('cambioRol')}}" class="nav-link">
-							<i class="nav-icon fa fa-exchange"></i>
-							<p>Cambiar a Recepción</p>
+						<a href="{{url('getOficios')}}" class="nav-link {{ Request::is( 'getOficios') ? 'active' : '' }}">
+							<i class="nav-icon fa fa-font"></i>
+							<p>Crear Oficios Nuevos</p>
 						</a>
 					</li>
+					
+					@if (Auth::user()->grupo=='orientador')
+						<li class="nav-item has-treeview">
+							<a href="{{route('cambioRol')}}" class="nav-link">
+								<i class="nav-icon fa fa-exchange"></i>
+								<p>Cambiar a Recepción</p>
+							</a>
+						</li>
+					@endif
 				@endif
-
+				
 				@if (Auth::user()->grupo=='recepcion')				
 					<li class="nav-item has-treeview">
 						<a href="{{route('cambioRol')}}" class="nav-link">
@@ -362,6 +366,7 @@
 						</a>
 					</li>
 				@endif
+
 				<li class="nav-item has-treeview">
 					<a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" >
 						<i class="nav-icon fa fa-power-off"></i>
