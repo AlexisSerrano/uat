@@ -253,5 +253,35 @@ class DelitoController extends Controller
         }
     }
 
+
+  
+
+    public function editarDelitoAjax(Request $request ){
+        $providencia = Providencia::find($request->input('idr')); 
+        $providencia->fechaInicio = $request->fechaInicio1;
+        $providencia->fechaFin = $request->fechaFinal1;
+        $providencia->idEjecutor = $request->quienEjecuta1;
+        $providencia->idPersona = $request->victima1;
+        $providencia->observacion = $request->observaciones1;
+        $providencia->save(); 
+       if ($providencia->save()){
+           return 1;
+       }
+       else{
+           return 0;
+       }
+     }
+   
+       public function getDelitoAjax($id){
+           $delito = DB::table('tipif_delito.idDelito','tipif_Delito.idAgrupacion1','tipif_Delito.idAgrupacion')
+           ->where('tipif_delito.id',$id)
+           ->select('tipif_delito.')
+           ->first();
+           return response()->json($providencia);
+       }
+   
+   
+
+
 }
 
