@@ -102,7 +102,7 @@ $data= getOficiosImpresos();
                     </td> 
                 </tr> 
                 {{-- @endisset   --}}
-                <tr>
+                {{-- <tr>
                     <td>Oficio Finanzas</td>
                     <td style="text-align:center;">
                         <span class="badge badge-info right">{{$data['finanzasC']}}</span>
@@ -120,7 +120,7 @@ $data= getOficiosImpresos();
                     <td style="text-align:center;">
                         <a href="{{ route("oficio.impRobo",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg "><i class="fa fa-print"></i></a>
                     </td> 
-                </tr> 
+                </tr>  --}}
             </tbody>
         </table>
        
