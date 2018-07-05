@@ -8,11 +8,33 @@ $('.btn-modal-delito').bind('click', function(){
 	var IdFilaTabla = $(this).val();
 	$.ajax({
 		//url : "editar/"+IdFilaTabla,
-		url: route('editar',IdFilaTabla),
+		url: route('getDelitoAjax',IdFilaTabla),
 		type : 'GET',
 		success : function(json) {
+		
+			 console.log(json);
 			$('#idr').val(json.id); 
-            $('#idDelito2').val(json.idDelito).trigger('change.select2');
+			$('#idDelito2').val(json.delito.idDelito).trigger('change.select2');
+			var html = '';
+			for (var clave in json.agrupacion1){
+				if (json.agrupacion1.hasOwnProperty(clave)) {
+				  html += "<option value='"+clave+"'> "+json.agrupacion1[clave]+"</option>";
+				}
+			}
+			$('#idAgrupacionD1').html(html);
+
+			var html2 = '';
+			for (var clave in json.agrupacion2){
+				if (json.agrupacion2.hasOwnProperty(clave)) {
+				  html2 += "<option value='"+clave+"'> "+json.agrupacion2[clave]+"</option>";
+				}
+			}
+
+			$('#idAgrupacionD2').html(html2);
+			 $("#formaComisionD2").val(json.delito.FormaComision).trigger('change.select2');
+
+			 console.log(json.delito.FormaComision);
+
 			// $('#formaComision2').val(json.formaComision).trigger('change.select2');
 			// $("#fecha2").val(json.fecha);
 			// $("#hora2").val(json.hora);
@@ -24,8 +46,8 @@ $('.btn-modal-delito').bind('click', function(){
 			// $('#quienEjecuta1').val(json.idEjecutor).trigger('change.select2');
 			// $('#victima1').val(json.idPersona).trigger('change.select2');
 		
-
 		},
+	
 		error : function(xhr, status) {
 		}
 	});

@@ -185,16 +185,6 @@ class DelitoController extends Controller
         }
     }
 
-    public function editar($id){
-        $delito = DB::table('tipif_delito')
-        ->join('cat_delito', 'tipif_delito.idDelito','=','cat_delito.id') 
-        ->where('tipif_delito.id',$id)
-        ->select('tipif_delito.idDelito','tipif_delito.formaComision','tipif_delito.fecha', 'tipif_delito.hora',  'tipif_delito.conViolencia')
-        ->first();     
-        return response()->json($delito);
-    //   return view ('forms.modalDelitosEdit', compact ('TipifDelito','delits','delitos','estados','lugares','zonas','domicilio','direccionTB','municipio','coloniaRow','idMunicipioSelect','idEstadoSelect','idLocalidadSelect','idCodigoPostalSelect','idColoniaSelect','catMunicipios','catLocalidades','catColonias','catCodigoPostal'));
-    }
-
     public function actualizar(Request $request, $id)
     {
         $domicilio = domicilio::find($id);
@@ -273,11 +263,22 @@ class DelitoController extends Controller
      }
    
        public function getDelitoAjax($id){
-           $delito = DB::table('tipif_delito.idDelito','tipif_Delito.idAgrupacion1','tipif_Delito.idAgrupacion')
+           $delito = DB::table('tipif_delito')
            ->where('tipif_delito.id',$id)
-           ->select('tipif_delito.')
+           ->select('tipif_delito.idDelito','tipif_delito.idAgrupacion1','tipif_delito.idAgrupacion2', 'tipif_delito.FormaComision')
            ->first();
-           return response()->json($providencia);
+
+        
+           $agrupacion1 = CatAgrupacion1::where('id', $delito->idAgrupacion1)
+           ->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+      
+
+           $agrupacion2 = CatAgrupacion2::where('id', $delito->idAgrupacion2)
+           ->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+
+           $data = array('delito'=>$delito,'agrupacion1'=>$agrupacion1, 'agrupacion2'=>$agrupacion2);
+
+           return response()->json($data);
        }
    
    

@@ -23,7 +23,7 @@
 	<div class="col-4">
 		<div class="form-group">
 			{!! Form::label('formaComisionD2', 'Forma de comisión', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::select('formaComisionD2', ['CULPOSO' => 'CULPOSO', 'DOLOSO' => 'DOLOSO'],  '$TipifDelito->formaComision', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una forma de comisión', 'required', 'id'=>'formaComision2']) !!}
+			{!! Form::select('formaComisionD2', ['CULPOSO' => 'CULPOSO', 'DOLOSO' => 'DOLOSO'],  '$TipifDelito->formaComision', ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una forma de comisión', 'required']) !!}
 		</div>
 	</div>
 
