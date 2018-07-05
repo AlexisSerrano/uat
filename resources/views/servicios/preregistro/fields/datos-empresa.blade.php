@@ -125,7 +125,7 @@
 	</div>
 		
 	<!--solo si es solicitud de hechos-->
-	 <div  id="tipodeActa1">
+	 {{-- <div  id="tipodeActa1">
 		<div class="col-12"  >
 			<div class="form-group" >
 					{!! Form::label('tipoActa', 'Seleccione el tipo de constancia de extravío que requiere', ['class' => 'col-form-label-sm']) !!}
@@ -152,7 +152,7 @@
 				<div class="help-block with-errors"></div>
 			</div>
 		</div>	
-	</div> 
+	</div>  --}}
 </div>
 
 

@@ -102,7 +102,11 @@ class AbogadoController extends Controller
             $ExtraAbogado->idVariablesPersona = $idVariablesPersona;
             $ExtraAbogado->cedulaProf = $request->cedulaProf;
             $ExtraAbogado->sector = $request->sector;
-            $ExtraAbogado->correo = $request->correo;
+            if(is_null($request->correo)){
+                $ExtraAbogado->correo = 'sin@informacion.com';
+            }else{
+                $ExtraAbogado->correo = $request->correo;
+            }
             $ExtraAbogado->tipo = $request->tipo;
             $ExtraAbogado->save();
             $idAbogado = $ExtraAbogado->id;

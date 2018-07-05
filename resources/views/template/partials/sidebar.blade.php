@@ -317,12 +317,12 @@
 				@endif		
 				
 				@if (!is_null(session('carpeta'))&&!is_null(session('terminada')))
-					<li class="nav-item has-treeview">
+					{{-- <li class="nav-item has-treeview">
 						<a href="{{url('periciales')}}" class="nav-link {{ Request::is( 'periciales') ? 'active' : '' }}">
 							<i class="nav-icon  fa fa-files-o"></i>
 							<p>Periciales</p>
 						</a>
-					</li>
+					</li> --}}
 				
 					<li class="nav-item has-treeview">
 						<a href="{{url('medidas')}}" class="nav-link {{ Request::is( 'medidas') ? 'active' : '' }}">
