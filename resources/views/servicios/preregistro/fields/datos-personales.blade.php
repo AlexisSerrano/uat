@@ -133,7 +133,7 @@
 	<div class="col-2">
 			<div class="form-group">
 				{!! Form::label('telefono2', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('telefono2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono','data-validation'=>'custom','data-validation-optional'=>'true','data-validation'=>'number, length', 'data-validation-length'=>'7-10']) !!}
+				{!! Form::text('telefono2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono','data-validation'=>'number','data-validation'=>'number, length', 'data-validation-length'=>'7-10','data-validation'=>'required', 'required']) !!}
 				<div class="help-block with-errors"></div>
 			</div>
 		</div>
