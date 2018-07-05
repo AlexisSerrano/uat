@@ -33,7 +33,7 @@ class CreatePermissionTables extends Migration
             // $table->unsignedInteger('permission_id');
             // $table->morphs('model');
             $table->integer('permission_id')->unsigned();
-            $table->string('model_type',255);
+            $table->string('model_type',190);
             $table->integer('model_id')->unsigned();
             
             $table->foreign('permission_id')
@@ -48,7 +48,7 @@ class CreatePermissionTables extends Migration
             // $table->unsignedInteger('role_id');
             // $table->morphs('model');
             $table->integer('role_id')->unsigned();
-            $table->string('model_type',255);
+            $table->string('model_type',190);
             $table->integer('model_id')->unsigned();
 
             $table->foreign('role_id')
