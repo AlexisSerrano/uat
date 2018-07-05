@@ -30,11 +30,11 @@ class CreatePermissionTables extends Migration
         });
         
         Schema::create($tableNames['model_has_permissions'], function (Blueprint $table) use ($tableNames) {
-            // $table->unsignedInteger('permission_id');
-            // $table->morphs('model');
-            $table->integer('permission_id')->unsigned();
-            $table->string('model_type',190);
-            $table->integer('model_id')->unsigned();
+            $table->unsignedInteger('permission_id');
+            $table->morphs('model');
+            // $table->integer('permission_id')->unsigned();
+            // $table->string('model_type',190);
+            // $table->integer('model_id')->unsigned();
             
             $table->foreign('permission_id')
             ->references('id')
@@ -45,11 +45,11 @@ class CreatePermissionTables extends Migration
         });
         
         Schema::create($tableNames['model_has_roles'], function (Blueprint $table) use ($tableNames) {
-            // $table->unsignedInteger('role_id');
-            // $table->morphs('model');
-            $table->integer('role_id')->unsigned();
-            $table->string('model_type',190);
-            $table->integer('model_id')->unsigned();
+            $table->unsignedInteger('role_id');
+            $table->morphs('model');
+            // $table->integer('role_id')->unsigned();
+            // $table->string('model_type',190);
+            // $table->integer('model_id')->unsigned();
 
             $table->foreign('role_id')
                 ->references('id')
