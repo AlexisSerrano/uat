@@ -12,6 +12,52 @@ class OficiosSeeder extends Seeder
     public function run()
     {
         DB::table('oficios')->insert([
+
+            ['nombre'  =>  'ACTAS HECHOS MORAL',
+            'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+            <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />
+                        Distrito XI Xalapa, Veracruz“</p>', 
+
+            'contenido' => '<p>En la ciudad de Xalapa, Veracruz, siendo las {{$hora}} horas del día {{$fecha}} , ante la presencia de la C. licenciada {{$fiscal}}, Fiscal Sexta Orientadora de la Unidad de Atención Temprana del XI Distrito Judicial de Xalapa, Veracruz, se presenta el C. {{$nombre}} en representacion de la empresa {{$nombreEmpresa}} con número de teléfono {{$telefono}}, fecha de alta {{$fechaNacimiento}} y&nbsp;domicilio&nbsp;{{$calle}} NÚMERO {{$numExterno}} , COLONIA {{$colonia}}, C.P. {{$cp}}, en la ciudad de {{$localidad}}, {{$estado}};&nbsp;&nbsp;a quien en este momento se le pone en conocimiento de las penas con que la ley castiga el declarar con falsedad ante la autoridad, como lo prevé el artículo 333 del Código Penal vigente para el estado de Veracruz, al cual se le da lectura, y previa la protesta que otorga de decir la verdad, bajo su única y exclusiva responsabilidad por sus generales dijo {{$nombre}},&nbsp;&nbsp;identificándose con {{$identificacion}} CON NÚMERO DE FOLIO {{$numIdentificacion}}, EXPEDIDA POR {{$expedido}} , identificado como corresponde, y considerando el motivo de su comparecencia hacer del conocimiento de esta representación social lo siguiente: "{{$narracion}}" lo cual, en uso de la voz, y bajo responsabilidad explica lo siguiente: TODO ESTO LO MANIFIESTO POR EL MAL USO QUE SE LE PUDIERE DAR - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Lo aquí manifestado es responsabilidad de quien comparece.- en términos de lo dispuesto en los artículos 21 de la Constitución Política de los Estados Unidos Mexicanos, 2, 3 Fracción XI, 5 y 15 Fracción XII de la ley orgánica de la fiscalía general del estado de Veracruz de Ignacio de la Llave, así como 201 y 207 del reglamento de la precitada ley y la Circular 01/2015, emitida por el Fiscal General del Estado esta representación social a mi cargo tiene a bien levantar la presente, misma que se firma por duplicado, otorgando un tanto al solicitante tal como lo requiere. - - - - - -</p>
+
+            <p style="text-align:center">Firma del Compareciente:</p>
+            
+            <p style="text-align:center">______________________________&nbsp;<br />
+            <strong>C.&nbsp;</strong>{{$nombre}}</p>
+            
+            <p style="text-align:center">__________________________________________&nbsp;<br />
+            <strong>LIC. </strong>{{$fiscal}}</p>
+            
+            <p style="text-align:center">Fiscal Sexta Orientadora de la Unidad de Atención Temprana&nbsp;<br />
+            Del XI Distrito Judicial en Xalapa, Veracruz</p>
+            
+            <p style="text-align:center">&nbsp;</p>
+            
+            <p style="text-align:center"><span style="font-size:10px"><strong>AVISO DE PRIVACIDAD SIMPLIFICADO</strong><br />
+            <strong>DEL EXPEDIENTE DE ATENCIÓN TEMPRANA</strong></span></p>
+            
+            <p style="text-align:justify"><span style="font-size:10px"><strong>La Fiscalía General del Estado de Veracruz</strong>, es la responsable del tratamiento de los datos personales que nos proporcione.&nbsp;<br />
+            Los datos personales que recabamos a Usted, los utilizaremos para las siguientes finalidades:&nbsp;<br />
+            • Identificar al usuario y conocer su problemática a fin de poder orientar en su caso, respecto a la procedencia del asunto expuesto, iniciando de ser procedente la Carpeta de Investigación correspondiente o por el contrario la canalización del ciudadano a la Unidad Integral de Procuración de Justicia, o alguna otra instancia competente;&nbsp;<br />
+            • Para iniciar el expediente de atención temprana,&nbsp;<br />
+            • Para la recepción de las denuncias y querellas,&nbsp;<br />
+            • Para la emisión de informes.&nbsp;<br />
+            De manera adicional, utilizaremos su información personal para la siguiente finalidad que nos permite y facilita brindarle una mejor atención:&nbsp;<br />
+            • Generación de informes estadísticos.&nbsp;<br />
+            En caso de que no desee que sus datos personales sean tratados para las finalidades adicionales, Usted puede manifestarlo al correo electrónico&nbsp;<a href="http://uat2.oo/actaoficio/direcciondetransparencia@fiscaliaveracruz.gob.mx">direcciondetransparencia@fiscaliaveracruz.gob.mx</a>&nbsp;<br />
+            Le informamos que sus datos personales&nbsp;<strong>NO</strong>&nbsp;son compartidos con personas, empresas, organizaciones y autoridades distintas al sujeto obligado, salvo que sean necesarias para atender requerimientos de información de una autoridad competente, debidamente fundados y motivados.&nbsp;<br />
+            Para mayor información acerca del tratamiento y de los derechos que puede hacer valer, usted puede acceder al aviso de privacidad integral a través de la dirección electrónica:&nbsp;<a href="http://fiscaliaveracruz.gob.mx/">http://fiscaliaveracruz.gob.mx</a></span></p>
+            ',
+
+            'pie' =>  '<p>Circuito Rafael Guízar y<br />
+            Valencia No. 147,<br />
+            Colonia Reserva Territorial,<br />
+            C.P. 91096<br />
+            Teléfono: 01 (228) 8149428,<br />
+            Xalapa-Enríquez, Veracruz</p>',
+            'unidad'=>'1'],
+
+
             ['nombre'  =>  'actas hechos',
             'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
             <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />
@@ -69,84 +115,39 @@ class OficiosSeeder extends Seeder
             Xalapa-Enríquez, Veracruz</p>',
             'unidad'=>'1'],
 
-//             ['nombre'  =>  'ACTAS HECHOS MORAL',
-//             'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
-//             <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />
-//                         Distrito XI Xalapa, Veracruz“</p>', 
+            ['nombre'  =>  'ACUERDO DE INICIO',
+            'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+            <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />
+                        Distrito XI Xalapa, Veracruz“</p>',  
+            'contenido' =>  '
+            <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">ACUERDO.- EN LA CIUDAD DE {{$localidad}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">, {{$entidad}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">, SIENDO LOS {{$fecha}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">.- - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -&nbsp;- - - - - - - - - - - - - - - - -&nbsp;- - - - - - - - -</span></span></strong></span></span></span></span></strong></span></span></span></span></strong></span></span></span></span></strong></span></span></p>
 
-//             'contenido' => '<p>En la ciudad de Xalapa, Veracruz, siendo las {{$hora}} horas del día {{$fecha}} , ante la presencia de la C. licenciada {{$fiscal}}, Fiscal Sexta Orientadora de la Unidad de Atención Temprana del XI Distrito Judicial de Xalapa, Veracruz, se presenta el C. {{$nombre}} en representacion de la empresa {{$nombreEmpresa}} con número de teléfono {{$telefono}}, fecha de alta {{$fechaNacimiento}} y&nbsp;domicilio&nbsp;{{$calle}} NÚMERO {{$numExterno}} , COLONIA {{$colonia}}, C.P. {{$cp}}, en la ciudad de {{$localidad}}, {{$estado}};&nbsp;&nbsp;a quien en este momento se le pone en conocimiento de las penas con que la ley castiga el declarar con falsedad ante la autoridad, como lo prevé el artículo 333 del Código Penal vigente para el estado de Veracruz, al cual se le da lectura, y previa la protesta que otorga de decir la verdad, bajo su única y exclusiva responsabilidad por sus generales dijo {{$nombre}},&nbsp;&nbsp;identificándose con {{$identificacion}} CON NÚMERO DE FOLIO {{$numIdentificacion}}, EXPEDIDA POR {{$expedido}} , identificado como corresponde, y considerando el motivo de su comparecencia hacer del conocimiento de esta representación social lo siguiente: "{{$narracion}}" lo cual, en uso de la voz, y bajo responsabilidad explica lo siguiente: TODO ESTO LO MANIFIESTO POR EL MAL USO QUE SE LE PUDIERE DAR - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Lo aquí manifestado es responsabilidad de quien comparece.- en términos de lo dispuesto en los artículos 21 de la Constitución Política de los Estados Unidos Mexicanos, 2, 3 Fracción XI, 5 y 15 Fracción XII de la ley orgánica de la fiscalía general del estado de Veracruz de Ignacio de la Llave, así como 201 y 207 del reglamento de la precitada ley y la Circular 01/2015, emitida por el Fiscal General del Estado esta representación social a mi cargo tiene a bien levantar la presente, misma que se firma por duplicado, otorgando un tanto al solicitante tal como lo requiere. - - - - - -</p>
+<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">VISTO:</span></span></strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"> Que se encuentra presente la ciudadano {{$Denunciante}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">&nbsp;{{$primerApDenunciante}} {{$segundoApDenunciante}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">, quien pone en conocimiento de esta autoridad hechos constitutivos del delito de {{$delito}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">,<strong> </strong>en contra de {{$nombreDenunciado}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">, por lo que con fundamento en lo dispuesto por los artículos 21 de la Constitución Política de los Estados Unidos Mexicanos; 54 de la Constitución Política Local;&nbsp; 1°,16, 108, 109, 110, 113, 115, 127, 128, 131, 132,&nbsp; 211, 212, 213, 214, 215, 216, 217, 221 y demás relativos y aplicables del Código Nacional de Procedimientos Penales vigente en este Distrito Judicial; 5 párrafo primero, 6 fracción I y IV, 7 fracción III, IV, V y VI de la Ley Orgánica de la Fiscalía General del Estado de Veracruz de Ignacio de la Llave; 34 Apartado A fracción I, Apartado B fracción I y Apartado C fracciones I: II; III y IV del Reglamento de la citada Ley, por lo que se: - - - <strong>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </strong><strong>A C U E R D A - - - - - - - - -&nbsp; - - - - - - - - - - - - - - - - - - &nbsp;PRIMERO.-</strong> Dese inicio a la carpeta de investigación&nbsp; que se impone, debiéndose registrar bajo el número que le corresponde en el libro de Gobierno que tiene la Unidad de Atención Temprana Número 1 del Distrito Decimo Primero, debiendo dar aviso de su inicio a la superioridad.- - - - - - - - - - - - - - - - - - - - - -</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></strong></span></span></span></span></strong></span></span></span></span></strong></span></span></p>
 
-//             <p style="text-align:center">Firma del Compareciente:</p>
+<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><strong>SEGUNDO.-</strong> Entrevístese al Denunciante y/o querellante en relación a los hechos que pone en conocimiento de esta Autoridad, lo anterior con el claro objetivo de investigar la veracidad de dicha denuncia y/o querella, debiéndosele notificar al denunciante los derechos que en su favor consagra el articulo 20 apartado C, de la Constitución General de la Republica en relación con el artículo 109 del Código Nacional de Procedimientos Penales vigente en este Distrito Judicial, debiendo dejar constancia de la misma. - - - - - - - - - - - - - - - -- - - - - - - - - -- - - - - - - -&nbsp;- - - - - - - - - - - - - - - - - - -- - - - - - - -&nbsp;- - - - -&nbsp;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></strong></span></span></span></span></strong></span></span></span></span></strong></span></span></p>
+
+<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><strong>TERCERO.-</strong>Practíquense todas aquellas diligencias urgentes e inaplazables para el esclarecimiento de los hechos, así como de las situaciones relevantes para la aplicación de la ley penal, de los autores y partícipes, así como de las circunstancias que sirvan para verificar en su oportunidad el grado de responsabilidad de los mismos, lo anterior en estricto cumplimiento a lo señalado por la ley bajo las premisas de la carga de la prueba y de presunción de inocencia, con el objeto de que esta Fiscalía reúna datos de prueba indiciaria para el esclarecimiento de los hechos que se denuncian, y en su caso, para sustentar el ejercicio o no de la acción penal que podría llegar a ejercitarse. - - - -- - - - - - - - - -- - - - - - <strong>CUARTO.-</strong> Hágasele saber al denunciante el número de Carpeta de Investigación Ministerial que le corresponde y realícense las diligencias necesarias de conformidad con el artículo 201 fracción II y IV 207 Fracción I</span></span><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"> del Reglamento de la Ley Orgánica de la Fiscalía General del Estado.- CÚMPLASE.- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -&nbsp;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></strong></span></span></span></span></strong></span></span></span></span></strong></span></span></p>
+
+<p style="text-align:center"><strong><strong><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">LIC. {{$fiscal}}</span></span></strong></span></span></strong></strong></p>
+
+<p style="text-align:center"><strong><strong><strong><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">FISCAL SEXTA ORIENTADORA</span></span></strong></span></span></strong></strong></strong></p>
+
+<p style="text-align:center"><strong><strong><strong><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">EN LA UNIDAD DE ATENCIÓN TEMPRANA</span></span></strong></span></span></strong></strong></strong></p>
+
+<p style="text-align:justify"><strong><strong><strong>&nbsp;</strong></strong></strong></p>
+
+<p style="text-align:justify"><strong><strong><strong><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong></span></span></strong></strong></strong></p>
+
+<p style="text-align:justify"><strong><strong><strong><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">CONSTANCIA.- En la misma fecha la presente Carpeta de Investigación queda registrada bajo el número {{$carpeta}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">
             
-//             <p style="text-align:center">______________________________&nbsp;<br />
-//             <strong>C.&nbsp;</strong>{{$nombre}}</p>
-            
-//             <p style="text-align:center">__________________________________________&nbsp;<br />
-//             <strong>LIC. </strong>{{$fiscal}}</p>
-            
-//             <p style="text-align:center">Fiscal Sexta Orientadora de la Unidad de Atención Temprana&nbsp;<br />
-//             Del XI Distrito Judicial en Xalapa, Veracruz</p>
-            
-//             <p style="text-align:center">&nbsp;</p>
-            
-//             <p style="text-align:center"><span style="font-size:10px"><strong>AVISO DE PRIVACIDAD SIMPLIFICADO</strong><br />
-//             <strong>DEL EXPEDIENTE DE ATENCIÓN TEMPRANA</strong></span></p>
-            
-//             <p style="text-align:justify"><span style="font-size:10px"><strong>La Fiscalía General del Estado de Veracruz</strong>, es la responsable del tratamiento de los datos personales que nos proporcione.&nbsp;<br />
-//             Los datos personales que recabamos a Usted, los utilizaremos para las siguientes finalidades:&nbsp;<br />
-//             • Identificar al usuario y conocer su problemática a fin de poder orientar en su caso, respecto a la procedencia del asunto expuesto, iniciando de ser procedente la Carpeta de Investigación correspondiente o por el contrario la canalización del ciudadano a la Unidad Integral de Procuración de Justicia, o alguna otra instancia competente;&nbsp;<br />
-//             • Para iniciar el expediente de atención temprana,&nbsp;<br />
-//             • Para la recepción de las denuncias y querellas,&nbsp;<br />
-//             • Para la emisión de informes.&nbsp;<br />
-//             De manera adicional, utilizaremos su información personal para la siguiente finalidad que nos permite y facilita brindarle una mejor atención:&nbsp;<br />
-//             • Generación de informes estadísticos.&nbsp;<br />
-//             En caso de que no desee que sus datos personales sean tratados para las finalidades adicionales, Usted puede manifestarlo al correo electrónico&nbsp;<a href="http://uat2.oo/actaoficio/direcciondetransparencia@fiscaliaveracruz.gob.mx">direcciondetransparencia@fiscaliaveracruz.gob.mx</a>&nbsp;<br />
-//             Le informamos que sus datos personales&nbsp;<strong>NO</strong>&nbsp;son compartidos con personas, empresas, organizaciones y autoridades distintas al sujeto obligado, salvo que sean necesarias para atender requerimientos de información de una autoridad competente, debidamente fundados y motivados.&nbsp;<br />
-//             Para mayor información acerca del tratamiento y de los derechos que puede hacer valer, usted puede acceder al aviso de privacidad integral a través de la dirección electrónica:&nbsp;<a href="http://fiscaliaveracruz.gob.mx/">http://fiscaliaveracruz.gob.mx</a></span></p>
-//             ',
-
-//             'pie' =>  '<p>Circuito Rafael Guízar y<br />
-//             Valencia No. 147,<br />
-//             Colonia Reserva Territorial,<br />
-//             C.P. 91096<br />
-//             Teléfono: 01 (228) 8149428,<br />
-//             Xalapa-Enríquez, Veracruz</p>',
-//             'unidad'=>'1'],
-
-
-//             ['nombre'  =>  'ACUERDO DE INICIO',
-//             'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
-//             <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />
-//                         Distrito XI Xalapa, Veracruz“</p>',  
-//             'contenido' =>  '
-//             <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">ACUERDO.- EN LA CIUDAD DE {{$localidad}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">, {{$entidad}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">, SIENDO LOS {{$fecha}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">.- - - - - - - - - - - - - - - - - - - - - -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -&nbsp;- - - - - - - - - - - - - - - - -&nbsp;- - - - - - - - -</span></span></strong></span></span></span></span></strong></span></span></span></span></strong></span></span></span></span></strong></span></span></p>
-
-// <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">VISTO:</span></span></strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"> Que se encuentra presente la ciudadano {{$Denunciante}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">&nbsp;{{$primerApDenunciante}} {{$segundoApDenunciante}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">, quien pone en conocimiento de esta autoridad hechos constitutivos del delito de {{$delito}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">,<strong> </strong>en contra de {{$nombreDenunciado}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">, por lo que con fundamento en lo dispuesto por los artículos 21 de la Constitución Política de los Estados Unidos Mexicanos; 54 de la Constitución Política Local;&nbsp; 1°,16, 108, 109, 110, 113, 115, 127, 128, 131, 132,&nbsp; 211, 212, 213, 214, 215, 216, 217, 221 y demás relativos y aplicables del Código Nacional de Procedimientos Penales vigente en este Distrito Judicial; 5 párrafo primero, 6 fracción I y IV, 7 fracción III, IV, V y VI de la Ley Orgánica de la Fiscalía General del Estado de Veracruz de Ignacio de la Llave; 34 Apartado A fracción I, Apartado B fracción I y Apartado C fracciones I: II; III y IV del Reglamento de la citada Ley, por lo que se: - - - <strong>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </strong><strong>A C U E R D A - - - - - - - - -&nbsp; - - - - - - - - - - - - - - - - - - &nbsp;PRIMERO.-</strong> Dese inicio a la carpeta de investigación&nbsp; que se impone, debiéndose registrar bajo el número que le corresponde en el libro de Gobierno que tiene la Unidad de Atención Temprana Número 1 del Distrito Decimo Primero, debiendo dar aviso de su inicio a la superioridad.- - - - - - - - - - - - - - - - - - - - - -</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></strong></span></span></span></span></strong></span></span></span></span></strong></span></span></p>
-
-// <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><strong>SEGUNDO.-</strong> Entrevístese al Denunciante y/o querellante en relación a los hechos que pone en conocimiento de esta Autoridad, lo anterior con el claro objetivo de investigar la veracidad de dicha denuncia y/o querella, debiéndosele notificar al denunciante los derechos que en su favor consagra el articulo 20 apartado C, de la Constitución General de la Republica en relación con el artículo 109 del Código Nacional de Procedimientos Penales vigente en este Distrito Judicial, debiendo dejar constancia de la misma. - - - - - - - - - - - - - - - -- - - - - - - - - -- - - - - - - -&nbsp;- - - - - - - - - - - - - - - - - - -- - - - - - - -&nbsp;- - - - -&nbsp;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></strong></span></span></span></span></strong></span></span></span></span></strong></span></span></p>
-
-// <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"><strong>TERCERO.-</strong>Practíquense todas aquellas diligencias urgentes e inaplazables para el esclarecimiento de los hechos, así como de las situaciones relevantes para la aplicación de la ley penal, de los autores y partícipes, así como de las circunstancias que sirvan para verificar en su oportunidad el grado de responsabilidad de los mismos, lo anterior en estricto cumplimiento a lo señalado por la ley bajo las premisas de la carga de la prueba y de presunción de inocencia, con el objeto de que esta Fiscalía reúna datos de prueba indiciaria para el esclarecimiento de los hechos que se denuncian, y en su caso, para sustentar el ejercicio o no de la acción penal que podría llegar a ejercitarse. - - - -- - - - - - - - - -- - - - - - <strong>CUARTO.-</strong> Hágasele saber al denunciante el número de Carpeta de Investigación Ministerial que le corresponde y realícense las diligencias necesarias de conformidad con el artículo 201 fracción II y IV 207 Fracción I</span></span><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;"> del Reglamento de la Ley Orgánica de la Fiscalía General del Estado.- CÚMPLASE.- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -&nbsp;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></strong></span></span></span></span></strong></span></span></span></span></strong></span></span></p>
-
-// <p style="text-align:center"><strong><strong><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">LIC. {{$fiscal}}</span></span></strong></span></span></strong></strong></p>
-
-// <p style="text-align:center"><strong><strong><strong><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">FISCAL SEXTA ORIENTADORA</span></span></strong></span></span></strong></strong></strong></p>
-
-// <p style="text-align:center"><strong><strong><strong><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">EN LA UNIDAD DE ATENCIÓN TEMPRANA</span></span></strong></span></span></strong></strong></strong></p>
-
-// <p style="text-align:justify"><strong><strong><strong>&nbsp;</strong></strong></strong></p>
-
-// <p style="text-align:justify"><strong><strong><strong><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong></span></span></strong></strong></strong></p>
-
-// <p style="text-align:justify"><strong><strong><strong><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">CONSTANCIA.- En la misma fecha la presente Carpeta de Investigación queda registrada bajo el número {{$carpeta}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:10.0pt"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">
-            
-//             ',  
-//             'pie' =>  '<p>Circuito Rafael Guízar y<br />
-//             Valencia No. 147,<br />
-//             Colonia Reserva Territorial,<br />
-//             C.P. 91096<br />
-//             Teléfono: 01 (228) 8149428,<br />
-//             Xalapa-Enríquez, Veracruz</p>',
-//             'unidad'=>'1'],
+            ',  
+            'pie' =>  '<p>Circuito Rafael Guízar y<br />
+            Valencia No. 147,<br />
+            Colonia Reserva Territorial,<br />
+            C.P. 91096<br />
+            Teléfono: 01 (228) 8149428,<br />
+            Xalapa-Enríquez, Veracruz</p>',
+            'unidad'=>'1'],
 
             ['nombre'  =>  'circunstanciada',
             'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
@@ -750,10 +751,37 @@ LIC. {{$fiscalAtendio}}
       
 
         ['nombre'  =>  'CARATULA DE LA CARPETA',
-        'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" /></p>
+        'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+        <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',  
 
-        <p style="text-align:right">Unidad de Atención Temprana, "Si lo platicamos, lo solucionamos”<br />
-        Distrito XI Xalapa, Veracruz.</p>
+        'contenido' => '<table align="center" cellpadding="1" cellspacing="1" style="width:500px">
+        <tbody>
+            <tr>
+                <td style="text-align:center">{{$descripcion}},</td>
+            </tr>
+            <tr>
+                <td style="text-align:center">VERACRUZ CARPETA DE INVESTIGACIÓN:{{$numeroCarpeta}}°</td>
+            </tr>
+            <tr>
+                <td style="text-align:center">C. {{$denunciante}}</td>
+            </tr>
+            <tr>
+                <td style="text-align:center">Lic. {{$nombreC}}</td>
+            </tr>
+            <tr>
+                <td style="text-align:center">{{$puesto}}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <p>&nbsp;</p>
+    
+    <p>&nbsp;</p>
+    
+    <p>&nbsp;</p>
+       
+
+
 ',
             'unidad'=>'1',
             'pie' =>  '<p>Circuito Rafael Guízar y<br />
@@ -768,10 +796,8 @@ LIC. {{$fiscalAtendio}}
            
            
             ['nombre'  =>  'POLICIA MINISTERIAL',
-            'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" /></p>
-
-            <p style="text-align:right">Unidad de Atención Temprana, "Si lo platicamos, lo solucionamos”<br />
-            Distrito XI Xalapa, Veracruz.</p>',
+            'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+            <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',
 
 
            'contenido' => '
@@ -855,10 +881,9 @@ Xalapa-Enríquez, Veracruz</p>',
 'unidad'=>'1'],  
 
 ['nombre'  =>  'NOT. ACTUACIONES FISCAL DISTRITO',
-        'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" /></p>
-
-        <p style="text-align:right">Unidad de Atención Temprana, "Si lo platicamos, lo solucionamos”<br />
-        Distrito XI Xalapa, Veracruz.</p>',  
+        'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+        <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />
+                    Distrito XI Xalapa, Veracruz“</p>',  
 
         'contenido' => '
         <p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">CARPETA DE INVESTIGACIÓN NÚMERO {{$numCarpeta}}</span></strong></span></span></p>
@@ -919,10 +944,8 @@ Xalapa-Enríquez, Veracruz</p>',
 
 
    ['nombre'  =>  'MEDIDASP',
-   'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" /></p>
-
-   <p style="text-align:right">Unidad de Atención Temprana, "Si lo platicamos, lo solucionamos”<br />
-   Distrito XI Xalapa, Veracruz.</p>',  
+   'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+   <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',  
 
    'contenido' => '<p style="text-align:justify"><span style="font-size:10pt"><span style="font-family:&quot;Trebuchet MS&quot;,sans-serif"><strong><span style="font-size:12.0pt">NOTIFICACIÓN PERSONAL DE LA MEDIDA DE PROTECCIÓN</span></strong><span style="font-size:12.0pt">.- En la ciudad de Xalapa, Enríquez, Veracruz, siendo el día nueve de abril del año dos mil dieciocho, encontrándose presente el ciudadano {{$nombre}}<strong>,</strong> se le informa que con fundamento en el artículo </span><span style="font-size:12.0pt">137 fracciones VI, VII y VIII</span> <span style="font-size:12.0pt">del Código Nacional de Procedimientos Penales para el Estado de Veracruz, se decretó por parte de esta autoridad la medida u orden de protección,&nbsp; en su favor y de su familia consistente en: <strong>a)</strong> vigilancia a través de rondines en el domicilio que habita ubicado en la calle <strong><em>{{$calle}} {{$numExterno}} {{$colonia}}, {{$cp}}, {{$municipio}}, {{$estado}}; </em></strong>que es su lugar de domicilio; <strong>b)</strong> Protección Policial y <strong>c)</strong> la atención ante cualquier llamado de auxilio en su domicilio o en cualquier lugar que se encuentre; girándose al efecto &nbsp;Oficio <strong>{{$ejecutor}}</strong> con sede en esta ciudad, a fin de que comisione personal a su mando que corresponda y se dé cumplimiento a las medidas de protección antes mencionadas, medidas que tendrán una vigencia de <strong>{{$vigencia}} días a partir del día de hoy</strong>, así como las condiciones y limitantes para su aplicación y las circunstancias en que podrán ser revocadas, lo anterior para que manifieste lo que a su derecho convenga. Por lo que en uso de la voz el denunciante manifiesta: Que en relación a la medida de protección decretada a mi quiero señalar que estoy de acuerdo con la misma.- Con lo anterior se da por concluida&nbsp; la presente diligencia y previa lectura manifiesta que se encuentra de acuerdo con el contenido de la misma firmando al margen y al calce para constancia.- CONSTE.- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </span></span></span></p>
 
@@ -1028,10 +1051,8 @@ Xalapa-Enríquez, Veracruz</p>',
        'unidad'=>'1'],
 
        ['nombre'  =>  'NOTIFICACIÓN DE ARCHIVO TEMPORAL',
-            'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" /></p>
-
-            <p style="text-align:right">Unidad de Atención Temprana, "Si lo platicamos, lo solucionamos”<br />
-            Distrito XI Xalapa, Veracruz.</p>',
+            'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+            <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',
 
 
            'contenido' => '<p style="text-align:center"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">FISCALÍA GENERAL&nbsp; DEL ESTADO DE VERACRUZ-LLAVE</span></span></span></p>
@@ -1121,10 +1142,8 @@ Xalapa-Enríquez, Veracruz</p>',
            
        
        ['nombre'  =>  'OFICIO FINANZAS',
-   'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" /></p>
-
-   <p style="text-align:right">Unidad de Atención Temprana, "Si lo platicamos, lo solucionamos”<br />
-   Distrito XI Xalapa, Veracruz.</p>',
+   'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+   <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',
        
    'contenido' => '<p>&nbsp;</p>
 
@@ -1189,10 +1208,8 @@ Xalapa-Enríquez, Veracruz</p>',
        
 
    ['nombre'  =>  'INVITACION INICIAL',
-   'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" /></p>
-
-   <p style="text-align:right">Unidad de Atención Temprana, "Si lo platicamos, lo solucionamos”<br />
-   Distrito XI Xalapa, Veracruz.</p>',
+   'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+   <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',
 
 
 'contenido' =>'<table align="right" cellspacing="0" style="width:503.45pt">
@@ -1309,10 +1326,8 @@ Xalapa-Enríquez, Veracruz</p>',
    Xalapa-Enríquez, Veracruz</p>',
    'unidad'=>'1'],
    ['nombre'  =>  'INICIO1',
-   'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" /></p>
-
-   <p style="text-align:right">Unidad de Atención Temprana, "Si lo platicamos, lo solucionamos”<br />
-   Distrito XI Xalapa, Veracruz.</p>',
+   'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+   <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',
 
 
 'contenido' =>'<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">En la ciudad de {{$ciudad}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">, Veracruz, siendo las<strong>&nbsp;{{$hora}}</strong>&nbsp;horas del día <strong>{{$fecha}}</strong>, el ciudadano {{$nombreC}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">, {{$puesto}}</span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">, quien actúa en forma legal. - - - - - -- - - - - - - - - -- - - - - - - - -&nbsp;- - - - - - - - - - - - - - - - - - - - - - - - -<strong> </strong>- - - - - - - - - - - - - -&nbsp;- - -- <strong>A c u e r d a: </strong>- - - - - - - - - - - - - - - - - - - - - - -<strong> </strong>- - - -- - - - - -- - - - - - - - - -- - - -Vista la denuncia por comparecencia/escrito del Ciudadano<strong>&nbsp;{{$denunciante}},</strong> quien pone en conocimiento de esta autoridad hechos posiblemente constitutivos de delito de<strong>&nbsp;{{$delitos}}</strong>&nbsp;en contra del Ciudadano<strong>&nbsp;{{$denunciados}}</strong>, con fundamento en lo dispuesto por los artículos 21 de la Constitución Política de los Estados Unidos Mexicanos; 54 y 67 fracción I de la Constitución Política del Estado de Veracruz; 1°,16, 127, 128, 131, 183, 212, 213, 214, 215, 216, 221 y demás relativos y aplicables del Código de Nacional de Procedimientos Penales; 5 párrafo primero, 6 fracción I y IV, 7 fracción III,IV, V, VI, y 40 de la Ley Orgánica de la Fiscalía General del Estado de Veracruz de Ignacio de la Llave; 34, 195, 201 y 206 del Reglamento de la citada Ley Orgánica, dese inicio a la Carpeta de Investigación que se impone, debiéndose registrar bajo el número que le corresponde en el libro de Gobierno con que cuenta la Unidad de Atención Temprana Número 1 del Distrito Decimo Primero, debiendo dar aviso de su inicio a la superioridad; entrevístese al denunciante y/o querellante en relación a los hechos que pone en conocimiento de esta Autoridad, lo anterior con el claro objetivo de investigar la veracidad de dicha denuncia y/o querella, debiéndose notificar los derechos que en su favor consagra el articulo 20 apartado C, de nuestra Carta Magna en relación con el 109 de la Ley Procesal Nacional, debiendo dejar constancia de la misma; <strong>así también y toda vez que los hechos denunciados se encuentran dentro de los señalados en el diverso 187 de la mencionada ley procesal, hágasele saber al agraviado la procedencia de los mecanismos alternativos de solución de controversias, asentando constancia de esto;</strong> por otra parte gírese oficio al Director de los Servicios Periciales solicitando perito en la materia a fin de que se emita dictamen pericial de<strong> {{$dictamenP}}</strong>; gírese oficio a la Policía Ministerial de este Distrito Judicial para que se avoquen a la investigación de los hechos que nos ocupan, y practíquense todas aquellas diligencias urgentes e inaplazables para el esclarecimiento de los hechos; en su momento recábense las entrevistas necesarias a todas aquellas personas<strong> </strong>que les resulte cita en relación con los hechos que se investigan, así como de las situaciones relevantes para la aplicación de la ley penal, de los autores y participes así como de las circunstancias que sirvan para verificar en su oportunidad el grado de responsabilidad de los mismos, lo anterior en estricto cumplimiento a lo señalado por la ley y bajo las premisas de la carga de la prueba y de presunción de inocencia, con el objeto de que esta Fiscalía reúna datos de prueba indiciaria para el esclarecimiento de los hechos denunciados, y en su caso, para sustentar el ejercicio o no ejercicio de la acción penal; por último, hágasele saber al denunciante el número de Carpeta de Investigación Ministerial que le corresponde.- CUMPLASE.- - -</span></span><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> - - - - - - - - - - - - -&nbsp;</span><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">- - - - - - - - - - - - - - - - -<strong> </strong>- - - -- - - - - -&nbsp;- - - - - - - - - - - - - - - - -<strong> </strong>- - - -- - - - - -&nbsp;- - - - - - - - - - - - - -</span></span></span></span></span></span></span></span></span></span></span></span></p>
@@ -1355,10 +1370,8 @@ Xalapa-Enríquez, Veracruz</p>',
 
 
    ['nombre'  =>  'ACUERDO REMISION',
-   'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" /></p>
-
-   <p style="text-align:right">Unidad de Atención Temprana, "Si lo platicamos, lo solucionamos”<br />
-   Distrito XI Xalapa, Veracruz.</p>',
+   'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
+   <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',
 
    'contenido' =>'<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">En la ciudad de <strong>{{$ciudad}}</strong>, Veracruz, siendo las<strong>&nbsp;{{$hora}}</strong>&nbsp;horas del día <strong>{{$fecha}}</strong>, el ciudadano </span></span><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">{{$fiscalAtendio}}, {{$puesto}}</span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">, quien actúa en forma legal. </span></span><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">- - - - - - - - - - - - - - - - - - - - - - -&nbsp;&nbsp;&nbsp; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - <strong>A C U E R D A: </strong>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - </span></span></span></p>
 
