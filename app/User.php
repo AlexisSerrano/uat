@@ -11,6 +11,9 @@ class User extends Authenticatable
     use Notifiable;
     use HasRoles;
 
+    protected $guard_name = 'web';
+    protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -36,7 +39,7 @@ class User extends Authenticatable
         'session_id',
         'puesto',
         'numFiscal',
-        'numFiscalLetras',
+        'numFiscalLetras'
     ];
 
     /**
