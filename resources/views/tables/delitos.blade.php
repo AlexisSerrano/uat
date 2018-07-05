@@ -69,7 +69,7 @@
                         <div role="tabpanel" class="tab-pane active" id="delito"></div>
                       @include('fields.edit.direccionesEdit') 
                       <div role="tabpanel" class="tab-pane active" id="delito"></div>
-                        @include('fields.edit.lugar-hechosedit')
+                        @include('fields.edit.lugar-hechosEdit')
                        
                     </div>
 
