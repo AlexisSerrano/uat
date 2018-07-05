@@ -31,7 +31,7 @@ class CreatePermissionTables extends Migration
         
         Schema::create($tableNames['model_has_permissions'], function (Blueprint $table) use ($tableNames) {
             $table->unsignedInteger('permission_id');
-            $table->string('model_type');
+            $table->string('model_type',255);
             // $table->morphs('model');
             $table->unsignedInteger('model_id');
             
@@ -45,7 +45,7 @@ class CreatePermissionTables extends Migration
         
         Schema::create($tableNames['model_has_roles'], function (Blueprint $table) use ($tableNames) {
             $table->unsignedInteger('role_id');
-            $table->string('model_type');
+            $table->string('model_type',255);
             // $table->morphs('model');
             $table->unsignedInteger('model_id');
 
