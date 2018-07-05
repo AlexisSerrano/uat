@@ -27,7 +27,7 @@
                        <i class="fa fa-edit"></i></a> --}} 
                           
                             @if(is_null(session('terminada')))
-                            <button type="button" class="btn btn-secondary btn-simple btn-xs btn-modal-delito"  value={{$delito->id}}  > <i class="fa fa-edit"></i></button>
+                            {{-- <button type="button" class="btn btn-secondary btn-simple btn-xs btn-modal-delito"  value={{$delito->id}}  > <i class="fa fa-edit"></i></button> --}}
                             <a data-delito-id={{$delito->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
                                 <i class="fa fa-times"></i>
                             </a>
