@@ -198,7 +198,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/buscarfolio', 'RegistrosCasoController@buscarfolio');
     Route::get('/buscarfolio', 'RegistrosCasoController@buscarfolio');
     Route::get('/buscarmunicipio/{id}', 'RegistrosCasoController@buscarmunicipio')->name('buscarmunicipio');
-    Route::put('storeregistro/{id}', 'RegistrosCasoController@updateregistros')->name('put.registro');
+    Route::post('storeregistro/{id}', 'RegistrosCasoController@updateregistros')->name('put.registro');
     
     /*---------Rutas Agregar Preregistro Controller------------*/
     

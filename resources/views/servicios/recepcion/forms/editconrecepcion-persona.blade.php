@@ -312,7 +312,7 @@
 
     $("#idEstado").focusout(function(event){
         if(event.target.value!=""){
-            $.get("../../municipios/"+event.target.value+"", function(response, estado){
+            $.get(route('get.municipio', event.target.value), function(response, estado){
                 $("#idMunicipio").empty();
                 $("#idMunicipio").append("<option value=''>Seleccione un municipio</option>");
                 for(i=0; i<response.length; i++){
@@ -326,15 +326,21 @@
 
     $("#idMunicipio").focusout(function(event){
         if(event.target.value!=""){
-            $.get("../../localidades/"+event.target.value+"", function(response, municipio){
+            $.get(route('get.localidad', event.target.value), function(response, municipio){
                 $("#idLocalidad").empty();
                 $("#idLocalidad").append("<option value=''>Seleccione una localidad</option>");
                 for(i=0; i<response.length; i++){
                     $("#idLocalidad").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
                 }
             });
-            
-            $.get("../../codigos/"+event.target.value+"", function(response, municipio){
+            $.get(route('get.colonia2', event.target.value), function(response, municipio){
+                $("#idColonia").empty();
+                $("#idColonia").append("<option value=''>Seleccione una colonia</option>");
+                for(i=0; i<response.length; i++){
+                    $("#idColonia").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+                }
+		    });
+            $.get(route('get.codigo', event.target.value), function(response, municipio){
                 $("#cp").empty();
                 $("#cp").append("<option value=''>Seleccione un código postal</option>");
                 for(i=0; i<response.length; i++){
@@ -342,19 +348,6 @@
                 }
             });
 
-        }
-    });
-
-    $("#cp").focusout(function(event){
-        if(event.target.value!=""){
-            $.get("../../colonias/"+$('#cp option:selected').html()+"", function(response, cp){
-                $("#idColonia").empty();
-                $("#idColonia").append("<option value=''>Seleccione una colonia</option>");
-                for(i=0; i<response.length; i++){
-                    $("#idColonia").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
-                }
-            });
-        
         }
     });
 

@@ -94,22 +94,22 @@
 		</div>
 	</div>
 	<div class="col-4">
-		<div class="form-group">
-			{!! Form::label('calle1', 'Calle', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('calle1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle', 'data-validation'=>'required','required']) !!}
-		</div>
-	</div>
-	<div class="col-2">
-		<div class="form-group">
-			{!! Form::label('numExterno1', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numExterno1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Exterior', 'data-validation'=>'required','required']) !!}
-		</div>
-	</div>
-	<div class="col-2">
-		<div class="form-group">
-			{!! Form::label('numInterno1', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-			{!! Form::text('numInterno1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Interior','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
-		</div>
+        <div class="form-group">
+            {!! Form::label('calle1', 'Calle', ['class' => 'col-form-label-sm']) !!}
+            {!! Form::text('calle1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle', 'data-validation'=>'required','required']) !!}
+        </div>
+    </div>
+    <div class="col-2">
+        <div class="form-group">
+            {!! Form::label('numExterno1', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
+            {!! Form::text('numExterno1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Exterior', 'data-validation'=>'required','required']) !!}
+        </div>
+    </div>
+    <div class="col-2">
+        <div class="form-group">
+            {!! Form::label('numInterno1', 'Número interior', ['class' => 'col-form-label-sm']) !!}
+            {!! Form::text('numInterno1', 'S/N', ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Interior', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+        </div>
 	</div>
 	<div class="col-4">
 		<div class="form-group">

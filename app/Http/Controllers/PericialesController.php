@@ -255,11 +255,10 @@ class PericialesController extends Controller{
                 $vehiculo->cp = $request->cp2;
                 $vehiculo->fecha = $request->fecha_nac;
                 $vehiculo->save();
+                // dd($vehiculo);
                 if($vehiculo->save()){
                     Alert::success('Registro guardado con éxito', 'Hecho');
-                    // $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-                    // $bdbitacora->medidas = $bdbitacora->medidas+1;
-                    // $bdbitacora->save();
+                 
                
                
 
@@ -295,6 +294,14 @@ class PericialesController extends Controller{
          }
 
          public function getVh($id){
+
+            $idCarpeta=session('carpeta');
+            $carpeta=DB::table('carpeta')
+            ->join('unidad','carpeta.idUnidad','=','unidad.id')
+            ->select('carpeta.fechaInicio','carpeta.numCarpeta')
+            ->where('carpeta.id',$idCarpeta)
+            ->first();
+
             $vehiculo = DB::table('per_vehiculos')
             ->where('per_vehiculos.id', $id)
             ->join('cat_marca','cat_marca.id','=','per_vehiculos.idMarca')
@@ -317,7 +324,7 @@ class PericialesController extends Controller{
             'per_vehiculos.calle','per_vehiculos.num_ext','per_vehiculos.num_int','per_vehiculos.created_at as fecha')
             ->first();
             $data = array('id' => $id,
-            'idCarpeta' => $vehiculo->idCarpeta,
+            'Carpeta' => $carpeta->numCarpeta,
             'marca' => $vehiculo->marca,
             'submarca' => $vehiculo->submarca,
             'clase' => $vehiculo->clase,

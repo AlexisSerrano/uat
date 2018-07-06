@@ -62,7 +62,8 @@ class ActasHechosController extends Controller
             'conViolencia',
             'narracion',
             'folio',
-            'tipoActa',
+            'tipoActa as tipoActa',
+            'tipoActa as otro',
             'representanteLegal',
             'statusCancelacion',
             'statusOrigen',
@@ -77,8 +78,12 @@ class ActasHechosController extends Controller
             'domicilio.numExterno as numExterno', 
             'cat_colonia.codigoPostal' 
             )
-        ->where('preregistros.id',$id)->where('preregistros.idRazon',4)->get();
-        $acta=$acta[0];
+        ->where('preregistros.id',$id)->where('preregistros.idRazon',4)->first();
+        // $acta=$acta[0];
+        if($acta->tipoActa=='PASAPORTE'||$acta->tipoActa=='CREDENCIAL DE TRABAJO/GAFFETE'||$acta->tipoActa=='TARJETA DE CREDITO/DEBITO'||$acta->tipoActa=='TELEFONO CELULAR'||$acta->tipoActa=='EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)'||$acta->tipoActa=='PERMISO DE TRANSITO PARA EMPLACAMIENTO DE TAXIS'||$acta->tipoActa=='FACTURA DE VEHICULO/MOTOCICLETA'||$acta->tipoActa=='TARJETA DE CIRCULACION'||$acta->tipoActa=='PLACAS DE CIRCULACION'||$acta->tipoActa=='LICENCIA DE CONDUCIR ESTATAL'||$acta->tipoActa=='LICENCIA DE CONDUCIR FEDERAL'||$acta->tipoActa=='DOCUMENTO/BIEN EXTRAVIADO O ROBADO'||$acta->tipoActa=='CERTIFICADO DE ALUMBRAMIENTO'){
+        }else{
+            $acta->tipoActa='OTROS DOCUMENTOS';
+        }
         // dd($acta);
 
         $estados = DB::table('cat_estado')->pluck('nombre','id');

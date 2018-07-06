@@ -2,7 +2,9 @@
 @section('content')
 @include('fields.errores')
         
-{!!Form::model($preregistro, array('route' => array('put.registro', $preregistro->id), 'method' => 'PUT')) !!}
+{{-- {!!Form::model($preregistro, array('route' => array('put.registro', $preregistro->id), 'method' => 'PUT')) !!} --}}
+{!!Form::model($preregistro, ['route' => ['put.registro', $preregistro->id]]) !!}
+
 <input type="hidden" name="esEmpresa" value="0">
 <div class="card container-create" id="datosPersona">
     <div class="card-header lead" align="center">
@@ -51,20 +53,7 @@
 @push('scripts')
 {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script> --}}
 <script>
-    // $(function () {
-    //     $('#fechanac').datetimepicker({
-    //         format: 'YYYY-MM-DD'
-    //     });
-    // });
-
-    // $("#fechanac").on("change.datetimepicker", function (e) {
-    //     $('#edad').val(moment().diff(e.date,'years'));
-    // });
-
-    // $( "#edad" ).change(function() {
-    //     var anios = $('#edad').val();
-    //     $('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
-    // });
+    
 
     $(document).ready(function(){
         //editar el campo al dar clic en el label de nombre
@@ -277,9 +266,11 @@
 
     });
 
+
+
     $("#idEstado").focusout(function(event){
         if(event.target.value!=""){
-            $.get("../../municipios/"+event.target.value+"", function(response, estado){
+            $.get(route('get.municipio', event.target.value), function(response, estado){
                 $("#idMunicipio").empty();
                 $("#idMunicipio").append("<option value=''>Seleccione un municipio</option>");
                 for(i=0; i<response.length; i++){
@@ -293,15 +284,21 @@
 
     $("#idMunicipio").focusout(function(event){
         if(event.target.value!=""){
-            $.get("../../localidades/"+event.target.value+"", function(response, municipio){
+            $.get(route('get.localidad', event.target.value), function(response, municipio){
                 $("#idLocalidad").empty();
                 $("#idLocalidad").append("<option value=''>Seleccione una localidad</option>");
                 for(i=0; i<response.length; i++){
                     $("#idLocalidad").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
                 }
             });
-            
-            $.get("../../codigos/"+event.target.value+"", function(response, municipio){
+            $.get(route('get.colonia2', event.target.value), function(response, municipio){
+                $("#idColonia").empty();
+                $("#idColonia").append("<option value=''>Seleccione una colonia</option>");
+                for(i=0; i<response.length; i++){
+                    $("#idColonia").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+                }
+		    });
+            $.get(route('get.codigo', event.target.value), function(response, municipio){
                 $("#cp").empty();
                 $("#cp").append("<option value=''>Seleccione un código postal</option>");
                 for(i=0; i<response.length; i++){
@@ -312,18 +309,18 @@
         }
     });
 
-    $("#cp").focusout(function(event){
-        if(event.target.value!=""){
-            $.get("../../colonias/"+$('#cp option:selected').html()+"", function(response, cp){
-                $("#idColonia").empty();
-                $("#idColonia").append("<option value=''>Seleccione una colonia</option>");
-                for(i=0; i<response.length; i++){
-                    $("#idColonia").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
-                }
-            });
+    // $("#cp").focusout(function(event){
+    //     if(event.target.value!=""){
+    //         $.get("../../colonias/"+$('#cp option:selected').html()+"", function(response, cp){
+    //             $("#idColonia").empty();
+    //             $("#idColonia").append("<option value=''>Seleccione una colonia</option>");
+    //             for(i=0; i<response.length; i++){
+    //                 $("#idColonia").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+    //             }
+    //         });
         
-        }
-    });
+    //     }
+    // });
 
 
 
