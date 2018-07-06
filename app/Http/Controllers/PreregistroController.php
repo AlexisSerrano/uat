@@ -157,7 +157,7 @@ class PreregistroController extends Controller
                 if (!is_null($request->idColonia)){
                     $domicilio->idColonia = $request->idColonia;
                 }
-                if (!is_null($request->calle)){
+                if (!is_null($request->calle1)){
                     $domicilio->calle = $request->calle1;
                 }
                 if (!is_null($request->numExterno1)){
@@ -168,6 +168,7 @@ class PreregistroController extends Controller
                 }
                 
                 $domicilio->save();
+               
                 $idD1 = $domicilio->id;
                 
                 // dd($request);
@@ -203,8 +204,9 @@ class PreregistroController extends Controller
             }
             DB::commit();
             // Alert::success('Registro modificado con exito','Hecho');
-            
-            return redirect('FormatoRegistro/'.$id);
+            Alert::success('Registro creado exitosamente.<br> <h5>Folio: '.$preregistro->folio.'</h5><br><br><a href="'.url('FormatoRegistro/'.$id).'" target="_blank" >Ver formato</a> ','Hecho')->html()->persistent("Aceptar");
+            return redirect()->route('predenuncias.index');
+            // return redirect('FormatoRegistro/'.$id);
         }catch (\PDOException $e){
             DB::rollBack();
             Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
@@ -335,14 +337,14 @@ class PreregistroController extends Controller
                 if (!is_null($request->idColonia)){
                     $domicilio->idColonia = $request->idColonia;
                 }
-                if (!is_null($request->calle)){
-                    $domicilio->calle = $request->calle;
+                if (!is_null($request->calle1)){
+                    $domicilio->calle = $request->calle1;
                 }
-                if (!is_null($request->numExterno)){
-                    $domicilio->numExterno = $request->numExterno;
+                if (!is_null($request->numExterno1)){
+                    $domicilio->numExterno = $request->numExterno1;
                 }
-                if (!is_null($request->numInterno)){
-                    $domicilio->numInterno = $request->numInterno;
+                if (!is_null($request->numInterno1)){
+                    $domicilio->numInterno = $request->numInterno1;
                 }
                 $domicilio->save();
                 $idD1 = $domicilio->id; 
