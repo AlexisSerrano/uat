@@ -77,7 +77,7 @@
                 <tbody>
                     <tr>
                         <td rowspan="2" style="text-align:center;">
-                            <img src="{{ url('http://fiscaliaveracruz.gob.mx/wp-content/uploads/2017/02/Fiscalia-General-del-Estado-Logo-Footer.png') }}" class="item">
+                            <img src="{{ asset('img/logolight.png') }}" class="item">
                         </td>
                         <td colspan="2" >
                             Titulo: Preregistro o Folio

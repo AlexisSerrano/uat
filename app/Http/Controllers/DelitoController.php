@@ -264,8 +264,9 @@ class DelitoController extends Controller
    
        public function getDelitoAjax($id){
            $delito = DB::table('tipif_delito')
+           ->join('domicilio', 'domicilio.id', '=', 'tipif_delito.idDomicilio')
            ->where('tipif_delito.id',$id)
-           ->select('tipif_delito.idDelito','tipif_delito.idAgrupacion1','tipif_delito.idAgrupacion2', 'tipif_delito.FormaComision')
+           ->select('tipif_delito.idDelito','tipif_delito.idAgrupacion1','tipif_delito.idAgrupacion2', 'tipif_delito.FormaComision', 'tipif_delito.idDomicilio','domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia')
            ->first();
 
         
@@ -275,6 +276,9 @@ class DelitoController extends Controller
 
            $agrupacion2 = CatAgrupacion2::where('id', $delito->idAgrupacion2)
            ->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+
+
+           $domicilio = 
 
            $data = array('delito'=>$delito,'agrupacion1'=>$agrupacion1, 'agrupacion2'=>$agrupacion2);
 

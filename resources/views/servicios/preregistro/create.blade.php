@@ -27,15 +27,16 @@
 		.oculto{
 			display: none;
 		}
-		#logo{
-position:fixed;
-width:98px;
-height:98px;
-left:50%;
-top:50%;
-margin-left:-45px;
-margin-top:-100px;
-}
+				#logo{
+		position:fixed;
+		width:110px;
+		height:110px;
+		left:50%;
+		top:50%;
+		margin-left:-45px;
+		margin-top:-100px;
+		}
+		
 	</style>
 @extends('servicios.preregistro.templates.form2')
 
@@ -64,9 +65,10 @@ margin-top:-100px;
 
 	</p>
 	<span id="pantalla" class="oculto" >
-	
+			
 			<img id= "logo" src="{{asset('img/Cargando.gif')}}" > 
-			 
+			<br><br> <br> <br> <br>
+			<p align="center">   Espere un momento</p>
 	</span>
 	<div>
 		@include('servicios.preregistro.fields.tipo-persona')
