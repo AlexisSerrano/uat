@@ -10,31 +10,23 @@
 		top: 0;
 		left: 0;
 		z-index: 1000;
+		
 	}
-	.loadPage p{
-		display: : block;
-		width: 100px;
-		height: 30px;
+	/* .loadPage p{
+		display: block;
+		
 		font-size: 30px;
-		position: absolute;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		right: 0;
 		margin: auto;
 			}
-	
+	 */
 		.oculto{
 			display: none;
 		}
-				#logo{
+		.logo{
 		position:fixed;
-		width:110px;
-		height:110px;
-		left:50%;
-		top:50%;
-		margin-left:-45px;
-		margin-top:-100px;
+		}
+		p {
+		font-family: "Arial", serif;
 		}
 		
 	</style>
@@ -64,12 +56,15 @@
 				PRE-REGISTRO
 
 	</p>
-	<span id="pantalla" class="oculto" >
-			
-			<img id= "logo" src="{{asset('img/Cargando.gif')}}" > 
-			<br><br> <br> <br> <br>
-			<p align="center">   Espere un momento</p>
-	</span>
+	<div id="pantalla" class="oculto" >
+		<div style="font-size: 30px;text-align: center;margin-top:300px; display:block;margin-bottom: auto;">
+			<p>
+				<img width="100px" height="100px" src="{{asset('img/Cargando.gif')}}" > 
+				<br>
+				Espere un momento
+			</p>
+		</div>	
+	</div>
 	<div>
 		@include('servicios.preregistro.fields.tipo-persona')
 	</div>
