@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
+use Jenssegers\Date\Date;
 use App\Models\Carpeta;
 use App\Models\Acusacion;
 use App\Http\Requests\AcusacionRequest;
@@ -132,30 +133,31 @@ class AcusacionController extends Controller
             'delitos.idDelito',
             'catDelito.nombre as delito' )
             ->FIRST();
-    //    dd($datos);
-
-        $localidadAcuerdo='XALAPA';
-        $entidadAcuerdo='VERACRUZ';
-        $fiscalAcuerdo='JULIO';
-        $fechaAcuerdo='OCHO DÍAS DEL MES DE JUNIO DEL AÑO DOS MIL DIECIOCHO';
-        $carpeta='UAT/D-XI/005/2018-6';
-
-
-       $datos1= array('id'=> $id,
-       'nombreDenunciante'=>$datos->nombreDenunciante,
-       'primerApDenunciante'=>$datos->primerApDenunciante,
-       'segundoApDenunciante'=>$datos->segundoApDenunciante,
-       'nombreDenunciado'=>$datos->nombreDenunciado,
-       'primerApDenunciado'=>$datos->primerApDenunciado,
-       'segundoApDenunciado'=>$datos->segundoApDenunciado,
-       'delito'=>$datos->delito,
-       'localidad'=> $localidadAcuerdo,
-       'entidad'=> $entidadAcuerdo,
-       'fiscal'=> $fiscalAcuerdo,
-       'fecha'=> $fechaAcuerdo,
-       'carpeta'=> $carpeta
-
-    );
+            
+            $localidadAcuerdo='XALAPA';
+            $entidadAcuerdo='VERACRUZ';
+            $fiscalAcuerdo=strtoupper(Auth::user()->nombreC);
+            // $fechaAcuerdo='OCHO DÍAS DEL MES DE JUNIO DEL AÑO DOS MIL DIECIOCHO';
+            $fechaAcuerdo=strtoupper(Date::now()->format('j \\d\\i\\a\\s \\d\\e F \\d\\e Y'));
+            $carpeta=session('numCarpeta');
+            
+            
+            $datos1= array('id'=> $id,
+            'nombreDenunciante'=>$datos->nombreDenunciante,
+            'primerApDenunciante'=>$datos->primerApDenunciante,
+            'segundoApDenunciante'=>$datos->segundoApDenunciante,
+            'nombreDenunciado'=>$datos->nombreDenunciado,
+            'primerApDenunciado'=>$datos->primerApDenunciado,
+            'segundoApDenunciado'=>$datos->segundoApDenunciado,
+            'delito'=>$datos->delito,
+            'localidad'=> $localidadAcuerdo,
+            'entidad'=> $entidadAcuerdo,
+            'fiscal'=> $fiscalAcuerdo,
+            'fecha'=> $fechaAcuerdo,
+            'carpeta'=> $carpeta
+            
+        );
+        // dd($datos1);
     return response()->json($datos1);
     // ->with('id', $datos->id);
 }
