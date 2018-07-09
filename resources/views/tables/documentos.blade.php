@@ -44,7 +44,7 @@ $data= getOficiosImpresos();
                                                 {{-- <span class="badge badge-info right">{{$data['remicionC']}}</span> --}}
                                         </td>
                                         <td style="text-align:center;">
-                                        <a href="{{ route("oficio.remision",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg "><i class="fa fa-print"></i></a>
+                                        <a href="{{ route("formato.denuncia",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg "><i class="fa fa-print"></i></a>
                                         </td> 
                                     </tr>  
                                     <tr>

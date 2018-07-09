@@ -95,6 +95,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('oficio-remision/{id}','ImpresionesController@docRemision')->name('oficio.remision');
     Route::get('impresion-remision/{id}','ImpresionesController@getRemision')->name('impresion.remision');
 
+/***************************** formato de denuncia************************************/
+    Route::get('formato-denuncia/{id}','ImpresionesController@formatoDenuncia')->name('formato.denuncia');
+    Route::get('imprimir-denuncia/{id}','ImpresionesController@getFormatoDenuncia')->name('get.formatoDenuncia');
+    
+
 
     /* --------Ruta para obtener token oficios----------- */
     // Route::get('getToken/{id}','ActasHechosController@getToken')->name('getToken');

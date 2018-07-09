@@ -144,6 +144,38 @@ class ImpresionesController extends Controller
         return redirect()->route('oficio.cavd',$Cavd->id);
        
     }
+    public function formatoDenuncia($id){
+      
+        return view('documentos.formato-denuncia')->with('id',  $id );
+    
+    }
+    public function getFormatoDenuncia($id){
+        $idCarpeta=session('carpeta');
+        $carpeta=DB::table('carpeta')
+        ->join('unidad','carpeta.idUnidad','=','unidad.id')
+        ->select('carpeta.numCarpeta')
+        ->where('carpeta.id',$idCarpeta)->first();
+
+        $numCarpeta=$carpeta->numCarpeta;
+        $oficio='pendiente';
+        $fechaactual = date::now();
+        $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
+        $fechahum= strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+      
+        $data = array('id' => $id,
+        'numCarpeta'=>$numCarpeta,
+        //'fiscalAtendio'=>$fiscalAtiende->nombreC,
+       // 'puestoFiscal'=>$puesto,
+       
+        'oficio'=>$oficio,
+        'fecha'=>$fechahum
+       );
+        
+        // }
+       return response()->json($data);
+    
+    }
+
     public function oficioCavd($id){
       
         return view('documentos.oficio-cavd')->with('id',  $id );
