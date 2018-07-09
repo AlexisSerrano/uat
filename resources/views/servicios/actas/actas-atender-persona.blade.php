@@ -71,7 +71,6 @@ $form = oldFormActas();
         <div class="help-block with-errors"></div>
     </div>
 </div>
-    
 @endif
 
 <div class="col-4">

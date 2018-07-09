@@ -7,12 +7,10 @@
 
 @section('content')
 @include('fields.errores')
- 
-
         
-        <div class="alert alert-info">
-          <strong>Nota:</strong> Todas las etiquetas que se encuentran abajo pueden ser editadas dando clic en el texto
-        </div>
+<div class="alert alert-info">
+    <strong>Nota:</strong> Todas las etiquetas que se encuentran abajo pueden ser editadas dando clic en el texto
+</div>
 
 
 {!!Form::model($preregistro, array('route' => array('predenuncias.update', $preregistro->id), 'method' => 'POST')) !!}

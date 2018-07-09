@@ -1,35 +1,145 @@
 @php
 $form = oldFormActas();
 @endphp
+<div class="col-8">
+    <div class="form-group">
+        {!! Form::label('nombres2', 'Nombre de la empresa', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::text('nombres2',$acta->nombre, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}
+    </div>
+</div>
+<input type="hidden" name="idPreregistro" id="idPreregistro" value="{{$acta->id}}">
+
+<input type="hidden" name="esEmpresa" id="esEmpresa" value="{{$acta->esEmpresa}}">
 <div class="col-4">
     <div class="form-group">
-        {!! Form::label('nombre2', 'Nombre', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
-        {!! Form::text('nombre2', $acta->nombre, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required',]) !!}
+        {!! Form::label('nombre2', 'Nombre del representante', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
+        {!! Form::text('nombre2', $acta->representanteLegal, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}
         <div class="help-block with-errors"></div> 
     </div>
 </div>
 
-<input type="hidden" name="idPreregistro" id="idPreregistro" value="{{$acta->id}}">
-
-{{-- <div class="col-4">
+<div class="col-4">
     <div class="form-group">
-        {!! Form::label('primerAp', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('primerAp', $acta->primerAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','data-validation'=>'required',]) !!}
+        {!! Form::label('primerAp2', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::text('primerAp2', $acta->primerAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','data-validation'=>'required']) !!}
         <div class="help-block with-errors"></div>
     </div>
-</div> --}}
+</div>
 
-{{-- <div class="col-4">
+<div class="col-4">
     <div class="form-group">
-        {!! Form::label('segundoAp', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('segundoAp', $acta->segundoAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+        {!! Form::label('segundoAp2', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::text('segundoAp2', $acta->segundoAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
     </div>
-</div> --}}
+</div>
 
-{{-- <div class="col-4">
+<div class="col-4">
+    <div class="form-group">
+        {!! Form::label('fechaAltaEmpresa', 'Fecha de alta de la empresa', ['class' => 'col-form-label-sm']) !!}
+        <input type="date" id="fechaAltaEmpresa" value="{{$acta->fechaNac}}" name="fechaAltaEmpresa" class="turnoempresa form-control form-control-sm" data-validation="required">
+        <div class="help-block with-errors"></div>	
+    </div>
+</div>
+{{-- {{dd($acta->fechaNac)}} --}}
+    
+<div class="col-4">
+    <div class="form-group">
+        <div class="row">
+            <div class="col">
+                {!! Form::label('rfc2', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}
+                {!! Form::text('rfc2', substr($acta->rfc,0,9), ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
+            </div>
+            <div class="col">
+                    {!! Form::label('homo2', 'Homo', ['class' => 'col-form-label-sm']) !!}
+                {!! Form::text('homo2',substr($acta->rfc,9,3), ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-4">
+    <div class="form-group">
+        {!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::text('telefono2', $acta->telefono, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+    </div>
+</div>
+
+<div class="col-4">
+    <div class="form-group">
+        {!! Form::label('idEstado', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::select('idEstado', $estados, $acta->idEstado, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required']) !!}
+    </div>
+</div>
+
+<div class="col-4">
+    <div class="form-group">
+        {!! Form::label('idMunicipio', 'Municipio', ['class' => 'col-form-label-sm']) !!}
+        @if(isset($form['catMunicipios'], $form['idMunicipio']))
+        {!! Form::select('idMunicipio',  $form['catMunicipios'], $form['idMunicipio'], ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+        @else
+        {!! Form::select('idMunicipio', $catMunicipios, $acta->idMunicipio, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
+        @endif
+    </div>
+</div>
+
+<div class="col-4">
+    <div class="form-group">
+        {!! Form::label('idLocalidad', 'Localidad', ['class' => 'col-form-label-sm']) !!}
+        @if(isset($form['catLocalidades'],$form['idLocalidad']))
+        {!! Form::select('idLocalidad',  $form['catLocalidades'], $form['idLocalidad'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+        @else
+        {!! Form::select('idLocalidad', $catLocalidades, $acta->idLocalidad, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+        @endif
+    </div>
+</div>
+
+<div class="col-2">
+    <div class="form-group">
+        {!! Form::label('idColonia', 'Colonia', ['class' => 'col-form-label-sm']) !!}
+        @if(isset($form['catColonias'],$form['idColonia']))
+        {!! Form::select('idColonia', $form['catColonias'], $form['idColonia'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+        @else
+        {!! Form::select('idColonia', $catColonias, $acta->idColonia, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+        @endif
+    </div>
+</div>
+
+<div class="col-2">
+    <div class="form-group">
+        {!! Form::label('cp', 'Código postal', ['class' => 'col-form-label-sm']) !!}
+        @if(isset($form['catCodigoPostal'],$form['cp']))
+        {!! Form::select('cp', $form['catCodigoPostal'], $form['cp'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+        @else
+        {!! Form::select('cp', $catCodigoPostal, $acta->codigoPostal, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
+        @endif
+    </div>
+</div>
+
+<div class="col-4">
+    <div class="form-group">
+        {!! Form::label('calle2', 'Calle', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::text('calle2',$acta->calle, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle', 'data-validation'=>'required']) !!}
+    </div>
+</div>
+
+<div class="col-2">
+    <div class="form-group">
+        {!! Form::label('numExterno2', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::text('numExterno2', $acta->numExterno, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Exterior','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+    </div>
+</div>
+
+<div class="col-2">
+    <div class="form-group">
+        {!! Form::label('numInterno2', 'Número interior', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::text('numInterno2', $acta->numInterno, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Interior', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+    </div>
+</div>
+
+<div class="col-4">
     <div class="form-group" >
         {!! Form::label('docIdentificacion', 'Seleccione el documento de identificación:', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::select('docIdentificacion', array('CREDENCIAL PARA VOTAR' => 'CREDENCIAL PARA VOTAR', 
+        {!! Form::select('docIdentificacion2', array('CREDENCIAL PARA VOTAR' => 'CREDENCIAL PARA VOTAR', 
         'PASAPORTE' => 'PASAPORTE',
         'CEDULA PROFESIONAL' => 'CÉDULA PROFESIONAL',
         'CARTILLA DEL SERVICIO MILITAR NACIONAL' => 'CARTILLA DEL SERVICIO MILITAR NACIONAL',
@@ -45,182 +155,51 @@ $form = oldFormActas();
         'CREDENCIAL DE TRABAJO' => 'CREDENCIAL DE TRABAJO',
         ), $acta->docIdentificacion, ['class' => 'form-control form-control-sm','placeholder'=>'Seleccione el documento de identificación','data-validation'=>'required']) !!}
     </div>
-</div> --}}
+</div>
 
-{{-- 
 <div class="col-4">
-    <div class="form-group">
-        {!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('docIdentificacion', $acta->docIdentificacion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificación','data-validation'=>'required']) !!}
-        <div class="help-block with-errors"></div>
-    </div>
-</div> --}}
-
-{{-- <div class="col-4">
     <div class="form-group">
         {!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('numDocIdentificacion', $acta->numDocIdentificacion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación','data-validation'=>'required' ]) !!}
-        <div class="help-block with-errors"></div>
-    </div>
-</div> --}}
-{{-- @if ($acta->docIdentificacion=='CREDENCIAL DE TRABAJO')
-<div class="col-4">
-    <div class="form-group">
-        {!! Form::label('expedido', 'Expedido por', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('expedido', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Expedido por']) !!}
+        {!! Form::text('numDocIdentificacion2', $acta->numDocIdentificacion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación','data-validation'=>'required' ]) !!}
         <div class="help-block with-errors"></div>
     </div>
 </div>
-    
-@endif --}}
 
-<div class="col-4">
-    <div class="form-group">
-    {!! Form::label('fecha_nac', 'Fecha de Alta', ['class' => 'col-form-label-sm']) !!}
-        <div class="input-group date" id="fecha_nac" data-target-input="nearest">
-            @if(isset($form['fecha_nac']))
-            <input type="date" id="fecha_nac" name="fecha_nac" value="{{ $form['fecha_nac'] }}" class="form-control form-control-sm", "required">
-            @else
-            <input type="date" id="fecha_nac" name="fecha_nac" value="{{$acta->fechaNac}}" class="form-control form-control-sm","required">
-            @endif
-        </div>
-    </div>
-</div>
-
-<div class="col-4">
-    <div class="form-group">
-        {!! Form::label('representanteLegal', 'Representante legal:', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
-        {!! Form::text('representanteLegal', $acta->representanteLegal, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required',]) !!}
-        <div class="help-block with-errors"></div> 
-    </div>
-</div>
-
-<div class="col-4">
-    <div class="form-group">
-        {!! Form::label('telefono', 'Teléfono', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('telefono', $acta->telefono, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
-    </div>
-</div>
-
-<div class="col-4">
-    <div class="form-group">
-        {!! Form::label('idEstado2', 'Entidad federativa', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::select('idEstado2', $estados, $acta->idEstado, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required']) !!}
-    </div>
-</div>
-
-<div class="col-4">
-    <div class="form-group">
-        {!! Form::label('idMunicipio2', 'Municipio', ['class' => 'col-form-label-sm']) !!}
-        @if(isset($form['catMunicipios'], $form['idMunicipio2']))
-        {!! Form::select('idMunicipio2',  $form['catMunicipios'], $form['idMunicipio2'], ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
-        @else
-        {!! Form::select('idMunicipio2', $catMunicipios, $acta->idMunicipio, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
-        @endif
-    </div>
-</div>
-
-<div class="col-4">
-    <div class="form-group">
-        {!! Form::label('idLocalidad2', 'Localidad', ['class' => 'col-form-label-sm']) !!}
-        @if(isset($form['catLocalidades'],$form['idLocalidad2']))
-        {!! Form::select('idLocalidad2',  $form['catLocalidades'], $form['idLocalidad2'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
-        @else
-        {!! Form::select('idLocalidad2', $catLocalidades, $acta->idLocalidad, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
-        @endif
-    </div>
-</div>
-
-<div class="col-2">
-    <div class="form-group">
-        {!! Form::label('idColonia2', 'Colonia', ['class' => 'col-form-label-sm']) !!}
-        @if(isset($form['catColonias'],$form['idColonia2']))
-        {!! Form::select('idColonia2', $form['catColonias'], $form['idColonia2'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
-        @else
-        {!! Form::select('idColonia2', $catColonias, $acta->idColonia, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
-        @endif
-    </div>
-</div>
-
-<div class="col-2">
-    <div class="form-group">
-        {!! Form::label('cp2', 'Código postal', ['class' => 'col-form-label-sm']) !!}
-        @if(isset($form['catCodigoPostal'],$form['cp2']))
-        {!! Form::select('cp2', $form['catCodigoPostal'], $form['cp2'], ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
-        @else
-        {!! Form::select('cp2', $catCodigoPostal, $acta->codigoPostal, ['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
-        @endif
-    </div>
-</div>
-
-
-<div class="col-4">
-    <div class="form-group">
-        {!! Form::label('calle2', 'Calle', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('calle2', $acta->calle, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle', 'data-validation'=>'required']) !!}
-    </div>
-</div>
-
-<div class="col-2">
-    <div class="form-group">
-        {!! Form::label('erno2', 'Número exterior', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('numExterno2', $acta->numExterno, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Exterior', 'data-validation'=>'custom','data-validation-optional'=>'true']) !!}
-    </div>
-</div>
-
-<div class="col-2">
-    <div class="form-group">
-        {!! Form::label('numInterno2', 'Número interior', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('numInterno2', $acta->numInterno, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el n. Interior','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
-    </div>
-</div>
-{{-- 
-<div class="col-4">
+<div class="col-4"  >
     <div class="form-group" >
-        {!! Form::label('estadoCivilActa1', 'Estado Civil', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::select('estadoCivilActa1',$estadocivil,$acta->idEstadoCivil ,['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione su estado civil','data-validation'=>'required']) !!}
-    </div>
-</div>		
-
-<div class="col-4">
-    <div class="form-group" >
-        {!! Form::label('escActa1', 'Escolaridad', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::select('escActa1', $escolaridades,$acta->idEscolaridad,['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
-    </div>
-</div> --}}
-
-{{-- <div class="col-4">
-    <div class="form-group" >
-        {!! Form::label('ocupActa1', 'Ocupación', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::select('ocupActa1',$ocupaciones, $acta->idOcupacion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una ocupación','data-validation'=>'required']) !!}
-    </div>
-</div> --}}
-<div class="col-6">
-    <div class="form-group" >
-            {!! Form::label('tipoActa', 'Seleccione el tipo de acta de hechos que requiere:', ['class' => 'col-form-label-sm']) !!}
-            {!! Form::select('tipoActa', array('PASAPORTE' => 'PASAPORTE', 
-            'CREDENCIAL DE TRABAJO/GAFFETE' => 'CREDENCIAL DE TRABAJO/GAFFETE',
-            'TARJETA DE CREDITO/DEBITO' => 'TARJETA DE CRÉDITO/DÉBITO',
-            'TELEFONO CELULAR' => 'TELÉFONO CELULAR',
-            'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)' => 'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)',
-            'PERMISO DE TRANSITO PARA EMPLACAMIENTO DE TAXIS' => 'PERMISO DE TRÁNSITO PARA EMPLACAMIENTO DE TAXIS',
-            'FACTURA DE VEHICULO/MOTOCICLETA' => 'FACTURA DE VEHÍCULO/MOTOCICLETA',
-            'TARJETA DE CIRCULACION' => 'TARJETA DE CIRCULACIÓN',
-            'PLACAS DE CIRCULACION' => 'PLACAS DE CIRCULACIÓN',
-            'LICENCIA DE CONDUCIR ESTATAL' => 'LICENCIA DE CONDUCIR ESTATAL',
-            'LICENCIA DE CONDUCIR FEDERAL' => 'LICENCIA DE CONDUCIR FEDERAL',
-            'DOCUMENTO/BIEN EXTRAVIADO O ROBADO' => 'DOCUMENTO/BIEN EXTRAVIADO O ROBADO',
-            'CERTIFICADO DE ALUMBRAMIENTO' => 'CERTIFICADO DE ALUMBRAMIENTO',
-            'OTROS DOCUMENTOS' => 'OTROS DOCUMENTOS'), $acta->tipoActa, ['class' => 'form-control form-control-sm','placeholder'=>'Seleccione un tipo de acta','data-validation'=>'required']) !!}
+        {!! Form::label('tipoActa', 'Seleccione el tipo de acta de hechos que requiere:', ['class' => 'col-form-label-sm']) !!}
+        {!! Form::select('tipoActa2', array('PASAPORTE' => 'PASAPORTE', 
+        'CREDENCIAL DE TRABAJO/GAFFETE' => 'CREDENCIAL DE TRABAJO/GAFFETE',
+        'TARJETA DE CREDITO/DEBITO' => 'TARJETA DE CRÉDITO/DÉBITO',
+        'TELEFONO CELULAR' => 'TELÉFONO CELULAR',
+        'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)' => 'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)',
+        'PERMISO DE TRANSITO PARA EMPLACAMIENTO DE TAXIS' => 'PERMISO DE TRÁNSITO PARA EMPLACAMIENTO DE TAXIS',
+        'FACTURA DE VEHICULO/MOTOCICLETA' => 'FACTURA DE VEHÍCULO/MOTOCICLETA',
+        'TARJETA DE CIRCULACION' => 'TARJETA DE CIRCULACIÓN',
+        'PLACAS DE CIRCULACION' => 'PLACAS DE CIRCULACIÓN',
+        'LICENCIA DE CONDUCIR ESTATAL' => 'LICENCIA DE CONDUCIR ESTATAL',
+        'LICENCIA DE CONDUCIR FEDERAL' => 'LICENCIA DE CONDUCIR FEDERAL',
+        'DOCUMENTO/BIEN EXTRAVIADO O ROBADO' => 'DOCUMENTO/BIEN EXTRAVIADO O ROBADO',
+        'CERTIFICADO DE ALUMBRAMIENTO' => 'CERTIFICADO DE ALUMBRAMIENTO',
+        'OTROS DOCUMENTOS' => 'OTROS DOCUMENTOS'), $acta->tipoActa, ['class' => 'form-control form-control-sm','placeholder'=>'Seleccione un tipo de acta','data-validation'=>'required']) !!}
     </div>
 </div>
+
 <div class="col-6 otros">
     <div class="form-group">
         {!! Form::label('otro', 'Especifique', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::text('otro', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Especifique', 'data-validation'=>'required']) !!}
+        {!! Form::text('otro', $acta->otro, ['class' => 'form-control form-control-sm', 'placeholder' => 'Especifique', 'data-validation'=>'required']) !!}
         <div class="help-block with-errors"></div>
     </div>
 </div>	
+
+
+<input type="hidden" name="idPreregistro" id="idPreregistro" value="{{$acta->id}}">
+
+
+
+
+{{-- -------------------------------------------------- --}}
 
         
 <div class="col-12">
