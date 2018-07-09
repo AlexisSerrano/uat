@@ -13,7 +13,7 @@ $data= getOficiosImpresos();
         <div class="card">
             <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
-                    <a class="btn " data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <a class="btn " style="color:black;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                     Basicos de la carpeta de investigación
                     </a>
                 </h5>
@@ -66,7 +66,7 @@ $data= getOficiosImpresos();
         <div class="card">
             <div class="card-header" id="headingTwo">
                 <h5 class="mb-0">
-                    <a class="btn collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <a class="btn collapsed" style="color:black;" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         Vehiculos
                     </a>
                 </h5>
@@ -119,7 +119,7 @@ $data= getOficiosImpresos();
         <div class="card">
             <div class="card-header" id="headingfour">
                 <h5 class="mb-0">
-                    <a class="btn  collapsed" data-toggle="collapse" data-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                    <a class="btn  collapsed" style="color:black;" data-toggle="collapse" data-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
                         Solicitudes
                     </a>
                 </h5>
@@ -163,12 +163,12 @@ $data= getOficiosImpresos();
         <div class="card">
             <div class="card-header" id="headingfive">
                 <h5 class="mb-0">
-                    <a class="btn collapsed" data-toggle="collapse" data-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
+                    <a class="btn collapsed" style="color:black;" data-toggle="collapse" data-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
                         Estatus de la carpeta
                     </a>
                 </h5>
             </div>
-            <div id="collapsefive" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div id="collapsefive" class="collapse" style="color:black;" aria-labelledby="headingThree" data-parent="#accordion">
                 <div>
                     <table class="table table-hover"  >
                             <thead>
