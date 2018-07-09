@@ -14,6 +14,7 @@
   {{-- plantilla web --}}
   {{-- <link href="https://rawcdn.githack.com/Romaincks/assets/master/css/font-neosans.css" rel="stylesheet" --}}
   <link href="{{ asset('https://rawcdn.githack.com/Romaincks/assets/master/style.css') }} " rel="stylesheet">
+	<link rel="stylesheet" href="{{asset ('css/sweetalert.css')}}">
   
   <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/font-awesome/css/font-awesome.css') }}">
@@ -78,7 +79,7 @@
     //   "showMethod": "fadeIn",
     //   "hideMethod": "fadeOut"
     // }
-    
+     
   </script>
  @yield('pilaScripts')
  @include('sweet::alert')

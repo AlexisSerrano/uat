@@ -24,7 +24,7 @@ $form = oldFormActas();
                     @endif
                 @else
                     @include('fields.tipo-persona')
-                    @include('fields.actas')
+                    @include('servicios.actas.actas')
                 @endisset
             </div>
             <div class="row menu">	

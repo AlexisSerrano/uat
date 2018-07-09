@@ -205,7 +205,7 @@ class PreregistroController extends Controller
             DB::commit();
             // Alert::success('Registro modificado con exito','Hecho');
             Alert::success('Registro creado exitosamente.<br> <h5>Folio: '.$preregistro->folio.'</h5><br><br><a href="'.url('FormatoRegistro/'.$id).'" target="_blank" >Ver formato</a> ','Hecho')->html()->persistent("Aceptar");
-            return redirect()->route('predenuncias.index');
+            return redirect()->route('preregistro.create');
             // return redirect('FormatoRegistro/'.$id);
         }catch (\PDOException $e){
             DB::rollBack();
