@@ -13,3 +13,4 @@ yarn-error.log
 /.env
 .env
 .env
+resources/views/documentos/imprimir-cavd.blade.php

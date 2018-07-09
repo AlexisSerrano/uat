@@ -163,65 +163,129 @@ public function actas()
 }
 
 public function impresion(){
-    $id=session('carpeta');
-    $carpeta=DB::table('carpeta')
-    ->join('unidad','carpeta.idUnidad','=','unidad.id')
-    ->select('carpeta.fechaInicio','carpeta.numCarpeta')
-    ->where('carpeta.id',$id)
-    ->first();
+//     $id=session('carpeta');
+//     $carpeta=DB::table('carpeta')
+//     ->join('unidad','carpeta.idUnidad','=','unidad.id')
+//     ->select('carpeta.fechaInicio','carpeta.numCarpeta')
+//     ->where('carpeta.id',$id)
+//     ->first();
 
-    $fiscalAtiende=DB::table('users')
-    ->join('unidad','unidad.id','=','users.id')
-    ->join('unidad as unid','unid.id','=','users.idUnidad')
-    ->where('users.id', Auth::user()->id)
-    ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra')
-    ->first();
-    $arr = explode(" ",$fiscalAtiende->descripcion);
-    $aux=9;
-    $localidad="";
-    while(count($arr)-1 >= $aux){
-        $localidad=$localidad." ".$arr[$aux];
-        $aux=$aux+1;
-    }
-    $vehiculo=DB::Table('vehiculo')
-    ->join('tipif_delito','vehiculo.idTipifDelito','=','tipif_delito.id')
-    ->join('cat_delito','cat_delito.id','=','tipif_delito.id')
-    ->join('cat_submarcas','cat_submarcas.id','=','vehiculo.idSubmarca')
-    ->join('cat_color','cat_color.id','=','vehiculo.idColor')
-    ->join('cat_tipo_uso','cat_tipo_uso.id','=','vehiculo.idTipoUso')
-     ->join('cat_marca','cat_marca.id','=','cat_submarcas.idMarca')
-     ->join('cat_procedencia','cat_procedencia.id','=','vehiculo.idProcedencia')
-    ->where('tipif_delito.idCarpeta',$id)
-    ->select('vehiculo.id','cat_marca.nombre as marca','cat_submarcas.nombre as submarca','vehiculo.created_at as fecha','cat_delito.nombre as delito','vehiculo.placas','cat_submarcas.nombre as submarca','vehiculo.modelo',
-    'vehiculo.nrpv','cat_color.nombre as color','vehiculo.numSerie','vehiculo.numMotor','cat_tipo_uso.nombre as TipoUso','vehiculo.modelo',
-    'cat_procedencia.nombre as lugar_fabricacion')
-    ->first();
+//     $fiscalAtiende=DB::table('users')
+//     ->join('unidad','unidad.id','=','users.id')
+//     ->join('unidad as unid','unid.id','=','users.idUnidad')
+//     ->where('users.id', Auth::user()->id)
+//     ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra')
+//     ->first();
+//     $arr = explode(" ",$fiscalAtiende->descripcion);
+//     $aux=9;
+//     $localidad="";
+//     while(count($arr)-1 >= $aux){
+//         $localidad=$localidad." ".$arr[$aux];
+//         $aux=$aux+1;
+//     }
+//     $vehiculo=DB::Table('vehiculo')
+//     ->join('tipif_delito','vehiculo.idTipifDelito','=','tipif_delito.id')
+//     ->join('cat_delito','cat_delito.id','=','tipif_delito.id')
+//     ->join('cat_submarcas','cat_submarcas.id','=','vehiculo.idSubmarca')
+//     ->join('cat_color','cat_color.id','=','vehiculo.idColor')
+//     ->join('cat_tipo_uso','cat_tipo_uso.id','=','vehiculo.idTipoUso')
+//      ->join('cat_marca','cat_marca.id','=','cat_submarcas.idMarca')
+//      ->join('cat_procedencia','cat_procedencia.id','=','vehiculo.idProcedencia')
+//     ->where('tipif_delito.idCarpeta',$id)
+//     ->select('vehiculo.id','cat_marca.nombre as marca','cat_submarcas.nombre as submarca','vehiculo.created_at as fecha','cat_delito.nombre as delito','vehiculo.placas','cat_submarcas.nombre as submarca','vehiculo.modelo',
+//     'vehiculo.nrpv','cat_color.nombre as color','vehiculo.numSerie','vehiculo.numMotor','cat_tipo_uso.nombre as TipoUso','vehiculo.modelo',
+//     'cat_procedencia.nombre as lugar_fabricacion')
+//     ->first();
    
 
-    $puesto=$fiscalAtiende->puesto;
-    $puesto = strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+//     $puesto=$fiscalAtiende->puesto;
+//     $puesto = strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
 
-   $fechaactual = new Date($carpeta->fechaInicio);
-   $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
+//    $fechaactual = new Date($carpeta->fechaInicio);
+//    $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
 
-   $data = array('id' =>$id,
-        'numCarpeta' => $carpeta->numCarpeta,
-        'marca' => $vehiculo->marca,
-        'submarca' => $vehiculo->submarca,
-        'numeroF'=> $fiscalAtiende->numFiscal,
-        'modelo' => $vehiculo->modelo,
-        'color' => $vehiculo->color,
-        'numero_serie' => $vehiculo->numSerie,
-        'lugar_fabricacion' => $vehiculo->lugar_fabricacion,
-        'placas' => $vehiculo->placas,
-        //'Estado' => $vehiculo->nombreEstado,
-        'fiscalAtendio'=>$fiscalAtiende->nombreC,
-        'puestoF'=>$puesto,
-        'Localidad' => $localidad,
-        'fecha' => $fechahum);
+//    $data = array('id' =>$id,
+//         'numCarpeta' => $carpeta->numCarpeta,
+//         'marca' => $vehiculo->marca,
+//         'submarca' => $vehiculo->submarca,
+//         'numeroF'=> $fiscalAtiende->numFiscal,
+//         'modelo' => $vehiculo->modelo,
+//         'color' => $vehiculo->color,
+//         'numero_serie' => $vehiculo->numSerie,
+//         'lugar_fabricacion' => $vehiculo->lugar_fabricacion,
+//         'placas' => $vehiculo->placas,
+//         //'Estado' => $vehiculo->nombreEstado,
+//         'fiscalAtendio'=>$fiscalAtiende->nombreC,
+//         'puestoF'=>$puesto,
+//         'Localidad' => $localidad,
+//         'fecha' => $fechahum);
 
+$idCarpeta=session('carpeta');
+$carpeta=DB::table('carpeta')
+->join('unidad','carpeta.idUnidad','=','unidad.id')
+->select('carpeta.numCarpeta')
+->where('carpeta.id',$idCarpeta)->first();
+
+$victimas2 = DB::table('extra_denunciante')
+        ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+        ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+        ->select('persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+        ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+        ->orderBy('persona.nombres', 'ASC')
+        ->get();
+        dd($victimas2);
+
+$numCarpeta=$carpeta->numCarpeta;
+
+$datos=DB::Table('cavd')
+        ->join('cat_cavd','cat_cavd.id','=','cavd.idCavd')
+        ->join('variables_persona','variables_persona.id','=','cavd.idVariablesPersona')
+        ->join('persona','persona.id','=','variables_persona.idPersona')
+        ->select('cavd.id','cavd.idCavd','cavd.idVariablesPersona','cavd.idCarpeta','cat_cavd.nombreDirector','persona.nombres')
+        ->where('cavd.id',$idCarpeta)
+        ->first();
+
+$denunciantes = DB::table('extra_denunciante')
+->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
+->where('variables_persona.idCarpeta', '=', $idCarpeta)
+->first();
+
+// $cadenaDenunciantes='';
+// foreach($denunciantes as $denunciante){
+//     $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.', ';
+// }
+// $telefonos='';
+// foreach($denunciantes as $denunciante){
+//     $telefonos .= $denunciante->telefono.', ';
+// }
+
+$fiscalAtiende=DB::table('users')
+->join('unidad','unidad.id','=','users.id')
+->join('unidad as unid','unid.id','=','users.idUnidad')
+->where('users.id', Auth::user()->id)
+->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion')
+->first();
+
+
+$fechaactual = date::now();
+$fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
+
+$data = array('id' => $idCarpeta,
+'idCavd' =>  $datos->idCavd,
+'idVariablesPersona' =>  $datos->idVariablesPersona,
+'numCarpeta' =>$carpeta->numCarpeta,
+'denunciante' => $denunciantes ->nombres.' '. $denunciantes ->primerAp.' '. $denunciantes ->segundoAp,
+'fecha' =>  $fechahum,
+'telefono' => $denunciantes->telefono,
+'fiscalAtiende' => $fiscalAtiende->nombreC,
+'puestoFiscal' => $fiscalAtiende->puesto,
+'unidad' => $fiscalAtiende->descripcion,
+'nombreDirector' =>$datos->nombreDirector
+);
             
-            dd($data);
+            dd($datos);
             
             return view('tables.pruebas')->with('fiscalAtiende',$fiscalAtiende);
 }

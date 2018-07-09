@@ -82,11 +82,7 @@ class ImpresionesController extends Controller
     }
     
 
-    public function oficioCavd($id){
-      
-        return view('documentos.oficio-cavd')->with('id',  $id );
     
-    }
 
     public function showOficio(){
          $idCarpeta=session('carpeta');
@@ -96,7 +92,7 @@ class ImpresionesController extends Controller
         $victimas2 = DB::table('extra_denunciante')
         ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
         ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-        ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
+        ->select('persona.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
         ->where('variables_persona.idCarpeta', '=', $idCarpeta)
         ->orderBy('persona.nombres', 'ASC')
         ->get();
@@ -113,20 +109,12 @@ class ImpresionesController extends Controller
 
     public function storeOficio(Request $request){
         $idCarpeta=session('carpeta');
-
-      
-
-
-        // $idCarpeta= 1;
-    //   foreach($request->idDenunciante as $idDenunciante){
         $Cavd = new Cavd();
         $Cavd->idCavd = $request->idCavd;
         $Cavd->idVariablesPersona = $request->idDenunciante;
         $Cavd->idCarpeta = $idCarpeta;
         $Cavd->save();
-    //   }
-        
-        
+    
         if( $Cavd->save()){
             Alert::success('Registro guardado con éxito', 'Hecho');
             //     $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
@@ -139,20 +127,27 @@ class ImpresionesController extends Controller
             Alert::error('Se presentó un problema al guardar el registro', 'Error');
         }
         DB::commit();
-        // dd( $idCarpeta);
-        $data = DB::table('cavd')
-        ->join('cat_cavd','cat_cavd.id','=','cavd.idCavd')
-        ->select('cat_cavd.unidad')
-        ->first();
-        $victimas2 = DB::table('extra_denunciante')
-        ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-        ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-        ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-        ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-        ->orderBy('persona.nombres', 'ASC')
-        ->first();
-        return redirect("show-oficioCavd/".$request->id)->with(' data', $data)->with(' victimas2',  $victimas2); 
+        // $data = DB::table('cavd')
+        // ->join('cat_cavd','cat_cavd.id','=','cavd.idCavd')
+        // ->select('cat_cavd.unidad')
+        // ->first();
+        // $victimas2 = DB::table('extra_denunciante')
+        // ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+        // ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+        // ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+        // ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+        // ->orderBy('persona.nombres', 'ASC')
+        // ->first();
+       // dd( $request);
 
+        
+        return redirect()->route('oficio.cavd',$Cavd->id);
+       
+    }
+    public function oficioCavd($id){
+      
+        return view('documentos.oficio-cavd')->with('id',  $id );
+    
     }
 
     public function getCavd($id){
@@ -167,8 +162,12 @@ class ImpresionesController extends Controller
 
         $datos=DB::Table('cavd')
         ->join('cat_cavd','cat_cavd.id','=','cavd.idCavd')
-        ->select('cavd.id','cavd.idCavd','cavd.idVariablesPersona','cavd.idCarpeta','cat_cavd.nombreDirector')
+        ->join('variables_persona','variables_persona.id','=','cavd.idVariablesPersona')
+        ->join('persona','persona.id','=','variables_persona.idPersona')
+        ->select('cavd.id','cavd.idCavd','cavd.idVariablesPersona','cavd.idCarpeta','cat_cavd.nombreDirector','persona.nombres')
+        ->where('cavd.id',$idCarpeta)
         ->first();
+
 
         $denunciantes = DB::table('extra_denunciante')
         ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
@@ -193,11 +192,20 @@ class ImpresionesController extends Controller
         ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion')
         ->first();
 
+         
+        $arr = explode(" ",$fiscalAtiende->descripcion);
+        $aux=9;
+        $localidad="";
+        while(count($arr)-1 >= $aux){
+            $localidad=$localidad." ".$arr[$aux];
+            $aux=$aux+1;
+        }
+
 
         $fechaactual = date::now();
         $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
-
-        $data = array('id' => $id,
+        $fechahum= strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+        $data = array('id' => $idCarpeta,
         'idCavd' =>  $datos->idCavd,
         'idVariablesPersona' =>  $datos->idVariablesPersona,
         'numCarpeta' =>$carpeta->numCarpeta,
@@ -206,7 +214,7 @@ class ImpresionesController extends Controller
         'telefono' => $denunciantes->telefono,
         'fiscalAtiende' => $fiscalAtiende->nombreC,
         'puestoFiscal' => $fiscalAtiende->puesto,
-        'unidad' => $fiscalAtiende->descripcion,
+        'localidad' => $localidad,
         'nombreDirector' =>$datos->nombreDirector
        );
         
@@ -575,7 +583,7 @@ class ImpresionesController extends Controller
 
             $cadenaDenunciantes='';
             foreach($denunciantes as $denunciante){
-                $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.', ';
+                $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.' ';
             }
             
             
@@ -675,6 +683,17 @@ class ImpresionesController extends Controller
                 $aux=$aux+1;
             }
            // dd($localidad);
+           $navCaso=DB::table('bitacora_navcaso')
+           ->where('idCaso',session('carpeta'))
+           ->first();
+
+           if ($navCaso->denunciante>1) {
+               $complemento1="de los ciudadanos";
+           }
+           else{
+               $complemento1="del ciudadano";
+           }
+
 
             $denunciantes = DB::table('variables_persona')
             ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
@@ -684,7 +703,7 @@ class ImpresionesController extends Controller
             ->get();
             $cadenaDenunciantes='';
             foreach($denunciantes as $denunciante){
-                $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.', ';
+                $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.' ';
             }
             $TipifDelito=DB::table('tipif_delito')
             ->join('cat_delito','cat_delito.id','=','tipif_delito.idDelito')
@@ -699,7 +718,7 @@ class ImpresionesController extends Controller
             ->get();
             $denunciados='';
             foreach($denunciado2 as $denunciado){
-                $denunciados .= $denunciado->nombres.' '.$denunciado->primerAp.' '.$denunciado->segundoAp.',';
+                $denunciados .= $denunciado->nombres.' '.$denunciado->primerAp.' '.$denunciado->segundoAp.'';
             }
              $hora=Carbon::now()->format('H:i');
              $fechaactual = date::now();
@@ -719,6 +738,7 @@ class ImpresionesController extends Controller
             'numCarpeta'=>$carpeta->numCarpeta,
             'denunciados'=>$denunciados,
             'fecha'=>$fechahum,
+            'complemento1'=>$complemento1,
              'hora'=>$hora
                 );
            
