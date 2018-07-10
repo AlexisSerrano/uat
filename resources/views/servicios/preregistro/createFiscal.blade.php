@@ -46,9 +46,9 @@
 	
 	<div class="form-group">
 		<div class="col-12">
-			<div class="col">
+			<div class="col" id="divNarracion">
 				<label for="narracion" class="col-form-label-sm">Narración</label>
-			<textarea name="narracion" id="narracion" cols="30" rows="10" class="form-control form-control-sm" data-validation="length" data-validation-length= "20-5000">{{old('narracion')}}</textarea>
+				<textarea name="narracion" id="narracion" cols="30" rows="10" class="form-control form-control-sm" data-validation="length" data-validation-length= "20-5000">{{old('narracion')}}</textarea>
 			</div>
 		</div>
 	</div>

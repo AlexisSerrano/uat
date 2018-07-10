@@ -148,7 +148,7 @@
 		<div class="col-12 otros">
 			<div class="form-group">
 				{!! Form::label('otro', 'Especifique', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('otro', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Especifique', 'data-validation'=>'required','id'=>'otroDocEmpresa']) !!}
+				{!! Form::text('otro', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Especifique', 'data-validation'=>'required']) !!}
 				<div class="help-block with-errors"></div>
 			</div>
 		</div>	

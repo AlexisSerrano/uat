@@ -12,14 +12,19 @@ $(document).ready(function(){
     else{
         $('#tipodeActa').hide();
     }
+    
     //Si es empresa
     $("#esEmpresa1").change(function(event){
         if ($('#esEmpresa1').is(':checked') ) {
             $('#collapsePersonales2').show();
+            $('#collapsePersonales2').prop( "disabled", false );
             $('#collapsePersonales1').hide();
+            $('#collapsePersonales1').prop( "disabled", true );
             $('#tipodeActa1').hide();
             mostrarmoral();
             paraActadeHechos1();
+            $("#datosPer").show();
+            $("#divNarracion").show();
         }
     });
 
@@ -27,10 +32,14 @@ $(document).ready(function(){
     $("#esEmpresa2").change(function(event){
         if ($('#esEmpresa2').is(':checked') ) {
             $('#collapsePersonales1').show();
+            $('#collapsePersonales1').prop( "disabled", false );
             $('#collapsePersonales2').hide();
+            $('#collapsePersonales2').prop( "disabled", true );
             $('#tipodeActa').hide();
             mostrarpersonal();
             paraActadeHechos2();
+            $("#datosPer").show();
+            $("#divNarracion").show();
         }
     });
 });
@@ -44,18 +53,18 @@ function paraActadeHechos1(){
             $("#tipodeActa1").change(function(){
                 valor2 = $("#tipodeActa1 option:selected").text();
                 if(valor2 == 'OTROS DOCUMENTOS'){
-                    $("#otroDocEmpresa").val('');
+                    $("#otro").val('');
                     $(".otros").show();                    
                 }
                 else{
-                    $("#otroDocEmpresa").val('');
+                    $("#otro").val('');
                     $(".otros").hide();
                 }
             });
             $('#tipodeActa1').show();
         }
         else{
-            $("#otroDocEmpresa").val('');
+            $("#otro").val('');
             $('#tipodeActa1').hide();
             $('#tipoActa1').prop('disabled', true);
         }
@@ -100,19 +109,29 @@ function paraActadeHechos2(){
 function mostrar(){
     if ($('#esEmpresa2').is(':checked') ) {
         $('#collapsePersonales1').show();
+        $('#collapsePersonales1').prop( "disabled", false );
         $('#collapsePersonales2').hide();
+        $('#collapsePersonales2').prop( "disabled", true );
+ 
         mostrarpersonal();
+        $("#datosPer").show();
         $("#divNarracion").show();
     }
     else if($('#esEmpresa1').is(':checked')){
         $('#collapsePersonales2').show();
+        $('#collapsePersonales2').prop( "disabled", false );
         $('#collapsePersonales1').hide();
+        $('#collapsePersonales1').prop( "disabled", true );
         mostrarmoral();
+        $("#datosPer").show();
         $("#divNarracion").show();
     }
     else{
         $('#collapsePersonales1').hide();
+        $('#collapsePersonales1').prop( "disabled", true );
         $('#collapsePersonales2').hide();
+        $('#collapsePersonales2').prop( "disabled", true );
+        $("#datosPer").hide();
         $("#divNarracion").hide();
     }
 }
