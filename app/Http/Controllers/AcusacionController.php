@@ -117,8 +117,10 @@ class AcusacionController extends Controller
         ->join('variables_persona as variables_denunciado','variables_denunciado.id','=','extra_denunciado.idVariablesPersona')
         ->join('persona as persona_denunciado','persona_denunciado.id','=','variables_denunciado.idPersona')
 
-        ->join('tipif_delito as delitos','delitos.id','=','acusacion.idTipifDelito')
-        ->join('cat_delito as catDelito','catDelito.id','=','delitos.idDelito')
+        ->join('tipif_delito','tipif_delito.id','=','acusacion.idTipifDelito')
+        ->join('cat_delito','cat_delito.id','=','tipif_delito.idDelito')
+        ->join('cat_agrupacion1','cat_agrupacion1.id','=','tipif_delito.idAgrupacion1')
+        ->join('cat_agrupacion2','cat_agrupacion2.id','=','tipif_delito.idAgrupacion2')
 
         ->select(
             'extra_denunciante.idVariablesPersona',
@@ -130,35 +132,58 @@ class AcusacionController extends Controller
             'persona_denunciado.primerAp as primerApDenunciado',
             'persona_denunciado.segundoAp as segundoApDenunciado',
             'extra_denunciado.idVariablesPersona as extraDenunciado',
-            'delitos.idDelito',
-            'catDelito.nombre as delito' )
+            'tipif_delito.idDelito',
+            'cat_agrupacion1.nombre as agr1',
+            'cat_agrupacion2.nombre as agr2',
+            'cat_delito.nombre as delito' )
             ->FIRST();
             
+            $cont = 0;
+
+            if ( $datos->agr1 == 'SIN AGRUPACION') {
+            $datos->agr1 = " ";
+            }
+            if ( $datos->agr2 == 'SIN AGRUPACION') {
+            $datos->agr2 = " ";
+            }
+            // $cont = $cont + 1;
+
+            // foreach ( $datos as $delito) {
+            //     dd($datos);
+            // }
+
             $localidadAcuerdo='XALAPA';
             $entidadAcuerdo='VERACRUZ';
             $fiscalAcuerdo=strtoupper(Auth::user()->nombreC);
             // $fechaAcuerdo='OCHO DÍAS DEL MES DE JUNIO DEL AÑO DOS MIL DIECIOCHO';
             $fechaAcuerdo=strtoupper(Date::now()->format('j \\d\\i\\a\\s \\d\\e F \\d\\e Y'));
-            $carpeta=session('numCarpeta');
+            $carpeta=DB::table('carpeta')
+            ->join('unidad','carpeta.idUnidad','=','unidad.id')
+            ->select('carpeta.numCarpeta')
+            ->where('carpeta.id',$id)
+            ->first();
+
+            $puesto=Auth::user()->puesto;
+           
+            $puesto = strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+           
             
-            
-            $datos1= array('id'=> $id,
-            'nombreDenunciante'=>$datos->nombreDenunciante,
-            'primerApDenunciante'=>$datos->primerApDenunciante,
-            'segundoApDenunciante'=>$datos->segundoApDenunciante,
-            'nombreDenunciado'=>$datos->nombreDenunciado,
-            'primerApDenunciado'=>$datos->primerApDenunciado,
-            'segundoApDenunciado'=>$datos->segundoApDenunciado,
-            'delito'=>$datos->delito,
+            $datos= array('id'=> $id,
+            'nombreDenunciante'=>$datos->nombreDenunciante.' '.$datos->primerApDenunciante.' '.$datos->segundoApDenunciante,
+            'nombreDenunciado'=>$datos->nombreDenunciado.' '.$datos->primerApDenunciado.' '.$datos->segundoApDenunciado,
+            'delito'=>$datos->delito.' '.$datos->agr1.' '.$datos->agr2,
+            // 'agrupacion1'=>$datos->agr1,
+            // 'agrupacion2'=>$datos->agr2,
             'localidad'=> $localidadAcuerdo,
             'entidad'=> $entidadAcuerdo,
             'fiscal'=> $fiscalAcuerdo,
+            'puestoFiscal'=>$puesto,
             'fecha'=> $fechaAcuerdo,
-            'carpeta'=> $carpeta
+            'carpeta'=> $carpeta->numCarpeta
             
         );
         // dd($datos1);
-    return response()->json($datos1);
+    return response()->json($datos);
     // ->with('id', $datos->id);
 }
 
