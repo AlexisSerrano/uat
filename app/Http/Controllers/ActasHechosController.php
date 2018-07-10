@@ -70,7 +70,7 @@ class ActasHechosController extends Controller
             'statusCola',
             'domicilio.idMunicipio',
             'domicilio.idLocalidad',
-            'domicilio.idColonia',
+            'domicilio.idColonia',  
             'cat_municipio.idEstado',
             'horaLlegada',
             'domicilio.calle as calle',
@@ -79,7 +79,7 @@ class ActasHechosController extends Controller
             'cat_colonia.codigoPostal' 
             )
         ->where('preregistros.id',$id)->where('preregistros.idRazon',4)->first();
-        // $acta=$acta[0];
+        // dd($acta);
         if($acta->tipoActa=='PASAPORTE'||$acta->tipoActa=='CREDENCIAL DE TRABAJO/GAFFETE'||$acta->tipoActa=='TARJETA DE CREDITO/DEBITO'||$acta->tipoActa=='TELEFONO CELULAR'||$acta->tipoActa=='EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)'||$acta->tipoActa=='PERMISO DE TRANSITO PARA EMPLACAMIENTO DE TAXIS'||$acta->tipoActa=='FACTURA DE VEHICULO/MOTOCICLETA'||$acta->tipoActa=='TARJETA DE CIRCULACION'||$acta->tipoActa=='PLACAS DE CIRCULACION'||$acta->tipoActa=='LICENCIA DE CONDUCIR ESTATAL'||$acta->tipoActa=='LICENCIA DE CONDUCIR FEDERAL'||$acta->tipoActa=='DOCUMENTO/BIEN EXTRAVIADO O ROBADO'||$acta->tipoActa=='CERTIFICADO DE ALUMBRAMIENTO'){
         }else{
             $acta->tipoActa='OTROS DOCUMENTOS';
@@ -282,7 +282,9 @@ class ActasHechosController extends Controller
                 $preregistro->statusCola = 22;
                 $preregistro->save();
             }
-             return redirect("actaoficio/$acta->id");
+            Alert::success('Acta de hechos creada exitosamente.<br> <br><br><a href="'.url("actaoficio/$acta->id").'" target="_blank" >Ver formato</a> ','Hecho')->html()->persistent("Aceptar");
+            return redirect()->route('actaspendientes');
+            //  return redirect('actas-pendientes');
         
         }elseif($request->esEmpresa==1){
 
@@ -364,7 +366,9 @@ class ActasHechosController extends Controller
             $preregistro->save();
         }
         // DB::commit();
-        return redirect("actaoficioM/$acta->id");
+        Alert::success('Acta de hechos creada exitosamente.<br> <br><br><a href="'.url("actaoficioM/$acta->id").'" target="_blank" >Ver formato</a> ','Hecho')->html()->persistent("Aceptar");
+        return redirect()->route('actaspendientes');
+        // return redirect("actaoficioM/$acta->id");
         // $request->session()->flash('redirectoficio', url("actaoficio/$acta->id"));
         // return redirect("actas-pendientes");
         }   
