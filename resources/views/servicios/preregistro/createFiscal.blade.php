@@ -48,37 +48,13 @@
 				</div>
 			</div>
 		</div>
-
-</div>
-	{{-- <div class="card" id="datosPer">
-		<div class="card-header">
-		<div class="boxtwo">
-			<div class="form-group" align="center">
-				<div class="col">
-					<label class="col-form-label col-form-label-sm"  for="formGroupExampleInput">¿Con violencia?</label>
-					<div class="clearfix"></div>
-					<div class="form-check form-check-inline">
-						<label class="form-check-label col-form-label col-form-label-sm">
-							<input class="form-check-input" type="radio" id="conViolencia" name="Violencia" value="1"> Sí
-						</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<label class="form-check-label col-form-label col-form-label-sm">
-							<input class="form-check-input" type="radio" id="sinViolencia" name="Violencia" value="0"> No
-						</label>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> --}}
-	
-
+	</div>
 	
 		<div class="form-group">
 			<div class="col-12">
 				<div class="col">
 					<label for="narracion" class="col-form-label-sm">Narración</label>
-					<textarea name="narracion" id="narracion" cols="30" rows="10" class="form-control form-control-sm" data-validation="length" data-validation-length= "min20"></textarea>
+				<textarea name="narracion" id="narracion" cols="30" rows="10" class="form-control form-control-sm" data-validation="length" data-validation-length= "20-5000">{{old('narracion')}}</textarea>
 				</div>
 			</div>
 		</div>
