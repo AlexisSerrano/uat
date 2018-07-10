@@ -125,7 +125,7 @@
 	</div>
 		
 	<!--solo si es solicitud de hechos-->
-	 {{-- <div  id="tipodeActa1">
+	<div  id="tipodeActa1">
 		<div class="col-12"  >
 			<div class="form-group" >
 					{!! Form::label('tipoActa', 'Seleccione el tipo de constancia de extravío que requiere', ['class' => 'col-form-label-sm']) !!}
@@ -148,11 +148,11 @@
 		<div class="col-12 otros">
 			<div class="form-group">
 				{!! Form::label('otro', 'Especifique', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('otro', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Especifique', 'data-validation'=>'required']) !!}
+				{!! Form::text('otro', null, ['class' => 'form-control form-control-sm otroUnique', 'placeholder' => 'Especifique', 'data-validation'=>'required']) !!}
 				<div class="help-block with-errors"></div>
 			</div>
 		</div>	
-	</div>  --}}
+	</div>
 </div>
 
 
