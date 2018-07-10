@@ -38,6 +38,7 @@ class ActaCircunstanciadaController extends Controller
         $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')
         ->pluck('nombre', 'id');
         $municipios = CatMunicipio::orderBy('nombre', 'ASC')
+        ->where('idEstado',30)
         ->pluck('nombre', 'id');
         return view('servicios.actas.acta-circunstanciada',compact('ocupaciones','escolaridades','estadocivil','nacionalidades','estados','municipios'));
     }

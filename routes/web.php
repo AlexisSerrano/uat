@@ -10,40 +10,42 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*******************INICIO DE RUTAS PARA PROBAR VISTAS O METODOS*************************** */
 Route::get('/', function () {
     return redirect('home');
 });
-Route::get('/prueba', function () {
-    return view('welcome');
-});
-Route::get('/pruebasactas','PruebasController@actas');
-Route::get('/pruebasmetodo/{id}','PruebasController@pruebas');
+/*******************INICIO DE RUTAS PARA PROBAR VISTAS O METODOS*************************** */
 
-Route::get('/pruebas/caso','PruebasController@create');
-Route::get('/pruebas/hechos','PruebasController@hechos');
-Route::get('pruebas','PericialesController@getVhFinanzas');
-Route::get('/pruebas/impresion','PruebasController@impresion');
-Route::get('/pruebas/alfred','PruebasController@alfred');
+// Route::get('/prueba', function () {
+//     return view('welcome');
+// });
 
-Route::get('/libro-acta', function(){
-    return view('tables.libro-actas');
-});
+// Route::get('/pruebasactas','PruebasController@actas');
+// Route::get('/pruebasmetodo/{id}','PruebasController@pruebas');
 
-Route::get('/pruebasf', function () {
-    return view('tables.pruebas');
-});
-Route::get('/pruebasconsulta', function(){
-    return view('tables.consulta-actas');
-});
-Route::get('/formatos-pruebas', function(){
-    return view('tables.formatos');
-});
+// Route::get('/pruebas/caso','PruebasController@create');
+// Route::get('/pruebas/hechos','PruebasController@hechos');
+// Route::get('pruebas','PericialesController@getVhFinanzas');
+// Route::get('/pruebas/impresion','PruebasController@impresion');
+// Route::get('/pruebas/alfred','PruebasController@alfred');
+
+// Route::get('/libro-acta', function(){
+//     return view('tables.libro-actas');
+// });
+
+// Route::get('/pruebasf', function () {
+//     return view('tables.pruebas');
+// });
+// Route::get('/pruebasconsulta', function(){
+//     return view('tables.consulta-actas');
+// });
+// Route::get('/formatos-pruebas', function(){
+//     return view('tables.formatos');
+// });
 
 
-Route::get('/pruebasformatos', function(){
-    return view('tables.formatos');
-});
+// Route::get('/pruebasformatos', function(){
+//     return view('tables.formatos');
+// });
 
 /**********************FIN RUTAS PARA PROBAR VISTAS O METODOS***********************/
 /**NO TOCAR***/
@@ -94,6 +96,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('oficio-remision/{id}','ImpresionesController@docRemision')->name('oficio.remision');
     Route::get('impresion-remision/{id}','ImpresionesController@getRemision')->name('impresion.remision');
+
+/***************************** formato de denuncia************************************/
+    Route::get('formato-denuncia/{id}','ImpresionesController@formatoDenuncia')->name('formato.denuncia');
+    Route::get('imprimir-denuncia/{id}','ImpresionesController@getFormatoDenuncia')->name('get.formatoDenuncia');
+    
 
 
     /* --------Ruta para obtener token oficios----------- */
