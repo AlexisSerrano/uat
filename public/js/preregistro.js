@@ -2,9 +2,8 @@ $(document).ready(function(){
     mostrar();
     if($("#idRazon2").val()==4){
         if($("#tipoActa").val() == 'OTROS DOCUMENTOS'){
-            alert("tipo acta otros");
             $(".otros").show();
-            $(".otro").hide();
+            $("input[name='otro']").hide();
         }
         else{
             $(".otros").hide();
@@ -45,18 +44,18 @@ function paraActadeHechos1(){
             $("#tipodeActa1").change(function(){
                 valor2 = $("#tipodeActa1 option:selected").text();
                 if(valor2 == 'OTROS DOCUMENTOS'){
-                    $(".otroUnique").val('');
+                    $("#otroDocEmpresa").val('');
                     $(".otros").show();                    
                 }
                 else{
-                    $(".otroUnique").val('');
+                    $("#otroDocEmpresa").val('');
                     $(".otros").hide();
                 }
             });
             $('#tipodeActa1').show();
         }
         else{
-            $(".otroUnique").val('');
+            $("#otroDocEmpresa").val('');
             $('#tipodeActa1').hide();
             $('#tipoActa1').prop('disabled', true);
         }
@@ -103,15 +102,18 @@ function mostrar(){
         $('#collapsePersonales1').show();
         $('#collapsePersonales2').hide();
         mostrarpersonal();
+        $("#divNarracion").show();
     }
     else if($('#esEmpresa1').is(':checked')){
         $('#collapsePersonales2').show();
         $('#collapsePersonales1').hide();
         mostrarmoral();
+        $("#divNarracion").show();
     }
     else{
         $('#collapsePersonales1').hide();
         $('#collapsePersonales2').hide();
+        $("#divNarracion").hide();
     }
 }
 

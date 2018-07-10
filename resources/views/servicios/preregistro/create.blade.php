@@ -90,7 +90,7 @@
 	<div class="card" id="datosPer">
 		<div class="form-group">
 			<div class="col-12">
-				<div class="col">
+				<div class="col" id="divNarracion">
 					<label for="narracion" class="col-form-label-sm">Narración</label>
 					{{-- @if(isset($form['narracion']))
 						{{ Form::textarea('narracion', $form['narracion'], ['class' => 'form-control form-control-sm', 'size' => '30x10', 'data-validation'=>'length', 'data-validation-length'=>'20-5000' ,'required']) }}
