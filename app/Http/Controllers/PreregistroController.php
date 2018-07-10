@@ -173,7 +173,9 @@ class PreregistroController extends Controller
                 
                 // dd($request);
                 $preregistro = new Preregistro();
-                $preregistro->nombre = $request->nombre1;
+                $preregistro->nombre = $request->nombres2;
+                $preregistro->primerAp = $request->primerAp2;
+                $preregistro->segundoAp = $request->segundoAp2;
                 $preregistro->idDireccion = $idD1;
                 $preregistro->idRazon = $request->idRazon1;
                 $preregistro->rfc = $request->rfc1 . $request->homo1;
@@ -352,7 +354,9 @@ class PreregistroController extends Controller
                 $domicilio->save();
                 $idD1 = $domicilio->id; 
                 $preregistro = new Preregistro();
-                $preregistro->nombre = $request->nombre1;
+                $preregistro->nombre = $request->nombres2;
+                $preregistro->primerAp = $request->primerAp2;
+                $preregistro->segundoAp = $request->segundoAp2;
                 $preregistro->idDireccion = $idD1;
                 $preregistro->idRazon = $request->idRazon1;
                 $preregistro->rfc = $request->rfc1 . $request->homo1;

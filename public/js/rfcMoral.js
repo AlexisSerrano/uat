@@ -1,4 +1,4 @@
-$("#nombre1").focusout(function() {
+$("#nombres2").focusout(function() {
 	obtenerRFC();
 });
 
@@ -17,7 +17,7 @@ function obtenerRFC(){
 
 	console.log('entra ajax');
 
-	nombre = $("#nombre1").val().toUpperCase();
+	nombre = $("#nombres2").val().toUpperCase();
 	fecha = $("#fechaAltaEmpresa").val();
 		
 	
