@@ -124,7 +124,7 @@ class RegisterController extends Controller
                 case "coordinador":
                     $gGrupo = $user->gcoordinador;
                     RegisterController::validarGrupo($gGrupo,$request->idRol);
-                    return redirect()->route('home');
+                    return redirect(route('indexcarpetas'));   
        
                     break;
             }
