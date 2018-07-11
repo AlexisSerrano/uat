@@ -73,8 +73,10 @@
     function primerConsonante(str) {
         if(str=== undefined || str === '' || str === 'Ñ')
             return 'X'
-        else
-            return str = str.trim().substring(1).replace(/[AEIOU]/ig, '').substring(0, 1);
+        else{
+            str = str.trim().substring(1).replace(/[AEIOU]/ig, '').substring(0, 1);
+            return (str === undefined || str === '' || str === 'Ñ')?'X':str;
+        }
     }
     /**
      * filtraCaracteres()
