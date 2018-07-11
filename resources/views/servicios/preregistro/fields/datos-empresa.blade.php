@@ -1,12 +1,42 @@
 <div class="row" >
 	<!--nombre-->
-	<div class="col-4">
+	{{-- <div class="col-4">
 		<div class="form-group">
 			{!! Form::label('nombre1', 'Nombre', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
 			{!! Form::text('nombre1', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'custom' ,'data-validation-regexp'=>'^([A-ZÁÉÑÍÓÚ][\s]*){2,100}$','data-validation-ignore'=>'.', 'data-validation-error-msg'=>'Nombre invalido','required']) !!}
 			<div class="help-block with-errors"></div> 
 		</div>
+	</div> --}}
+	<div class="col-4">
+		<div class="form-group">
+			{!! Form::label('nombres2', 'Nombre de la empresa', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('nombres2',null, ['class' => 'turnoempresa form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}
+		</div>
 	</div>
+	<div class="col-4">
+		<div class="form-group">
+			{!! Form::label('repLegal', 'Nombre del representante', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
+			{!! Form::text('repLegal', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}
+			<div class="help-block with-errors"></div> 
+		</div>
+	</div>
+	
+	<div class="col-4">
+		<div class="form-group">
+			{!! Form::label('primerAp2', 'Primer apellido', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('primerAp2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','data-validation'=>'required']) !!}
+			<div class="help-block with-errors"></div>
+		</div>
+	</div>
+	
+	<div class="col-4">
+		<div class="form-group">
+			{!! Form::label('segundoAp2', 'Segundo apellido', ['class' => 'col-form-label-sm']) !!}
+			{!! Form::text('segundoAp2', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+		</div>
+	</div>
+
+
 	<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('fechaAltaEmpresa', 'Fecha de alta de la empresa', ['class' => 'col-form-label-sm']) !!}
@@ -32,13 +62,13 @@
 	</div>
 	</div>
 	<!--Representante legal-->
-	<div class="col-4">
+	{{-- <div class="col-4">
 		<div class="form-group">
 			{!! Form::label('repLegal', 'Representante legal', ['class' => 'col-form-label-sm','valid-tooltip']) !!}
 			{!! Form::text('repLegal', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required','required','data-validation-length'=>'4']) !!}
 			<div class="help-block with-errors"></div> 
 		</div>
-	</div>
+	</div> --}}
 	{{--  telefono  --}}
 	<div class="col-4">
 		<div class="form-group">
@@ -148,7 +178,7 @@
 		<div class="col-12 otros">
 			<div class="form-group">
 				{!! Form::label('otro', 'Especifique', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('otro', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Especifique', 'data-validation'=>'required','id'=>'otroDocEmpresa']) !!}
+				{!! Form::text('otro', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Especifique', 'data-validation'=>'required']) !!}
 				<div class="help-block with-errors"></div>
 			</div>
 		</div>	

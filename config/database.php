@@ -56,13 +56,13 @@ return [
             'engine' => null,
         ],
 
-        'formatos' => [
-            'driver' => env('DB_CONNECTION_F'),
-            'host' => env('DB_HOST_F'),
-            'port' => env('DB_PORT_F'),
-            'database' => env('DB_DATABASE_F'),
-            'username' => env('DB_USERNAME_F'),
-            'password' => env('DB_PASSWORD_F'),
+        'componentes' => [
+            'driver' => env('DB_CONNECTION_COMPONENTES'),
+            'host' => env('DB_HOST_COMPONENTES'),
+            'port' => env('DB_PORT_COMPONENTES'),
+            'database' => env('DB_DATABASE_COMPONENTES'),
+            'username' => env('DB_USERNAME_COMPONENTES'),
+            'password' => env('DB_PASSWORD_COMPONENTES'),
             'unix_socket' => env('DB_SOCKET'),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
