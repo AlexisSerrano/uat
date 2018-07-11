@@ -69,6 +69,12 @@ function cerrarsesion($id){
 	session()->getHandler()->destroy($id);
 }
 
+function roles(){
+	$roles = DB::table('roles')->orderBy('name', 'ASC')->pluck('name', 'id');
+	// $delits = CatDelito::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+	return $roles;
+}
+
 function formato_fecha($old){
 	$new = explode(" ", $old);
 	$fecha = explode("-", $new[0]);

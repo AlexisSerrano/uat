@@ -92,7 +92,7 @@ class CarpetaController extends Controller
         session()->forget('numCarpeta');
         session()->forget('carpeta');
         Alert::info('El caso ha sido cancelado con éxito.', 'Hecho');
-        return redirect(url('carpetas'));
+        return redirect(url('carpetasReserva'));
     }
 
 
@@ -139,13 +139,13 @@ class CarpetaController extends Controller
     }
 
     public function indexCarpetasReserva(){
-        
+        //dd(Auth::user()->id);
         $carpetas = DB::table('carpeta')
         ->join('variables_persona','variables_persona.idCarpeta','=','carpeta.id')
         ->leftJoin('extra_autoridad','extra_autoridad.idVariablesPersona','=','variables_persona.id')
         ->leftJoin('extra_denunciante','extra_denunciante.idVariablesPersona','=','variables_persona.id')
-        ->join('extra_denunciado','extra_denunciado.idVariablesPersona','!=','variables_persona.id')
-        ->join('extra_abogado','extra_abogado.idVariablesPersona','!=','variables_persona.id')
+        //->join('extra_denunciado','extra_denunciado.idVariablesPersona','!=','variables_persona.id')
+        //->join('extra_abogado','extra_abogado.idVariablesPersona','=','variables_persona.id')
         ->join('persona','persona.id','=','variables_persona.idPersona')
         ->select('carpeta.id as id',
         'carpeta.fechaInicio',
@@ -156,7 +156,7 @@ class CarpetaController extends Controller
         ->whereNull('idEstadoCarpeta')
         // ->whereNull('extra_autoridad.idVariablesPersona')
         ->paginate('10');
-        // dd($carpetas);
+         //dd($carpetas);
         return view('tables.carpetasReserva')->with('carpetas',$carpetas);
         
         //    dd(session());

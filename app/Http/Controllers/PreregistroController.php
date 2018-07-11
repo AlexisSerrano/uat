@@ -187,7 +187,7 @@ class PreregistroController extends Controller
                 $preregistro->statusCancelacion = 0;
                 $preregistro->representanteLegal = $request->repLegal;
                 if (!is_null($request->tipoActaEmpresa)){
-                    $preregistro->tipoActaEmpresa = (!is_null($request->otroEmpresa))?$request->otroEmpresa:$request->tipoActaEmpresa;
+                    $preregistro->tipoActa = (!is_null($request->otroEmpresa))?$request->otroEmpresa:$request->tipoActaEmpresa;
                 }
                 
                 $preregistro->save();
@@ -369,7 +369,7 @@ class PreregistroController extends Controller
                 $preregistro->statusOrigen = 1;
                 $preregistro->representanteLegal = $request->repLegal;
                  if (!is_null($request->tipoActaEmpresa)){
-                    $preregistro->tipoActaEmpresa = (!is_null($request->otroEmpresa))?$request->otroEmpresa:$request->tipoActaEmpresa;
+                    $preregistro->tipoActa = (!is_null($request->otroEmpresa))?$request->otroEmpresa:$request->tipoActaEmpresa;
                 }
 
                 // $preregistro->conViolencia = $request->Violencia;
@@ -391,9 +391,8 @@ class PreregistroController extends Controller
             // return redirect('FormatoRegistro/'.$id);
         }catch (\PDOException $e){
             DB::rollBack();
-            //Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
-            return var_dump($e);
-            //return back()->withInput();
+            Alert::error('Se presentó un problema al guardar los datos, intente de nuevo.'.$e, 'Error');
+            return back()->withInput();
         }
     }
 
