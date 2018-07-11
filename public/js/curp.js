@@ -71,8 +71,12 @@
      * @param {string} str - String del cual se va a sacar la primer consonante.
      */
     function primerConsonante(str) {
-        str = str.trim().substring(1).replace(/[AEIOU]/ig, '').substring(0, 1);
-        return (str === '' || str === 'Ñ') ? 'X' : str;
+        console.log(str);
+        if(str=== undefined || str === '' || str === 'Ñ')
+            return 'X'
+        else
+            return str = str.trim().substring(1).replace(/[AEIOU]/ig, '').substring(0, 1);
+        //return (str === '' || str === 'Ñ') ? 'X' : str;
     }
     /**
      * filtraCaracteres()
