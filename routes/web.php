@@ -98,8 +98,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('impresion-remision/{id}','ImpresionesController@getRemision')->name('impresion.remision');
 
 /***************************** formato de denuncia************************************/
-    Route::get('formato-denuncia/{id}','ImpresionesController@formatoDenuncia')->name('formato.denuncia');
-    Route::get('imprimir-denuncia/{id}','ImpresionesController@getFormatoDenuncia')->name('get.formatoDenuncia');
+    Route::get('formato-denuncia/{id}','FormatoDenController@formatoDenuncia')->name('formato.denuncia');
+    Route::get('imprimir-denuncia/{id}','FormatoDenController@getFormatoDenuncia')->name('get.formatoDenuncia');
     
 
 
