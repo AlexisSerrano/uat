@@ -12,10 +12,10 @@ url = window.location;
 			url: route("getVehiculoAjax",idr),
 			type : 'GET',
 			success : function(json) {
-				console.log(json.tipovehiculo);
+				 console.log(json);
 				$('#idTipifDelito1').val(json.vehiculo.Delito).trigger('change.select2');
 				$("#placasv").val(json.vehiculo.Placas);
-				$('#estadov').val(json.vehiculo.Delito).trigger('change.select2');
+				$('#estadov').val(json.vehiculo.Estado).trigger('change.select2');
 				$('#marcav').val(json.vehiculo.Marca).trigger('change.select2');
 				var html = '';
 				for (var clave in json.submarcas){
@@ -23,8 +23,8 @@ url = window.location;
 					  html += "<option value='"+clave+"'> "+json.submarcas[clave]+"</option>";
 					}
 				}
-				$("#submarcav").html(html);
-				// $('#submarcav').val(json.vehiculo.Submarca).trigger('change.select2');
+				 $("#submarcav").html(html);
+				 $('#submarcav').val(json.vehiculo.Submarca).trigger('change.select2');
 
 				$('#modelov').val(json.vehiculo.Modelo);
 				$('#colorv').val(json.vehiculo.Color).trigger('change.select2');
