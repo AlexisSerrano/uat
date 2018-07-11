@@ -74,7 +74,36 @@
 
 		<!-- /.content -->	
 	</div>
-	
+
+	{{--  inicio modal para cambio de rol --}}
+	<div class="modal" id="modalRol">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				{!! Form::open(['route' => 'cambioRol', 'method'=> 'post']) !!}
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Selecciona un rol</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				
+				<!-- Modal body -->
+				<div class="modal-body">
+					{{ Form::label('label', 'Selecciona el Rol') }}
+					{{Form::select('idRol', roles(), null,['class'=> 'form-control','placeholder' => 'Seleccione rol','required'])}}
+				</div>
+				
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+					{!!Form::submit('Guardar',['class'=>'btn btn-default'])!!}
+				</div>
+				{!! Form::close() !!}
+			
+			</div>
+		</div>
+	</div>
+	{{--  fin modal para cambio de rol --}}
 	@include('template.partials.footer')
 </div>
 <!-- ./wrapper -->
@@ -118,6 +147,10 @@
 
 
 	$('select').select2();
+
+	function mostrarModal() {
+		$('#modalRol').modal('show');
+	}
 
 	
 	function deshabilitaRetroceso(){
