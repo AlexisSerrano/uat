@@ -23,10 +23,10 @@ class PermisoSeeder extends Seeder
         Permission::create(['name' => 'prueba5']);
         
         //Creación de roles
-        $coordinador = Role::create(['name' => 'COORDINADOR']);
-        $facilidador = Role::create(['name' => 'FACILITADOR']);
-        $orientador  = Role::create(['name' => 'ORIENTADOR']);
-        $recepcion   = Role::create(['name' => 'RECEPCION']);
+        $coordinador = Role::create(['name' => 'coordinador']);
+        $facilidador = Role::create(['name' => 'facilitador']);
+        $orientador  = Role::create(['name' => 'orientador']);
+        $recepcion   = Role::create(['name' => 'recepcion']);
         
         // Asignación de permisos a Rol de Fiscal Coordinador
         $coordinador->givePermissionTo(Permission::all());

@@ -8,6 +8,7 @@ use App\Models\CatMunicipio;
 use App\Models\CatLocalidad;
 use App\Models\CatColonia;
 use App\User;
+use DB;
 
 class RegisterController extends Controller
 {
@@ -92,14 +93,13 @@ class RegisterController extends Controller
                  
             $rol_usuario =    DB::table('model_has_roles')->where('model_id', Auth::user()->id)->update(['role_id' => $request->idRol]);
            
-
-            $nombreRol = DB::table('roles')->where('id',$rol_usuario->role_id)->select('name')->get();
-            
-            $user = DB::table('users')->where('id',Auth::user()->id)->get()->first();
-            $user->grupo = $nombreRol;
+            $nombreRol = DB::table('roles')->where('id',$request->idRol)->select('name')->first();
+        //   dd($nombreRol);
+            $user = User::find(Auth::user()->id);
+            $user->grupo = $nombreRol->name;
             $user->save();
 
-            return view('home');
+            return redirect()->route('home');
     }
     
 }
