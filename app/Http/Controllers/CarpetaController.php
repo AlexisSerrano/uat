@@ -92,7 +92,7 @@ class CarpetaController extends Controller
         session()->forget('numCarpeta');
         session()->forget('carpeta');
         Alert::info('El caso ha sido cancelado con éxito.', 'Hecho');
-        return redirect(url('carpetas'));
+        return redirect(url('carpetasReserva'));
     }
 
 
