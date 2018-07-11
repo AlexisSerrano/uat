@@ -1,16 +1,28 @@
 $(document).ready(function(){
     mostrar();
+    
+    //$(".otros").hide();
     if($("#idRazon2").val()==4){
         if($("#tipoActa").val() == 'OTROS DOCUMENTOS'){
             $(".otros").show();
-            $("input[name='otro']").hide();
+        }
+        else{
+            $(".otros").hide();
+        }
+    }else{
+        $('#tipodeActa').hide();
+    }
+
+    if($("#idRazon1").val()==4){
+        if($("#tipoActaEmpresa").val() == 'OTROS DOCUMENTOS'){
+            $(".otros").show();
         }
         else{
             $(".otros").hide();
         }
     }
     else{
-        $('#tipodeActa').hide();
+        $('#tipodeActa1').hide();
     }
     
     //Si es empresa
@@ -20,7 +32,6 @@ $(document).ready(function(){
             $('#collapsePersonales2').prop( "disabled", false );
             $('#collapsePersonales1').hide();
             $('#collapsePersonales1').prop( "disabled", true );
-            $('#tipodeActa1').hide();
             mostrarmoral();
             paraActadeHechos1();
             $("#datosPer").show();
@@ -45,35 +56,63 @@ $(document).ready(function(){
 });
 //empresa
 function paraActadeHechos1(){
-    $(".otros").hide();
     $("#idRazon1").change(function(){
         valor = $(this).val();
         if(valor==4){
-            $('#tipoActa1').prop('disabled', false);
-            $("#tipodeActa1").change(function(){
-                valor2 = $("#tipodeActa1 option:selected").text();
-                if(valor2 == 'OTROS DOCUMENTOS'){
-                    $("#otro").val('');
-                    $(".otros").show();                    
-                }
-                else{
-                    $("#otro").val('');
-                    $(".otros").hide();
-                }
-            });
-            $('#tipodeActa1').show();
-        }
-        else{
-            $("#otro").val('');
+            $('#tipoActaEmpresa').prop('disabled', false);
+            $('#tipodeActa1').show(); 
+            if($("#tipoActaEmpresa").val() == 'OTROS DOCUMENTOS'){
+                $(".otros").show();
+                $("input[name='otroEmpresa']").css("display","block");
+                $("#divOtroDoc").show();
+            }
+            else{
+                $(".otros").hide();
+            }
+        }else{
+            $("#otroEmpresa").val('');
             $('#tipodeActa1').hide();
-            $('#tipoActa1').prop('disabled', true);
+            $('#tipoActaEmpresa').prop('disabled', true);
         }
     });
-    
+    $("#tipoActaEmpresa").change(function(){
+        valor2 = $("#tipoActaEmpresa option:selected").text();
+        if(valor2 == 'OTROS DOCUMENTOS'){
+            $(".otros").show();                    
+        }
+        else{
+            $("#otroEmpresa").val('');
+            $(".otros").hide();
+        }
+    });
+       
 }
 //persona
 function paraActadeHechos2(){
-    $(".otros").hide();
+
+    $("#idRazon2").change(function(){
+        valor = $(this).val();
+        if(valor==4){
+            $('#tipoActa').prop('disabled', false);
+            $('#tipodeActa').show(); 
+            if($("#tipoActa").val() == 'OTROS DOCUMENTOS'){
+                $(".otros").show();
+                $("input[name='otro']").css("display","block");
+                //$("#divOtroDoc").show();
+            }
+            else{
+                $(".otros").hide();
+            }
+        }else{
+            $("#otro").val('');
+            $('#tipodeActa').hide();
+            $('#tipoActa').prop('disabled', true);
+        }
+    });
+
+
+/*
+    //$(".otros").hide();
     $("#tipoActa").change(function(){
         valor = $(this).val();
         if(valor == 'OTROS DOCUMENTOS'){
@@ -84,14 +123,30 @@ function paraActadeHechos2(){
             $(".otros").hide();
         }
     });
-    $("#idRazon2").bind("change",function(){
+
+
+    if($("#idRazon2").val()==4){
+        if($("#tipoActa").val() == 'OTROS DOCUMENTOS'){
+            $(".otros").show();
+        }
+        else{
+            $(".otros").hide();
+        }
+    }else{
+        $('#tipodeActa').hide();
+    }
+
+
+*/
+/*
+   $("#idRazon2").bind("change",function(){
         // alert("ok");
         valor = $(this).val();
         if(valor==4){
             console.log('es 4');
+            $('#tipoActa').prop('disabled', false);
+            $('#tipoActa').prop('disabled', false);
             $('#tipodeActa').show();
-            $('#tipoActa').prop('disabled', false);
-            $('#tipoActa').prop('disabled', false);
             $('#estadoCivilActa').prop('disabled', false);
             $('#escActa').prop('disabled', false);
             $('#ocupActa').prop('disabled', false);
@@ -103,7 +158,21 @@ function paraActadeHechos2(){
             $('#escActa').prop('disabled', true);
             $('#ocupActa').prop('disabled', true);
         }
-    }); 
+    });
+    */
+   $("#tipoActa").change(function(){
+        valor2 = $("#tipoActa option:selected").text();
+        if(valor2 == 'OTROS DOCUMENTOS'){
+            $(".otros").show();                    
+        }
+        else{
+            $("#otro").val('');
+            $(".otros").hide();
+        }
+    });
+    
+   // $('#tipodeActa1').hide();
+   // $('#tipodeActa').hide();
 }
 
 function mostrar(){

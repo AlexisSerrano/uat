@@ -128,8 +128,8 @@
 	<div  id="tipodeActa1">
 		<div class="col-12"  >
 			<div class="form-group" >
-					{!! Form::label('tipoActa', 'Seleccione el tipo de constancia de extravío que requiere', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('tipoActa', array('PASAPORTE' => 'PASAPORTE', 
+					{!! Form::label('tipoActaEmpresa', 'Seleccione el tipo de constancia de extravío que requiere', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('tipoActaEmpresa', array('PASAPORTE' => 'PASAPORTE', 
 					'CREDENCIAL DE TRABAJO/GAFFETE' => 'CREDENCIAL DE TRABAJO/GAFFETE',
 					'TARJETA DE CREDITO/DEBITO' => 'TARJETA DE CRÉDITO/DÉBITO',
 					'TELEFONO CELULAR' => 'TELÉFONO CELULAR',
@@ -145,10 +145,10 @@
 					'OTROS DOCUMENTOS' => 'OTROS DOCUMENTOS'), null, ['class' => 'form-control form-control-sm','data-validation'=>'required']) !!}
 			</div>
 		</div>
-		<div class="col-12 otros">
+		<div class="col-12 otros" id="divOtroDoc">
 			<div class="form-group">
-				{!! Form::label('otro', 'Especifique', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('otro', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Especifique', 'data-validation'=>'required']) !!}
+				{!! Form::label('otroEmpresa', 'Especifique', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::text('otroEmpresa', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Especifique', 'data-validation'=>'required']) !!}
 				<div class="help-block with-errors"></div>
 			</div>
 		</div>	
