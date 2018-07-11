@@ -134,7 +134,8 @@ $form = oldFormDenunciante();
 	{{-- <script src="{{ asset('js/validation.js')}}"></script>
 	<script src="{{ asset('js/validation-orientador.js')}}"></script> --}}
 	<script>
-
+	$(document).ready(function(){
+// $('#identidad').hide();
 
 	id = $(".datotip").attr("id");
 	
@@ -185,6 +186,8 @@ $form = oldFormDenunciante();
 		$('#direccion').addClass("show");
 		console.log('boton atrás')
 		});
+	}
+		
 	
 </script>
 @endpush
