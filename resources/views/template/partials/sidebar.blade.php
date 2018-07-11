@@ -348,7 +348,7 @@
 						</a>
 					</li>
 					
-					@if (Auth::user()->grupo=='orientador')
+					{{-- @if (Auth::user()->grupo=='orientador')
 						<li class="nav-item has-treeview">
 							<a href="{{route('cambioRol')}}" class="nav-link">
 								<i class="nav-icon fa fa-exchange"></i>
@@ -356,15 +356,24 @@
 							</a>
 						</li>
 					@endif
-				@endif
-				
-				@if (Auth::user()->grupo=='recepcion')				
+					
+					@if (Auth::user()->grupo=='recepcion')				
+						<li class="nav-item has-treeview">
+							<a href="{{route('cambioRol')}}" class="nav-link">
+								<i class="nav-icon fa fa-exchange"></i>
+								<p>Cambiar a Fiscal</p>
+							</a>
+						</li>
+						@endif --}}
+						{{-- <button type="button" class="nav-link" data-toggle="modal" data-target="#modalRol"> --}}
 					<li class="nav-item has-treeview">
-						<a href="{{route('cambioRol')}}" class="nav-link">
+						{{-- <a href="{{route('cambioRol')}}" class="nav-link"> --}}
+						<a href="#" onclick="mostrarModal()" class="nav-link">
 							<i class="nav-icon fa fa-exchange"></i>
-							<p>Cambiar a Fiscal</p>
+							<p>Cambiar de rol</p>
 						</a>
 					</li>
+					{{-- </button> --}}
 				@endif
 
 				<li class="nav-item has-treeview">

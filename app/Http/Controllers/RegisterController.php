@@ -8,6 +8,7 @@ use App\Models\CatMunicipio;
 use App\Models\CatLocalidad;
 use App\Models\CatColonia;
 use App\User;
+use DB;
 
 class RegisterController extends Controller
 {
@@ -71,8 +72,8 @@ class RegisterController extends Controller
         return view('servicios.errores.errorlogin');
     }
     
-    public function cambioRol(){
-        if (Auth::user()->grupo=='orientador') {
+    public function cambioRol(Request $request){
+     /*   if (Auth::user()->grupo=='orientador') {
             $user=User::find(Auth::user()->id);
             $user->grupo='recepcion';
             $user->save();
@@ -88,8 +89,17 @@ class RegisterController extends Controller
 
         if(Auth::user()->grupo!='recepcion'&&Auth::user()->grupo!='orientador'){
             return redirect('home');
-        }
+        }*/
+                 
+            $rol_usuario =    DB::table('model_has_roles')->where('model_id', Auth::user()->id)->update(['role_id' => $request->idRol]);
+           
+            $nombreRol = DB::table('roles')->where('id',$request->idRol)->select('name')->first();
+        //   dd($nombreRol);
+            $user = User::find(Auth::user()->id);
+            $user->grupo = $nombreRol->name;
+            $user->save();
 
+            return redirect()->route('home');
     }
     
 }
