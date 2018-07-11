@@ -419,6 +419,7 @@ class ActasHechosController extends Controller
         $fechasep = explode("-", $catalogos->fecha_nac);
         $edad = Date::createFromDate($fechasep[0],$fechasep[1],$fechasep[2])->age;
         $data = array('estado' => $catalogos->nombreEstado, 
+        'unidadMunicipio' => $catalogos->nombreMunicipio, 
         'municipio' => $catalogos->nombreMunicipio, 
         'localidad' => $catalogos->nombreLocalidad,
         'colonia' => $catalogos->nombreColonia,
@@ -427,8 +428,9 @@ class ActasHechosController extends Controller
         'numExterno' => $numExterno,
         'folio' => $catalogos->folio,
         'hora' => $date->parse($catalogos->hora)->format('H:i'),
-        'fecha' => $fechahum,
-        'fiscal' => $catalogos->fiscal,
+        'fecha' => strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'fiscal' => strtr(strtoupper($catalogos->fiscal),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'puesto' => strtoupper(Auth::user()->puesto),
         'nombre' => $catalogos->nombrePersona.' '.$catalogos->primer_ap.' '.$catalogos->segundo_ap,
         'identificacion' => $catalogos->identificacion,
         'numIdentificacion' => $catalogos->num_identificacion,
