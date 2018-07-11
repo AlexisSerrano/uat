@@ -15,7 +15,7 @@ class PruebaSeeder extends Seeder
     public function run()
     {
         DB::table('domicilio')->insert([
-            ['id'=>1 ,'idMunicipio'  =>  2493,  'idLocalidad'   =>  106783,  'idColonia' =>  49115,  'calle' =>  'SIN INFORMACION', 'numExterno'    =>  'S/N',  'numInterno'    =>  'S/N']            
+            ['idMunicipio'  =>  2493,  'idLocalidad'   =>  106783,  'idColonia' =>  49115,  'calle' =>  'SIN INFORMACION', 'numExterno'    =>  'S/N',  'numInterno'    =>  'S/N']            
         ]);
         /************usuario para pruebas fuera de la fiscalia*************/
         $user=App\User::create([
@@ -32,20 +32,22 @@ class PruebaSeeder extends Seeder
             'gcoordinador'=>1,
             'email'=>'admin@fiscaliaveracruz.gob.mx',
             'password'=> bcrypt('admin'),
+            'session_id' => 'sesionid0f1',
             'puesto'=>'Fiscal cuarto de la unidad de xalapa', 
             'numFiscal'=>4, 
             'numFiscalLetras'=>'Cuarto'
         ]);
         $user->assignRole('orientador');
         /******************************************************************/
-        DB::table('domicilio')->insert([
-            ['idMunicipio'  =>  2091,  'idLocalidad'   =>  81877,  'idColonia' =>  40665,  'calle' =>  'CALLE DE ALGUN LUGAR', 'numExterno'    =>  '5',  'numInterno'    =>  'S/N'],
+        DB::table('domicilio')->insert([            
             ['idMunicipio'  =>  2097,  'idLocalidad'   =>  82389,  'idColonia' =>  43449,  'calle' =>  'RUIZ CORTINEZ', 'numExterno'    =>  '152',  'numInterno'    =>  'B'],
-            ['idMunicipio'  =>  2205,  'idLocalidad'   =>  93140,  'idColonia' =>  44169,  'calle' =>  'LA CALLE DE LA ESQUINA', 'numExterno'    =>  '20',  'numInterno'    =>  'C']
+            ['idMunicipio'  =>  2205,  'idLocalidad'   =>  93140,  'idColonia' =>  44169,  'calle' =>  'LA CALLE DE LA ESQUINA', 'numExterno'    =>  '20',  'numInterno'    =>  'C'],
+            ['idMunicipio'  =>  2091,  'idLocalidad'   =>  81877,  'idColonia' =>  40665,  'calle' =>  'CALLE DE ALGUN LUGAR', 'numExterno'    =>  '5',  'numInterno'    =>  'S/N'],
+            ['idMunicipio'  =>  2097,  'idLocalidad'   =>  82389,  'idColonia' =>  43449,  'calle' =>  'CALLE FICTICIA', 'numExterno'    =>  '10',  'numInterno'    =>  'P'],
         	
         ]);
 
-        DB::table('preregistros')->insert([
+        DB::table('preregistros')->insert([            
             ['idDireccion'  =>  2,  'esEmpresa'   =>  0, 'idRazon'=>2, 'fechaNac'=>'1995-02-11','statusCancelacion'=>0, 'edad'=>23, 'nombre' =>  'JUAN',  'primerAp' =>  'PEREZ', 'segundoAp'    =>  'PEREZ',  'rfc'    =>  'PEPJ950211VH3', 'curp' => 'PEPJ950211VH3VZNL0','sexo'=>'HOMBRE','telefono'=>'2284658970','docIdentificacion'=> 1,'numDocIdentificacion'=>'HVOZSDFA151ASC51EF65','narracion'=>'LE ACABAN DE ASALTAR Y SE LLEVANRON MI CELULAR','folio'=>'A65S4F','idEscolaridad'=>5,'idEstadoCivil'=>5,'idOcupacion'=>4,'idMunicipioOrigen'=>2254, 'created_at'=>Carbon::now() ],
             ['idDireccion'  =>  3,  'esEmpresa'   =>  0, 'idRazon'=>2, 'fechaNac'=>'1995-02-11','statusCancelacion'=>0, 'edad'=>23, 'nombre' =>  'ALEJANDRO',  'primerAp' =>  'MARTINEZ', 'segundoAp'    =>  'ACOSTA',  'rfc'    =>  'MAAA950211VH3', 'curp' => 'MAAA950211VH3VH3NL','sexo'=>'HOMBRE','telefono'=>'6841534316','docIdentificacion'=> 5,'numDocIdentificacion'=>'A416514A35FASDAS','narracion'=>'ME GOLPERARON CUANDO ME BAJE DEL CALLO POR LA LAZARO.','folio'=>'F63NGS' ,'idEscolaridad'=>5,'idEstadoCivil'=>5,'idOcupacion'=>4,'idMunicipioOrigen'=>2102, 'created_at'=>Carbon::now()],
             ['idDireccion'  =>  4,  'esEmpresa'   =>  0, 'idRazon'=>2, 'fechaNac'=>'1995-02-11','statusCancelacion'=>0, 'edad'=>23, 'nombre' =>  'MARTA',  'primerAp' =>  'RAMIREZ', 'segundoAp'    =>  'CRUZ',  'rfc'    =>  'RACM950211S48' ,'curp' => 'RACM950211VH3VH3VZ','sexo'=>'HOMBRE','telefono'=>'6841534316','docIdentificacion'=> 3,'numDocIdentificacion'=>'6RG4WEF6W8E4F6QWFQ6W4D','narracion'=>'asufhaksdifahsdgijakshd iDHSFisdhfi hKFH Khfkihfk hkfuahsdkfhakshkaehfh awehfñwaehfk','folio'=>'MVG64M','idEscolaridad'=>5,'idEstadoCivil'=>5,'idOcupacion'=>4,'idMunicipioOrigen'=>1954, 'created_at'=>Carbon::now() ]

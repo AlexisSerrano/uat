@@ -351,7 +351,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/filtro', 'LibroOficioController@filtroactas');  
     
     /* -----------Ruta para cambio de rol------------ */
-    Route::get('rol','RegisterController@cambioRol')->name('cambioRol');  
+    Route::post('rol','RegisterController@cambioRol')->name('cambioRol');  
 
 });
 
