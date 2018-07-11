@@ -90,9 +90,15 @@ class RegisterController extends Controller
             return redirect('home');
         }*/
                  
-            $rol =    DB::table('model_has_roles')->where('model_id', Auth::user()->id)->get()->first();
-            $rol->role_id = $request->idRol;
-            $rol->save();
+            $rol_usuario =    DB::table('model_has_roles')->where('model_id', Auth::user()->id)->get()->first();
+            $rol_usuario->role_id = $request->idRol;
+            $rol_usuario->save();
+
+            $rol = DB::table('roles')->where('id',$rol_usuario->role_id)->get()->first();
+            
+            $user = DB::table('users')->where('id',Auth::user()->id)->get()->first();
+            $user->grupo = $rol->name;
+            $user->save();
 
             return view('home');
     }
