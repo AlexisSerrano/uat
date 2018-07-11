@@ -16,29 +16,33 @@ class PermisoSeeder extends Seeder
         // Reset cached roles and permissions
         app()['cache']->forget('spatie.permission.cache');
         //Creación de permisos
-        Permission::create(['name' => 'index.carpeta']);
-        Permission::create(['name' => 'index.libro']);
+        Permission::create(['name' => 'prueba1']);
+        Permission::create(['name' => 'prueba2']);
+        Permission::create(['name' => 'prueba3']);
+        Permission::create(['name' => 'prueba4']);
+        Permission::create(['name' => 'prueba5']);
         
         //Creación de roles
-        $coordinador = Role::create(['name' => 'coordinador']);
-        $facilidador = Role::create(['name' => 'facilitador']);
-        $orientador = Role::create(['name' => 'orientador']);
-        $recepcion = Role::create(['name' => 'recepcion']);
+        $coordinador = Role::create(['name' => 'Coordinador']);
+        $facilidador = Role::create(['name' => 'Facilitador']);
+        $orientador  = Role::create(['name' => 'Orientador']);
+        $recepcion   = Role::create(['name' => 'Recepcion']);
         
         // Asignación de permisos a Rol de Fiscal Coordinador
         $coordinador->givePermissionTo(Permission::all());
         // Asignación de permisos a Rol de Fiscal Facilitador
-        $facilidador->givePermissionTo(['index.carpeta', 'index.libro']);
+        $facilidador->givePermissionTo(['prueba1']);
         // Asignación de permisos a Rol de Fiscal Orientador
-        $orientador->givePermissionTo(['index.carpeta', 'index.libro']);
+        $orientador->givePermissionTo(['prueba2','prueba5']);
         // Asignación de permisos a Rol de Recepción
-        $recepcion->givePermissionTo(['index.carpeta', 'index.libro']);
+        $recepcion->givePermissionTo(['prueba3','prueba4']);
 
         // asignar rol
         // $user->assignRole('orientador');
 
         //reasignar rol
         // $usuario->syncRoles(['orientador']);
+        
 
     }
 }

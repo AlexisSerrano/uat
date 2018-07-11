@@ -71,8 +71,8 @@ class RegisterController extends Controller
         return view('servicios.errores.errorlogin');
     }
     
-    public function cambioRol(){
-        if (Auth::user()->grupo=='orientador') {
+    public function cambioRol(Request $request){
+     /*   if (Auth::user()->grupo=='orientador') {
             $user=User::find(Auth::user()->id);
             $user->grupo='recepcion';
             $user->save();
@@ -88,8 +88,13 @@ class RegisterController extends Controller
 
         if(Auth::user()->grupo!='recepcion'&&Auth::user()->grupo!='orientador'){
             return redirect('home');
-        }
+        }*/
+                 
+            $rol =    DB::table('model_has_roles')->where('model_id', Auth::user()->id)->get()->first();
+            $rol->role_id = $request->idRol;
+            $rol->save();
 
+            return view('home');
     }
     
 }
