@@ -217,7 +217,7 @@ class PreregistroAuxController extends Controller
                 $preregistro->docIdentificacion = $request->docIdentificacion;
                 $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
                 if (!is_null($request->idRazon)){
-                    $domicilio->idRazon = $request->idRazon;
+                    $preregistro->idRazon = $request->idRazon;
                 }
                 $preregistro->save();
                 $id = $preregistro->id;
