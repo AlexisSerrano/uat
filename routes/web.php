@@ -233,15 +233,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('agregar-delito', 'DelitoController@showForm')->name('new.delito');
     Route::post('storedelito', 'DelitoController@storeDelito')->name('store.delito');
     Route::get('delito/{id}/eliminar', 'DelitoController@delete')->name('delete.delito');
-    Route::get('editar/{id}', 'DelitoController@editar')->name('editar');
-    Route::put('delito/{id}/actualizar', 'DelitoController@actualizar')->name('actualizar.delito');
+    // Route::get('editar/{id}', 'DelitoController@editar')->name('editar');
+    // Route::put('delito/{id}/actualizar', 'DelitoController@actualizar')->name('actualizar.delito');
     /*---------Rutas para obtener delitos y desagregaciones------------*/
     Route::get('agrupaciones1/{id}', 'DelitoController@getAgrupaciones1')->name('get.agregacion1');
     Route::get('agrupaciones2/{id}', 'DelitoController@getAgrupaciones2')->name('get.agregacion2');
 
     /*----------------AJAX DELITO -------------*/
     Route::get('getDelitoAjax/{id}', 'DelitoController@getDelitoAjax')->name("getDelitoAjax");
-    Route::post('Delito/editar', 'DelitoController@editarDelitoAjax')->name('agregar-Delito');
+    Route::post('Delito/editar', 'DelitoController@editarDelito')->name("editar-Delito");
 
 
     /*------------------------------------------------------------*/

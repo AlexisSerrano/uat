@@ -55,13 +55,13 @@
 		<div class="form-group">
 			<div class="form-check form-check-inline">
 				<label class="form-check-label col-form-label-sm">
-					<input class="form-check-input" type="radio" id="conViolencia1" name="conViolencia" id="no" value="0" checked required>
+					<input class="form-check-input" type="radio" id="conViolenciaD1" name="conViolenciaD" id="no" value="0" checked required>
 					No
 				</label>
 			</div>
 			<div class="form-check form-check-inline">
 				<label class="form-check-label col-form-label-sm">
-					<input class="form-check-input" type="radio" id="conViolencia2" name="conViolencia" id="si" value="1">
+					<input class="form-check-input" type="radio" id="conViolenciaD2" name="conViolenciaD" id="si" value="1">
 					Sí
 				</label>
 			</div>

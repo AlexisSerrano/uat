@@ -185,48 +185,6 @@ class DelitoController extends Controller
         }
     }
 
-    public function actualizar(Request $request, $id)
-    {
-        $domicilio = domicilio::find($id);
-        $domicilio->idMunicipio=$request->idMunicipio;
-        $domicilio->idLocalidad=$request->idLocalidad;
-        $domicilio->idColonia=$request->idColonia;
-        $domicilio->calle=$request->calle;
-        $domicilio->numExterno=$request->numExterno;
-        $domicilio->numInterno=$request->numInterno;
-        $domicilio->save();
-
-        $tipifDelito = TipifDelito::find($id);
-        $tipifDelito->idDelito = $request->idDelito;
-        if ($request->conViolencia==="1") {
-            # code...
-            $tipifDelito->conViolencia = 1;
-        } else {
-            $tipifDelito->conViolencia = 0;
-        }
-        $tipifDelito->formaComision = $request->formaComision;
-        $tipifDelito->fecha = $request->fecha;
-        $tipifDelito->hora = $request->hora;
-        $tipifDelito->idLugar = $request->idLugar;
-        $tipifDelito->idZona = $request->idZona;
-       // $tipifDelito->idDomicilio = $idD1;
-        $tipifDelito->entreCalle = $request->entreCalle;
-        $tipifDelito->yCalle = $request->yCalle;
-        $tipifDelito->calleTrasera = $request->calleTrasera;
-        $tipifDelito->puntoReferencia = $request->puntoReferencia;
-        $tipifDelito->save();
-
-//dd($domicilio,$tipifDelito);
-
-
-        Alert::success('Delito modificado con éxito','Hecho');
-       
-
-        return redirect()->route('new.delito', $id);
-       // return back();
-        //return view('forms.editdelitos'); 
-    }
-    
     public function getAgrupaciones1(Request $request, $id)
     {
         if ($request->ajax()) {
@@ -266,7 +224,7 @@ class DelitoController extends Controller
            $delito = DB::table('tipif_delito')
            ->join('domicilio', 'domicilio.id', '=', 'tipif_delito.idDomicilio')
            ->where('tipif_delito.id',$id)
-           ->select('tipif_delito.idDelito','tipif_delito.idAgrupacion1','tipif_delito.idAgrupacion2', 'tipif_delito.FormaComision', 'tipif_delito.idDomicilio','domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idColonia')
+           ->select('tipif_delito.idDelito','tipif_delito.conViolencia as conViolencia' ,'tipif_delito.idAgrupacion1  as idAgrupacion1','tipif_delito.idAgrupacion2 as idAgrupacion2', 'tipif_delito.FormaComision', 'tipif_delito.idDomicilio as idDomicilio','tipif_delito.entreCalle as entreCalle', 'tipif_Delito.yCalle as yCalle', 'tipif_Delito.calleTrasera as calleTrasera', 'tipif_Delito.puntoReferencia as puntoReferencia', 'tipif_delito.idLugar as idLugar', 'tipif_delito.idZona as idZona' )
            ->first();
 
         
@@ -278,13 +236,81 @@ class DelitoController extends Controller
            ->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
 
 
-           $domicilio = 
+           $domicilio = Domicilio::where('id', $delito->idDomicilio)
+           ->select('domicilio.idMunicipio', 'domicilio.idLocalidad', 'domicilio.idLocalidad', 'domicilio.idColonia', 'domicilio.calle', 'domicilio.numExterno', 'domicilio.numInterno')
+            ->first();
+         
+           $estado = CatMunicipio::where('id', $domicilio->idMunicipio)
+           ->select('cat_municipio.idEstado')
+           ->first();
 
-           $data = array('delito'=>$delito,'agrupacion1'=>$agrupacion1, 'agrupacion2'=>$agrupacion2);
+           $municipios = CatMunicipio::where('id', $domicilio->idMunicipio)
+           ->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+           
+           $localidad = CatLocalidad::where('id', $domicilio->idLocalidad)
+           ->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+
+           $colonia = CatColonia::where('id', $domicilio->idColonia)
+           ->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+
+           $cp = CatColonia::where('id', $domicilio->idColonia)
+           ->orderBy('CodigoPostal', 'ASC')->pluck('CodigoPostal', 'id');
+
+
+
+
+
+           $data = array('delito'=>$delito,'agrupacion1'=>$agrupacion1,
+                         'agrupacion2'=>$agrupacion2, 'domicilio'=>$domicilio,
+                         'estado'=>$estado, 'municipios'=>$municipios,
+                        'localidad'=>$localidad, 'colonia'=>$colonia, 'cp'=>$cp);
 
            return response()->json($data);
        }
    
+       
+    
+   
+
+public function editarDelito(Request $request ){
+    $newDomicilio= new Domicilio;
+    $newDomicilio->idMunicipio = $request->idMunicipioD;
+    $newDomicilio->idLocalidad = $request->idLocalidadD;
+    $newDomicilio->idColonia = $request->idColoniaD;
+    $newDomicilio->calle = $request->calleD;
+    $newDomicilio->numExterno = $request->numExternoD;
+    $newDomicilio->numInterno = $request->numInternoD;
+    $newDomicilio->save();
+
+    $idDomicilioN=$newDomicilio->id; //sacamos id del nuevo domicilio 
+
+    
+    $deli = TipifDelito::find($request->input('idr')); 
+    $oldDomicilio=$deli->idDomicilio; //antiguo Domiciliio
+    $domicilio = Domicilio::find($oldDomicilio);
+    $deli->idDelito = $request->idDelito2;
+    $deli->idAgrupacion1 = $request->idAgrupacion1;
+    $deli->idAgrupacion2 = $request->idAgrupacion2;
+    $deli->conViolencia = $request->conViolencia;
+    $deli->formaComision = $request->formaComisionD2;
+    $deli->idLugar = $request->idLugarD;
+    $deli->idZona = $request->idZonaD;
+    $deli->idDomicilio = $idDomicilioN;
+
+    $deli->entreCalle = $request->entreCalleD;
+    $deli->yCalle = $request->yCalleD;
+    $deli->calleTrasera = $request->calleTraseraD;
+    $deli->puntoReferencia = $request->puntoReferenciaD;
+    $deli->save(); 
+    $domicilio->delete();
+   if ( $deli->save() &  $newDomicilio->save()){
+       return 1;
+   }
+   else{
+       return 0;
+   }
+ }
+
    
 
 

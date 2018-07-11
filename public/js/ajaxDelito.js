@@ -15,6 +15,7 @@ $('.btn-modal-delito').bind('click', function(){
 			 console.log(json);
 			$('#idr').val(json.id); 
 			$('#idDelito2').val(json.delito.idDelito).trigger('change.select2');
+			
 			var html = '';
 			for (var clave in json.agrupacion1){
 				if (json.agrupacion1.hasOwnProperty(clave)) {
@@ -29,23 +30,71 @@ $('.btn-modal-delito').bind('click', function(){
 				  html2 += "<option value='"+clave+"'> "+json.agrupacion2[clave]+"</option>";
 				}
 			}
-
 			$('#idAgrupacionD2').html(html2);
-			 $("#formaComisionD2").val(json.delito.FormaComision).trigger('change.select2');
 
-			 console.log(json.delito.FormaComision);
+			$("#formaComisionD2").val(json.delito.FormaComision).trigger('change.select2');
 
-			// $('#formaComision2').val(json.formaComision).trigger('change.select2');
-			// $("#fecha2").val(json.fecha);
-			// $("#hora2").val(json.hora);
-			// console.log(json);
-			// $("#observaciones1").val(json.observacion);
-			// $("#fechaInicio1").val(json.fechaInicio);
-			// $("#fechaFinal1").val(json.fechaFin);
-			// $("#tipo_medida2").val(json.nombre);
-			// $('#quienEjecuta1').val(json.idEjecutor).trigger('change.select2');
-			// $('#victima1').val(json.idPersona).trigger('change.select2');
-		
+
+			$("#idEstadoD").val(json.estado.idEstado).trigger('change.select2');
+
+
+			 var html3 = '';
+			 for (var clave in json.municipios){
+				 if (json.municipios.hasOwnProperty(clave)) {
+				   html3 += "<option value='"+clave+"'> "+json.municipios[clave]+"</option>";
+				 }
+			}
+			 $('#idMunicipioD').html(html3);
+
+			
+			 
+			 var html4 = '';
+			 for (var clave in json.localidad){
+				 if (json.localidad.hasOwnProperty(clave)) {
+				   html4 += "<option value='"+clave+"'> "+json.localidad[clave]+"</option>";
+				 }
+			}
+			 $('#idLocalidadD').html(html4);
+
+
+			 var html5 = '';
+			 for (var clave in json.colonia){
+				 if (json.colonia.hasOwnProperty(clave)) {
+				   html5 += "<option value='"+clave+"'> "+json.colonia[clave]+"</option>";
+				 }
+			}
+			 $('#idColoniaD').html(html5);
+
+			 
+			 var html6 = '';
+			 for (var clave in json.cp){
+				 if (json.cp.hasOwnProperty(clave)) {
+				   html6 += "<option value='"+clave+"'> "+json.cp[clave]+"</option>";
+				 }
+			}
+			 $('#cpD').html(html6);
+
+
+			 $('#calleD').val(json.domicilio.calle).trigger('change.select2');
+			 $('#numExternoD').val(json.domicilio.numExterno).trigger('change.select2');
+			 $('#numInternoD').val(json.domicilio.numInterno).trigger('change.select2');
+
+			 $('#entreCalleD').val(json.delito.entreCalle);
+			 $('#yCalleD').val(json.delito.yCalle);
+			 $('#calleTraseraD').val(json.delito.calleTrasera);
+			 $('#puntoReferenciaD').val(json.delito.puntoReferencia);
+
+			 $('#idLugarD').val(json.delito.idLugar).trigger('change.select2');
+			 $('#idZonaD').val(json.delito.idZona).trigger('change.select2');
+			//  $('#conViolencia').val(json.delito.conViolencia);
+			//  $("#conViolencia").prop(json.delito.conViolencia);
+			console.log(json.delito.conViolencia);
+  
+			if (json.delito.conViolencia == '0')
+			$("#conViolenciaD1").prop('checked',true);
+			else
+			$("#conViolenciaD2").prop('checked',true);
+
 		},
 	
 		error : function(xhr, status) {
@@ -54,7 +103,7 @@ $('.btn-modal-delito').bind('click', function(){
 	});
 
 	
-	//para select multiples en formulario de estado localidad municipico
+	//para select multiples en formulario de estado, localidad ,municipico, colonia y cp
 
 	$("#idEstadoD").change(function(event){
 		if(event.target.value!=""){
@@ -125,3 +174,63 @@ $('.btn-modal-delito').bind('click', function(){
 	});
 
 
+//para mandar los datos ala base de datos 
+
+$('#guardar').bind('click', function(){
+	var datos = {
+		'idr' : $('#idr').val(),
+		// // 'tipo_medida2'  : $('#tipoProvidencia1').select2('val'),
+		// 'fechaInicio1' : $('#fechaInicio1').val(),
+		// 'fechaFinal1' : $('#fechaFinal1').val(),
+		// 'quienEjecuta1'  : $('#quienEjecuta1').select2('val'),
+		// 'victima1'  : $('#victima1').select2('val'),
+		// 'observaciones1' : $('#observaciones1').val(),
+
+		'idDelito2' :$('#idDelito2').select2('val'),
+			'idAgrupacion1' :$("#idAgrupacion1").select2('val'),
+			'idAgrupacion2' :$('#idAgrupacion2').select2('val'),
+			'formaComisionD' :$('#formaComisionD').val(),
+
+			'idLugarD'	:$('#idLugarD').select2('val'),
+			'idZonaD'	:$('#idZonaD').select2('val'),
+		
+			'entreCalleD'	:$('#entrecalleD').val(),
+			'ycalleD'	:$('#ycalleD').val(),
+			'calleTraseraD' :$('#calleTraseraD').val(),
+			'puntoReferenciaD' :$('#puntoReferenciaD').val(),
+
+			'idMunicipioD' :$("#idMunicipioD").select2('val'),
+			'idLocalidadD' :$('#idLocalidadD').select2('val'),
+			'idColoniaD' :$('#idColoniaD').select2('val'),
+
+			'calleD'	:$('#calleD').val(),
+			'numExternoD'	:$('#numExternoD').val(),
+			'numInternoD'	:$('#numInternoD').val(),
+	}
+	console.log(datos);
+	$.ajax({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		},
+		//url : "agregar-medidas/editar",
+		url: route('editar-Delito'),
+		data : datos,
+		type : 'POST',
+		success : function(json) {
+			if(json){	
+			swal("Hecho", "Registro guardado con exito", "success");
+				location.reload();
+			}else{
+				swal("Hecho", "Error", "success");
+			}            
+		},
+		error : function(xhr, status) {
+			swal({
+				title: "Error al guardar cambios",
+				icon: "error",
+			});
+		},
+		complete : function(xhr, status) {
+		}
+	});
+});

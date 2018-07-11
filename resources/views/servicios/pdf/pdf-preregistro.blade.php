@@ -80,12 +80,15 @@
                             <img src="{{ asset('img/logolight.png') }}" class="item">
                         </td>
                         <td colspan="2" >
-                            Titulo: Preregistro o Folio
+                            Folio para pre-registro
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" >
+                        {{-- <td colspan="2" >
                             Aquí colocar una breve instrucción de ¿qué hacer con éste documento? asu fhqeifjiaeufeijwfai ewbfpwebfpab ewflakjwebnf ksjewbfakjewfb alkwejbfalkwebfalkewfb alkejfbakewb jfalwkejfbaef 
+                        </td> --}}
+                        <td colspan="2" >
+                            Este documento sirve para la solicitud de una cita en una de las unidades integrales mas cercanas para la orientación y/o asesoria sobre un asunto.  
                         </td>
                     </tr>
                 </tbody>
@@ -143,21 +146,28 @@
                     </tr>
 
                     <tr class="text-muted">
-                        <td><p>UIPJ XALAPA</p>
-                                Circuito Rafael Guízar y Valencia No. 707, Colonia Reserva Territorial C.P. 91096 Xalapa, Veracruz.
-                                <br>
-                                Horario. 9:00 - 15:00 hrs y 16:00 - 18:00 hrs. 
-                                de Lunes a Viernes</td>
-                        <td><p>UIPJ XALAPA</p>
-                                Calle Tal entre tal y tal No. 74, Colonia Reserva Territorial C.P. 0000 Xalapa, Veracruz.
-                                <br>
-                                Horario. 9:00 - 15:00 hrs y 16:00 - 18:00 hrs. 
-                                de Lunes a Viernes</td>
-                        <td><p>UIPJ XALAPA</p>
-                                Calle Tal entre tal y tal No. 92, Colonia Reserva Territorial C.P. 0000 Xalapa, Veracruz.
-                                <br>
-                                Horario. 9:00 - 15:00 hrs y 16:00 - 18:00 hrs. 
-                                de Lunes a Viernes</td>
+                        <td>
+                            <p>UIPJ XALAPA</p>
+                            Circuito Rafael Guízar y Valencia No. 707, Colonia Reserva Territorial C.P. 91096 Xalapa, Veracruz.
+                            <br>
+                            Horario. 9:00 - 15:00 hrs y 16:00 - 18:00 hrs. 
+                            de Lunes a Viernes
+                        </td>
+                        <td>
+                            <p>UIPJ XALAPA</p>
+                            Circuito Rafael Guízar y Valencia No. 707, Colonia Reserva Territorial C.P. 91096 Xalapa, Veracruz.
+                            <br>
+                            Horario. 9:00 - 15:00 hrs y 16:00 - 18:00 hrs. 
+                            de Lunes a Viernes
+                        </td>
+                        <td>
+                            <p>UIPJ XALAPA</p>
+                            Circuito Rafael Guízar y Valencia No. 707, Colonia Reserva Territorial C.P. 91096 Xalapa, Veracruz.
+                            <br>
+                            Horario. 9:00 - 15:00 hrs y 16:00 - 18:00 hrs. 
+                            de Lunes a Viernes
+                        </td>
+                        
                     </tr>
                     <tr>
                         <td><hr></td>
@@ -166,50 +176,12 @@
                     </tr>
                     <tr>
                         <td colspan="3">
-                                <small class="text-muted">Aquí colocar leyenda en caso de requerirlo: El presente documento no tiene valor fiscal o leyenda de donde localizar el aviso de privacidad.</small>
+                            <small class="text-muted">El presente documento no tiene valor fiscal.</small>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-            {{-- <div class="row">    
-            <div class="col-sm-1"><img src="{{ url('http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png') }}"  class="item" alt="">
-            </div>
-        </div>  
-        
-
-        <div>
-            {{ Form::label('etiqueta', 'Circuito Rafael Guízar y Valencia No. 707, Colonia Reserva Territorial C.P. 91096
-            Xalapa, Veracruz. ', array('class' => 'izquierda')) }}
-        </div>  
-
-
-        <table class = "nombre" >
-                <tr >
-                <div class ="nom">{{ $DatosRegistros[0]->nombre.' '.$DatosRegistros[0]->primerAp.' '.$DatosRegistros[0]->segundoAp }}</div>
-                </tr>
-        </table>
-
-                
-        <table class = "folio" >
-                <tr >
-                <h1>Folio: {{ $DatosRegistros[0]->folio}}</h1>
-                </tr>
-        </table>
-
-
-
-
-
-        <table >
-            <tr class="nota">
-            <div id="nota">
-                {{ Form::label('etiqueta', 'Este Folio deverá ser presentado en la audiencia', array('class' => 'nota')) }}
-            </div>  
-            </tr>
-        </table>  --}}
-
-
     </body>
 </html>
 

@@ -207,7 +207,7 @@ function mostrar(){
 
 function mostrarpersonal(){
     //Datos personales no requeridos de Persona Moral o Empresa
-    $('#nombre1').prop('disabled', true);
+    $('#nombres2').prop('disabled', true);
     $('#rfc1').prop('disabled', true);
     $('#homo1').prop('disabled', true);
     $('#repLegal').prop('disabled', true);
@@ -221,7 +221,9 @@ function mostrarpersonal(){
     $("#numInterno1").prop('disabled', true);   
     $("#calle1").prop('disabled', true);   
     $("#numExterno1").prop('disabled', true); 
-    $("#idRazon1").prop('disabled',true);  
+    $("#idRazon1").prop('disabled',true); 
+    $("#primerAp2").prop('disabled', true);   
+    $("#segundoAp2").prop('disabled', true);   
     
     //Datos personales requeridos de Persona Física
     $('#estadoCivil').prop('disabled', false);
@@ -254,7 +256,9 @@ function mostrarpersonal(){
     
 function mostrarmoral(){
     //Datos personales requeridos de Persona Moral o Empresa
-    $('#nombre1').prop('disabled', false);
+    $('#nombres2').prop('disabled', false);
+    $("#primerAp2").prop('disabled', false);   
+    $("#segundoAp2").prop('disabled', false); 
     $('#rfc1').prop('disabled', false);
     $('#homo1').prop('disabled', false);
     $("#fechaAltaEmpresa").prop('disabled', false); 
