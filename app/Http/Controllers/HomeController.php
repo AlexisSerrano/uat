@@ -25,6 +25,7 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::user()->grupo=='orientador') {
+            
             return redirect(route('indexcarpetas'));
         }
         if (Auth::user()->grupo=='recepcion') {
