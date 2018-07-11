@@ -333,7 +333,14 @@ $("#idDelito").change(function(event){
 			console.log(response);
 			$("#idAgrupacion1").append("<option value=''>Seleccione una desagregación</option>");
 			for(i=0; i<response.length; i++){
-				$("#idAgrupacion1").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+				//alert(response.length);
+				if(response.length==1){
+					//alert();
+					$("#idAgrupacion1").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+					$("#idAgrupacion1").val(response[i].id).trigger('change');
+				}else{
+					$("#idAgrupacion1").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+				}
 			}
 	});
 }
@@ -346,7 +353,12 @@ $("#idAgrupacion1").change(function(event){
 			console.log(response);
 			$("#idAgrupacion2").append("<option value=''>Seleccione una desagregación</option>");
 			for(i=0; i<response.length; i++){
-				$("#idAgrupacion2").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+				if(response.length==1){
+					$("#idAgrupacion2").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+					$("#idAgrupacion2").val(response[i].id).trigger('change');
+				}else{
+					$("#idAgrupacion2").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+				}
 			}
 		});
 	}
