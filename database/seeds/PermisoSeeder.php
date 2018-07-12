@@ -195,7 +195,7 @@ class PermisoSeeder extends Seeder
         Permission::create(['name' => 'lista_oficios']);
         Permission::create(['name' => 'filtro_actas_post']);
         Permission::create(['name' => 'filtro_actas_get']);
-        Permission::create(['name' => 'cambioRol']);
+   
        
          //Creación de roles
         $coordinador = Role::create(['name' => 'coordinador']);
@@ -209,11 +209,11 @@ class PermisoSeeder extends Seeder
         'resumen_denunciado','resumen_acusaciones','resumen_delito','resumen_abogado','resumen_autoridad',
         'resumen_defensa','resumen_vehiculo','historial_carpeta','salir_caso','libro_gobierno_terminadas',
         'libro_gobierno_carpetas','indexcarpetas','ir_carpetas','filtro_carpetas','libro_filtro','lista_oficios',
-        'filtro_actas_post','filtro_actas_get','cambioRol']);
+        'filtro_actas_post','filtro_actas_get']);
  
        
         // Asignación de permisos a Rol de Fiscal Facilitador
-        $facilidador->givePermissionTo('cambioRol');
+        $facilidador->givePermissionTo();
 
 
         // Asignación de permisos a Rol de Fiscal Orientador
@@ -243,13 +243,12 @@ class PermisoSeeder extends Seeder
         'index_periciales','store_agregar','store_psicologo','store_vehiculo','store_lesiones', 'periciales_get',
         'getpsico','getVh_periciales','get_lesion','show_ofFinanzas','getVhFinanzas','oficio_m','oficio_P','oficio_V',
         'oficio_L','oficio_impRobo','oficio_reporteRobo','vehiculo_carpeta','get_submarcas','get_tipovehiculos',
-        'carpeta_vehiculo','getVh','delete_vehiculo','getVehiculoAjax','agregar_vehiculo']);  
-
-    
+        'carpeta_vehiculo','getVh','delete_vehiculo','getVehiculoAjax','agregar_vehiculo','oficios','intentos',
+        'getOficios','getOficio','addOficio','updateOficio']);  
 
         // Asignación de permisos a Rol de Recepción
-        $recepcion->givePermissionTo(['cambioRol','post_showByfolio' ,'get_showByfolio',
-        'en_cola','urgentes','prioridadpreregistrofiltro','showbymunicipio','datos_estado',
+        $recepcion->givePermissionTo(['post_showByfolio' ,'get_showByfolio','en_cola','urgentes',
+        'prioridadpreregistrofiltro','showbymunicipio','datos_estado',
         'estado','predenuncias_index', 'predenuncias_edit','predenuncias_update','ver_pre_aux',
         'create_pre_aux','index_preregistro', 'fiscal','index_atencion_rapida','addatencion']);
 
