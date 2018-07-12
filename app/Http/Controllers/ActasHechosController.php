@@ -545,8 +545,8 @@ class ActasHechosController extends Controller
             $acta->esEmpresa = $request->empresa; 
             $acta->narracion = $request->narracion;
             $acta->varPersona = $request->idPersona;
-            //$fiscaldb = DB::table('users')->where('id',$request->usuario)->first();
-            $acta->idUnidad = 1;
+            $fiscaldb = DB::table('users')->where('id',$request->usuario)->first();
+            $acta->idUnidad = $fiscaldb->idUnidad;
             $acta->save();
 
             // DB::commit();
