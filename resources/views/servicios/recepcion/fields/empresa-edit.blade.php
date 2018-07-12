@@ -12,6 +12,42 @@
 				<div class="help-block with-errors"></div> 
 			</div>
 		</div>
+	<!--Representante legal-->
+	<div class="col-5">
+			<div class="form-group">
+				{!! Form::label('repLegal', 'Nombre representante legal: ', ['class' => 'col-form-label-sm labelCambioRepLegal','valid-tooltip']) !!}
+				{!!Form::label('nombre',$preregistro->representanteLegal ,['class'=> 'col-form-label-sm labelCambioRepLegal'])!!}
+			<div class="input-group inputOculto" id="inputRepLegal">
+					{!! Form::text('repLegal', $preregistro->representanteLegal, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','required']) !!}
+					<input type="button" id="botonCambioRepLegal" value="Cancelar" class="btn btn-sm btn-danger">
+				</div>
+				<div class="help-block with-errors"></div> 
+			</div>
+		</div>
+
+		<div class="col-4">
+				<div class="form-group">
+					{!! Form::label('primerAp', 'Primer apellido: ', ['class' => 'col-form-label-sm labelCambioPrimerAp']) !!}
+					{!!Form::label('nombre',$preregistro->primerAp ,['class'=> 'col-form-label-sm labelCambioPrimerAp'])!!}
+					<div class="input-group inputOculto" id="inputPrimerAp">
+						{!! Form::text('primerAp',$preregistro->primerAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','required']) !!}
+						<input type="button" id="botonCambioPrimerAp" value="Cancelar" class="btn btn-sm btn-danger">
+					</div>
+					<div class="help-block with-errors"></div>
+				</div>
+			</div>
+			
+			<div class="col-4">
+				<div class="form-group">
+					{!! Form::label('segundoAp', 'Segundo apellido: ', ['class' => 'col-form-label-sm labelCambioSegundoAp']) !!}
+					{!!Form::label('nombre',$preregistro->segundoAp ,['class'=> 'col-form-label-sm labelCambioSegundoAp'])!!}
+					<div class="input-group inputOculto" id="inputSegundoAp">
+						{!! Form::text('segundoAp', $preregistro->segundoAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+						<input type="button" id="botonCambioSegundoAp" value="Cancelar" class="btn btn-sm btn-danger">
+					</div>
+				</div>
+			</div>
+
 		<!--RFC-->
 		<div class="col-2">
 			<div class="form-group">
@@ -24,18 +60,7 @@
 				<div class="help-block with-errors"></div>
 			</div>
 		</div>
-		<!--Representante legal-->
-		<div class="col-5">
-			<div class="form-group">
-				{!! Form::label('repLegal', 'Representante legal: ', ['class' => 'col-form-label-sm labelCambioRepLegal','valid-tooltip']) !!}
-				{!!Form::label('nombre',$preregistro->representanteLegal ,['class'=> 'col-form-label-sm labelCambioRepLegal'])!!}
-			<div class="input-group inputOculto" id="inputRepLegal">
-					{!! Form::text('repLegal', $preregistro->representanteLegal, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','required']) !!}
-					<input type="button" id="botonCambioRepLegal" value="Cancelar" class="btn btn-sm btn-danger">
-				</div>
-				<div class="help-block with-errors"></div> 
-			</div>
-		</div>
+		
 		<!--telefono-->
 		<div class="col-2">
 			<div class="form-group">

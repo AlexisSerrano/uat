@@ -17,7 +17,7 @@ function obtenerRFC(){
 
 	console.log('entra ajax');
 
-	nombre = $("#nombres2").val().toUpperCase();
+	nombre = $("#nombres2").val();
 	fecha = $("#fechaAltaEmpresa").val();
 		
 	
