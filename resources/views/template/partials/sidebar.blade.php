@@ -348,13 +348,13 @@
 				@endif
 				
 				@if (is_null(session('carpeta'))&&is_null(session('terminada')))
-					<li class="nav-item has-treeview">
+					{{-- <li class="nav-item has-treeview">
 						<a href="{{url('getOficios')}}" class="nav-link {{ Request::is( 'getOficios') ? 'active' : '' }}">
 							<i class="nav-icon fa fa-font"></i>
 							<p>Crear Oficios Nuevos</p>
 						</a>
 					</li>
-					
+					 --}}
 					{{-- @if (Auth::user()->grupo=='orientador')
 						<li class="nav-item has-treeview">
 							<a href="{{route('cambioRol')}}" class="nav-link">
