@@ -47,7 +47,14 @@
                 @foreach($actas as $acta)
                 <tr>
                     <td>{{ $acta->folio }}</td>
+                    @if ($acta->esEmpresa==0)
                     <td>{{ $acta->nombre." ".$acta->primerAp." ".$acta->segundoAp }}</td>
+                        
+                    @else
+                    <td>{{ $acta->representanteLegal." ".$acta->primerAp." ".$acta->segundoAp }}</td>
+                        
+                    @endif
+                    
                     <td>{{ $acta->tipoActa }}</td>
                     <td>
                         <a href="{{ url('atender-acta/'.$acta->id.'')}}" title="Atender" class="btn btn-primary">
