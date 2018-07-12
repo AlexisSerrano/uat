@@ -35,7 +35,9 @@ $data= getOficiosImpresos();
                                             <span class="badge badge-info right">{{$data['caratulaC']}}</span>
                                         </td>                              
                                         <td style="text-align:center;">
-                                            <a href="{{ route("caratula",session('carpeta'))}}" title="imprimir" class=" hola btn-lg btn-secondary"><i class="fa fa-print"></i></a>
+                                                {{-- Alert::success('Registro creado exitosamente.<br> <h5>Folio: '.$preregistro->folio.'</h5><br><br><a href="'.url('FormatoRegistro/'.$id).'" target="_blank" >Ver formato</a> ','Hecho')->html()->persistent("Aceptar");
+                                                return redirect()->route('preregistro.create'); --}}
+                                            <a href="{{ route("caratula",session('carpeta'))}}" title="imprimir" class=" hola btn-lg btn-secondary" TARGET=”_blank”><i class="fa fa-print"></i></a>
                                         </td> 
                                     </tr>
                                     <tr>
@@ -44,7 +46,7 @@ $data= getOficiosImpresos();
                                                 {{-- <span class="badge badge-info right">{{$data['remicionC']}}</span> --}}
                                         </td>
                                         <td style="text-align:center;">
-                                        <a href="{{ route("formato.denuncia",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg "><i class="fa fa-print"></i></a>
+                                        <a href="{{ route("formato.denuncia",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg " TARGET=”_blank”><i class="fa fa-print"></i></a>
                                         </td> 
                                     </tr>  
                                     <tr>
@@ -53,7 +55,7 @@ $data= getOficiosImpresos();
                                             <span class="badge badge-info right">{{$data['acuerdoInicioc']}}</span>
                                         </td>
                                         <td style="text-align:center;">
-                                            <a href="{{ route("impresion.acuerdoInicio",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg "><i class="fa fa-print"></i></a>
+                                            <a href="{{ route("impresion.acuerdoInicio",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg " TARGET=”_blank”><i class="fa fa-print"></i></a>
                                         </td> 
                                     </tr>
                                       
@@ -88,7 +90,7 @@ $data= getOficiosImpresos();
                                         <span class="badge badge-info right">{{$data['gralTransporte']}}</span>
                                     </td>
                                     <td style="text-align:center;">
-                                        <a href=" {{ route("oficio.transporte",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i></a>
+                                        <a href=" {{ route("oficio.transporte",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg" TARGET=”_blank”><i class="fa fa-print"></i></a>
                                     </td> 
                                 </tr> 
                                 {{-- @endisset --}}
@@ -98,7 +100,7 @@ $data= getOficiosImpresos();
                                         <span class="badge badge-info right">{{$data['finanzasC']}}</span>
                                     </td>
                                     <td style="text-align:center;">
-                                        <a href="{{ route("show.ofFinanzas",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i></a>
+                                        <a href="{{ route("show.ofFinanzas",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg" TARGET=”_blank”><i class="fa fa-print"></i></a>
                                     </td> 
                                 </tr> 
                                 
@@ -108,7 +110,7 @@ $data= getOficiosImpresos();
                                         <span class="badge badge-info right"></span>
                                     </td>
                                     <td style="text-align:center;">
-                                        <a href="{{ route("oficio.impRobo",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg "><i class="fa fa-print"></i></a>
+                                        <a href="{{ route("oficio.impRobo",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg " TARGET=”_blank”><i class="fa fa-print"></i></a>
                                     </td> 
                                 </tr> 
                             </tbody>
@@ -142,7 +144,7 @@ $data= getOficiosImpresos();
                                         <span class="badge badge-info right">{{$data['cavdC']}}</span>
                                     </td> 
                                     <td style="text-align:center;">
-                                        <a href="{{ route("show.oficioCavd",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i></a>
+                                        <a href="{{ route("show.oficioCavd",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg" ><i class="fa fa-print"></i></a>
                                     </td>
                                 </tr> 
                                 <tr>
@@ -151,7 +153,7 @@ $data= getOficiosImpresos();
                                         <span class="badge badge-info right">{{$data['policiaMinC']}}</span>
                                     </td>
                                     <td style="text-align:center;">
-                                        <a href="{{ route("policia.ministerial",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i></a>
+                                        <a href="{{ route("policia.ministerial",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg" TARGET=”_blank”><i class="fa fa-print"></i></a>
                                     </td> 
                                 </tr>  
                             </tbody>
@@ -185,7 +187,7 @@ $data= getOficiosImpresos();
                                         <span class="badge badge-info right">{{$data['actuacionesC']}}</span>
                                     </td>
                                     <td style="text-align:center;">
-                                        <a href="{{ route("not.actuaciones",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i></a>
+                                        <a href="{{ route("not.actuaciones",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg" TARGET=”_blank”><i class="fa fa-print"></i></a>
                                     </td> 
                                 </tr> 
                                 <tr>
@@ -194,7 +196,7 @@ $data= getOficiosImpresos();
                                         <span class="badge badge-info right">{{$data['acuerdoRemisionC']}}</span>
                                     </td>
                                     <td style="text-align:center;">
-                                        <a href="{{ route("fiscal.distrito",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg "><i class="fa fa-print"></i></a>
+                                        <a href="{{ route("fiscal.distrito",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg " ><i class="fa fa-print"></i></a>
                                     </td> 
                                 </tr> 
                                 <tr>
@@ -203,7 +205,7 @@ $data= getOficiosImpresos();
                                         <span class="badge badge-info right">{{$data['temporalC']}}</span>
                                     </td> 
                                     <td style="text-align:center;">
-                                        <a href="{{ route("impresion.temporal",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i></a>
+                                        <a href="{{ route("impresion.temporal",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg" TARGET=”_blank”><i class="fa fa-print"></i></a>
                                     </td>
                                 </tr>
                                 
@@ -213,7 +215,7 @@ $data= getOficiosImpresos();
                                             <span class="badge badge-info right">{{$data['remicionC']}}</span>
                                     </td>
                                     <td style="text-align:center;">
-                                    <a href="{{ route("oficio.remision",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg "><i class="fa fa-print"></i></a>
+                                    <a href="{{ route("oficio.remision",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg " TARGET=”_blank”><i class="fa fa-print"></i></a>
                                     </td> 
                                 </tr>  
                             </tbody>
