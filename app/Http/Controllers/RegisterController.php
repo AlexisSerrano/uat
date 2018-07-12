@@ -83,11 +83,12 @@ class RegisterController extends Controller
     
     public function errorlogin()
     {
+        Auth::logout();
         return view('servicios.errores.errorlogin');
     }
     
     public function cambioRol(Request $request){
-    // dump('entra');
+    //dump('entra');
      //   Alert::error('No tienes permiso de cambiarte a éste rol, comunícate con el centro de información.', 'Error');
 
      /*   if (Auth::user()->grupo=='orientador') {
