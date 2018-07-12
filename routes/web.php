@@ -323,7 +323,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getlesion/{id}','PericialesController@getlesion')->name('get.lesion')->middleware(['permission:get_lesion']);
     /* --------oficio finanzas------------------------*/
     Route::get('oficioFinanzas/{id}','PericialesController@getOficioF')->name('show.ofFinanzas')->middleware(['permission:show_ofFinanzas']);
-    Route::get('OficioF-impresion/{id}','PericialesController@getVhFinanzas')->name('store.agregar')->middleware(['permission:getVhFinanzas']);
+    Route::get('OficioF-impresion/{id}','PericialesController@getVhFinanzas')->name('getVhFinanzas')->middleware(['permission:getVhFinanzas']);
 
     Route::get('getOficioM/{id}','PericialesController@getOficioM')->name('oficio.m')->middleware(['permission:oficio_m']);
     Route::get('getOficioP/{id}','PericialesController@getOficioP')->name('oficio.P')->middleware(['permission:oficio_P']);

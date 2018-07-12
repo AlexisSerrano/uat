@@ -83,10 +83,7 @@ class OficiosSeeder extends Seeder
             
             <p style="text-align:center">&nbsp;</p>
             
-            <p style="text-align:center"><span style="font-size:10px"><strong>AVISO DE PRIVACIDAD SIMPLIFICADO</strong><br />
-            <strong>DEL EXPEDIENTE DE ATENCIÓN TEMPRANA</strong></span></p>
-            
-            <p style="font-size:8px"><strong>La Fiscalía General del Estado de Veracruz</strong>, es la responsable del tratamiento de los datos personales que nos proporcione.&nbsp;<br />
+            <p style="text-align:JUSTIFY"><span style="font-size:10PX"><strong>La Fiscalía General del Estado de Veracruz</strong>, es la responsable del tratamiento de los datos personales que nos proporcione.&nbsp;<br />
             Los datos personales que recabamos a Usted, los utilizaremos para las siguientes finalidades:&nbsp;<br />
             • Identificar al usuario y conocer su problemática a fin de poder orientar en su caso, respecto a la procedencia del asunto expuesto, iniciando de ser procedente la Carpeta de Investigación correspondiente o por el contrario la canalización del ciudadano a la Unidad Integral de Procuración de Justicia, o alguna otra instancia competente;&nbsp;<br />
             • Para iniciar el expediente de atención temprana,&nbsp;<br />
@@ -96,13 +93,7 @@ class OficiosSeeder extends Seeder
             • Generación de informes estadísticos.&nbsp;<br />
             En caso de que no desee que sus datos personales sean tratados para las finalidades adicionales, Usted puede manifestarlo al correo electrónico&nbsp;<a href="http://uat2.oo/actaoficio/direcciondetransparencia@fiscaliaveracruz.gob.mx">direcciondetransparencia@fiscaliaveracruz.gob.mx</a>&nbsp;<br />
             Le informamos que sus datos personales&nbsp;<strong>NO</strong>&nbsp;son compartidos con personas, empresas, organizaciones y autoridades distintas al sujeto obligado, salvo que sean necesarias para atender requerimientos de información de una autoridad competente, debidamente fundados y motivados.&nbsp;<br />
-            Para mayor información acerca del tratamiento y de los derechos que puede hacer valer, usted puede acceder al aviso de privacidad integral a través de la dirección electrónica:&nbsp;<a href="http://fiscaliaveracruz.gob.mx/">http://fiscaliaveracruz.gob.mx</a></p>',  
-            'pie' =>  '<p>Circuito Rafael Guízar y<br />
-            Valencia No. 147,<br />
-            Colonia Reserva Territorial,<br />
-            C.P. 91096<br />
-            Teléfono: 01 (228) 8149428,<br />
-            Xalapa-Enríquez, Veracruz</p>',
+            Para mayor información acerca del tratamiento y de los derechos que puede hacer valer, usted puede acceder al aviso de privacidad integral a través de la dirección electrónica:&nbsp;<a href="http://fiscaliaveracruz.gob.mx/">http://fiscaliaveracruz.gob.mx</a></span></p>',
             'unidad'=>'1'],
 
             ['nombre'  =>  'ACUERDO DE INICIO',
