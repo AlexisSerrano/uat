@@ -13,7 +13,7 @@ $('.btn-modal-delito').bind('click', function(){
 		success : function(json) {
 		
 			 console.log(json);
-			$('#idr').val(json.id); 
+			$('#idr').val(json.delito.id); 
 			$('#idDelito2').val(json.delito.idDelito).trigger('change.select2');
 			
 			var html = '';
@@ -86,14 +86,15 @@ $('.btn-modal-delito').bind('click', function(){
 
 			 $('#idLugarD').val(json.delito.idLugar).trigger('change.select2');
 			 $('#idZonaD').val(json.delito.idZona).trigger('change.select2');
+			 $('#Cviolencia').val(json.delito.conViolencia).trigger('change.select2');
 			//  $('#conViolencia').val(json.delito.conViolencia);
 			//  $("#conViolencia").prop(json.delito.conViolencia);
-			console.log(json.delito.conViolencia);
+			// console.log(json.delito.conViolencia);
   
-			if (json.delito.conViolencia == '0')
-			$("#conViolenciaD1").prop('checked',true);
-			else
-			$("#conViolenciaD2").prop('checked',true);
+			// if (json.delito.conViolencia == '0')
+			// $("#conViolenciaD1").prop('checked',true);
+			// else
+			// $("#conViolenciaD2").prop('checked',true);
 
 		},
 	
@@ -177,42 +178,51 @@ $('.btn-modal-delito').bind('click', function(){
 //para mandar los datos ala base de datos 
 
 $('#guardar').bind('click', function(){
+
 	var datos = {
 		'idr' : $('#idr').val(),
-		// // 'tipo_medida2'  : $('#tipoProvidencia1').select2('val'),
-		// 'fechaInicio1' : $('#fechaInicio1').val(),
-		// 'fechaFinal1' : $('#fechaFinal1').val(),
-		// 'quienEjecuta1'  : $('#quienEjecuta1').select2('val'),
-		// 'victima1'  : $('#victima1').select2('val'),
-		// 'observaciones1' : $('#observaciones1').val(),
+
 
 		'idDelito2' :$('#idDelito2').select2('val'),
-			'idAgrupacion1' :$("#idAgrupacion1").select2('val'),
-			'idAgrupacion2' :$('#idAgrupacion2').select2('val'),
-			'formaComisionD' :$('#formaComisionD').val(),
-
-			'idLugarD'	:$('#idLugarD').select2('val'),
-			'idZonaD'	:$('#idZonaD').select2('val'),
-		
-			'entreCalleD'	:$('#entrecalleD').val(),
-			'ycalleD'	:$('#ycalleD').val(),
-			'calleTraseraD' :$('#calleTraseraD').val(),
-			'puntoReferenciaD' :$('#puntoReferenciaD').val(),
+			'idAgrupacionD1' :$("#idAgrupacionD1").select2('val'),
+			'idAgrupacionD2' :$('#idAgrupacionD2').select2('val'),
+			'formaComisionD2' :$('#formaComisionD2').select2('val'),
+			'Cviolencia' :$('#Cviolencia').select2('val'),
+			
 
 			'idMunicipioD' :$("#idMunicipioD").select2('val'),
 			'idLocalidadD' :$('#idLocalidadD').select2('val'),
 			'idColoniaD' :$('#idColoniaD').select2('val'),
-
+			'cpD' :$('#cpD').select2('val'),
 			'calleD'	:$('#calleD').val(),
 			'numExternoD'	:$('#numExternoD').val(),
 			'numInternoD'	:$('#numInternoD').val(),
+
+			'idLugarD'	:$('#idLugarD').select2('val'),
+			'idZonaD'	:$('#idZonaD').select2('val'),
+		
+
+			'entreCalleD'	:$('#entreCalleD').val(),
+
+			'yCalleD'	:$('#yCalleD').val(),
+			'calleTraseraD' :$('#calleTraseraD').val(),
+			'puntoReferenciaD' :$('#puntoReferenciaD').val(),
+
+			
+		
+			'numExternoD'	:$('#numExternoD').val(),
+			'numInternoD'	:$('#numInternoD').val(),
+
+
+			
 	}
+
 	console.log(datos);
 	$.ajax({
 		headers: {
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		},
-		//url : "agregar-medidas/editar",
+	
 		url: route('editar-Delito'),
 		data : datos,
 		type : 'POST',

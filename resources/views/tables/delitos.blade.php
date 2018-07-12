@@ -61,7 +61,7 @@
             <form class="modalForm" id="mediformu">
 
             <div class="modal-body">
-                    <input class="form-control" type="text" id="idr" name="idr" hidden>
+                    <input class="form-control" type="text" id="idr" name="idr" hidden >
                 <div role="tabpanel">
                     
                          <div role="tabpanel" class="tab-pane active" id="delito"></div>

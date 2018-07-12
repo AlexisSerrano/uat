@@ -224,7 +224,7 @@ class DelitoController extends Controller
            $delito = DB::table('tipif_delito')
            ->join('domicilio', 'domicilio.id', '=', 'tipif_delito.idDomicilio')
            ->where('tipif_delito.id',$id)
-           ->select('tipif_delito.idDelito','tipif_delito.conViolencia as conViolencia' ,'tipif_delito.idAgrupacion1  as idAgrupacion1','tipif_delito.idAgrupacion2 as idAgrupacion2', 'tipif_delito.FormaComision', 'tipif_delito.idDomicilio as idDomicilio','tipif_delito.entreCalle as entreCalle', 'tipif_Delito.yCalle as yCalle', 'tipif_Delito.calleTrasera as calleTrasera', 'tipif_Delito.puntoReferencia as puntoReferencia', 'tipif_delito.idLugar as idLugar', 'tipif_delito.idZona as idZona' )
+           ->select('tipif_delito.id', 'tipif_delito.idDelito','tipif_delito.conViolencia as conViolencia' ,'tipif_delito.idAgrupacion1  as idAgrupacion1','tipif_delito.idAgrupacion2 as idAgrupacion2', 'tipif_delito.FormaComision', 'tipif_delito.idDomicilio as idDomicilio','tipif_delito.entreCalle as entreCalle', 'tipif_Delito.yCalle as yCalle', 'tipif_Delito.calleTrasera as calleTrasera', 'tipif_Delito.puntoReferencia as puntoReferencia', 'tipif_delito.idLugar as idLugar', 'tipif_delito.idZona as idZona' )
            ->first();
 
         
@@ -289,10 +289,13 @@ public function editarDelito(Request $request ){
     $oldDomicilio=$deli->idDomicilio; //antiguo Domiciliio
     $domicilio = Domicilio::find($oldDomicilio);
     $deli->idDelito = $request->idDelito2;
-    $deli->idAgrupacion1 = $request->idAgrupacion1;
-    $deli->idAgrupacion2 = $request->idAgrupacion2;
-    $deli->conViolencia = $request->conViolencia;
+    $deli->idAgrupacion1 = $request->idAgrupacionD1;
+    $deli->idAgrupacion2 = $request->idAgrupacionD2;
+
+    $deli->conViolencia = $request->Cviolencia;
+
     $deli->formaComision = $request->formaComisionD2;
+
     $deli->idLugar = $request->idLugarD;
     $deli->idZona = $request->idZonaD;
     $deli->idDomicilio = $idDomicilioN;
