@@ -16,7 +16,8 @@ class EstatusCasoSeeder extends Seeder
             [ 'id' => 1, 'nombreEstatus' => 'INICIO'],
             [ 'id' => 2, 'nombreEstatus' => 'DETERMINADO'],
             [ 'id' => 3, 'nombreEstatus' => 'TURNADO A UIPJ'],
-            [ 'id' => 4, 'nombreEstatus' => 'ARCHIVO']   
+            [ 'id' => 4, 'nombreEstatus' => 'ARCHIVO'],   
+            [ 'id' => 5, 'nombreEstatus' => 'TURNADO A FISCAL']   
         ]);
     }
 }

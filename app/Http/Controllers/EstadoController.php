@@ -38,6 +38,7 @@ use App\Models\CatTipoDeterminacion;
 use Illuminate\Support\Facades\Session;
 use App\Models\HistorialCarpeta;
 use App\Models\Admin;
+use App\Models\Unidad;
 
 use DB;
 use Alert;
@@ -72,12 +73,18 @@ class EstadoController extends Controller
         
         $informacion = CatEstatusCaso::orderBy('nombreEstatus', 'ASC')
             ->pluck('nombreEstatus','id');
+
+
+        $unidad = Unidad::orderBy('descripcion', 'ASC')
+            ->pluck('descripcion','id');
+        
         
         return view('fields.resumen-carpeta.estatusCarpeta')
         ->with('informacion', $informacion)
         ->with('tipoDeterminacion', $tipoDeterminacion)
         ->with('tipoArchivo', $tipoArchivo)
-        ->with('estatus', $estatus);
+        ->with('estatus', $estatus)
+        ->with('unidad', $unidad);
     }
 
 
@@ -379,7 +386,7 @@ class EstadoController extends Controller
                     
                         // dd($delitos);
     
-                        if (count($delitos)>0) {
+                        if (count($delitos)>0) { 
                             $arraydelitos=array();
                             foreach ($delitos as $delito) {
                                 $condelito = new ConTipifDelito;
@@ -765,6 +772,13 @@ class EstadoController extends Controller
                     $historial->save();
                    
                     break;
+                case '5':
+                    $id = Carpeta::find($idCarpeta); //seleccinar toda la fila del primer id con  el valor de idCarpeta 
+                    //$id->idEstadoCarpeta = $request->EstadoCarpeta;  //cambiar el campo idEstadpCarpeta por el valor $nombre
+                    $id->observacionesEstatus = $request->narracion;  
+                    $id->idFiscal = $request->selectFiscal;  
+                    $id->save(); 
+                break;
                 
                 default:
                     break;
