@@ -10417,6 +10417,13 @@ input.form-control {
 
 .v-select .selected-tag {
   margin: 1.5px 1px 0px 3px !important;
+  color: #495057 !important;
+}
+
+.v-select li > a {
+  color: #495057 !important;
+  font-size: .875rem !important;
+  padding: 3px 9px !important;
 }
 
 input,
@@ -10439,11 +10446,19 @@ textarea {
 }
 
 th {
-  text-align: center;
+  text-align: center !important;
 }
 
 .table td {
-  text-align: center;
-  vertical-align: middle;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.table {
+  font-size: 14px !important;
+}
+
+.table thead th {
+  vertical-align: middle !important;
 }
 
