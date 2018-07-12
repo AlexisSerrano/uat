@@ -117,13 +117,13 @@
         $('#archivo').hide();
         $('#unidad').hide();
         $('#fiscal').hide();
-        $('#observacion').hide();
+        $('#observacion').show();
         
         //campos del formulario
         $('#selectDetermina').prop('disabled', true);
         $('#selectArchivo').prop('disabled', true);
         $('#selectUnidad').prop('disabled', true);
-        $('#narracion').prop('disabled', true);
+    //    $('#narracion').prop('disabled', true);
         
         $("#EstadoCarpeta").bind("change",function(){
             valor = $(this).val();
@@ -132,7 +132,6 @@
                 case "1":
                     $('#determinacion').hide();
                     $('#archivo').hide();
-                    $('#observacion').show();
                     $('#selectDetermina').prop('disabled', true);
                     $('#selectArchivo').prop('disabled', true);
                     $('#narracion').prop('disabled', false);
@@ -145,7 +144,6 @@
                 case "2":
                     $('#archivo').hide();
                     $('#determinacion').show();
-                    $('#observacion').show();
                     $('#selectArchivo').prop('disabled', true);
                     $('#selectDetermina').prop('disabled', false);
                     $('#narracion').prop('disabled', false);
@@ -158,7 +156,6 @@
                 case "3":
                     $('#determinacion').hide();
                     $('#archivo').hide();
-                    $('#observacion').show();
                     $('#selectDetermina').prop('disabled', true);
                     $('#selectArchivo').prop('disabled', true);
                     $('#narracion').prop('disabled', false);
@@ -170,7 +167,6 @@
 
                 case "4":
                     $('#archivo').show();
-                    $("#observacion").show();
                     $("#determinacion").hide();
                     $('#selectDetermina').prop('disabled', true);
                     $('#selectArchivo').prop('disabled', false);
@@ -183,7 +179,6 @@
             
                 case "5":
                     $('#archivo').hide();
-                    $("#observacion").show();
                     $("#unidad").show();
                     $("#fiscal").show();
                     $("#determinacion").hide();
@@ -195,7 +190,6 @@
                 default:
                     $('#determinacion').hide();
                     $('#archivo').hide();
-                    $('#observacion').hide();
                     break;
             }
         }); 

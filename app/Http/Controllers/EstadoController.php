@@ -172,8 +172,14 @@ class EstadoController extends Controller
                     $carpeta=Carpeta::where('id',$idCarpeta)->first();
     
                     //datos del delitos
-                    $delitos=TipifDelito::where('idCarpeta',$idCarpeta)->get();
-    
+                  //  $delitos=TipifDelito::where('idCarpeta',$idCarpeta)->get();
+                    $delitos = DB::table('tipif_delito')
+                        ->join('domicilio','domicilio.id','=','tipif_delito.idDomicilio')
+                        ->select('domicilio.*', 'tipif_delito.*')
+                        ->where('tipif_delito.idCarpeta','=',$idCarpeta)
+                        ->get();
+                                     
+                //    dd($delitos);
                     //datos de autoridades
     
                     $autoridades=DB::table('extra_autoridad')
@@ -389,6 +395,18 @@ class EstadoController extends Controller
                         if (count($delitos)>0) { 
                             $arraydelitos=array();
                             foreach ($delitos as $delito) {
+
+                                $conDomicilio = new ConDomicilio;
+                                $conDomicilio->id = $delito->idDomicilio;
+                                $conDomicilio->idMunicipio = $delito->idMunicipio;
+                                $conDomicilio->idLocalidad = $delito->idLocalidad;
+                                $conDomicilio->idColonia = $delito->idColonia;
+                                $conDomicilio->calle = $delito->calle;
+                                $conDomicilio->numExterno = $delito->numExterno;
+                                $conDomicilio->numInterno = $delito->numInterno;
+                                $conDomicilio->save();
+    
+
                                 $condelito = new ConTipifDelito;
                                 $condelito->idCarpeta = $idCarpetaTurnada;
                                 $condelito->idDelito = $delito->idDelito;
@@ -404,7 +422,7 @@ class EstadoController extends Controller
                                 $condelito->hora = $delito->hora;
                                 $condelito->idZona = $delito->idZona;
                                 $condelito->idLugar = $delito->idLugar;
-                                $condelito->idDomicilio = $delito->idDomicilio;
+                                $condelito->idDomicilio = $conDomicilio->id;
                                 $condelito->entreCalle = $delito->entreCalle;
                                 $condelito->yCalle = $delito->yCalle;
                                 $condelito->calleTrasera = $delito->calleTrasera;
