@@ -416,6 +416,7 @@ class ActasHechosController extends Controller
         else{
             $numExterno = $catalogos->numExterno.' interior '.$catalogos->numInterno;
         }
+        $unidad=$catalogos->nombreMunicipio;
         $fechaactual = new Date($catalogos->fecha);
         $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
         $date = new Date($catalogos->fecha_nac);
@@ -423,28 +424,28 @@ class ActasHechosController extends Controller
         $fechasep = explode("-", $catalogos->fecha_nac);
         $edad = Date::createFromDate($fechasep[0],$fechasep[1],$fechasep[2])->age;
         $data = array('estado' => $catalogos->nombreEstado, 
-        'unidadMunicipio' => $catalogos->nombreMunicipio, 
-        'municipio' => $catalogos->nombreMunicipio, 
-        'localidad' => $catalogos->nombreLocalidad,
-        'colonia' => $catalogos->nombreColonia,
-        'calle' => $catalogos->calle,
+        'unidadMunicipio' => strtr(($unidad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
+        'municipio' => strtr(($catalogos->nombreMunicipio),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),   
+        'localidad' =>strtr(($catalogos->nombreLocalidad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
+        'colonia' => strtr(($catalogos->nombreColonia),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'calle' =>strtr(($catalogos->calle),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
         'cp' => $catalogos->cp,
         'numExterno' => $numExterno,
         'folio' => $catalogos->folio,
         'hora' => $date->parse($catalogos->hora)->format('H:i'),
         'fecha' => strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'fiscal' => strtr(strtoupper($catalogos->fiscal),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-        'puesto' => strtoupper(Auth::user()->puesto),
-        'nombre' => $catalogos->nombrePersona.' '.$catalogos->primer_ap.' '.$catalogos->segundo_ap,
-        'identificacion' => $catalogos->identificacion,
+        'puesto' => strtr(strtoupper(Auth::user()->puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'nombre' =>strtr(($catalogos->nombrePersona.' '.$catalogos->primer_ap.' '.$catalogos->segundo_ap),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'identificacion' => strtr(($catalogos->identificacion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'numIdentificacion' => $catalogos->num_identificacion,
         'fechaNacimiento' => $fechanachum,
-        'ocupacion' => $catalogos->nombreOcupacion,
-        'estadoCivil' => $catalogos->nombreEstadoCivil,
-        'escolaridad' => $catalogos->nombreEscolaridad,
+        'ocupacion' =>strtr(($catalogos->nombreOcupacion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
+        'estadoCivil' =>strtr(($catalogos->nombreEstadoCivil),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),  
+        'escolaridad' => strtr(($catalogos->nombreEscolaridad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),  
         'telefono' => $catalogos->telefono,
-        'narracion' => $catalogos->narracion,
-        'expedido' => $catalogos->expedido,
+        'narracion' => strtr(($catalogos->narracion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'expedido' => strtr(($catalogos->expedido),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'edad' => $edad,
         'img' => asset('img/logo.png'),
         'id' => $id);
