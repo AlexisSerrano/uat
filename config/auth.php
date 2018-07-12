@@ -66,15 +66,15 @@ return [
 
      'providers' => [
         //comentar en caso de querer checar localmente sin sevidor de active directory 
-        'users' => [
-            'driver' => 'adldap',
-            'model' => App\User::class,
-        ],
-        //descomentar para poder correr el proyecto con el usuario admin sin conexion al active
         // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
+        //     'driver' => 'adldap',
+        //     'model' => App\User::class,
         // ],
+        //descomentar para poder correr el proyecto con el usuario admin sin conexion al active
+        'users' => [
+            'driver' => 'database',
+            'table' => 'users',
+        ],
 
         // NOTA: NUNCA SUBAR NINGUN CAMBIO DE ESTE ARCHIVO O ALGUNA CONFIGURACION EN LA QUE LE MUEVAN
      ],

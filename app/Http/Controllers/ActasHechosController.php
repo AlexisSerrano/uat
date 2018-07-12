@@ -381,19 +381,51 @@ class ActasHechosController extends Controller
      
     
     public function actaoficio($id){
+        // $actas = ActasHechos::find($id);
+        // $variable = DB::connection('componentes')->table('variables_persona_fisica')
+        // ->join('persona_fisica','variables_persona_fisica.idPersona','=','persona_fisica.id')
+        // ->join('cat_ocupacion','variables_persona_fisica.idOcupacion','=','cat_ocupacion.id')
+        // ->join('cat_estado_civil','variables_persona_fisica.idEstadoCivil','=','cat_estado_civil.id')
+        // ->join('cat_escolaridad','variables_persona_fisica.idEscolaridad','=','cat_escolaridad.id')
+        // ->join('domicilio','variables_persona_fisica.idDomicilio','=','domicilio.id')
+        // ->join('cat_municipio','domicilio.idMunicipio','=','cat_municipio.id')
+        // ->join('cat_localidad','domicilio.idLocalidad','=','cat_localidad.id')
+        // ->join('cat_colonia','domicilio.idColonia','=','cat_colonia.id')
+        // ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')
+        // ->join('cat_identificacion','variables_persona_fisica.docIdentificacion','=','cat_identificacion.id')
+        // ->where('variables_persona_fisica.id',$actas->varPersona)
+        // ->select('cat_ocupacion.nombre as nombreOcupacion',
+        // 'cat_estado_civil.nombre as nombreEstadoCivil',
+        // 'cat_escolaridad.nombre as nombreEscolaridad',
+        // 'cat_municipio.nombre as nombreMunicipio',
+        // 'cat_localidad.nombre as nombreLocalidad',
+        // 'cat_colonia.nombre as nombreColonia',
+        // 'cat_estado.nombre as nombreEstado',
+        // 'domicilio.numInterno as numInterno', 'domicilio.numExterno as numExterno', 'domicilio.calle as calle',
+        // 'persona_fisica.fechaNacimiento as fecha_nac', 'variables_persona_fisica.telefono as telefono', 
+        // 'persona_fisica.nombres as nombrePersona',
+        // 'persona_fisica.primerAp as primer_ap', 'persona_fisica.segundoAp as segundo_ap',
+        // 'cat_identificacion.documento as identificacion', 'variables_persona_fisica.numDocIdentificacion as num_identificacion',
+        // 'cat_colonia.codigoPostal as cp')
+        // ->first();
+        //dd($variable);
         return view("documentos/actashechos")->with('id',$id);
     }
 
     public function getoficioah($id){
-        $catalogos = DB::table('actas_hechos')->where('actas_hechos.id', $id)
-        ->join('cat_ocupacion','actas_hechos.idOcupacion','=','cat_ocupacion.id')
-        ->join('cat_estado_civil','actas_hechos.idEstadoCivil','=','cat_estado_civil.id')
-        ->join('cat_escolaridad','actas_hechos.idEscolaridad','=','cat_escolaridad.id')
-        ->join('domicilio','actas_hechos.idDomicilio','=','domicilio.id')
+        $acta = ActasHechos::find($id);
+        $variable = DB::connection('componentes')->table('variables_persona_fisica')
+        ->join('persona_fisica','variables_persona_fisica.idPersona','=','persona_fisica.id')
+        ->join('cat_ocupacion','variables_persona_fisica.idOcupacion','=','cat_ocupacion.id')
+        ->join('cat_estado_civil','variables_persona_fisica.idEstadoCivil','=','cat_estado_civil.id')
+        ->join('cat_escolaridad','variables_persona_fisica.idEscolaridad','=','cat_escolaridad.id')
+        ->join('domicilio','variables_persona_fisica.idDomicilio','=','domicilio.id')
         ->join('cat_municipio','domicilio.idMunicipio','=','cat_municipio.id')
         ->join('cat_localidad','domicilio.idLocalidad','=','cat_localidad.id')
         ->join('cat_colonia','domicilio.idColonia','=','cat_colonia.id')
         ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')
+        ->join('cat_identificacion','variables_persona_fisica.docIdentificacion','=','cat_identificacion.id')
+        ->where('variables_persona_fisica.id',$acta->varPersona)
         ->select('cat_ocupacion.nombre as nombreOcupacion',
         'cat_estado_civil.nombre as nombreEstadoCivil',
         'cat_escolaridad.nombre as nombreEscolaridad',
@@ -402,49 +434,48 @@ class ActasHechosController extends Controller
         'cat_colonia.nombre as nombreColonia',
         'cat_estado.nombre as nombreEstado',
         'domicilio.numInterno as numInterno', 'domicilio.numExterno as numExterno', 'domicilio.calle as calle',
-        'actas_hechos.fecha_nac as fecha_nac', 'actas_hechos.telefono as telefono', 'actas_hechos.narracion as narracion',
-        'actas_hechos.expedido as expedido', 'actas_hechos.fiscal as fiscal', 'actas_hechos.nombre as nombrePersona',
-        'actas_hechos.primer_ap as primer_ap', 'actas_hechos.segundo_ap as segundo_ap',
-        'actas_hechos.identificacion as identificacion', 'actas_hechos.num_identificacion as num_identificacion',
-        'cat_colonia.codigoPostal as cp', 'actas_hechos.folio as folio', 'actas_hechos.hora as hora',
-        'actas_hechos.fecha as fecha')
+        'persona_fisica.fechaNacimiento as fecha_nac', 'variables_persona_fisica.telefono as telefono', 
+        'persona_fisica.nombres as nombrePersona',
+        'persona_fisica.primerAp as primer_ap', 'persona_fisica.segundoAp as segundo_ap',
+        'cat_identificacion.documento as identificacion', 'variables_persona_fisica.numDocIdentificacion as num_identificacion',
+        'cat_colonia.codigoPostal as cp')
         ->first();
-        // dd($catalogos);
-        if($catalogos->numInterno==''){
-            $numExterno = $catalogos->numExterno;
+
+        if($variable->numInterno==''){
+            $numExterno = $variable->numExterno;
         }
         else{
-            $numExterno = $catalogos->numExterno.' interior '.$catalogos->numInterno;
+            $numExterno = $variable->numExterno.' interior '.$variable->numInterno;
         }
-        $fechaactual = new Date($catalogos->fecha);
+        $fechaactual = new Date($acta->fecha);
         $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
-        $date = new Date($catalogos->fecha_nac);
+        $date = new Date($variable->fecha_nac);
         $fechanachum = $date->format('j').' de '.$date->format('F').' del año '.$date->format('Y');
-        $fechasep = explode("-", $catalogos->fecha_nac);
+        $fechasep = explode("-", $variable->fecha_nac);
         $edad = Date::createFromDate($fechasep[0],$fechasep[1],$fechasep[2])->age;
-        $data = array('estado' => $catalogos->nombreEstado, 
-        'unidadMunicipio' => $catalogos->nombreMunicipio, 
-        'municipio' => $catalogos->nombreMunicipio, 
-        'localidad' => $catalogos->nombreLocalidad,
-        'colonia' => $catalogos->nombreColonia,
-        'calle' => $catalogos->calle,
-        'cp' => $catalogos->cp,
+        $data = array('estado' => $variable->nombreEstado, 
+        'unidadMunicipio' => $variable->nombreMunicipio, 
+        'municipio' => $variable->nombreMunicipio, 
+        'localidad' => $variable->nombreLocalidad,
+        'colonia' => $variable->nombreColonia,
+        'calle' => $variable->calle,
+        'cp' => $variable->cp,
         'numExterno' => $numExterno,
-        'folio' => $catalogos->folio,
-        'hora' => $date->parse($catalogos->hora)->format('H:i'),
+        'folio' => $acta->id,
+        'hora' => $date->parse($acta->hora)->format('H:i'),
         'fecha' => strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-        'fiscal' => strtr(strtoupper($catalogos->fiscal),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'fiscal' => strtr(strtoupper('FISCAL CAMBIAR'),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'puesto' => strtoupper(Auth::user()->puesto),
-        'nombre' => $catalogos->nombrePersona.' '.$catalogos->primer_ap.' '.$catalogos->segundo_ap,
-        'identificacion' => $catalogos->identificacion,
-        'numIdentificacion' => $catalogos->num_identificacion,
+        'nombre' => $variable->nombrePersona.' '.$variable->primer_ap.' '.$variable->segundo_ap,
+        'identificacion' => $variable->identificacion,
+        'numIdentificacion' => $variable->num_identificacion,
         'fechaNacimiento' => $fechanachum,
-        'ocupacion' => $catalogos->nombreOcupacion,
-        'estadoCivil' => $catalogos->nombreEstadoCivil,
-        'escolaridad' => $catalogos->nombreEscolaridad,
-        'telefono' => $catalogos->telefono,
-        'narracion' => $catalogos->narracion,
-        'expedido' => $catalogos->expedido,
+        'ocupacion' => $variable->nombreOcupacion,
+        'estadoCivil' => $variable->nombreEstadoCivil,
+        'escolaridad' => $variable->nombreEscolaridad,
+        'telefono' => $variable->telefono,
+        'narracion' => $acta->narracion,
+        'expedido' => $acta->expedido,
         'edad' => $edad,
         'img' => asset('img/logo.png'),
         'id' => $id);
