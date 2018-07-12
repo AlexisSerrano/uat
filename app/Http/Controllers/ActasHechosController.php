@@ -314,7 +314,7 @@ class ActasHechosController extends Controller
         $acta->nombre = $request->nombre2;
         $acta->primer_ap = $request->primerAp2;
         $acta->segundo_ap = $request->segundoAp2;
-        $acta->identificacion = $request->docIdentificacion2;
+        $acta->identificacion = $request->tipoActa;
         $acta->num_identificacion = $request->numDocIdentificacion2;
         $acta->fecha_nac = $request->fechaAltaEmpresa;
         $acta->idDomicilio = $direccion->id;
@@ -514,5 +514,68 @@ class ActasHechosController extends Controller
         'img' => asset('img/logo.png'),
         'id' => $id);
         return response()->json($data);
+    }
+
+    /*COMPONENTE */
+    public function addExtrasActas(Request $request){
+        try{
+            DB::beginTransaction();
+            if($request->idExtrasActas!=""){
+                $acta = ActasHechos::find($request->idExtrasActas);
+            }else{
+                $acta = new ActasHechos();
+                $acta->varPersona = $request->idPersona;
+            }     
+            $acta->hora = Date::now()->format('H:i:s');
+            $acta->fecha = Date::now()->format('Y-m-d');
+            $acta->fiscal = $request->usuario;
+            $acta->expedido = ActasHechosController::getExpedido($request->tipoActa); 
+            $acta->tipoActa = $request->tipoActa;
+            $acta->esEmpresa = $request->empresa; 
+            $acta->narracion = $request->narracion;
+            $acta->varPersona = $request->idPersona;         
+            $acta->save();
+
+            DB::commit();
+            return $acta->id;
+        }
+        catch(Exception $e){
+            DB::rollback();
+            return false;
+        }
+    }
+
+    public function getExpedido($tipo){
+        switch ($tipo) {
+            case 'CREDENCIAL PARA VOTAR': $acta ="INSTITUTO NACIONAL ELECTORAL";
+            break;
+            case 'PASAPORTE':$acta ="SECRETARÍA DE RELACIONES EXTERIORES";
+            break;
+            case 'CEDULA PROFESIONAL':$acta ="DIRECCIÓN GENERAL DE PROFESIONES";
+            break;
+            case 'CARTILLA DEL SERVICIO MILITAR NACIONAL':$acta ="SECRETARÍA DE LA DEFENSA NACIONAL";
+            break;
+            case 'TARJETA UNICA DE IDENTIDAD MILITAR':$acta ="DISPOSICIONES DE CARÁCTER GENERAL";
+            break;
+            case 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES':$acta ="INAPAM";
+            break;
+            case 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL':$acta ="IMSS";
+            break;
+            case 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR':$acta ="DIRECCIÓN GENERAL DE ACREDITACIÓN, INCORPORACIÓN Y REVALIDACIÓN";
+            break;
+            case 'LICENCIA DE CONDUCIR':$acta ="SECRETARÍA DE COMUNICACIONES Y TRANSPORTES";
+            break;
+            case 'CERTIFICADO DE MATRICULA CONSULAR':$acta ="CERTIFICADO DE MATRICULA CONSULAR";
+            break;
+            case 'ACTA DE NACIMIENTO':$acta ="REGISTRO NACIONAL DE POBLACIÓN";
+            break;
+            case 'CURP':$acta ="REGISTRO NACIONAL DE POBLACIÓN";
+            break;
+            case 'CONSTANCIA DE RESIDENCIA':$acta ="SERVICIO DE ADMINISTRACIÓN TRIBUTARIA";
+            break;
+            default:$acta = $tipo;
+            break;
+        }
+        return $acta;
     }
 }

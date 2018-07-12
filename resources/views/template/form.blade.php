@@ -4,6 +4,7 @@
 {{-- estilos --}}
 <link rel="stylesheet" href="{{asset ('css/app.css')}}">
 <link rel="stylesheet" href="{{asset ('css/cssfonts.css')}}">
+<link rel="stylesheet" href="{{asset ('css/ac.css')}}">
 <link rel="stylesheet" href="{{asset ('css/estilos.css')}}">
 {{-- fileinput --}}
 <link rel="stylesheet" href="{{ asset('plugins/fileinput/css/fileinput.min.css') }}">
