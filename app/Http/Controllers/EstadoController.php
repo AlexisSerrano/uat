@@ -185,41 +185,12 @@ class EstadoController extends Controller
                     $autoridades=DB::table('extra_autoridad')
                     ->join('variables_persona','variables_persona.id','=','extra_autoridad.idVariablesPersona')
                     ->join('persona','variables_persona.idPersona','=','persona.id')
+                    ->join('domicilio as domicilio','domicilio.id','=','variables_persona.idDomicilio')
+                    ->join('domicilio as domicilioTrabajo','domicilioTrabajo.id','=','variables_persona.idDomicilioTrabajo')
+                    ->select('domicilio.*','domicilioTrabajo.*','persona.*','variables_persona.*')
                     ->where('variables_persona.idCarpeta',$idCarpeta)
-                    ->select(   
-                                'persona.nombres as pernombres',
-                                'persona.primerAp as perprimerAp',
-                                'persona.segundoAp as persegundoAp',
-                                'persona.fechaNacimiento as perfechaNacimiento',
-                                'persona.rfc as perrfc',
-                                'persona.curp as percurp',
-                                'persona.sexo as persexo',
-                                'persona.idNacionalidad as peridNacionalidad',
-                                'persona.idEtnia as peridEtnia',
-                                'persona.idLengua as peridLengua',
-                                'persona.idMunicipioOrigen as peridMunicipioOrigen',
-                                'persona.esEmpresa as peresEmpresa',
-                                'variables_persona.idPersona as variaidPersona',
-                                'variables_persona.edad as variaedad',
-                                'variables_persona.telefono as variatelefono',
-                                // 'variables_persona.motivoEstancia as variamotivoEstancia',
-                                'variables_persona.idOcupacion as variaidOcupacion',
-                                'variables_persona.idEstadoCivil as variaidEstadoCivil',
-                                'variables_persona.idEscolaridad as variaidEscolaridad',
-                                'variables_persona.idReligion as variaidReligion',
-                                'variables_persona.idDomicilio as variaidDomicilio',
-                                'variables_persona.docIdentificacion as variadocIdentificacion',
-                                'variables_persona.numDocIdentificacion as varianumDocIdentificacion',
-                                'variables_persona.lugarTrabajo as varialugarTrabajo',
-                                'variables_persona.idDomicilioTrabajo as variaidDomicilioTrabajo',
-                                'variables_persona.telefonoTrabajo as variatelefonoTrabajo',
-                                'variables_persona.representanteLegal as variarepresentanteLegal',
-                                'extra_autoridad.antiguedad as autoantiguedad',
-                                'extra_autoridad.rango as autorango',
-                                'extra_autoridad.horarioLaboral as autohorarioLaboral',
-                                'extra_autoridad.narracion as autonarracion')
                     ->get();
-                    //dd($autoridades);
+                    dd($autoridades);
     
                     //abogados
     
