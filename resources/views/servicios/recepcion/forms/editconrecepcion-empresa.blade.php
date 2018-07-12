@@ -94,6 +94,27 @@
             $('.labelCambioNombre').show();
             $('#inputNombre').hide();
         });
+
+          $(".labelCambioPrimerAp").click(function(){
+            $('.llabelCambioPrimerAp').hide();
+            $('#inputPrimerAp').show().css('display', 'flex');
+        });
+        //ocultar el campo de nombre y mostrar el label anterior
+        $("#botonCambioPrimerAp").click(function(){
+            $('.labelCambioPrimerAp').show();
+            $('#inputPrimerAp').hide();
+        });
+
+         $(".labelCambioSegundoAp").click(function(){
+            $('.llabelCambioSegundoAp').hide();
+            $('#inputSegundoAp').show().css('display', 'flex');
+        });
+        //ocultar el campo de nombre y mostrar el label anterior
+        $("#botonCambioSegundoAp").click(function(){
+            $('.labelCambioSegundoAp').show();
+            $('#inputSegundoAp').hide();
+        });
+        
         
         //editar el campo al dar clic en el label de rfc
         $(".labelCambioRfc").click(function(){
