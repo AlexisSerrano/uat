@@ -217,7 +217,7 @@ class PermisoSeeder extends Seeder
 
 
         // Asignación de permisos a Rol de Fiscal Orientador
-        $orientador->givePermissionTo(['tabla_oficios','fiscal_distrito','oficio_funcion',
+        $orientador->givePermissionTo(['indexcarpetas','tabla_oficios','fiscal_distrito','oficio_funcion',
         'get_fiscal','store_oficioDistrito','dato_fiscal_impresiones','policia_ministerial','datos_ministerial',
         'oficio_transporte' ,'storeoficio_transporte' ,'oficio_cavd','show_oficioCavd','store_oficioCavd','datos_oficioCavd',
         'not_actuaciones','impresion_actuaciones' ,'impresion_archivoTemporal','impresion_temporal',
