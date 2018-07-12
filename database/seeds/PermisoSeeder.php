@@ -28,7 +28,8 @@ class PermisoSeeder extends Seeder
         Permission::create(['name' => 'storeoficio_transporte']);
         Permission::create(['name' => 'oficio_cavd']);
         Permission::create(['name' => 'show_oficioCavd']);
-        Permission::create(['name' => 'datos.oficioCavd']);
+        Permission::create(['name' => 'store_oficioCavd']);
+        Permission::create(['name' => 'datos_oficioCavd']);
         Permission::create(['name' => 'not_actuaciones']);
         Permission::create(['name' => 'impresion_actuaciones']);
         Permission::create(['name' => 'impresion_archivoTemporal']);
@@ -42,18 +43,14 @@ class PermisoSeeder extends Seeder
         Permission::create(['name' => 'impresion_remision']);
         Permission::create(['name' => 'formato_denuncia']);
         Permission::create(['name' => 'get_formatoDenuncia']);
-        Permission::create(['name' => 'getToken']);
-        Permission::create(['name' => 'oficioah']);
-        Permission::create(['name' => 'saveOficio']);
-        Permission::create(['name' => 'getoficioah']);
-      /*  Permission::create(['name' => 'oficios']);
+        Permission::create(['name' => 'oficios']);
         Permission::create(['name' => 'getToken']);
         Permission::create(['name' => 'saveOficio']);
         Permission::create(['name' => 'intentos']);
         Permission::create(['name' => 'getOficios']);
         Permission::create(['name' => 'getOficio']);
         Permission::create(['name' => 'addOficio']);
-        Permission::create(['name' => 'updateOficio']);*/
+        Permission::create(['name' => 'updateOficio']);
         Permission::create(['name' => 'acuerdo_inicio']);
         Permission::create(['name' => 'acuerdo_documento']);
         Permission::create(['name' => 'disponibilidad_fiscal']);
@@ -101,8 +98,8 @@ class PermisoSeeder extends Seeder
         Permission::create(['name' => 'store_denunciado']);
         Permission::create(['name' => 'delete_denunciado']);
         Permission::create(['name' => 'notificaciones']);
-        Permission::create(['name' => 'registros.orientador']);
-        Permission::create(['name' => 'lista.filtro.orientador']);
+        Permission::create(['name' => 'registros_orientador']);
+        Permission::create(['name' => 'lista_filtro_orientador']);
         Permission::create(['name' => 'edit_registros_orientador']);
         Permission::create(['name' => 'buscar_folio_orientador_post']);
         Permission::create(['name' => 'buscar_folio_orientador_get']);
@@ -116,7 +113,7 @@ class PermisoSeeder extends Seeder
         Permission::create(['name' => 'addMedidas']);
         Permission::create(['name' => 'getMedidas']);
         Permission::create(['name' => 'delete_medida']);
-        Permission::create(['name' => 'agregar-medidas']);
+        Permission::create(['name' => 'agregar_medidas']);
         Permission::create(['name' => 'getMedidasAjax']);
         Permission::create(['name' => 'medida_oficio_datos']);
         Permission::create(['name' => 'medidaoficio']);
@@ -132,7 +129,7 @@ class PermisoSeeder extends Seeder
         Permission::create(['name' => 'delete_acusacion']);
         Permission::create(['name' => 'new_abogado']);
         Permission::create(['name' => 'store_abogado']);
-        Permission::create(['name' => 'delte_abogado']);
+        Permission::create(['name' => 'delete_abogado']);
         Permission::create(['name' => 'new_defensa']);
         Permission::create(['name' => 'store_defensa']);  
         Permission::create(['name' => 'getInvolucrados']);
@@ -222,22 +219,22 @@ class PermisoSeeder extends Seeder
         // Asignación de permisos a Rol de Fiscal Orientador
         $orientador->givePermissionTo(['tabla_oficios','fiscal_distrito','oficio_funcion',
         'get_fiscal','store_oficioDistrito','dato_fiscal_impresiones','policia_ministerial','datos_ministerial',
-        'oficio_transporte' ,'storeoficio_transporte' ,'oficio_cavd','show_oficioCavd','datos.oficioCavd',
+        'oficio_transporte' ,'storeoficio_transporte' ,'oficio_cavd','show_oficioCavd','store_oficioCavd','datos_oficioCavd',
         'not_actuaciones','impresion_actuaciones' ,'impresion_archivoTemporal','impresion_temporal',
         'primera_invitacion','show_invitacion' ,'datos_invitacion','oficio_inicio' ,'impresion_acuerdoInicio',
-        'oficio_remision','impresion_remision','formato_denuncia','get_formatoDenuncia','getToken','oficioah',
-        'saveOficio','getoficioah','acuerdo_inicio','acuerdo_documento','carpeta_detalle','resumen_denunciante',
+        'oficio_remision','impresion_remision','formato_denuncia','get_formatoDenuncia','getToken',
+        'saveOficio','acuerdo_inicio','acuerdo_documento','carpeta_detalle','resumen_denunciante',
         'resumen_denunciado','resumen_acusaciones','resumen_delito','resumen_abogado','resumen_autoridad',
         'resumen_defensa','resumen_vehiculo','historial_carpeta','inicio_caso',
         'cancelar_caso','terminar_Caso','salir_caso','new_denunciante','store_denunciante','delete_denunciante',
         'atender','tomar_turno','turno_denunciante','devolver','observaciones','store_descripcionHechos',
         'narracion','new_narracion','getnarracion','mostrar_doc','new_denunciado','store_denunciado',
-        'delete_denunciado', 'notificaciones', 'registros.orientador','lista.filtro.orientador',
+        'delete_denunciado', 'notificaciones', 'registros_orientador','lista_filtro_orientador',
         'edit_registros_orientador', 'buscar_folio_orientador_post','buscar_folio_orientador_get','buscarmunicipio',
         'put_registro','index_atencion_rapida', 'addatencion','medidas','addMedidas','getMedidas','delete_medida',
-        'agregar-medidas','getMedidasAjax','medida_oficio_datos','medidaoficio','new_delito','store_delito',
+        'agregar_medidas','getMedidasAjax','medida_oficio_datos','medidaoficio','new_delito','store_delito',
         'delete_delito', 'get_agregacion1','get_agregacion2','getDelitoAjax','editar_delito','new_acusacion',
-        'store_acusacion','delete_acusacion','new_abogado','store_abogado','delte_abogado','new_defensa',
+        'store_acusacion','delete_acusacion','new_abogado','store_abogado','delete_abogado','new_defensa',
         'store_defensa','getInvolucrados','new_autoridad','store_autoridad','delete_autoridad','turnar_carpeta',
         'estado_edit','new_actahechos','addactas','addactas2','actaspendientes','show_actas','actaspreregistro',
         'filtroactas','filtroacta','descActas','actaoficio','get_oficioah','actaoficioM','get_oficioahm',

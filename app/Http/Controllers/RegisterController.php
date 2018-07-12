@@ -67,6 +67,19 @@ class RegisterController extends Controller
         }
     }
 
+    public function getFiscales(Request $request, $id){
+        // dd($request);
+         if($request->ajax()){
+            $fiscales = User::select('id', 'nombreC')
+                ->where('idUnidad', '=', $id)
+                ->where('id','!=',Auth::user()->id)
+                ->where('gorientador','=',1)
+                ->orderBy('nombreC', 'ASC')
+                ->get();
+            return response()->json($fiscales);
+        }
+    }
+
     
     public function errorlogin()
     {
