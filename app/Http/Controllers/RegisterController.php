@@ -73,6 +73,7 @@ class RegisterController extends Controller
             $fiscales = User::select('id', 'nombreC')
                 ->where('idUnidad', '=', $id)
                 ->where('id','!=',Auth::user()->id)
+                ->where('gorientador','=',1)
                 ->orderBy('nombreC', 'ASC')
                 ->get();
             return response()->json($fiscales);
