@@ -412,12 +412,19 @@ class ActasHechosController extends Controller
         'cat_identificacion.documento as identificacion', 'variables_persona_fisica.numDocIdentificacion as num_identificacion',
         'cat_colonia.codigoPostal as cp')
         ->first();
-        // $origen = DB::connection('componentes')->table('cat_municipio')
-        // ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')
-        // ->where('cat_municipio.id',$variable->idMunicipioOrigen)
-        // ->select('cat_municipio.nombre as municipioOrigen','cat_estado.nombre estadoOrigen')
-        // ->first();
-
+        $origen = DB::connection('componentes')->table('cat_municipio')
+        ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')
+        ->where('cat_municipio.id',$variable->idMunicipioOrigen)
+        ->select('cat_municipio.nombre as municipioOrigen','cat_estado.nombre as estadoOrigen')
+        ->first();
+        $unidad = DB::table('unidad')->where('id',$acta->idUnidad)->first();
+        $arr = explode(" ",$unidad->descripcion);
+        $aux=9;
+        $localidad="";
+        while(count($arr)-1 >= $aux){
+           $localidad=$localidad." ".$arr[$aux];
+           $aux=$aux+1;
+        }
         if($variable->numInterno==''){
             $numExterno = $variable->numExterno;
         }
@@ -431,31 +438,32 @@ class ActasHechosController extends Controller
         $fechasep = explode("-", $variable->fecha_nac);
         $edad = Date::createFromDate($fechasep[0],$fechasep[1],$fechasep[2])->age;
         $data = array('estado' => $variable->nombreEstado, 
-        'unidadMunicipio' => strtr(($unidad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
-        'municipio' => strtr(($catalogos->nombreMunicipio),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),   
-        'localidad' =>strtr(($catalogos->nombreLocalidad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
-        'colonia' => strtr(($catalogos->nombreColonia),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-        'calle' =>strtr(($catalogos->calle),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
-        'cp' => $catalogos->cp,
+        'unidadMunicipio' => strtr(($localidad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
+        'municipio' => strtr(($variable->nombreMunicipio),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),   
+        'localidad' =>strtr(($variable->nombreLocalidad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
+        'colonia' => strtr(($variable->nombreColonia),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'calle' =>strtr(($variable->calle),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
+        'cp' => $variable->cp,
         'numExterno' => $numExterno,
-        'folio' => $catalogos->folio,
-        'hora' => $date->parse($catalogos->hora)->format('H:i'),
+        'folio' => $unidad->abreviacion."/AH-".$acta->folio."/".$fechaactual->format('Y'),
+        'hora' => $date->parse($acta->hora)->format('H:i'),
         'fecha' => strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-        'fiscal' => strtr(strtoupper($catalogos->fiscal),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'fiscal' => strtr(strtoupper($acta->fiscal),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'puesto' => strtr(strtoupper(Auth::user()->puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-        'nombre' =>strtr(($catalogos->nombrePersona.' '.$catalogos->primer_ap.' '.$catalogos->segundo_ap),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-        'identificacion' => strtr(($catalogos->identificacion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-        'numIdentificacion' => $catalogos->num_identificacion,
+        'nombre' =>strtr(($variable->nombrePersona.' '.$variable->primer_ap.' '.$variable->segundo_ap),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'identificacion' => strtr(($variable->identificacion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'numIdentificacion' => $variable->num_identificacion,
         'fechaNacimiento' => $fechanachum,
-        'ocupacion' =>strtr(($catalogos->nombreOcupacion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
-        'estadoCivil' =>strtr(($catalogos->nombreEstadoCivil),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),  
-        'escolaridad' => strtr(($catalogos->nombreEscolaridad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),  
-        'telefono' => $catalogos->telefono,
-        'narracion' => strtr(($catalogos->narracion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-        'expedido' => strtr(($catalogos->expedido),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'ocupacion' =>strtr(($variable->nombreOcupacion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
+        'estadoCivil' =>strtr(($variable->nombreEstadoCivil),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),  
+        'escolaridad' => strtr(($variable->nombreEscolaridad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),  
+        'telefono' => $variable->telefono,
+        'narracion' => strtr(($acta->narracion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'expedido' => strtr(($acta->expedido),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'edad' => $edad,
         'img' => asset('img/logo.png'),
-        
+        'municipioOrigen' => $origen->municipioOrigen,
+        'estadoOrigen' => $origen->estadoOrigen,
         'id' => $id);
         return response()->json($data);
     }
@@ -532,6 +540,7 @@ class ActasHechosController extends Controller
     public function addExtrasActas(Request $request){
         // try{
             // DB::beginTransaction();
+            $fiscaldb = DB::table('users')->where('id',$request->usuario)->first();
             if($request->idExtrasActas!=""){
                 $acta = ActasHechos::find($request->idExtrasActas);
             }else{
@@ -539,17 +548,17 @@ class ActasHechosController extends Controller
                 $acta->varPersona = $request->idPersona;
                 $ultimo = ActasHechos::orderBy('id','desc')->first();
                 $new = ($ultimo)?$ultimo->folio+1:1;
+
                 $acta->folio = $new;   
             } 
             $acta->hora = Date::now()->format('H:i:s');
             $acta->fecha = Date::now()->format('Y-m-d');
-            $acta->fiscal = $request->usuario;
+            $acta->fiscal = $fiscaldb->nombreC;
             $acta->expedido = ActasHechosController::getExpedido($request->tipoActa); 
             $acta->tipoActa = $request->tipoActa;
             $acta->esEmpresa = $request->empresa; 
             $acta->narracion = $request->narracion;
-            $acta->varPersona = $request->idPersona;
-            $fiscaldb = DB::table('users')->where('id',$request->usuario)->first();
+            $acta->varPersona = $request->idPersona;          
             $acta->idUnidad = $fiscaldb->idUnidad;
             $acta->save();
 
