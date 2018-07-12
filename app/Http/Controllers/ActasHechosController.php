@@ -545,6 +545,7 @@ class ActasHechosController extends Controller
             $acta->esEmpresa = $request->empresa; 
             $acta->narracion = $request->narracion;
             $acta->varPersona = $request->idPersona;
+            //$fiscaldb = DB::table('users')->where('id',$request->usuario)->first();
             $acta->idUnidad = 1;
             $acta->save();
 
@@ -559,35 +560,35 @@ class ActasHechosController extends Controller
 
     public function getExpedido($tipo){
         switch ($tipo) {
-            case 'CREDENCIAL PARA VOTAR': $acta ="INSTITUTO NACIONAL ELECTORAL";
+            case 'CREDENCIAL PARA VOTAR': $acta2 ="INSTITUTO NACIONAL ELECTORAL";
             break;
-            case 'PASAPORTE':$acta ="SECRETARÍA DE RELACIONES EXTERIORES";
+            case 'PASAPORTE':$acta2 ="SECRETARÍA DE RELACIONES EXTERIORES";
             break;
-            case 'CEDULA PROFESIONAL':$acta ="DIRECCIÓN GENERAL DE PROFESIONES";
+            case 'CEDULA PROFESIONAL':$acta2 ="DIRECCIÓN GENERAL DE PROFESIONES";
             break;
-            case 'CARTILLA DEL SERVICIO MILITAR NACIONAL':$acta ="SECRETARÍA DE LA DEFENSA NACIONAL";
+            case 'CARTILLA DEL SERVICIO MILITAR NACIONAL':$acta2 ="SECRETARÍA DE LA DEFENSA NACIONAL";
             break;
-            case 'TARJETA UNICA DE IDENTIDAD MILITAR':$acta ="DISPOSICIONES DE CARÁCTER GENERAL";
+            case 'TARJETA UNICA DE IDENTIDAD MILITAR':$acta2 ="DISPOSICIONES DE CARÁCTER GENERAL";
             break;
-            case 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES':$acta ="INAPAM";
+            case 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES':$acta2 ="INAPAM";
             break;
-            case 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL':$acta ="IMSS";
+            case 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL':$acta2 ="IMSS";
             break;
-            case 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR':$acta ="DIRECCIÓN GENERAL DE ACREDITACIÓN, INCORPORACIÓN Y REVALIDACIÓN";
+            case 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR':$acta2 ="DIRECCIÓN GENERAL DE ACREDITACIÓN, INCORPORACIÓN Y REVALIDACIÓN";
             break;
-            case 'LICENCIA DE CONDUCIR':$acta ="SECRETARÍA DE COMUNICACIONES Y TRANSPORTES";
+            case 'LICENCIA DE CONDUCIR':$acta2 ="SECRETARÍA DE COMUNICACIONES Y TRANSPORTES";
             break;
-            case 'CERTIFICADO DE MATRICULA CONSULAR':$acta ="CERTIFICADO DE MATRICULA CONSULAR";
+            case 'CERTIFICADO DE MATRICULA CONSULAR':$acta2 ="CERTIFICADO DE MATRICULA CONSULAR";
             break;
-            case 'ACTA DE NACIMIENTO':$acta ="REGISTRO NACIONAL DE POBLACIÓN";
+            case 'ACTA2 DE NACIMIENTO':$acta2 ="REGISTRO NACIONAL DE POBLACIÓN";
             break;
-            case 'CURP':$acta ="REGISTRO NACIONAL DE POBLACIÓN";
+            case 'CURP':$acta2 ="REGISTRO NACIONAL DE POBLACIÓN";
             break;
-            case 'CONSTANCIA DE RESIDENCIA':$acta ="SERVICIO DE ADMINISTRACIÓN TRIBUTARIA";
+            case 'CONSTANCIA DE RESIDENCIA':$acta2 ="SERVICIO DE ADMINISTRACIÓN TRIBUTARIA";
             break;
-            default:$acta = $tipo;
+            default:$acta2 = $tipo;
             break;
         }
-        return $acta;
+        return $acta2;
     }
 }
