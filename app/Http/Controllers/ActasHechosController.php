@@ -442,7 +442,7 @@ class ActasHechosController extends Controller
         'hora' => $date->parse($acta->hora)->format('H:i'),
         'fecha' => strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'fiscal' => strtr(strtoupper('FISCAL CAMBIAR'),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-        'puesto' => strtoupper(Auth::user()->puesto),
+        'puesto' => strtr(strtoupper(Auth::user()->puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'nombre' => $variable->nombrePersona.' '.$variable->primer_ap.' '.$variable->segundo_ap,
         'identificacion' =>strtr(strtoupper($variable->identificacion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
         'numIdentificacion' => $variable->num_identificacion,
