@@ -766,7 +766,7 @@ class EstadoController extends Controller
                     $historial->idEstatusCarpeta = 4;
                     $historial->observacion = $motivo;
                     $historial->numCarpeta = $numCarpetaAux;
-                    $historial->idTipoDeterminacion = $request->selectArchivo;
+                    $historial->idTipoDeterminacion = 5;
                     $historial->fiscal = Auth::user()->nombreC;
                     $historial->fecha = Carbon::now();
                     $historial->save();
@@ -778,6 +778,20 @@ class EstadoController extends Controller
                     $id->observacionesEstatus = $request->narracion;  
                     $id->idFiscal = $request->selectFiscal;  
                     $id->save(); 
+
+                    $idCarpetaAux=$idCarpeta;
+                    $motivo=$id->observacionesEstatus;
+                    $numCarpetaAux=$id->numCarpeta;
+
+                    $historial= new HistorialCarpeta;
+                    $historial->idCarpeta = $idCarpetaAux;
+                    $historial->idEstatusCarpeta = 5;
+                    $historial->observacion = $motivo;
+                    $historial->numCarpeta = $numCarpetaAux;
+                    $historial->idTipoDeterminacion = 5;
+                    $historial->fiscal = Auth::user()->nombreC;
+                    $historial->fecha = Carbon::now();
+                    $historial->save();
                 break;
                 
                 default:
