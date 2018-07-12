@@ -51,7 +51,7 @@
 		</div>
 	</div> --}}
 	<div class="col-4">
-		<p class="col-form-label-sm">¿Con violencia?</p>
+		{{-- <p class="col-form-label-sm">¿Con violencia?</p>
 		<div class="form-group">
 			<div class="form-check form-check-inline">
 				<label class="form-check-label col-form-label-sm">
@@ -65,9 +65,28 @@
 					Sí
 				</label>
 			</div>
-		</div>
+		</div> --}}
+		<div class="form-group">
+
+				{!! Form::label('Cviolencia', 'Con Violencia', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('Cviolencia', ['1' => 'SI', '0' => 'NO'], null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione si es con violencia', 'required']) !!}
+				
+				{{-- <label class="col-form-label col-form-label-sm">¿Con Violencia?</label>
+				<div class="clearfix"></div>
+				<div id="valor" class="form-check form-check-inline">
+					<label class="form-check-label col-form-label col-form-label-sm">
+						<input class="form-check-input" type="radio" id="conViolenciaD1" name="conViolenciaD" value="1" required> Sí
+					</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<label class="form-check-label col-form-label col-form-label-sm">
+						<input class="form-check-input" type="radio" id="conViolenciaD2" name="conViolenciaD" value="0"> No
+					</label>
+				</div> --}}
+		
+			</div>
 	</div>
-	
+
 	{{-- <div class="col-4">
 		<div class="form-group">
 			{!! Form::label('idModalidad', 'Modalidad', ['class' => 'col-form-label-sm']) !!}
