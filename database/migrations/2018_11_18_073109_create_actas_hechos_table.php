@@ -15,10 +15,11 @@ class CreateActasHechosTable extends Migration
     {
         Schema::create('actas_hechos', function (Blueprint $table) {
             $table->increments('id');
-            // $table->string('folio',100)->unique();
+            $table->string('folio',100)->unique();
             $table->time('hora');
             $table->date('fecha');
             $table->string('fiscal');
+            $table->integer('idUnidad')->unsigned();
             // $table->string('nombreEmpresa');
             // $table->string('nombre');
             // $table->string('primer_ap');
@@ -39,6 +40,7 @@ class CreateActasHechosTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
+            $table->foreign('idUnidad')->references('id')->on('unidad')->onDelete('restrict');
             // $table->foreign('idDomicilio')->references('id')->on('domicilio')->onDelete('cascade');
             // $table->foreign('idEscolaridad')->references('id')->on('cat_escolaridad')->onDelete('cascade');
             // $table->foreign('idOcupacion')->references('id')->on('cat_ocupacion')->onDelete('cascade');
