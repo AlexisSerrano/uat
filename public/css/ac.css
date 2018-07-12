@@ -10388,3 +10388,62 @@ a.text-dark:focus {
   }
 }
 
+.dropdown-toggle {
+  height: 33px !important;
+  overflow: hidden !important;
+}
+
+input.form-control {
+  width: 100% !important;
+}
+
+.dropdown {
+  font-family: inherit !important;
+  font-size: .875rem !important;
+}
+
+.v-select input[type=search],
+.v-select input[type=search]:focus {
+  height: 30px !important;
+}
+
+.v-select .dropdown-toggle .clear {
+  bottom: 8.2px !important;
+}
+
+.v-select .open-indicator {
+  bottom: 4.6px !important;
+}
+
+.v-select .selected-tag {
+  margin: 1.5px 1px 0px 3px !important;
+}
+
+input,
+textarea {
+  text-transform: uppercase;
+}
+
+.centrar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -30px;
+  margin-top: -30px;
+}
+
+.linkAlert,
+.linkAlert:hover {
+  color: white;
+  text-decoration: none;
+}
+
+th {
+  text-align: center;
+}
+
+.table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
