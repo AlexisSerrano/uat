@@ -204,5 +204,6 @@
 @routes
 @yield('pilaScripts')
 @include('sweet::alert')
+<script src="{{asset ('js/ac.js')}}"></script>
 </body>
 </html>
