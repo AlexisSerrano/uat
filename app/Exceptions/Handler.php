@@ -57,8 +57,12 @@ class Handler extends ExceptionHandler
                     return response()->view('servicios.errores.404',[],404);
                 break;
                 // ERROR INTERNO DEL SERVIDOR
-                case '500':
+                case 500:
                     return response()->view('servicios.errores.500',[],500);    
+                break;
+                //ERROR DE ACCESO DENEGADO(PERMISOS)
+                case 403:
+                    return response()->view('servicios.errores.403',[],403);    
                 break;
                 default:
                     return $this->renderHttpException($exception);
