@@ -47,7 +47,14 @@
 				@if (is_null(session('carpeta')))
 					@if (Auth::user()->grupo=='orientador')
 					
-						<li class="nav-item has-treeview  {{ Request::is( 'registros') ? 'menu-open' : '' }}">
+						<li class="nav-item">
+							<a href='{{url("registros")}}' class="nav-link {{ Request::is( 'registros') ? 'active' : '' }}">
+								<i class="nav-icon fa fa-users"></i>
+								<p>Pre-registros</p>
+							</a>
+						</li>
+				
+						{{-- <li class="nav-item has-treeview  {{ Request::is( 'registros') ? 'menu-open' : '' }}">
 							<a href="#" class="nav-link ">
 								<i class="nav-icon fa fa-users"></i>
 								<p>
@@ -70,7 +77,7 @@
 									</a>
 								</li>
 							</ul>
-						</li>
+						</li> --}}
 					@endif
 
 					@if (Auth::user()->grupo=='recepcion')
