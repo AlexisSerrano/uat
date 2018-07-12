@@ -376,6 +376,6 @@ Route::get('colonias/{cp}', 'RegisterController@getColonias')->name('get.colonia
 Route::get('colonias2/{id}', 'RegisterController@getColonias2')->name('get.colonia2');
 Route::get('codigos2/{id}', 'RegisterController@getCodigos2')->name('get.codigo2');
 Route::get('listas/{id}', 'RegisterController@getListas')->name('get.listas');
-
+Route::get('fiscales/{id}', 'RegisterController@getFiscales')->name('get.fiscales');
 /********************generar pdf**********************************/
 Route::get('FormatoRegistro/{id}', 'PdfController@datos');

@@ -1,5 +1,5 @@
 jQuery.ajaxSetup({async:false});
-$("#idEstadoOrigen").change(function(event){
+$("#idEstadoOrigen").change(function(event){ 
 	//$.get(route('get.municipio', event.target.value), function(response, estado){
 	$.get(route('get.municipio', event.target.value), function(response, estado){
 		$("#idMunicipioOrigen").empty();
@@ -477,6 +477,20 @@ $("#cp2").change(function(event){
 		});
 	
 	}
+});
+
+
+$("#selectUnidad").change(function(event){ 
+	//alert('entra aqui');
+	//$.get(route('get.municipio', event.target.value), function(response, estado){
+	$.get(route('get.fiscales', event.target.value), function(response, estado){
+		$("#selectFiscal").empty();
+		$("#selectFiscal").append("<option value=''>Seleccione un fiscal</option>");
+		console.log(response);
+		for(i=0; i<response.length; i++){
+			$("#selectFiscal").append("<option value='"+response[i].id+"'> "+response[i].nombreC+"</option>");
+		}
+	});
 });
 
 // $("#idDelito").change(function(event){
