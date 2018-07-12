@@ -334,7 +334,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('oficio/robo/{id}','PericialesController@reporteRobo')->name('oficio.reporteRobo')->middleware(['permission:oficio_reporteRobo']);
     
      /* --------Pruebas vehiculos----------- */
-    Route::get('/vehiculos-pruebas','VehiculoController@showform')->name('vehiculo.carpeta')->middleware(['permission:vehiculo_carpeta']);
+    Route::get('/agregar-vehiculos','VehiculoController@showform')->name('vehiculo.carpeta')->middleware(['permission:vehiculo_carpeta']);
     Route::get('submarcas/{id}', 'VehiculoController@getSubmarcas')->name('get.submarcas')->middleware(['permission:get_submarcas']);
     Route::get('tipoVehiculos/{id}', 'VehiculoController@getTipoVehiculos')->name('get.tipovehiculos')->middleware(['permission:get_tipovehiculos']);
     Route::post('store-vehiculo', 'VehiculoController@storeVehiculo')->name('carpeta.vehiculo')->middleware(['permission:carpeta_vehiculo']);
