@@ -10408,11 +10408,11 @@ input.form-control {
 }
 
 .v-select .dropdown-toggle .clear {
-  bottom: 8.2px !important;
+  bottom: 5px !important;
 }
 
 .v-select .open-indicator {
-  bottom: 4.6px !important;
+  bottom: 5px !important;
 }
 
 .v-select .selected-tag {
