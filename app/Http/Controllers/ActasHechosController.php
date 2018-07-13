@@ -483,6 +483,7 @@ class ActasHechosController extends Controller
         ->join('cat_localidad','domicilio.idLocalidad','=','cat_localidad.id')
         ->join('cat_colonia','domicilio.idColonia','=','cat_colonia.id')
         ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')
+        ->join('cat_identificacion','variables_persona_moral.docIdentificacion','=','cat_identificacion.id')
         ->where('variables_persona_moral.id',$acta->varPersona)
         ->select('cat_municipio.nombre as nombreMunicipio',
         'cat_localidad.nombre as nombreLocalidad',
@@ -496,7 +497,11 @@ class ActasHechosController extends Controller
         'persona_moral.fechaCreacion as fechaCreacion',
         'persona_moral.rfc as rfc',
         'cat_colonia.codigoPostal as cp',
-        'variables_persona_moral.representanteLegal as representanteLegal')
+        'variables_persona_moral.nombreRep as nombreRep',
+        'variables_persona_moral.primerApRep as primerApRep',
+        'variables_persona_moral.segundoApRep as segundoApRep',
+        'cat_identificacion.documento as documento',
+        'variables_persona_moral.numDocIdentificacion as numDocIdentificacion')
         ->first();
         $unidad = DB::table('unidad')->where('id',$acta->idUnidad)->first();
         $arr = explode(" ",$unidad->descripcion);
@@ -530,14 +535,15 @@ class ActasHechosController extends Controller
             'hora' => $date->parse($acta->hora)->format('H:i'),
             'fecha' => strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'fiscal' => strtr(strtoupper($acta->fiscal),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-            'nombre' =>strtr(($variable->representanteLegal),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+            'nombre' =>strtr(($variable->nombreRep." ".$variable->primerApRep." ".$variable->segundoApRep),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'nombreEmpresa' =>strtr(($variable->nombreEmpresa),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-            'identificacion' => strtr(('IDENTIFICACION'),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-            'numIdentificacion' => 'NUM DOC IDENTIFICACION',
+            'identificacion' => strtr(($variable->documento),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+            'numIdentificacion' => $variable->numDocIdentificacion,
             'fechaNacimiento' => $fechanachum ,//$fechanachum,  
             'telefono' => $variable->telefono,
             'narracion' => strtr(($acta->narracion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'expedido' => strtr(($acta->expedido),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+            'puesto' => strtr(strtoupper(Auth::user()->puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'id' => $id);
          return response()->json($data);
     }
