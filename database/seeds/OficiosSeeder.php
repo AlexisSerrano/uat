@@ -14,9 +14,10 @@ class OficiosSeeder extends Seeder
         DB::table('oficios')->insert([
 
             ['nombre'  =>  'ACTAS HECHOS MORAL',
-            'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
-            <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />
-                        Distrito XI Xalapa, Veracruz“</p>', 
+            'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" /></p>
+
+            <p style="text-align:right">Unidad de Atención Temprana, Veracruz&nbsp;<br />
+            <strong>"Si lo platicamos, lo solucionamos”</strong></p>', 
 
             'contenido' => '<p style="text-align: center;"><span style="font-size:10.0pt"><span style="font-family:Neo Sans Pro,sans-serif&quot;">ACTA DE HECHOS NÚMERO {{$folio}}</span></span></p>
 
