@@ -431,12 +431,12 @@ class ActasHechosController extends Controller
             $numExterno = $variable->numExterno;
         }
         else{
-            $numExterno = $variable->numExterno.' interior '.$variable->numInterno;
+            $numExterno = $variable->numExterno.' INTERIOR '.$variable->numInterno;
         }
         $fechaactual = new Date($acta->fecha);
-        $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
+        $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' de '.$fechaactual->format('Y');
         $date = new Date($variable->fecha_nac);
-        $fechanachum = $date->format('j').' de '.$date->format('F').' del año '.$date->format('Y');
+        $fechanachum = $date->format('j').' de '.$date->format('F').' de '.$date->format('Y');
         $fechasep = explode("-", $variable->fecha_nac);
         $edad = Date::createFromDate($fechasep[0],$fechasep[1],$fechasep[2])->age;
         $data = array('estado' => $variable->nombreEstado, 
@@ -461,7 +461,7 @@ class ActasHechosController extends Controller
         'escolaridad' => strtr(($variable->nombreEscolaridad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),  
         'telefono' => $variable->telefono,
         'narracion' => strtr(($acta->narracion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-        'expedido' => strtr(($acta->expedido),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'expedido' => strtr((ActasHechosController::getExpedido($variable->identificacion)),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'edad' => $edad,
         'img' => asset('img/logo.png'),
         'municipioOrigen' => $origen->municipioOrigen,
@@ -517,12 +517,12 @@ class ActasHechosController extends Controller
             $numExterno = $variable->numExterno;
         }
         else{
-            $numExterno = $variable->numExterno.' interior '.$variable->numInterno;
+            $numExterno = $variable->numExterno.' INTERIOR '.$variable->numInterno;
         }
         $fechaactual = new Date($acta->fecha);
-        $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
+        $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' de '.$fechaactual->format('Y');
         $date = new Date($variable->fechaCreacion);
-        $fechanachum = $date->format('j').' de '.$date->format('F').' del año '.$date->format('Y');
+        $fechanachum = $date->format('j').' de '.$date->format('F').' de '.$date->format('Y');
         $data = array('estado' => $variable->nombreEstado, 
             'unidadMunicipio' => strtr(($localidad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
             'municipio' => strtr(($variable->nombreMunicipio),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),   
@@ -539,10 +539,10 @@ class ActasHechosController extends Controller
             'nombreEmpresa' =>strtr(($variable->nombreEmpresa),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'identificacion' => strtr(($variable->documento),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'numIdentificacion' => $variable->numDocIdentificacion,
-            'fechaNacimiento' => $fechanachum ,//$fechanachum,  
+            'fechaNacimiento' => strtr(strtoupper($fechanachum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'telefono' => $variable->telefono,
             'narracion' => strtr(($acta->narracion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-            'expedido' => strtr(($acta->expedido),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+            'expedido' => strtr((ActasHechosController::getExpedido($variable->documento)),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'puesto' => strtr(strtoupper(Auth::user()->puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'id' => $id);
          return response()->json($data);
@@ -566,6 +566,7 @@ class ActasHechosController extends Controller
             $acta->hora = Date::now()->format('H:i:s');
             $acta->fecha = Date::now()->format('Y-m-d');
             $acta->fiscal = $fiscaldb->nombreC;
+            /*cambiar */
             $acta->expedido = ActasHechosController::getExpedido($request->tipoActa); 
             $acta->tipoActa = $request->tipoActa;
             $acta->esEmpresa = $request->empresa; 
@@ -605,7 +606,7 @@ class ActasHechosController extends Controller
             break;
             case 'CERTIFICADO DE MATRICULA CONSULAR':$acta2 ="CERTIFICADO DE MATRICULA CONSULAR";
             break;
-            case 'ACTA2 DE NACIMIENTO':$acta2 ="REGISTRO NACIONAL DE POBLACIÓN";
+            case 'ACTA DE NACIMIENTO':$acta2 ="REGISTRO NACIONAL DE POBLACIÓN";
             break;
             case 'CURP':$acta2 ="REGISTRO NACIONAL DE POBLACIÓN";
             break;
