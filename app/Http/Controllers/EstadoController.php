@@ -180,7 +180,7 @@ class EstadoController extends Controller
                         ->where('tipif_delito.idCarpeta','=',$idCarpeta)
                         ->get();
                                      
-                 //   dump($delitos);
+              //      dump($delitos);
                     //datos de autoridades
     
                     $autoridades=DB::table('extra_autoridad')
@@ -194,7 +194,7 @@ class EstadoController extends Controller
                     'domicilioTrabajo.numInterno as DT_numInterno','persona.*','variables_persona.*','extra_autoridad.*')
                     ->where('variables_persona.idCarpeta',$idCarpeta)
                     ->get();
-                   // dump($autoridades);
+                    dump($autoridades);
     
                     //abogados
     
@@ -209,7 +209,7 @@ class EstadoController extends Controller
                     'domicilioTrabajo.numInterno as DT_numInterno','persona.*','variables_persona.*','extra_abogado.*')
                     ->where('variables_persona.idCarpeta',$idCarpeta)
                     ->get();
-                  //  dd($abogados);
+               //    dump($abogados);
                     
                     $denunciados=DB::table('extra_denunciado')
                     ->join('dirnotificacion','dirnotificacion.id','=','extra_denunciado.idNotificacion')
@@ -286,7 +286,7 @@ class EstadoController extends Controller
                                 'notificacion.numExterno as notifiNumExterno',
                                 'notificacion.numInterno as notifiNumInterno')
                     ->get();
-                    //dd($denunciados);
+                 //  dump($denunciados);
     
                     $denunciantes=DB::table('extra_denunciante')
                     ->join('dirnotificacion','dirnotificacion.id','=','extra_denunciante.idNotificacion')
@@ -359,7 +359,7 @@ class EstadoController extends Controller
                                 'notificacion.numExterno as notifiNumExterno',
                                 'notificacion.numInterno as notifiNumInterno')
                     ->get();
-                    //dd($abogados);
+                  // dd($denunciantes);
     
                     $acusaciones=Acusacion::where('idCarpeta',$idCarpeta)->get();
                     //dd($acusaciones);
@@ -399,8 +399,13 @@ class EstadoController extends Controller
 
                                 $conDomicilio = new ConDomicilio;
                                 $conDomicilio->idMunicipio = $delito->idMunicipio;
-                                $conDomicilio->idLocalidad = $delito->idLocalidad;
-                                $conDomicilio->idColonia = $delito->idColonia;
+                                if($conDomicilio->idMunicipio==2493){
+                                    $conDomicilio->idLocalidad =27592;
+                                    $conDomicilio->idColonia = 8982;
+                                }else{
+                                    $conDomicilio->idLocalidad = $delito->idLocalidad;
+                                    $conDomicilio->idColonia = $delito->idColonia;
+                                }                               
                                 $conDomicilio->calle = $delito->calle;
                                 $conDomicilio->numExterno = $delito->numExterno;
                                 $conDomicilio->numInterno = $delito->numInterno;
@@ -456,8 +461,13 @@ class EstadoController extends Controller
                                 
                                 $conDomicilio = new ConDomicilio;
                                 $conDomicilio->idMunicipio = $autoridad->idMunicipio;
-                                $conDomicilio->idLocalidad = $autoridad->idLocalidad;
-                                $conDomicilio->idColonia = $autoridad->idColonia;
+                                if($conDomicilio->idMunicipio==2493){
+                                    $conDomicilio->idLocalidad =27592;
+                                    $conDomicilio->idColonia = 8982;
+                                }else{
+                                    $conDomicilio->idLocalidad = $autoridad->idLocalidad;
+                                    $conDomicilio->idColonia = $autoridad->idColonia;
+                                }   
                                 $conDomicilio->calle = $autoridad->calle;
                                 $conDomicilio->numExterno = $autoridad->numExterno;
                                 $conDomicilio->numInterno = $autoridad->numInterno;
@@ -465,8 +475,13 @@ class EstadoController extends Controller
 
                                 $conDomicilioT = new ConDomicilio;
                                 $conDomicilioT->idMunicipio = $autoridad->DT_idMunicipio;
-                                $conDomicilioT->idLocalidad = $autoridad->DT_idLocalidad;
-                                $conDomicilioT->idColonia = $autoridad->DT_idColonia;
+                                if($conDomicilioT->DT_idMunicipio==2493){
+                                    $conDomicilioT->idLocalidad =27592;
+                                    $conDomicilioT->idColonia = 8982;
+                                }else{
+                                    $conDomicilioT->idLocalidad = $autoridad->DT_idLocalidad;
+                                    $conDomicilioT->idColonia = $autoridad->DT_idColonia;
+                                }                                 
                                 $conDomicilioT->calle = $autoridad->DT_calle;
                                 $conDomicilioT->numExterno = $autoridad->DT_numExterno;
                                 $conDomicilioT->numInterno = $autoridad->DT_numInterno;
@@ -483,11 +498,11 @@ class EstadoController extends Controller
                                 $convariables->idEstadoCivil = $autoridad->idEstadoCivil;
                                 $convariables->idEscolaridad = $autoridad->idEscolaridad;
                                 $convariables->idReligion = $autoridad->idReligion;
-                                $convariables->idDomicilio = $conDomiclio->id;
+                                $convariables->idDomicilio = $conDomicilio->id;
                                 $convariables->docIdentificacion = $autoridad->docIdentificacion;
                                 $convariables->numDocIdentificacion = $autoridad->numDocIdentificacion;
                                 $convariables->lugarTrabajo = $autoridad->lugarTrabajo;
-                                $convariables->idDomicilioTrabajo = $conDomiclioT->id;
+                                $convariables->idDomicilioTrabajo = $conDomicilioT->id;
                                 $convariables->telefonoTrabajo = $autoridad->telefonoTrabajo;
                                 $convariables->representanteLegal = $autoridad->representanteLegal;
                                 $convariables->save();
@@ -542,8 +557,13 @@ class EstadoController extends Controller
                                 
                                 $conDomicilio = new ConDomicilio;
                                 $conDomicilio->idMunicipio = $abogado->idMunicipio;
-                                $conDomicilio->idLocalidad = $abogado->idLocalidad;
-                                $conDomicilio->idColonia = $abogado->idColonia;
+                                if($conDomicilio->idMunicipio==2493){
+                                    $conDomicilio->idLocalidad =27592;
+                                    $conDomicilio->idColonia = 8982;
+                                }else{
+                                    $conDomicilio->idLocalidad = $abogado->idLocalidad;
+                                    $conDomicilio->idColonia = $abogado->idColonia;
+                                }  
                                 $conDomicilio->calle = $abogado->calle;
                                 $conDomicilio->numExterno = $abogado->numExterno;
                                 $conDomicilio->numInterno = $abogado->numInterno;
@@ -551,8 +571,13 @@ class EstadoController extends Controller
 
                                 $conDomicilioT = new ConDomicilio;
                                 $conDomicilioT->idMunicipio = $abogado->DT_idMunicipio;
-                                $conDomicilioT->idLocalidad = $abogado->DT_idLocalidad;
-                                $conDomicilioT->idColonia = $abogado->DT_idColonia;
+                                if($conDomicilioT->DT_idMunicipio==2493){
+                                    $conDomicilioT->idLocalidad =27592;
+                                    $conDomicilioT->idColonia = 8982;
+                                }else{
+                                    $conDomicilioT->idLocalidad = $abogado->DT_idLocalidad;
+                                    $conDomicilioT->idColonia = $abogado->DT_idColonia;
+                                }       
                                 $conDomicilioT->calle = $abogado->DT_calle;
                                 $conDomicilioT->numExterno = $abogado->DT_numExterno;
                                 $conDomicilioT->numInterno = $abogado->DT_numInterno;
@@ -569,11 +594,11 @@ class EstadoController extends Controller
                                 $convariables->idEstadoCivil = $abogado->idEstadoCivil;
                                 $convariables->idEscolaridad = $abogado->idEscolaridad;
                                 $convariables->idReligion = $abogado->idReligion;
-                                $convariables->idDomicilio = $conDomiclio->id;
+                                $convariables->idDomicilio = $conDomicilio->id;
                                 $convariables->docIdentificacion = $abogado->docIdentificacion;
                                 $convariables->numDocIdentificacion = $abogado->numDocIdentificacion;
                                 $convariables->lugarTrabajo = $abogado->lugarTrabajo;
-                                $convariables->idDomicilioTrabajo = $conDomiclioT->id;
+                                $convariables->idDomicilioTrabajo = $conDomicilioT->id;
                                 $convariables->telefonoTrabajo = $abogado->telefonoTrabajo;
                                 $convariables->representanteLegal = $abogado->representanteLegal;
                                 $convariables->save();
@@ -620,8 +645,13 @@ class EstadoController extends Controller
                     
                                 $conDomicilio = new ConDomicilio;
                                 $conDomicilio->idMunicipio = $denunciado->domicilioMunicipio;
-                                $conDomicilio->idLocalidad = $denunciado->domicilioLocalidad;
-                                $conDomicilio->idColonia = $denunciado->domicilioColonia;
+                                if($conDomicilio->idMunicipio==2493){
+                                    $conDomicilio->idLocalidad =27592;
+                                    $conDomicilio->idColonia = 8982;
+                                }else{
+                                    $conDomicilio->idLocalidad = $denunciado->domicilioLocalidad;
+                                    $conDomicilio->idColonia = $denunciado->domicilioColonia;
+                                }      
                                 $conDomicilio->calle = $denunciado->domicilioCalle;
                                 $conDomicilio->numExterno = $denunciado->domicilioNumExterno;
                                 $conDomicilio->numInterno = $denunciado->domicilioNumInterno;
@@ -629,8 +659,13 @@ class EstadoController extends Controller
 
                                 $conDomicilioT = new ConDomicilio;
                                 $conDomicilioT->idMunicipio = $denunciado->TrabajoMunicipio;
-                                $conDomicilioT->idLocalidad = $denunciado->TrabajoLocalidad;
-                                $conDomicilioT->idColonia = $denunciado->TrabajoColonia;
+                                if($conDomicilioT->idMunicipio==2493){
+                                    $conDomicilioT->idLocalidad =27592;
+                                    $conDomicilioT->idColonia = 8982;
+                                }else{
+                                    $conDomicilio->idLocalidad = $denunciado->TrabajoLocalidad;
+                                    $conDomicilio->idColonia = $denunciado->TrabajoColonia;
+                                }      
                                 $conDomicilioT->calle = $denunciado->TrabajoCalle;
                                 $conDomicilioT->numExterno = $denunciado->TrabajoNumExterno;
                                 $conDomicilioT->numInterno = $denunciado->TrabajoNumInterno;
@@ -638,8 +673,13 @@ class EstadoController extends Controller
     
                                 $conDomicilioN = new ConDomicilio;
                                 $conDomicilioN->idMunicipio = $denunciado->notifiMunicipio;
-                                $conDomicilioN->idLocalidad = $denunciado->notifiLocalidad;
-                                $conDomicilioN->idColonia = $denunciado->notifiColonia;
+                                if($conDomicilioN->idMunicipio==2493){
+                                    $conDomicilioN->idLocalidad =27592;
+                                    $conDomicilioN->idColonia = 8982;
+                                }else{
+                                    $conDomicilioN->idLocalidad = $denunciado->notifiLocalidad;
+                                    $conDomicilioN->idColonia = $denunciado->notifiColonia;
+                                }      
                                 $conDomicilioN->calle = $denunciado->notifiCalle;
                                 $conDomicilioN->numExterno = $denunciado->notifiNumExterno;
                                 $conDomicilioN->numInterno = $denunciado->notifiNumInterno;
@@ -737,30 +777,46 @@ class EstadoController extends Controller
                                 $idpersonadenuncianate=$conpersona->id;
                                 
                                 $conDomicilio = new ConDomicilio;
-                                $conDomicilio->idMunicipio = $denunciado->domicilioMunicipio;
-                                $conDomicilio->idLocalidad = $denunciado->domicilioLocalidad;
-                                $conDomicilio->idColonia = $denunciado->domicilioColonia;
-                                $conDomicilio->calle = $denunciado->domicilioCalle;
-                                $conDomicilio->numExterno = $denunciado->domicilioNumExterno;
-                                $conDomicilio->numInterno = $denunciado->domicilioNumInterno;
+                                $conDomicilio->idMunicipio = $denunciante->domicilioMunicipio;
+                                if($conDomicilio->idMunicipio==2493){
+                                    $conDomicilio->idLocalidad =27592;
+                                    $conDomicilio->idColonia = 8982;
+                                }else{
+                                    $conDomicilio->idLocalidad = $denunciante->domicilioLocalidad;
+                                    $conDomicilio->idColonia = $denunciante->domicilioColonia;
+                                }    
+                                $conDomicilio->calle = $denunciante->domicilioCalle;
+                                $conDomicilio->numExterno = $denunciante->domicilioNumExterno;
+                                $conDomicilio->numInterno = $denunciante->domicilioNumInterno;
                                 $conDomicilio->save();
 
                                 $conDomicilioT = new ConDomicilio;
-                                $conDomicilioT->idMunicipio = $denunciado->TrabajoMunicipio;
-                                $conDomicilioT->idLocalidad = $denunciado->TrabajoLocalidad;
-                                $conDomicilioT->idColonia = $denunciado->TrabajoColonia;
-                                $conDomicilioT->calle = $denunciado->TrabajoCalle;
-                                $conDomicilioT->numExterno = $denunciado->TrabajoNumExterno;
-                                $conDomicilioT->numInterno = $denunciado->TrabajoNumInterno;
+                                $conDomicilioT->idMunicipio = $denunciante->TrabajoMunicipio;
+                                if($conDomicilioT->idMunicipio==2493){
+                                    $conDomicilioT->idLocalidad =27592;
+                                    $conDomicilioT->idColonia = 8982;
+                                }else{
+                                    $conDomicilioT->idLocalidad = $denunciante->TrabajoLocalidad;
+                                    $conDomicilioT->idColonia = $denunciante->TrabajoColonia;
+                                }      
+                                $conDomicilioT->calle = $denunciante->TrabajoCalle;
+                                $conDomicilioT->numExterno = $denunciante->TrabajoNumExterno;
+                                $conDomicilioT->numInterno = $denunciante->TrabajoNumInterno;
                                 $conDomicilioT->save();                               
     
                                 $conDomicilioN = new ConDomicilio;
-                                $conDomicilioN->idMunicipio = $denunciado->notifiMunicipio;
-                                $conDomicilioN->idLocalidad = $denunciado->notifiLocalidad;
-                                $conDomicilioN->idColonia = $denunciado->notifiColonia;
-                                $conDomicilioN->calle = $denunciado->notifiCalle;
-                                $conDomicilioN->numExterno = $denunciado->notifiNumExterno;
-                                $conDomicilioN->numInterno = $denunciado->notifiNumInterno;
+                                $conDomicilioN->idMunicipio = $denunciante->notifiMunicipio;
+                                if($conDomicilioN->idMunicipio==2493){
+                                    $conDomicilioN->idLocalidad =27592;
+                                    $conDomicilioN->idColonia = 8982;
+                                }else{
+                                    $conDomicilioN->idLocalidad = $denunciante->notifiLocalidad;
+                                    $conDomicilioN->idColonia = $denunciante->notifiColonia;
+                                } 
+                               
+                                $conDomicilioN->calle = $denunciante->notifiCalle;
+                                $conDomicilioN->numExterno = $denunciante->notifiNumExterno;
+                                $conDomicilioN->numInterno = $denunciante->notifiNumInterno;
                                 $conDomicilioN->save();                               
                                 
                                 $convariables = new ConVariablesPersona;
@@ -857,6 +913,7 @@ class EstadoController extends Controller
                         Alert::success('La carpeta con número '.$carpeta->numCarpeta.' ha sido turnada con éxito','Hecho')->persistent('Aceptar');
                         return redirect(route('indexcarpetas'));
                     }catch (\PDOException $e){
+                        dd($e);
                         DB::rollBack();
                         Alert::error('Se presentó un problema al guardar los datos, intente de nuevo', 'Error');
                         return back()->withInput();
