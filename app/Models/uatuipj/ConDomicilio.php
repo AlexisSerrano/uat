@@ -4,7 +4,7 @@ namespace App\Models\uatuipj;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Domicilio extends Model
+class ConDomicilio extends Model
 {
     protected $connection = 'uipj';
     protected $table = 'domicilio';
