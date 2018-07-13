@@ -20,7 +20,11 @@
             @else
                 @foreach($denunciados as $denunciado)
                     <tr>
+                    @if(is_null($denunciado->nombres))
+                        <td>{{ $denunciado->alias }}</td>
+                    @else  
                         <td>{{ $denunciado->nombres." ".$denunciado->primerAp." ".$denunciado->segundoAp }}</td>
+                    @endif
                         <td>{{ $denunciado->rfc }}</td>
                         <td>{{ $denunciado->edad }}</td>
                         <td>{{ $denunciado->sexo }}</td>
