@@ -179,7 +179,7 @@ class EstadoController extends Controller
                         ->where('tipif_delito.idCarpeta','=',$idCarpeta)
                         ->get();
                                      
-                //    dd($delitos);
+                 //   dump($delitos);
                     //datos de autoridades
     
                     $autoridades=DB::table('extra_autoridad')
@@ -193,7 +193,7 @@ class EstadoController extends Controller
                     'domicilioTrabajo.numInterno as DT_numInterno','persona.*','variables_persona.*','extra_autoridad.*')
                     ->where('variables_persona.idCarpeta',$idCarpeta)
                     ->get();
-                  //  dd($autoridades);
+                   // dump($autoridades);
     
                     //abogados
     
@@ -208,7 +208,7 @@ class EstadoController extends Controller
                     'domicilioTrabajo.numInterno as DT_numInterno','persona.*','variables_persona.*','extra_abogado.*')
                     ->where('variables_persona.idCarpeta',$idCarpeta)
                     ->get();
-                    //dd($abogados);
+                  //  dd($abogados);
                     
                     $denunciados=DB::table('extra_denunciado')
                     ->join('dirnotificacion','dirnotificacion.id','=','extra_denunciado.idNotificacion')
@@ -578,11 +578,13 @@ class EstadoController extends Controller
                                 $convariables->save();
                                 $idvariablesauto=$convariables->id;
                                 
-                                $conabogado = new ConExtraAutoridad;
+                                $conabogado = new ConExtraAbogado;
                                 $conabogado->idVariablesPersona = $convariables->id;
-                                $conabogado->antiguedad = $abogado->antiguedad;
-                                $conabogado->rango = $abogado->rango;
-                                $conabogado->horarioLaboral = $abogado->horarioLaboral;
+                                $conabogado->cedulaProf = $abogado->cedulaProf;
+                                $conabogado->sector = $abogado->sector;
+                                $conabogado->correo = $abogado->correo;
+                                $conabogado->tipo = $abogado->tipo;
+
 
                                 $conabogado->save();
                                 $idextraabogado=$conabogado->id;
