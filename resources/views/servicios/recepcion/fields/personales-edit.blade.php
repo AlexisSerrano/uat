@@ -124,12 +124,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-4">
+	<div class="col-5">
 		<div class="form-group">
 			{!! Form::label('idMunicipio', 'Municipio: ', ['class' => 'col-form-label-sm labelCambioDireccion']) !!}
 			{!!Form::label('nombre',$nombreMunicipio ,['class'=> 'col-form-label-sm labelCambioDireccion'])!!}
 			<div class="input-group inputOculto" id="inputDireccionMunicipio">
-				{!! Form::select('idMunicipio', $catMunicipios, $idMunicipioSelect, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
+				{!! Form::select('idMunicipio', $catMunicipios, $idMunicipioSelect , ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
 			</div>
 		</div>
 	</div>
@@ -140,7 +140,7 @@
 			{!!Form::label('nombre',$nombreLocalidad ,['class'=> 'col-form-label-sm labelCambioDireccion'])!!}
 			<div class="input-group inputOculto" id="inputDireccionLocalidad">
 				{!! Form::select('idLocalidad', $catLocalidades, $idLocalidadSelect, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
-			</div>
+			</div> 
 		</div>
 	</div>
 			
