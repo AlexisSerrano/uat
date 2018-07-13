@@ -496,31 +496,22 @@ class ActasHechosController extends Controller
         // ->first();
         // // dd($catalogos);
         $acta = ActasHechos::find($id);
-        $variable = DB::connection('componentes')->table('variables_persona_fisica')
-        ->join('persona_fisica','variables_persona_fisica.idPersona','=','persona_fisica.id')
-        ->join('cat_ocupacion','variables_persona_fisica.idOcupacion','=','cat_ocupacion.id')
-        ->join('cat_estado_civil','variables_persona_fisica.idEstadoCivil','=','cat_estado_civil.id')
-        ->join('cat_escolaridad','variables_persona_fisica.idEscolaridad','=','cat_escolaridad.id')
-        ->join('domicilio','variables_persona_fisica.idDomicilio','=','domicilio.id')
+        $variable = DB::connection('componentes')->table('variables_persona_moral')
+        ->join('persona_moral','variables_persona_moral.idPersona','=','persona_moral.id')
+        ->join('domicilio','variables_persona_moral.idDomicilio','=','domicilio.id')
         ->join('cat_municipio','domicilio.idMunicipio','=','cat_municipio.id')
         ->join('cat_localidad','domicilio.idLocalidad','=','cat_localidad.id')
         ->join('cat_colonia','domicilio.idColonia','=','cat_colonia.id')
         ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')
-        ->join('cat_identificacion','variables_persona_fisica.docIdentificacion','=','cat_identificacion.id')
-        ->where('variables_persona_fisica.id',$acta->varPersona)
-        ->select('cat_ocupacion.nombre as nombreOcupacion',
-        'cat_estado_civil.nombre as nombreEstadoCivil',
-        'cat_escolaridad.nombre as nombreEscolaridad',
-        'cat_municipio.nombre as nombreMunicipio',
+        ->where('variables_persona_moral.id',$acta->varPersona)
+        ->select('cat_municipio.nombre as nombreMunicipio',
         'cat_localidad.nombre as nombreLocalidad',
         'cat_colonia.nombre as nombreColonia',
         'cat_estado.nombre as nombreEstado',
         'domicilio.numInterno as numInterno', 'domicilio.numExterno as numExterno', 'domicilio.calle as calle',
-        'persona_fisica.fechaNacimiento as fecha_nac', 'variables_persona_fisica.telefono as telefono', 
-        'persona_fisica.nombres as nombrePersona','persona_fisica.primerAp as primer_ap',
-        'persona_fisica.segundoAp as segundo_ap','persona_fisica.idMunicipioOrigen as idMunicipioOrigen',
-        'cat_identificacion.documento as identificacion', 'variables_persona_fisica.numDocIdentificacion as num_identificacion',
-        'cat_colonia.codigoPostal as cp')
+        'variables_persona_moral.telefono as telefono', 
+        'persona_moral.nombre as nombreEmpresa','persona_moral.fechaCreacion as fechaCreacion',
+        'persona_moral.rfc as rfc','cat_colonia.codigoPostal as cp')
         ->first();
         $origen = DB::connection('componentes')->table('cat_municipio')
         ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')

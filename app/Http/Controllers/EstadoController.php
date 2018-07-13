@@ -187,50 +187,26 @@ class EstadoController extends Controller
                     ->join('persona','variables_persona.idPersona','=','persona.id')
                     ->join('domicilio as domicilio','domicilio.id','=','variables_persona.idDomicilio')
                     ->join('domicilio as domicilioTrabajo','domicilioTrabajo.id','=','variables_persona.idDomicilioTrabajo')
-                    ->select('domicilio.*','domicilioTrabajo.*','persona.*','variables_persona.*')
+                    ->select('domicilio.*','domicilioTrabajo.id as DT_id', 'domicilioTrabajo.idMunicipio as DT_idMunicipio',
+                    'domicilioTrabajo.idLocalidad as DT_idLocalidad','domicilioTrabajo.idColonia as DT_idColonia',
+                    'domicilioTrabajo.calle as DT_calle','domicilioTrabajo.numExterno as DT_numExterno',
+                    'domicilioTrabajo.numInterno as DT_numInterno','persona.*','variables_persona.*','extra_autoridad.*')
                     ->where('variables_persona.idCarpeta',$idCarpeta)
                     ->get();
-                    dd($autoridades);
+                  //  dd($autoridades);
     
                     //abogados
     
                     $abogados=DB::table('extra_abogado')
                     ->join('variables_persona','variables_persona.id','=','extra_abogado.idVariablesPersona')
                     ->join('persona','variables_persona.idPersona','=','persona.id')
+                    ->join('domicilio as domicilio','domicilio.id','=','variables_persona.idDomicilio')
+                    ->join('domicilio as domicilioTrabajo','domicilioTrabajo.id','=','variables_persona.idDomicilioTrabajo')
+                    ->select('domicilio.*','domicilioTrabajo.id as DT_id', 'domicilioTrabajo.idMunicipio as DT_idMunicipio',
+                    'domicilioTrabajo.idLocalidad as DT_idLocalidad','domicilioTrabajo.idColonia as DT_idColonia',
+                    'domicilioTrabajo.calle as DT_calle','domicilioTrabajo.numExterno as DT_numExterno',
+                    'domicilioTrabajo.numInterno as DT_numInterno','persona.*','variables_persona.*','extra_abogado.*')
                     ->where('variables_persona.idCarpeta',$idCarpeta)
-                    ->select(   
-                                'persona.nombres as pernombres',
-                                'persona.primerAp as perprimerAp',
-                                'persona.segundoAp as persegundoAp',
-                                'persona.fechaNacimiento as perfechaNacimiento',
-                                'persona.rfc as perrfc',
-                                'persona.curp as percurp',
-                                'persona.sexo as persexo',
-                                'persona.idNacionalidad as peridNacionalidad',
-                                'persona.idEtnia as peridEtnia',
-                                'persona.idLengua as peridLengua',
-                                'persona.idMunicipioOrigen as peridMunicipioOrigen',
-                                'persona.esEmpresa as peresEmpresa',
-                                'variables_persona.idPersona as variaidPersona',
-                                'variables_persona.edad as variaedad',
-                                'variables_persona.telefono as variatelefono',
-                                // 'variables_persona.motivoEstancia as variamotivoEstancia',
-                                'variables_persona.idOcupacion as variaidOcupacion',
-                                'variables_persona.idEstadoCivil as variaidEstadoCivil',
-                                'variables_persona.idEscolaridad as variaidEscolaridad',
-                                'variables_persona.idReligion as variaidReligion',
-                                'variables_persona.idDomicilio as variaidDomicilio',
-                                'variables_persona.docIdentificacion as variadocIdentificacion',
-                                'variables_persona.numDocIdentificacion as varianumDocIdentificacion',
-                                'variables_persona.lugarTrabajo as varialugarTrabajo',
-                                'variables_persona.idDomicilioTrabajo as variaidDomicilioTrabajo',
-                                'variables_persona.telefonoTrabajo as variatelefonoTrabajo',
-                                'variables_persona.representanteLegal as variarepresentanteLegal',
-                                'extra_abogado.id as aboid',
-                                'extra_abogado.cedulaProf as abocedulaProf',
-                                'extra_abogado.sector as abosector',
-                                'extra_abogado.correo as abocorreo',
-                                'extra_abogado.tipo as abotipo')
                     ->get();
                     //dd($abogados);
                     
@@ -421,7 +397,6 @@ class EstadoController extends Controller
                             foreach ($delitos as $delito) {
 
                                 $conDomicilio = new ConDomicilio;
-                                $conDomicilio->id = $delito->idDomicilio;
                                 $conDomicilio->idMunicipio = $delito->idMunicipio;
                                 $conDomicilio->idLocalidad = $delito->idLocalidad;
                                 $conDomicilio->idColonia = $delito->idColonia;
@@ -462,47 +437,66 @@ class EstadoController extends Controller
                         if (count($autoridades)>0) {
                             foreach ($autoridades as $autoridad) {
                                 $conpersona = new ConPersona;
-                                $conpersona->nombres = $autoridad->pernombres;
-                                $conpersona->primerAp = $autoridad->perprimerAp;
-                                $conpersona->segundoAp = $autoridad->persegundoAp;
-                                $conpersona->fechaNacimiento = $autoridad->perfechaNacimiento;
-                                $conpersona->rfc = $autoridad->perrfc;
-                                $conpersona->curp = $autoridad->percurp;
-                                $conpersona->sexo = $autoridad->persexo;
-                                $conpersona->idNacionalidad = $autoridad->peridNacionalidad;
-                                $conpersona->idEtnia = $autoridad->peridEtnia;
-                                $conpersona->idLengua = $autoridad->peridLengua;
-                                $conpersona->idMunicipioOrigen = $autoridad->peridMunicipioOrigen;
-                                $conpersona->esEmpresa = $autoridad->peresEmpresa;
+                                $conpersona->nombres = $autoridad->nombres;
+                                $conpersona->primerAp = $autoridad->primerAp;
+                                $conpersona->segundoAp = $autoridad->segundoAp;
+                                $conpersona->fechaNacimiento = $autoridad->fechaNacimiento;
+                                $conpersona->rfc = $autoridad->rfc;
+                                $conpersona->curp = $autoridad->curp;
+                                $conpersona->sexo = $autoridad->sexo;
+                                $conpersona->idNacionalidad = $autoridad->idNacionalidad;
+                                $conpersona->idEtnia = $autoridad->idEtnia;
+                                $conpersona->idLengua = $autoridad->idLengua;
+                                $conpersona->idMunicipioOrigen = $autoridad->idMunicipioOrigen;
+                                $conpersona->esEmpresa = $autoridad->esEmpresa;
                                 $conpersona->save();
                                 $idpersonaauto=$conpersona->id;
+
+                                
+                                $conDomicilio = new ConDomicilio;
+                                $conDomicilio->idMunicipio = $autoridad->idMunicipio;
+                                $conDomicilio->idLocalidad = $autoridad->idLocalidad;
+                                $conDomicilio->idColonia = $autoridad->idColonia;
+                                $conDomicilio->calle = $autoridad->calle;
+                                $conDomicilio->numExterno = $autoridad->numExterno;
+                                $conDomicilio->numInterno = $autoridad->numInterno;
+                                $conDomicilio->save();
+
+                                $conDomicilioT = new ConDomicilio;
+                                $conDomicilioT->idMunicipio = $autoridad->DT_idMunicipio;
+                                $conDomicilioT->idLocalidad = $autoridad->DT_idLocalidad;
+                                $conDomicilioT->idColonia = $autoridad->DT_idColonia;
+                                $conDomicilioT->calle = $autoridad->DT_calle;
+                                $conDomicilioT->numExterno = $autoridad->DT_numExterno;
+                                $conDomicilioT->numInterno = $autoridad->DT_numInterno;
+                                $conDomicilioT->save();                               
     
     
                                 $convariables = new ConVariablesPersona;
-                                $convariables->idCarpeta = $idCarpetaTurnada;
-                                $convariables->idPersona = $idpersonaauto;
-                                $convariables->edad = $autoridad->variaedad;
-                                $convariables->telefono = $autoridad->variatelefono;
+                                $convariables->idCarpeta = $autoridad->idCarpeta;
+                                $convariables->idPersona = $conpersona->id;
+                                $convariables->edad = $autoridad->edad;
+                                $convariables->telefono = $autoridad->telefono;
                                 $convariables->motivoEstancia = 'NO APLICA';
-                                $convariables->idOcupacion = $autoridad->variaidOcupacion;
-                                $convariables->idEstadoCivil = $autoridad->variaidEstadoCivil;
-                                $convariables->idEscolaridad = $autoridad->variaidEscolaridad;
-                                $convariables->idReligion = $autoridad->variaidReligion;
-                                $convariables->idDomicilio = $autoridad->variaidDomicilio;
-                                $convariables->docIdentificacion = $autoridad->variadocIdentificacion;
-                                $convariables->numDocIdentificacion = $autoridad->varianumDocIdentificacion;
-                                $convariables->lugarTrabajo = $autoridad->varialugarTrabajo;
-                                $convariables->idDomicilioTrabajo = $autoridad->variaidDomicilioTrabajo;
-                                $convariables->telefonoTrabajo = $autoridad->variatelefonoTrabajo;
-                                $convariables->representanteLegal = $autoridad->variarepresentanteLegal;
+                                $convariables->idOcupacion = $autoridad->idOcupacion;
+                                $convariables->idEstadoCivil = $autoridad->idEstadoCivil;
+                                $convariables->idEscolaridad = $autoridad->idEscolaridad;
+                                $convariables->idReligion = $autoridad->idReligion;
+                                $convariables->idDomicilio = $conDomiclio->id;
+                                $convariables->docIdentificacion = $autoridad->docIdentificacion;
+                                $convariables->numDocIdentificacion = $autoridad->numDocIdentificacion;
+                                $convariables->lugarTrabajo = $autoridad->lugarTrabajo;
+                                $convariables->idDomicilioTrabajo = $conDomiclioT->id;
+                                $convariables->telefonoTrabajo = $autoridad->telefonoTrabajo;
+                                $convariables->representanteLegal = $autoridad->representanteLegal;
                                 $convariables->save();
                                 $idvariablesauto=$convariables->id;
                                 
                                 $conautoridad = new ConExtraAutoridad;
-                                $conautoridad->idVariablesPersona = $idvariablesauto;
-                                $conautoridad->antiguedad = $autoridad->autoantiguedad;
-                                $conautoridad->rango = $autoridad->autorango;
-                                $conautoridad->horarioLaboral = $autoridad->autohorarioLaboral;
+                                $conautoridad->idVariablesPersona = $convariables->id;
+                                $conautoridad->antiguedad = $autoridad->antiguedad;
+                                $conautoridad->rango = $autoridad->rango;
+                                $conautoridad->horarioLaboral = $autoridad->horarioLaboral;
                                 //$conautoridad->narracion = $autoridad->autonarracion;
                                 $conautoridad->save();
                                 $idextraauto=$conautoridad->id;
@@ -512,7 +506,7 @@ class EstadoController extends Controller
                                     'idInvolucrado'=>$idextraauto,
                                     'idCarpeta'=>$idCarpetaTurnada,
                                     'tipoInvolucrado'=>3,
-                                    'narracion'=>$autoridad->autonarracion
+                                    'narracion'=>$autoridad->narracion
                                 ]);
                                 //$narracion->save();
                                 //dd($narracion->id);
@@ -527,51 +521,73 @@ class EstadoController extends Controller
                         if (count($abogados)>0) {
                             $arrayabogados=array();
                             foreach ($abogados as $abogado) {
+
                                 $conpersona = new ConPersona;
-                                $conpersona->nombres = $abogado->pernombres;
-                                $conpersona->primerAp = $abogado->perprimerAp;
-                                $conpersona->segundoAp = $abogado->persegundoAp;
-                                $conpersona->fechaNacimiento = $abogado->perfechaNacimiento;
-                                $conpersona->rfc = $abogado->perrfc;
-                                $conpersona->curp = $abogado->percurp;
-                                $conpersona->sexo = $abogado->persexo;
-                                $conpersona->idNacionalidad = $abogado->peridNacionalidad;
-                                $conpersona->idEtnia = $abogado->peridEtnia;
-                                $conpersona->idLengua = $abogado->peridLengua;
-                                $conpersona->idMunicipioOrigen = $abogado->peridMunicipioOrigen;
-                                $conpersona->esEmpresa = $abogado->peresEmpresa;
+                                $conpersona->nombres = $abogado->nombres;
+                                $conpersona->primerAp = $abogado->primerAp;
+                                $conpersona->segundoAp = $abogado->segundoAp;
+                                $conpersona->fechaNacimiento = $abogado->fechaNacimiento;
+                                $conpersona->rfc = $abogado->rfc;
+                                $conpersona->curp = $abogado->curp;
+                                $conpersona->sexo = $abogado->sexo;
+                                $conpersona->idNacionalidad = $abogado->idNacionalidad;
+                                $conpersona->idEtnia = $abogado->idEtnia;
+                                $conpersona->idLengua = $abogado->idLengua;
+                                $conpersona->idMunicipioOrigen = $abogado->idMunicipioOrigen;
+                                $conpersona->esEmpresa = $abogado->esEmpresa;
                                 $conpersona->save();
-                                $idpersonaabo=$conpersona->id;
+                                $idpersonaauto=$conpersona->id;
+
                                 
+                                $conDomicilio = new ConDomicilio;
+                                $conDomicilio->idMunicipio = $abogado->idMunicipio;
+                                $conDomicilio->idLocalidad = $abogado->idLocalidad;
+                                $conDomicilio->idColonia = $abogado->idColonia;
+                                $conDomicilio->calle = $abogado->calle;
+                                $conDomicilio->numExterno = $abogado->numExterno;
+                                $conDomicilio->numInterno = $abogado->numInterno;
+                                $conDomicilio->save();
+
+                                $conDomicilioT = new ConDomicilio;
+                                $conDomicilioT->idMunicipio = $abogado->DT_idMunicipio;
+                                $conDomicilioT->idLocalidad = $abogado->DT_idLocalidad;
+                                $conDomicilioT->idColonia = $abogado->DT_idColonia;
+                                $conDomicilioT->calle = $abogado->DT_calle;
+                                $conDomicilioT->numExterno = $abogado->DT_numExterno;
+                                $conDomicilioT->numInterno = $abogado->DT_numInterno;
+                                $conDomicilioT->save();                               
+    
+    
                                 $convariables = new ConVariablesPersona;
-                                $convariables->idCarpeta = $idCarpetaTurnada;
-                                $convariables->idPersona = $idpersonaabo;
-                                $convariables->edad = $abogado->variaedad;
-                                $convariables->telefono = $abogado->variatelefono;
-                                $convariables->motivoEstancia = 'SIN INFORMACION';
-                                $convariables->idOcupacion = $abogado->variaidOcupacion;
-                                $convariables->idEstadoCivil = $abogado->variaidEstadoCivil;
-                                $convariables->idEscolaridad = $abogado->variaidEscolaridad;
-                                $convariables->idReligion = $abogado->variaidReligion;
-                                $convariables->idDomicilio = $abogado->variaidDomicilio;
-                                $convariables->docIdentificacion = $abogado->variadocIdentificacion;
-                                $convariables->numDocIdentificacion = $abogado->varianumDocIdentificacion;
-                                $convariables->lugarTrabajo = $abogado->varialugarTrabajo;
-                                $convariables->idDomicilioTrabajo = $abogado->variaidDomicilioTrabajo;
-                                $convariables->telefonoTrabajo = $abogado->variatelefonoTrabajo;
-                                $convariables->representanteLegal = $abogado->variarepresentanteLegal;
+                                $convariables->idCarpeta = $abogado->idCarpeta;
+                                $convariables->idPersona = $conpersona->id;
+                                $convariables->edad = $abogado->edad;
+                                $convariables->telefono = $autoridad->telefono;
+                                $convariables->motivoEstancia = 'NO APLICA';
+                                $convariables->idOcupacion = $abogado->idOcupacion;
+                                $convariables->idEstadoCivil = $abogado->idEstadoCivil;
+                                $convariables->idEscolaridad = $abogado->idEscolaridad;
+                                $convariables->idReligion = $abogado->idReligion;
+                                $convariables->idDomicilio = $conDomiclio->id;
+                                $convariables->docIdentificacion = $abogado->docIdentificacion;
+                                $convariables->numDocIdentificacion = $abogado->numDocIdentificacion;
+                                $convariables->lugarTrabajo = $abogado->lugarTrabajo;
+                                $convariables->idDomicilioTrabajo = $conDomiclioT->id;
+                                $convariables->telefonoTrabajo = $abogado->telefonoTrabajo;
+                                $convariables->representanteLegal = $abogado->representanteLegal;
                                 $convariables->save();
-                                $idvariablesabo=$convariables->id;
+                                $idvariablesauto=$convariables->id;
                                 
-                                $conabogado = new ConExtraAbogado;
-                                $conabogado->idVariablesPersona = $idvariablesabo;
-                                $conabogado->cedulaProf = $abogado->abocedulaProf;
-                                $conabogado->sector = $abogado->abosector;
-                                $conabogado->correo = $abogado->abocorreo;
-                                $conabogado->tipo = $abogado->abotipo;
+                                $conabogado = new ConExtraAutoridad;
+                                $conabogado->idVariablesPersona = $convariables->id;
+                                $conabogado->antiguedad = $abogado->antiguedad;
+                                $conabogado->rango = $abogado->rango;
+                                $conabogado->horarioLaboral = $abogado->horarioLaboral;
+
                                 $conabogado->save();
-                                //dd($conabogado);
-                                array_push($arrayabogados,array('iduat'=>$abogado->aboid,'idnuevo'=>$conabogado->id));
+                                $idextraabogado=$conabogado->id;
+                             
+                                array_push($arrayabogados,array('iduat'=>$abogado->id,'idnuevo'=>$conabogado->id));
                                 
     
                             }
