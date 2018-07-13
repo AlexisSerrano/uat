@@ -241,37 +241,38 @@ class ActasHechosController extends Controller
             $acta->idEscolaridad = $request->escActa1;
             $acta->telefono = $request->telefono;
             $acta->narracion = $request->narracion;
+            $acta->expedido= ActasHechosController::getExpedido($request->tipoActa);
             
-            switch ($request->docIdentificacion) {
-                case 'CREDENCIAL PARA VOTAR': $acta->expedido ="INSTITUTO NACIONAL ELECTORAL";
-                break;
-                case 'PASAPORTE':$acta->expedido ="SECRETARÍA DE RELACIONES EXTERIORES";
-                break;
-                case 'CEDULA PROFESIONAL':$acta->expedido ="DIRECCIÓN GENERAL DE PROFESIONES";
-                break;
-                case 'CARTILLA DEL SERVICIO MILITAR NACIONAL':$acta->expedido ="SECRETARÍA DE LA DEFENSA NACIONAL";
-                break;
-                case 'TARJETA UNICA DE IDENTIDAD MILITAR':$acta->expedido ="DISPOSICIONES DE CARÁCTER GENERAL";
-                break;
-                case 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES':$acta->expedido ="INAPAM";
-                break;
-                case 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL':$acta->expedido ="IMSS";
-                break;
-                case 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR':$acta->expedido ="DIRECCIÓN GENERAL DE ACREDITACIÓN, INCORPORACIÓN Y REVALIDACIÓN";
-                break;
-                case 'LICENCIA DE CONDUCIR':$acta->expedido ="SECRETARÍA DE COMUNICACIONES Y TRANSPORTES";
-                break;
-                case 'CERTIFICADO DE MATRICULA CONSULAR':$acta->expedido ="CERTIFICADO DE MATRICULA CONSULAR";
-                break;
-                case 'ACTA DE NACIMIENTO':$acta->expedido ="REGISTRO NACIONAL DE POBLACIÓN";
-                break;
-                case 'CURP':$acta->expedido ="REGISTRO NACIONAL DE POBLACIÓN";
-                break;
-                case 'CONSTANCIA DE RESIDENCIA':$acta->expedido ="SERVICIO DE ADMINISTRACIÓN TRIBUTARIA";
-                break;
-                default:$acta->expedido = $request->expedido;
-                break;
-            }
+            // switch ($request->docIdentificacion) {
+            //     case 'CREDENCIAL PARA VOTAR': $acta->expedido ="INSTITUTO NACIONAL ELECTORAL";
+            //     break;
+            //     case 'PASAPORTE':$acta->expedido ="SECRETARÍA DE RELACIONES EXTERIORES";
+            //     break;
+            //     case 'CEDULA PROFESIONAL':$acta->expedido ="DIRECCIÓN GENERAL DE PROFESIONES";
+            //     break;
+            //     case 'CARTILLA DEL SERVICIO MILITAR NACIONAL':$acta->expedido ="SECRETARÍA DE LA DEFENSA NACIONAL";
+            //     break;
+            //     case 'TARJETA UNICA DE IDENTIDAD MILITAR':$acta->expedido ="DISPOSICIONES DE CARÁCTER GENERAL";
+            //     break;
+            //     case 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES':$acta->expedido ="INAPAM";
+            //     break;
+            //     case 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL':$acta->expedido ="IMSS";
+            //     break;
+            //     case 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR':$acta->expedido ="DIRECCIÓN GENERAL DE ACREDITACIÓN, INCORPORACIÓN Y REVALIDACIÓN";
+            //     break;
+            //     case 'LICENCIA DE CONDUCIR':$acta->expedido ="SECRETARÍA DE COMUNICACIONES Y TRANSPORTES";
+            //     break;
+            //     case 'CERTIFICADO DE MATRICULA CONSULAR':$acta->expedido ="CERTIFICADO DE MATRICULA CONSULAR";
+            //     break;
+            //     case 'ACTA DE NACIMIENTO':$acta->expedido ="REGISTRO NACIONAL DE POBLACIÓN";
+            //     break;
+            //     case 'CURP':$acta->expedido ="REGISTRO NACIONAL DE POBLACIÓN";
+            //     break;
+            //     case 'CONSTANCIA DE RESIDENCIA':$acta->expedido ="SERVICIO DE ADMINISTRACIÓN TRIBUTARIA";
+            //     break;
+            //     default:$acta->expedido = $request->expedido;
+            //     break;
+            // }
             if (!is_null($request->tipoActa)){
                 $acta->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa;
             }
@@ -324,37 +325,38 @@ class ActasHechosController extends Controller
         // $acta->idEscolaridad = $request->escActa1;
         $acta->telefono = $request->telefono2;
         $acta->narracion = $request->narracion;
+        $acta->expedido= ActasHechosController::getExpedido($request->tipoActa);
         
-        switch ($request->docIdentificacion2) {
-            case 'CREDENCIAL PARA VOTAR': $acta->expedido ="INSTITUTO NACIONAL ELECTORAL";
-            break;
-            case 'PASAPORTE':$acta->expedido ="SECRETARÍA DE RELACIONES EXTERIORES";
-            break;
-            case 'CEDULA PROFESIONAL':$acta->expedido ="DIRECCIÓN GENERAL DE PROFESIONES";
-            break;
-            case 'CARTILLA DEL SERVICIO MILITAR NACIONAL':$acta->expedido ="SECRETARÍA DE LA DEFENSA NACIONAL";
-            break;
-            case 'TARJETA UNICA DE IDENTIDAD MILITAR':$acta->expedido ="DISPOSICIONES DE CARÁCTER GENERAL";
-            break;
-            case 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES':$acta->expedido ="INAPAM";
-            break;
-            case 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL':$acta->expedido ="IMSS";
-            break;
-            case 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR':$acta->expedido ="DIRECCIÓN GENERAL DE ACREDITACIÓN, INCORPORACIÓN Y REVALIDACIÓN";
-            break;
-            case 'LICENCIA DE CONDUCIR':$acta->expedido ="SECRETARÍA DE COMUNICACIONES Y TRANSPORTES";
-            break;
-            case 'CERTIFICADO DE MATRICULA CONSULAR':$acta->expedido ="CERTIFICADO DE MATRICULA CONSULAR";
-            break;
-            case 'ACTA DE NACIMIENTO':$acta->expedido ="REGISTRO NACIONAL DE POBLACIÓN";
-            break;
-            case 'CURP':$acta->expedido ="REGISTRO NACIONAL DE POBLACIÓN";
-            break;
-            case 'CONSTANCIA DE RESIDENCIA':$acta->expedido ="SERVICIO DE ADMINISTRACIÓN TRIBUTARIA";
-            break;
-            default:$acta->expedido = $request->expedido;
-            break;
-        }
+        // switch ($request->docIdentificacion2) {
+        //     case 'CREDENCIAL PARA VOTAR': $acta->expedido ="INSTITUTO NACIONAL ELECTORAL";
+        //     break;
+        //     case 'PASAPORTE':$acta->expedido ="SECRETARÍA DE RELACIONES EXTERIORES";
+        //     break;
+        //     case 'CEDULA PROFESIONAL':$acta->expedido ="DIRECCIÓN GENERAL DE PROFESIONES";
+        //     break;
+        //     case 'CARTILLA DEL SERVICIO MILITAR NACIONAL':$acta->expedido ="SECRETARÍA DE LA DEFENSA NACIONAL";
+        //     break;
+        //     case 'TARJETA UNICA DE IDENTIDAD MILITAR':$acta->expedido ="DISPOSICIONES DE CARÁCTER GENERAL";
+        //     break;
+        //     case 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES':$acta->expedido ="INAPAM";
+        //     break;
+        //     case 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL':$acta->expedido ="IMSS";
+        //     break;
+        //     case 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR':$acta->expedido ="DIRECCIÓN GENERAL DE ACREDITACIÓN, INCORPORACIÓN Y REVALIDACIÓN";
+        //     break;
+        //     case 'LICENCIA DE CONDUCIR':$acta->expedido ="SECRETARÍA DE COMUNICACIONES Y TRANSPORTES";
+        //     break;
+        //     case 'CERTIFICADO DE MATRICULA CONSULAR':$acta->expedido ="CERTIFICADO DE MATRICULA CONSULAR";
+        //     break;
+        //     case 'ACTA DE NACIMIENTO':$acta->expedido ="REGISTRO NACIONAL DE POBLACIÓN";
+        //     break;
+        //     case 'CURP':$acta->expedido ="REGISTRO NACIONAL DE POBLACIÓN";
+        //     break;
+        //     case 'CONSTANCIA DE RESIDENCIA':$acta->expedido ="SERVICIO DE ADMINISTRACIÓN TRIBUTARIA";
+        //     break;
+        //     default:$acta->expedido = $request->expedido;
+        //     break;
+        // }
         if (!is_null($request->tipoActa2)){
             $acta->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa2;
         }
@@ -453,7 +455,7 @@ class ActasHechosController extends Controller
         'nombre' =>strtr(($variable->nombrePersona.' '.$variable->primer_ap.' '.$variable->segundo_ap),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'identificacion' => strtr(($variable->identificacion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'numIdentificacion' => $variable->num_identificacion,
-        'fechaNacimiento' => $fechanachum,
+        'fechaNacimiento' =>strtr(($fechanachum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
         'ocupacion' =>strtr(($variable->nombreOcupacion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
         'estadoCivil' =>strtr(($variable->nombreEstadoCivil),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),  
         'escolaridad' => strtr(($variable->nombreEscolaridad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),  
@@ -473,28 +475,6 @@ class ActasHechosController extends Controller
     }
 
     public function getoficioahm($id){
-        // $catalogos = DB::table('actas_hechos')
-        // ->where('actas_hechos.id', $id)
-        // ->where('actas_hechos.esEmpresa', 1)
-        // ->join('domicilio','actas_hechos.idDomicilio','=','domicilio.id')
-        // ->join('cat_municipio','domicilio.idMunicipio','=','cat_municipio.id')
-        // ->join('cat_localidad','domicilio.idLocalidad','=','cat_localidad.id')
-        // ->join('cat_colonia','domicilio.idColonia','=','cat_colonia.id')
-        // ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')
-        // ->select(
-        // 'cat_municipio.nombre as nombreMunicipio',
-        // 'cat_localidad.nombre as nombreLocalidad',
-        // 'cat_colonia.nombre as nombreColonia',
-        // 'cat_estado.nombre as nombreEstado',
-        // 'domicilio.numInterno as numInterno', 'domicilio.numExterno as numExterno', 'domicilio.calle as calle',
-        // 'actas_hechos.fecha_nac as fecha_nac', 'actas_hechos.telefono as telefono', 'actas_hechos.narracion as narracion',
-        // 'actas_hechos.expedido as expedido', 'actas_hechos.fiscal as fiscal', 'actas_hechos.nombreEmpresa','actas_hechos.nombre as nombrePersona',
-        // 'actas_hechos.primer_ap as primer_ap', 'actas_hechos.segundo_ap as segundo_ap',
-        // 'actas_hechos.identificacion as identificacion', 'actas_hechos.num_identificacion as num_identificacion',
-        // 'cat_colonia.codigoPostal as cp', 'actas_hechos.folio as folio', 'actas_hechos.hora as hora',
-        // 'actas_hechos.fecha as fecha')
-        // ->first();
-        // // dd($catalogos);
         $acta = ActasHechos::find($id);
         $variable = DB::connection('componentes')->table('variables_persona_moral')
         ->join('persona_moral','variables_persona_moral.idPersona','=','persona_moral.id')
@@ -508,15 +488,15 @@ class ActasHechosController extends Controller
         'cat_localidad.nombre as nombreLocalidad',
         'cat_colonia.nombre as nombreColonia',
         'cat_estado.nombre as nombreEstado',
-        'domicilio.numInterno as numInterno', 'domicilio.numExterno as numExterno', 'domicilio.calle as calle',
+        'domicilio.numInterno as numInterno', 
+        'domicilio.numExterno as numExterno', 
+        'domicilio.calle as calle',
         'variables_persona_moral.telefono as telefono', 
-        'persona_moral.nombre as nombreEmpresa','persona_moral.fechaCreacion as fechaCreacion',
-        'persona_moral.rfc as rfc','cat_colonia.codigoPostal as cp')
-        ->first();
-        $origen = DB::connection('componentes')->table('cat_municipio')
-        ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')
-        ->where('cat_municipio.id',$variable->idMunicipioOrigen)
-        ->select('cat_municipio.nombre as municipioOrigen','cat_estado.nombre as estadoOrigen')
+        'persona_moral.nombre as nombreEmpresa',
+        'persona_moral.fechaCreacion as fechaCreacion',
+        'persona_moral.rfc as rfc',
+        'cat_colonia.codigoPostal as cp',
+        'variables_persona_moral.representanteLegal as representanteLegal')
         ->first();
         $unidad = DB::table('unidad')->where('id',$acta->idUnidad)->first();
         $arr = explode(" ",$unidad->descripcion);
@@ -528,45 +508,38 @@ class ActasHechosController extends Controller
         }
 
 
-        if($catalogos->numInterno=='S/N'){
-            $numExterno = $catalogos->numExterno;
+        if($variable->numInterno=='S/N'){
+            $numExterno = $variable->numExterno;
         }
         else{
-            $numExterno = $catalogos->numExterno.' interior '.$catalogos->numInterno;
+            $numExterno = $variable->numExterno.' interior '.$variable->numInterno;
         }
-        $fechaactual = new Date($catalogos->fecha);
+        $fechaactual = new Date($acta->fecha);
         $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
-        $date = new Date($catalogos->fecha_nac);
+        $date = new Date($variable->fechaCreacion);
         $fechanachum = $date->format('j').' de '.$date->format('F').' del año '.$date->format('Y');
-        $fechasep = explode("-", $catalogos->fecha_nac);
-        $edad = Date::createFromDate($fechasep[0],$fechasep[1],$fechasep[2])->age;
-        $data = array('estado' => $catalogos->nombreEstado, 
-        'unidadMunicipio' => strtr(($variable->nombreMunicipio),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-        'municipio' => strtr(($variable->nombreMunicipio),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
-        'localidad' =>strtr(($variable->nombreLocalidad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-        'colonia' =>strtr(($variable->nombreColonia),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
-        'calle' =>strtr(( $variable->calle),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
-        'cp' => $variable->cp,
-        'numExterno' => $numExterno,
-        'folio' => $acta->id,
-        'hora' => $date->parse($acta->hora)->format('H:i'),
-        'fecha' => strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-        'fiscal' => strtr(strtoupper('FISCAL CAMBIAR'),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-        'puesto' => strtoupper(Auth::user()->puesto),
-        'nombre' => $variable->nombrePersona.' '.$variable->primer_ap.' '.$variable->segundo_ap,
-        'identificacion' =>strtr(strtoupper($variable->identificacion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
-        'numIdentificacion' => $variable->num_identificacion,
-        'fechaNacimiento' => $fechanachum,
-        'ocupacion' => strtr(strtoupper($variable->nombreOcupacion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-        'estadoCivil' =>strtr(strtoupper($variable->nombreEstadoCivil),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
-        'escolaridad' =>strtr(strtoupper($variable->nombreEscolaridad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),  
-        'telefono' => $variable->telefono,
-        'narracion' =>strtr(strtoupper($acta->narracion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
-        'expedido' => strtr(strtoupper($acta->expedido),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-        'edad' => $edad,
-        'img' => asset('img/logo.png'),
-        'id' => $id);
-        return response()->json($data);
+        $data = array('estado' => $variable->nombreEstado, 
+            'unidadMunicipio' => strtr(($localidad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
+            'municipio' => strtr(($variable->nombreMunicipio),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),   
+            'localidad' =>strtr(($variable->nombreLocalidad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
+            'colonia' => strtr(($variable->nombreColonia),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+            'calle' =>strtr(($variable->calle),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
+            'cp' => $variable->cp,
+            'numExterno' => $numExterno,
+            'folio' => $unidad->abreviacion."/AH-".$acta->folio."/".$fechaactual->format('Y'),
+            'hora' => $date->parse($acta->hora)->format('H:i'),
+            'fecha' => strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+            'fiscal' => strtr(strtoupper($acta->fiscal),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+            'nombre' =>strtr(($variable->representanteLegal),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+            'nombreEmpresa' =>strtr(($variable->nombreEmpresa),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+            'identificacion' => strtr(('IDENTIFICACION'),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+            'numIdentificacion' => 'NUM DOC IDENTIFICACION',
+            'fechaNacimiento' => $fechanachum ,//$fechanachum,  
+            'telefono' => $variable->telefono,
+            'narracion' => strtr(($acta->narracion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+            'expedido' => strtr(($acta->expedido),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+            'id' => $id);
+         return response()->json($data);
     }
 
     /*COMPONENTE */
