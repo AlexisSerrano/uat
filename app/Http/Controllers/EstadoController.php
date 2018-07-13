@@ -18,6 +18,7 @@ use App\Models\VariablesPersona;
 
 use App\Models\uatuipj\ConPersona;
 use App\Models\uatuipj\ConCarpeta;
+use App\Models\uatuipj\ConDomicilio;
 use App\Models\uatuipj\ConAcusacion;
 use App\Models\uatuipj\ConExtraAbogado;
 use App\Models\uatuipj\ConExtraAutoridad;
@@ -616,7 +617,34 @@ class EstadoController extends Controller
                                 $conpersona->esEmpresa = $denunciado->peresEmpresa;
                                 $conpersona->save();
                                 $idpersonadenunciado=$conpersona->id;
-                                
+                    
+                                $conDomicilio = new ConDomicilio;
+                                $conDomicilio->idMunicipio = $denunciado->domicilioMunicipio;
+                                $conDomicilio->idLocalidad = $denunciado->domicilioLocalidad;
+                                $conDomicilio->idColonia = $denunciado->domicilioColonia;
+                                $conDomicilio->calle = $denunciado->domicilioCalle;
+                                $conDomicilio->numExterno = $denunciado->domicilioNumExterno;
+                                $conDomicilio->numInterno = $denunciado->domicilioNumInterno;
+                                $conDomicilio->save();
+
+                                $conDomicilioT = new ConDomicilio;
+                                $conDomicilioT->idMunicipio = $denunciado->TrabajoMunicipio;
+                                $conDomicilioT->idLocalidad = $denunciado->TrabajoLocalidad;
+                                $conDomicilioT->idColonia = $denunciado->TrabajoColonia;
+                                $conDomicilioT->calle = $denunciado->TrabajoCalle;
+                                $conDomicilioT->numExterno = $denunciado->TrabajoNumExterno;
+                                $conDomicilioT->numInterno = $denunciado->TrabajoNumInterno;
+                                $conDomicilioT->save();                               
+    
+                                $conDomicilioN = new ConDomicilio;
+                                $conDomicilioN->idMunicipio = $denunciado->notifiMunicipio;
+                                $conDomicilioN->idLocalidad = $denunciado->notifiLocalidad;
+                                $conDomicilioN->idColonia = $denunciado->notifiColonia;
+                                $conDomicilioN->calle = $denunciado->notifiCalle;
+                                $conDomicilioN->numExterno = $denunciado->notifiNumExterno;
+                                $conDomicilioN->numInterno = $denunciado->notifiNumInterno;
+                                $conDomicilioN->save();                               
+
                                 $convariables = new ConVariablesPersona;
                                 $convariables->idCarpeta = $idCarpetaTurnada;
                                 $convariables->idPersona = $idpersonadenunciado;
@@ -627,18 +655,18 @@ class EstadoController extends Controller
                                 $convariables->idEstadoCivil = $denunciado->variaidEstadoCivil;
                                 $convariables->idEscolaridad = $denunciado->variaidEscolaridad;
                                 $convariables->idReligion = $denunciado->variaidReligion;
-                                $convariables->idDomicilio = $denunciado->variaidDomicilio;
+                                $convariables->idDomicilio = $conDomicilio->id;
                                 $convariables->docIdentificacion = $denunciado->variadocIdentificacion;
                                 $convariables->numDocIdentificacion = $denunciado->varianumDocIdentificacion;
                                 $convariables->lugarTrabajo = $denunciado->varialugarTrabajo;
-                                $convariables->idDomicilioTrabajo = $denunciado->variaidDomicilioTrabajo;
+                                $convariables->idDomicilioTrabajo = $conDomicilioT->id;
                                 $convariables->telefonoTrabajo = $denunciado->variatelefonoTrabajo;
                                 $convariables->representanteLegal = $denunciado->variarepresentanteLegal;
                                 $convariables->save();
                                 $idvariablesabo=$convariables->id;
                                 
                                 $conNotifi = new ConNotificacion;
-                                $conNotifi->idDomicilio = $denunciado->notifiidDomicilio;
+                                $conNotifi->idDomicilio = $conDomicilioN->id;
                                 $conNotifi->correo = $denunciado->notificorreo;
                                 $conNotifi->telefono = $denunciado->notifitelefono;
                                 // $conNotifi->fax = $denunciado->notififax;
@@ -708,6 +736,32 @@ class EstadoController extends Controller
                                 $conpersona->save();
                                 $idpersonadenuncianate=$conpersona->id;
                                 
+                                $conDomicilio = new ConDomicilio;
+                                $conDomicilio->idMunicipio = $denunciado->domicilioMunicipio;
+                                $conDomicilio->idLocalidad = $denunciado->domicilioLocalidad;
+                                $conDomicilio->idColonia = $denunciado->domicilioColonia;
+                                $conDomicilio->calle = $denunciado->domicilioCalle;
+                                $conDomicilio->numExterno = $denunciado->domicilioNumExterno;
+                                $conDomicilio->numInterno = $denunciado->domicilioNumInterno;
+                                $conDomicilio->save();
+
+                                $conDomicilioT = new ConDomicilio;
+                                $conDomicilioT->idMunicipio = $denunciado->TrabajoMunicipio;
+                                $conDomicilioT->idLocalidad = $denunciado->TrabajoLocalidad;
+                                $conDomicilioT->idColonia = $denunciado->TrabajoColonia;
+                                $conDomicilioT->calle = $denunciado->TrabajoCalle;
+                                $conDomicilioT->numExterno = $denunciado->TrabajoNumExterno;
+                                $conDomicilioT->numInterno = $denunciado->TrabajoNumInterno;
+                                $conDomicilioT->save();                               
+    
+                                $conDomicilioN = new ConDomicilio;
+                                $conDomicilioN->idMunicipio = $denunciado->notifiMunicipio;
+                                $conDomicilioN->idLocalidad = $denunciado->notifiLocalidad;
+                                $conDomicilioN->idColonia = $denunciado->notifiColonia;
+                                $conDomicilioN->calle = $denunciado->notifiCalle;
+                                $conDomicilioN->numExterno = $denunciado->notifiNumExterno;
+                                $conDomicilioN->numInterno = $denunciado->notifiNumInterno;
+                                $conDomicilioN->save();                               
                                 
                                 $convariables = new ConVariablesPersona;
                                 $convariables->idCarpeta = $idCarpetaTurnada;
@@ -719,18 +773,18 @@ class EstadoController extends Controller
                                 $convariables->idEstadoCivil = $denunciante->variaidEstadoCivil;
                                 $convariables->idEscolaridad = $denunciante->variaidEscolaridad;
                                 $convariables->idReligion = $denunciante->variaidReligion;
-                                $convariables->idDomicilio = $denunciante->variaidDomicilio;
+                                $convariables->idDomicilio = $conDomicilio->id;
                                 $convariables->docIdentificacion = $denunciante->variadocIdentificacion;
                                 $convariables->numDocIdentificacion = $denunciante->varianumDocIdentificacion;
                                 $convariables->lugarTrabajo = $denunciante->varialugarTrabajo;
-                                $convariables->idDomicilioTrabajo = $denunciante->variaidDomicilioTrabajo;
+                                $convariables->idDomicilioTrabajo = $conDomicilioT->id;
                                 $convariables->telefonoTrabajo = $denunciante->variatelefonoTrabajo;
                                 $convariables->representanteLegal = $denunciante->variarepresentanteLegal;
                                 $convariables->save();
                                 $idvariablesabo=$convariables->id;
                                 
                                 $conNotifi = new ConNotificacion;
-                                $conNotifi->idDomicilio = $denunciante->notifiidDomicilio;
+                                $conNotifi->idDomicilio = $conDomicilioN->id;
                                 $conNotifi->correo = $denunciante->notificorreo;
                                 $conNotifi->telefono = $denunciante->notifitelefono;
                                 // $conNotifi->fax = $denunciante->notififax;
