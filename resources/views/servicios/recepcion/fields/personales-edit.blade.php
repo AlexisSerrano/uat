@@ -120,7 +120,7 @@
 			{!! Form::label('idEstado', 'Entidad federativa: ', ['class' => 'col-form-label-sm labelCambioDireccion']) !!}
 			{!!Form::label('nombre',$nombreEstado ,['class'=> 'col-form-label-sm labelCambioDireccion'])!!}
 			<div class="input-group inputOculto" id="inputDireccionEstado">
-				{!! Form::select('idEstado', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required','disabled']) !!}
+				{!! Form::select('idEstado', $estados, $idEstadoSelect, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required','disabled']) !!}
 			</div>
 		</div>
 	</div>
@@ -129,7 +129,7 @@
 			{!! Form::label('idMunicipio', 'Municipio: ', ['class' => 'col-form-label-sm labelCambioDireccion']) !!}
 			{!!Form::label('nombre',$nombreMunicipio ,['class'=> 'col-form-label-sm labelCambioDireccion'])!!}
 			<div class="input-group inputOculto" id="inputDireccionMunicipio">
-				{!! Form::select('idMunicipio', [''=>'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
+				{!! Form::select('idMunicipio', $catMunicipios, $idMunicipioSelect, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
 			</div>
 		</div>
 	</div>
@@ -139,7 +139,7 @@
 			{!! Form::label('idLocalidad', 'Localidad: ', ['class' => 'col-form-label-sm labelCambioDireccion']) !!}
 			{!!Form::label('nombre',$nombreLocalidad ,['class'=> 'col-form-label-sm labelCambioDireccion'])!!}
 			<div class="input-group inputOculto" id="inputDireccionLocalidad">
-				{!! Form::select('idLocalidad', [ '' => 'Seleccione una localidad'], null, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
+				{!! Form::select('idLocalidad', $catLocalidades, $idLocalidadSelect, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
 			</div>
 		</div>
 	</div>
@@ -150,7 +150,7 @@
 			{!! Form::label('cp', 'Código postal :', ['class' => 'col-form-label-sm labelCambioDireccion']) !!}
 			{!!Form::label('nombre',$nombreCP ,['class'=> 'col-form-label-sm labelCambioDireccion'])!!}
 			<div class="input-group inputOculto" id="inputDireccionCp">
-				{!! Form::select('cp', ['' => 'Seleccione un CP'], null, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
+				{!! Form::select('cp',  $catCodigoPostal, $idCodigoPostalSelect, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
 			</div>
 		</div>
 	</div>
@@ -161,7 +161,7 @@
 			{!! Form::label('idColonia', 'Colonia: ', ['class' => 'col-form-label-sm labelCambioDireccion']) !!}
 			{!!Form::label('nombre',$nombreColonia ,['class'=> 'col-form-label-sm labelCambioDireccion'])!!}
 			<div class="input-group inputOculto" id="inputDireccionColonia">
-				{!! Form::select('idColonia', ['' => 'Colonia'], null, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
+				{!! Form::select('idColonia', $catColonias, $idColoniaSelect, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
 				<input type="button" id="botonCambioDireccion" value="Cancelar" class="btn btn-sm btn-danger">
 			</div>
 		</div>
