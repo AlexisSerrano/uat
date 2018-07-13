@@ -63,40 +63,42 @@ class OficiosSeeder extends Seeder
             <p style="text-align:right">Unidad de Atención Temprana, Veracruz&nbsp;<br>
             <strong>"Si lo platicamos, lo solucionamos”</strong><br />
             &nbsp;</p>',  
-            'contenido' =>  '<p style="text-align:center"><span style="font-size:10.0pt"><span style="font-family:Neo Sans Pro,sans-serif&quot;">ACTA DE HECHOS NÚMERO {{$folio}}</span></span></p>
+            'contenido' =>  '
+            <p style="text-align:center"><span style="font-size:10.0pt"><span style="font-family:Neo Sans Pro,sans-serif&quot;">ACTA DE HECHOS NÚMERO {{$folio}}</span></span></p>
 
-            <p>En la ciudad de {{$unidadMunicipio}}, VERACRUZ, siendo las <strong>{{$hora}}</strong> horas del día <strong>{{$fecha}}</strong>, ante la presencia de la <strong>LIC.</strong>&nbsp;<strong>{{$fiscal}}, {{$puesto}}</strong>, <strong>VERACRUZ</strong>, se presenta el <strong>C. {{$nombre}}</strong>,&nbsp; identificándose con <strong>{{$identificacion}} CON NÚMERO DE FOLIO {{$numIdentificacion}},&nbsp; EXPEDIDA POR {{$expedido}}</strong>,&nbsp; a quien en este momento se le pone en conocimiento de las penas con que la ley castiga el declarar con falsedad ante la autoridad,&nbsp; como lo prevé el artículo 333 del Código Penal vigente para el estado de Veracruz, al cual se le da lectura, y previa la protesta que otorga de decir la verdad,&nbsp; bajo su única y exclusiva responsabilidad por sus generales dijo <strong>C.&nbsp;{{$nombre}}</strong>, de <strong>{{$edad}}</strong> años de edad,&nbsp; nació en fecha <strong>{{$fechaNacimiento}}</strong>, originario de <strong>{{$municipioOrigen}},&nbsp; {{$estadoOrigen}},</strong>&nbsp; con domicilio en la calle&nbsp;<strong>{{$calle}}</strong> <strong>NÚMERO {{$numExterno}}, COLONIA {{$colonia}}, C.P. {{$cp}}</strong>,&nbsp; en el municipio de <strong>{{$municipio}}</strong>,&nbsp; <strong>{{$estado}}</strong>; ocupación <strong>{{$ocupacion}}</strong>,&nbsp; estado civil <strong>{{$estadoCivil}}</strong>,&nbsp; grado de escolaridad <strong>{{$escolaridad}}</strong>,&nbsp; con número teléfonico&nbsp;<strong>{{$telefono}}</strong>, identificado como corresponde, y considerando el motivo de su comparecencia hacer del conocimiento de esta representación social lo siguiente: <strong>"{{$narracion}}"</strong> lo cual, en uso de la voz, y bajo responsabilidad explica lo siguiente: <strong>TODO ESTO LO MANIFIESTO POR EL MAL USO QUE SE LE PUDIERE DAR - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</strong></p>
-            
-            <p>Lo aquí manifestado es responsabilidad de quien comparece.- en términos de lo dispuesto en los artículos 21 de la Constitución Política de los Estados Unidos Mexicanos, 2, 3 Fracción XI, 5 y 15 Fracción XII de la ley orgánica de la fiscalía general del estado de Veracruz de Ignacio de la Llave, así como 201 y 207 del reglamento de la precitada ley y la Circular 01/2015, emitida por el Fiscal General del Estado esta representación social a mi cargo tiene a bien levantar la presente, misma que se firma por duplicado, otorgando un tanto al solicitante tal como lo requiere. - - - - - -</p>
-            
-            <p style="text-align:center">Firma del Compareciente:</p>
-            
-            <p style="text-align:center">______________________________&nbsp;<br />
-            <strong>C.&nbsp;{{$nombre}}</strong></p>
-            
-            <p style="text-align:center">&nbsp;</p>
-            
-            <p style="text-align:center">__________________________________________&nbsp;<br />
-            <strong>LIC. {{$fiscal}}</strong></p>
-            
-            <p style="text-align:center"><strong>{{$puesto}}, Veracruz</strong></p>
-            
-            <p style="text-align:center">&nbsp;</p>
-            
-            <p style="text-align:center"><span style="font-size:10px"><strong>AVISO DE PRIVACIDAD SIMPLIFICADO</strong><br />
-            <strong>DEL EXPEDIENTE DE ATENCIÓN TEMPRANA</strong></span></p>
-            
-            <p style="font-size:8px"><strong>La Fiscalía General del Estado de Veracruz</strong>, es la responsable del tratamiento de los datos personales que nos proporcione.&nbsp;<br />
-            Los datos personales que recabamos a Usted, los utilizaremos para las siguientes finalidades:&nbsp;<br />
-            • Identificar al usuario y conocer su problemática a fin de poder orientar en su caso, respecto a la procedencia del asunto expuesto, iniciando de ser procedente la Carpeta de Investigación correspondiente o por el contrario la canalización del ciudadano a la Unidad Integral de Procuración de Justicia, o alguna otra instancia competente;&nbsp;<br />
-            • Para iniciar el expediente de atención temprana,&nbsp;<br />
-            • Para la recepción de las denuncias y querellas,&nbsp;<br />
-            • Para la emisión de informes.&nbsp;<br />
-            De manera adicional, utilizaremos su información personal para la siguiente finalidad que nos permite y facilita brindarle una mejor atención:&nbsp;<br />
-            • Generación de informes estadísticos.&nbsp;<br />
-            En caso de que no desee que sus datos personales sean tratados para las finalidades adicionales, Usted puede manifestarlo al correo electrónico&nbsp;<a href="http://uat2.oo/actaoficio/direcciondetransparencia@fiscaliaveracruz.gob.mx">direcciondetransparencia@fiscaliaveracruz.gob.mx</a>&nbsp;<br />
-            Le informamos que sus datos personales&nbsp;<strong>NO</strong>&nbsp;son compartidos con personas, empresas, organizaciones y autoridades distintas al sujeto obligado, salvo que sean necesarias para atender requerimientos de información de una autoridad competente, debidamente fundados y motivados.&nbsp;<br />
-            Para mayor información acerca del tratamiento y de los derechos que puede hacer valer, usted puede acceder al aviso de privacidad integral a través de la dirección electrónica:&nbsp;<a href="http://fiscaliaveracruz.gob.mx/">http://fiscaliaveracruz.gob.mx</a></p>',  
+<p>En la ciudad de {{$unidadMunicipio}}, VERACRUZ, siendo las <strong>{{$hora}}</strong> horas del día <strong>{{$fecha}}</strong>, ante la presencia de la <strong>LIC.</strong><strong>{{$fiscal}}, {{$puesto}}</strong>, <strong>VERACRUZ</strong>, se presenta el <strong>C.{{$nombre}}</strong>,&nbsp;identificándose con <strong>{{$identificacion}} CON NÚMERO DE FOLIO {{$numIdentificacion}},&nbsp;EXPEDIDA POR {{$expedido}}</strong>,&nbsp;a quien en este momento se le pone en conocimiento de las penas con que la ley castiga el declarar con falsedad ante la autoridad,&nbsp;como lo prevé el artículo 333 del Código Penal vigente para el estado de Veracruz, al cual se le da lectura, y previa la protesta que otorga de decir la verdad,&nbsp;bajo su única y exclusiva responsabilidad por sus generales dijo <strong>C.&nbsp;{{$nombre}}</strong>, de <strong>{{$edad}}</strong> años de edad,&nbsp; nació en fecha <strong>{{$fechaNacimiento}}</strong>, originario de <strong>{{$municipioOrigen}}, {{$estadoOrigen}},</strong>&nbsp;con domicilio en la calle <strong>{{$calle}}</strong> <strong>NÚMERO {{$numExterno}}, COLONIA {{$colonia}}, C.P.{{$cp}}</strong>, en el municipio de <strong>{{$municipio}}</strong>,<strong>{{$estado}}</strong>; ocupación <strong>{{$ocupacion}}</strong>,&nbsp;estado civil <strong>{{$estadoCivil}}</strong>, grado de escolaridad <strong>{{$escolaridad}}</strong>,&nbsp;con número teléfonico&nbsp;<strong>{{$telefono}}</strong>, identificado como corresponde, y considerando el motivo de su comparecencia hacer del conocimiento de esta representación social lo siguiente: <strong>"{{$narracion}}"</strong> lo cual, en uso de la voz, y bajo responsabilidad explica lo siguiente: <strong>TODO ESTO LO MANIFIESTO POR EL MAL USO QUE SE LE PUDIERE DAR - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -&nbsp;</strong></p>
+
+<p>Lo aquí manifestado es responsabilidad de quien comparece.- en términos de lo dispuesto en los artículos 21 de la Constitución Política de los Estados Unidos Mexicanos, 2, 3 Fracción XI, 5 y 15 Fracción XII de la ley orgánica de la fiscalía general del estado de Veracruz de Ignacio de la Llave, así como 201 y 207 del reglamento de la precitada ley y la Circular 01/2015, emitida por el Fiscal General del Estado esta representación social a mi cargo tiene a bien levantar la presente, misma que se firma por duplicado, otorgando un tanto al solicitante tal como lo requiere. - - - - - -&nbsp;<strong>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -&nbsp;- - - - - - - - - - - - - - - - - - - - - - - - - - -&nbsp;</strong></p>
+
+<p style="text-align:center">Firma del Compareciente:</p>
+
+<p style="text-align:center">______________________________&nbsp;<br />
+<strong>C.{{$nombre}}</strong></p>
+
+<p style="text-align:center">&nbsp;</p>
+
+<p style="text-align:center">__________________________________________&nbsp;<br />
+<strong>LIC.{{$fiscal}}</strong></p>
+
+<p style="text-align:center"><strong>{{$puesto}}, VERACRUZ.</strong></p>
+
+<p style="text-align:center">&nbsp;</p>
+
+<p style="text-align:center"><span style="font-size:10px"><strong>AVISO DE PRIVACIDAD SIMPLIFICADO</strong><br />
+<strong>DEL EXPEDIENTE DE ATENCIÓN TEMPRANA</strong></span></p>
+
+<p><span style="font-size:9px"><strong>La Fiscalía General del Estado de Veracruz</strong>, es la responsable del tratamiento de los datos personales que nos proporcione.&nbsp;<br />
+Los datos personales que recabamos a Usted, los utilizaremos para las siguientes finalidades:&nbsp;<br />
+• Identificar al usuario y conocer su problemática a fin de poder orientar en su caso, respecto a la procedencia del asunto expuesto, iniciando de ser procedente la Carpeta de Investigación correspondiente o por el contrario la canalización del ciudadano a la Unidad Integral de Procuración de Justicia, o alguna otra instancia competente;&nbsp;<br />
+• Para iniciar el expediente de atención temprana,&nbsp;<br />
+• Para la recepción de las denuncias y querellas,&nbsp;<br />
+• Para la emisión de informes.&nbsp;<br />
+De manera adicional, utilizaremos su información personal para la siguiente finalidad que nos permite y facilita brindarle una mejor atención:&nbsp;<br />
+• Generación de informes estadísticos.&nbsp;<br />
+En caso de que no desee que sus datos personales sean tratados para las finalidades adicionales, Usted puede manifestarlo al correo electrónico&nbsp;<a href="http://uat2.oo/actaoficio/direcciondetransparencia@fiscaliaveracruz.gob.mx">direcciondetransparencia@fiscaliaveracruz.gob.mx</a>&nbsp;<br />
+Le informamos que sus datos personales&nbsp;<strong>NO</strong>&nbsp;son compartidos con personas, empresas, organizaciones y autoridades distintas al sujeto obligado, salvo que sean necesarias para atender requerimientos de información de una autoridad competente, debidamente fundados y motivados.&nbsp;<br />
+Para mayor información acerca del tratamiento y de los derechos que puede hacer valer, usted puede acceder al aviso de privacidad integral a través de la dirección electrónica:&nbsp;<a href="http://fiscaliaveracruz.gob.mx/">http://fiscaliaveracruz.gob.mx</a></span></p>
+            ',  
             'pie' =>  '<p>Circuito Rafael Guízar y<br />
             Valencia No. 147,<br />
             Colonia Reserva Territorial,<br />
