@@ -104,10 +104,10 @@ Route::middleware(['auth'])->group(function () {
 
 
     /* --------Ruta para obtener token oficios----------- */
-    Route::get('getToken/{id}','ActasHechosController@getToken')->name('getToken');
-    Route::get('oficioah/{id}','ActasHechosController@getoficioah')->name('oficioah');  
-    Route::post('saveOficio','ActasHechosController@saveOficio')->name('saveOficio');
-    Route::get('getoficioah2/{id}','ActasHechosController@getoficioah2')->name('getoficioah');
+    // Route::get('getToken/{id}','ActasHechosController@getToken')->name('getToken');
+    // Route::get('oficioah/{id}','ActasHechosController@getoficioah')->name('oficioah');  
+    // Route::post('saveOficio','ActasHechosController@saveOficio')->name('saveOficio');
+    // Route::get('getoficioah2/{id}','ActasHechosController@getoficioah2')->name('getoficioah');
 
 
 
