@@ -212,7 +212,10 @@ class EstadoController extends Controller
                     
                     $denunciados=DB::table('extra_denunciado')
                     ->join('dirnotificacion','dirnotificacion.id','=','extra_denunciado.idNotificacion')
+                    ->join('domicilio as notificacion','dirnotificacion.idDomicilio','=','notificacion.id')
                     ->join('variables_persona','variables_persona.id','=','extra_denunciado.idVariablesPersona')
+                    ->join('domicilio','variables_persona.idDomicilio','=','domicilio.id')
+                    ->join('domicilio as trabajo','variables_persona.idDomicilioTrabajo','=','trabajo.id')
                     ->join('persona','variables_persona.idPersona','=','persona.id')
                     ->where('variables_persona.idCarpeta',$idCarpeta)
                     ->select(   
@@ -231,7 +234,6 @@ class EstadoController extends Controller
                                 'variables_persona.idPersona as variaidPersona',
                                 'variables_persona.edad as variaedad',
                                 'variables_persona.telefono as variatelefono',
-                                // 'variables_persona.motivoEstancia as variamotivoEstancia',
                                 'variables_persona.idOcupacion as variaidOcupacion',
                                 'variables_persona.idEstadoCivil as variaidEstadoCivil',
                                 'variables_persona.idEscolaridad as variaidEscolaridad',
@@ -257,13 +259,40 @@ class EstadoController extends Controller
                                 'extra_denunciado.narracion as denunciadonarracion',
                                 'dirnotificacion.idDomicilio as notifiidDomicilio',
                                 'dirnotificacion.correo as notificorreo',
-                                'dirnotificacion.telefono as notifitelefono')
+                                'dirnotificacion.telefono as notifitelefono',
+                    
+                                'domicilio.id as domicilioid',
+                                'domicilio.idMunicipio as domicilioMunicipio',
+                                'domicilio.idLocalidad as domicilioLocalidad',
+                                'domicilio.idColonia as domicilioColonia',
+                                'domicilio.calle as domicilioCalle',
+                                'domicilio.numExterno as domicilioNumExterno',
+                                'domicilio.numInterno as domicilioNumInterno',
+                
+                                'trabajo.id as domicilioTrabajoid',
+                                'trabajo.idMunicipio as TrabajoMunicipio',
+                                'trabajo.idLocalidad as TrabajoLocalidad',
+                                'trabajo.idColonia as TrabajoColonia',
+                                'trabajo.calle as TrabajoCalle',
+                                'trabajo.numExterno as TrabajoNumExterno',
+                                'trabajo.numInterno as TrabajoNumInterno',
+                
+                                'notificacion.id as domicilioNotifiId',
+                                'notificacion.idMunicipio as notifiMunicipio',
+                                'notificacion.idLocalidad as notifiLocalidad',
+                                'notificacion.idColonia as notifiColonia',
+                                'notificacion.calle as notifiCalle',
+                                'notificacion.numExterno as notifiNumExterno',
+                                'notificacion.numInterno as notifiNumInterno')
                     ->get();
                     //dd($denunciados);
     
                     $denunciantes=DB::table('extra_denunciante')
                     ->join('dirnotificacion','dirnotificacion.id','=','extra_denunciante.idNotificacion')
+                    ->join('domicilio as notificacion','dirnotificacion.idDomicilio','=','notificacion.id')
                     ->join('variables_persona','variables_persona.id','=','extra_denunciante.idVariablesPersona')
+                    ->join('domicilio','variables_persona.idDomicilio','=','domicilio.id')
+                    ->join('domicilio as trabajo','variables_persona.idDomicilioTrabajo','=','trabajo.id')
                     ->join('persona','variables_persona.idPersona','=','persona.id')
                     ->where('variables_persona.idCarpeta',$idCarpeta)
                     ->select(   
@@ -303,7 +332,31 @@ class EstadoController extends Controller
                                 'extra_denunciante.narracion as denunciantenarracion',
                                 'dirnotificacion.idDomicilio as notifiidDomicilio',
                                 'dirnotificacion.correo as notificorreo',
-                                'dirnotificacion.telefono as notifitelefono')
+                                'dirnotificacion.telefono as notifitelefono',
+                                
+                                'domicilio.id as domicilioid',
+                                'domicilio.idMunicipio as domicilioMunicipio',
+                                'domicilio.idLocalidad as domicilioLocalidad',
+                                'domicilio.idColonia as domicilioColonia',
+                                'domicilio.calle as domicilioCalle',
+                                'domicilio.numExterno as domicilioNumExterno',
+                                'domicilio.numInterno as domicilioNumInterno',
+                
+                                'trabajo.id as domicilioTrabajoid',
+                                'trabajo.idMunicipio as TrabajoMunicipio',
+                                'trabajo.idLocalidad as TrabajoLocalidad',
+                                'trabajo.idColonia as TrabajoColonia',
+                                'trabajo.calle as TrabajoCalle',
+                                'trabajo.numExterno as TrabajoNumExterno',
+                                'trabajo.numInterno as TrabajoNumInterno',
+                
+                                'notificacion.id as domicilioNotifiId',
+                                'notificacion.idMunicipio as notifiMunicipio',
+                                'notificacion.idLocalidad as notifiLocalidad',
+                                'notificacion.idColonia as notifiColonia',
+                                'notificacion.calle as notifiCalle',
+                                'notificacion.numExterno as notifiNumExterno',
+                                'notificacion.numInterno as notifiNumInterno')
                     ->get();
                     //dd($abogados);
     
