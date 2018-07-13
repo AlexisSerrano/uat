@@ -92,7 +92,7 @@
 							<ul class="nav nav-treeview"> --}}
 								<li class="nav-item has-treeview  ">
 									<a href="{{route('predenuncias.index')}}" class="nav-link {{ Request::is( 'predenuncias') ? 'active' : '' }}">
-											<i class="nav-icon fa fa-angle-right "></i>
+											<i class="nav-icon fa fa-users "></i>
 										<p>
 											Todos los registros
 										</p>
@@ -101,7 +101,7 @@
 									
 								<li class="nav-item has-treeview">
 									<a href="{{url('encola')}}" class="nav-link {{ Request::is( 'encola') ? 'active' : '' }}">
-											<i class="nav-icon fa fa-angle-right "></i>
+											<i class="nav-icon fa fa-list-alt"></i>
 										<p>
 											Registros en cola
 										</p>
@@ -110,7 +110,7 @@
 										
 								<li class="nav-item has-treeview">
 									<a href="{{url('urgentes')}}" class="nav-link {{ Request::is( 'urgentes') ? 'active' : '' }}">
-											<i class="nav-icon fa fa-angle-right "></i>
+											<i class="nav-icon fa fa-street-view "></i>
 										<p>
 											Urgentes
 										</p>
@@ -119,7 +119,7 @@
 								
 								<li class="nav-item has-treeview">
 									<a href="{{url('recepcionista')}}" class="nav-link {{ Request::is( 'recepcionista') ? 'active' : '' }}">
-										<i class="nav-icon fa fa-angle-right "></i>
+										<i class="nav-icon fa fa-user-plus "></i>
 										<p>
 											Agregar pre-registro	
 										</p>
