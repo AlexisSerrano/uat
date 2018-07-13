@@ -28,7 +28,7 @@
                                     <i class="fa fa-times"></i>
                                 </a>
                             @endif
-                            <a href="{{route('acuerdo-documento',$acusacion->id)}}" title="Imprimir acuerdo inicial" class=" btn btn-secondary btn-simple btn-xs">
+                            <a href="{{route('acuerdo-documento',$acusacion->id)}}" title="Imprimir acuerdo inicial" class=" btn btn-secondary btn-simple btn-xs" target="_black">
                                 <i class="fa fa-print"></i>
                             </a>
                         </td>

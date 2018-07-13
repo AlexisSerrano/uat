@@ -60,7 +60,7 @@ class PreregistroAuxController extends Controller
 
     
     public function edit($id)
-    {
+    {        
         $estados=CatEstado::orderBy('nombre', 'ASC')
         ->pluck('nombre','id');
         $preregistro = Preregistro::find($id);
@@ -130,7 +130,7 @@ class PreregistroAuxController extends Controller
         ->where('cat_colonia.codigoPostal','!=',0)
         ->orderBy('codigoPostal','asc')
         ->groupBy('codigoPostal')
-        ->pluck('codigoPostal','codigopostal');
+        ->pluck('codigoPostal','codigoPostal');
         $identificaciones = CatIdentificacion::orderBy('id', 'ASC')
         ->pluck('documento', 'id');
         $docIdent = CatIdentificacion::select('documento')

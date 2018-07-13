@@ -96,7 +96,7 @@
         });
 
           $(".labelCambioPrimerAp").click(function(){
-            $('.llabelCambioPrimerAp').hide();
+            $('.labelCambioPrimerAp').hide();
             $('#inputPrimerAp').show().css('display', 'flex');
         });
         //ocultar el campo de nombre y mostrar el label anterior
@@ -106,7 +106,7 @@
         });
 
          $(".labelCambioSegundoAp").click(function(){
-            $('.llabelCambioSegundoAp').hide();
+            $('.labelCambioSegundoAp').hide();
             $('#inputSegundoAp').show().css('display', 'flex');
         });
         //ocultar el campo de nombre y mostrar el label anterior
@@ -135,7 +135,7 @@
         //ocultar el campo y mostrar el label anterior
         $("#botonCambioRepLegal").click(function(){
             $('.labelCambioRepLegal').show();
-            $('#inputRepLegal').hide();
+            $('#inputRepLegal').hide(); 
         });
         
         //editar el campo al dar clic en el label de Telefono
