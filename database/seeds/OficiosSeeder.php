@@ -1319,11 +1319,13 @@ Xalapa-Enríquez, Veracruz</p>',
    Xalapa-Enríquez, Veracruz</p>',
    'unidad'=>'1'],
    ['nombre'  =>  'INICIO1',
-   'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
-   <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',
+   'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:100px; width:100px" /></p>
+   <p style="text-align:right">Unidad de Atención Temprana, Veracruz&nbsp;<br>
+   <strong>"Si lo platicamos, lo solucionamos”</strong><br />
+   &nbsp;</p>',
 
 
-'contenido' =>'<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">En la ciudad de {{$ciudad}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">, Veracruz, siendo las<strong>&nbsp;{{$hora}}</strong>&nbsp;horas del día <strong>{{$fecha}}</strong>, el ciudadano {{$nombreC}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">, {{$puesto}}</span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">, quien actúa en forma legal. - - - - - -- - - - - - - - - -- - - - - - - - -&nbsp;- - - - - - - - - - - - - - - - - - - - - - - - -<strong> </strong>- - - - - - - - - - - - - -&nbsp;- - -- <strong>A c u e r d a: </strong>- - - - - - - - - - - - - - - - - - - - - - -<strong> </strong>- - - -- - - - - -- - - - - - - - - -- - - -Vista la denuncia por comparecencia/escrito {{$complemento1}}<strong>&nbsp;{{$denunciante}},</strong> quien pone en conocimiento de esta autoridad hechos posiblemente constitutivos de delito de<strong>&nbsp;{{$delitos}}</strong>&nbsp;en contra del Ciudadano<strong>&nbsp;{{$denunciados}}</strong>, con fundamento en lo dispuesto por los artículos 21 de la Constitución Política de los Estados Unidos Mexicanos; 54 y 67 fracción I de la Constitución Política del Estado de Veracruz; 1°,16, 127, 128, 131, 183, 212, 213, 214, 215, 216, 221 y demás relativos y aplicables del Código de Nacional de Procedimientos Penales; 5 párrafo primero, 6 fracción I y IV, 7 fracción III,IV, V, VI, y 40 de la Ley Orgánica de la Fiscalía General del Estado de Veracruz de Ignacio de la Llave; 34, 195, 201 y 206 del Reglamento de la citada Ley Orgánica, dese inicio a la Carpeta de Investigación que se impone, debiéndose registrar bajo el número que le corresponde en el libro de Gobierno con que cuenta la Unidad de Atención Temprana Número 1 del Distrito Decimo Primero, debiendo dar aviso de su inicio a la superioridad; entrevístese al denunciante y/o querellante en relación a los hechos que pone en conocimiento de esta Autoridad, lo anterior con el claro objetivo de investigar la veracidad de dicha denuncia y/o querella, debiéndose notificar los derechos que en su favor consagra el articulo 20 apartado C, de nuestra Carta Magna en relación con el 109 de la Ley Procesal Nacional, debiendo dejar constancia de la misma; <strong>así también y toda vez que los hechos denunciados se encuentran dentro de los señalados en el diverso 187 de la mencionada ley procesal, hágasele saber al agraviado la procedencia de los mecanismos alternativos de solución de controversias, asentando constancia de esto;</strong> por otra parte gírese oficio al Director de los Servicios Periciales solicitando perito en la materia a fin de que se emita dictamen pericial de<strong> {{$dictamenP}}</strong>; gírese oficio a la Policía Ministerial de este Distrito Judicial para que se avoquen a la investigación de los hechos que nos ocupan, y practíquense todas aquellas diligencias urgentes e inaplazables para el esclarecimiento de los hechos; en su momento recábense las entrevistas necesarias a todas aquellas personas<strong> </strong>que les resulte cita en relación con los hechos que se investigan, así como de las situaciones relevantes para la aplicación de la ley penal, de los autores y participes así como de las circunstancias que sirvan para verificar en su oportunidad el grado de responsabilidad de los mismos, lo anterior en estricto cumplimiento a lo señalado por la ley y bajo las premisas de la carga de la prueba y de presunción de inocencia, con el objeto de que esta Fiscalía reúna datos de prueba indiciaria para el esclarecimiento de los hechos denunciados, y en su caso, para sustentar el ejercicio o no ejercicio de la acción penal; por último, hágasele saber al denunciante el número de Carpeta de Investigación Ministerial que le corresponde.- CUMPLASE.- - -</span></span><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> - - - - - - - - - - - - -&nbsp;</span><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">- - - - - - - - - - - - - - - - -<strong> </strong>- - - -- - - - - -&nbsp;- - - - - - - - - - - - - - - - -<strong> </strong>- - - -- - - - - -&nbsp;- - - - - - - - - - - - - -</span></span></span></span></span></span></span></span></span></span></span></span></p>
+'contenido' =>'<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">En la ciudad de {{$ciudad}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">, Veracruz, siendo las<strong>&nbsp;{{$hora}}</strong>&nbsp;horas del día <strong>{{$fecha}}</strong>, el ciudadano {{$nombreC}}<span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">, {{$puesto}}</span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">, quien actúa en forma legal. &nbsp;- - - - - - - - - - - - - - - - - - - - - - -<strong> </strong>- - - - - - - - - - - - - -&nbsp;- - -- <strong>A c u e r d a: </strong>- - - - - - - - - - - - - - - - - - - - - - -<strong> </strong>- - - -- - - - - -- - - - - - - - - -- - - -Vista la denuncia por comparecencia/escrito {{$complemento1}}<strong>&nbsp;{{$denunciante}},</strong> quien pone en conocimiento de esta autoridad hechos posiblemente constitutivos de delito de<strong>&nbsp;{{$delitos}}</strong>&nbsp;en contra del Ciudadano<strong>&nbsp;{{$denunciados}}</strong>, con fundamento en lo dispuesto por los artículos 21 de la Constitución Política de los Estados Unidos Mexicanos; 54 y 67 fracción I de la Constitución Política del Estado de Veracruz; 1°,16, 127, 128, 131, 183, 212, 213, 214, 215, 216, 221 y demás relativos y aplicables del Código de Nacional de Procedimientos Penales; 5 párrafo primero, 6 fracción I y IV, 7 fracción III,IV, V, VI, y 40 de la Ley Orgánica de la Fiscalía General del Estado de Veracruz de Ignacio de la Llave; 34, 195, 201 y 206 del Reglamento de la citada Ley Orgánica, dese inicio a la Carpeta de Investigación que se impone, debiéndose registrar bajo el número que le corresponde en el libro de Gobierno con que cuenta la Unidad de Atención Temprana Número 1 del Distrito Decimo Primero, debiendo dar aviso de su inicio a la superioridad; entrevístese al denunciante y/o querellante en relación a los hechos que pone en conocimiento de esta Autoridad, lo anterior con el claro objetivo de investigar la veracidad de dicha denuncia y/o querella, debiéndose notificar los derechos que en su favor consagra el articulo 20 apartado C, de nuestra Carta Magna en relación con el 109 de la Ley Procesal Nacional, debiendo dejar constancia de la misma; <strong>así también y toda vez que los hechos denunciados se encuentran dentro de los señalados en el diverso 187 de la mencionada ley procesal, hágasele saber al agraviado la procedencia de los mecanismos alternativos de solución de controversias, asentando constancia de esto;</strong> por otra parte gírese oficio al Director de los Servicios Periciales solicitando perito en la materia a fin de que se emita dictamen pericial de<strong> {{$dictamenP}}</strong>; gírese oficio a la Policía Ministerial de este Distrito Judicial para que se avoquen a la investigación de los hechos que nos ocupan, y practíquense todas aquellas diligencias urgentes e inaplazables para el esclarecimiento de los hechos; en su momento recábense las entrevistas necesarias a todas aquellas personas<strong> </strong>que les resulte cita en relación con los hechos que se investigan, así como de las situaciones relevantes para la aplicación de la ley penal, de los autores y participes así como de las circunstancias que sirvan para verificar en su oportunidad el grado de responsabilidad de los mismos, lo anterior en estricto cumplimiento a lo señalado por la ley y bajo las premisas de la carga de la prueba y de presunción de inocencia, con el objeto de que esta Fiscalía reúna datos de prueba indiciaria para el esclarecimiento de los hechos denunciados, y en su caso, para sustentar el ejercicio o no ejercicio de la acción penal; por último, hágasele saber al denunciante el número de Carpeta de Investigación Ministerial que le corresponde.- CUMPLASE.- - -</span></span><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> - - - - - - - - - - - - -&nbsp;</span><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">- - - - - - - - - - - - - - - - -<strong> </strong>- - - -- - - - - -&nbsp;- - - - - - - - - - - - - - - - -<strong> </strong>- - - -- - - - - -&nbsp;- - - - - - - - - - - - - -</span></span></span></span></span></span></span></span></span></span></span></span></p>
 
 <table align="center" border="0" cellpadding="1" cellspacing="1" style="width:700px">
 	<tbody>
@@ -1331,7 +1333,7 @@ Xalapa-Enríquez, Veracruz</p>',
 			<td style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Courier New&quot;"><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">__________________________________</span></strong></span></span></td>
 		</tr>
 		<tr>
-			<td style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Courier New&quot;"><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Lic. {{$nombreC}}</span></strong></span></span></td>
+			<td style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Courier New&quot;"><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">LIC. {{$nombreC}}</span></strong></span></span></td>
 		</tr>
 		<tr>
 			<td style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Courier New&quot;"><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">&nbsp;{{$puesto}}</span></strong></span></span></td>
@@ -1411,286 +1413,266 @@ Xalapa-Enríquez, Veracruz</p>',
 
 
 'contenido' =>'
-<p style="text-align:right"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><em><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">&lt;UIP&gt;</span></span></em></strong></span></span></p>
+<p style="text-align:right"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><em>{{$localidad}}, VERACRUZ, A&nbsp;{{$fecha}}-{{$hora}}</em></span></span></p>
 
-<table cellspacing="0" style="width:801px">
+<p><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><em>La denuncia se presenta por:</em><strong> {{$tipoDenuncia}}</strong></span></span></p>
+
+<p><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">No. de Expediente:<strong> {{$nuc}}</strong></span></span></p>
+
+<p><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Calidad Jurídica en la que se presenta:<strong>&nbsp;{{$tipoDenunciante}}</strong></span></span></p>
+
+<p>&nbsp;</p>
+
+<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>a. INFORMACIÓN DEL DENUNCIANTE/QUERELLANTE</strong></span></span></p>
+
+<table align="left" cellpadding="1" cellspacing="1" style="width:875px">
 	<tbody>
 		<tr>
-			<td style="border-color:black; vertical-align:top; width:1px">
+			<td style="height:13px; width:329px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Nombre:&nbsp;<strong>{{$denunciante}}</strong></span></span></td>
+			<td style="height:13px; width:3px">&nbsp;</td>
+			<td style="height:13px; width:525px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Sexo:&nbsp;<strong>{{$sexo}} </strong></span></span></td>
+		</tr>
+		<tr>
+			<td style="width:329px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Profesión:&nbsp;<strong>{{$ocupacion}} </strong></span></span></td>
+			<td style="width:3px">&nbsp;</td>
+			<td style="width:525px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Estado Civil:<strong> {{$edoCivil}}</strong></span></span></td>
+		</tr>
+		<tr>
+			<td style="width:329px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Edad<strong> {{$edad}}</strong></span></span></td>
+			<td style="width:3px">&nbsp;</td>
+			<td style="width:525px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Fecha de Nacimiento:<strong>{{$fechaNac}}</strong></span></span></td>
+		</tr>
+		<tr>
+			<td style="width:329px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Nacionalidad:<strong> {{$nacionalidad}}</strong></span></span></td>
+			<td style="width:3px">&nbsp;</td>
+			<td style="width:525px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Lugar de Nacimiento:<strong> {{$lugarNac}}</strong></span></span></td>
+		</tr>
+		<tr>
+			<td style="width:329px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Teléfono Trabajo:<strong> {{$telTrabajo}}</strong>&nbsp;</span></span></td>
+			<td style="width:3px">&nbsp;</td>
+			<td style="width:525px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Teléfono Particular:<strong> {{$telefono}}</strong></span></span></td>
+		</tr>
+		<tr>
+			<td style="width:329px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Correo electrónico:<strong>{{$email}}</strong></span></span></td>
+			<td style="width:3px">&nbsp;</td>
+			<td style="width:525px">&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="text-align:justify"><br />
+&nbsp;</p>
+
+<p style="text-align:justify">&nbsp;</p>
+
+<p style="text-align:justify">&nbsp;</p>
+
+<p style="text-align:justify">&nbsp;</p>
+
+<table align="left" cellpadding="1" cellspacing="1" style="width:870px">
+	<tbody>
+		<tr>
+			<td style="width:862px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Dirección:<strong> {{$direccionDenunciante}}</strong></span></span></td>
+		</tr>
+		<tr>
+			<td style="width:862px">
 			<p>&nbsp;</p>
-			</td>
-			<td style="border-color:black; vertical-align:top; width:792px">
-			<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><em><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">La denuncia se presenta por:</span></span></em><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> {{$tipoDenincia}}</span></span></strong></span></span></p>
 
-			<p>&nbsp;</p>
-
-			<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">No. de Expediente:<strong> {{$nuc}}</strong></span></span></span></span></p>
-
-			<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Calidad Jurídica en la que se presenta:<strong> &lt;CalidadJuridica&gt;</strong></span></span></span></span></p>
-
-			<p>&nbsp;</p>
-
-			<p style="text-align:right"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><em><span style="font-size:10.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">{{$localidad}}, Veracruz a {{$fecha}}-{{$hora}}</span></span></em></span></span></p>
-
-			<p style="text-align:right">&nbsp;</p>
+			<p><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>b. INFORMACIÓN DEL IMPUTADO(S)</strong></span></span></p>
 			</td>
 		</tr>
 	</tbody>
 </table>
 
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">a. INFORMACIÓN DEL DENUNCIANTE/QUERELLANTE</span></span></strong></span></span></p>
+<p style="text-align:justify">&nbsp;</p>
 
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Nombre:<strong> {{$denunciante}}</strong></span></span></span></span></p>
+<p style="text-align:justify">&nbsp;</p>
 
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Sexo: <strong>{{$sexo}} </strong>Profesión:<strong> {{$profesion}} </strong>Estado Civil:<strong> {{$edoCivil}}</strong> </span></span></span></span></p>
+<p style="text-align:justify">&nbsp;</p>
 
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Fecha de Nacimiento:<strong> {{$fechaNac}} </strong>Edad<strong> {{$edad}}</strong></span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Nacionalidad:<strong> {{$nacionalidad}}</strong></span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Lugar de Nacimiento:<strong> {{$lugarNac}}</strong></span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Dirección:<strong> {{$direccionDenunciante}}</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Teléfono Particular:<strong> {{$telefono}}</strong> Teléfono Trabajo:<strong> {{$telTrabajo}}</strong> Celular:<strong> {{$telCelular}} </strong></span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Correo electrónico:<strong> {{$email}}</strong></span></span></span></span></p>
-
-<table cellpadding="1" cellspacing="1" style="width:500px">
+<table align="left" cellpadding="1" cellspacing="1" style="width:881px">
 	<tbody>
 		<tr>
-			<td><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Consume Alcohol:<strong> &lt;ConsumeAlcohol&gt; </strong></span></span></span></span></td>
-			<td><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Cantidad semanal:<strong> &lt;DATO&gt;</strong></span></span></span></span></td>
+			<td style="width:416px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>{{$denunciante}}</strong></span></span></td>
+			<td style="width:16px">&nbsp;</td>
+			<td style="width:431px">&nbsp;</td>
 		</tr>
 		<tr>
-			<td><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Consume Drogas:<strong> &lt;ConsumeDrogas&gt;</strong></span></span></span></span></td>
-			<td><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Cantidad semanal:<strong> &lt;DATO&gt;</strong></span></span></span></span></td>
+			<td style="width:416px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">{{$alias}}</span></span></td>
+			<td style="width:16px">&nbsp;</td>
+			<td style="width:431px">&nbsp;</td>
 		</tr>
 		<tr>
-			<td><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Consume Tabaco:<strong> &lt;ConsumeTabaco&gt; </strong></span></span></span></span></td>
+			<td style="width:416px">&nbsp;</td>
+			<td style="width:16px">&nbsp;</td>
+			<td style="width:431px">&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="text-align:justify">&nbsp;</p>
+
+<table align="left" cellpadding="1" cellspacing="1" style="width:904px">
+	<tbody>
+		<tr>
+			<td style="width:896px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>c. HECHOS</strong></span></span></td>
+		</tr>
+		<tr>
+			<td style="width:896px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>{{$hechos}}</strong></span></span></td>
+		</tr>
+		<tr>
+			<td style="width:896px">&nbsp;</td>
+		</tr>
+		<tr>
+			<td style="width:896px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>d. DERECHOS DE LA VÍCTIMA U OFENDIDO</strong></span></span></td>
+		</tr>
+		<tr>
+			<td style="width:896px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>Artículo 20 apartado C. Constitucional de los derechos de la víctima o del ofendido:</strong></span></span></td>
+		</tr>
+		<tr>
+			<td style="width:896px">&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<p style="text-align:justify">&nbsp;</p>
+
+<p style="text-align:justify">&nbsp;</p>
+
+<p style="text-align:justify">&nbsp;</p>
+
+<p style="text-align:justify">&nbsp;</p>
+
+<p style="text-align:justify">&nbsp;</p>
+
+<p style="text-align:justify">&nbsp;</p>
+
+<table align="left" cellpadding="1" cellspacing="1" style="width:1000px">
+	<tbody>
+		<tr>
 			<td>
-			<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Cantidad Semanal:<strong> &lt;DATO&gt;</strong></span></span></span></span></p>
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>I.</strong> Recibir asesoría jurídica; ser informado de los derechos que en su favor establece la Constitución y, cuando lo solicite, ser informado del desarrollo del procedimiento penal;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>II.</strong> Coadyuvar con el Ministerio Público; a que se le reciban todos los datos o elementos de prueba con los que cuente, tanto en la investigación como en el proceso, a que se desahoguen las diligencias correspondientes, y a intervenir en el juicio e interponer los recursos en los términos que prevea la ley.</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Cuando el Ministerio Público considere que no es necesario el desahogo de la diligencia, deberá fundar y motivar su negativa;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>III.</strong> Recibir, desde la comisión del delito, atención médica y psicológica de urgencia;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>IV.</strong> Que se le repare el daño. En los casos en que sea procedente, el Ministerio Público estará obligado a solicitar la reparación del daño, sin menoscabo de que la víctima u ofendido lo pueda solicitar directamente, y el juzgador no podrá absolver al sentenciado de dicha reparación si ha emitido una sentencia condenatoria.</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">La ley fijará procedimientos ágiles para ejecutar las sentencias en materia de reparación del daño;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>V</strong>. Al resguardo de su identidad y otros datos personales en los siguientes casos: cuando sean menores de edad; cuando se trate de delitos de violación, secuestro o delincuencia organizada; y cuando a juicio del juzgador sea necesario para su protección, salvaguardando en todo caso los derechos de la defensa.</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>V.</strong> Al resguardo de su identidad y otros datos personales en los siguientes casos: cuando sean menores de edad; cuando se trate de delitos de violación, trata de personas, secuestro o delincuencia organizada; y cuando a juicio del juzgador sea necesario para su protección, salvaguardando en todo caso los derechos de la defensa. </span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">El Ministerio Público deberá garantizar la protección de víctimas, ofendidos, testigos y en general todos los sujetos que intervengan en el proceso. Los jueces deberán vigilar el buen cumplimiento de esta obligación;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>VI.</strong> Solicitar las medidas cautelares y providencias necesarias para la protección y restitución de sus derechos, y</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>VII.</strong> Impugnar ante autoridad judicial las omisiones del Ministerio Público en la investigación de los delitos, así como las resoluciones de reserva, no ejercicio, desistimiento de la acción penal o suspensión del procedimiento cuando no esté satisfecha la reparación del daño.</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>Artículo 109 del Código Nacional de Procedimientos Penales:</strong></span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">En los procedimientos previstos en este Código, la víctima u ofendido tendrán los siguientes derechos:</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>I.</strong> A ser informado de los derechos que en su favor le reconoce la Constitución;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>II.</strong> A que el Ministerio Público y sus auxiliares, así como el Órgano jurisdiccional le faciliten el acceso a la justicia y les presten los servicios que constitucionalmente tienen encomendados con legalidad, honradez, lealtad, imparcialidad, profesionalismo, eficiencia y eficacia y con la debida diligencia;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>III.</strong> A contar con información sobre los derechos que en su beneficio existan, como ser atendidos por personal del mismo sexo, o del sexo que la víctima elija, cuando así lo requieran y recibir desde la comisión del delito atención médica y psicológica de urgencia, así como asistencia jurídica a través de un Asesor jurídico;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>IV.</strong> A comunicarse, inmediatamente después de haberse cometido el delito con un familiar, e incluso con su Asesor jurídico;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>V.</strong> A ser informado, cuando así lo solicite, del desarrollo del procedimiento penal por su Asesor jurídico, el Ministerio Público y/o, en su caso, por el Juez o Tribunal;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>VI.</strong> A ser tratado con respeto y dignidad;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>VII.</strong> A contar con un Asesor jurídico gratuito en cualquier etapa del procedimiento, en los términos de la legislación aplicable;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>VIII.</strong> A recibir trato sin discriminación a fin de evitar que se atente contra la dignidad humana y se anulen o menoscaben sus derechos y libertades, por lo que la protección de sus derechos se hará sin distinción alguna;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>IX.</strong> A acceder a la justicia de manera pronta, gratuita e imparcial respecto de sus denuncias o querellas;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>X.</strong> A participar en los mecanismos alternativos de solución de controversias;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>XI.</strong> A recibir gratuitamente la asistencia de un intérprete o traductor desde la denuncia hasta la conclusión del procedimiento penal, cuando la víctima u ofendido pertenezca a un grupo étnico o pueblo indígena o no conozca o no comprenda el idioma español;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>XII.</strong> En caso de tener alguna discapacidad, a que se realicen los ajustes al procedimiento penal que sean necesarios para salvaguardar sus derechos;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>XIII.</strong> A qué se le proporcione asistencia migratoria cuando tenga otra nacionalidad;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>XIV.</strong> A qué se le reciban todos los datos o elementos de prueba pertinentes con los que cuente, tanto en la investigación como en el proceso, a que se desahoguen las diligencias correspondientes, y a intervenir en el juicio e interponer los recursos en los términos que establece este Código;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">&nbsp;<strong>XV.</strong> A intervenir en todo el procedimiento por sí o a través de su Asesor jurídico, conforme lo dispuesto en este Código;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>XVI.</strong> A qué se le provea protección cuando exista riesgo para su vida o integridad personal;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>XVII.</strong>A solicitar la realización de actos de investigación que en su caso correspondan, salvo que el Ministerio Público considere que no es necesario, debiendo fundar y motivar su negativa;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>XVIII. </strong>A recibir atención médica y psicológica o a ser canalizado a instituciones que le proporcionen estos servicios, así como a recibir protección especial de su integridad física y psíquica cuando así lo solicite, o cuando se trate de delitos que así lo requieran;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>XIX.</strong> A solicitar medidas de protección, providencias precautorias y medidas cautelares;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>XX.</strong> A solicitar el traslado de la autoridad al lugar en donde se encuentre, para ser interrogada o participar en el acto para el cual fue citada, cuando por su edad, enfermedad grave o por alguna otra imposibilidad física o psicológica se dificulte su comparecencia, a cuyo fin deberá requerir la dispensa, por sí o por un tercero, con anticipación;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>XXI.</strong> A impugnar por sí o por medio de su representante, las omisiones o negligencia que cometa el Ministerio Público en el desempeño de sus funciones de investigación, en los términos previstos en este Código y en las demás disposiciones legales aplicables;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>XXII. </strong>A tener acceso a los registros de la investigación durante el procedimiento, así como a obtener copia gratuita de éstos, salvo que la información esté sujeta a reserva así determinada por el Órgano jurisdiccional;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>XXIII.</strong> A ser restituido en sus derechos, cuando éstos estén acreditados;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>XXIV.</strong> A qué se le garantice la reparación del daño durante el procedimiento en cualquiera de las formas previstas en este Código;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>XXV. </strong>A que se le repare el daño causado por la comisión del delito, pudiendo solicitarlo directamente al Órgano jurisdiccional, sin perjuicio de que el Ministerio Público lo solicite;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>XXVI.</strong> Al resguardo de su identidad y demás datos personales cuando sean menores de edad, se trate de delitos de violación contra la libertad y el normal desarrollo psicosexual, violencia familiar, secuestro, trata de personas o cuando a juicio del Órgano jurisdiccional sea necesario para su protección, salvaguardando en todo caso los derechos de la defensa;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>XXVII.</strong> A ser notificado del desistimiento de la acción penal y de todas las resoluciones que finalicen el procedimiento, de conformidad con las reglas que establece este Código;</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>XXVIII.</strong> A solicitar la reapertura del proceso cuando se haya decretado su suspensión, y</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>XXIX.</strong> Los demás que establezcan este Código y otras leyes aplicables.</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">En el caso de que las víctimas sean personas menores de dieciocho años, el Órgano jurisdiccional o el Ministerio Público tendrán en cuenta los principios del interés superior de los niños o adolescentes, la prevalencia de sus derechos, su protección integral y los derechos consagrados en la Constitución, en los Tratados, así como los previstos en el presente Código.</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Para los delitos que impliquen violencia contra las mujeres, se deberán observar todos los derechos que en su favor establece la Ley General de Acceso de las Mujeres a una Vida Libre de Violencia y demás disposiciones aplicables.</span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><s>Me doy por enterado de los derechos que me asisten sin embargo en este momento me los reservo ya que no cuento con un abogado para nombrar como asesor pero lo haré posteriormente en caso de que yo considere necesario; por cuanto hace a los mecanismos alternos de solución de conflictos, he sido informado y orientado, comprendo los alcances y beneficios de los mismos y que proceden en mi denuncia, (SI/NO) es mi deseo someterme a ellos (ya que mi interés es que se solucione a la brevedad mi problema).</s></span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>e. NOTIFICACIÓN A TRAVÉS DE MEDIOS ELECTRÓNICOS</strong></span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><s>En términos de los artículos 83, 84 y 85 del Código Nacional de Procedimientos Penales, se pregunta al entrevistado si autoriza ser notificado vía telefónica o correo electrónico y en uso de la voz manifiesta:</s></span></span></p>
+
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>&nbsp;&lt;AceptaMail&gt; </strong>expresamente la notificación por correo electrónico indicado en el apartado “<em>A”</em> como medio alternativo de comunicación.</span></span></p>
 			</td>
 		</tr>
-	</tbody>
-</table>
-
-<table cellpadding="1" cellspacing="1" style="width:815px">
-	<tbody>
-		<tr>
-			<td style="width:237px"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Nombre del padre:<strong> &lt;Padre&gt; </strong></span></span></span></span></td>
-			<td style="width:309px"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Nacimiento:<strong> &lt;NacimientoPadre&gt;</strong></span></span></span></span></td>
-			<td style="width:251px"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Edad:<strong> &lt;EdadPadre&gt;</strong></span></span></span></span></td>
-		</tr>
-		<tr>
-			<td style="width:237px"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Nombre de la madre:<strong> &lt;Madre&gt;</strong></span></span></span></span></td>
-			<td style="width:309px"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Fecha de nacimiento:<strong> &lt;NacimientoMadre&gt; </strong></span></span></span></span></td>
-			<td style="width:251px"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Edad:<strong> &lt;EdadMadre&gt;</strong></span></span></span></span></td>
-		</tr>
-	</tbody>
-</table>
-
-<table align="left" cellpadding="1" cellspacing="1" style="width:500px">
-	<tbody>
 		<tr>
 			<td>
-			<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Número de hijos:<strong> &lt;DATO&gt;</strong></span></span></span></span></p>
+			<p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>f. FIRMAS</strong></span></span></p>
 			</td>
+		</tr>
+		<tr>
 			<td>&nbsp;</td>
 		</tr>
-		<tr>
-			<td><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Nombre de hijo 1: <strong>&lt;DATO&gt;</strong></span></span></span></span></td>
-			<td><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Edad:<strong> &lt;DATO&gt;</strong></span></span></span></span></td>
-		</tr>
-		<tr>
-			<td><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Nombre de hijo 2: <strong>&lt;DATO&gt;</strong></span></span></span></span></td>
-			<td><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Edad:<strong> &lt;DATO&gt;</strong></span></span></span></span></td>
-		</tr>
-		<tr>
-			<td><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Nombre de hijo 3: <strong>&lt;DATO&gt;</strong></span></span></span></span></td>
-			<td><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Edad:<strong> &lt;DATO&gt;</strong></span></span></span></span></td>
-		</tr>
-		<tr>
-			<td><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Nombre de hijo 4:<strong> &lt;DATO&gt;</strong></span></span></span></span></td>
-			<td><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Edad:<strong> &lt;DATO&gt;</strong></span></span></span></span></td>
-		</tr>
-		<tr>
-			<td><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Nombre de hijo 5:<strong>&lt;DATO&gt;</strong></span></span></span></span></td>
-			<td><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Edad:<strong> &lt;DATO&gt;</strong></span></span></span></span></td>
-		</tr>
-		<tr>
-			<td><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Nombre de hijo 6:<strong> &lt;DATO&gt;</strong></span></span></span></span></td>
-			<td><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Edad:<strong> &lt;DATO&gt;</strong></span></span></span></span></td>
-		</tr>
-		<tr>
-			<td><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Nombre de hijo 7:<strong> &lt;DATO&gt;</strong></span></span></span></span></td>
-			<td><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Edad:<strong> &lt;DATO&gt;</strong></span></span></span></span></td>
-		</tr>
 	</tbody>
 </table>
 
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
 <p style="text-align:justify">&nbsp;</p>
 
-<p style="text-align:justify">&nbsp;</p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">b. INFORMACIÓN DEL IMPUTADO(S)</span></span></strong></span></span></p>
-
-<p style="text-align:justify">&nbsp;</p>
-
-<p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">&nbsp;&lt;InformacionImputados&gt;</span></span></strong></span></span></p>
-
-<p style="text-align:justify">&nbsp;</p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">c. HECHOS</span></span></strong></span></span></p>
-
-<p style="text-align:justify">&nbsp;</p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">&nbsp;{{$hechos}}</span></span></strong></span></span></p>
-
-<p style="text-align:justify">&nbsp;</p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">d. DERECHOS DE LA VÍCTIMA U OFENDIDO</span></span></strong></span></span></p>
-
-<p style="text-align:justify">&nbsp;</p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Artículo 20 apartado C. Constitucional de los derechos de la víctima o del ofendido:</span></span></strong></span></span></p>
-
-<p style="text-align:justify">&nbsp;</p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">I.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> Recibir asesoría jurídica; ser informado de los derechos que en su favor establece la Constitución y, cuando lo solicite, ser informado del desarrollo del procedimiento penal;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">II.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> Coadyuvar con el Ministerio Público; a que se le reciban todos los datos o elementos de prueba con los que cuente, tanto en la investigación como en el proceso, a que se desahoguen las diligencias correspondientes, y a intervenir en el juicio e interponer los recursos en los términos que prevea la ley.</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Cuando el Ministerio Público considere que no es necesario el desahogo de la diligencia, deberá fundar y motivar su negativa;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">III.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> Recibir, desde la comisión del delito, atención médica y psicológica de urgencia;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">IV.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> Que se le repare el daño. En los casos en que sea procedente, el Ministerio Público estará obligado a solicitar la reparación del daño, sin menoscabo de que la víctima u ofendido lo pueda solicitar directamente, y el juzgador no podrá absolver al sentenciado de dicha reparación si ha emitido una sentencia condenatoria.</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">La ley fijará procedimientos ágiles para ejecutar las sentencias en materia de reparación del daño;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">V</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">. Al resguardo de su identidad y otros datos personales en los siguientes casos: cuando sean menores de edad; cuando se trate de delitos de violación, secuestro o delincuencia organizada; y cuando a juicio del juzgador sea necesario para su protección, salvaguardando en todo caso los derechos de la defensa.</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">V.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> Al resguardo de su identidad y otros datos personales en los siguientes casos: cuando sean menores de edad; cuando se trate de delitos de violación, trata de personas, secuestro o delincuencia organizada; y cuando a juicio del juzgador sea necesario para su protección, salvaguardando en todo caso los derechos de la defensa. </span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">El Ministerio Público deberá garantizar la protección de víctimas, ofendidos, testigos y en general todos los sujetos que intervengan en el proceso. Los jueces deberán vigilar el buen cumplimiento de esta obligación;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">VI.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> Solicitar las medidas cautelares y providencias necesarias para la protección y restitución de sus derechos, y</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">VII.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> Impugnar ante autoridad judicial las omisiones del Ministerio Público en la investigación de los delitos, así como las resoluciones de reserva, no ejercicio, desistimiento de la acción penal o suspensión del procedimiento cuando no esté satisfecha la reparación del daño.</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Artículo 109 del Código Nacional de Procedimientos Penales:</span></span></strong></span></span></p>
-
-<p style="text-align:justify">&nbsp;</p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">En los procedimientos previstos en este Código, la víctima u ofendido tendrán los siguientes derechos:</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">I.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A ser informado de los derechos que en su favor le reconoce la Constitución;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">II.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A que el Ministerio Público y sus auxiliares, así como el Órgano jurisdiccional le faciliten el acceso a la justicia y les presten los servicios que constitucionalmente tienen encomendados con legalidad, honradez, lealtad, imparcialidad, profesionalismo, eficiencia y eficacia y con la debida diligencia;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">III.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A contar con información sobre los derechos que en su beneficio existan, como ser atendidos por personal del mismo sexo, o del sexo que la víctima elija, cuando así lo requieran y recibir desde la comisión del delito atención médica y psicológica de urgencia, así como asistencia jurídica a través de un Asesor jurídico;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">IV.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A comunicarse, inmediatamente después de haberse cometido el delito con un familiar, e incluso con su Asesor jurídico;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">V.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A ser informado, cuando así lo solicite, del desarrollo del procedimiento penal por su Asesor jurídico, el Ministerio Público y/o, en su caso, por el Juez o Tribunal;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">VI.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A ser tratado con respeto y dignidad;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">VII.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A contar con un Asesor jurídico gratuito en cualquier etapa del procedimiento, en los términos de la legislación aplicable;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">VIII.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A recibir trato sin discriminación a fin de evitar que se atente contra la dignidad humana y se anulen o menoscaben sus derechos y libertades, por lo que la protección de sus derechos se hará sin distinción alguna;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">IX.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A acceder a la justicia de manera pronta, gratuita e imparcial respecto de sus denuncias o querellas;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">X.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A participar en los mecanismos alternativos de solución de controversias;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XI.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A recibir gratuitamente la asistencia de un intérprete o traductor desde la denuncia hasta la conclusión del procedimiento penal, cuando la víctima u ofendido pertenezca a un grupo étnico o pueblo indígena o no conozca o no comprenda el idioma español;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XII.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> En caso de tener alguna discapacidad, a que se realicen los ajustes al procedimiento penal que sean necesarios para salvaguardar sus derechos;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XIII.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A qué se le proporcione asistencia migratoria cuando tenga otra nacionalidad;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XIV.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A qué se le reciban todos los datos o elementos de prueba pertinentes con los que cuente, tanto en la investigación como en el proceso, a que se desahoguen las diligencias correspondientes, y a intervenir en el juicio e interponer los recursos en los términos que establece este Código;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">&nbsp;<strong>XV.</strong> A intervenir en todo el procedimiento por sí o a través de su Asesor jurídico, conforme lo dispuesto en este Código;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XVI.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A qué se le provea protección cuando exista riesgo para su vida o integridad personal;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XVII.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">A solicitar la realización de actos de investigación que en su caso correspondan, salvo que el Ministerio Público considere que no es necesario, debiendo fundar y motivar su negativa;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XVIII. </span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">A recibir atención médica y psicológica o a ser canalizado a instituciones que le proporcionen estos servicios, así como a recibir protección especial de su integridad física y psíquica cuando así lo solicite, o cuando se trate de delitos que así lo requieran;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XIX.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A solicitar medidas de protección, providencias precautorias y medidas cautelares;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XX.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A solicitar el traslado de la autoridad al lugar en donde se encuentre, para ser interrogada o participar en el acto para el cual fue citada, cuando por su edad, enfermedad grave o por alguna otra imposibilidad física o psicológica se dificulte su comparecencia, a cuyo fin deberá requerir la dispensa, por sí o por un tercero, con anticipación;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XXI.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A impugnar por sí o por medio de su representante, las omisiones o negligencia que cometa el Ministerio Público en el desempeño de sus funciones de investigación, en los términos previstos en este Código y en las demás disposiciones legales aplicables;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XXII. </span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">A tener acceso a los registros de la investigación durante el procedimiento, así como a obtener copia gratuita de éstos, salvo que la información esté sujeta a reserva así determinada por el Órgano jurisdiccional;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XXIII.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A ser restituido en sus derechos, cuando éstos estén acreditados;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XXIV.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A qué se le garantice la reparación del daño durante el procedimiento en cualquiera de las formas previstas en este Código;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XXV. </span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">A que se le repare el daño causado por la comisión del delito, pudiendo solicitarlo directamente al Órgano jurisdiccional, sin perjuicio de que el Ministerio Público lo solicite;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XXVI.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> Al resguardo de su identidad y demás datos personales cuando sean menores de edad, se trate de delitos de violación contra la libertad y el normal desarrollo psicosexual, violencia familiar, secuestro, trata de personas o cuando a juicio del Órgano jurisdiccional sea necesario para su protección, salvaguardando en todo caso los derechos de la defensa;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XXVII.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A ser notificado del desistimiento de la acción penal y de todas las resoluciones que finalicen el procedimiento, de conformidad con las reglas que establece este Código;</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XXVIII.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> A solicitar la reapertura del proceso cuando se haya decretado su suspensión, y</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">XXIX.</span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> Los demás que establezcan este Código y otras leyes aplicables.</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">En el caso de que las víctimas sean personas menores de dieciocho años, el Órgano jurisdiccional o el Ministerio Público tendrán en cuenta los principios del interés superior de los niños o adolescentes, la prevalencia de sus derechos, su protección integral y los derechos consagrados en la Constitución, en los Tratados, así como los previstos en el presente Código.</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Para los delitos que impliquen violencia contra las mujeres, se deberán observar todos los derechos que en su favor establece la Ley General de Acceso de las Mujeres a una Vida Libre de Violencia y demás disposiciones aplicables.</span></span></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><s><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Me doy por enterado de los derechos que me asisten sin embargo en este momento me los reservo ya que no cuento con un abogado para nombrar como asesor pero lo haré posteriormente en caso de que yo considere necesario; por cuanto hace a los mecanismos alternos de solución de conflictos, he sido informado y orientado, comprendo los alcances y beneficios de los mismos y que proceden en mi denuncia, (SI/NO) es mi deseo someterme a ellos (ya que mi interés es que se solucione a la brevedad mi problema).</span></span></s></span></span></p>
-
-<p style="text-align:justify">&nbsp;</p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">e. NOTIFICACIÓN A TRAVÉS DE MEDIOS ELECTRÓNICOS</span></span></strong></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><s><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">En términos de los artículos 83, 84 y 85 del Código Nacional de Procedimientos Penales, se pregunta al entrevistado si autoriza ser notificado vía telefónica o correo electrónico y en uso de la voz manifiesta:</span></span></s></span></span></p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">&nbsp;&lt;AceptaMail&gt; </span></span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">expresamente la notificación por correo electrónico indicado en el apartado “<em>A”</em> como medio alternativo de comunicación. </span></span></span></span></p>
-
-<p style="text-align:justify">&nbsp;</p>
-
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">f. FIRMAS</span></span></strong></span></span></p>
-
-<p style="text-align:justify">&nbsp;</p>
-
-<p style="text-align:justify">&nbsp;</p>
-
-<table cellspacing="0" style="width:741px">
+<table cellspacing="0" style="width:901px">
 	<tbody>
 		<tr>
-			<td style="border-color:black; vertical-align:top; width:374px">
-			<p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">__________________________________</span></span></strong></span></span></p>
+			<td style="border-color:black; vertical-align:top; width:475px">
+			<p style="text-align:center"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>________________________________________</strong></span></span></p>
 
-			<p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">{{$denunciante}}</span></span></strong></span></span></p>
+			<p style="text-align:center"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>C.{{$denunciante}}</strong></span></span></p>
 			</td>
-			<td style="border-color:black; vertical-align:top; width:357px">
-			<p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">__________________________________</span></span></strong></span></span></p>
+			<td style="border-color:black; vertical-align:top; width:416px">
+			<p style="text-align:center"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>_______________________________________</strong></span></span></p>
 
-			<p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Lic.</span></strong><strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;"> {{$fiscalAtendio}}</span></span></strong></span></span></p>
+			<p style="text-align:center"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>LIC. {{$fiscalAtendio}}</strong></span></span></p>
 			</td>
 		</tr>
 	</tbody>
