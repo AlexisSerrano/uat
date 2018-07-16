@@ -99,20 +99,6 @@ class AutoridadController extends Controller
                 $idPersona = $persona->id;
             }
 
-            // $persona = new Persona();
-            // $persona->nombres = $request->nombres;
-            // $persona->primerAp = $request->primerAp;
-            // $persona->segundoAp = $request->segundoAp;
-            // $persona->fechaNacimiento = $request->fechaNacimiento;
-            // $persona->rfc = $request->rfc;
-            // $persona->curp = $request->curp;
-            // $persona->sexo = $request->sexo;
-            // $persona->idNacionalidad = $request->idNacionalidad;
-            // $persona->idEtnia = $request->idEtnia;
-            // $persona->idLengua = $request->idLengua;
-            // $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
-            // $persona->save();
-            // $idPersona = $persona->id;
 
             $domicilio = new Domicilio();
             $domicilio->idMunicipio = $request->idMunicipio;

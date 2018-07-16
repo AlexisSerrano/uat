@@ -20,7 +20,65 @@ class CarpetaController extends Controller
         Carbon::setLocale('es');
     }
 
-    
+    public function crearCaso(){
+        $caso=session('carpeta');
+        //dd($caso);
+        if (is_null($caso)){  
+            
+            $unidad=DB::table('unidad')->where('id',Auth::user()->idUnidad)->first();
+            $unidad=$unidad->abreviacion;
+
+
+            $caso = new Carpeta();
+            $caso->idFiscal = Auth::user()->id;
+            $caso->idUnidad = Auth::user()->idUnidad;
+            $caso->fechaInicio = Carbon::now();
+            $caso->horaIntervencion = Carbon::now();
+            $caso->fiscalAtendio = Auth::user()->nombreC;
+            $caso->save();
+            
+            
+            session(['carpeta' => $caso->id]);
+            /* inicio generacion numCarpeta consecutivo */
+            
+            $NuevoNumCarpeta = $unidad."/1/".Carbon::now()->year."-".Auth::user()->numFiscal;
+            $buscarConsecutivo = Carpeta::where('numCarpeta',$NuevoNumCarpeta)->get();
+            
+            while ($buscarConsecutivo->isNotEmpty()) {
+                $buscarConsecutivo=$buscarConsecutivo[0];
+                $partesNumero=explode("/", $buscarConsecutivo->numCarpeta);
+                // dd($buscarConsecutivo);
+                $consecutivo=$partesNumero[2] + 1;
+                $NuevoNumCarpeta = $partesNumero[0].'/'.$partesNumero[1].'/'.$consecutivo.'/'.$partesNumero[3];                
+                $buscarConsecutivo = Carpeta::where('numCarpeta',$NuevoNumCarpeta)->get();
+            }
+            
+            
+            
+            $numCarpeta=Carpeta::find($caso->id);
+            $numCarpeta->numCarpeta = $NuevoNumCarpeta;            
+            $numCarpeta->save();
+            /* fin generacion numCarpeta consecutivo */
+            
+            session(['numCarpeta' => $numCarpeta->numCarpeta]);
+            
+            $usuario=User::find(Auth::user()->id);
+            $usuario->idCarpeta=session('carpeta');
+            $usuario->save();
+
+            $bdbitacora = new BitacoraNavCaso;
+            $bdbitacora->idCaso = $caso->id;
+            $bdbitacora->save();
+            //dd($idCarpeta);
+            Alert::success('Caso iniciado con éxito', 'Hecho');
+            return redirect()->route('new.denunciante');
+        } else {
+            Alert::warning('Tiene un caso en curso debe terminarlo o cancelarlo para iniciar uno nuevo', 'Advertencia');
+            return redirect()->back()->withInput();
+        }
+    }
+
+
     public static function getCarpeta($id)
     {
         //dd(Auth::user());
@@ -95,46 +153,66 @@ class CarpetaController extends Controller
         return redirect(url('carpetasReserva'));
     }
 
+    public function terminar(Request $request){
+        if ($request->session()->has('carpeta')) {
+            $id=session('carpeta');
+            $carpterminadas = DB::table('acusacion')
+            ->join('extra_denunciante', 'extra_denunciante.id', '=', 'acusacion.idDenunciante')
+            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            ->join('extra_denunciado', 'extra_denunciado.id', '=', 'acusacion.idDenunciado')
+            ->join('variables_persona as var', 'var.id', '=', 'extra_denunciado.idVariablesPersona')
+            ->join('persona as per', 'per.id', '=', 'var.idPersona')
+            ->join('tipif_delito', 'tipif_delito.id', '=', 'acusacion.idTipifDelito')
+            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+            ->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta')
+            ->select('carpeta.id')
+            ->where('carpeta.id',$id)
+            ->first();
 
+            $unidad=DB::table('unidad')->where('id',Auth::user()->idUnidad)->first();
+            $unidad=$unidad->abreviacion;
 
-     public function showForm()
-    {
-        $tiposdet = CatTipoDeterminacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-        $nombreUnidad = Unidad::select('nombre')->where('id', Auth::user()->idUnidad)->pluck('nombre');
-        $nombreUnidad = $nombreUnidad[0];
-        return view('forms.inicio')->with('nombreUnidad', $nombreUnidad)->with('tiposdet', $tiposdet);
-    }
+            if($carpterminadas){
+                $carpeta = Carpeta::find($id);
+                $carpeta->fiscalAtendio = Auth::user()->nombreC;
+                $carpeta->idEstadoCarpeta = 1;
+                $carpeta->save();
 
+                $idCarpetaAux=$carpeta->id;
+                $motivo=$carpeta->descripcionHechos;
+                $numCarpetaAux=$carpeta->numCarpeta;
+                
+                $historial= new HistorialCarpeta;
+                $historial->idCarpeta = $idCarpetaAux;
+                $historial->idEstatusCarpeta = 1;
+                $historial->observacion = $motivo;
+                $historial->numCarpeta = $numCarpetaAux;
+                $historial->fiscal = Auth::user()->nombreC;
+                $historial->fecha = Carbon::now();
+                $historial->save();
+                
+                $bdbitacora = BitacoraNavCaso::where('idCaso',$id)->first();
+                $bdbitacora->terminada = 1;
+                $bdbitacora->save();
 
-    public function index($id)
-    {
-        $carpetaNueva = Carpeta::where('id', $id)->where('idFiscal', Auth::user()->id)->get();
-        if(count($carpetaNueva)>0){
-            $denunciantes = CarpetaController::getDenunciantes($id);
-            $denunciados = CarpetaController::getDenunciados($id);
-            $autoridades = CarpetaController::getAutoridades($id);
-            $abogados = CarpetaController::getAbogados($id);
-            $defensas = CarpetaController::getDefensas($id);
-            $familiares = CarpetaController::getFamiliares($id);
-            $delitos = CarpetaController::getDelitos($id);
-            $medidasP=CarpetaController::getMedidasP($id);
-            $acusaciones = CarpetaController::getAcusaciones($id);
-            $vehiculos = CarpetaController::getVehiculos($id);
-            $delits = CarpetaController::hayDelitosVeh($id);
-            //dd($vehiculos);
-            return view('carpeta')->with('carpetaNueva', $carpetaNueva)
-                ->with('denunciantes', $denunciantes)
-                ->with('denunciados', $denunciados)
-                ->with('autoridades', $autoridades)
-                ->with('abogados', $abogados)
-                ->with('defensas', $defensas)
-                ->with('familiares', $familiares)
-                ->with('delitos', $delitos)
-                ->with('acusaciones', $acusaciones)
-                ->with('vehiculos', $vehiculos)
-                ->with('delits', $delits);
-        }else{
-            return redirect()->route('home');
+                $usuario=User::find(Auth::user()->id);
+                $usuario->idCarpeta=null;
+                $usuario->save();
+
+                $request->session()->forget('carpeta');
+                $request->session()->forget('numCarpeta');
+                if (session('preregistro')!=null) {
+                    $request->session()->forget('preregistro');
+                    $request->session()->forget('foliopreregistro');
+                }
+                Alert::success('Carpeta iniciada con éxito se le ha asignado el número de carpeta: '.$carpeta->numCarpeta, 'Hecho')->persistent('Aceptar');
+                return redirect('carpetas');
+            }
+            else{
+                Alert::warning('No cuenta con los requisitos mínimos (denunciante, denunciado, delito, acusación) para terminar la carpeta', 'Advertencia')->persistent('Aceptar');
+                return redirect()->back()->withInput();
+            }
         }
     }
 
@@ -198,37 +276,6 @@ class CarpetaController extends Controller
 
     }
 
-
-    public function verDetalle($id){
-        $carpetaNueva = Carpeta::where('id', $id)->where('idFiscal', Auth::user()->id)->get();
-        if(count($carpetaNueva)>0){
-            $denunciantes = CarpetaController::getDenunciantes($id);
-            $denunciados = CarpetaController::getDenunciados($id);
-            $autoridades = CarpetaController::getAutoridades($id);
-            $abogados = CarpetaController::getAbogados($id);
-            $defensas = CarpetaController::getDefensas($id);
-            $familiares = CarpetaController::getFamiliares($id);
-            $delitos = CarpetaController::getDelitos($id);
-            $acusaciones = CarpetaController::getAcusaciones($id);
-            $vehiculos = CarpetaController::getVehiculos($id);
-            $delits = CarpetaController::hayDelitosVeh($id);
-            //dd($vehiculos);
-            return view('detalle')->with('carpetaNueva', $carpetaNueva)
-                ->with('denunciantes', $denunciantes)
-                ->with('denunciados', $denunciados)
-                ->with('autoridades', $autoridades)
-                ->with('abogados', $abogados)
-                ->with('defensas', $defensas)
-                ->with('familiares', $familiares)
-                ->with('delitos', $delitos)
-                ->with('acusaciones', $acusaciones)
-                ->with('vehiculos', $vehiculos)
-                ->with('delits', $delits);
-        }else{
-            return redirect()->route('home');
-        }
-    }
-
     public static function getDenunciantes($id){
         $denunciantes = DB::table('extra_denunciante')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
@@ -238,7 +285,6 @@ class CarpetaController extends Controller
             ->get();
         return $denunciantes;
     }
-
 
     public static function getMedidasP($id){
         $medidasP = DB::table('providencias_precautorias')
@@ -326,19 +372,19 @@ class CarpetaController extends Controller
         return $delitos;
     }
 
-    public static function hayDelitosVeh($id){
-        $delveh = DB::table('tipif_delito')
-            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
-            ->select('tipif_delito.id', 'cat_delito.id as idDelito', 'cat_delito.nombre as delito')
-            ->where('tipif_delito.idCarpeta', '=', $id)
-            ->whereIn('idDelito', [130, 131, 132, 133, 134, 135, 242, 243, 244, 245, 227])
-            ->get();
-        if(count($delveh)>0){
-            return true;
-        }else{
-            return false;
-        }
-    }
+    // public static function hayDelitosVeh($id){
+    //     $delveh = DB::table('tipif_delito')
+    //         ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+    //         ->select('tipif_delito.id', 'cat_delito.id as idDelito', 'cat_delito.nombre as delito')
+    //         ->where('tipif_delito.idCarpeta', '=', $id)
+    //         ->whereIn('idDelito', [130, 131, 132, 133, 134, 135, 242, 243, 244, 245, 227])
+    //         ->get();
+    //     if(count($delveh)>0){
+    //         return true;
+    //     }else{
+    //         return false;
+    //     }
+    // }
 
     public static function getAcusaciones($id){
         $acusaciones = DB::table('acusacion')
@@ -393,135 +439,15 @@ class CarpetaController extends Controller
         return $vehiculos;
     }
 
-
-    public function crearCaso(){
-        $caso=session('carpeta');
-        //dd($caso);
-        if (is_null($caso)){  
-            
-            $unidad=DB::table('unidad')->where('id',Auth::user()->idUnidad)->first();
-            $unidad=$unidad->abreviacion;
-
-
-            $caso = new Carpeta();
-            $caso->idFiscal = Auth::user()->id;
-            $caso->idUnidad = Auth::user()->idUnidad;
-            $caso->fechaInicio = Carbon::now();
-            $caso->horaIntervencion = Carbon::now();
-            $caso->fiscalAtendio = Auth::user()->nombreC;
-            $caso->save();
-            
-            
-            session(['carpeta' => $caso->id]);
-            /* inicio generacion numCarpeta consecutivo */
-            
-            $NuevoNumCarpeta = $unidad."/1/".Carbon::now()->year."-".Auth::user()->numFiscal;
-            $buscarConsecutivo = Carpeta::where('numCarpeta',$NuevoNumCarpeta)->get();
-            
-            while ($buscarConsecutivo->isNotEmpty()) {
-                $buscarConsecutivo=$buscarConsecutivo[0];
-                $partesNumero=explode("/", $buscarConsecutivo->numCarpeta);
-                // dd($buscarConsecutivo);
-                $consecutivo=$partesNumero[2] + 1;
-                $NuevoNumCarpeta = $partesNumero[0].'/'.$partesNumero[1].'/'.$consecutivo.'/'.$partesNumero[3];                
-                $buscarConsecutivo = Carpeta::where('numCarpeta',$NuevoNumCarpeta)->get();
-            }
-            
-            
-            
-            $numCarpeta=Carpeta::find($caso->id);
-            $numCarpeta->numCarpeta = $NuevoNumCarpeta;            
-            $numCarpeta->save();
-            /* fin generacion numCarpeta consecutivo */
-            
-            session(['numCarpeta' => $numCarpeta->numCarpeta]);
-            
-            $usuario=User::find(Auth::user()->id);
-            $usuario->idCarpeta=session('carpeta');
-            $usuario->save();
-
-            $bdbitacora = new BitacoraNavCaso;
-            $bdbitacora->idCaso = $caso->id;
-            $bdbitacora->save();
-            //dd($idCarpeta);
-            Alert::success('Caso iniciado con éxito', 'Hecho');
-            return redirect()->route('new.denunciante');
-        } else {
-            Alert::warning('Tiene un caso en curso debe terminarlo o cancelarlo para iniciar uno nuevo', 'Advertencia');
-            return redirect()->back()->withInput();
-        }
-    }
-
-    public function terminar(Request $request){
-        if ($request->session()->has('carpeta')) {
-            $id=session('carpeta');
-            $carpterminadas = DB::table('acusacion')
-            ->join('extra_denunciante', 'extra_denunciante.id', '=', 'acusacion.idDenunciante')
-            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->join('extra_denunciado', 'extra_denunciado.id', '=', 'acusacion.idDenunciado')
-            ->join('variables_persona as var', 'var.id', '=', 'extra_denunciado.idVariablesPersona')
-            ->join('persona as per', 'per.id', '=', 'var.idPersona')
-            ->join('tipif_delito', 'tipif_delito.id', '=', 'acusacion.idTipifDelito')
-            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
-            ->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta')
-            ->select('carpeta.id')
-            ->where('carpeta.id',$id)
-            ->first();
-
-            $unidad=DB::table('unidad')->where('id',Auth::user()->idUnidad)->first();
-            $unidad=$unidad->abreviacion;
-
-            if($carpterminadas){
-                $carpeta = Carpeta::find($id);
-                $carpeta->fiscalAtendio = Auth::user()->nombreC;
-                $carpeta->idEstadoCarpeta = 1;
-                $carpeta->save();
-
-                $idCarpetaAux=$carpeta->id;
-                $motivo=$carpeta->descripcionHechos;
-                $numCarpetaAux=$carpeta->numCarpeta;
-                
-                $historial= new HistorialCarpeta;
-                $historial->idCarpeta = $idCarpetaAux;
-                $historial->idEstatusCarpeta = 1;
-                $historial->observacion = $motivo;
-                $historial->numCarpeta = $numCarpetaAux;
-                $historial->fiscal = Auth::user()->nombreC;
-                $historial->fecha = Carbon::now();
-                $historial->save();
-                
-                $bdbitacora = BitacoraNavCaso::where('idCaso',$id)->first();
-                $bdbitacora->terminada = 1;
-                $bdbitacora->save();
-
-                $usuario=User::find(Auth::user()->id);
-                $usuario->idCarpeta=null;
-                $usuario->save();
-
-                $request->session()->forget('carpeta');
-                $request->session()->forget('numCarpeta');
-                if (session('preregistro')!=null) {
-                    $request->session()->forget('preregistro');
-                    $request->session()->forget('foliopreregistro');
-                }
-                Alert::success('Carpeta iniciada con éxito se le ha asignado el número de carpeta: '.$carpeta->numCarpeta, 'Hecho')->persistent('Aceptar');
-                return redirect('carpetas');
-            }
-            else{
-                Alert::warning('No cuenta con los requisitos mínimos (denunciante, denunciado, delito, acusación) para terminar la carpeta', 'Advertencia')->persistent('Aceptar');
-                return redirect()->back()->withInput();
-            }
-        }
-    }
-    public function descripcionHechos(Request $request){
-        if ($request->session()->has('carpeta')) {
-            $id=session('carpeta');
-            $carpeta = Carpeta::find($id);
-            $carpeta->descripcionHechos = $request->descripcionHechos;
-            $carpeta->save();
-            Alert::success('Descripcion de hechos registrada', 'Hecho');
-            return redirect();        
-        }
-    }
+    
+    // public function descripcionHechos(Request $request){
+    //     if ($request->session()->has('carpeta')) {
+    //         $id=session('carpeta');
+    //         $carpeta = Carpeta::find($id);
+    //         $carpeta->descripcionHechos = $request->descripcionHechos;
+    //         $carpeta->save();
+    //         Alert::success('Descripcion de hechos registrada', 'Hecho');
+    //         return redirect();        
+    //     }
+    // }
 }

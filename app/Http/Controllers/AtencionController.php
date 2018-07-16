@@ -32,9 +32,6 @@ class AtencionController extends Controller
             $atencion->segundoAp = $request->segundo_ap;
             $atencion->telefono = $request->telefono;
             $atencion->idRedireccion = $request->redireccion;
-            // $atencion->zona = session('zona');
-            // $atencion->unidad = session('unidad');
-            // $atencion->usuario = session('usuario');
             $atencion->idZona = Auth::user()->idZona;
             $atencion->idUnidad = Auth::user()->idUnidad;
             $atencion->idUsuario = Auth::user()->id;
