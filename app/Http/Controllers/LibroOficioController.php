@@ -22,31 +22,31 @@ class LibroOficioController extends Controller
     }
 
 
-    // public function filtroActas(Request $request){
-    //     if($request->input("filtro")!=''){
-    //         if($request->input("filtro")){
-    //             $filtro = $request->input("filtro");
-    //             $request->session()->flash('filtro', $filtro);
-    //         }
-    //         else{
-    //             $filtro = $request->session()->get('filtro');
-    //             $request->session()->flash('filtro', $filtro);
+    public function filtroActas(Request $request){
+        if($request->input("filtro")!=''){
+            if($request->input("filtro")){
+                $filtro = $request->input("filtro");
+                $request->session()->flash('filtro', $filtro);
+            }
+            else{
+                $filtro = $request->session()->get('filtro');
+                $request->session()->flash('filtro', $filtro);
     
-    //         }
-    //         $year = Date::now()->format('Y');
-    //         $actas = ActasHechos::
-    //         where(DB::raw("CONCAT(nombre,' ',primer_ap,' ',segundo_ap)"), 'LIKE', '%' . $filtro . '%')
-    //         ->orwhere('folio','like','%'.$filtro.'%')
-    //         ->paginate('15');
-    //         return view('tables.libOficios')
-    //         -> with("actas", $actas)
-    //         -> with("year", $year);  
-    //     }
+            }
+            $year = Date::now()->format('Y');
+            $actas = ActasHechos::
+            where(DB::raw("CONCAT(nombre,' ',primer_ap,' ',segundo_ap)"), 'LIKE', '%' . $filtro . '%')
+            ->orwhere('folio','like','%'.$filtro.'%')
+            ->paginate('15');
+            return view('tables.libOficios')
+            -> with("actas", $actas)
+            -> with("year", $year);  
+        }
 
-    //     else{
-    //         return redirect('lista-oficios');
-    //     }
-    // }
+        else{
+            return redirect('lista-oficios');
+        }
+    }
 
 }
 
