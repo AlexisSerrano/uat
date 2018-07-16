@@ -227,6 +227,11 @@ $("#nombre2").focusout(function() {
     obtenerCURP();
     // obtenerRFCFISICA();
 });
+$("#nombres").focusout(function() {
+    //toastr.clear();
+    obtenerCURP();
+    // obtenerRFCFISICA();
+});
 $("#primerAp").focusout(function() {
     //toastr.clear();
     obtenerCURP();
@@ -252,8 +257,17 @@ $("#idEstadoOrigen").change(function() {
     obtenerCURP();
 });
 
+$("#idEstado").change(function() {
+    //toastr.clear();
+    obtenerCURP();
+});
+
 function obtenerCURP() {
-	nombre = $("#nombre2").val().toUpperCase();
+    if($("#nombre2").val()){
+        nombre = $("#nombre2").val().toUpperCase();
+    }else if($("#nombres").val()){
+        nombre = $("#nombres").val().toUpperCase();
+    }	
 	apellidoPaterno = $("#primerAp").val().toUpperCase();
 	apellidoMaterno = $("#segundoAp").val().toUpperCase();
     fecha = $("#fechaNacimiento").val();
@@ -268,18 +282,15 @@ function obtenerCURP() {
 	if(nombre!=""&& apellidoPaterno!=""&&sexo!=""){
         
 		var abreviacion = ["AS", "BC", "BS", "CC", "CS", "CH", "CL", "CM", "CX", "DF", "DG", "GT", "GR", "HG", "JC", "MC", "MN", "MS", "NT", "NL", "OC", "PL", "QT", "QR", "SP", "SL", "SR", "TC", "TS", "TL", "VZ", "YN", "ZS"];
-        estado = abreviacion[($("#idEstadoOrigen").val())];
-        console.log(estado);
-        console.log(fecha);
-        
+        if( $("#idEstadoOrigen").val() ){
+            estado = abreviacion[($("#idEstadoOrigen").val())];
+        }else if($("#idEstado").val()){
+            estado = abreviacion[($("#idEstado").val())];
+        }        
         dia = fecha.substr(8, 2);
-        console.log(dia);
-        mes = fecha.substr(5, 2);
-        console.log(mes);
-		año = fecha.substr(0, 4);
-        console.log(año);
-		//console.log(dia+"/"+mes+"/"+año);
-
+        mes = fecha.substr(5, 2);    
+        año = fecha.substr(0, 4);        		
+        
 		var curp = generaCurp({
 			nombre: nombre,
 			apellido_paterno: apellidoPaterno,

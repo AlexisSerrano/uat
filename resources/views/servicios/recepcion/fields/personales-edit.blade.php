@@ -5,6 +5,7 @@
 			{!! Form::label('nombres', 'Nombre: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$preregistro->nombre ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputNombre">
+				{!! Form::label('nombres', 'Nombre: ', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::text('nombres', $preregistro->nombre, ['class' => 'form-control  form-control-sm', 'placeholder' => 'Ingrese el nombre','required']) !!}				
 			</div>
 			<div class="help-block with-errors"></div> 
@@ -16,6 +17,7 @@
 			{!! Form::label('primerAp', 'Primer apellido: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$preregistro->primerAp ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputPrimerAp">
+				{!! Form::label('primerAp', 'Primer apellido: ', ['class' => 'col-form-label-sm ']) !!}
 				{!! Form::text('primerAp',$preregistro->primerAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','required']) !!}				
 			</div>
 			<div class="help-block with-errors"></div>
@@ -27,6 +29,7 @@
 			{!! Form::label('segundoAp', 'Segundo apellido: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$preregistro->segundoAp ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputSegundoAp">
+				{!! Form::label('segundoAp', 'Segundo apellido: ', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::text('segundoAp', $preregistro->segundoAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom','data-validation-optional'=>'true']) !!}				
 			</div>
 		</div>
@@ -37,7 +40,8 @@
 			{!! Form::label('rfc', 'R.F.C.: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$preregistro->rfc ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputRfc">
-			{!! Form::text('rfc', $preregistro->rfc, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}				
+				{!! Form::label('rfc', 'R.F.C.: ', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::text('rfc', $preregistro->rfc, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}				
 			</div>
 			<div class="help-block with-errors"></div>
 		</div>
@@ -48,12 +52,12 @@
 			{!! Form::label('fechaNacimiento', 'Fecha de nacimiento: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$preregistro->fechaNac ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputFechaNac">
+				{!! Form::label('fechaNacimiento', 'Fecha de nacimiento: ', ['class' => 'col-form-label-sm']) !!}
 				{{-- <div class="input-group date" id="fechanac" data-target-input="nearest"> --}}
-					{!! Form::date('fechaNacimiento', $preregistro->fechaNac, ['class' => 'form-control form-control-sm', 'data-target' => '#fechanac', 'required']) !!}					
-					{{-- <div class="input-group-append" data-target="#fechanac" data-toggle="datetimepicker">
+				{!! Form::date('fechaNacimiento', $preregistro->fechaNac, ['class' => 'form-control form-control-sm', 'data-target' => '#fechanac', 'required']) !!}					
+				{{-- <div class="input-group-append" data-target="#fechanac" data-toggle="datetimepicker">
 						<div class="input-group-text"><i class="fa fa-calendar"></i></div>
-					</div> --}}
-					
+					</div> --}}					
 				{{-- </div> --}}
 			</div>
 			<div class="help-block with-errors"></div>	
@@ -76,6 +80,7 @@
 			{!! Form::label('sexo', 'Sexo: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$preregistro->sexo ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputSexo">
+				{!! Form::label('sexo', 'Sexo: ', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::select('sexo', ['HOMBRE' => 'HOMBRE', 'MUJER' => 'MUJER'], $preregistro->sexo, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione el sexo', 'required']) !!}				
 			</div>
 			<div class="help-block with-errors"></div>
@@ -88,6 +93,7 @@
 			{!! Form::label('telefono1', 'Teléfono: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$preregistro->telefono ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputTelefono">
+				{!! Form::label('telefono1', 'Teléfono: ', ['class' => 'col-form-label-sm']) !!}				
 				{!! Form::text('telefono', $preregistro->telefono, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el teléfono', 'required']) !!}				
 			</div>
 			<div class="help-block with-errors"></div>
@@ -98,6 +104,7 @@
 			{!! Form::label('curp', 'C.U.R.P.: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$preregistro->curp ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputCurp">
+				{!! Form::label('curp', 'C.U.R.P.: ', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::text('curp', $preregistro->curp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el C.U.R.P.']) !!}				
 			</div>
 		</div>
@@ -112,6 +119,7 @@
 			{!! Form::label('idEstado', 'Entidad federativa: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$nombreEstado ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputDireccionEstado">
+				{!! Form::label('idEstado', 'Entidad federativa: ', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::select('idEstado', $estados, $idEstadoSelect, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required','disabled']) !!}
 			</div>
 		</div>
@@ -121,6 +129,7 @@
 			{!! Form::label('idMunicipio', 'Municipio: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$nombreMunicipio ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputDireccionMunicipio">
+				{!! Form::label('idMunicipio', 'Municipio: ', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::select('idMunicipio', $catMunicipios, $idMunicipioSelect , ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
 			</div>
 		</div>
@@ -131,6 +140,7 @@
 			{!! Form::label('idLocalidad', 'Localidad: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$nombreLocalidad ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputDireccionLocalidad">
+				{!! Form::label('idLocalidad', 'Localidad: ', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::select('idLocalidad', $catLocalidades, $idLocalidadSelect, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
 			</div> 
 		</div>
@@ -142,6 +152,7 @@
 			{!! Form::label('cp', 'Código postal :', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$nombreCP ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputDireccionCp">
+				{!! Form::label('cp', 'Código postal :', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::select('cp',  $catCodigoPostal, $idCodigoPostalSelect, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
 			</div>
 		</div>
@@ -153,6 +164,7 @@
 			{!! Form::label('idColonia', 'Colonia: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$nombreColonia ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputDireccionColonia">
+				{!! Form::label('idColonia', 'Colonia: ', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::select('idColonia', $catColonias, $idColoniaSelect, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}				
 			</div>
 		</div>
@@ -166,6 +178,7 @@
 			{!! Form::label('calle', 'Calle: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$direccionTB[0]->calle ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputCalle">
+				{!! Form::label('calle', 'Calle: ', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::text('calle',$direccionTB[0]->calle, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese la calle', 'required']) !!}
 			</div>
 		</div>
@@ -176,6 +189,7 @@
 			{!! Form::label('numExterno', 'Número exterior: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$direccionTB[0]->numExterno ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputNumExterno">
+				{!! Form::label('numExterno', 'Número exterior: ', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::text('numExterno', $direccionTB[0]->numExterno, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número exterior', 'required']) !!}				
 			</div>
 		</div>
@@ -185,6 +199,7 @@
 			{!! Form::label('numInterno1', 'Número interior: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$direccionTB[0]->numInterno ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputNumInterno">
+				{!! Form::label('numInterno1', 'Número interior: ', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::text('numInterno',$direccionTB[0]->numInterno, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el número interior', 'required']) !!}				
 			</div>
 		</div>
@@ -195,6 +210,7 @@
 			{!! Form::label('docIdentificacion', 'Documento de identificación: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$docIdent ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputDoc">
+				{!! Form::label('docIdentificacion', 'Documento de identificación: ', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::select('docIdentificacion',$identificaciones,null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificación','required']) !!}				
 			</div>
 			<div class="help-block with-errors"></div>
@@ -206,6 +222,7 @@
 			{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$preregistro->numDocIdentificacion ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputDocIden">
+				{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación: ', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::text('numDocIdentificacion', $preregistro->numDocIdentificacion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación']) !!}				
 			</div>
 			<div class="help-block with-errors"></div>
@@ -217,6 +234,7 @@
 			{!! Form::label('idRazon', 'Razón:', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$razon ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputRazon">
+				{!! Form::label('idRazon', 'Razón:', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::select('idRazon', $razones, $preregistro->idRazon, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una razón', 'data-validation'=> 'required']) !!}				
 			</div>
 			<div class="help-block with-errors"></div>
