@@ -20,7 +20,15 @@ use Alert;
 use Carbon\Carbon;
 use Jenssegers\Date\Date;
 
-use App\Models\VariablesPersona;
+//use App\Models\VariablesPersona;
+
+use App\Models\componentes\aparicionesModel;
+use App\Models\componentes\VariablesPersona;
+use App\Models\componentes\PersonaModel;
+use App\Models\componentes\Domicilio;
+use App\Models\componentes\Trabajo;
+use App\Models\componentes\PersonaMoralModel;
+use App\Models\componentes\VariablesPersonaMoral;
 
 class ImpresionesController extends Controller
 
@@ -695,33 +703,82 @@ class ImpresionesController extends Controller
            else{
                $complemento1="del ciudadano";
            }
-
-
-            $denunciantes = DB::table('variables_persona')
-            ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
-            ->join('extra_denunciante', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-            ->where('variables_persona.idCarpeta',$idCarpeta)
-            ->select('persona.nombres','persona.primerAp','persona.segundoAp', 'persona.id')
-            ->get();
-            $cadenaDenunciantes='';
-            foreach($denunciantes as $denunciante){
-                $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.' ';
+           $idCarpeta1='UIPJ/D17/VER1/22/1/2018';
+            $apariciones= aparicionesModel::where('idCarpeta',$idCarpeta1)
+            ->where('sistema','uat')
+            ->where('tipoInvolucrado','denunciante')
+            ->select('id','idVarPersona','idCarpeta','esEmpresa')
+            ->first();
+            $idVPersona=$apariciones->idVarPersona;
+            if ($apariciones->esEmpresa==0) {
+                $variablesP=VariablesPersona::where('id',$idVPersona)
+                ->first();
+                $datosPersona=PersonaModel::where('id',$variablesP->idPersona)
+                ->first();
+                $denunciante=$datosPersona->nombres.' '.$datosPersona->primerAp.' '.$datosPersona->segundoAp;
             }
+            else{
+                $variablesP=VariablesPersonaMoral::where('id',$idVPersona)
+                ->first();
+                $idPersona=$variablesP->idPersona;
+                $datosPersona=PersonaMoralModel::where('id',$idPersona)
+                ->select('nombre')
+                ->first();
+        
+                $denunciante=$datosPersona->nombre;
+            }
+
+
+            // $denunciantes = DB::table('variables_persona')
+            // ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
+            // ->join('extra_denunciante', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            // ->where('variables_persona.idCarpeta',$idCarpeta)
+            // ->select('persona.nombres','persona.primerAp','persona.segundoAp', 'persona.id')
+            // ->get();
+            // $cadenaDenunciantes='';
+            // foreach($denunciantes as $denunciante){
+            //     $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.' ';
+            // }
             $TipifDelito=DB::table('tipif_delito')
             ->join('cat_delito','cat_delito.id','=','tipif_delito.idDelito')
             ->where('tipif_delito.idCarpeta',$idCarpeta)
             ->select('cat_delito.nombre')
             ->first();
-            $denunciado2= DB::table('variables_persona')
-            ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
-            ->join('extra_denunciado', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
-            ->where('variables_persona.idCarpeta',$idCarpeta)
-            ->select('persona.nombres','persona.primerAp','persona.segundoAp', 'persona.id')
-            ->get();
-            $denunciados='';
-            foreach($denunciado2 as $denunciado){
-                $denunciados .= $denunciado->nombres.' '.$denunciado->primerAp.' '.$denunciado->segundoAp.'';
+            // $denunciado2= DB::table('variables_persona')
+            // ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
+            // ->join('extra_denunciado', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+            // ->where('variables_persona.idCarpeta',$idCarpeta)
+            // ->select('persona.nombres','persona.primerAp','persona.segundoAp', 'persona.id')
+            // ->get();
+            // $denunciados='';
+            // foreach($denunciado2 as $denunciado){
+            //     $denunciados .= $denunciado->nombres.
+            $idCarpeta2='UIPJ/D42/VER0/19/8/2018';
+            $apariciones2= aparicionesModel::where('idCarpeta',$idCarpeta2)
+            ->where('sistema','uat')
+            ->where('tipoInvolucrado','denunciado')
+            ->select('id','idVarPersona','idCarpeta','esEmpresa')
+            ->first();
+            $idVPersona2=$apariciones2->idVarPersona;
+
+            if($apariciones2->esEmpresa==0) {
+
+                $variablesDenunciado=VariablesPersona::where('id',$idVPersona2)
+                ->first();
+                $denuncianteFisica=PersonaModel::where('id',$variablesDenunciado->idPersona)
+                ->first();
+                $denunciados=$denuncianteFisica->nombres.' '.$denuncianteFisica->primerAp.' '.$denuncianteFisica->segundoAp;
             }
+            else{
+                $variablesDenunciado=VariablesPersonaMoral::where('id',$idVPersona2)
+                ->first();
+                $denuncianteMoral=PersonaMoralModel::where('id',$variablesDenunciado->idPersona)
+                ->select('nombre')
+                ->first();
+                $denunciados=$denuncianteMoral->nombre;
+
+            }
+
              $hora=Carbon::now()->format('H:i');
              $fechaactual = date::now();
              $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
@@ -731,15 +788,15 @@ class ImpresionesController extends Controller
             
            
             $datos=array('id'=> $idCarpeta,
-            'nombreC'=>$fiscalAtiende->nombreC,
+            'nombreC'=>strtr(strtoupper($fiscalAtiende->nombreC),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'ciudad'=>$localidad,
-            'puesto'=>$fiscalAtiende->puesto,
-            'denunciante'=>$cadenaDenunciantes,
+            'puesto'=>strtr(strtoupper($fiscalAtiende->puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+            'denunciante'=>strtr(strtoupper($denunciante),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'delitos'=>$TipifDelito->nombre,
             'dictamenP'=>$dictamen,
             'numCarpeta'=>$carpeta->numCarpeta,
-            'denunciados'=>$denunciados,
-            'fecha'=>$fechahum,
+            'denunciados'=>strtr(strtoupper($denunciados),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+            'fecha'=>strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'complemento1'=>$complemento1,
              'hora'=>$hora
                 );

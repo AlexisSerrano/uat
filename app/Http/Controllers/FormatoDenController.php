@@ -61,7 +61,7 @@ public function getFormatoDenuncia($id){
         $aux=$aux+1;
     }
     //datos del denunciante
-    $idCarpeta1='558546';
+    $idCarpeta1='UIPJ/D17/VER1/22/1/2018';
     $apariciones= aparicionesModel::where('idCarpeta',$idCarpeta1)
     ->where('sistema','uat')
     ->where('tipoInvolucrado','denunciante')
@@ -121,7 +121,7 @@ else
 
     }
     // datos denunciado
-    $idCarpeta2='630486';
+    $idCarpeta2='UIPJ/D42/VER0/19/8/2018';
     $apariciones2= aparicionesModel::where('idCarpeta',$idCarpeta2)
     ->where('sistema','uat')
     ->where('tipoInvolucrado','denunciado')
@@ -160,14 +160,14 @@ else
 
         $data = array('id' => $id,
         'numCarpeta'=>$numCarpeta,
-        'fiscalAtendio'=>$fiscalAtiende->nombreC,
+        'fiscalAtendio'=>strtr(strtoupper($fiscalAtiende->nombreC),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'hora'=>$hora,
         'fecha'=>$fechahum,
         'localidad'=>$localidad,
-        'tipoDenincia'=>$tipoDenuncia,
+        'tipoDenuncia'=>$tipoDenuncia,
         'nuc'=>$nuc,
         'edad'=>$variablesP->edad,
-        'denunciante'=>$denunciante,
+        'denunciante'=>strtr(strtoupper($denunciante),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'telefono'=>$variablesP->telefono,
         'motivoEstancia'=>$variablesP->motivoEstancia,
         'ocupacion'=> $ocupacion->nombre,
@@ -183,7 +183,7 @@ else
         'telTrabajo'=>$datosTrabajo->telefono,
         'fechaNac'=>$datosPersona->fechaNacimiento,
         'hechos'=>$carpeta->narracion,
-        'denunciado'=>$denunciado,
+        'denunciado'=>strtr(strtoupper($denunciado),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'sexo'=>$sexo->nombre
        );
 

@@ -492,52 +492,57 @@ function getOficiosImpresos(){
 	$acuerdoInicioc=DB::table('oficios_hechos')
 		->join('oficios','oficios.id','=','oficios_hechos.idOficio')
 		->where('idTabla',session('carpeta'))
-		->where('idOficio',18)
+		->where('nombre','INICIO1')
 		->count();
 	$gralTransporte=DB::table('oficios_hechos')
 		->join('oficios','oficios.id','=','oficios_hechos.idOficio')
 		->where('idTabla',session('carpeta'))
-		->where('idOficio',9)
+		->where('nombre','DIRECCION GRAL TRANSITO')
 		->count();
 	$caratulaC=DB::table('oficios_hechos')
 		->join('oficios','oficios.id','=','oficios_hechos.idOficio')
 		->where('idTabla',session('carpeta'))
-		->where('idOficio',11)
+		->where('nombre','CARATULA DE LA CARPETA')
 		->count();
 	$policiaMinC=DB::table('oficios_hechos')
 		->join('oficios','oficios.id','=','oficios_hechos.idOficio')
 		->where('idTabla',session('carpeta'))
-		->where('idOficio',12)
+		->where('nombre','POLICIA MINISTERIAL')
 		->count();
 	$cavdC=DB::table('oficios_hechos')
 		->join('oficios','oficios.id','=','oficios_hechos.idOficio')
 		->where('idTabla',session('carpeta'))
-		->where('idOficio',4)
+		->where('nombre','CAVD')
 		->count();
 	$actuacionesC=DB::table('oficios_hechos')
 		->join('oficios','oficios.id','=','oficios_hechos.idOficio')
 		->where('idTabla',session('carpeta'))
-		->where('idOficio',13)
+		->where('nombre','NOT. ACTUACIONES FISCAL DISTRITO')
 		->count();
 	$temporalC=DB::table('oficios_hechos')
 		->join('oficios','oficios.id','=','oficios_hechos.idOficio')
 		->where('idTabla',session('carpeta'))
-		->where('idOficio',15)
+		->where('nombre','NOTIFICACIÓN DE ARCHIVO TEMPORAL')
 		->count();
 	$finanzasC=DB::table('oficios_hechos')
 		->join('oficios','oficios.id','=','oficios_hechos.idOficio')
 		->where('idTabla',session('carpeta'))
-		->where('idOficio',16)
+		->where('nombre','OFICIO FINANZAS')
 		->count();
 	$remicionC=DB::table('oficios_hechos')
 	->join('oficios','oficios.id','=','oficios_hechos.idOficio')
 	->where('idTabla',session('carpeta'))
-	->where('idOficio',19)
+	->where('nombre','ACUERDO REMISION')
 	->count();
 	$acuerdoRemisionC=DB::table('oficios_hechos')
 	->join('oficios','oficios.id','=','oficios_hechos.idOficio')
 	->where('idTabla',session('carpeta'))
-	->where('idOficio',10)
+	->where('nombre','AcuerdoFiscalDistrito')
+	->count();
+	$querella=DB::table('oficios_hechos')
+	->join('oficios','oficios.id','=','oficios_hechos.idOficio')
+	->where('idTabla',session('carpeta'))
+	->where('nombre','FORMATO DE DENUNCIA')
 	->count();
 	$data=array(
 		'acuerdoInicioc'=>$acuerdoInicioc,
@@ -549,7 +554,9 @@ function getOficiosImpresos(){
 		'temporalC'=>$temporalC,
 		'finanzasC'=>$finanzasC,
 		'remicionC'=>$remicionC,
-		'acuerdoRemisionC'=>$acuerdoRemisionC
+		'acuerdoRemisionC'=>$acuerdoRemisionC,
+		'querella'=>$querella
+
 
 	);
 		return $data;

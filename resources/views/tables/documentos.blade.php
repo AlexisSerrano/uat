@@ -14,7 +14,7 @@ $data= getOficiosImpresos();
             <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
                     <a class="btn " style="color:black;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Basicos de la carpeta de investigación
+                    Formatos basicos
                     </a>
                 </h5>
             </div>
@@ -30,7 +30,7 @@ $data= getOficiosImpresos();
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Caratula de carpeta de información</td>
+                                        <td style="text-align:center;">Caratula de carpeta de información</td>
                                         <td style="text-align:center;">
                                             <span class="badge badge-info right">{{$data['caratulaC']}}</span>
                                         </td>                              
@@ -42,8 +42,8 @@ $data= getOficiosImpresos();
                                     </tr>
                                     <tr>
                                         <td>Formato de denuncia/querella </td>
-                                        <td style="text-align:center;">
-                                                {{-- <span class="badge badge-info right">{{$data['remicionC']}}</span> --}}
+                                      <td style="text-align:center;">
+                                                 <span class="badge badge-info right">{{$data['querella']}}</span> 
                                         </td>
                                         <td style="text-align:center;">
                                         <a href="{{ route("formato.denuncia",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg " TARGET=”_blank”><i class="fa fa-print"></i></a>
