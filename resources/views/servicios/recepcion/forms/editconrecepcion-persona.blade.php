@@ -77,6 +77,8 @@
     
 @endsection
 @push('scripts')
+
+<script src="{{ asset('js/curp.js') }}"></script>
 {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script> --}}
 <script>
     // $(function () {
@@ -110,10 +112,8 @@
                 $("#editFields").removeClass("btn-danger")                                
             }          
         });
-
-
-
-
+         
+        /*
         //editar el campo al dar clic en el label de nombre
         $(".labelCambioNombre").click(function(){
             $('.labelCambioNombre').hide();
@@ -320,7 +320,7 @@
             $("#cp").prop('disabled', true);   
             $("#idColonia").prop('disabled', true);   
             
-        });
+        }); */
 
     });
 
