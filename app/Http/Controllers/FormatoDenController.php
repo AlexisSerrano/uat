@@ -29,15 +29,16 @@ use Jenssegers\Date\Date;
 
 class FormatoDenController extends Controller
 {
-   
     public function formatoDenuncia($id){
+   
     
     return view('documentos.formato-denuncia')->with('id',  $id );
     
 }
+public function getFormatoDenuncia($id){
     
-    public function getFormatoDenuncia($id){
-
+    
+  
     $idCarpeta=session('carpeta');
     $carpeta=DB::table('carpeta')
     ->join('unidad','carpeta.idUnidad','=','unidad.id')
@@ -186,11 +187,11 @@ else
         'sexo'=>$sexo->nombre
        );
 
-   // dd($data);
+      // dd($data);
        
-       //return view('documentos.formato-denuncia');
+         // return view('documentos.formato-denuncia');
         // }
-       return response()->json($data);
+    return response()->json($data);
     
     }
 }

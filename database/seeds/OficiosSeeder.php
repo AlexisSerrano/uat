@@ -741,25 +741,28 @@ LIC. {{$fiscalAtendio}}
       
 
         ['nombre'  =>  'CARATULA DE LA CARPETA',
-        'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
-        <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',  
+        'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" /></p>
 
-        'contenido' => '<table align="center" cellpadding="1" cellspacing="1" style="width:500px">
+        <p style="text-align:right"><span style="font-size:16px">Unidad de Atención Temprana.</span></p>
+        
+        <p style="text-align:right"><span style="font-size:16px">"Si lo platicamos, lo solucionamos”</span></p>',  
+
+        'contenido' => '<table align="center" cellpadding="1" cellspacing="1" style="width:646px; font-size:27px;">
         <tbody>
             <tr>
-                <td style="text-align:center">{{$descripcion}},</td>
+                <td style="height:97px; text-align:center; width:638px"><span style="font-size:27px"><strong>{{$descripcion}}</strong></span></td>
             </tr>
             <tr>
-                <td style="text-align:center">VERACRUZ CARPETA DE INVESTIGACIÓN:{{$numeroCarpeta}}°</td>
+                <td style="height:126px; text-align:center; width:638px"><span style="font-size:27px"><strong>VERACRUZ CARPETA DE INVESTIGACIÓN:{{$numeroCarpeta}}°</strong></span></td>
             </tr>
             <tr>
-                <td style="text-align:center">C. {{$denunciante}}</td>
+                <td style="height:70px; text-align:center; width:638px"><span style="font-size:27px"><strong>C. {{$denunciante}}</strong></span></td>
             </tr>
             <tr>
-                <td style="text-align:center">Lic. {{$nombreC}}</td>
+                <td style="height:78px; text-align:center; width:638px"><span style="font-size:27px"><strong>LIC. {{$nombreC}}</strong></span></td>
             </tr>
             <tr>
-                <td style="text-align:center">{{$puesto}}</td>
+                <td style="height:96px; text-align:center; width:638px"><span style="font-size:27px"><strong>{{$puesto}}</strong></span></td>
             </tr>
         </tbody>
     </table>
@@ -769,9 +772,6 @@ LIC. {{$fiscalAtendio}}
     <p>&nbsp;</p>
     
     <p>&nbsp;</p>
-       
-
-
 ',
             'unidad'=>'1',
             'pie' =>  '<p>Circuito Rafael Guízar y<br />
@@ -1403,8 +1403,10 @@ Xalapa-Enríquez, Veracruz</p>',
    'unidad'=>'1'],
 
    ['nombre'  =>  'FORMATO DE DENUNCIA',
-   'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
-   <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',
+   'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:100px; width:100px" /></p>
+   <p style="text-align:right">Unidad de Atención Temprana, Veracruz&nbsp;<br>
+   <strong>"Si lo platicamos, lo solucionamos”</strong><br />
+   &nbsp;</p>',
 
 
 'contenido' =>'
