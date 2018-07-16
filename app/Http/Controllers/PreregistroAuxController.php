@@ -60,7 +60,7 @@ class PreregistroAuxController extends Controller
 
     
     public function edit($id)
-    {
+    {        
         $estados=CatEstado::orderBy('nombre', 'ASC')
         ->pluck('nombre','id');
         $preregistro = Preregistro::find($id);
@@ -130,7 +130,7 @@ class PreregistroAuxController extends Controller
         ->where('cat_colonia.codigoPostal','!=',0)
         ->orderBy('codigoPostal','asc')
         ->groupBy('codigoPostal')
-        ->pluck('codigoPostal','codigopostal');
+        ->pluck('codigoPostal','codigoPostal');
         $identificaciones = CatIdentificacion::orderBy('id', 'ASC')
         ->pluck('documento', 'id');
         $docIdent = CatIdentificacion::select('documento')
@@ -217,7 +217,7 @@ class PreregistroAuxController extends Controller
                 $preregistro->docIdentificacion = $request->docIdentificacion;
                 $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
                 if (!is_null($request->idRazon)){
-                    $domicilio->idRazon = $request->idRazon;
+                    $preregistro->idRazon = $request->idRazon;
                 }
                 $preregistro->save();
                 $id = $preregistro->id;
@@ -249,6 +249,8 @@ class PreregistroAuxController extends Controller
                 $preregistro =Preregistro::find($id);
                 $preregistro->esEmpresa = 1;    
                 $preregistro->nombre = $request->nombres;
+                $preregistro->primerAp = $request->primerAp;
+                $preregistro->segundoAp = $request->segundoAp;
                 $preregistro->idDireccion = $idD1;
                 $preregistro->rfc = $request->rfc . $request->homo;
                 $preregistro->representanteLegal = $request->repLegal;

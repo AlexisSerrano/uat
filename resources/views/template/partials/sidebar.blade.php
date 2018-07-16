@@ -47,7 +47,14 @@
 				@if (is_null(session('carpeta')))
 					@if (Auth::user()->grupo=='orientador')
 					
-						<li class="nav-item has-treeview  {{ Request::is( 'registros') ? 'menu-open' : '' }}">
+						<li class="nav-item">
+							<a href='{{url("registros")}}' class="nav-link {{ Request::is( 'registros') ? 'active' : '' }}">
+								<i class="nav-icon fa fa-users"></i>
+								<p>Pre-registros</p>
+							</a>
+						</li>
+				
+						{{-- <li class="nav-item has-treeview  {{ Request::is( 'registros') ? 'menu-open' : '' }}">
 							<a href="#" class="nav-link ">
 								<i class="nav-icon fa fa-users"></i>
 								<p>
@@ -70,7 +77,7 @@
 									</a>
 								</li>
 							</ul>
-						</li>
+						</li> --}}
 					@endif
 
 					@if (Auth::user()->grupo=='recepcion')
@@ -85,7 +92,7 @@
 							<ul class="nav nav-treeview"> --}}
 								<li class="nav-item has-treeview  ">
 									<a href="{{route('predenuncias.index')}}" class="nav-link {{ Request::is( 'predenuncias') ? 'active' : '' }}">
-											<i class="nav-icon fa fa-angle-right "></i>
+											<i class="nav-icon fa fa-users "></i>
 										<p>
 											Todos los registros
 										</p>
@@ -94,7 +101,7 @@
 									
 								<li class="nav-item has-treeview">
 									<a href="{{url('encola')}}" class="nav-link {{ Request::is( 'encola') ? 'active' : '' }}">
-											<i class="nav-icon fa fa-angle-right "></i>
+											<i class="nav-icon fa fa-list-alt"></i>
 										<p>
 											Registros en cola
 										</p>
@@ -103,7 +110,7 @@
 										
 								<li class="nav-item has-treeview">
 									<a href="{{url('urgentes')}}" class="nav-link {{ Request::is( 'urgentes') ? 'active' : '' }}">
-											<i class="nav-icon fa fa-angle-right "></i>
+											<i class="nav-icon fa fa-street-view "></i>
 										<p>
 											Urgentes
 										</p>
@@ -112,7 +119,7 @@
 								
 								<li class="nav-item has-treeview">
 									<a href="{{url('recepcionista')}}" class="nav-link {{ Request::is( 'recepcionista') ? 'active' : '' }}">
-										<i class="nav-icon fa fa-angle-right "></i>
+										<i class="nav-icon fa fa-user-plus "></i>
 										<p>
 											Agregar pre-registro	
 										</p>
@@ -317,12 +324,12 @@
 				@endif		
 				
 				@if (!is_null(session('carpeta'))&&!is_null(session('terminada')))
-					{{-- <li class="nav-item has-treeview">
+					<li class="nav-item has-treeview">
 						<a href="{{url('periciales')}}" class="nav-link {{ Request::is( 'periciales') ? 'active' : '' }}">
 							<i class="nav-icon  fa fa-files-o"></i>
 							<p>Periciales</p>
 						</a>
-					</li> --}}
+					</li>
 				
 					<li class="nav-item has-treeview">
 						<a href="{{url('medidas')}}" class="nav-link {{ Request::is( 'medidas') ? 'active' : '' }}">
@@ -341,14 +348,14 @@
 				@endif
 				
 				@if (is_null(session('carpeta'))&&is_null(session('terminada')))
-					<li class="nav-item has-treeview">
+					{{-- <li class="nav-item has-treeview">
 						<a href="{{url('getOficios')}}" class="nav-link {{ Request::is( 'getOficios') ? 'active' : '' }}">
 							<i class="nav-icon fa fa-font"></i>
 							<p>Crear Oficios Nuevos</p>
 						</a>
 					</li>
-					
-					@if (Auth::user()->grupo=='orientador')
+					 --}}
+					{{-- @if (Auth::user()->grupo=='orientador')
 						<li class="nav-item has-treeview">
 							<a href="{{route('cambioRol')}}" class="nav-link">
 								<i class="nav-icon fa fa-exchange"></i>
@@ -356,15 +363,24 @@
 							</a>
 						</li>
 					@endif
-				@endif
-				
-				@if (Auth::user()->grupo=='recepcion')				
+					
+					@if (Auth::user()->grupo=='recepcion')				
+						<li class="nav-item has-treeview">
+							<a href="{{route('cambioRol')}}" class="nav-link">
+								<i class="nav-icon fa fa-exchange"></i>
+								<p>Cambiar a Fiscal</p>
+							</a>
+						</li>
+						@endif --}}
+						{{-- <button type="button" class="nav-link" data-toggle="modal" data-target="#modalRol"> --}}
 					<li class="nav-item has-treeview">
-						<a href="{{route('cambioRol')}}" class="nav-link">
+						{{-- <a href="{{route('cambioRol')}}" class="nav-link"> --}}
+						<a href="#" onclick="mostrarModal()" class="nav-link">
 							<i class="nav-icon fa fa-exchange"></i>
-							<p>Cambiar a Fiscal</p>
+							<p>Cambiar de rol</p>
 						</a>
 					</li>
+					{{-- </button> --}}
 				@endif
 
 				<li class="nav-item has-treeview">

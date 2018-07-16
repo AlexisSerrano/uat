@@ -1,5 +1,5 @@
 jQuery.ajaxSetup({async:false});
-$("#idEstadoOrigen").change(function(event){
+$("#idEstadoOrigen").change(function(event){ 
 	//$.get(route('get.municipio', event.target.value), function(response, estado){
 	$.get(route('get.municipio', event.target.value), function(response, estado){
 		$("#idMunicipioOrigen").empty();
@@ -333,7 +333,14 @@ $("#idDelito").change(function(event){
 			console.log(response);
 			$("#idAgrupacion1").append("<option value=''>Seleccione una desagregación</option>");
 			for(i=0; i<response.length; i++){
-				$("#idAgrupacion1").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+				//alert(response.length);
+				if(response.length==1){
+					//alert();
+					$("#idAgrupacion1").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+					$("#idAgrupacion1").val(response[i].id).trigger('change');
+				}else{
+					$("#idAgrupacion1").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+				}
 			}
 	});
 }
@@ -346,7 +353,12 @@ $("#idAgrupacion1").change(function(event){
 			console.log(response);
 			$("#idAgrupacion2").append("<option value=''>Seleccione una desagregación</option>");
 			for(i=0; i<response.length; i++){
-				$("#idAgrupacion2").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+				if(response.length==1){
+					$("#idAgrupacion2").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+					$("#idAgrupacion2").val(response[i].id).trigger('change');
+				}else{
+					$("#idAgrupacion2").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+				}
 			}
 		});
 	}
@@ -465,6 +477,20 @@ $("#cp2").change(function(event){
 		});
 	
 	}
+});
+
+
+$("#selectUnidad").change(function(event){ 
+	//alert('entra aqui');
+	//$.get(route('get.municipio', event.target.value), function(response, estado){
+	$.get(route('get.fiscales', event.target.value), function(response, estado){
+		$("#selectFiscal").empty();
+		$("#selectFiscal").append("<option value=''>Seleccione un fiscal</option>");
+		console.log(response);
+		for(i=0; i<response.length; i++){
+			$("#selectFiscal").append("<option value='"+response[i].id+"'> "+response[i].nombreC+"</option>");
+		}
+	});
 });
 
 // $("#idDelito").change(function(event){

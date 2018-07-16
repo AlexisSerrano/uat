@@ -75,7 +75,7 @@
 								<th scope="row">{{$registro->id}}</th>
 								<td>{{$registro->folio}}</th>
 								<td>{{($registro->esEmpresa==0)?'FISICA':'MORAL'}}</td>
-								<td>{{($registro->esEmpresa==0)?$registro->nombre.' '.$registro->primerAp.' '.$registro->segundoAp:$registro->representanteLegal}}</td>
+								<td>{{($registro->esEmpresa==0)?$registro->nombre.' '.$registro->primerAp.' '.$registro->segundoAp:$registro->representanteLegal.' '.$registro->primerAp.' '.$registro->segundoAp}}</td>
 								<td>{{$registro->docIdentificacion}}</td>
 								<td>{{$registro->razon}}</td>
 								<td><a class="btn btn-secondary" href="{{url("registros/".$registro->id."/edit")}}"><i class="fa fa-check" aria-hidden="true"></i></a></td>

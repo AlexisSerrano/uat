@@ -57,6 +57,23 @@
                         </div>
                         
                     </div>
+
+                    <div class="col-6" id="unidad">
+                        <div class=""></div>
+                        <div class="form-group">
+                            {!! Form::label('selectUnidad', 'Unidad:', ['class' => 'col-form-label-sm']) !!}
+                            {!! Form::select('selectUnidad', $unidad, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una unidad','data-validation'=>'required','id'=>'selectUnidad']) !!}
+                        </div>
+
+                        
+                        
+                    </div>
+                    <div class="col-6" id="fiscal">
+                    <div class="form-group">
+                            {!! Form::label('selectFiscal', 'Fiscal:', ['class' => 'col-form-label-sm']) !!}
+                            {!! Form::select('selectFiscal', ['placeholder'=>'Seleccione un fiscal'], null, ['class' => 'form-control form-control-sm select2', 'required','id'=>'selectFiscal']) !!}
+                        </div> 
+                    </div>
                     {{-- <div class="col-12" id="archivo">
                         
                         <div class="form-group">
@@ -92,17 +109,21 @@
 @endsection
 
 @push('scripts')
+<script src="{{ asset('js/selectsDirecciones.js') }}"></script>
 <script>
     $(document).ready(function(){
         // var selectEstatus=$("#EstadoCarpeta");
         $('#determinacion').hide();
         $('#archivo').hide();
-        $('#observacion').hide();
+        $('#unidad').hide();
+        $('#fiscal').hide();
+        $('#observacion').show();
         
         //campos del formulario
         $('#selectDetermina').prop('disabled', true);
         $('#selectArchivo').prop('disabled', true);
-        $('#narracion').prop('disabled', true);
+        $('#selectUnidad').prop('disabled', true);
+    //    $('#narracion').prop('disabled', true);
         
         $("#EstadoCarpeta").bind("change",function(){
             valor = $(this).val();
@@ -111,55 +132,72 @@
                 case "1":
                     $('#determinacion').hide();
                     $('#archivo').hide();
-                    $('#observacion').show();
                     $('#selectDetermina').prop('disabled', true);
                     $('#selectArchivo').prop('disabled', true);
                     $('#narracion').prop('disabled', false);
+                    $("#unidad").hide();
+                    $("#fiscal").hide();
+                    $('#selectUnidad').prop('disabled', true);
+                    $('#selectFiscal').prop('disabled', true);
                     break;
             
                 case "2":
                     $('#archivo').hide();
                     $('#determinacion').show();
-                    $('#observacion').show();
                     $('#selectArchivo').prop('disabled', true);
                     $('#selectDetermina').prop('disabled', false);
                     $('#narracion').prop('disabled', false);
+                    $("#unidad").hide();
+                    $("#fiscal").hide();
+                    $('#selectUnidad').prop('disabled', true);
+                    $('#selectFiscal').prop('disabled', true);
                     break;
                 
                 case "3":
                     $('#determinacion').hide();
                     $('#archivo').hide();
-                    $('#observacion').show();
                     $('#selectDetermina').prop('disabled', true);
                     $('#selectArchivo').prop('disabled', true);
                     $('#narracion').prop('disabled', false);
+                    $("#unidad").hide();
+                    $("#fiscal").hide();
+                    $('#selectUnidad').prop('disabled', true);
+                    $('#selectFiscal').prop('disabled', true);
                     break;
 
                 case "4":
                     $('#archivo').show();
-                    $("#observacion").show();
                     $("#determinacion").hide();
                     $('#selectDetermina').prop('disabled', true);
                     $('#selectArchivo').prop('disabled', false);
                     $('#narracion').prop('disabled', false);
+                    $("#unidad").hide();
+                    $("#fiscal").hide();
+                    $('#selectUnidad').prop('disabled', true);
+                    $('#selectFiscal').prop('disabled', true);
                     break;
             
-                // case "5":
-                //     $('#archivo').hide();
-                //     $("#observacion").show();
-                //     $("#determinacion").hide();
-                //     $('#selectDetermina').prop('disabled', true);
-                //     $('#selectArchivo').prop('disabled', true);
-                //     $('#narracion').prop('disabled', false);
-                //     break;
+                case "5":
+                    $('#archivo').hide();
+                    $("#unidad").show();
+                    $("#fiscal").show();
+                    $("#determinacion").hide();
+                    $('#selectUnidad').prop('disabled', false);
+                    $('#selectFiscal').prop('disabled', false);
+                    $('#narracion').prop('disabled', false);
+                    break;
             
                 default:
                     $('#determinacion').hide();
                     $('#archivo').hide();
-                    $('#observacion').hide();
                     break;
             }
         }); 
+
+
+
+
+
     });
 </script>
 @endpush

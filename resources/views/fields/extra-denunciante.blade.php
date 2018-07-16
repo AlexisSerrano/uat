@@ -17,7 +17,7 @@
 				</label>
 			</div>
 		</div> --}}
-		<div class="form-group">
+		<div class="form-group" id='identidad'>
 			{!! Form::label('reguardarIdentidad', 'Identidad resguardada', ['class' => 'col-form-label-sm']) !!}
 			{!! Form::select('reguardarIdentidad', [ 0 => 'No',1 => 'Si'], 0, ['class' => 'form-control form-control-sm', 'data-validation'=> 'required']) !!}
 		</div>

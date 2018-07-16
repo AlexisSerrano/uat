@@ -12,6 +12,42 @@
 				<div class="help-block with-errors"></div> 
 			</div>
 		</div>
+	<!--Representante legal-->
+	<div class="col-5">
+			<div class="form-group">
+				{!! Form::label('repLegal', 'Nombre representante legal: ', ['class' => 'col-form-label-sm labelCambioRepLegal','valid-tooltip']) !!}
+				{!!Form::label('nombre',$preregistro->representanteLegal ,['class'=> 'col-form-label-sm labelCambioRepLegal'])!!}
+			<div class="input-group inputOculto" id="inputRepLegal">
+					{!! Form::text('repLegal', $preregistro->representanteLegal, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','required']) !!}
+					<input type="button" id="botonCambioRepLegal" value="Cancelar" class="btn btn-sm btn-danger">
+				</div>
+				<div class="help-block with-errors"></div> 
+			</div>
+		</div>
+
+		<div class="col-4">
+				<div class="form-group">
+					{!! Form::label('primerAp', 'Primer apellido: ', ['class' => 'col-form-label-sm labelCambioPrimerAp']) !!}
+					{!!Form::label('nombre',$preregistro->primerAp ,['class'=> 'col-form-label-sm labelCambioPrimerAp'])!!}
+					<div class="input-group inputOculto" id="inputPrimerAp">
+						{!! Form::text('primerAp',$preregistro->primerAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','required']) !!}
+						<input type="button" id="botonCambioPrimerAp" value="Cancelar" class="btn btn-sm btn-danger">
+					</div>
+					<div class="help-block with-errors"></div>
+				</div>
+			</div>
+			
+			<div class="col-4">
+				<div class="form-group">
+					{!! Form::label('segundoAp', 'Segundo apellido: ', ['class' => 'col-form-label-sm labelCambioSegundoAp']) !!}
+					{!!Form::label('nombre',$preregistro->segundoAp ,['class'=> 'col-form-label-sm labelCambioSegundoAp'])!!}
+					<div class="input-group inputOculto" id="inputSegundoAp">
+						{!! Form::text('segundoAp', $preregistro->segundoAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el segundo apellido','data-validation'=>'custom','data-validation-optional'=>'true']) !!}
+						<input type="button" id="botonCambioSegundoAp" value="Cancelar" class="btn btn-sm btn-danger">
+					</div>
+				</div>
+			</div>
+
 		<!--RFC-->
 		<div class="col-2">
 			<div class="form-group">
@@ -24,18 +60,7 @@
 				<div class="help-block with-errors"></div>
 			</div>
 		</div>
-		<!--Representante legal-->
-		<div class="col-5">
-			<div class="form-group">
-				{!! Form::label('repLegal', 'Representante legal: ', ['class' => 'col-form-label-sm labelCambioRepLegal','valid-tooltip']) !!}
-				{!!Form::label('nombre',$preregistro->representanteLegal ,['class'=> 'col-form-label-sm labelCambioRepLegal'])!!}
-			<div class="input-group inputOculto" id="inputRepLegal">
-					{!! Form::text('repLegal', $preregistro->representanteLegal, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el nombre','required']) !!}
-					<input type="button" id="botonCambioRepLegal" value="Cancelar" class="btn btn-sm btn-danger">
-				</div>
-				<div class="help-block with-errors"></div> 
-			</div>
-		</div>
+		
 		<!--telefono-->
 		<div class="col-2">
 			<div class="form-group">
@@ -57,7 +82,7 @@
 				{!! Form::label('idEstado', 'Entidad federativa: ', ['class' => 'col-form-label-sm labelCambioDireccion']) !!}
 				{!!Form::label('nombre',$nombreEstado ,['class'=> 'col-form-label-sm labelCambioDireccion'])!!}
 				<div class="input-group inputOculto" id="inputDireccionEstado">
-					{!! Form::select('idEstado', $estados, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required','disabled']) !!}
+					{!! Form::select('idEstado', $estados, $idEstadoSelect, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required','disabled']) !!}
 				</div>
 			</div>
 		</div>
@@ -66,7 +91,7 @@
 				{!! Form::label('idMunicipio', 'Municipio: ', ['class' => 'col-form-label-sm labelCambioDireccion']) !!}
 				{!!Form::label('nombre',$nombreMunicipio ,['class'=> 'col-form-label-sm labelCambioDireccion'])!!}
 				<div class="input-group inputOculto" id="inputDireccionMunicipio">
-					{!! Form::select('idMunicipio', [''=>'Seleccione un municipio'], null, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
+					{!! Form::select('idMunicipio', $catMunicipios, $idMunicipioSelect, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
 				</div>
 			</div>
 		</div>
@@ -76,7 +101,7 @@
 				{!! Form::label('idLocalidad', 'Localidad: ', ['class' => 'col-form-label-sm labelCambioDireccion']) !!}
 				{!!Form::label('nombre',$nombreLocalidad ,['class'=> 'col-form-label-sm labelCambioDireccion'])!!}
 				<div class="input-group inputOculto" id="inputDireccionLocalidad">
-					{!! Form::select('idLocalidad', [ '' => 'Seleccione una localidad'], null, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
+					{!! Form::select('idLocalidad', $catLocalidades, $idLocalidadSelect, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
 				</div>
 			</div>
 		</div>
@@ -87,7 +112,7 @@
 				{!! Form::label('cp', 'Código postal :', ['class' => 'col-form-label-sm labelCambioDireccion']) !!}
 				{!!Form::label('nombre',$nombreCP ,['class'=> 'col-form-label-sm labelCambioDireccion'])!!}
 				<div class="input-group inputOculto" id="inputDireccionCp">
-					{!! Form::select('cp', ['' => 'Seleccione un CP'], null, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
+					{!! Form::select('cp', $catCodigoPostal, $idCodigoPostalSelect, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
 				</div>
 			</div>
 		</div>
@@ -98,7 +123,7 @@
 				{!! Form::label('idColonia', 'Colonia: ', ['class' => 'col-form-label-sm labelCambioDireccion']) !!}
 				{!!Form::label('nombre',$nombreColonia ,['class'=> 'col-form-label-sm labelCambioDireccion'])!!}
 				<div class="input-group inputOculto" id="inputDireccionColonia">
-					{!! Form::select('idColonia', ['' => 'Colonia'], null, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
+					{!! Form::select('idColonia', $catColonias, $idColoniaSelect, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
 					<input type="button" id="botonCambioDireccion" value="Cancelar" class="btn btn-sm btn-danger">
 				</div>
 			</div>

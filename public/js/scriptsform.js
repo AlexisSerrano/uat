@@ -384,8 +384,9 @@ $(document).ready(function(){
             $('#datosNotif').show();
             $('#datosExtra').show();
             $('#extra-fis').hide();
-
+            $('#identidad').hide();
             $('#Atrabajo').hide();
+           
             $('#ANotificaciones2').show();
 
             //ocultar tab hasta que seleccione
@@ -468,7 +469,7 @@ $(document).ready(function(){
             $('#datosNotif').show();
             $('#datosExtra').show();
             $('#extra-fis').show();
-
+            $('#identidad').show();
             $('#Atrabajo').show();
             $('#ANotificaciones2').hide();
             $('#atrabajo2').show();
