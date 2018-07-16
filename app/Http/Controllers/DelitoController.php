@@ -33,13 +33,9 @@ class DelitoController extends Controller
             $delitos = CarpetaController::getDelitos($idCarpeta);
             $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
             $delits = CatDelito::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            // $posiblescausas = CatPosibleCausa::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $municipios = CatMunicipio::select('id', 'nombre')->orderBy('nombre', 'ASC')->where('idEstado',30)->pluck('nombre', 'id');
             $lugares = CatLugar::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            // $marcas = CatMarca::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            // $modalidades = CatModalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            // $tiposarma = CatTipoArma::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $zonas = CatZona::orderBy('nombre', 'ASC')->pluck('nombre', 'id');   
             // dd($delitos);
            
@@ -53,10 +49,6 @@ class DelitoController extends Controller
                 ->with('municipios', $municipios)
                 ->with('lugares', $lugares)
                 ->with('zonas', $zonas);
-                // ->with('posiblescausas', $posiblescausas)
-                // ->with('marcas', $marcas)
-                // ->with('modalidades', $modalidades)
-                // ->with('tiposarma', $tiposarma)
         }else{
             return redirect()->route('new.delito');
         }
