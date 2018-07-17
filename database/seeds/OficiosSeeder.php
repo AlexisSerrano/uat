@@ -1370,37 +1370,38 @@ Xalapa-Enríquez, Veracruz</p>',
 
 
    ['nombre'  =>  'ACUERDO REMISION',
-   'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
-   <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',
+   'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" /></p>
 
-   'contenido' =>'<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">En la ciudad de <strong>{{$ciudad}}</strong>, Veracruz, siendo las<strong>&nbsp;{{$hora}}</strong>&nbsp;horas del día <strong>{{$fecha}}</strong>, el ciudadano </span></span><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">{{$fiscalAtendio}}, {{$puesto}}</span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">, quien actúa en forma legal. </span></span><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">- - - - - - - - - - - - - - - - - - - - - - -&nbsp;&nbsp;&nbsp; - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - <strong>A C U E R D A: </strong>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - </span></span></span></p>
+   <p style="text-align:right">Unidad de Atención Temprana, Veracruz&nbsp;<br />
+   <strong>"Si lo platicamos, lo solucionamos”</strong></p>',
 
-   <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">- - - Vistas las diligencias de la Carpeta de Investigación número <strong>{{$numCarpeta}}</strong>, iniciada con la&nbsp; denuncia del Ciudadano<strong> {{$denunciante}},</strong> por el delito de <strong>{{$delito}}</strong> en agravio de su patrimonio y en contra de los CC. <strong>{{$denunciado}}</strong><strong>,</strong> y toda vez que hasta el momento se han desahogado diligencias urgentes e inaplazables, así mismo se agotaron los mecanismos alternos de solución de conflictos de los cuales según informe del Facilitador _______ de esta Unidad de Atención Temprana las partes <strong>no llegaron a ningún acuerdo que permita dar por concluida la presente,</strong> en tal orden de ideas, con independencia de que posteriormente pueda de nuevo aplicarse un mecanismo alterno, resulta procedente remitir el sumario de investigación que nos ocupa a la Unidad Integral de Procuración de Justicia de este Distrito Judicial, a efecto de que el Fiscal de Distrito la turne con el Fiscal Investigador que corresponda y se continúe la secuela procesal que se impone, hasta su total integración y determinación conforme a derecho sea procedente. Lo anterior con fundamento en los diversos 21 de la Constitución Política de los Estados Unidos Mexicanos; 52 y 67 fracción I de la Constitución Política local; 1°,16, 127, 128, 131, 212, 213, y demás relativos y aplicables del Código de Nacional de Procedimientos Penales en vigor; 5 párrafo primero, 6 fracción I y IV, 7 fracción III, IV, V, VI, y 40 de la referida Ley Orgánica de la Fiscalía General del Estado; 34, 195, 201 y 206 del Reglamento de la citada Ley Orgánica.- CUMPLASE.- - - - - - - - - - - - - - - - - - - - </span></span></span></p>
+   'contenido' =>'<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">En la ciudad de <strong>{{$ciudad}}</strong>, Veracruz, siendo las<strong>&nbsp;{{$hora}}</strong>&nbsp;horas del día <strong>{{$fecha}}</strong>, el ciudadano </span></span><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">{{$fiscalAtendio}}, {{$puesto}}</span></strong><span style="font-size:12.0pt"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">, quien actúa en forma legal. </span></span><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">- - -&nbsp;</span><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">- - - - -</span><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">&nbsp;- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - <strong>A C U E R D A: </strong>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span></span></span></p>
+
+   <p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Vistas las diligencias de la Carpeta de Investigación número <strong>{{$numCarpeta}}</strong>, iniciada con la&nbsp; denuncia del C.<strong>{{$denunciante}},</strong> por el delito de <strong>{{$delito}}</strong> en agravio de su patrimonio y en contra de el&nbsp;C. <strong>{{$denunciado}}</strong><strong>,</strong> y toda vez que hasta el momento se han desahogado diligencias urgentes e inaplazables, así mismo se agotaron los mecanismos alternos de solución de conflictos de los cuales según informe del Facilitador _______ de esta Unidad de Atención Temprana las partes <strong>no llegaron a ningún acuerdo que permita dar por concluida la presente,</strong> en tal orden de ideas, con independencia de que posteriormente pueda de nuevo aplicarse un mecanismo alterno, resulta procedente remitir el sumario de investigación que nos ocupa a la Unidad Integral de Procuración de Justicia de este Distrito Judicial, a efecto de que el Fiscal de Distrito la turne con el Fiscal Investigador que corresponda y se continúe la secuela procesal que se impone, hasta su total integración y determinación conforme a derecho sea procedente. Lo anterior con fundamento en los diversos 21 de la Constitución Política de los Estados Unidos Mexicanos; 52 y 67 fracción I de la Constitución Política local; 1°,16, 127, 128, 131, 212, 213, y demás relativos y aplicables del Código de Nacional de Procedimientos Penales en vigor; 5 párrafo primero, 6 fracción I y IV, 7 fracción III, IV, V, VI, y 40 de la referida Ley Orgánica de la Fiscalía General del Estado; 34, 195, 201 y 206 del Reglamento de la citada Ley Orgánica.- CUMPLASE.- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -&nbsp;- - - - - - - - - - - - - - - -&nbsp;- - - - - -&nbsp;- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -&nbsp;- - - - - - - - -&nbsp;- - - - -</span></span></span></p>
    
    <p style="text-align:justify">&nbsp;</p>
    
    <p style="text-align:justify">&nbsp;</p>
    
-   <p style="text-align:justify">&nbsp;</p>
-   
-   <p>&nbsp; &nbsp;&nbsp; &nbsp;</p>
-   
-   <table cellspacing="0" style="width:436.85pt">
+   <table align="center" border="0" cellpadding="1" cellspacing="1" style="width:500px">
        <tbody>
            <tr>
-               <td style="border-color:black; vertical-align:top; width:436.85pt">
+               <td style="border-color:black; vertical-align:top; width:736px">
                <p style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Courier New&quot;"><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">__________________________________</span></strong></span></span></p>
-   
-               <p style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Courier New&quot;"><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">Lic. {{$fiscalAtendio}}</span></strong></span></span></p>
                </td>
            </tr>
            <tr>
-               <td style="border-color:black; vertical-align:top; width:436.85pt">
-               <p style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Courier New&quot;"><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">&nbsp;{{$puesto}}</span></strong></span></span></p>
-               </td>
+               <td style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Courier New&quot;"><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">LIC.&nbsp;{{$fiscalAtendio}}</span></strong></span></span></td>
+           </tr>
+           <tr>
+               <td style="text-align:center"><span style="font-size:10pt"><span style="font-family:&quot;Courier New&quot;"><strong><span style="font-family:&quot;Times New Roman&quot;,&quot;serif&quot;">&nbsp;{{$puesto}}</span></strong></span></span></td>
            </tr>
        </tbody>
    </table>
+   
+   <p style="text-align:justify">&nbsp;</p>
+   
+   <p>&nbsp; &nbsp; &nbsp;</p>
    ',
 
    'unidad'=>'1',
