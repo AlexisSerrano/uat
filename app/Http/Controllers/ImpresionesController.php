@@ -53,33 +53,26 @@ class ImpresionesController extends Controller
         ->where('users.id', Auth::user()->id)
         ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra')
         ->first();
-
-        $victimas2 = DB::table('extra_denunciante')
-        ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-        ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-        ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
-        ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-        ->orderBy('persona.nombres', 'ASC')
-        ->first();
-
-        
-        $puesto=$fiscalAtiende->puesto;
-        $puesto = strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
-
-        // $numCarpeta=$carpeta->numCarpeta;
-        //$fiscalAtendio=$carpeta->fiscalAtendio;
+        $arr = explode(" ",$fiscalAtiende->descripcion);
+        $aux=9;
+        $localidad="";
+        while(count($arr)-1 >= $aux){
+            $localidad=$localidad." ".$arr[$aux];
+            $aux=$aux+1;
+        }
 
 
-        //dd($carpeta);
+
         $fechaactual = date::now();
         $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
         $data = array('id' => $idCarpeta,
         'numCarpeta'=>$carpeta->numCarpeta,
-        'fiscal'=>$fiscalAtiende->nombreC,
-        'puesto'=>$puesto,
-        'notificado'=> $victimas2->nombres.' '. $victimas2->primerAp.' '. $victimas2->segundoAp,
+        'fiscal'=>strtr(strtoupper($fiscalAtiende->nombreC),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'localidad'=>$localidad,
+        'puesto'=>strtr(strtoupper($fiscalAtiende->puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        //'notificado'=> $victimas2->nombres.' '. $victimas2->primerAp.' '. $victimas2->segundoAp,
         // 'zona'=> $fiscalAtiende->zona,
-        'fecha'=>$fechahum
+        'fecha'=>strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ")
         );
         
         //dd($data);

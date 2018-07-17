@@ -878,16 +878,17 @@ Xalapa-Enríquez, Veracruz</span></span></p>
 'unidad'=>'1'],  
 
 ['nombre'  =>  'NOT. ACTUACIONES FISCAL DISTRITO',
-        'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
-        <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />
-                    Distrito XI Xalapa, Veracruz“</p>',  
+        'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" /></p>
+
+        <p style="text-align:right">Unidad de Atención Temprana, Veracruz&nbsp;<br />
+        <strong>"Si lo platicamos, lo solucionamos”</strong></p>',  
 
         'contenido' => '
         <p style="text-align:center"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">CARPETA DE INVESTIGACIÓN NÚMERO {{$numCarpeta}}</span></strong></span></span></p>
 
 <p style="text-align:justify">&nbsp;</p>
 
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">NOTIFICACIÓN DE RESULTADO DE ACTUACIONES BRINDADAS POR ESTA FISCALÍA ORIENTADORA DE ESTA UNIDAD DE ATENCIÓN TEMPRANA.- EN LA CIUDAD DE XALAPA, ENRÍQUEZ, VERACRUZ, A LOS SEIS DÍAS DEL MES DE FEBRERO DEL AÑO DOS MIL DIECIOCHO. - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </span></strong></span></span></p>
+<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">NOTIFICACIÓN DE RESULTADO DE ACTUACIONES BRINDADAS POR ESTA FISCALÍA ORIENTADORA DE ESTA UNIDAD DE ATENCIÓN TEMPRANA.- EN LA CIUDAD DE {{$localidad}},&nbsp;VERACRUZ, DE EL DÍA&nbsp;{{$fecha}}. - - - - - - - - -</span></strong></span></span></p>
 
 <p style="text-align:justify">&nbsp;</p>
 
@@ -916,8 +917,6 @@ Xalapa-Enríquez, Veracruz</span></span></p>
 <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">LIC. {{$fiscal}}</span></strong></span></span></p>
 
 <p><strong><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">{{$puesto}}</span></span></span></strong></p>
-
-<p><strong><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Del XI Distrito Judicial en Xalapa, Veracruz</span></span></span></strong></p>
 
 <p style="text-align:justify"><strong>&nbsp;</strong></p>
 
