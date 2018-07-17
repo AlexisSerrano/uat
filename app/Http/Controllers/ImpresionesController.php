@@ -500,19 +500,56 @@ class ImpresionesController extends Controller
                 $complemento1="el ciudadano";
             }
 
-           
-
-            $denunciantes = DB::table('extra_denunciante')
-            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
-            ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-            ->get();
-
-            $cadenaDenunciantes='';
-            foreach($denunciantes as $denunciante){
-                $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.', ';
+            $idCarpeta1='UIPJ/D17/VER1/22/1/2018';
+            $apariciones= aparicionesModel::where('idCarpeta',$idCarpeta1)
+            ->where('sistema','uat')
+            ->where('tipoInvolucrado','denunciante')
+            ->select('id','idVarPersona','idCarpeta','esEmpresa')
+            ->first();
+            
+            $idVPersona=$apariciones->idVarPersona;
+        // si es persona fisica
+            if ($apariciones->esEmpresa==0) {
+                
+            $variablesP=VariablesPersona::where('id',$idVPersona)
+            ->first();
+            $datosPersona=PersonaModel::where('id',$variablesP->idPersona)
+            ->first();
+            $telefono=$variablesP->telefono;
+            
+            $denunciantes=$datosPersona->nombres.' '.$datosPersona->primerAp.' '.$datosPersona->segundoAp;
             }
+            else 
+// si es persona moral
+{
+        $variablesP=VariablesPersonaMoral::where('id',$idVPersona)
+        ->first();
+        $idPersona=$variablesP->idPersona;
+        $datosPersona=PersonaMoralModel::where('id',$idPersona)
+        ->select('nombre')
+        ->first();
+        $telefono=$variablesP->telefono;
+        $denunciantes=$datosPersona->nombre;
+
+    }
+    //cambiar la variable por id->veriable de componente
+    $idVariableP=1;
+        $narracion=DB::table('narraciones_persona')
+        ->where('idVariablesPersona',$idVariableP)
+        ->select('narracion')
+        ->first();
+
+            // $denunciantes = DB::table('extra_denunciante')
+            // ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            // ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            // ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
+            // ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+            // ->get();
+
+            // $cadenaDenunciantes='';
+            // foreach($denunciantes as $denunciante){
+            //     $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.', ';
+            // }
             // $nombre= $denunciantes->nombres.' '. $denunciantes->primerAp.' '. $denunciantes->segundoAp;
 
             $fiscalAtiende=DB::table('users')
@@ -542,9 +579,9 @@ class ImpresionesController extends Controller
             $fechahum=strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
             $datos=array('id'=> $idCarpeta,
             'numeroCarpeta'=> $carpeta->numCarpeta,
-            'denunciante'=> $cadenaDenunciantes,
+            'denunciante'=> $denunciantes,
             'fecha'=>$fechahum,
-            'puesto'=>$puesto,
+            'puesto'=>strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'delito'=>$TipifDelito->nombre,
             'calle'=>$TipifDelito->calle,
             'numExterno'=>$TipifDelito->numExterno,
@@ -556,11 +593,11 @@ class ImpresionesController extends Controller
             'estado'=>$TipifDelito->estado,
             'numeroF'=> $fiscalAtiende->numFiscal,
             'descripcion'=> $fiscalAtiende->descripcion,
-            'telefono'=> $denunciante->telefono,
-            'narracion'=> $denunciante->narracion,
+            'telefono'=> $telefono,
+            'narracion'=>strtr(strtoupper($narracion->narracion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
             'img' => asset('img/logo.png'),
             'complemento1'=>$complemento1,
-            'nombreC'=>$fiscalAtiende->nombreC);
+            'nombreC'=>strtr(strtoupper($fiscalAtiende->nombreC),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"));
         
     
             return response()->json($datos);
