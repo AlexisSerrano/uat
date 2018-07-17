@@ -19,7 +19,7 @@
                     <tr>
                         <td>{{ $acusacion->nombres." ".$acusacion->primerAp." ".$acusacion->segundoAp }}</td>
                         <td>{{ $acusacion->delito." ".$acusacion->desagregacion1." ".$acusacion->desagregacion2 }}</td>
-                        <td>{{ $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2 }}</td>
+                        <td>{{ $acusacion->nombres2." ".$acusacion->primerAp2." ".$acusacion->segundoAp2." ".$acusacion->alias }}</td>
                         <td>
                             {{-- <a href="{{ url('agregar-acusacion/'.$acusacion->id.'/eliminar')}}"  title="Eliminar Registro" class="btn btn-secondary btn-simple btn-xs">
                             <i class="fa fa-times"></i></a> --}}

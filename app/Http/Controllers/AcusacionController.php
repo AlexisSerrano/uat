@@ -31,7 +31,7 @@ class AcusacionController extends Controller
             $denunciados = DB::table('extra_denunciado')
                 ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
                 ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+                ->select('extra_denunciado.id','extra_denunciado.alias','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
                 ->where('variables_persona.idCarpeta', '=', $idCarpeta)
                 ->orderBy('persona.nombres', 'ASC')
                 ->get();
