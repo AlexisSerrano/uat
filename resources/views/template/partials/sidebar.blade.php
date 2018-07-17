@@ -294,6 +294,12 @@
 										<p>Carpetas de la unidad</p>
 									</a>
 								</li>
+								<li class="nav-item has-treeview">
+									<a href="{{route('lista.ficios')}}" class="nav-link {{ Request::is( 'lista-oficios') ? 'active' : '' }}">
+											<i class="nav-icon fa fa-angle-right "></i>
+										<p>Libro Actas Hechos</p>
+									</a>
+								</li>
 							@endif
 							@if (Auth::user()->grupo=='orientador')
 							<li class="nav-item has-treeview ">
