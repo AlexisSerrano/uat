@@ -63,7 +63,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/impresion-Oficios/{id}','ImpresionesController@tablaOficios')->name('tabla.oficios')->middleware(['permission:tabla_oficios']);
     Route::get('/oficio-distrito','ImpresionesController@oficioDistrito')->name('fiscal.distrito')->middleware(['permission:fiscal_distrito']);
     Route::get('/oficio-funcion/{id}','ImpresionesController@docDistrito')->name('oficio.funcion')->middleware(['permission:oficio_funcion']); 
-    Route::get('fiscal/{id}', 'ImpresionesController@getfiscal')->name('get.fiscal')->middleware(['permission:get_fiscal']);
+    Route::get('fiscal/{id}', 'ImpresionesController@getFiscal')->name('get.fiscal')->middleware(['permission:get_fiscal']);
     Route::post('imprimir/Oficio-distrito','ImpresionesController@storeDistrito')->name('store.oficioDistrito')->middleware(['permission:store_oficioDistrito']);
     Route::get('Datosfiscal/{id}', 'ImpresionesController@getDatos')->name('dato.fiscal.impresiones')->middleware(['permission:dato_fiscal_impresiones']);
 
@@ -88,8 +88,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('impresion-temporal/{id}','ImpresionesController@archivoTemporalImp')->name('impresion.temporal')->middleware(['permission:impresion_temporal']);
 
     Route::get('primera-invitacion','ImpresionesController@primeraInvitacion')->name('primera.invitacion')->middleware(['permission:primera_invitacion']);
-    Route::get('impresion-invitacion','ImpresionesController@mostrarOficio')->name('primera.invitacion')->middleware(['permission:show_invitacion']);
-    Route::get('json-invitacion/{id}','ImpresionesController@getInvitacion')->name('primera.invitacion')->middleware(['permission:datos_invitacion']);
+    Route::get('impresion-invitacion','ImpresionesController@mostrarOficio')->name('show.invitacion')->middleware(['permission:show_invitacion']);
+    Route::get('json-invitacion/{id}','ImpresionesController@getInvitacion')->name('datos.invitacion')->middleware(['permission:datos_invitacion']);
 
     Route::get('oficio-inicio/{id}','ImpresionesController@oficioInicio')->name('oficio.inicio')->middleware(['permission:oficio_inicio']);
     Route::get('impresion-inicio/{id}','ImpresionesController@impresionInicio')->name('impresion.acuerdoInicio')->middleware(['permission:impresion_acuerdoInicio']);
@@ -294,7 +294,6 @@ Route::middleware(['auth'])->group(function () {
     
     /* --------Rutas para Libro de gobierno----------- */
     Route::get('libro','LibroGobController@terminadas')->name('libro.gobierno.terminadas')->middleware(['permission:libro_gobierno_terminadas']);
-    Route::get('getCarpetas','LibroGobController@getCarpetas')->name('libro.gobierno.carpetas')->middleware(['permission:libro_gobierno_carpetas']);
     Route::get('carpetas','LibroGobController@buscar')->name('indexcarpetas')->middleware(['permission:indexcarpetas']);
     route::get('carpeta/{id}','ResumenCarpetaController@showForm')->name('ir.carpeta')->middleware(['permission:ir_carpetas']);
     Route::post('carpetas','LibroGobController@searchNumCarpeta')->name('filtro.carpetas')->middleware(['permission:filtro_carpetas']);
@@ -345,8 +344,8 @@ Route::middleware(['auth'])->group(function () {
 
     /* -----------Ruta para Libro de Oficios------------ */
     Route::get('lista-oficios','LibroOficioController@IndexOfi')->name('lista.ficios')->middleware(['permission:lista_oficios']);
-    Route::post('/filtro', 'LibroOficioController@filtroactas')->name('filtro.actas.post')->middleware(['permission:filtro_actas_post']);
-    Route::get('/filtro', 'LibroOficioController@filtroactas')->name('filtro.actas.get')->middleware(['permission:filtro_actas_get']);
+    Route::post('/filtro', 'LibroOficioController@filtroActas')->name('filtro.actas.post')->middleware(['permission:filtro_actas_post']);
+    Route::get('/filtro', 'LibroOficioController@filtroActas')->name('filtro.actas.get')->middleware(['permission:filtro_actas_get']);
     
     /* -----------Ruta para cambio de rol------------ */
     Route::post('rol','RegisterController@cambioRol')->name('cambioRol');
