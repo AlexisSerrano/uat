@@ -155,7 +155,6 @@ class PermisoSeeder extends Seeder
         Permission::create(['name' => 'addactaCirc']);
         Permission::create(['name' => 'getcincunstanciada']);
         Permission::create(['name' => 'libro_gobierno_terminadas']);
-        Permission::create(['name' => 'libro_gobierno_carpetas']);
         Permission::create(['name' => 'indexcarpetas']);
         Permission::create(['name' => 'ir_carpetas']);
         Permission::create(['name' => 'filtro_carpetas']);
@@ -196,7 +195,7 @@ class PermisoSeeder extends Seeder
         Permission::create(['name' => 'filtro_actas_get']);
    
        
-         //Creación de roles
+        //Creación de roles
         $coordinador = Role::create(['name' => 'coordinador']);
         $facilidador = Role::create(['name' => 'facilitador']);
         $orientador  = Role::create(['name' => 'orientador']);
@@ -207,8 +206,8 @@ class PermisoSeeder extends Seeder
         $coordinador->givePermissionTo(['disponibilidad_fiscal','carpeta_detalle','resumen_denunciante',
         'resumen_denunciado','resumen_acusaciones','resumen_delito','resumen_abogado','resumen_autoridad',
         'resumen_defensa','resumen_vehiculo','historial_carpeta','salir_caso','libro_gobierno_terminadas',
-        'libro_gobierno_carpetas','indexcarpetas','ir_carpetas','filtro_carpetas','libro_filtro','lista_oficios',
-        'filtro_actas_post','filtro_actas_get']);
+        'oficios', 'indexcarpetas','ir_carpetas','filtro_carpetas','libro_filtro','lista_oficios',
+        'filtro_actas_post','actaoficio','get_oficioah','actaoficioM','get_oficioahm','filtro_actas_get']);
  
        
         // Asignación de permisos a Rol de Fiscal Facilitador
