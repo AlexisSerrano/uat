@@ -228,6 +228,7 @@ class PreregistroAuxController extends Controller
                 if (!is_null($request->idRazon)){
                     $preregistro->idRazon = $request->idRazon;
                 }
+                $preregistro->idMunicipioOrigen = $request->idMunicipioOrigen;
                 $preregistro->save();
                 $id = $preregistro->id;
                 
