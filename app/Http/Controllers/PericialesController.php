@@ -60,13 +60,14 @@ class PericialesController extends Controller{
             foreach($victimas2 as $victima){
                 $victimas[$victima->nombres.'-'.$victima->primerAp.'-'.$victima->segundoAp] = $victima->nombres.' '.$victima->primerAp.' '.$victima->segundoAp;
             }
-
-           // $idCarpeta=1;
+            
+            // $idCarpeta=1;
        
             $psicoSolicitud=DB::table('per_psicologos')
             ->where('per_psicologos.idCarpeta',$idCarpeta)
             ->select('per_psicologos.created_at as fecha','per_psicologos.nombre','per_psicologos.primerAp','per_psicologos.segundoAp')
             ->get();
+            
             $solicitudV=DB::table('per_vehiculos')
             ->join('cat_marca as marca','marca.id','=','per_vehiculos.idMarca')
             ->where('per_vehiculos.idCarpeta',$idCarpeta)
@@ -74,35 +75,37 @@ class PericialesController extends Controller{
             'per_vehiculos.placas','per_vehiculos.nombre','per_vehiculos.primerAp',
             'per_vehiculos.segundoAp','per_vehiculos.color')
             ->get();
+            
             $soliLesiones=db::table('per_lesiones')
             ->where('per_lesiones.idCarpeta',$idCarpeta)
             ->select('per_lesiones.created_at as fecha','per_lesiones.nombre','per_lesiones.primerAp',
             'per_lesiones.segundoAp')
             ->get();
+            
             $soliMensaje=db::table('per_mensajes')
             ->where('per_mensajes.idCarpeta',$idCarpeta)
             ->select('per_mensajes.created_at as fecha','per_mensajes.nombre','per_mensajes.primerAp','per_mensajes.segundoAp')
             ->get();
     
-           //dd($solicitudV);
+            //dd($solicitudV);
             //dd($idCarpeta);
             // return view('forms.periciales')
-           // return view('forms.periciales')
-            
+            // return view('forms.periciales')
             
             return view('forms.periciales')->with('idCarpeta', $idCarpeta)
-                ->with('abogados', $abogados)
-                ->with('estados', $estados)
-                ->with('delits', $delits)
-                ->with('victimas', $victimas)
-                ->with('marca', $marca)
-                ->with('submarca', $submarca)
-                ->with('tipo', $tipo)
-                ->with('estadoscivil', $estadoscivil)
-                ->with('psicoSolicitud',$psicoSolicitud)
-                ->with('solicitudV',$solicitudV)
-                ->with('soliMensaje',$soliMensaje)
-                ->with('soliLesiones',$soliLesiones);
+            ->with('abogados', $abogados)
+            ->with('estados', $estados)
+            ->with('delits', $delits)
+            ->with('victimas', $victimas)
+            ->with('marca', $marca)
+            ->with('submarca', $submarca)
+            ->with('tipo', $tipo)
+            ->with('estadoscivil', $estadoscivil)
+            ->with('psicoSolicitud',$psicoSolicitud)
+            ->with('solicitudV',$solicitudV)
+            ->with('soliMensaje',$soliMensaje)
+            ->with('soliLesiones',$soliLesiones);
+        
         }else{
             return redirect()->route('home');
         }
@@ -145,8 +148,8 @@ class PericialesController extends Controller{
     }
 
     public function getOficioM($id){
-    return view('documentos.per-mensajes')
-    ->with('id',  $id );
+        return view('documentos.per-mensajes')
+        ->with('id',  $id );
     }
     
     public function getpericiales($id){
@@ -156,6 +159,7 @@ class PericialesController extends Controller{
         'per_mensajes.imei','per_mensajes.compania','per_mensajes.telefono',
         'per_mensajes.telefono_destino','per_mensajes.narracion','per_mensajes.created_at as fecha')
         ->first();
+    
         $data = array('id' => $id,
         'idCarpeta' => $pericial->idCarpeta,
         'nombre' => $pericial->nombre.' '.$pericial->primerAp.' '.$pericial->segundoAp,
@@ -204,9 +208,10 @@ class PericialesController extends Controller{
             return back()->withInput();
         }
     }
+    
     public function getOficioP($id){
-    return view('documentos.per-psicologo')
-    ->with('id',  $id );
+        return view('documentos.per-psicologo')
+        ->with('id',  $id );
     }
 
     public function getpsico($id){
@@ -225,43 +230,40 @@ class PericialesController extends Controller{
     }
 
     
-        public function vehi(Request $request) {   
-            $NombreComp3 = explode("-",  $request->victima3);
-             DB::beginTransaction();
-             try{
-                $idCarpeta = session('carpeta');
-                $vehiculo = new PerVehiculo;
-                $vehiculo->idCarpeta =  $idCarpeta;
-                $vehiculo->idMarca = $request->idMarca;
-                $vehiculo->idSubmarca = $request->idSubmarca;
-                $vehiculo->idClase = $request->idClaseVehiculo;
-                $vehiculo->linea = $request->lineav;
-                $vehiculo->modelo = $request->modelov;
-                $vehiculo->color = $request->colorv;
-                $vehiculo->numero_serie = $request->numeroseriev;
-                $vehiculo->lugar_fabricacion = $request->lugarFabv;
-                $vehiculo->placas = $request->placav;
-                $vehiculo->nombre = $NombreComp3[0];
-                $vehiculo->primerAp = $NombreComp3[1];
-                $vehiculo->segundoAp =  $NombreComp3[2];
-                $vehiculo->numero = $request->celularv;
-                $vehiculo->calle = $request->calle2;
-                $vehiculo->num_ext = $request->numExterno2;
-                $vehiculo->num_int = $request->numInterno2;
-                $vehiculo->idEstado = $request->idEstado2;
-                $vehiculo->idMunicipio = $request->idMunicipio2;
-                $vehiculo->idLocalidad = $request->idLocalidad2;
-                $vehiculo->idColonia = $request->idColonia2;
-                $vehiculo->cp = $request->cp2;
-                $vehiculo->fecha = $request->fecha_nac;
-                $vehiculo->save();
-                // dd($vehiculo);
-                if($vehiculo->save()){
-                    Alert::success('Registro guardado con éxito', 'Hecho');
-                 
-               
-               
-
+    public function vehi(Request $request) {   
+        $NombreComp3 = explode("-",  $request->victima3);
+        DB::beginTransaction();
+        try{
+            $idCarpeta = session('carpeta');
+            $vehiculo = new PerVehiculo;
+            $vehiculo->idCarpeta =  $idCarpeta;
+            $vehiculo->idMarca = $request->idMarca;
+            $vehiculo->idSubmarca = $request->idSubmarca;
+            $vehiculo->idClase = $request->idClaseVehiculo;
+            $vehiculo->linea = $request->lineav;
+            $vehiculo->modelo = $request->modelov;
+            $vehiculo->color = $request->colorv;
+            $vehiculo->numero_serie = $request->numeroseriev;
+            $vehiculo->lugar_fabricacion = $request->lugarFabv;
+            $vehiculo->placas = $request->placav;
+            $vehiculo->nombre = $NombreComp3[0];
+            $vehiculo->primerAp = $NombreComp3[1];
+            $vehiculo->segundoAp =  $NombreComp3[2];
+            $vehiculo->numero = $request->celularv;
+            $vehiculo->calle = $request->calle2;
+            $vehiculo->num_ext = $request->numExterno2;
+            $vehiculo->num_int = $request->numInterno2;
+            $vehiculo->idEstado = $request->idEstado2;
+            $vehiculo->idMunicipio = $request->idMunicipio2;
+            $vehiculo->idLocalidad = $request->idLocalidad2;
+            $vehiculo->idColonia = $request->idColonia2;
+            $vehiculo->cp = $request->cp2;
+            $vehiculo->fecha = $request->fecha_nac;
+            $vehiculo->save();
+            // dd($vehiculo);
+            if($vehiculo->save()){
+                Alert::success('Registro guardado con éxito', 'Hecho');
+        
                 $catalogos = DB::table('per_vehiculos')
                 ->where('per_vehiculos.id', $vehiculo->id)
                 ->join('cat_municipio','cat_municipio.id','=','per_vehiculos.idMunicipio')
@@ -273,79 +275,78 @@ class PericialesController extends Controller{
                 'cat_colonia.nombre as nombreColonia',
                 'cat_estado.nombre as nombreEstado',
                 'cat_colonia.codigoPostal')
-                ->first(); }
-            else{
+                ->first(); 
+            }else{
                 Alert::error('Se presentó un problema al guardar el registro', 'Error');
             }
             DB::commit();
-            return redirect()->route('oficio.V', $vehiculo->id);
-
-                  
+            return redirect()->route('oficio.V', $vehiculo->id);    
         }catch (\PDOException $e){
             DB::rollBack();
             Alert::error('Se presentó un problema al guardar el registro, intente de nuevo', 'Error');
             return back()->withInput();
         }
-         }
+    }
 
-         public function getOficioV($id){
-         return view('documentos.periciales_vehiculo')
-         ->with('id',   $id ); 
-         }
+    public function getOficioV($id){
+        return view('documentos.periciales_vehiculo')
+        ->with('id',   $id ); 
+    }
 
-         public function getVh($id){
+    public function getVh($id){
+        $idCarpeta=session('carpeta');
+        $carpeta=DB::table('carpeta')
+        ->join('unidad','carpeta.idUnidad','=','unidad.id')
+        ->select('carpeta.fechaInicio','carpeta.numCarpeta')
+        ->where('carpeta.id',$idCarpeta)
+        ->first();
 
-            $idCarpeta=session('carpeta');
-            $carpeta=DB::table('carpeta')
-            ->join('unidad','carpeta.idUnidad','=','unidad.id')
-            ->select('carpeta.fechaInicio','carpeta.numCarpeta')
-            ->where('carpeta.id',$idCarpeta)
-            ->first();
+        $vehiculo = DB::table('per_vehiculos')
+        ->where('per_vehiculos.id', $id)
+        ->join('cat_marca','cat_marca.id','=','per_vehiculos.idMarca')
+        ->join('cat_submarcas','cat_submarcas.id','=','per_vehiculos.idSubmarca')
+        ->join('cat_clase_vehiculo','cat_clase_vehiculo.id','=','per_vehiculos.idClase')
+        ->join('cat_municipio','cat_municipio.id','=','per_vehiculos.idMunicipio')
+        ->join('cat_localidad','cat_localidad.id','=','per_vehiculos.idLocalidad')
+        ->join('cat_colonia','cat_colonia.id','=','per_vehiculos.idColonia')
+        ->join('cat_estado','cat_estado.id','=','per_vehiculos.idEstado')
+        ->select( 'cat_municipio.nombre as nombreMunicipio',
+        'cat_localidad.nombre as nombreLocalidad',
+        'cat_colonia.nombre as nombreColonia',
+        'cat_estado.nombre as nombreEstado',
+        'cat_colonia.codigoPostal',
+        'per_vehiculos.id','per_vehiculos.idCarpeta','cat_marca.nombre as marca',
+        'cat_submarcas.nombre as submarca','cat_clase_vehiculo.nombre as clase','per_vehiculos.linea',
+        'per_vehiculos.modelo','per_vehiculos.color','per_vehiculos.numero_serie',
+        'per_vehiculos.lugar_fabricacion','per_vehiculos.placas','per_vehiculos.nombre',
+        'per_vehiculos.primerAp','per_vehiculos.segundoAp','per_vehiculos.numero',
+        'per_vehiculos.calle','per_vehiculos.num_ext','per_vehiculos.num_int','per_vehiculos.created_at as fecha')
+        ->first();
 
-            $vehiculo = DB::table('per_vehiculos')
-            ->where('per_vehiculos.id', $id)
-            ->join('cat_marca','cat_marca.id','=','per_vehiculos.idMarca')
-            ->join('cat_submarcas','cat_submarcas.id','=','per_vehiculos.idSubmarca')
-            ->join('cat_clase_vehiculo','cat_clase_vehiculo.id','=','per_vehiculos.idClase')
-            ->join('cat_municipio','cat_municipio.id','=','per_vehiculos.idMunicipio')
-            ->join('cat_localidad','cat_localidad.id','=','per_vehiculos.idLocalidad')
-            ->join('cat_colonia','cat_colonia.id','=','per_vehiculos.idColonia')
-            ->join('cat_estado','cat_estado.id','=','per_vehiculos.idEstado')
-            ->select( 'cat_municipio.nombre as nombreMunicipio',
-            'cat_localidad.nombre as nombreLocalidad',
-            'cat_colonia.nombre as nombreColonia',
-            'cat_estado.nombre as nombreEstado',
-            'cat_colonia.codigoPostal',
-            'per_vehiculos.id','per_vehiculos.idCarpeta','cat_marca.nombre as marca',
-            'cat_submarcas.nombre as submarca','cat_clase_vehiculo.nombre as clase','per_vehiculos.linea',
-            'per_vehiculos.modelo','per_vehiculos.color','per_vehiculos.numero_serie',
-            'per_vehiculos.lugar_fabricacion','per_vehiculos.placas','per_vehiculos.nombre',
-            'per_vehiculos.primerAp','per_vehiculos.segundoAp','per_vehiculos.numero',
-            'per_vehiculos.calle','per_vehiculos.num_ext','per_vehiculos.num_int','per_vehiculos.created_at as fecha')
-            ->first();
-            $data = array('id' => $id,
-            'Carpeta' => $carpeta->numCarpeta,
-            'marca' => $vehiculo->marca,
-            'submarca' => $vehiculo->submarca,
-            'clase' => $vehiculo->clase,
-            'linea' => $vehiculo->linea,
-            'modelo' => $vehiculo->modelo,
-            'color' => $vehiculo->color,
-            'numero_serie' => $vehiculo->numero_serie,
-            'lugar_fabricacion' => $vehiculo->lugar_fabricacion,
-            'placas' => $vehiculo->placas,
-            'nombre' => $vehiculo->nombre.' '.$vehiculo->primerAp.' '.$vehiculo->segundoAp,
-            'telefono' => $vehiculo->numero,
-            'num_ext' => $vehiculo->num_ext,
-            'num_int' => $vehiculo->num_int,
-            'Estado' => $vehiculo->nombreEstado,
-            'Municipio' => $vehiculo->nombreMunicipio,
-            'Localidad' => $vehiculo->nombreLocalidad,
-            'Colonia' => $vehiculo->nombreColonia,
-            'CP' => $vehiculo->codigoPostal,
-            'fecha' => $vehiculo->fecha);
-            return response()->json($data);
-        }
+        $data = array('id' => $id,
+        'Carpeta' => $carpeta->numCarpeta,
+        'marca' => $vehiculo->marca,
+        'submarca' => $vehiculo->submarca,
+        'clase' => $vehiculo->clase,
+        'linea' => $vehiculo->linea,
+        'modelo' => $vehiculo->modelo,
+        'color' => $vehiculo->color,
+        'numero_serie' => $vehiculo->numero_serie,
+        'lugar_fabricacion' => $vehiculo->lugar_fabricacion,
+        'placas' => $vehiculo->placas,
+        'nombre' => $vehiculo->nombre.' '.$vehiculo->primerAp.' '.$vehiculo->segundoAp,
+        'telefono' => $vehiculo->numero,
+        'num_ext' => $vehiculo->num_ext,
+        'num_int' => $vehiculo->num_int,
+        'Estado' => $vehiculo->nombreEstado,
+        'Municipio' => $vehiculo->nombreMunicipio,
+        'Localidad' => $vehiculo->nombreLocalidad,
+        'Colonia' => $vehiculo->nombreColonia,
+        'CP' => $vehiculo->codigoPostal,
+        'fecha' => $vehiculo->fecha);
+
+        return response()->json($data);
+    }
 
     public function lesiones(Request $request) {   
         $NombreComp4 = explode("-",  $request->victima77);
@@ -376,108 +377,93 @@ class PericialesController extends Controller{
 
     public function getOficioL($id){
         return view('documentos.per-lesiones')
-            ->with('id',  $id );
-        }
+        ->with('id',  $id );
+    }
     
     public function getlesion($id){
         $lesion = DB::table('per_lesiones')->where('per_lesiones.id', $id)
         ->select('per_lesiones.id','per_lesiones.idCarpeta','per_lesiones.nombre',
         'per_lesiones.primerAp','per_lesiones.segundoAp','per_lesiones.created_at as fecha')
         ->first();
+        
         $data = array('id' => $id,
         'idCarpeta' =>  $lesion->idCarpeta,
         'nombre' => $lesion->nombre.' '.$lesion->primerAp.' '.$lesion->segundoAp,
         'fecha' =>  $lesion->fecha,
         );
+        
         return response()->json($data);
     }
 
 
     public function getOficioF($id){
         return view('documentos.oficioFinanzas')->with('id',$id); 
+    }
+
+    public function getVhFinanzas($id){
+        $id=session('carpeta');
+    
+        $carpeta=DB::table('carpeta')
+        ->join('unidad','carpeta.idUnidad','=','unidad.id')
+        ->select('carpeta.fechaInicio','carpeta.numCarpeta')
+        ->where('carpeta.id',$id)
+        ->first();
+
+        $fiscalAtiende=DB::table('users')
+        ->join('unidad','unidad.id','=','users.id')
+        ->join('unidad as unid','unid.id','=','users.idUnidad')
+        ->where('users.id', Auth::user()->id)
+        ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra')
+        ->first();
+    
+        $arr = explode(" ",$fiscalAtiende->descripcion);
+        $aux=9;
+        $localidad="";
+        while(count($arr)-1 >= $aux){
+            $localidad=$localidad." ".$arr[$aux];
+            $aux=$aux+1;
         }
+    
+        $vehiculo=DB::Table('vehiculo')
+        ->join('tipif_delito','vehiculo.idTipifDelito','=','tipif_delito.id')
+        ->join('cat_delito','cat_delito.id','=','tipif_delito.id')
+        ->join('cat_submarcas','cat_submarcas.id','=','vehiculo.idSubmarca')
+        ->join('cat_color','cat_color.id','=','vehiculo.idColor')
+        ->join('cat_tipo_uso','cat_tipo_uso.id','=','vehiculo.idTipoUso')
+        ->join('cat_marca','cat_marca.id','=','cat_submarcas.idMarca')
+        ->join('cat_procedencia','cat_procedencia.id','=','vehiculo.idProcedencia')
+        ->where('tipif_delito.idCarpeta',$id)
+        ->select('vehiculo.id','cat_marca.nombre as marca','cat_submarcas.nombre as submarca','vehiculo.created_at as fecha','cat_delito.nombre as delito','vehiculo.placas','cat_submarcas.nombre as submarca','vehiculo.modelo',
+        'vehiculo.nrpv','cat_color.nombre as color','vehiculo.numSerie','vehiculo.numMotor','cat_tipo_uso.nombre as TipoUso','vehiculo.modelo',
+        'cat_procedencia.nombre as lugar_fabricacion')
+        ->first();
+    
+        $puesto=$fiscalAtiende->puesto;
+        $puesto = strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
 
-        public function getVhFinanzas($id){
-            $id=session('carpeta');
-            $carpeta=DB::table('carpeta')
-            ->join('unidad','carpeta.idUnidad','=','unidad.id')
-            ->select('carpeta.fechaInicio','carpeta.numCarpeta')
-            ->where('carpeta.id',$id)
-            ->first();
+        $fechaactual = new Date($carpeta->fechaInicio);
+        $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
 
-            $fiscalAtiende=DB::table('users')
-            ->join('unidad','unidad.id','=','users.id')
-            ->join('unidad as unid','unid.id','=','users.idUnidad')
-            ->where('users.id', Auth::user()->id)
-            ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra')
-            ->first();
-            $arr = explode(" ",$fiscalAtiende->descripcion);
-            $aux=9;
-            $localidad="";
-            while(count($arr)-1 >= $aux){
-                $localidad=$localidad." ".$arr[$aux];
-                $aux=$aux+1;
-            }
-            $vehiculo=DB::Table('vehiculo')
-            ->join('tipif_delito','vehiculo.idTipifDelito','=','tipif_delito.id')
-            ->join('cat_delito','cat_delito.id','=','tipif_delito.id')
-            ->join('cat_submarcas','cat_submarcas.id','=','vehiculo.idSubmarca')
-            ->join('cat_color','cat_color.id','=','vehiculo.idColor')
-            ->join('cat_tipo_uso','cat_tipo_uso.id','=','vehiculo.idTipoUso')
-             ->join('cat_marca','cat_marca.id','=','cat_submarcas.idMarca')
-             ->join('cat_procedencia','cat_procedencia.id','=','vehiculo.idProcedencia')
-            ->where('tipif_delito.idCarpeta',$id)
-            ->select('vehiculo.id','cat_marca.nombre as marca','cat_submarcas.nombre as submarca','vehiculo.created_at as fecha','cat_delito.nombre as delito','vehiculo.placas','cat_submarcas.nombre as submarca','vehiculo.modelo',
-            'vehiculo.nrpv','cat_color.nombre as color','vehiculo.numSerie','vehiculo.numMotor','cat_tipo_uso.nombre as TipoUso','vehiculo.modelo',
-            'cat_procedencia.nombre as lugar_fabricacion')
-            ->first();
-           
+        $data = array('id' =>$id,
+        'numCarpeta' => $carpeta->numCarpeta,
+        'marca' => $vehiculo->marca,
+        'submarca' => $vehiculo->submarca,
+        'numeroF'=> $fiscalAtiende->numFiscal,
+        'modelo' => $vehiculo->modelo,
+        'color' => $vehiculo->color,
+        'numero_serie' => $vehiculo->numSerie,
+        'lugar_fabricacion' => $vehiculo->lugar_fabricacion,
+        'placas' => $vehiculo->placas,
+        'Estado' => $vehiculo->nombreEstado,
+        'fiscalAtendio'=>$fiscalAtiende->nombreC,
+        'puestoF'=>$puesto,
+        'Localidad' => $localidad,
+        'fecha' => $fechahum);
 
-            $puesto=$fiscalAtiende->puesto;
-            $puesto = strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
-
-           $fechaactual = new Date($carpeta->fechaInicio);
-           $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
-
-           $data = array('id' =>$id,
-                'numCarpeta' => $carpeta->numCarpeta,
-                'marca' => $vehiculo->marca,
-                'submarca' => $vehiculo->submarca,
-                'numeroF'=> $fiscalAtiende->numFiscal,
-                'modelo' => $vehiculo->modelo,
-                'color' => $vehiculo->color,
-                'numero_serie' => $vehiculo->numSerie,
-                'lugar_fabricacion' => $vehiculo->lugar_fabricacion,
-                'placas' => $vehiculo->placas,
-                'Estado' => $vehiculo->nombreEstado,
-                'fiscalAtendio'=>$fiscalAtiende->nombreC,
-                'puestoF'=>$puesto,
-                'Localidad' => $localidad,
-                'fecha' => $fechahum);
-
-           return response()->json($data);
-
-          //return view('tables.pruebas')->with('fiscalAtiende',$fiscalAtiende);
-       }
+        return response()->json($data);
+    }
 
 
-    //    public function getMensajesP(){
-
-    //    //$idCarpeta=session('carpeta');
-    //    $idCarpeta=1;
-       
-    //     $mensajesSol=DB::table('per_psicologos')
-    //     ->where('per_psicologos.idCarpeta',$idCarpeta)
-    //     ->select('per_psicologos.fecha','per_psicologos.nombre','per_psicologos.primerAp','per_psicologos.segundoAp')
-    //     ->get();
-
-
-    //    //dd($mensajesSol);
-    //     //dd('hola');
-    //     return view('forms.periciales')
-    //    // return view('forms.periciales')
-    //     ->with('mensajesSol',$mensajesSol);
-    //     } 
     public function reporteRobo($id){
         // $id=session('carpeta');
         $carpeta=DB::table('carpeta')
@@ -534,9 +520,12 @@ class PericialesController extends Controller{
 
     }
 
+    public function getMensajesP(){
+        return 'hola soy una ruta disponible teoricamente para usarse en tabla de periciales';
+    }
+ 
     public function impRobo($id){
         return view('documentos.oficioReporteAuto') ->with('id',$id);
-
     }
    
 

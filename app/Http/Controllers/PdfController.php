@@ -21,25 +21,14 @@ class PDFcontroller extends Controller
 		 'cat_identificacion.documento as docIdentificacion',  'folio', 'representanteLegal', 'preregistros.created_at')
 		->where ('preregistros.id', '=', $id)
 		->first();
-	
-
 		
-		//dd($DatosRegistros->esEmpresa);
 		$data = ['DatosRegistros' => $DatosRegistros];
 		
 		$pdf = PDF::loadView('servicios.pdf.pdf-preregistro', $data)->setPaper('letter', 'landscape');//->save('E:\NUEVO.pdf');
 		
 		//return $pdf->stream('pruebapdf.pdf');
-		return $pdf->stream($DatosRegistros->folio.'.pdf');
-		
-		
-		
+		return $pdf->stream($DatosRegistros->folio.'.pdf');		
 		//return $pdf->download('PreregistroUAT.pdf');
-		
-
-
-
-
 	}
 
 }

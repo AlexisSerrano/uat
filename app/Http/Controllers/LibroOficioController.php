@@ -9,9 +9,6 @@ use DB;
 
 class LibroOficioController extends Controller
 {
-    //
-
-
     public function IndexOfi()
     {    
         $actas = ActasHechos::orderBy('id','desc')->paginate('15');

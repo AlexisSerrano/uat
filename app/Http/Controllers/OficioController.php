@@ -23,19 +23,19 @@ class OficioController extends Controller
     }
     
     public function saveOficio(Request $request){      
-            $oficio = new Oficio();
-            $oficio->html = $request->html;
-            $oficio->token = $request->token;
-            $oficio->fiscal = Auth::user()->id;
-            $oficio->idOficio = $request->id_oficio;
-            $oficio->idTabla = $request->id_tabla;
-            if($oficio->save()){
-                return 1;
-            }
-            else{
-                return 0;
-            }
-        
+        $oficio = new Oficio();
+        $oficio->html = $request->html;
+        $oficio->token = $request->token;
+        $oficio->fiscal = Auth::user()->id;
+        $oficio->idOficio = $request->id_oficio;
+        $oficio->idTabla = $request->id_tabla;
+        if($oficio->save()){
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    
     }
 
     public function intentos(Request $request){
