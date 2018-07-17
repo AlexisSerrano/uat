@@ -744,25 +744,28 @@ LIC. {{$fiscalAtendio}}
       
 
         ['nombre'  =>  'CARATULA DE LA CARPETA',
-        'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
-        <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',  
+        'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" /></p>
 
-        'contenido' => '<table align="center" cellpadding="1" cellspacing="1" style="width:500px">
+        <p style="text-align:right"><span style="font-size:16px">Unidad de Atención Temprana.</span></p>
+        
+        <p style="text-align:right"><span style="font-size:16px">"Si lo platicamos, lo solucionamos”</span></p>',  
+
+        'contenido' => '<table align="center" cellpadding="1" cellspacing="1" style="width:646px; font-size:27px;">
         <tbody>
             <tr>
-                <td style="text-align:center">{{$descripcion}},</td>
+                <td style="height:97px; text-align:center; width:638px"><span style="font-size:27px"><strong>{{$descripcion}}</strong></span></td>
             </tr>
             <tr>
-                <td style="text-align:center">VERACRUZ CARPETA DE INVESTIGACIÓN:{{$numeroCarpeta}}°</td>
+                <td style="height:126px; text-align:center; width:638px"><span style="font-size:27px"><strong>VERACRUZ CARPETA DE INVESTIGACIÓN:{{$numeroCarpeta}}°</strong></span></td>
             </tr>
             <tr>
-                <td style="text-align:center">C. {{$denunciante}}</td>
+                <td style="height:70px; text-align:center; width:638px"><span style="font-size:27px"><strong>C. {{$denunciante}}</strong></span></td>
             </tr>
             <tr>
-                <td style="text-align:center">Lic. {{$nombreC}}</td>
+                <td style="height:78px; text-align:center; width:638px"><span style="font-size:27px"><strong>LIC. {{$nombreC}}</strong></span></td>
             </tr>
             <tr>
-                <td style="text-align:center">{{$puesto}}</td>
+                <td style="height:96px; text-align:center; width:638px"><span style="font-size:27px"><strong>{{$puesto}}</strong></span></td>
             </tr>
         </tbody>
     </table>
@@ -772,9 +775,6 @@ LIC. {{$fiscalAtendio}}
     <p>&nbsp;</p>
     
     <p>&nbsp;</p>
-       
-
-
 ',
             'unidad'=>'1',
             'pie' =>  '<p>Circuito Rafael Guízar y<br />
@@ -789,9 +789,10 @@ LIC. {{$fiscalAtendio}}
            
            
             ['nombre'  =>  'POLICIA MINISTERIAL',
-            'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
-            <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',
+            'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" /></p>
 
+            <p style="text-align:right">Unidad de Atención Temprana, Veracruz&nbsp;<br />
+            <strong>"Si lo platicamos, lo solucionamos”</strong></p>',
 
            'contenido' => '
            <p><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><strong><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">C. DELEGADO REGIONAL DE LA POLICÍA MINISTERIAL </span></strong></span></span></p>
@@ -814,7 +815,7 @@ LIC. {{$fiscalAtendio}}
 
 <p style="text-align:justify">&nbsp;</p>
 
-<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Con fundamento en lo dispuesto por los artículos 14, 16 y 21 de la Constitución General de la República; 52 de la Constitución Política Local; 127,131, 132 y demás relativos y aplicables del&nbsp; Código Nacional de Procedimientos Penales en vigor; solicito a usted atentamente, designe personal a su cargo a efecto de que se aboquen a INVESTIGAR los hechos denunciados por {{$complemento1}}&nbsp;<strong>{{$denunciante}}</strong><strong>&nbsp;</strong>con número de teléfono <strong>{{$telefono}}</strong>, ocurridos con domicilio en la calle <strong>{{$calle}} {{$numExterno}}, COLONIA {{$colonia}}, C.P.{{$CP}},</strong> de la ciudad de <strong>{{$municipio}}, VERACRUZ</strong>, por hechos que considero constitutivos del delito de <strong>{{$delito}}</strong> cometidos en contra de mi patrimonio y respecto a los hechos manifiesto</span><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">: </span></span><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">“<strong>. . . </strong></span><em><span style="font-size:9.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">{{$narracion}}<strong>. . .</strong></span></span></em><strong><em><span style="font-size:7.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">”;</span></span></em></strong><em> </em><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">para lo cual se deja a la vista la carpeta de investigación al rubro citada para su consulta.</span></span></span></p>
+<p style="text-align:justify"><span style="font-size:11pt"><span style="font-family:&quot;Calibri&quot;,&quot;sans-serif&quot;"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">Con fundamento en lo dispuesto por los artículos 14, 16 y 21 de la Constitución General de la República; 52 de la Constitución Política Local; 127,131, 132 y demás relativos y aplicables del&nbsp; Código Nacional de Procedimientos Penales en vigor; solicito a usted atentamente, designe personal a su cargo a efecto de que se aboquen a INVESTIGAR los hechos denunciados por {{$complemento1}} <strong>{{$denunciante}}</strong><strong> </strong>con número de teléfono <strong>{{$telefono}}</strong>, ocurridos con domicilio en la calle <strong>{{$calle}} {{$numExterno}}, COLONIA {{$colonia}}, C.P.{{$CP}},</strong> de la ciudad de <strong>{{$municipio}}, VERACRUZ</strong>, por hechos que considero constitutivos del delito de <strong>{{$delito}}</strong> cometidos en contra de mi patrimonio y respecto a los hechos manifiesto</span><span style="font-size:12.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">: </span></span><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">“<strong>. . . </strong></span><em><span style="font-size:9.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">{{$narracion}}<strong>. . .</strong></span></span></em><strong><em><span style="font-size:7.0pt"><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">”;</span></span></em></strong><em> </em><span style="font-family:&quot;Neo Sans Pro&quot;,&quot;sans-serif&quot;">para lo cual se deja a la vista la carpeta de investigación al rubro citada para su consulta.</span></span></span></p>
 
 <p style="text-align:justify">&nbsp;</p>
 
@@ -852,25 +853,28 @@ LIC. {{$fiscalAtendio}}
 
 <p style="text-align:justify"><span style="font-size:12pt"><span style="font-family:&quot;Arial&quot;,&quot;sans-serif&quot;"><strong>&nbsp;</strong></span></span></p>
 
-<p><span style="font-size:9px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>DELEGACIÓN POLICÍA MINISTERIAL</strong></span></span></p>
-
-<p><span style="font-size:9px"><span style="font-family:Arial,Helvetica,sans-serif">CALLE MIAMI NÚMERO 19</span></span><span style="font-size:9px"><span style="font-family:Arial,Helvetica,sans-serif">,COLONIA AGUACATAL</span></span></p>
-
-<p><span style="font-size:9px"><span style="font-family:Arial,Helvetica,sans-serif">XALAPA, VERACRUZ C.P.91130</span></span></p>
-
-<p><span style="font-size:9px"><span style="font-family:Arial,Helvetica,sans-serif">TEL: 01 (228) 8407186 HORARIO: ABIERTO LAS 24 HORAS</span></span></p>
-           ',
+<p>&nbsp;</p> ',
 
 
            
            
 'unidad'=>'1',
-'pie' =>  '<p>Circuito Rafael Guízar y<br />
-Valencia No. 147,<br />
-Colonia Reserva Territorial,<br />
-C.P. 91096<br />
+'pie' =>  '<p>&nbsp;</p>
+
+<p><span style="font-size:11px"><span style="font-family:Arial,Helvetica,sans-serif">Circuito Rafael Guízar y Valencia No. 147,&nbsp;</span></span><br />
+<span style="font-size:11px"><span style="font-family:Arial,Helvetica,sans-serif">Colonia Reserva Territorial, C.P. 91096<br />
 Teléfono: 01 (228) 8149428,<br />
-Xalapa-Enríquez, Veracruz</p>',
+Xalapa-Enríquez, Veracruz</span></span></p>
+
+<p>&nbsp;</p>
+
+<p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:11px">Delegacion Policia Ministerial, Calle Miami n.19</span></span></p>
+
+<p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:11px">Xalapa Ver. CP. 91130 TEL:01(228)8407186</span></span></p>
+
+<p><span style="font-family:Arial,Helvetica,sans-serif"><span style="font-size:11px">Horario: Abierto las 24 horas</span></span></p>
+
+<p>&nbsp;</p>',
 'unidad'=>'1'],  
 
 ['nombre'  =>  'NOT. ACTUACIONES FISCAL DISTRITO',
@@ -1408,8 +1412,10 @@ Xalapa-Enríquez, Veracruz</p>',
    'unidad'=>'1'],
 
    ['nombre'  =>  'FORMATO DE DENUNCIA',
-   'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
-   <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',
+   'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:100px; width:100px" /></p>
+   <p style="text-align:right">Unidad de Atención Temprana, Veracruz&nbsp;<br>
+   <strong>"Si lo platicamos, lo solucionamos”</strong><br />
+   &nbsp;</p>',
 
 
 'contenido' =>'
