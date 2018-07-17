@@ -468,17 +468,17 @@ class ImpresionesController extends Controller
 
         
 
-        $denunciantes = DB::table('extra_denunciante')
-        ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-        ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-        ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
-        ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-        ->get();
+        // $denunciantes = DB::table('extra_denunciante')
+        // ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+        // ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+        // ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
+        // ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+        // ->get();
 
-        $cadenaDenunciantes='';
-        foreach($denunciantes as $denunciante){
-            $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.', ';
-        }
+        // $cadenaDenunciantes='';
+        // foreach($denunciantes as $denunciante){
+        //     $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.', ';
+        // }
         // $nombre= $denunciantes->nombres.' '. $denunciantes->primerAp.' '. $denunciantes->segundoAp;
 
         $fiscalAtiende=DB::table('users')
@@ -487,6 +487,14 @@ class ImpresionesController extends Controller
         ->where('users.id', Auth::user()->id)
         ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion')
         ->first();
+
+        $arr = explode(" ",$fiscalAtiende->descripcion);
+        $aux=9;
+        $localidad="";
+        while(count($arr)-1 >= $aux){
+            $localidad=$localidad." ".$arr[$aux];
+            $aux=$aux+1;
+        }
 
             $idCarpeta1='UIPJ/D17/VER1/22/1/2018';
             $apariciones= aparicionesModel::where('idCarpeta',$idCarpeta1)
@@ -527,69 +535,50 @@ class ImpresionesController extends Controller
         ->select('narracion')
         ->first();
 
-            // $denunciantes = DB::table('extra_denunciante')
-            // ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-            // ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            // ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
-            // ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-            // ->get();
+        $TipifDelito=DB::table('tipif_delito')
+        ->join('cat_delito','cat_delito.id','=','tipif_delito.idDelito')
+        ->join('domicilio','domicilio.id','=','tipif_delito.idDomicilio')
+        ->join('cat_municipio','cat_municipio.id','=','domicilio.idMunicipio')
+        ->join('cat_localidad','cat_localidad.id','=','domicilio.idLocalidad')
+        ->join('cat_colonia','cat_colonia.id','=','domicilio.idColonia')
+        ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')
+        ->where('tipif_delito.idCarpeta',$idCarpeta)
+        ->select('cat_delito.nombre','domicilio.calle','domicilio.numExterno','domicilio.numInterno','cat_estado.nombre as estado',
+                    'cat_municipio.nombre as municipio','cat_localidad.nombre as localidad','cat_colonia.nombre as colonia','cat_colonia.codigoPostal')
+        ->first();
 
-            // $cadenaDenunciantes='';
-            // foreach($denunciantes as $denunciante){
-            //     $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.', ';
-            // }
-            // $nombre= $denunciantes->nombres.' '. $denunciantes->primerAp.' '. $denunciantes->segundoAp;
+        $puesto=$fiscalAtiende->puesto;
+        $puesto = strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
 
-            $fiscalAtiende=DB::table('users')
-            ->join('unidad','unidad.id','=','users.id')
-            ->join('unidad as unid','unid.id','=','users.idUnidad')
-            ->where('users.id', Auth::user()->id)
-            ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion')
-            ->first();
-
-            $TipifDelito=DB::table('tipif_delito')
-            ->join('cat_delito','cat_delito.id','=','tipif_delito.idDelito')
-            ->join('domicilio','domicilio.id','=','tipif_delito.idDomicilio')
-            ->join('cat_municipio','cat_municipio.id','=','domicilio.idMunicipio')
-            ->join('cat_localidad','cat_localidad.id','=','domicilio.idLocalidad')
-            ->join('cat_colonia','cat_colonia.id','=','domicilio.idColonia')
-            ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')
-            ->where('tipif_delito.idCarpeta',$idCarpeta)
-            ->select('cat_delito.nombre','domicilio.calle','domicilio.numExterno','domicilio.numInterno','cat_estado.nombre as estado',
-                      'cat_municipio.nombre as municipio','cat_localidad.nombre as localidad','cat_colonia.nombre as colonia','cat_colonia.codigoPostal')
-            ->first();
-
-            $puesto=$fiscalAtiende->puesto;
-            $puesto = strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
-
-            $fechaactual = new Date($carpeta->fechaInicio);
-            $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
-            $fechahum=strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
-            $datos=array('id'=> $idCarpeta,
-            'numeroCarpeta'=> $carpeta->numCarpeta,
-            'denunciante'=> $denunciantes,
-            'fecha'=>$fechahum,
-            'puesto'=>strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-            'delito'=>$TipifDelito->nombre,
-            'calle'=>$TipifDelito->calle,
-            'numExterno'=>$TipifDelito->numExterno,
-            'numInterno'=>$TipifDelito->numInterno,
-            'municipio'=>$TipifDelito->municipio,
-            'localidad'=>$TipifDelito->localidad,
-            'colonia'=>$TipifDelito->colonia,
-            'CP'=>$TipifDelito->codigoPostal,
-            'estado'=>$TipifDelito->estado,
-            'numeroF'=> $fiscalAtiende->numFiscal,
-            'descripcion'=> $fiscalAtiende->descripcion,
-            'telefono'=> $telefono,
-            'narracion'=>strtr(strtoupper($narracion->narracion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
-            'img' => asset('img/logo.png'),
-            'complemento1'=>$complemento1,
-            'nombreC'=>strtr(strtoupper($fiscalAtiende->nombreC),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"));
-        
+        $fechaactual = new Date($carpeta->fechaInicio);
+        $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
+        $fechahum=strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
+        $datos=array('id'=> $idCarpeta,
+        'numeroCarpeta'=> $carpeta->numCarpeta,
+        'ciudad'=>$localidad,
+        'denunciante'=> $denunciantes,
+        'fecha'=>$fechahum,
+        'puesto'=>strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'delito'=>$TipifDelito->nombre,
+        'calle'=>$TipifDelito->calle,
+        'numExterno'=>$TipifDelito->numExterno,
+        'numInterno'=>$TipifDelito->numInterno,
+        'municipio'=>$TipifDelito->municipio,
+        'localidad'=>$TipifDelito->localidad,
+        'colonia'=>$TipifDelito->colonia,
+        'CP'=>$TipifDelito->codigoPostal,
+        'estado'=>$TipifDelito->estado,
+        'numeroF'=> $fiscalAtiende->numFiscal,
+        'descripcion'=> $fiscalAtiende->descripcion,
+        'telefono'=> $telefono,
+        'narracion'=>strtr(strtoupper($narracion->narracion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
+        'img' => asset('img/logo.png'),
+        'complemento1'=>$complemento1,
+        'nombreC'=>strtr(strtoupper($fiscalAtiende->nombreC),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"));
     
 
-        return response()->json($datos);
+
+    return response()->json($datos);
 
 
     }
@@ -610,18 +599,48 @@ class ImpresionesController extends Controller
         ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion as unidad','users.numFiscalLetras as letra')
         ->first();
 
-        $denunciantes = DB::table('extra_denunciante')
-        ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-        ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-        ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
-        ->where('variables_persona.idCarpeta', '=', $id)
-        ->get();
+        // $denunciantes = DB::table('extra_denunciante')
+        // ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+        // ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+        // ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
+        // ->where('variables_persona.idCarpeta', '=', $id)
+        // ->get();
 
-        $cadenaDenunciantes='';
-        foreach($denunciantes as $denunciante){
-            $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.' ';
-        }
+        // $cadenaDenunciantes='';
+        // foreach($denunciantes as $denunciante){
+        //     $cadenaDenunciantes .= $denunciante->nombres.' '. $denunciante->primerAp.' '. $denunciante->segundoAp.' ';
+        // }
         
+        $idCarpeta1='UIPJ/D17/VER1/22/1/2018';
+        $apariciones= aparicionesModel::where('idCarpeta',$idCarpeta1)
+        ->where('sistema','uat')
+        ->where('tipoInvolucrado','denunciante')
+        ->select('id','idVarPersona','idCarpeta','esEmpresa')
+        ->first();
+        
+        $idVPersona=$apariciones->idVarPersona;
+    // si es persona fisica
+        if ($apariciones->esEmpresa==0) {
+            
+            $variablesP=VariablesPersona::where('id',$idVPersona)
+            ->first();
+            $datosPersona=PersonaModel::where('id',$variablesP->idPersona)
+            ->first();
+            $denunciante=$datosPersona->nombres.' '.$datosPersona->primerAp.' '.$datosPersona->segundoAp;
+        }
+    else 
+    // si es persona moral
+    {
+            $variablesP=VariablesPersonaMoral::where('id',$idVPersona)
+            ->first();
+            $idPersona=$variablesP->idPersona;
+            $datosPersona=PersonaMoralModel::where('id',$idPersona)
+            ->select('nombre')
+            ->first();
+    
+            $denunciante=$datosPersona->nombre;
+    
+        }
         
         
         $nombreC=$fiscalAtiende->nombreC;
@@ -636,7 +655,7 @@ class ImpresionesController extends Controller
         'puesto'=> $puestoF,
         'unidad'=> $fiscalAtiende->unidad,
         'nombreC'=>$nombreC,
-        'notificado'=>$cadenaDenunciantes);
+        'notificado'=>$denunciante);
         
         //dd($datos);
         //'puesto'=>$puesto,
@@ -687,26 +706,7 @@ class ImpresionesController extends Controller
         ->first();
     }
 
-    // ACUERDO DE INICIO
-
-    public function oficioInicio($id){
-        $idCarpeta=session('carpeta');
-        $carpeta=DB::table('carpeta')
-        ->join('unidad','carpeta.idUnidad','=','unidad.id')
-        ->select('carpeta.fechaInicio','carpeta.numCarpeta')
-        ->where('carpeta.id',$idCarpeta)
-        ->first();
-
-        $fiscalAtiende=DB::table('users')
-        ->join('unidad','unidad.id','=','users.id')
-        ->join('unidad as unid','unid.id','=','users.idUnidad')
-        ->join('zona as localidad','localidad.id','=','unid.idZona')
-        ->where('users.id', Auth::user()->id)
-        ->select('users.nombreC','users.puesto','users.numFiscal','unid.descripcion','users.numFiscalLetras as letra', 'localidad.descripcion as ciudad')
-        ->first();
-
-           }
-
+   
 // ACUERDO DE INICIO
 
            public function oficioInicio($id){

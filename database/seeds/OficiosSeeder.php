@@ -1048,13 +1048,15 @@ Xalapa-Enríquez, Veracruz</span></span></p>
        'unidad'=>'1'],
 
        ['nombre'  =>  'NOTIFICACIÓN DE ARCHIVO TEMPORAL',
-            'encabezado'=>'<img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" />
-            <p style="text-align:right">Unidad de Atención Temprana, Si lo platicamos, lo solucionamos”<br />',
+            'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:150px" /></p>
+
+            <p style="text-align:right">Unidad de Atención Temprana, Veracruz&nbsp;<br />
+            <strong>"Si lo platicamos, lo solucionamos”</strong></p>',
 
 
-           'contenido' => '<p style="text-align:center"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">FISCALÍA GENERAL&nbsp; DEL ESTADO DE VERACRUZ-LLAVE</span></span></span></p>
+           'contenido' => '<p style="text-align:center"><strong><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">FISCALÍA GENERAL&nbsp; DEL ESTADO DE VERACRUZ-LLAVE</span></span></span></strong></p>
 
-           <p style="text-align:center"><span style="font-family:Trebuchet MS, sans-serif"><span style="font-size:16px">{{$unidad}}</span></span></p>
+           <p style="text-align:center"><span style="font-family:Trebuchet MS,sans-serif"><span style="font-size:16px">{{$unidad}}</span></span></p>
            
            <p>&nbsp;</p>
            
@@ -1067,7 +1069,7 @@ Xalapa-Enríquez, Veracruz</span></span></p>
                    </tr>
                    <tr>
                        <td style="height:22.7pt; width:689px">
-                       <p style="text-align:center"><span style="font-family:Trebuchet MS, sans-serif"><span style="font-size:16px">{{$puesto}}</span></span></p>
+                       <p style="text-align:center"><span style="font-family:Trebuchet MS,sans-serif"><span style="font-size:16px">{{$puesto}}</span></span></p>
                        </td>
                    </tr>
                </tbody>
@@ -1121,8 +1123,7 @@ Xalapa-Enríquez, Veracruz</span></span></p>
            
            <p style="text-align:justify"><span style="font-size:12pt"><span style="font-family:&quot;Times New Roman&quot;,serif"><strong><span style="font-family:&quot;Trebuchet MS&quot;,&quot;sans-serif&quot;">LIC. {{$nombreC}}</span></strong></span></span></p>
            
-           <p style="text-align:justify"><span style="font-family:Trebuchet MS, sans-serif"><span style="font-size:16px">{{$puesto}}</span></span></p>
-           ',
+           <p style="text-align:justify"><span style="font-family:Trebuchet MS,sans-serif"><span style="font-size:16px">{{$puesto}}</span></span></p> ',
 
 
            
