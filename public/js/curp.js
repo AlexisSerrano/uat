@@ -257,10 +257,6 @@ $("#idEstadoOrigen").change(function() {
     obtenerCURP();
 });
 
-$("#idEstado").change(function() {
-    //toastr.clear();
-    obtenerCURP();
-});
 
 function obtenerCURP() {
     if($("#nombre2").val()){
