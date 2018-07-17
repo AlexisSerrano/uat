@@ -31,7 +31,7 @@ class AcusacionController extends Controller
             $denunciados = DB::table('extra_denunciado')
                 ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
                 ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                ->select('extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+                ->select('extra_denunciado.id','extra_denunciado.alias','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
                 ->where('variables_persona.idCarpeta', '=', $idCarpeta)
                 ->orderBy('persona.nombres', 'ASC')
                 ->get();
@@ -90,25 +90,22 @@ class AcusacionController extends Controller
     }
     
     public function delete($id){
-
+        
         $Acusacion =  Acusacion::find($id);
         $Acusacion->delete();
         $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-            $bdbitacora->acusaciones = $bdbitacora->acusaciones-1;
-            $bdbitacora->save();
+        $bdbitacora->acusaciones = $bdbitacora->acusaciones-1;
+        $bdbitacora->save();
+        
         Alert::success('Registro eliminado con éxito', 'Hecho');
         return back();
 
-//dd($id);
     }
 
     public function acuerdoInicio($id){
 
-    //  ¿¿   $id=session('carpeta');
-    //     $carpeta = Carpeta::find($id);
         $datos=DB::table('acusacion')
         ->where('acusacion.id','=',$id)
-    //   ->join('extra_de', 'acusacion.idDenunciante', '=', 'extra_denunciado.id' )
         ->join('extra_denunciante', 'extra_denunciante.id', '=', 'acusacion.idDenunciante')
         ->join('variables_persona','variables_persona.id','=','extra_denunciante.idVariablesPersona')
         ->join('persona','persona.id','=','variables_persona.idPersona')
@@ -146,12 +143,7 @@ class AcusacionController extends Controller
             if ( $datos->agr2 == 'SIN AGRUPACION') {
             $datos->agr2 = " ";
             }
-            // $cont = $cont + 1;
-
-            // foreach ( $datos as $delito) {
-            //     dd($datos);
-            // }
-
+    
             $localidadAcuerdo='XALAPA';
             $entidadAcuerdo='VERACRUZ';
             $fiscalAcuerdo=strtoupper(Auth::user()->nombreC);
@@ -183,16 +175,14 @@ class AcusacionController extends Controller
             
         );
         // dd($datos1);
-    return response()->json($datos);
-    // ->with('id', $datos->id);
-}
-
-
-
-public function acuerdoDocumento($id){ 
+        return response()->json($datos);
     
-    
-     return view('documentos.acuerdo-inicio')->with('id',$id);
+    }
+
+
+
+    public function acuerdoDocumento($id){ 
+        return view('documentos.acuerdo-inicio')->with('id',$id);
     }
 
 }

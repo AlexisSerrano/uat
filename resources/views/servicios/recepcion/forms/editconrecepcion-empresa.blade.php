@@ -4,15 +4,10 @@
 @else
 	@section('title', 'Registros urgentes')
 @endif
-
+ 
 @section('content')
 @include('fields.errores')
         
-<div class="alert alert-info">
-    <strong>Nota:</strong> Todas las etiquetas que se encuentran abajo pueden ser editadas dando clic en el texto
-</div>
-
-
 {!!Form::model($preregistro, array('route' => array('predenuncias.update', $preregistro->id), 'method' => 'POST')) !!}
         <div>
         {{-- @include('recepcion.tipo-p-edit') --}}
@@ -29,13 +24,13 @@
         </div>
         <div class="form-group">
             <div class="col-12">
-                <label for="narracion" class="col-form-label-sm">Descripción de hechos </label>
-                {!!Form::label('nombre',$preregistro->narracion ,['class'=> 'col-form-label-sm labelCambioNarracion'])!!}
-                <div class="input-group inputOculto" id="inputNarracion">
-                    {{ Form::textarea('narracion', $preregistro->narracion, ['class'=>'form-control form-control-sm','size' => '30x5']) }}
-                    <!--textarea name="narracion" id="" cols="30" rows="10" class="form-control form-control-sm" ></textarea-->
-                    <input type="button" id="botonCambioNarracion" value="Cancelar" class="btn btn-sm btn-danger">
-                </div>
+                    {!! Form::label('narracion', 'Narración: ', ['class' => 'col-form-label-sm hideLabels']) !!}                                    
+                    {!!Form::label('nombre',$preregistro->narracion ,['class'=> 'col-form-label-sm hideLabels'])!!}                    
+                    <div class="input-group inputOculto" id="inputNarracion">
+                        {!! Form::label('narracion', 'Narración: ', ['class' => 'col-form-label-sm']) !!}
+                        {{ Form::textarea('narracion', $preregistro->narracion, ['class'=>'form-control form-control-sm','size' => '30x5','style'=>'width:100% !important ']) }}
+                        <!--textarea name="narracion" id="" cols="30" rows="10" class="form-control form-control-sm" ></textarea-->                        
+                    </div>
             </div>
         </div>
     </div>
@@ -45,7 +40,9 @@
             <div class="text-left col">
                 <a href="{{redirect()->getUrlGenerator()->previous()}}" title="" class="btn btn-secondary ">Regresar</a>
             </div>       
-            <div class="text-right col">
+            <div class="text-right col">                    
+                    <span id="editFields" class="btn  btn-secondary">Editar</span>
+
                 @if(is_null($preregistro->statusCola))
                     <a href="{{url('estado/'.$preregistro->id.'/0')}}" title="" class="btn  btn-secondary ">En cola</a>
                     <a href="#" title="" class="btn btn-secondary btnEnUrgente" id="{{$preregistro->id}}">Urgente</a>
@@ -83,7 +80,24 @@
 
 @push('scripts')
 <script>
-    $(document).ready(function(){
+    $(document).ready(function(){        
+        
+        $("#editFields").click(function(){
+            if($("#editFields").html()=="Editar"){
+                $(".hideLabels").hide();
+                $(".inputOculto").show();
+                $("#editFields").addClass("btn-danger");
+                $("#editFields").html("Cancelar");
+            }else{
+                $(".hideLabels").show();
+                $(".inputOculto").hide();
+                $("#editFields").html("Editar");
+                $("#editFields").removeClass("btn-danger")                                
+            }          
+        });
+
+
+/*
         //editar el campo al dar clic en el label de nombre
         $(".labelCambioNombre").click(function(){
             $('.labelCambioNombre').hide();
@@ -233,9 +247,9 @@
             $("#cp").prop('disabled', true);   
             $("#idColonia").prop('disabled', true);   
             
-        });
+        }); */
 
-    });
+    }); 
 
     $("#idEstado").focusout(function(event){
         if(event.target.value!=""){

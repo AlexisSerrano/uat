@@ -27,7 +27,7 @@
 			<select name="idDenunciado" id="idDenuncidoe" class="form-control form-control-sm" required>
 				<option value="">Seleccione al investigado</option>
 				@foreach($denunciados as $denunciado)
-				<option value="{{ $denunciado->id }}">{{ $denunciado->nombres." ".$denunciado->primerAp." ".$denunciado->segundoAp }}</option>
+				<option value="{{ $denunciado->id }}">{{ $denunciado->nombres." ".$denunciado->primerAp." ".$denunciado->segundoAp." ".$denunciado->alias }}</option>
 				@endforeach
 			</select>
 		</div>

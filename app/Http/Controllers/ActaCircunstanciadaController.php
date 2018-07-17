@@ -25,29 +25,18 @@ class ActaCircunstanciadaController extends Controller
 {
     
     public function showform(){
-        
-       
-        $estados=CatEstado::orderBy('nombre', 'ASC')
-        ->pluck('nombre','id');
-        $ocupaciones=CatOcupacion::orderBy('nombre', 'ASC')
-        ->pluck('nombre', 'id');
-        $estadocivil = CatEstadoCivil::orderBy('nombre', 'ASC')
-        ->pluck('nombre', 'id');
-        $escolaridades = CatEscolaridad::orderBy('id', 'ASC')
-        ->pluck('nombre', 'id');
-        $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')
-        ->pluck('nombre', 'id');
-        $municipios = CatMunicipio::orderBy('nombre', 'ASC')
-        ->where('idEstado',30)
-        ->pluck('nombre', 'id');
+        $estados=CatEstado::orderBy('nombre', 'ASC')->pluck('nombre','id');
+        $ocupaciones=CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $estadocivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $municipios = CatMunicipio::orderBy('nombre', 'ASC')->where('idEstado',30)->pluck('nombre', 'id');
         return view('servicios.actas.acta-circunstanciada',compact('ocupaciones','escolaridades','estadocivil','nacionalidades','estados','municipios'));
     }
 
     public function addActaCirc(ActaCircRequest $request){
         DB::beginTransaction();
         try{
-          
-          
             $direccion = new Domicilio;
             $direccion->idMunicipio = $request->idMunicipio2;
             $direccion->idLocalidad = $request->idLocalidad2;
@@ -58,14 +47,7 @@ class ActaCircunstanciadaController extends Controller
             }
             $direccion->numExterno = $request->numExterno2;
             $direccion->save();
-            // $ultimo = ActasHechos::orderBy('id','desc')->first();
-            // if($ultimo){
-            //     $new = $ultimo->folio+1;
-            // }
-            // else{
-            //     $new = 1;
-            // }
-            // $acta->folio = $new;
+            
             $acta = new ActaCircunstanciada;
             $acta->hora = Date::now()->format('H:i:s');
             $acta->fecha = Date::now()->format('Y-m-d');
@@ -120,26 +102,13 @@ class ActaCircunstanciadaController extends Controller
            // dd($acta);
             if($acta->save()){
                 Alert::success('Datos registrados con éxito', 'Hecho');
-                // $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-                // $bdbitacora->delitos = $bdbitacora->delitos+1;
-                // $bdbitacora->save();
             }
             else{
                 Alert::error('Se presentó un problema al guardar los datos', 'Error');
             }
     
             DB::commit();
-           // dd($acta);
             return view('documentos/actaCircunstanciada')->with('id',$acta->id);
-        //     $delitos = DB::table('tipif_delito')
-        //     ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
-        //     ->join('domicilio', 'domicilio.id', '=', 'tipif_delito.idDomicilio')
-        //     ->select('tipif_delito.id','domicilio.id as idDomicilio','domicilio.calle as domicilio','cat_delito.id as idDelito', 'cat_delito.nombre as delito',  'tipif_delito.fecha', 'tipif_delito.hora')
-        // // ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
-        //     ->get();
-
-        // dd($delitos);
-           // return redirect()->route('new.actacircunstanciada');
 
         }catch (\PDOException $e){
             DB::rollBack();

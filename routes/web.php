@@ -277,9 +277,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('actas-pendientes','ActasHechosController@actasPendientes')->name('actaspendientes')->middleware(['permission:actaspendientes']);
     Route::get('listaActas', 'ActasHechosController@showActas')->name('show.actas')->middleware(['permission:show_actas']);
     Route::get('atender-acta/{id}','ActasHechosController@actasPreregistro')->name('actaspreregistro')->middleware(['permission:actaspreregistro']);
-    Route::post('/filtroactas', 'ActasHechosController@filtroactas')->name('actaspreregistro')->middleware(['permission:filtroactas']);
-    Route::get('/filtroactas', 'ActasHechosController@filtroactas')->name('actaspreregistro')->middleware(['permission:filtroacta']);
-    Route::get('/descActas/{id}', 'ActasHechosController@descActas')->name('actaspreregistro')->middleware(['permission:descActas']);
+    Route::post('/filtroactas', 'ActasHechosController@filtroActas')->name('post.filtro.actas')->middleware(['permission:filtroactas']);
+    Route::get('/filtroactas', 'ActasHechosController@filtroActas')->name('get.filtro.actas')->middleware(['permission:filtroacta']);
     /* --------Rutas para imprimir oficiio acta de hechos moral y fisica----------- */
     Route::get('actaoficio/{id}', 'ActasHechosController@actaoficio')->name('actaoficio')->middleware(['permission:actaoficio']);
     Route::get('getoficioah/{id}', 'ActasHechosController@getoficioah')->name('get.oficioah')->middleware(['permission:get_oficioah']);

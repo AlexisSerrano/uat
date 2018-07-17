@@ -15,8 +15,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CaratulaCarpetaController extends Controller
 {
-    public function crearCaratula($id){
-        
+    public function crearCaratula($id){        
         return view('documentos.caratula')
              ->with('id',$id);
     }
@@ -46,8 +45,7 @@ class CaratulaCarpetaController extends Controller
             ->select('nombres','primerAp','segundoAp')
             ->get();
             $nombre=$datosPersona[0]->nombres.' '.$datosPersona[0]->primerAp.' '.$datosPersona[0]->segundoAp;
-        }
-    else {
+        }else {
             $variablesP=VariablesPersonaMoral::where('id',$idVPersona)
             ->select('idPersona','id')
             ->get();
@@ -61,10 +59,10 @@ class CaratulaCarpetaController extends Controller
         }
 
         $fiscalAtiende=DB::table('users')
-    ->join('unidad','unidad.id','=','users.id')
-    ->where('users.id', Auth::user()->id)
-    ->select('users.nombreC','users.puesto','users.numFiscal')
-    ->first();
+            ->join('unidad','unidad.id','=','users.id')
+            ->where('users.id', Auth::user()->id)
+            ->select('users.nombreC','users.puesto','users.numFiscal')
+            ->first();
 
         $datos=array('id'=>strtr(strtoupper($id),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'numeroCarpeta'=>strtr(strtoupper($idCarpeta),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
@@ -75,30 +73,6 @@ class CaratulaCarpetaController extends Controller
         'nombreC'=>strtr(strtoupper($fiscalAtiende->nombreC),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"));
      
         return response()->json($datos);
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 
 }

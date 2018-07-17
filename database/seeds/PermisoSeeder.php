@@ -146,7 +146,6 @@ class PermisoSeeder extends Seeder
         Permission::create(['name' => 'actaspreregistro']);
         Permission::create(['name' => 'filtroactas']);
         Permission::create(['name' => 'filtroacta']);
-        Permission::create(['name' => 'descActas']);
         Permission::create(['name' => 'actaoficio']);
         Permission::create(['name' => 'get_oficioah']);
         Permission::create(['name' => 'actaoficioM']);
@@ -237,9 +236,9 @@ class PermisoSeeder extends Seeder
         'store_acusacion','delete_acusacion','new_abogado','store_abogado','delete_abogado','new_defensa',
         'store_defensa','getInvolucrados','new_autoridad','store_autoridad','delete_autoridad','turnar_carpeta',
         'estado_edit','new_actahechos','addactas','addactas2','actaspendientes','show_actas','actaspreregistro',
-        'filtroactas','filtroacta','descActas','actaoficio','get_oficioah','actaoficioM','get_oficioahm',
+        'filtroactas','filtroacta','actaoficio','get_oficioah','actaoficioM','get_oficioahm',
         'filtroactapaciente','new_actacircunstanciada','addactaCirc','getcincunstanciada','ir_carpetas',
-        'carpeta_reserva', 'carpetas_reserva','filtro_carpetasReserva', 'caratula','imprimir_caratula','get_mensajes_periciales',
+        'carpeta_reserva', 'carpetas_reserva','filtro_carpetas','filtro_carpetasReserva', 'caratula','imprimir_caratula','get_mensajes_periciales',
         'index_periciales','store_agregar','store_psicologo','store_vehiculo','store_lesiones', 'periciales_get',
         'getpsico','getVh_periciales','get_lesion','show_ofFinanzas','getVhFinanzas','oficio_m','oficio_P','oficio_V',
         'oficio_L','oficio_impRobo','oficio_reporteRobo','vehiculo_carpeta','get_submarcas','get_tipovehiculos',
