@@ -388,28 +388,29 @@ class CarpetaController extends Controller
 
     public static function getAcusaciones($id){
         $acusaciones = DB::table('acusacion')
-            ->join('extra_denunciante', 'extra_denunciante.id', '=', 'acusacion.idDenunciante')
-            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->join('extra_denunciado', 'extra_denunciado.id', '=', 'acusacion.idDenunciado')
-            ->join('variables_persona as var', 'var.id', '=', 'extra_denunciado.idVariablesPersona')
-            ->join('persona as per', 'per.id', '=', 'var.idPersona')
-            ->join('tipif_delito', 'tipif_delito.id', '=', 'acusacion.idTipifDelito')
-            ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
-            ->join('cat_agrupacion1', 'cat_agrupacion1.id', '=', 'tipif_delito.idAgrupacion1')
-            ->join('cat_agrupacion2', 'cat_agrupacion2.id', '=', 'tipif_delito.idAgrupacion2')
-            ->select('acusacion.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'cat_delito.nombre as delito', 'cat_agrupacion1.nombre as desagregacion1', 'cat_agrupacion2.nombre as desagregacion2', 'per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
-            ->where('acusacion.idCarpeta', '=', $id)
-            ->get();
-            $cont=0;
-            foreach ($acusaciones as $delito => $nombre) {
-                if ($acusaciones[$cont]->desagregacion1 == 'SIN AGRUPACION') {
-                    $acusaciones[$cont]->desagregacion1 = "";
-                }if ($acusaciones[$cont]->desagregacion2 == 'SIN AGRUPACION') {
-                    $acusaciones[$cont]->desagregacion2 = "";
-                }
-                $cont = $cont + 1;
+        ->join('extra_denunciante', 'extra_denunciante.id', '=', 'acusacion.idDenunciante')
+        ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+        ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+        ->join('extra_denunciado', 'extra_denunciado.id', '=', 'acusacion.idDenunciado')
+        ->join('variables_persona as var', 'var.id', '=', 'extra_denunciado.idVariablesPersona')
+        ->join('persona as per', 'per.id', '=', 'var.idPersona')
+        ->join('tipif_delito', 'tipif_delito.id', '=', 'acusacion.idTipifDelito')
+        ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+        ->join('cat_agrupacion1', 'cat_agrupacion1.id', '=', 'tipif_delito.idAgrupacion1')
+        ->join('cat_agrupacion2', 'cat_agrupacion2.id', '=', 'tipif_delito.idAgrupacion2')
+        ->select('acusacion.id', DB::raw('(CASE WHEN extra_denunciado.alias = "SIN INFORMACION" THEN "" ELSE extra_denunciado.alias END) AS alias'),'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'cat_delito.nombre as delito', 'cat_agrupacion1.nombre as desagregacion1', 'cat_agrupacion2.nombre as desagregacion2', 'per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
+        ->where('acusacion.idCarpeta', '=', $id)
+        ->get();
+        
+        $cont=0;
+        foreach ($acusaciones as $delito => $nombre) {
+            if ($acusaciones[$cont]->desagregacion1 == 'SIN AGRUPACION') {
+                $acusaciones[$cont]->desagregacion1 = "";
+            }if ($acusaciones[$cont]->desagregacion2 == 'SIN AGRUPACION') {
+                $acusaciones[$cont]->desagregacion2 = "";
             }
+            $cont = $cont + 1;
+        }
         return $acusaciones;
     }
 
