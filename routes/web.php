@@ -219,7 +219,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('medidas', 'MedidasProteccionController@index')->name('medidas')->middleware(['permission:medidas']);
     Route::post('addMedidas', 'MedidasProteccionController@addMedidas')->name('addMedidas')->middleware(['permission:addMedidas']);
     Route::get('getMedidas', 'MedidasProteccionController@getMedidas')->name('getMedidas')->middleware(['permission:getMedidas']);
-    // Route::get('deleteMedida/{id}', 'MedidasProteccionController@deleteMedida')->name('deleteMedida');
     Route::get('agregar-medidas/{id}/eliminar', 'MedidasProteccionController@delete')->name('delete.medida')->middleware(['permission:delete_medida']);
     Route::post('agregar-medidas/editar', 'MedidasProteccionController@editar')->name('agregar-medidas')->middleware(['permission:agregar_medidas']);
     Route::get('getMedidasAjax/{id}', 'MedidasProteccionController@getMedidasAjax')->name("getMedidasAjax")->middleware(['permission:getMedidasAjax']);

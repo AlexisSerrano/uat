@@ -52,13 +52,8 @@
 			{!! Form::label('fechaNacimiento', 'Fecha de nacimiento: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$preregistro->fechaNac ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputFechaNac">
-				{!! Form::label('fechaNacimiento', 'Fecha de nacimiento: ', ['class' => 'col-form-label-sm']) !!}
-				{{-- <div class="input-group date" id="fechanac" data-target-input="nearest"> --}}
+				{!! Form::label('fechaNacimiento', 'Fecha de nacimiento: ', ['class' => 'col-form-label-sm']) !!}				
 				{!! Form::date('fechaNacimiento', $preregistro->fechaNac, ['class' => 'form-control form-control-sm', 'data-target' => '#fechanac', 'required']) !!}					
-				{{-- <div class="input-group-append" data-target="#fechanac" data-toggle="datetimepicker">
-						<div class="input-group-text"><i class="fa fa-calendar"></i></div>
-					</div> --}}					
-				{{-- </div> --}}
 			</div>
 			<div class="help-block with-errors"></div>	
 		</div>
@@ -86,7 +81,33 @@
 			<div class="help-block with-errors"></div>
 		</div>
 	</div>
-	
+
+
+	<!--EstadoOrigen-->
+	<div class="col-4">
+			<div class="form-group">			
+				{!! Form::label('idEstadoOrigen', 'Estado de origen: ', ['class' => 'col-form-label-sm hideLabels']) !!}
+				{!! Form::label('nombre', $estadoOrigen->nombre, ['class' => 'col-form-label-sm hideLabels']) !!}			
+				<div class="input-group inputOculto" id="inputEstadoOrigen">
+					{!! Form::label('idEstadoOrigen', 'Estado de origen', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idEstadoOrigen', $estados, $MunicipioOrigen->idEstado, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required','required']) !!}	
+				</div>			
+			</div>
+		</div>
+	<!--Municipio Origen-->
+	<div class="col-5">
+			<div class="form-group">
+				{!! Form::label('idMunicipioOrigen', 'Municipio origen: ', ['class' => 'col-form-label-sm hideLabels']) !!}
+				{!!Form::label('nombre',$MunicipioOrigen->nombre ,['class'=> 'col-form-label-sm hideLabels'])!!}
+				<div class="input-group inputOculto" id="inputMunicipioOrigen">
+					{!! Form::label('idMunicipioOrigen', 'Municipio de origen: ', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idMunicipioOrigen', $catMunicipios, $preregistro->idMunicipioOrigen, ['class' => 'form-control form-control-sm', 'required']) !!}					
+				</div>
+			</div>
+		</div>
+
+
+		 
 	<!--telefono-->
 	<div class="col-3">
 		<div class="form-group">

@@ -30,7 +30,7 @@ use App\Models\Acusacion;
 class DenuncianteController extends Controller
 {
 
-public function showForm()
+    public function showForm()
     {
         $idCarpeta=session('carpeta');
         $casoNuevo = Carpeta::where('id', $idCarpeta)->get();
@@ -390,9 +390,8 @@ public function showForm()
 
     public function addbitacora(){
         $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-            $bdbitacora->denunciante = $bdbitacora->denunciante+1;
-            $bdbitacora->save();
+        $bdbitacora->denunciante = $bdbitacora->denunciante+1;
+        $bdbitacora->save();
     }
 
-    
 }

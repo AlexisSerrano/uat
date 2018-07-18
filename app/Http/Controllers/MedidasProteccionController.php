@@ -86,13 +86,6 @@ class MedidasProteccionController extends Controller
             DB::commit();
             $request->session()->flash('redirectoficio', url("medidaoficio/$providenciaBD->id"));
             return redirect('medidas');
-            //  return view('documentos.medidas-proteccion')
-
-      
-            //   ->with('id',  $providenciaBD->id );
-
-            //   return redirect('medidas')
-           //  return redirect('getoficio/'.$providenciaBD->id.'/medida');
         }catch (\PDOException $e){
             DB::rollBack();
             Alert::error('Se presentó un problema al guardar los datos, intente de nuevo', 'Error');
@@ -117,45 +110,35 @@ class MedidasProteccionController extends Controller
         return Datatables::of($providencias)->make(true);
     }
 
-    public function deleteMedida($id){
-        $post = Providencia::findOrFail($id);
-        if($post->delete()){
-            Alert::success('Medida de protección eliminada con éxito', 'Hecho');
-        }
-        else{
-            Alert::error('Se presentó un problema al eliminar su medida de protección', 'Error');
-        }
-        return redirect("medidas");
-    }
-
-
     public function delete($id){
         $Providencia =Providencia::find($id);
         $Providencia->delete();
+    
         Alert::success('Registrado eliminado con éxito', 'Hecho');
+    
         $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-            $bdbitacora->medidas = $bdbitacora->medidas-1;
-            $bdbitacora->save();
+        $bdbitacora->medidas = $bdbitacora->medidas-1;
+        $bdbitacora->save();
         return back();
     }
 
     
 
     public function editar(Request $request ){
-     $providencia = Providencia::find($request->input('idr')); 
-     $providencia->fechaInicio = $request->fechaInicio1;
-     $providencia->fechaFin = $request->fechaFinal1;
-     $providencia->idEjecutor = $request->quienEjecuta1;
-     $providencia->idPersona = $request->victima1;
-     $providencia->observacion = $request->observaciones1;
-     $providencia->save(); 
-    if ($providencia->save()){
-        return 1;
+        $providencia = Providencia::find($request->input('idr')); 
+        $providencia->fechaInicio = $request->fechaInicio1;
+        $providencia->fechaFin = $request->fechaFinal1;
+        $providencia->idEjecutor = $request->quienEjecuta1;
+        $providencia->idPersona = $request->victima1;
+        $providencia->observacion = $request->observaciones1;
+        $providencia->save(); 
+        if ($providencia->save()){
+            return 1;
+        }
+        else{
+            return 0;
+        }
     }
-    else{
-        return 0;
-    }
-  }
 
     public function getMedidasAjax($id){
         $providencia = DB::table('providencias_precautorias')
@@ -168,34 +151,34 @@ class MedidasProteccionController extends Controller
 
 
     
-public function oficio($id){
+    public function oficio($id){
    
-    $oficio = DB::table('providencias_precautorias')->where('providencias_precautorias.id', $id)
-    ->join('cat_providencia_precautoria', 'providencias_precautorias.idProvidencia','=', 'cat_providencia_precautoria.id')
-    ->join('ejecutor', 'providencias_precautorias.idEjecutor', '=', 'ejecutor.id')
-    ->join('persona', 'providencias_precautorias.idPersona', '=', 'persona.id')
-    ->join('variables_persona', 'persona.id', '=', 'variables_persona.idPersona')
-    ->join('domicilio', 'variables_persona.idDomicilio', '=', 'domicilio.id')
-    ->join('cat_municipio', 'domicilio.idMunicipio', '=', 'cat_municipio.id')
-    ->join('cat_localidad', 'domicilio.idLocalidad', '=', 'cat_localidad.id')
-    ->join('cat_colonia', 'domicilio.idColonia', '=', 'cat_colonia.id')
-    ->join('cat_estado', 'cat_municipio.idEstado', '=', 'cat_estado.id')
-    ->join('carpeta', 'providencias_precautorias.idCarpeta', '=', 'carpeta.id')
-  
-    ->select( DB::raw("CONCAT(`persona`.`nombres`,' ',CASE WHEN `persona`.`primerAp` IS NULL  THEN '' ELSE `persona`.`primerAp` END,' ',CASE WHEN `persona`.`segundoAp` IS NULL  THEN '' ELSE `persona`.`segundoAp` END) as nombre"),
-     'domicilio.calle', 'domicilio.numExterno', 'cat_colonia.nombre as colonia','cat_colonia.codigoPostal as cp','cat_municipio.nombre as municipio','cat_estado.nombre as estado',
-     'ejecutor.nombre as ejecutor', DB::raw("DATEDIFF(providencias_precautorias.fechaFin,providencias_precautorias.fechaInicio) AS VIGENCIA"), 'providencias_precautorias.id', 'providencias_precautorias.fechaInicio AS fecha','carpeta.numCarpeta as carpeta' , 'variables_persona.telefono as telefono')
-      
-      ->first();
+        $oficio = DB::table('providencias_precautorias')->where('providencias_precautorias.id', $id)
+        ->join('cat_providencia_precautoria', 'providencias_precautorias.idProvidencia','=', 'cat_providencia_precautoria.id')
+        ->join('ejecutor', 'providencias_precautorias.idEjecutor', '=', 'ejecutor.id')
+        ->join('persona', 'providencias_precautorias.idPersona', '=', 'persona.id')
+        ->join('variables_persona', 'persona.id', '=', 'variables_persona.idPersona')
+        ->join('domicilio', 'variables_persona.idDomicilio', '=', 'domicilio.id')
+        ->join('cat_municipio', 'domicilio.idMunicipio', '=', 'cat_municipio.id')
+        ->join('cat_localidad', 'domicilio.idLocalidad', '=', 'cat_localidad.id')
+        ->join('cat_colonia', 'domicilio.idColonia', '=', 'cat_colonia.id')
+        ->join('cat_estado', 'cat_municipio.idEstado', '=', 'cat_estado.id')
+        ->join('carpeta', 'providencias_precautorias.idCarpeta', '=', 'carpeta.id')
+    
+        ->select( DB::raw("CONCAT(`persona`.`nombres`,' ',CASE WHEN `persona`.`primerAp` IS NULL  THEN '' ELSE `persona`.`primerAp` END,' ',CASE WHEN `persona`.`segundoAp` IS NULL  THEN '' ELSE `persona`.`segundoAp` END) as nombre"),
+        'domicilio.calle', 'domicilio.numExterno', 'cat_colonia.nombre as colonia','cat_colonia.codigoPostal as cp','cat_municipio.nombre as municipio','cat_estado.nombre as estado',
+        'ejecutor.nombre as ejecutor', DB::raw("DATEDIFF(providencias_precautorias.fechaFin,providencias_precautorias.fechaInicio) AS VIGENCIA"), 'providencias_precautorias.id', 'providencias_precautorias.fechaInicio AS fecha','carpeta.numCarpeta as carpeta' , 'variables_persona.telefono as telefono')
+        
+        ->first();
 
-      $denunciado2= DB::table('variables_persona')
-      ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
-      ->join('extra_denunciado', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
-      ->where('variables_persona.id',$id)
-      ->select('persona.nombres','persona.primerAp','persona.segundoAp', 'persona.id')
-      ->first();
+        $denunciado2= DB::table('variables_persona')
+        ->join('persona', 'variables_persona.idPersona', '=', 'persona.id')
+        ->join('extra_denunciado', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+        ->where('variables_persona.id',$id)
+        ->select('persona.nombres','persona.primerAp','persona.segundoAp', 'persona.id')
+        ->first();
 
-      $fiscalAtiende=DB::table('users')
+        $fiscalAtiende=DB::table('users')
         ->join('unidad','unidad.id','=','users.id')
         ->join('unidad as unid','unid.id','=','users.idUnidad')
         ->join('zona','zona.id','=','users.idZona')
@@ -211,31 +194,31 @@ public function oficio($id){
 
         $puesto=$fiscalAtiende->puesto;
         $puesto = strtr(strtoupper($puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
-     
-    $data = array('nombre' => $oficio->nombre, 
-    'calle' => $oficio->calle, 
-    'numExterno' => $oficio->numExterno,
-    'colonia' => $oficio->colonia,
-    'cp' => $oficio->cp,
-    'municipio' => $oficio->municipio,
-    'estado' => $oficio->estado,
-    'ejecutor' => $oficio->ejecutor,
-    'vigencia' => $oficio->VIGENCIA,
-    'id' => $oficio->id,
-    'fecha' => $oficio->fecha,
-    'carpeta' => $oficio->carpeta,
-    'fiscalAtiende' =>  $fiscalAtiende->nombreC,
-    'NF' => $fiscalAtiende->numFiscal,
-    'puestoFiscal' => $puesto,
-    'telefono' => $oficio->telefono,
-    // 'delito' => $TipifDelito->delito,
-    'zona' => $fiscalAtiende->zona,
-    // 'denunciado' => $denunciado2->nombres.' '.$denunciado2->primerAp.' '.$denunciado2->segundoAp,
-    'img' => asset('img/logo.png'),
-    'id' => $id);
-    return response()->json($data);
-    // dd($data);
-}
+    
+        $data = array('nombre' => $oficio->nombre, 
+        'calle' => $oficio->calle, 
+        'numExterno' => $oficio->numExterno,
+        'colonia' => $oficio->colonia,
+        'cp' => $oficio->cp,
+        'municipio' => $oficio->municipio,
+        'estado' => $oficio->estado,
+        'ejecutor' => $oficio->ejecutor,
+        'vigencia' => $oficio->VIGENCIA,
+        'id' => $oficio->id,
+        'fecha' => $oficio->fecha,
+        'carpeta' => $oficio->carpeta,
+        'fiscalAtiende' =>  $fiscalAtiende->nombreC,
+        'NF' => $fiscalAtiende->numFiscal,
+        'puestoFiscal' => $puesto,
+        'telefono' => $oficio->telefono,
+        // 'delito' => $TipifDelito->delito,
+        'zona' => $fiscalAtiende->zona,
+        // 'denunciado' => $denunciado2->nombres.' '.$denunciado2->primerAp.' '.$denunciado2->segundoAp,
+        'img' => asset('img/logo.png'),
+        'id' => $id);
+        return response()->json($data);
+        // dd($data);
+    }
 
 
 }

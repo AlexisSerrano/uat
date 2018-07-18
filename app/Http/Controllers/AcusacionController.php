@@ -31,7 +31,7 @@ class AcusacionController extends Controller
             $denunciados = DB::table('extra_denunciado')
                 ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
                 ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                ->select('extra_denunciado.id','extra_denunciado.alias','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+                ->select('extra_denunciado.id',DB::raw('(CASE WHEN extra_denunciado.alias = "SIN INFORMACION" THEN "" ELSE extra_denunciado.alias END) AS alias'),'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
                 ->where('variables_persona.idCarpeta', '=', $idCarpeta)
                 ->orderBy('persona.nombres', 'ASC')
                 ->get();
@@ -81,8 +81,9 @@ class AcusacionController extends Controller
             $acusacion->save();
     
             $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-                $bdbitacora->acusaciones = $bdbitacora->acusaciones+1;
-                $bdbitacora->save();
+            $bdbitacora->acusaciones = $bdbitacora->acusaciones+1;
+            $bdbitacora->save();
+        
             Alert::success('Acusación registrada con éxito', 'Hecho');
             return redirect()->route('new.acusacion');
         }

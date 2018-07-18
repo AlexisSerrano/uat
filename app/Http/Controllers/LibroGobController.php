@@ -25,11 +25,6 @@ use App\Models\ExtraDenunciante;
 
 class LibroGobController extends Controller
 {
-    
-     
-       
-   
-        
 
     public function searchNumCarpeta(Request $request)
     {
@@ -46,14 +41,8 @@ class LibroGobController extends Controller
             ->orwhere('numCarpeta','like','%'.$carpeta.'%')
             ->orwhere('horaIntervencion','like','%'.$carpeta.'%')
             ->orwhere('fechaInicio','like','%'.$carpeta.'%');
-          })
+        })
         ->paginate('15');
-    
-       
-
-           
-         
-       
         // dd( $carpetas);
         // return Datatables::of($carpetas)->make(true);
         return view('tables.carpetasEnGral')->with('carpetas',$carpetas);
@@ -74,21 +63,15 @@ class LibroGobController extends Controller
             ->join('cat_estatus_casos','carpeta.idEstadoCarpeta','=','cat_estatus_casos.id')
             ->select('carpeta.id as id','carpeta.fechaInicio','carpeta.horaIntervencion','carpeta.numCarpeta','cat_estatus_casos.nombreEstatus as idEstadoCarpeta' )
             ->where('idFiscal',Auth::user()->id)
-            // ->orwhere()
             ->paginate('15');
             // dd($carpetas);
             return view('tables.carpetasEnGral')->with('carpetas',$carpetas);
-        }
-        
+        }    
         //    dd(session());
 
     }
     
-    
-   
     public function terminadas(){
-      
-        
         $carpterminadas = DB::table('acusacion')
         ->join('extra_denunciante', 'extra_denunciante.id', '=', 'acusacion.idDenunciante')
         ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
@@ -104,14 +87,14 @@ class LibroGobController extends Controller
         ->paginate(10);
         //dd( $carpterminadas);
         return view('forms.libro-gobierno')->with('carpterminadas',$carpterminadas);
-//dd($carpterminadas);
+        //dd($carpterminadas);
     }
 
     public function mostrarlibro(Request $request){
-       // $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();
-      // $idCarpeta=session('carpeta');
-       // $idCarpeta='7';
-       $carpeta=$request->search;
+        // $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();
+        // $idCarpeta=session('carpeta');
+        // $idCarpeta='7';
+        $carpeta=$request->search;
       
         $carpterminadas = DB::table('acusacion')
         ->join('extra_denunciante', 'extra_denunciante.id', '=', 'acusacion.idDenunciante')
@@ -127,16 +110,17 @@ class LibroGobController extends Controller
         ->select('carpeta.id','carpeta.fechaInicio','persona.nombres','persona.primerAp','persona.segundoAp','per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2','carpeta.numCarpeta' ,'cat_delito.nombre as delito','tipif_delito.formaComision','cat_estatus_casos.nombreEstatus as idEstadoCarpeta')
         ->orwhere('fechaInicio','like','%'.$carpeta.'%')
         ->orWhere(DB::raw("CONCAT(persona.nombres,' ',persona.primerAp,' ',persona.segundoAp)"), 'LIKE', '%'.$carpeta.'%')
-       ->orWhere(DB::raw("CONCAT(per.nombres,' ',per.primerAp)"), 'LIKE', '%'.$carpeta.'%')
+        ->orWhere(DB::raw("CONCAT(per.nombres,' ',per.primerAp)"), 'LIKE', '%'.$carpeta.'%')
         ->orwhere('persona.nombres','like','%'.$carpeta.'%')
         ->orwhere('persona.nombres','=','QUIEN O QUIENES RESULTEN RESPONSABLES')
         ->orwhere('numCarpeta','like','%'.$carpeta.'%')
         ->orwhere('formaComision','like','%'.$carpeta.'%')
-      ->orWhere('cat_delito.nombre', 'like', '%' . $carpeta . '%')
-    
-      ->paginate('15');
+        ->orWhere('cat_delito.nombre', 'like', '%' . $carpeta . '%')
+        ->paginate('15');
+        
         //dd( $carpta);
-       return view('forms.libro-gobierno')->with('carpterminadas',$carpterminadas);
-//dd($carpterminadas);
-   }
+        return view('forms.libro-gobierno')->with('carpterminadas',$carpterminadas);
+    //dd($carpterminadas);
+    }
+
 }
