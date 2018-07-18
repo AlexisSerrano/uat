@@ -1,7 +1,7 @@
 <div class="form-group">
 	<div class="form-row" >
 		<!--nombre-->
-		<div class="col-5">
+		<div class="col-6">
 			<div class="form-group">
 				{!! Form::label('nombres', 'Nombre: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 				{!!Form::label('nombre',$preregistro->nombre ,['class'=> 'col-form-label-sm hideLabels'])!!}
@@ -13,7 +13,7 @@
 			</div>
 		</div>
 	<!--Representante legal-->
-	<div class="col-5">
+	<div class="col-3">
 			<div class="form-group">
 				{!! Form::label('repLegal', 'Nombre representante legal: ', ['class' => 'col-form-label-sm hideLabels','valid-tooltip']) !!}
 				{!!Form::label('nombre',$preregistro->representanteLegal ,['class'=> 'col-form-label-sm hideLabels'])!!}
@@ -25,7 +25,7 @@
 			</div>
 		</div>
 
-		<div class="col-4">
+		<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('primerAp', 'Primer apellido: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 					{!!Form::label('nombre',$preregistro->primerAp ,['class'=> 'col-form-label-sm hideLabels'])!!}
@@ -37,7 +37,7 @@
 				</div>
 			</div>
 			
-			<div class="col-4">
+			<div class="col-3">
 				<div class="form-group">
 					{!! Form::label('segundoAp', 'Segundo apellido: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 					{!!Form::label('nombre',$preregistro->segundoAp ,['class'=> 'col-form-label-sm hideLabels'])!!}
@@ -97,7 +97,7 @@
 		{{--  direccion  --}}
 		{{--  V V V V V  --}}
 
-		<div class="col-5">
+		<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('idEstado', 'Entidad federativa: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 				{!!Form::label('nombre',$nombreEstado ,['class'=> 'col-form-label-sm hideLabels'])!!}
@@ -107,7 +107,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-5">
+		<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('idMunicipio', 'Municipio: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 				{!!Form::label('nombre',$nombreMunicipio ,['class'=> 'col-form-label-sm hideLabels'])!!}
@@ -118,7 +118,7 @@
 			</div>
 		</div>
 
-		<div class="col-5">
+		<div class="col-4">
 			<div class="form-group">
 				{!! Form::label('idLocalidad', 'Localidad: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 				{!!Form::label('nombre',$nombreLocalidad ,['class'=> 'col-form-label-sm hideLabels'])!!}
@@ -129,6 +129,18 @@
 			</div>
 		</div>
 				
+		<!--colonia-->
+		<div class="col-4">
+			<div class="form-group">
+				{!! Form::label('idColonia', 'Colonia: ', ['class' => 'col-form-label-sm hideLabels']) !!}
+				{!!Form::label('nombre',$nombreColonia ,['class'=> 'col-form-label-sm hideLabels'])!!}
+				<div class="input-group inputOculto" id="inputDireccionColonia">
+						{!! Form::label('idColonia', 'Colonia: ', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('idColonia', $catColonias, $idColoniaSelect, ['class' => 'form-control form-control-sm', 'required']) !!}					
+				</div>
+			</div>
+		</div>
+
 		<!--Codigo Postal-->
 		<div class="col-2">
 			<div class="form-group">
@@ -140,23 +152,11 @@
 				</div>
 			</div>
 		</div>
-
-			<!--colonia-->
-		<div class="col-4">
-			<div class="form-group">
-				{!! Form::label('idColonia', 'Colonia: ', ['class' => 'col-form-label-sm hideLabels']) !!}
-				{!!Form::label('nombre',$nombreColonia ,['class'=> 'col-form-label-sm hideLabels'])!!}
-				<div class="input-group inputOculto" id="inputDireccionColonia">
-						{!! Form::label('idColonia', 'Colonia: ', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idColonia', $catColonias, $idColoniaSelect, ['class' => 'form-control form-control-sm', 'required']) !!}					
-				</div>
-			</div>
-		</div>
 		{{--  A A A A A  --}}
 		{{--  ---------  --}}
 
 		<!--CALLE-->
-		<div class="col-7">
+		<div class="col-8">
 			<div class="form-group">
 				{!! Form::label('calle', 'Calle: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 				{!!Form::label('nombre',$direccionTB[0]->calle ,['class'=> 'col-form-label-sm hideLabels'])!!}
