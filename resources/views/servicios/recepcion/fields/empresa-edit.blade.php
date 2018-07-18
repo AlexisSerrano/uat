@@ -62,17 +62,24 @@
 				</div>
 
 		<!--RFC-->
-		<div class="col-2">
+
+		<div class="col-4">
 			<div class="form-group">
-				{!! Form::label('rfc', 'R.F.C.: ', ['class' => 'col-form-label-sm hideLabels']) !!}
-				{!!Form::label('nombre',$preregistro->rfc ,['class'=> 'col-form-label-sm hideLabels'])!!}
-				<div class="input-group inputOculto" id="inputRfc">
-					{!! Form::label('rfc', 'R.F.C.: ', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('rfc', $preregistro->rfc, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}					
+				<div class="row">
+					<div class="col">
+						{!!	Form::label('rfc2', 'R.F.C.', ['class' => 'col-form-label-sm']) !!}						
+						{!!	Form::label('rfc2',substr($preregistro->rfc,0,9), ['class' => 'col-form-label-sm hideLabels']) !!}
+						{!!	Form::text('rfc2', substr($preregistro->rfc,0,9), ['class' => 'form-control form-control-sm inputOculto', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
+					</div>					
+					<div class="col">
+						{!! Form::label('homo2', 'Homoclave', ['class' => 'col-form-label-sm']) !!}
+						{!! Form::label('homo2', substr($preregistro->rfc,9,3), ['class' => 'col-form-label-sm hideLabels']) !!}
+						{!! Form::text('homo2', substr($preregistro->rfc,9,3), ['class' => 'form-control form-control-sm inputOculto', 'placeholder' => 'Ingrese homoclave','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'Homoclave inválida' ,'required']) !!}
+					</div>
 				</div>
-				<div class="help-block with-errors"></div>
 			</div>
 		</div>
+
 		
 		<!--telefono-->
 		<div class="col-2">
