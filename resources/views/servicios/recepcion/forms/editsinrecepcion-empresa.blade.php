@@ -6,7 +6,7 @@
        
 {{-- {!!Form::model($preregistro, array('route' => array('put.registro', $preregistro->id), 'method' => 'POST')) !!} --}}
 {!!Form::model($preregistro, ['route' => ['put.registro', $preregistro->id]]) !!}
-<input type="hidden" name="esEmpresa" value="0">
+<input type="hidden" name="esEmpresa" value="1">
 <div class="card container-create" id="datosPersona">
     <div class="card-header lead" align="center">
         Datos personales

@@ -252,7 +252,7 @@ class PreregistroAuxController extends Controller
                 
                 $preregistro =Preregistro::find($id);
                 $preregistro->esEmpresa = 1;    
-                $preregistro->nombre = $request->nombres;
+                $preregistro->nombre = $request->nombres2;
                 $preregistro->primerAp = $request->primerAp;
                 $preregistro->segundoAp = $request->segundoAp;
                 $preregistro->idDireccion = $idD1;

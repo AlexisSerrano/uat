@@ -3,11 +3,11 @@
 		<!--nombre-->
 		<div class="col-6">
 			<div class="form-group">
-				{!! Form::label('nombres', 'Nombre: ', ['class' => 'col-form-label-sm hideLabels']) !!}
-				{!!Form::label('nombre',$preregistro->nombre ,['class'=> 'col-form-label-sm hideLabels'])!!}
+				{!! Form::label('nombres2', 'Nombre: ', ['class' => 'col-form-label-sm hideLabels']) !!}
+				{!!Form::label('nombres2',$preregistro->nombre ,['class'=> 'col-form-label-sm hideLabels'])!!}
 				<div class="input-group inputOculto" id="inputNombre">
-						{!! Form::label('nombres', 'Nombre: ', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('nombres', $preregistro->nombre, ['class' => 'form-control  form-control-sm', 'placeholder' => 'Ingrese el nombre','required']) !!}					
+						{!! Form::label('nombres2', 'Nombre: ', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('nombres2', $preregistro->nombre, ['class' => 'form-control  form-control-sm', 'placeholder' => 'Ingrese el nombre','required']) !!}					
 				</div>
 				<div class="help-block with-errors"></div> 
 			</div>
