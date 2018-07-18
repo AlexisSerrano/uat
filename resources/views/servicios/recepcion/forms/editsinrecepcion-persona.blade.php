@@ -286,9 +286,9 @@
 
     });
 
-
-
-    $("#idEstado").focusout(function(event){
+    $("#idEstado").change(function(event){
+        alert("sin");
+        console.log("sel>"+event.target.value);
         if(event.target.value!=""){
             $.get(route('get.municipio', event.target.value), function(response, estado){
                 $("#idMunicipio").empty();
@@ -297,12 +297,12 @@
                     $("#idMunicipio").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
                 }
             });
-
-            
+        }else{
+            $("#idMunicipio").empty();
         }
     });
 
-    $("#idMunicipio").focusout(function(event){
+    $("#idMunicipio").change(function(event){
         if(event.target.value!=""){
             $.get(route('get.localidad', event.target.value), function(response, municipio){
                 $("#idLocalidad").empty();

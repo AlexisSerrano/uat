@@ -264,6 +264,8 @@
             });
 
             
+        }else{
+            $("#idMunicipio").empty();
         }
     });
 
