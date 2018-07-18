@@ -79,6 +79,7 @@
 @push('scripts')
 
 <script src="{{ asset('js/curp.js') }}"></script>
+<script src="{{ asset('js/rfcFisico.js') }}"></script>
 {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script> --}}
 <script>
     // $(function () {

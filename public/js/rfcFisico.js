@@ -2,6 +2,10 @@ $("#nombre2").focusout(function() {
 	obtenerRFCFISICA();
 });
 
+$("#nombres").focusout(function() {
+	obtenerRFCFISICA();
+});
+
 $("#primerAp").focusout(function() {
 	obtenerRFCFISICA();
 });
@@ -23,8 +27,11 @@ $.ajaxSetup({
 function obtenerRFCFISICA() {
 
     
-
-    nombre = $("#nombre2").val().toUpperCase();
+    if($("#nombre2").val()){
+        nombre = $("#nombre2").val().toUpperCase();    
+    }else{
+        nombre = $("#nombres").val().toUpperCase();    
+    }
     apPaterno = $("#primerAp").val().toUpperCase();
     apMaterno = $("#segundoAp").val().toUpperCase();
     fecha = $("#fechaNacimiento").val();
@@ -72,6 +79,7 @@ function obtenerRFCFISICA() {
             var contador=0;
 
             $("#rfc2").val(rfc);
+            $("#rfc").val(rfc);
             $("#homo2").val(homo);
             // $('#rfcAux').val(rfcOriginal);
 
