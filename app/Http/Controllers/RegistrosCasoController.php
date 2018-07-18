@@ -142,6 +142,17 @@ class RegistrosCasoController extends Controller
             ->get();
             $nombreColonia=$Colonia[0]->nombre;
             $nombreCP=$Colonia[0]->codigoPostal;
+
+
+            $MunicipioOrigen = DB::table('cat_municipio')        
+            ->select('idEstado','idMunicipio','nombre')
+            ->where('id','=', $preregistro->idMunicipioOrigen)->first();
+            
+            $estadoOrigen = DB::table('cat_estado')        
+            ->select('nombre')
+            ->where('id','=', $MunicipioOrigen->idEstado)->first();
+
+
             /* FIN DE PRUEBAS PARA NOMBRES DE DIRECCIONES */
             $catMunicipios=DB::table('cat_municipio')
             ->where('cat_municipio.idEstado','=',$idEstadoSelect)
@@ -160,7 +171,7 @@ class RegistrosCasoController extends Controller
             ->where('cat_colonia.codigoPostal','!=',0)
             ->orderBy('codigoPostal','asc')
             ->groupBy('codigoPostal')
-            ->pluck('codigoPostal','codigopostal');
+            ->pluck('codigoPostal','codigoPostal');
             $identificaciones = CatIdentificacion::orderBy('id', 'ASC')
             ->pluck('documento', 'id');
             $docIdent = CatIdentificacion::select('documento')
@@ -177,7 +188,7 @@ class RegistrosCasoController extends Controller
                 return view('servicios.recepcion.forms.editsinrecepcion-empresa', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon','identificaciones','docIdent' ));
             }
             else{
-                return view('servicios.recepcion.forms.editsinrecepcion-persona', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon','identificaciones','docIdent'));
+                return view('servicios.recepcion.forms.editsinrecepcion-persona', compact('estadoOrigen','MunicipioOrigen','idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon','identificaciones','docIdent'));
             }
         }
 
