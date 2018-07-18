@@ -18,6 +18,8 @@ class CreateUnidadTable extends Migration
             $table->string('descripcion', 250);
             $table->integer('idZona')->unsigned();
             $table->string('abreviacion', 100);
+            $table->string('direccion', 100);
+            $table->string('telefono', 100);
             $table->boolean('activo');
             $table->timestamps();
             $table->foreign('idZona')->references('id')->on('zona')->onDelete('cascade');
