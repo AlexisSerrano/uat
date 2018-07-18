@@ -86,8 +86,6 @@ class PermisoSeeder extends Seeder
         Permission::create(['name' => 'predenuncias_index']);
         Permission::create(['name' => 'predenuncias_edit']);
         Permission::create(['name' => 'predenuncias_update']);
-        Permission::create(['name' => 'ver_pre_aux']);
-        Permission::create(['name' => 'create_pre_aux']);
         Permission::create(['name' => 'observaciones']);
         Permission::create(['name' => 'store_descripcionHechos']);
         Permission::create(['name' => 'narracion']);
@@ -250,8 +248,7 @@ class PermisoSeeder extends Seeder
         // Asignación de permisos a Rol de Recepción
         $recepcion->givePermissionTo(['post_showByfolio' ,'get_showByfolio','en_cola','urgentes',
         'prioridadpreregistrofiltro','showbymunicipio','datos_estado',
-        'estado','predenuncias_index', 'predenuncias_edit','predenuncias_update','ver_pre_aux',
-        'create_pre_aux','index_preregistro', 'fiscal','index_atencion_rapida','addatencion']);
+        'estado','predenuncias_index', 'predenuncias_edit','predenuncias_update','index_preregistro', 'fiscal','index_atencion_rapida','addatencion']);
 
 
     }

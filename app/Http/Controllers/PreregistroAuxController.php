@@ -55,14 +55,15 @@ class PreregistroAuxController extends Controller
         ->where('nombre', '!=', 'SIN INFORMACION')
         ->orderBy('nombre','asc')
         ->get();
+
         return view('servicios.recepcion.preregistros',compact('registros','municipios'));
     }
 
     
     public function edit($id)
     {        
-        $estados=CatEstado::orderBy('nombre', 'ASC')
-        ->pluck('nombre','id');
+        $estados=CatEstado::orderBy('nombre', 'ASC')->pluck('nombre','id');
+
         $preregistro = Preregistro::find($id);            
         $idDireccionPregistro =$preregistro->idDireccion;//id direccion
         $direccionTB=DB::table('domicilio') //id's de domicilios (municipio,localidad)
@@ -72,6 +73,7 @@ class PreregistroAuxController extends Controller
         $municipio=DB::table('cat_municipio')//nombre municipio
         ->where('cat_municipio.id','=',$direccionTB[0]->idMunicipio)
         ->get();
+        
         $coloniaRow=DB::table('cat_colonia')//nombre municipio
         ->where('cat_colonia.id','=',$direccionTB[0]->idColonia)
         ->get();
@@ -100,8 +102,7 @@ class PreregistroAuxController extends Controller
         ->get();
         $nombreLocalidad=$nombreLocalidad[0]->nombre;
 
-        $razones=Razon::orderBy('nombre', 'ASC')
-        ->pluck('nombre','id');
+        $razones=Razon::orderBy('nombre', 'ASC')->pluck('nombre','id');
         
         $razon=Razon::select('nombre')->where('id',$preregistro->idRazon)->get();
         $razon=$razon[0]->nombre;
@@ -163,13 +164,6 @@ class PreregistroAuxController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //dd($request);
@@ -374,12 +368,7 @@ class PreregistroAuxController extends Controller
 
     public function urgentes()
     {
-        // $preregistros = Preregistro::where('statusCola', 1)
-        // ->where('conViolencia', 0)
-        // ->orderBy('horaLlegada','asc')
-        // ->paginate(10);
-        // return view('servicios.recepcion.cola-preregistro')->with('registros',$preregistros)->with('status',1);
-
+  
         $registros = DB::table('preregistros')->where('statusCola', 1)
         ->join('razones','razones.id','=','preregistros.idRazon')
         ->leftJoin('cat_identificacion','cat_identificacion.id','=','preregistros.docIdentificacion')
@@ -423,7 +412,7 @@ class PreregistroAuxController extends Controller
         try{
             $estado = Preregistro::find($id);
             // dd($estado);
-                DB::commit();
+            DB::commit();
             return redirect(url("turno")."/".$estado->id."/".$estado->idRazon);
         }catch (\PDOException $e){
             DB::rollBack();
@@ -519,7 +508,6 @@ class PreregistroAuxController extends Controller
                 $unidad=DB::table('unidad')->where('id',Auth::user()->idUnidad)->first();
                 $unidad=$unidad->abreviacion;
                 
-
                 $NuevoNumCarpeta = $unidad."/1/".Carbon::now()->year."-".Auth::user()->numFiscal;
                 $buscarConsecutivo = Carpeta::where('numCarpeta',$NuevoNumCarpeta)->get();
                 
@@ -624,16 +612,14 @@ class PreregistroAuxController extends Controller
                     $estado->save();
                     session(['enturno' => 'urgente']);
                     return redirect(url('turno').'/'.$urgente->id.'/'.$estado->idRazon);
-                }
-                else{
+                }else{
                     $estado = Preregistro::find($cola->id);
                     $estado->statusCola = 20;
                     $estado->save();
                     session(['enturno' => 'cola']);
                     return redirect(url('turno').'/'.$cola->id.'/'.$estado->idRazon);
                 }
-            }
-            else{
+            }else{
                 $anterior = session('enturno');
                 if($anterior=='urgente'&&$cola){
                     $estado = Preregistro::find($cola->id);
@@ -697,15 +683,6 @@ class PreregistroAuxController extends Controller
 
         }
         
-        // $carpeta = Carpeta::find($idCarpeta);
-        // $carpeta->numCarpeta = null;
-        // $carpeta->save();
-        //dd($carpeta);
-        //$carpeta->delete();
-        
-        //$carpeta->delete();
-
-        
         session()->forget('carpeta');
         session()->forget('preregistro');
         session()->forget('foliopreregistro');
@@ -713,8 +690,6 @@ class PreregistroAuxController extends Controller
          //dd($idCarpeta);
         //dd(session('carpeta'));
         
-
-
         Alert::info('Los datos del caso que inicio han sido borrados y el turno fue devuelto a la cola ', 'Turno devuelto');
         return redirect('registros');
        }
@@ -725,31 +700,31 @@ class PreregistroAuxController extends Controller
     }
 
     public function rfcMoral(Request $request)
-   {
-       $nombre = $request->nombre;
-       $dia    = $request->dia;
-       $mes    = $request->mes;
-       $ano    = $request->ano;
+    {
+        $nombre = $request->nombre;
+        $dia    = $request->dia;
+        $mes    = $request->mes;
+        $ano    = $request->ano;
 
-       $builder = new RfcBuilder();
+        $builder = new RfcBuilder();
 
-       $rfc = $builder->legalName($nombre)
-           ->creationDate($dia, $mes, $ano)
-           ->build()
-           ->toString();
-       return ['res' => $rfc];
-   }
+        $rfc = $builder->legalName($nombre)
+            ->creationDate($dia, $mes, $ano)
+            ->build()
+            ->toString();
+        return ['res' => $rfc];
+    }
 
-   public function rfcFisico(Request $request)
-   {
-       $builder = new RfcBuilder();
-       $rfc     = $builder->name($request->nombre)
-           ->firstLastName($request->apPaterno)
-           ->secondLastName($request->apMaterno)
-           ->birthday($request->dia, $request->mes, $request->año)
-           ->build()
-           ->toString();
+    public function rfcFisico(Request $request)
+    {
+        $builder = new RfcBuilder();
+        $rfc     = $builder->name($request->nombre)
+            ->firstLastName($request->apPaterno)
+            ->secondLastName($request->apMaterno)
+            ->birthday($request->dia, $request->mes, $request->año)
+            ->build()
+            ->toString();
 
-       return ['res' => $rfc];
-   }
+        return ['res' => $rfc];
+    }
 }

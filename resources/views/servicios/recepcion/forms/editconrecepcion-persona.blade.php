@@ -325,7 +325,8 @@
 
     });
 
-    $("#idEstado").focusout(function(event){
+
+    $("#idEstado").change(function(event){
         if(event.target.value!=""){
             $.get(route('get.municipio', event.target.value), function(response, estado){
                 $("#idMunicipio").empty();
@@ -334,12 +335,19 @@
                     $("#idMunicipio").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
                 }
             });
-
-            
+        }else{
+            $("#idMunicipio").empty();
+            $("#idMunicipio").append("<option value=''>Seleccione un municipio</option>");
+            $("#idLocalidad").empty();
+            $("#idLocalidad").append("<option value=''>Seleccione una localidad</option>");
+            $("#cp").empty();
+            $("#cp").append("<option value=''>Seleccione un código postal</option>");
+            $("#idColonia").empty();
+            $("#idColonia").append("<option value=''>Seleccione un colonia</option>");
         }
     });
 
-    $("#idMunicipio").focusout(function(event){
+    $("#idMunicipio").change(function(event){
         if(event.target.value!=""){
             $.get(route('get.localidad', event.target.value), function(response, municipio){
                 $("#idLocalidad").empty();
@@ -363,6 +371,13 @@
                 }
             });
 
+        }else{
+            $("#idLocalidad").empty();
+            $("#idLocalidad").append("<option value=''>Seleccione una localidad</option>");
+            $("#cp").empty();
+            $("#cp").append("<option value=''>Seleccione un código postal</option>");
+            $("#idColonia").empty();
+            $("#idColonia").append("<option value=''>Seleccione un colonia</option>");
         }
     });
 

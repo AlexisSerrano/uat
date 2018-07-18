@@ -20,11 +20,11 @@
             <div class="form-group">
                 <div class="col-12">
                     <label for="narracion" class="col-form-label-sm">Descripción de hechos</label>
-                    {!!Form::label('nombre',$preregistro->narracion ,['class'=> 'col-form-label-sm labelCambioNarracion'])!!}
+                    {!!Form::label('nombre',$preregistro->narracion ,['class'=> 'col-form-label-sm labelCambioNarracion hideLabels'])!!}
                     <div class="input-group inputOculto" id="inputNarracion">
-                        {{ Form::textarea('narracion', $preregistro->narracion, ['class'=>'form-control form-control-sm','size' => '30x5']) }}
+                        {{ Form::textarea('narracion', $preregistro->narracion, ['class'=>'form-control form-control-sm','size' => '30x5','style'=>'width:100% !important ']) }}
                         <!--textarea name="narracion" id="" cols="30" rows="10" class="form-control form-control-sm" ></textarea-->
-                        <input type="button" id="botonCambioNarracion" value="Cancelar" class="btn btn-sm btn-danger">
+                        
                     </div>
                 </div>
             </div>
@@ -35,6 +35,7 @@
             <a href="{{url('registros')}}" title="" class="btn btn-secondary">Regresar</a>
         </div>   
         <div class="text-right col">
+                <span id="editFields" class="btn  btn-secondary">Editar</span>
             <a href="{{ url('atender/'.$preregistro->id)}}" title="" class="btn btn-secondary">Atender</a>
             {!!Form::submit('Guardar',array('class' => 'btn btn-primary'))!!}
         
@@ -54,6 +55,8 @@
     
 @endsection
 @push('scripts')
+<script src="{{ asset('js/rfcMoral.js') }}"></script>
+
 {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script> --}}
 <script>
     // $(function () {
@@ -72,6 +75,23 @@
     // });
 
     $(document).ready(function(){
+
+
+        $("#editFields").click(function(){
+            if($("#editFields").html()=="Editar"){
+                $(".hideLabels").hide();
+                $(".inputOculto").show();
+                $("#editFields").addClass("btn-danger");
+                $("#editFields").html("Cancelar");
+            }else{
+                $(".hideLabels").show();
+                $(".inputOculto").hide();
+                $("#editFields").html("Editar");
+                $("#editFields").removeClass("btn-danger")                                
+            }          
+        });
+
+        /*
         //editar el campo al dar clic en el label de nombre
         $(".labelCambioNombre").click(function(){
             $('.labelCambioNombre').hide();
@@ -221,11 +241,11 @@
             $("#cp").prop('disabled', true);   
             $("#idColonia").prop('disabled', true);   
             
-        });
+        }); */
 
     });
 
-    $("#idEstado").focusout(function(event){
+    $("#idEstado").change(function(event){
         if(event.target.value!=""){
             $.get(route('get.municipio', event.target.value), function(response, estado){
                 $("#idMunicipio").empty();
@@ -234,12 +254,19 @@
                     $("#idMunicipio").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
                 }
             });
-
-            
+        }else{
+            $("#idMunicipio").empty();
+            $("#idMunicipio").append("<option value=''>Seleccione un municipio</option>");
+            $("#idLocalidad").empty();
+            $("#idLocalidad").append("<option value=''>Seleccione una localidad</option>");
+            $("#cp").empty();
+            $("#cp").append("<option value=''>Seleccione un código postal</option>");
+            $("#idColonia").empty();
+            $("#idColonia").append("<option value=''>Seleccione un colonia</option>");
         }
     });
 
-    $("#idMunicipio").focusout(function(event){
+    $("#idMunicipio").change(function(event){
         if(event.target.value!=""){
             $.get(route('get.localidad', event.target.value), function(response, municipio){
                 $("#idLocalidad").empty();
@@ -262,7 +289,13 @@
                     $("#cp").append("<option value='"+response[i].id+"'> "+response[i].codigoPostal+"</option>");
                 }
             });
-
+        }else{
+            $("#idLocalidad").empty();
+            $("#idLocalidad").append("<option value=''>Seleccione una localidad</option>");
+            $("#cp").empty();
+            $("#cp").append("<option value=''>Seleccione un código postal</option>");
+            $("#idColonia").empty();
+            $("#idColonia").append("<option value=''>Seleccione un colonia</option>");
         }
     });
 

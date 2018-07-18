@@ -69,7 +69,7 @@ class RegisterController extends Controller
 
     public function getFiscales(Request $request, $id){
         // dd($request);
-         if($request->ajax()){
+        if($request->ajax()){
             $fiscales = User::select('id', 'nombreC')
                 ->where('idUnidad', '=', $id)
                 ->where('id','!=',Auth::user()->id)
@@ -88,62 +88,41 @@ class RegisterController extends Controller
     }
     
     public function cambioRol(Request $request){
-    //dump('entra');
-     //   Alert::error('No tienes permiso de cambiarte a éste rol, comunícate con el centro de información.', 'Error');
+        //dump('entra');
+        //   Alert::error('No tienes permiso de cambiarte a éste rol, comunícate con el centro de información.', 'Error');
 
-     /*   if (Auth::user()->grupo=='orientador') {
-            $user=User::find(Auth::user()->id);
-            $user->grupo='recepcion';
-            $user->save();
-            return redirect(route('predenuncias.index'));    
+        $nombreRol = DB::table('roles')->where('id',$request->idRol)->select('name')->first();
+        $user = User::find(Auth::user()->id);
+        //  dd($nombreRol->name)
 
-        }
-        if (Auth::user()->grupo=='recepcion') {
-            $user=User::find(Auth::user()->id);
-            $user->grupo='orientador';
-            $user->save();
-            return redirect(route('indexcarpetas'));
-        }       
-
-        if(Auth::user()->grupo!='recepcion'&&Auth::user()->grupo!='orientador'){
-            return redirect('home');
-        }*/
-            $nombreRol = DB::table('roles')->where('id',$request->idRol)->select('name')->first();
-            $user = User::find(Auth::user()->id);
-          //  dd($nombreRol->name)
-
-            switch ($nombreRol->name) {
-                
-                case "recepcion":
-                     $gGrupo = $user->grecepcion; 
-                     RegisterController::validarGrupo($gGrupo,$request->idRol); 
-                     return redirect(route('predenuncias.index'));    
-
+        switch ($nombreRol->name) {
+            
+            case "recepcion":
+                $gGrupo = $user->grecepcion; 
+                RegisterController::validarGrupo($gGrupo,$request->idRol); 
+                return redirect(route('predenuncias.index'));    
+                break;
+            
+            case "orientador":
+                $gGrupo = $user->gorientador; 
+                RegisterController::validarGrupo($gGrupo,$request->idRol); 
+                return redirect(route('indexcarpetas'));   
+                break;
+            
+            case "facilitador":
+                $gGrupo = $user->gfacilitador; 
+                RegisterController::validarGrupo($gGrupo,$request->idRol); 
+                return redirect()->route('home');
+                break;
+            
+            case "coordinador":
+                $gGrupo = $user->gcoordinador;
+                RegisterController::validarGrupo($gGrupo,$request->idRol);
+                return redirect(route('indexcarpetas'));   
                 break;
                 
-                case "orientador":
-                    $gGrupo = $user->gorientador; 
-                    RegisterController::validarGrupo($gGrupo,$request->idRol); 
-                    return redirect(route('indexcarpetas'));   
-      
-                    break;
-                
-                    case "facilitador":
-                    $gGrupo = $user->gfacilitador; 
-                    RegisterController::validarGrupo($gGrupo,$request->idRol); 
-                    return redirect()->route('home');
-  
-                    break;
-               
-                case "coordinador":
-                    $gGrupo = $user->gcoordinador;
-                    RegisterController::validarGrupo($gGrupo,$request->idRol);
-                    return redirect(route('indexcarpetas'));   
-       
-                    break;
-            }
+        }
 
-         //   return redirect()->route('home');
     }
 
 
