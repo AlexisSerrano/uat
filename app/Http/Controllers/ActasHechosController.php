@@ -615,4 +615,29 @@ class ActasHechosController extends Controller
         }
         return $acta2;
     }
+
+    public function recuperar(Request $request){
+        $oficio = DB::table('oficios')
+        ->join('oficios_hechos', 'oficios.id','=','oficios_hechos.idOficio')
+        ->where('oficios.nombre', $request->tipo)
+        ->where('oficios_hechos.idTabla', $request->id)
+        ->select('html','token')
+        ->orderBy('oficios_hechos.id','desc')
+        ->first();
+        return response()->json($oficio);
+    }
+
+    public function recuperar_token(Request $request){
+        $oficio = DB::table('oficios')
+        ->join('oficios_hechos', 'oficios.id','=','oficios_hechos.idOficio')
+        ->where('oficios_hechos.token', $request->token)
+        ->select('html','token')
+        ->orderBy('oficios_hechos.id','desc')
+        ->first();
+        return response()->json($oficio);
+    }
+
+    public function getOficiosApp($token){
+        return view("servicios.actas.recuperar")->with('token',$token);
+    }
 }

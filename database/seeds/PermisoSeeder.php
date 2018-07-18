@@ -193,7 +193,10 @@ class PermisoSeeder extends Seeder
         Permission::create(['name' => 'lista_oficios']);
         Permission::create(['name' => 'filtro_actas_post']);
         Permission::create(['name' => 'filtro_actas_get']);
-   
+        Permission::create(['name' => 'getOficiosApp']);
+        Permission::create(['name' => 'recuperar_token']);
+        Permission::create(['name' => 'recuperar']);
+        
        
         //Creación de roles
         $coordinador = Role::create(['name' => 'coordinador']);
@@ -242,7 +245,7 @@ class PermisoSeeder extends Seeder
         'getpsico','getVh_periciales','get_lesion','show_ofFinanzas','getVhFinanzas','oficio_m','oficio_P','oficio_V',
         'oficio_L','oficio_impRobo','oficio_reporteRobo','vehiculo_carpeta','get_submarcas','get_tipovehiculos',
         'carpeta_vehiculo','getVh','delete_vehiculo','getVehiculoAjax','agregar_vehiculo','oficios','intentos',
-        'getOficios','getOficio','addOficio','updateOficio']);  
+        'getOficios','getOficio','addOficio','updateOficio','recuperar','recuperar_token','getOficiosApp']);  
 
         // Asignación de permisos a Rol de Recepción
         $recepcion->givePermissionTo(['post_showByfolio' ,'get_showByfolio','en_cola','urgentes',

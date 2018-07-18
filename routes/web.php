@@ -287,9 +287,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/folioActa', 'ActasHechosController@filtroActasPendientes')->name('filtroactapendiente')->middleware(['permission:filtroactapaciente']);
     
     /* --------Rutas para Actas circunstanciadas----------- */
-    Route::get('actacircunstanciada','ActaCircunstanciadaController@showform')->name('new.actacircunstanciada')->middleware(['permission:new_actacircunstanciada']);
-    Route::post('addactacircunstanciada','ActaCircunstanciadaController@addActaCirc')->name('addactaCirc')->middleware(['permission:addactaCirc']);
-    Route::get('getcircunstanciada/{id}','ActaCircunstanciadaController@getcircunstanciada')->name('getcircunstanciada')->middleware(['permission:getcincunstanciada']);
+    // Route::get('actacircunstanciada','ActaCircunstanciadaController@showform')->name('new.actacircunstanciada')->middleware(['permission:new_actacircunstanciada']);
+    // Route::post('addactacircunstanciada','ActaCircunstanciadaController@addActaCirc')->name('addactaCirc')->middleware(['permission:addactaCirc']);
+    // Route::get('getcircunstanciada/{id}','ActaCircunstanciadaController@getcircunstanciada')->name('getcircunstanciada')->middleware(['permission:getcincunstanciada']);
     
     /* --------Rutas para Libro de gobierno----------- */
     Route::get('libro','LibroGobController@terminadas')->name('libro.gobierno.terminadas')->middleware(['permission:libro_gobierno_terminadas']);
@@ -376,3 +376,11 @@ Route::get('listas/{id}', 'RegisterController@getListas')->name('get.listas');
 Route::get('fiscales/{id}', 'RegisterController@getFiscales')->name('get.fiscales');
 /********************generar pdf**********************************/
 Route::get('FormatoRegistro/{id}', 'PdfController@datos');
+
+/*nuevas componentes */
+Route::get('getOficiosApp/{token}','ActasHechosController@getOficiosApp')->name('getOficiosApp'); //sin middleware para pruebas
+Route::post('recuperar_token','ActasHechosController@recuperar_token')->name('recuperar_token');    //sin middleware para pruebas
+Route::post('recuperar','ActasHechosController@recuperar')->name('recuperar')->middleware(['permission:recuperar']);
+Route::get('actaCircunstanciada/{id}','ActaCircunstanciadaController@actaCircunstanciada')->name('actaCircunstanciada');
+Route::get('getcircunstanciada/{id}','ActaCircunstanciadaController@getcircunstanciada')->name('getcircunstanciada')->middleware(['permission:getcincunstanciada']);
+Route::get('showcircunstanciada','ActaCircunstanciadaController@showform')->name('new.actacircunstanciada')->middleware(['permission:new_actacircunstanciada']);
