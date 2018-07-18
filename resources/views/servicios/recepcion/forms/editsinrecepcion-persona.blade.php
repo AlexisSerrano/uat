@@ -299,6 +299,13 @@
             });
         }else{
             $("#idMunicipio").empty();
+            $("#idMunicipio").append("<option value=''>Seleccione un municipio</option>");
+            $("#idLocalidad").empty();
+            $("#idLocalidad").append("<option value=''>Seleccione una localidad</option>");
+            $("#cp").empty();
+            $("#cp").append("<option value=''>Seleccione un código postal</option>");
+            $("#idColonia").empty();
+            $("#idColonia").append("<option value=''>Seleccione un colonia</option>");
         }
     });
 
@@ -326,6 +333,13 @@
                 }
             });
 
+        }else{
+            $("#idLocalidad").empty();
+            $("#idLocalidad").append("<option value=''>Seleccione una localidad</option>");
+            $("#cp").empty();
+            $("#cp").append("<option value=''>Seleccione un código postal</option>");
+            $("#idColonia").empty();
+            $("#idColonia").append("<option value=''>Seleccione un colonia</option>");
         }
     });
 
