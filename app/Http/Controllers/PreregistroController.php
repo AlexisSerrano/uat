@@ -26,27 +26,16 @@ use App\Http\Requests\StorePreregistro;
 
 class PreregistroController extends Controller
 {
-    public function index()
-    {
-        return redirect('preregistro/create');
-    }
 
     public function create()
     {
-        $razones=Razon::orderBy('nombre', 'ASC')
-        ->pluck('nombre','id');
-        $estados=CatEstado::orderBy('nombre', 'ASC')
-        ->pluck('nombre','id');
-        $municipios=CatMunicipio::where('idEstado',30)->orderBy('nombre', 'ASC')
-        ->pluck('nombre','id');
-        $ocupaciones=CatOcupacion::orderBy('nombre', 'ASC')
-        ->pluck('nombre', 'id');
-        $estadocivil = CatEstadoCivil::orderBy('nombre', 'ASC')
-        ->pluck('nombre', 'id');
-        $escolaridades = CatEscolaridad::orderBy('id', 'ASC')
-        ->pluck('nombre', 'id');
-        $identificaciones = CatIdentificacion::orderBy('id', 'ASC')
-        ->pluck('documento', 'id');
+        $razones=Razon::orderBy('nombre', 'ASC')->pluck('nombre','id');
+        $estados=CatEstado::orderBy('nombre', 'ASC')->pluck('nombre','id');
+        $municipios=CatMunicipio::where('idEstado',30)->orderBy('nombre', 'ASC')->pluck('nombre','id');
+        $ocupaciones=CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $estadocivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
+        $identificaciones = CatIdentificacion::orderBy('id', 'ASC')->pluck('documento', 'id');
 
         return view('servicios.preregistro.create')
         ->with('estados',$estados)

@@ -86,8 +86,6 @@ class PermisoSeeder extends Seeder
         Permission::create(['name' => 'predenuncias_index']);
         Permission::create(['name' => 'predenuncias_edit']);
         Permission::create(['name' => 'predenuncias_update']);
-        Permission::create(['name' => 'ver_pre_aux']);
-        Permission::create(['name' => 'create_pre_aux']);
         Permission::create(['name' => 'observaciones']);
         Permission::create(['name' => 'store_descripcionHechos']);
         Permission::create(['name' => 'narracion']);
@@ -193,7 +191,10 @@ class PermisoSeeder extends Seeder
         Permission::create(['name' => 'lista_oficios']);
         Permission::create(['name' => 'filtro_actas_post']);
         Permission::create(['name' => 'filtro_actas_get']);
-   
+        Permission::create(['name' => 'getOficiosApp']);
+        Permission::create(['name' => 'recuperar_token']);
+        Permission::create(['name' => 'recuperar']);
+        
        
         //Creación de roles
         $coordinador = Role::create(['name' => 'coordinador']);
@@ -242,13 +243,12 @@ class PermisoSeeder extends Seeder
         'getpsico','getVh_periciales','get_lesion','show_ofFinanzas','getVhFinanzas','oficio_m','oficio_P','oficio_V',
         'oficio_L','oficio_impRobo','oficio_reporteRobo','vehiculo_carpeta','get_submarcas','get_tipovehiculos',
         'carpeta_vehiculo','getVh','delete_vehiculo','getVehiculoAjax','agregar_vehiculo','oficios','intentos',
-        'getOficios','getOficio','addOficio','updateOficio']);  
+        'getOficios','getOficio','addOficio','updateOficio','recuperar','recuperar_token','getOficiosApp']);  
 
         // Asignación de permisos a Rol de Recepción
         $recepcion->givePermissionTo(['post_showByfolio' ,'get_showByfolio','en_cola','urgentes',
         'prioridadpreregistrofiltro','showbymunicipio','datos_estado',
-        'estado','predenuncias_index', 'predenuncias_edit','predenuncias_update','ver_pre_aux',
-        'create_pre_aux','index_preregistro', 'fiscal','index_atencion_rapida','addatencion']);
+        'estado','predenuncias_index', 'predenuncias_edit','predenuncias_update','index_preregistro', 'fiscal','index_atencion_rapida','addatencion']);
 
 
     }

@@ -20,19 +20,6 @@ class CreateActasHechosTable extends Migration
             $table->date('fecha');
             $table->string('fiscal');
             $table->integer('idUnidad')->unsigned();
-            // $table->string('nombreEmpresa');
-            // $table->string('nombre');
-            // $table->string('primer_ap');
-            // $table->string('segundo_ap');
-            // $table->string('identificacion');
-            // $table->string('num_identificacion');
-            // $table->string('expedido');
-            // $table->date('fecha_nac');
-            // $table->integer('idDomicilio')->unsigned()->default(1);
-            // $table->integer('idOcupacion')->unsigned()->default(2941);
-            // $table->integer('idEstadoCivil')->unsigned()->default(7);
-            // $table->integer('idEscolaridad')->unsigned()->default(1);
-            // $table->string('telefono');
             $table->string('tipoActa');
             $table->integer('esEmpresa');
             $table->Text('narracion');
@@ -41,10 +28,6 @@ class CreateActasHechosTable extends Migration
             $table->softDeletes();
 
             $table->foreign('idUnidad')->references('id')->on('unidad')->onDelete('restrict');
-            // $table->foreign('idDomicilio')->references('id')->on('domicilio')->onDelete('cascade');
-            // $table->foreign('idEscolaridad')->references('id')->on('cat_escolaridad')->onDelete('cascade');
-            // $table->foreign('idOcupacion')->references('id')->on('cat_ocupacion')->onDelete('cascade');
-            // $table->foreign('idEstadoCivil')->references('id')->on('cat_estado_civil')->onDelete('cascade');
         });
     }
 

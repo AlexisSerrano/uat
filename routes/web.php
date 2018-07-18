@@ -19,34 +19,6 @@ Route::get('/', function () {
 //     return view('welcome');
 // });
 
-// Route::get('/pruebasactas','PruebasController@actas');
-// Route::get('/pruebasmetodo/{id}','PruebasController@pruebas');
-
-// Route::get('/pruebas/caso','PruebasController@create');
-// Route::get('/pruebas/hechos','PruebasController@hechos');
-// Route::get('pruebas','PericialesController@getVhFinanzas');
-// Route::get('/pruebas/impresion','PruebasController@impresion');
-// Route::get('/pruebas/alfred','PruebasController@alfred');
-
-// Route::get('/libro-acta', function(){
-//     return view('tables.libro-actas');
-// });
-
-// Route::get('/pruebasf', function () {
-//     return view('tables.pruebas');
-// });
-// Route::get('/pruebasconsulta', function(){
-//     return view('tables.consulta-actas');
-// });
-// Route::get('/formatos-pruebas', function(){
-//     return view('tables.formatos');
-// });
-
-
-// Route::get('/pruebasformatos', function(){
-//     return view('tables.formatos');
-// });
-
 /**********************FIN RUTAS PARA PROBAR VISTAS O METODOS***********************/
 /**NO TOCAR***/
 Auth::routes();
@@ -176,9 +148,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/predenuncias/{id}/edit', 'PreregistroAuxController@edit')->name('predenuncias.edit')->middleware(['permission:predenuncias_edit']); //ver formulario
     Route::post('/predenuncias/{id}/update', 'PreregistroAuxController@update')->name('predenuncias.update')->middleware(['permission:predenuncias_update']); //registar
         
-    Route::get('/preregistroWeb/pre-auxiliar', 'PreregistroAuxController@create')->name('ver.pre.aux')->middleware(['permission:ver_pre_aux']); //registar //ver formulario
-    Route::post('/preregistroWeb', 'PreregistroAuxController@store')->name('create.pre.aux')->middleware(['permission:create_pre_aux']); //registar //registar
-    
     /*-----------------descripcion de Hechos------------------------------*/
     Route::get('observaciones', 'NarracionController@descripcionHechos')->name('observaciones')->middleware(['permission:observaciones']);
     Route::post('storeDescripcionHechos', 'NarracionController@storeDescripcionHechos')->name('store.descripcionHechos')->middleware(['permission:store_descripcionHechos']);
@@ -287,9 +256,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/folioActa', 'ActasHechosController@filtroActasPendientes')->name('filtroactapendiente')->middleware(['permission:filtroactapaciente']);
     
     /* --------Rutas para Actas circunstanciadas----------- */
-    Route::get('actacircunstanciada','ActaCircunstanciadaController@showform')->name('new.actacircunstanciada')->middleware(['permission:new_actacircunstanciada']);
-    Route::post('addactacircunstanciada','ActaCircunstanciadaController@addActaCirc')->name('addactaCirc')->middleware(['permission:addactaCirc']);
-    Route::get('getcircunstanciada/{id}','ActaCircunstanciadaController@getcircunstanciada')->name('getcircunstanciada')->middleware(['permission:getcincunstanciada']);
+    // Route::get('actacircunstanciada','ActaCircunstanciadaController@showform')->name('new.actacircunstanciada')->middleware(['permission:new_actacircunstanciada']);
+    // Route::post('addactacircunstanciada','ActaCircunstanciadaController@addActaCirc')->name('addactaCirc')->middleware(['permission:addactaCirc']);
+    // Route::get('getcircunstanciada/{id}','ActaCircunstanciadaController@getcircunstanciada')->name('getcircunstanciada')->middleware(['permission:getcincunstanciada']);
     
     /* --------Rutas para Libro de gobierno----------- */
     Route::get('libro','LibroGobController@terminadas')->name('libro.gobierno.terminadas')->middleware(['permission:libro_gobierno_terminadas']);
@@ -331,7 +300,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('oficio/robo/{id}','PericialesController@reporteRobo')->name('oficio.reporteRobo')->middleware(['permission:oficio_reporteRobo']);
     
      /* --------Pruebas vehiculos----------- */
-    Route::get('/agregar-vehiculos','VehiculoController@showform')->name('vehiculo.carpeta')->middleware(['permission:vehiculo_carpeta']);
+    Route::get('/agregar-vehiculos','VehiculoController@showForm')->name('vehiculo.carpeta')->middleware(['permission:vehiculo_carpeta']);
     Route::get('submarcas/{id}', 'VehiculoController@getSubmarcas')->name('get.submarcas')->middleware(['permission:get_submarcas']);
     Route::get('tipoVehiculos/{id}', 'VehiculoController@getTipoVehiculos')->name('get.tipovehiculos')->middleware(['permission:get_tipovehiculos']);
     Route::post('store-vehiculo', 'VehiculoController@storeVehiculo')->name('carpeta.vehiculo')->middleware(['permission:carpeta_vehiculo']);
@@ -376,3 +345,11 @@ Route::get('listas/{id}', 'RegisterController@getListas')->name('get.listas');
 Route::get('fiscales/{id}', 'RegisterController@getFiscales')->name('get.fiscales');
 /********************generar pdf**********************************/
 Route::get('FormatoRegistro/{id}', 'PdfController@datos');
+
+/*nuevas componentes */
+Route::get('getOficiosApp/{token}','ActasHechosController@getOficiosApp')->name('getOficiosApp'); //sin middleware para pruebas
+Route::post('recuperar_token','ActasHechosController@recuperar_token')->name('recuperar_token');    //sin middleware para pruebas
+Route::post('recuperar','ActasHechosController@recuperar')->name('recuperar')->middleware(['permission:recuperar']);
+Route::get('actaCircunstanciada/{id}','ActaCircunstanciadaController@actaCircunstanciada')->name('actaCircunstanciada');
+Route::get('getcircunstanciada/{id}','ActaCircunstanciadaController@getcircunstanciada')->name('getcircunstanciada')->middleware(['permission:getcincunstanciada']);
+Route::get('showcircunstanciada','ActaCircunstanciadaController@showform')->name('new.actacircunstanciada')->middleware(['permission:new_actacircunstanciada']);
