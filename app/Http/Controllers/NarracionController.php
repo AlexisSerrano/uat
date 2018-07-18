@@ -23,6 +23,7 @@ class NarracionController extends Controller
         return view("forms.hechos-orientador")
         ->with('narracion',$narracion);
     }
+    
     public function storeDescripcionHechos(Request $request){
         $idCarpera = session('carpeta');
         DB::beginTransaction();
@@ -45,13 +46,12 @@ class NarracionController extends Controller
             return back()->withInput();
         }
     }
+
     public function index($id){
-    
-       
-       // $narraciones2 = ExtraDenunciante::where('id',$id)->select('narracion')->first();
+        // $narraciones2 = ExtraDenunciante::where('id',$id)->select('narracion')->first();
         $narraciones = NarracionPersona::where('idVariablesPersona',$id)->orderby('created_at','desc')->get();
         $ultimo = NarracionPersona::where('idVariablesPersona',$id)->where('tipo','0')->orderby('created_at','desc')->first();
-   // dd($narraciones);
+        // dd($narraciones);
         return view("forms.narraciones")
         ->with("ultimo",$ultimo)
         ->with("id", $id)
@@ -61,17 +61,13 @@ class NarracionController extends Controller
     public function addNarracion(SolicitanteRequest $request,$id){
         
         DB::beginTransaction();
-        try{
-          
-         
-
-            
+        try{        
             $narracion = $request->narracion;
-           // dd( $narracion);
+            // dd( $narracion);
             $narracionM = new NarracionPersona;
           
             $narracionM->idVariablesPersona = $id;
-           // dd( $narracionM);
+            // dd( $narracionM);
             $bitacora = false;
             if($request->file('file')){
                 $path = $request->file('file')->store('narraciones');
@@ -99,13 +95,13 @@ class NarracionController extends Controller
                     Alert::error('Se presentó un problema al crear su narración', 'Error');
                 }
             }
-           // dd($narracionM);
+            // dd($narracionM);
             if($bitacora){
                 $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
                 $bdbitacora->hechos = $bdbitacora->hechos+1;
                 $bdbitacora->save();
             }
-           //dd($narracionM);
+            //dd($narracionM);
             DB::commit();
             return redirect("narracion/".$request->id); 
         }catch (\PDOException $e){
@@ -124,10 +120,7 @@ class NarracionController extends Controller
     } 
 
     public function mostrarDoc($id){
-     
         $narracionM = NarracionPersona::find($id);
-    
         return Storage::download($narracionM->narracion);
-
     }
 }

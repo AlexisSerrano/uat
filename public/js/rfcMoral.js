@@ -2,6 +2,11 @@ $("#nombres2").focusout(function() {
 	obtenerRFC();
 });
 
+$("#nombres").focusout(function() {
+	console.log("generar RFC");
+	obtenerRFC();
+});
+
 $("#fechaAltaEmpresa").change(function() {
 	obtenerRFC();
 });
@@ -17,8 +22,14 @@ function obtenerRFC(){
 
 	console.log('entra ajax');
 
-	nombre = $("#nombres2").val();
+	if($("#nombres").val()){
+		nombre = $("#nombres").val();
+	}else{
+		nombre = $("#nombres2").val();
+	}	
+	
 	fecha = $("#fechaAltaEmpresa").val();
+	
 		
 	
     dia = fecha.substr(8, 2);
@@ -33,7 +44,7 @@ function obtenerRFC(){
 	console.log(dia);
 	console.log(mes);
 	console.log(ano);
-
+ 
 	ruta= route('rfc.moral');
 	$.ajax({
 		type: "POST",
@@ -59,8 +70,10 @@ function obtenerRFC(){
 
 			rfc=rfcSH.join("");
             homo=homoC.join("");
-            $("#rfc1").val(rfc);
-            $("#homo1").val(homo);
+			$("#rfc1").val(rfc);
+			$("#rfc2").val(rfc);
+			$("#homo1").val(homo);
+			$("#homo2").val(homo);
 
 			// if($("#rfc1").val() == "" || $("#homo1").val() == ""){
 			// 	if($("#fechaAltaEmpresa").val() != "" ){
