@@ -210,8 +210,8 @@ class PreregistroAuxController extends Controller
                     $preregistro->fechaNac = $request->fechaNacimiento;
                 }
                 $preregistro->edad = $edad;
-                if (!is_null($request->rfc2)){
-                    $preregistro->rfc = $request->rfc2;
+                if (!is_null($request->rfc2) && !is_null($request->homo2) ){
+                    $preregistro->rfc = $request->rfc2.$request->homo2;
                 }
                 $preregistro->curp = $request->curp;
                 if (!is_null($request->sexo)){
