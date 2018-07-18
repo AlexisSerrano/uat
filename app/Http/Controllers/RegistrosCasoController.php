@@ -275,7 +275,7 @@ class RegistrosCasoController extends Controller
             
             $preregistro =Preregistro::find($idDireccion);
             $preregistro->esEmpresa = 1;    
-            $preregistro->nombre = $request->nombres;
+            $preregistro->nombre = $request->nombres2;
             $preregistro->idDireccion = $idD1;
             $preregistro->rfc = $request->rfc2.$request->homo2;
             $preregistro->representanteLegal = $request->repLegal;
