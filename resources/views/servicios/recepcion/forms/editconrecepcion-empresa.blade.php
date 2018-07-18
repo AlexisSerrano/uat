@@ -79,6 +79,8 @@
 @endsection
 
 @push('scripts')
+<script src="{{ asset('js/rfcMoral.js') }}"></script>
+
 <script>
     $(document).ready(function(){        
         

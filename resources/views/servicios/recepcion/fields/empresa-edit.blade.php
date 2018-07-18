@@ -48,13 +48,26 @@
 				</div>
 			</div>
 
+			<!--Fecha creación de la empresa-->
+			<div class="col-3">
+					<div class="form-group">
+						{!! Form::label('fechaAltaEmpresa', 'Fecha de alta de la empresa: ', ['class' => 'col-form-label-sm hideLabels']) !!}
+						{!!Form::label('nombre',$preregistro->fechaNac ,['class'=> 'col-form-label-sm hideLabels'])!!}
+						<div class="input-group inputOculto" id="inputFechaNac">
+							{!! Form::label('fechaAltaEmpresa', 'Fecha de nacimiento: ', ['class' => 'col-form-label-sm']) !!}							
+							{!! Form::date('fechaAltaEmpresa', $preregistro->fechaNac, ['class' => 'form-control form-control-sm', 'data-target' => '#fechanac', 'required']) !!}					
+						</div>
+						<div class="help-block with-errors"></div>	
+					</div>
+				</div>
+
 		<!--RFC-->
 		<div class="col-2">
 			<div class="form-group">
 				{!! Form::label('rfc', 'R.F.C.: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 				{!!Form::label('nombre',$preregistro->rfc ,['class'=> 'col-form-label-sm hideLabels'])!!}
 				<div class="input-group inputOculto" id="inputRfc">
-						{!! Form::label('rfc', 'R.F.C.: ', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::label('rfc', 'R.F.C.: ', ['class' => 'col-form-label-sm']) !!}
 					{!! Form::text('rfc', $preregistro->rfc, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el R.F.C.', 'required']) !!}					
 				</div>
 				<div class="help-block with-errors"></div>

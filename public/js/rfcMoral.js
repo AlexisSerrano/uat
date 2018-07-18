@@ -2,6 +2,10 @@ $("#nombres2").focusout(function() {
 	obtenerRFC();
 });
 
+$("#nombres").focusout(function() {
+	obtenerRFC();
+});
+
 $("#fechaAltaEmpresa").change(function() {
 	obtenerRFC();
 });
@@ -33,7 +37,7 @@ function obtenerRFC(){
 	console.log(dia);
 	console.log(mes);
 	console.log(ano);
-
+ 
 	ruta= route('rfc.moral');
 	$.ajax({
 		type: "POST",
@@ -59,7 +63,8 @@ function obtenerRFC(){
 
 			rfc=rfcSH.join("");
             homo=homoC.join("");
-            $("#rfc1").val(rfc);
+			$("#rfc1").val(rfc);
+			$("#rfc").val(rfc);
             $("#homo1").val(homo);
 
 			// if($("#rfc1").val() == "" || $("#homo1").val() == ""){
