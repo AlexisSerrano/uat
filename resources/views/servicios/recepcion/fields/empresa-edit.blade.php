@@ -103,7 +103,7 @@
 				{!!Form::label('nombre',$nombreEstado ,['class'=> 'col-form-label-sm hideLabels'])!!}
 				<div class="input-group inputOculto" id="inputDireccionEstado">
 					{!! Form::label('idEstado', 'Entidad federativa: ', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idEstado', $estados, $idEstadoSelect, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required','disabled']) !!}
+					{!! Form::select('idEstado', $estados, $idEstadoSelect, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
 				</div>
 			</div>
 		</div>
@@ -113,7 +113,7 @@
 				{!!Form::label('nombre',$nombreMunicipio ,['class'=> 'col-form-label-sm hideLabels'])!!}
 				<div class="input-group inputOculto" id="inputDireccionMunicipio">
 					{!! Form::label('idMunicipio', 'Municipio: ', ['class' => 'col-form-label-sm ']) !!}
-					{!! Form::select('idMunicipio', $catMunicipios, $idMunicipioSelect, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
+					{!! Form::select('idMunicipio', $catMunicipios, $idMunicipioSelect, ['class' => 'form-control form-control-sm', 'required']) !!}
 				</div>
 			</div>
 		</div>
@@ -124,7 +124,7 @@
 				{!!Form::label('nombre',$nombreLocalidad ,['class'=> 'col-form-label-sm hideLabels'])!!}
 				<div class="input-group inputOculto" id="inputDireccionLocalidad">
 						{!! Form::label('idLocalidad', 'Localidad: ', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idLocalidad', $catLocalidades, $idLocalidadSelect, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
+					{!! Form::select('idLocalidad', $catLocalidades, $idLocalidadSelect, ['class' => 'form-control form-control-sm', 'required']) !!}
 				</div>
 			</div>
 		</div>
@@ -136,7 +136,7 @@
 				{!!Form::label('nombre',$nombreCP ,['class'=> 'col-form-label-sm hideLabels'])!!}
 				<div class="input-group inputOculto" id="inputDireccionCp">
 						{!! Form::label('cp', 'Código postal :', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('cp', $catCodigoPostal, $idCodigoPostalSelect, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}
+					{!! Form::select('cp', $catCodigoPostal, $idCodigoPostalSelect, ['class' => 'form-control form-control-sm', 'required']) !!}
 				</div>
 			</div>
 		</div>
@@ -148,7 +148,7 @@
 				{!!Form::label('nombre',$nombreColonia ,['class'=> 'col-form-label-sm hideLabels'])!!}
 				<div class="input-group inputOculto" id="inputDireccionColonia">
 						{!! Form::label('idColonia', 'Colonia: ', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idColonia', $catColonias, $idColoniaSelect, ['class' => 'form-control form-control-sm', 'required','disabled']) !!}					
+					{!! Form::select('idColonia', $catColonias, $idColoniaSelect, ['class' => 'form-control form-control-sm', 'required']) !!}					
 				</div>
 			</div>
 		</div>
