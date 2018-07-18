@@ -323,6 +323,10 @@
             
         }); */
 
+        $("#docIdentificacion").change(function(event){
+            $("#numDocIdentificacion").val('');
+        });
+
     });
 
 
@@ -361,6 +365,7 @@
         }else{
             limpiarDomicilioSel(2);
         }
+
     });
 
     function limpiarDomicilioSel(idSelChanged){

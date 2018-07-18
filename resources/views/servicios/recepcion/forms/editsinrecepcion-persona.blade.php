@@ -283,7 +283,9 @@
             $("#idColonia").prop('disabled', true);   
             
         });*/
-
+        $("#docIdentificacion").change(function(event){
+            $("#numDocIdentificacion").val('');
+        });
     });
 
     $("#idEstado").change(function(event){
