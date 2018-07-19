@@ -2,7 +2,7 @@
 @section('title', 'Agregar denuncia')
 @section('content')
 @include('fields.buttons-navegacion')
-@include('fields.botonborrar')
+
 <br>
 @include('fields.errores')
     {!! Form::open(['route' => 'store.acusacion', 'method' => 'POST', 'id'=>'form'])  !!}

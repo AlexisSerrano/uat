@@ -3,7 +3,7 @@
 @section('title', 'Agregar Defensa')
 @section('content')
 	@include('fields.buttons-navegacion')
-	@include('fields.botonborrar')
+	
 	<br>
     
 	{!! Form::open(['route' => 'store.defensa', 'method' => 'POST', 'id'=>'form'])  !!}
