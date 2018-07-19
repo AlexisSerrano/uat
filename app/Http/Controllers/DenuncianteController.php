@@ -35,27 +35,9 @@ class DenuncianteController extends Controller
         $idCarpeta=session('carpeta');
         $casoNuevo = Carpeta::where('id', $idCarpeta)->get();
         if(count($casoNuevo)>0){ 
-            $denunciantes = CarpetaController::getDenunciantes($idCarpeta);
-            $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
-            $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $municipios=CatMunicipio::where('idEstado',30)->orderBy('nombre', 'ASC')->pluck('nombre','id');
-            $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $etnias = CatEtnia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $lenguas = CatLengua::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $religiones = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $denunciantes = CarpetaController::getDenunciantes(session('numCarpeta'));
             return view('forms.denunciante')->with('idCarpeta', $idCarpeta)
-                ->with('denunciantes', $denunciantes)
-                ->with('escolaridades', $escolaridades)
-                ->with('estados', $estados)
-                ->with('estadoscivil', $estadoscivil)
-                ->with('municipios', $municipios)
-                ->with('etnias', $etnias)
-                ->with('lenguas', $lenguas)
-                ->with('nacionalidades', $nacionalidades)
-                ->with('ocupaciones', $ocupaciones)
-                ->with('religiones', $religiones);
+                ->with('denunciantes', $denunciantes);
         }
         else{
             return redirect(route('home'));
