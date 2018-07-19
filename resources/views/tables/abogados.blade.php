@@ -29,7 +29,7 @@
                         <i class="fa fa-times"></i></td>  --}}
                         <td> 
 	                        @if(is_null(session('terminada')))
-                            <a data-abogado-id={{$abogado->id}} title="Eliminar abogado" class="deleteBtn btn btn-secondary btn-simple btn-xs">
+                            <a data-abogado-id={{$abogado->idApariciones}} title="Eliminar abogado" class="deleteBtn btn btn-secondary btn-simple btn-xs">
                                 <i class="fa fa-times"></i>
                             </a>
                         	@endif             
