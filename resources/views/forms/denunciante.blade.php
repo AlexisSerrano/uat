@@ -1,7 +1,3 @@
-{{-- @php
-$form = oldFormDenunciante();
-@endphp --}}
-
 @extends('template.form')
 
 @section('title', 'Agregar víctima u ofendido')
@@ -10,9 +6,6 @@ $form = oldFormDenunciante();
 @include('fields.errores')
 
 <div id="page-content-wrapper">
-
-{!!Form::open(['route' => 'store.denunciante', 'method' => 'POST', 'id'=>'form'])!!}
-
 @include('fields.buttons-navegacion')
 
 	<div class="col-md-12">
@@ -24,7 +17,4 @@ $form = oldFormDenunciante();
 		</div>
 	</div>
 </div>
-
-{!!Form::close()!!}
-
 @endsection
