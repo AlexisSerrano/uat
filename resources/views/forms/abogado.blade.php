@@ -10,7 +10,7 @@
 
 	<div class="col-md-12">
 		<div id="app" style="background-color:#fff">
-				<registro :sistema="'uat'" :tipo="'abogado'" usuario="{{Auth::user()->id}}" carpeta="xxx"></registro>
+				<registro :sistema="'uat'" :tipo="'abogado'" usuario="{{Auth::user()->id}}" carpeta="{{session('numCarpeta')}}"></registro>
 		</div>
 		<div>
 			@include('tables.abogados')
