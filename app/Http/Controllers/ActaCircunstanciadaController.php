@@ -323,7 +323,7 @@ class ActaCircunstanciadaController extends Controller
         $data = array('estado' => $variable->nombreEstado, 
         'unidadMunicipio' => strtr(($localidad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
         'municipio' => strtr(($variable->nombreMunicipio),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),   
-        'localidad' =>strtr(($variable->nombreLocalidad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
+        'localidad' =>strtr(($localidad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
         'colonia' => strtr(($variable->nombreColonia),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'calle' =>strtr(($variable->calle),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
         'cp' => $variable->cp,
@@ -347,6 +347,7 @@ class ActaCircunstanciadaController extends Controller
         'img' => asset('img/logo.png'),
         'municipioOrigen' => $origen->municipioOrigen,
         'estadoOrigen' => $origen->estadoOrigen,
+        'unidad'=>$unidad->descripcion,
         'id' => $id);
         return response()->json($data);
     }
