@@ -411,6 +411,7 @@ class ActasHechosController extends Controller
         'comp_pf.fechaNacimiento as fecha_nac', 'comp_vpf.telefono as telefono', 
         'comp_pf.nombres as nombrePersona','comp_pf.primerAp as primer_ap',
         'comp_pf.segundoAp as segundo_ap','comp_pf.idMunicipioOrigen as idMunicipioOrigen',
+        'comp_ci.id as identificacion1',
         'comp_ci.documento as identificacion', 'comp_vpf.numDocIdentificacion as num_identificacion',
         'comp_cc.codigoPostal as cp','uat_ah.idUnidad as idUnidad','uat_ah.fecha as fecha','uat_ah.folio as folio',
         'uat_ah.tipoActa as tipoActa','uat_ah.hora as hora','uat_ah.fiscal as fiscal','uat_ah.narracion as narracion')
@@ -490,7 +491,7 @@ class ActasHechosController extends Controller
         'escolaridad' => strtr(($variable->nombreEscolaridad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),  
         'telefono' => $variable->telefono,
         'narracion' => strtr(($variable->narracion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-        'expedido' => strtr((ActasHechosController::getExpedido($variable->identificacion)),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'expedido' => strtr((ActasHechosController::getExpedido($variable->identificacion1)),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'edad' => $edad,
         'img' => asset('img/logo.png'),
         'municipioOrigen' => $origen->municipioOrigen,
@@ -530,6 +531,7 @@ class ActasHechosController extends Controller
         'variables_persona_moral.primerApRep as primerApRep',
         'variables_persona_moral.segundoApRep as segundoApRep',
         'cat_identificacion.id as documento',
+        'cat_identificacion.documento as documento1',
         'variables_persona_moral.numDocIdentificacion as numDocIdentificacion')
         ->first();
         $unidad = DB::table('unidad')->where('id',$acta->idUnidad)->first();
@@ -565,7 +567,7 @@ class ActasHechosController extends Controller
             'fiscal' => strtr(strtoupper($acta->fiscal),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'nombre' =>strtr(($variable->nombreRep." ".$variable->primerApRep." ".$variable->segundoApRep),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'nombreEmpresa' =>strtr(($variable->nombreEmpresa),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-            'identificacion' => strtr(($variable->documento),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+            'identificacion' => strtr(($variable->documento1),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'numIdentificacion' => $variable->numDocIdentificacion,
             'fechaNacimiento' => strtr(strtoupper($fechanachum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'telefono' => $variable->telefono,
