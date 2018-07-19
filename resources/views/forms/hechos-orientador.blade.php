@@ -20,7 +20,7 @@
 
 
 @include('fields.buttons-navegacion')
-@include('fields.botonborrar')
+
 
 
 {{-- <div class="card"> --}}

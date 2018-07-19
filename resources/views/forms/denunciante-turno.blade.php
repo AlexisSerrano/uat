@@ -9,7 +9,7 @@
   
 <div id="page-content-wrapper">
 
-		@include('fields.botonborrar')
+		
  <span class="datotip" id="{{$tipopersona}}"></span> 	 
 	
 	<div class="col-md-12">
