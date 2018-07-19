@@ -34,29 +34,9 @@ class DenunciadoController extends Controller
         $idCarpeta=session('carpeta');
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();
         if(count($carpetaNueva)>0){ 
-            $denunciados = CarpetaController::getDenunciados($idCarpeta);
-            $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
-            $municipios=CatMunicipio::where('idEstado',30)->orderBy('nombre', 'ASC')->pluck('nombre','id');
-            $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $etnias = CatEtnia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $lenguas = CatLengua::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $puestos = CatPuesto::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $religiones = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+            $denunciados = CarpetaController::getDenunciados(session('numCarpeta'));
             return view('forms.denunciado')->with('idCarpeta', $idCarpeta)
-                ->with('denunciados', $denunciados)
-                ->with('escolaridades', $escolaridades)
-                ->with('estados', $estados)
-                ->with('estadoscivil', $estadoscivil)
-                ->with('municipios', $municipios)
-                ->with('etnias', $etnias)
-                ->with('lenguas', $lenguas)
-                ->with('nacionalidades', $nacionalidades)
-                ->with('ocupaciones', $ocupaciones)
-                ->with('puestos', $puestos)
-                ->with('religiones', $religiones);
+                ->with('denunciados', $denunciados);
         }else{
             return redirect()->route('home');
         }

@@ -298,6 +298,7 @@ class CarpetaController extends Controller
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN sexo.nombre ELSE "NO APLICA" END) AS sexo'),//'persona.sexo', 
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN variables_fisica.telefono ELSE variables_fisica.telefono END) AS telefono'))//'variables_persona.telefono')
             ->where('apariciones.idCarpeta', '=', $id)
+            ->where('apariciones.tipoInvolucrado', '=', 'denunciante')
             ->get();
         return $denunciantes;
     }
@@ -316,12 +317,39 @@ class CarpetaController extends Controller
     }
 
     public static function getDenunciados($id){
-        $denunciados = DB::table('extra_denunciado')
-            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->select('extra_denunciado.alias','extra_denunciado.idVariablesPersona','extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'persona.esEmpresa', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
-            ->where('variables_persona.idCarpeta', '=', $id)
-            ->get();
+        // $denunciados = DB::table('extra_denunciado')
+        //     ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
+        //     ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+        //     ->select('extra_denunciado.alias','extra_denunciado.idVariablesPersona','extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'persona.esEmpresa', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
+        //     ->where('variables_persona.idCarpeta', '=', $id)
+        //     ->get();
+        $denunciados = DB::table('componentes.apariciones as apariciones')
+        ->leftJoin('componentes.variables_persona_fisica as variables_fisica', 'variables_fisica.id', '=', 'apariciones.idVarPersona')
+        ->leftJoin('componentes.variables_persona_moral as variables_moral', 'variables_moral.id', '=', 'apariciones.idVarPersona')
+        ->leftJoin('componentes.extra_denunciado_fisico as extras_fisica', 'variables_fisica.id', '=', 'extras_fisica.idVariablesPersona')
+        ->leftJoin('componentes.extra_denunciado_moral as extras_moral', 'variables_moral.id', '=', 'extras_moral.idVariablesPersona')
+        ->leftJoin('componentes.persona_fisica as persona_fisica', 'persona_fisica.id', '=', 'variables_fisica.idPersona')
+        ->leftJoin('componentes.sexos as sexo', 'sexo.id', '=', 'persona_fisica.sexo')
+        ->leftJoin('componentes.persona_moral as persona_moral', 'persona_moral.id', '=', 'variables_moral.idPersona')
+        ->select(
+            // 'apariciones.id AS idaparicion',//'extra_denunciado.alias',
+            DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN extras_fisica.alias ELSE "NO APLICA" END) AS alias'),//'extra_denunciado.alias',
+            DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN extras_fisica.idVariablesPersona ELSE extras_moral.idVariablesPersona END) AS idVariablesPersona'),//'extra_denunciado.idVariablesPersona',
+            DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN extras_fisica.id ELSE extras_moral.id END) AS id'),//'extra_denunciado.id',
+            DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.nombres ELSE persona_moral.nombre END) AS nombres'),//'persona.nombres', 
+            DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.primerAp ELSE "" END) AS primerAp'),//'persona.primerAp', 
+            DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.segundoAp ELSE "" END) AS segundoAp'),//'persona.segundoAp', 
+            DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN ifnull(persona_fisica.rfc,"SIN INFORMACION") ELSE persona_moral.rfc END) AS rfc'),//'persona.rfc',
+            'apariciones.esEmpresa AS esEmpresa',//'persona.esEmpresa', 
+            DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN variables_fisica.edad ELSE "NO APLICA" END) AS edad'),//'variables_persona.edad', 
+            DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN ifnull(sexo.nombre,"SIN INFORMACION") ELSE "NO APLICA" END) AS sexo'),//'persona.sexo', 
+            DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN ifnull(variables_fisica.telefono,"SIN INFORMACION") ELSE ifnull(variables_fisica.telefono,"SIN INFORMACION") END) AS telefono')//'variables_persona.telefono')
+            )
+        ->where('apariciones.idCarpeta', '=', $id)
+        ->where('apariciones.tipoInvolucrado', '!=', 'denunciante')
+        ->where('apariciones.tipoInvolucrado', '!=', 'abogado')
+        ->where('apariciones.tipoInvolucrado', '!=', 'autoridad')
+        ->get();
         return $denunciados;
     }
 
