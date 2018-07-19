@@ -387,39 +387,67 @@ class ActasHechosController extends Controller
     }
 
     public function getoficioah($id){
-        $acta = ActasHechos::find($id);
-        $variable = DB::connection('componentes')->table('variables_persona_fisica')
-        ->join('persona_fisica','variables_persona_fisica.idPersona','=','persona_fisica.id')
-        ->join('cat_ocupacion','variables_persona_fisica.idOcupacion','=','cat_ocupacion.id')
-        ->join('cat_estado_civil','variables_persona_fisica.idEstadoCivil','=','cat_estado_civil.id')
-        ->join('cat_escolaridad','variables_persona_fisica.idEscolaridad','=','cat_escolaridad.id')
-        ->join('domicilio','variables_persona_fisica.idDomicilio','=','domicilio.id')
-        ->join('cat_municipio','domicilio.idMunicipio','=','cat_municipio.id')
-        ->join('cat_localidad','domicilio.idLocalidad','=','cat_localidad.id')
-        ->join('cat_colonia','domicilio.idColonia','=','cat_colonia.id')
-        ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')
-        ->join('cat_identificacion','variables_persona_fisica.docIdentificacion','=','cat_identificacion.id')
-        ->where('variables_persona_fisica.id',$acta->varPersona)
-        ->select('cat_ocupacion.nombre as nombreOcupacion',
-        'cat_estado_civil.nombre as nombreEstadoCivil',
-        'cat_escolaridad.nombre as nombreEscolaridad',
-        'cat_municipio.nombre as nombreMunicipio',
-        'cat_localidad.nombre as nombreLocalidad',
-        'cat_colonia.nombre as nombreColonia',
-        'cat_estado.nombre as nombreEstado',
-        'domicilio.numInterno as numInterno', 'domicilio.numExterno as numExterno', 'domicilio.calle as calle',
-        'persona_fisica.fechaNacimiento as fecha_nac', 'variables_persona_fisica.telefono as telefono', 
-        'persona_fisica.nombres as nombrePersona','persona_fisica.primerAp as primer_ap',
-        'persona_fisica.segundoAp as segundo_ap','persona_fisica.idMunicipioOrigen as idMunicipioOrigen',
-        'cat_identificacion.documento as identificacion', 'variables_persona_fisica.numDocIdentificacion as num_identificacion',
-        'cat_colonia.codigoPostal as cp')
+        $variable = DB::table('uat.actas_hechos as uat_ah')
+        ->join('componentes.variables_persona_fisica as comp_vpf','uat_ah.varPersona','=','comp_vpf.id')
+        ->join('componentes.persona_fisica as comp_pf','comp_vpf.idPersona','=','comp_pf.id')
+        ->join('componentes.cat_ocupacion as comp_co','comp_vpf.idOcupacion','=','comp_co.id')
+        ->join('componentes.cat_estado_civil as comp_cec','comp_vpf.idEstadoCivil','=','comp_cec.id')
+        ->join('componentes.cat_escolaridad as comp_ce','comp_vpf.idEscolaridad','=','comp_ce.id')
+        ->join('componentes.domicilio as comp_d','comp_vpf.idDomicilio','=','comp_d.id')
+        ->join('componentes.cat_municipio as comp_cm','comp_d.idMunicipio','=','comp_cm.id')
+        ->join('componentes.cat_localidad as comp_cl','comp_d.idLocalidad','=','comp_cl.id')
+        ->join('componentes.cat_colonia as comp_cc','comp_d.idColonia','=','comp_cc.id')
+        ->join('componentes.cat_estado as comp_ces','comp_cm.idEstado','=','comp_ces.id')
+        ->join('componentes.cat_identificacion as comp_ci','comp_vpf.docIdentificacion','=','comp_ci.id')
+        ->where('uat_ah.id',$id)
+        ->select('comp_co.nombre as nombreOcupacion',
+        'comp_cec.nombre as nombreEstadoCivil',
+        'comp_ce.nombre as nombreEscolaridad',
+        'comp_cm.nombre as nombreMunicipio',
+        'comp_cl.nombre as nombreLocalidad',
+        'comp_cc.nombre as nombreColonia',
+        'comp_ces.nombre as nombreEstado',
+        'comp_d.numInterno as numInterno', 'comp_d.numExterno as numExterno', 'comp_d.calle as calle',
+        'comp_pf.fechaNacimiento as fecha_nac', 'comp_vpf.telefono as telefono', 
+        'comp_pf.nombres as nombrePersona','comp_pf.primerAp as primer_ap',
+        'comp_pf.segundoAp as segundo_ap','comp_pf.idMunicipioOrigen as idMunicipioOrigen',
+        'comp_ci.documento as identificacion', 'comp_vpf.numDocIdentificacion as num_identificacion',
+        'comp_cc.codigoPostal as cp','uat_ah.idUnidad as idUnidad','uat_ah.fecha as fecha','uat_ah.folio as folio',
+        'uat_ah.tipoActa as tipoActa','uat_ah.hora as hora','uat_ah.fiscal as fiscal','uat_ah.narracion as narracion')
         ->first();
+        // $acta = ActasHechos::find($id);
+        // $variable = DB::connection('componentes')->table('variables_persona_fisica')
+        // ->join('persona_fisica','variables_persona_fisica.idPersona','=','persona_fisica.id')
+        // ->join('cat_ocupacion','variables_persona_fisica.idOcupacion','=','cat_ocupacion.id')
+        // ->join('cat_estado_civil','variables_persona_fisica.idEstadoCivil','=','cat_estado_civil.id')
+        // ->join('cat_escolaridad','variables_persona_fisica.idEscolaridad','=','cat_escolaridad.id')
+        // ->join('domicilio','variables_persona_fisica.idDomicilio','=','domicilio.id')
+        // ->join('cat_municipio','domicilio.idMunicipio','=','cat_municipio.id')
+        // ->join('cat_localidad','domicilio.idLocalidad','=','cat_localidad.id')
+        // ->join('cat_colonia','domicilio.idColonia','=','cat_colonia.id')
+        // ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')
+        // ->join('cat_identificacion','variables_persona_fisica.docIdentificacion','=','cat_identificacion.id')
+        // ->where('variables_persona_fisica.id',$acta->varPersona)
+        // ->select('cat_ocupacion.nombre as nombreOcupacion',
+        // 'cat_estado_civil.nombre as nombreEstadoCivil',
+        // 'cat_escolaridad.nombre as nombreEscolaridad',
+        // 'cat_municipio.nombre as nombreMunicipio',
+        // 'cat_localidad.nombre as nombreLocalidad',
+        // 'cat_colonia.nombre as nombreColonia',
+        // 'cat_estado.nombre as nombreEstado',
+        // 'domicilio.numInterno as numInterno', 'domicilio.numExterno as numExterno', 'domicilio.calle as calle',
+        // 'persona_fisica.fechaNacimiento as fecha_nac', 'variables_persona_fisica.telefono as telefono', 
+        // 'persona_fisica.nombres as nombrePersona','persona_fisica.primerAp as primer_ap',
+        // 'persona_fisica.segundoAp as segundo_ap','persona_fisica.idMunicipioOrigen as idMunicipioOrigen',
+        // 'cat_identificacion.documento as identificacion', 'variables_persona_fisica.numDocIdentificacion as num_identificacion',
+        // 'cat_colonia.codigoPostal as cp')
+        // ->first();
         $origen = DB::connection('componentes')->table('cat_municipio')
         ->join('cat_estado','cat_municipio.idEstado','=','cat_estado.id')
         ->where('cat_municipio.id',$variable->idMunicipioOrigen)
         ->select('cat_municipio.nombre as municipioOrigen','cat_estado.nombre as estadoOrigen')
         ->first();
-        $unidad = DB::table('unidad')->where('id',$acta->idUnidad)->first();
+        $unidad = DB::table('unidad')->where('id',$variable->idUnidad)->first();
         $arr = explode(" ",$unidad->descripcion);
         $aux=9;
         $localidad="";
@@ -433,7 +461,7 @@ class ActasHechosController extends Controller
         else{
             $numExterno = $variable->numExterno.' INTERIOR '.$variable->numInterno;
         }
-        $fechaactual = new Date($acta->fecha);
+        $fechaactual = new Date($variable->fecha);
         $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' de '.$fechaactual->format('Y');
         $date = new Date($variable->fecha_nac);
         $fechanachum = $date->format('j').' de '.$date->format('F').' de '.$date->format('Y');
@@ -447,10 +475,11 @@ class ActasHechosController extends Controller
         'calle' =>strtr(($variable->calle),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
         'cp' => $variable->cp,
         'numExterno' => $numExterno,
-        'folio' => $unidad->abreviacion."/AH-".$acta->folio."/".$fechaactual->format('Y'),
-        'hora' => $date->parse($acta->hora)->format('H:i'),
+        'folio' => $unidad->abreviacion."/AH-".$variable->folio."/".$fechaactual->format('Y'),
+        'perdida'=>strtr(strtoupper($variable->tipoActa),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'hora' => $date->parse($variable->hora)->format('H:i'),
         'fecha' => strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-        'fiscal' => strtr(strtoupper($acta->fiscal),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'fiscal' => strtr(strtoupper($variable->fiscal),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'puesto' => strtr(strtoupper(Auth::user()->puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'nombre' =>strtr(($variable->nombrePersona.' '.$variable->primer_ap.' '.$variable->segundo_ap),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'identificacion' => strtr(($variable->identificacion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
@@ -460,7 +489,7 @@ class ActasHechosController extends Controller
         'estadoCivil' =>strtr(($variable->nombreEstadoCivil),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),  
         'escolaridad' => strtr(($variable->nombreEscolaridad),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),  
         'telefono' => $variable->telefono,
-        'narracion' => strtr(($acta->narracion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'narracion' => strtr(($variable->narracion),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'expedido' => strtr((ActasHechosController::getExpedido($variable->identificacion)),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'edad' => $edad,
         'img' => asset('img/logo.png'),
@@ -500,7 +529,7 @@ class ActasHechosController extends Controller
         'variables_persona_moral.nombreRep as nombreRep',
         'variables_persona_moral.primerApRep as primerApRep',
         'variables_persona_moral.segundoApRep as segundoApRep',
-        'cat_identificacion.documento as documento',
+        'cat_identificacion.id as documento',
         'variables_persona_moral.numDocIdentificacion as numDocIdentificacion')
         ->first();
         $unidad = DB::table('unidad')->where('id',$acta->idUnidad)->first();
@@ -511,8 +540,6 @@ class ActasHechosController extends Controller
            $localidad=$localidad." ".$arr[$aux];
            $aux=$aux+1;
         }
-
-
         if($variable->numInterno=='S/N'){
             $numExterno = $variable->numExterno;
         }
@@ -531,6 +558,7 @@ class ActasHechosController extends Controller
             'calle' =>strtr(($variable->calle),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
             'cp' => $variable->cp,
             'numExterno' => $numExterno,
+            'perdida'=>strtr(strtoupper($acta->tipoActa),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'folio' => $unidad->abreviacion."/AH-".$acta->folio."/".$fechaactual->format('Y'),
             'hora' => $date->parse($acta->hora)->format('H:i'),
             'fecha' => strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
