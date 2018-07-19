@@ -76,11 +76,13 @@
 	</div>
 
 	{{--  inicio modal para cambio de rol --}}
+	
+	@if (is_null(session('carpeta'))&&is_null(session('terminada')))
 	<div class="modal" id="modalRol">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				{!! Form::open(['route' => 'cambioRol', 'method'=> 'post']) !!}
-
+				
 				<!-- Modal Header -->
 				<div class="modal-header">
 					<h4 class="modal-title">Selecciona un rol</h4>
@@ -99,10 +101,11 @@
 					{!!Form::submit('Guardar',['class'=>'btn btn-default'])!!}
 				</div>
 				{!! Form::close() !!}
-			
+				
 			</div>
 		</div>
 	</div>
+	@endif
 	{{--  fin modal para cambio de rol --}}
 	@include('template.partials.footer')
 </div>
