@@ -279,6 +279,8 @@ class RegistrosCasoController extends Controller
             $preregistro->idDireccion = $idD1;
             $preregistro->rfc = $request->rfc2.$request->homo2;
             $preregistro->representanteLegal = $request->repLegal;
+            $preregistro->primerAp = $request->primerAp;
+            $preregistro->segundoAp = $request->segundoAp;
             $preregistro->telefono = $request->telefono;
             $preregistro->conViolencia = $request->conViolencia;
             $preregistro->narracion = $request->narracion;
