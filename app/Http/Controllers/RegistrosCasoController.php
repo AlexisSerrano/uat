@@ -234,7 +234,7 @@ class RegistrosCasoController extends Controller
             $preregistro->fechaNac = $request->fechaNacimiento;
             $preregistro->edad = $request->edad;
             if (!is_null($request->rfc2)){
-                $preregistro->rfc = $request->rfc2;
+                $preregistro->rfc = $request->rfc2.$request->homo2;
             }
             $preregistro->curp = $request->curp;
             if (!is_null($request->sexo)){
@@ -275,9 +275,9 @@ class RegistrosCasoController extends Controller
             
             $preregistro =Preregistro::find($idDireccion);
             $preregistro->esEmpresa = 1;    
-            $preregistro->nombre = $request->nombres;
+            $preregistro->nombre = $request->nombres2;
             $preregistro->idDireccion = $idD1;
-            $preregistro->rfc = $request->rfc;
+            $preregistro->rfc = $request->rfc2.$request->homo2;
             $preregistro->representanteLegal = $request->repLegal;
             $preregistro->telefono = $request->telefono;
             $preregistro->conViolencia = $request->conViolencia;

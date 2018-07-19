@@ -210,8 +210,8 @@ class PreregistroAuxController extends Controller
                     $preregistro->fechaNac = $request->fechaNacimiento;
                 }
                 $preregistro->edad = $edad;
-                if (!is_null($request->rfc2)){
-                    $preregistro->rfc = $request->rfc2;
+                if (!is_null($request->rfc2) && !is_null($request->homo2) ){
+                    $preregistro->rfc = $request->rfc2.$request->homo2;
                 }
                 $preregistro->curp = $request->curp;
                 if (!is_null($request->sexo)){
@@ -252,11 +252,11 @@ class PreregistroAuxController extends Controller
                 
                 $preregistro =Preregistro::find($id);
                 $preregistro->esEmpresa = 1;    
-                $preregistro->nombre = $request->nombres;
+                $preregistro->nombre = $request->nombres2;
                 $preregistro->primerAp = $request->primerAp;
                 $preregistro->segundoAp = $request->segundoAp;
                 $preregistro->idDireccion = $idD1;
-                $preregistro->rfc = $request->rfc . $request->homo;
+                $preregistro->rfc = $request->rfc2 . $request->homo2;
                 $preregistro->representanteLegal = $request->repLegal;
                 $preregistro->telefono = $request->telefono;
                 $preregistro->conViolencia = $request->conViolencia;
