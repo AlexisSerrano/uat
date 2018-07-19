@@ -6,7 +6,7 @@
        
 {{-- {!!Form::model($preregistro, array('route' => array('put.registro', $preregistro->id), 'method' => 'POST')) !!} --}}
 {!!Form::model($preregistro, ['route' => ['put.registro', $preregistro->id]]) !!}
-<input type="hidden" name="esEmpresa" value="0">
+<input type="hidden" name="esEmpresa" value="1">
 <div class="card container-create" id="datosPersona">
     <div class="card-header lead" align="center">
         Datos personales
@@ -247,58 +247,56 @@
 
     $("#idEstado").change(function(event){
         if(event.target.value!=""){
+            limpiarDomicilioSel(1);
             $.get(route('get.municipio', event.target.value), function(response, estado){
-                $("#idMunicipio").empty();
-                $("#idMunicipio").append("<option value=''>Seleccione un municipio</option>");
                 for(i=0; i<response.length; i++){
                     $("#idMunicipio").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
                 }
             });
         }else{
-            $("#idMunicipio").empty();
-            $("#idMunicipio").append("<option value=''>Seleccione un municipio</option>");
-            $("#idLocalidad").empty();
-            $("#idLocalidad").append("<option value=''>Seleccione una localidad</option>");
-            $("#cp").empty();
-            $("#cp").append("<option value=''>Seleccione un código postal</option>");
-            $("#idColonia").empty();
-            $("#idColonia").append("<option value=''>Seleccione un colonia</option>");
+            limpiarDomicilioSel(1);
         }
     });
 
     $("#idMunicipio").change(function(event){
         if(event.target.value!=""){
+            limpiarDomicilioSel(2);
             $.get(route('get.localidad', event.target.value), function(response, municipio){
-                $("#idLocalidad").empty();
-                $("#idLocalidad").append("<option value=''>Seleccione una localidad</option>");
                 for(i=0; i<response.length; i++){
                     $("#idLocalidad").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
                 }
             });
             $.get(route('get.colonia2', event.target.value), function(response, municipio){
-                $("#idColonia").empty();
-                $("#idColonia").append("<option value=''>Seleccione una colonia</option>");
                 for(i=0; i<response.length; i++){
                     $("#idColonia").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
                 }
 		    });
             $.get(route('get.codigo', event.target.value), function(response, municipio){
-                $("#cp").empty();
-                $("#cp").append("<option value=''>Seleccione un código postal</option>");
                 for(i=0; i<response.length; i++){
                     $("#cp").append("<option value='"+response[i].id+"'> "+response[i].codigoPostal+"</option>");
                 }
             });
         }else{
-            $("#idLocalidad").empty();
-            $("#idLocalidad").append("<option value=''>Seleccione una localidad</option>");
-            $("#cp").empty();
-            $("#cp").append("<option value=''>Seleccione un código postal</option>");
-            $("#idColonia").empty();
-            $("#idColonia").append("<option value=''>Seleccione un colonia</option>");
+            limpiarDomicilioSel(2);
         }
     });
 
+    function limpiarDomicilioSel(idSelChanged){
+        switch(idSelChanged){
+            case 1:
+                $("#idMunicipio").empty();
+                $("#idMunicipio").append("<option value=''>Seleccione un municipio</option>");
+            case 2:
+                $("#idLocalidad").empty();
+                $("#idLocalidad").append("<option value=''>Seleccione una localidad</option>");
+            case 3:
+                $("#idColonia").empty();
+                $("#idColonia").append("<option value=''>Seleccione un colonia</option>");
+            case 4:
+                $("#cp").empty();
+                $("#cp").append("<option value=''>Seleccione un código postal</option>");
+        }
+    }
 
 
 </script>
