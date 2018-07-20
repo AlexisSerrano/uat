@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ActasHechos;
 use Jenssegers\Date\Date;
 use DB;
+use Auth;
 
 class LibroOficioController extends Controller
 {
@@ -14,30 +15,28 @@ class LibroOficioController extends Controller
 
         
         
-        $vfisica = DB::table('uat.actas_hechos as actas') 
-        ->Join('componentes.variables_persona_fisica as pf', 'actas.varPersona', '=', 'pf.id') 
-        ->Join('componentes.persona_fisica as PER', 'pf.idPersona', '=', 'PER.id') 
-        ->select('actas.folio', 'actas.fiscal', 'actas.tipoActa' ,'actas.varPersona', 'pf.id' ,'pf.idPersona', 'PER.nombres', 'PER.primerAp', 'PER.segundoAp');
-        
-              
- 
-         
-        $vmoral = DB::table('uat.actas_hechos as actas') 
-        ->Join('componentes.variables_persona_moral as pf', 'actas.varPersona', '=', 'pf.id') 
-        ->select('actas.folio', 'actas.fiscal', 'actas.tipoActa', 'actas.varPersona', 'pf.id' ,'pf.idPersona', 'pf.nombreRep', 'pf.primerApRep', 'pf.segundoApRep')   
-        ->union($vfisica)
-        
-        ->get();
+        $actas = DB::table('uat.actas_hechos as actas') 
+        ->leftJoin('componentes.variables_persona_fisica as pf', 'actas.varPersona', '=', 'pf.id') 
+        ->leftJoin('componentes.variables_persona_moral as pm', 'actas.varPersona', '=', 'pm.id') 
+        ->leftJoin('componentes.persona_fisica as PER', 'pf.idPersona', '=', 'PER.id') 
+        ->select('actas.folio', 'actas.fiscal', 'actas.tipoActa' ,'actas.varPersona','actas.idUnidad',          
+        DB::raw('(CASE WHEN actas.esEmpresa = 0 THEN  pf.id ELSE pm.id END) AS id'),
+        DB::raw('(CASE WHEN actas.esEmpresa = 0 THEN  pf.idPersona ELSE pm.idPersona END) AS idPersona'),
+        DB::raw('(CASE WHEN actas.esEmpresa = 0 THEN  PER.nombres ELSE pm.nombreRep END) AS Nombre'),
+        DB::raw('(CASE WHEN actas.esEmpresa = 0 THEN  PER.primerAp ELSE pm.primerApRep END) AS PApellido'),
+        DB::raw('(CASE WHEN actas.esEmpresa = 0 THEN  PER.segundoAp ELSE pm.segundoApRep END) AS SApellido'))
+        ->where('actas.idUnidad', '=', Auth::user()->idUnidad )
+        ->paginate(10);
 
        
-        dd($vmoral);
+        // dd($vfisica);
 
 
 
         // $actas = ActasHechos::orderBy('id','desc')->paginate('15');  ->where('db2.id', 5)
         $year = Date::now()->format('Y');
          return view('tables.libOficios')
-         -> with("variable", $variable)
+        
          -> with("actas", $actas)
          -> with("year", $year);  
     }

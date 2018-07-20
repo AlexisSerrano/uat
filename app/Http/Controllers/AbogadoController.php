@@ -27,7 +27,9 @@ class AbogadoController extends Controller
         $idCarpeta=session('carpeta');
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();
         if(count($carpetaNueva)>0){ 
-            $abogados = CarpetaController::getAbogados($idCarpeta);
+            //$abogados = CarpetaController::getAbogados($idCarpeta);
+            //$abogados = CarpetaController::getAbogados($carpetaNueva[0]['numCarpeta']);
+            $abogados = CarpetaController::getAbogados('XXX');
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $municipios=CatMunicipio::where('idEstado',30)->orderBy('nombre', 'ASC')->pluck('nombre','id');

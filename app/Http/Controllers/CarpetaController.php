@@ -357,13 +357,25 @@ class CarpetaController extends Controller
     }
 
     public static function getAbogados($id){
+        /*
         $abogados = DB::table('extra_abogado')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_abogado.cedulaProf', 'extra_abogado.sector', 'extra_abogado.tipo')
             ->where('variables_persona.idCarpeta', '=', $id)
             ->get();
+        */
+        $abogados = DB::table('componentes.persona_fisica as per')
+            ->Join('componentes.variables_persona_fisica as var', 'var.idPersona','per.id')
+            ->Join('componentes.apariciones as apar', 'apar.idVarPersona', 'var.id')
+            ->Join('componentes.extra_abogado as abo', 'abo.idVariablesPersona', 'apar.idVarPersona')
+            ->select('apar.id as idApariciones','var.id as idVarPersona','nombres', 'primerAp', 'segundoAp','cedulaProf','sector','tipo')
+            ->where('apar.tipoInvolucrado', 'ABOGADO')
+            ->where('apar.activo', 1)
+            ->where('apar.idCarpeta', $id)
+            ->get();
         return $abogados;
+
     }
 
 
