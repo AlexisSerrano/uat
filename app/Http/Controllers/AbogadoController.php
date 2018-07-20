@@ -127,8 +127,9 @@ class AbogadoController extends Controller
         DB::beginTransaction();
         try{
             $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
+            /*
             $ExtraAbogado =  ExtraAbogado::find($id);
-            $tipo=$ExtraAbogado->tipo;
+            $tipo=$ExtraAbogado->$ExtraAbogado[0]['tipo'];
             $tipo = normaliza($tipo);
             if ($tipo=="asesor juridico") {
                 $denunciantes = DB::table('extra_denunciante')
@@ -155,6 +156,8 @@ class AbogadoController extends Controller
                 }
             }
             $ExtraAbogado->delete();
+            */
+            $ExtraAbogado = CarpetaController::deleteAbogado($id);
             $bdbitacora->abogado = $bdbitacora->abogado-1;
             $bdbitacora->save();
             DB::commit();

@@ -369,15 +369,13 @@ class CarpetaController extends Controller
             ->Join('componentes.variables_persona_fisica as var', 'var.idPersona','per.id')
             ->Join('componentes.apariciones as apar', 'apar.idVarPersona', 'var.id')
             ->Join('componentes.extra_abogado as abo', 'abo.idVariablesPersona', 'apar.idVarPersona')
-            ->select('apar.id as idApariciones','var.id as idVarPersona','nombres', 'primerAp', 'segundoAp','cedulaProf','sector','tipo')
-            ->where('apar.tipoInvolucrado', 'ABOGADO')
+            ->select('apar.id as idApariciones','var.id as idVarPersona','nombres', 'primerAp', 'segundoAp','cedulaProf','sector','abo.tipo')
             ->where('apar.activo', 1)
             ->where('apar.idCarpeta', $id)
             ->get();
         return $abogados;
 
     }
-
 
     public static function getDefensas($id){
         $defensas1 = DB::table('extra_abogado')
@@ -420,6 +418,65 @@ class CarpetaController extends Controller
             ->where('apar.idCarpeta', $id)
             ->get();
         return $autoridades;
+    }
+
+    public static function deleteAutoridad($id){
+        $autoridades = DB::table('componentes.apariciones')->where('id', $id)->update(['activo' => 0]);
+        return $autoridades;
+    }
+
+    public static function deleteAbogado($id){
+        try{
+
+            $carpeta = DB::table('componentes.apariciones')
+            ->where('id', $id)
+            ->select('idCarpeta')->first();
+
+            DB::beginTransaction();
+            $abogado = DB::table('componentes.apariciones')
+            ->where('id', $id)
+            ->update(['activo' => 0]);
+
+            
+            $involucrados = DB::table('componentes.apariciones')
+            ->where('idCarpeta', $carpeta->idCarpeta)
+            ->where('tipoInvolucrado', 'DENUNCIADO')
+            ->orWhere('tipoInvolucrado', 'CONOCIDO')
+            ->orWhere('tipoInvolucrado', 'QRR')
+            ->orWhere('tipoInvolucrado', 'DENUNCIANTE')
+            ->select('idVarPersona','esEmpresa','tipoInvolucrado')
+            ->get();
+
+            foreach ($involucrados as $inv) {
+                if ($inv->esEmpresa == 0) {
+                    if ($inv->tipoInvolucrado == "DENUNCIANTE") {
+                        DB::table('componentes.extra_denunciante_fisico')
+                        ->where('idVariablesPersona', $inv->idVarPersona)
+                        ->update(['idAbogado' => null]);
+                    }else{
+                        DB::table('componentes.extra_denunciado_fisico')
+                        ->where('idVariablesPersona', $inv->idVarPersona)
+                        ->update(['idAbogado' => null]);
+                    }
+                }else{
+                    if ($inv->tipoInvolucrado == "DENUNCIANTE") {
+                        DB::table('componentes.extra_denunciante_moral')                        
+                        ->where('idVariablesPersona', $inv->idVarPersona)
+                        ->update(['idAbogado' => null]);
+                    }else{
+                        DB::table('componentes.extra_denunciado_moral')
+                        ->where('idVariablesPersona', $inv->idVarPersona)
+                        ->update(['idAbogado' => null]);
+                    }
+                }
+            }    
+
+            DB::commit();
+            return true;
+        }catch (\PDOException $e){
+            DB::rollBack();
+            return false;
+        }
     }
 
 

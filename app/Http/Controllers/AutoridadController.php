@@ -197,8 +197,7 @@ class AutoridadController extends Controller
     public function delete($id){
         $idCarpeta=session('carpeta');
 
-        $ExtraAutoridad =  ExtraAutoridad::find($id);
-        $ExtraAutoridad->delete();
+        $ExtraAutoridad = CarpetaController::deleteAutoridad($id);
         $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
         $bdbitacora->autoridad = $bdbitacora->autoridad-1;
         $bdbitacora->save();
