@@ -33,7 +33,7 @@
         <div class="text-right col">
                 <span id="editFields" class="btn  btn-secondary">Editar</span>
             <a href="{{ url('atender/'.$preregistro->id)}}" title="" class="btn btn-secondary">Atender</a>
-            {!!Form::submit('Guardar',array('class' => 'btn btn-primary'))!!}
+            {!!Form::submit('Guardar',array('class' => 'btn btn-primary', 'style'=>'display:none','id'=>'saveForm'))!!}
         
         </div>
     </div>
@@ -60,7 +60,8 @@
 
     $(document).ready(function(){
 
-                        $("#editFields").click(function(){
+            $("#editFields").click(function(){
+                $( "#saveForm" ).toggle();
             if($("#editFields").html()=="Editar"){
                 $(".hideLabels").hide();
                 $(".inputOculto").show();

@@ -59,7 +59,7 @@
                 <a href="{{url('estado/'.$preregistro->id.'/99')}}" class="btn  btn-secondary ">Descartar</a>
                 <a href="{{url('estado/'.$preregistro->id.'/0')}}" class="btn  btn-secondary ">En cola</a>
             @endif
-            {!!Form::submit('Guardar',array('class' => 'btn  btn-primary'))!!}
+            {!!Form::submit('Guardar',array('class' => 'btn  btn-primary', 'style'=>'display:none','id'=>'saveForm'))!!}
         </div>
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </div>
@@ -97,10 +97,9 @@
     //     $('#fechanac').datetimepicker('date', moment().subtract(anios, 'years').format('YYYY-MM-DD'));
     // });
 
-    $(document).ready(function(){
-
-
-                $("#editFields").click(function(){
+    $(document).ready(function(){        
+        $("#editFields").click(function(){
+            $( "#saveForm" ).toggle();    
             if($("#editFields").html()=="Editar"){
                 $(".hideLabels").hide();
                 $(".inputOculto").show();

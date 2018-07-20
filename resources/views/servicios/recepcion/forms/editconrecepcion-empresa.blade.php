@@ -58,7 +58,7 @@
 {{--                    
                         <a href="{{url('estado/'.$preregistro->id.'/99')}}" title="button1" class="btn  btn-secondary ">Descartar</a>
                  --}}
-                {!!Form::submit('Guardar',array('class' => 'btn  btn-primary'))!!}
+                {!!Form::submit('Guardar',array('class' => 'btn  btn-primary', 'style'=>'display:none','id'=>'saveForm'))!!}
             </div>
             <meta name="csrf-token" content="{{ csrf_token() }}">
         </div>
@@ -81,15 +81,17 @@
 @push('scripts')
 <script src="{{ asset('js/rfcMoral.js') }}"></script>
 
-<script>
-    $(document).ready(function(){        
-        
+<script>    
+
+    $(document).ready(function(){  
+                
         $("#editFields").click(function(){
+            $( "#saveForm" ).toggle();
             if($("#editFields").html()=="Editar"){
                 $(".hideLabels").hide();
                 $(".inputOculto").show();
                 $("#editFields").addClass("btn-danger");
-                $("#editFields").html("Cancelar");
+                $("#editFields").html("Cancelar");                
             }else{
                 $(".hideLabels").show();
                 $(".inputOculto").hide();
