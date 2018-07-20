@@ -104,7 +104,7 @@
 					{!! Form::select('idEstadoOrigen', $estados, $MunicipioOrigen->idEstado, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una entidad federativa','data-validation'=>'required','required']) !!}	
 				</div>			
 			</div>
-		</div>
+	</div>
 	<!--Municipio Origen-->
 	<div class="col-4">
 			<div class="form-group">
@@ -112,7 +112,7 @@
 				{!!Form::label('nombre',$MunicipioOrigen->nombre ,['class'=> 'col-form-label-sm hideLabels'])!!}
 				<div class="input-group inputOculto" id="inputMunicipioOrigen">
 					{!! Form::label('idMunicipioOrigen', 'Municipio de origen: ', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::select('idMunicipioOrigen', $catMunicipios, $preregistro->idMunicipioOrigen, ['class' => 'form-control form-control-sm', 'required']) !!}					
+					{!! Form::select('idMunicipioOrigen', $catMunicipiosOrigen, $preregistro->idMunicipioOrigen, ['class' => 'form-control form-control-sm', 'required']) !!}					
 				</div>
 			</div>
 		</div>

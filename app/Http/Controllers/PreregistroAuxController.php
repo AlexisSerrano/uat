@@ -118,6 +118,12 @@ class PreregistroAuxController extends Controller
         ->select('idEstado','idMunicipio','nombre')
         ->where('id','=', $preregistro->idMunicipioOrigen)->first();
         
+
+        $catMunicipiosOrigen=DB::table('cat_municipio')
+        ->where('cat_municipio.idEstado','=',$MunicipioOrigen->idEstado)
+        ->orderBy('nombre','asc')
+        ->pluck('nombre','id');
+
         $estadoOrigen = DB::table('cat_estado')        
         ->select('nombre')
         ->where('id','=', $MunicipioOrigen->idEstado)->first();
@@ -160,7 +166,7 @@ class PreregistroAuxController extends Controller
             return view('servicios.recepcion.forms.editconrecepcion-empresa', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon','identificaciones','docIdent' ));
         }
         else{
-            return view('servicios.recepcion.forms.editconrecepcion-persona', compact('estadoOrigen','MunicipioOrigen','idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon','identificaciones','docIdent'));
+            return view('servicios.recepcion.forms.editconrecepcion-persona', compact('catMunicipiosOrigen','estadoOrigen','MunicipioOrigen','idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon','identificaciones','docIdent'));
         }
     }
 
