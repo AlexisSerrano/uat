@@ -38,7 +38,7 @@
 				@forelse($actas as $acta)
 				<tr>
 					<td>UAT-XI/AH-{{$acta->folio}}/{{$year}}</td>
-					<td>{{$acta->nombre}} {{$acta->primer_ap}} {{$acta->segundo_ap}}</td>
+					<td>{{$acta->Nombre}} {{$acta->PApellido}} {{$acta->SApellido}}</td>
 					<td>{{$acta->fiscal}}</td>
 					<td style="text-align:center;"><a href='{{url("getoficioah/$acta->id")}}'><button class="btn btn-secondary"><i class="fa fa-download"></i></button></a></td>
 				</tr>
