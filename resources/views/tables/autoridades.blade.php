@@ -31,7 +31,7 @@
                              {{-- <a href="{{ url('narracion/'.$autoridad->idVariablesPersona)}}"  rel="tooltip" title="Ampliar narracion" class="btn btn-secondary btn-simple btn-xs">
                             <i class="fa fa-edit"></i></a>   --}}
                             @if(is_null(session('terminada')))
-                            <a data-autoridad-id={{$autoridad->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
+                            <a data-autoridad-id={{$autoridad->idApariciones}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
                                 <i class="fa fa-times"></i>
                             </a>
                         	@endif

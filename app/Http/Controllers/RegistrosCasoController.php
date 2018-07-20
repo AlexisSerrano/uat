@@ -284,6 +284,7 @@ class RegistrosCasoController extends Controller
             $preregistro->telefono = $request->telefono;
             $preregistro->conViolencia = $request->conViolencia;
             $preregistro->narracion = $request->narracion;
+            $preregistro->fechaNac = $request->fechaAltaEmpresa;
             if (!is_null($request->idRazon)){
                 $preregistro->idRazon = $request->idRazon;
             }

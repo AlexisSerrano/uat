@@ -34,7 +34,7 @@ class AutoridadController extends Controller
         $idCarpeta=session('carpeta');
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();//->where('idFiscal', Auth::user()->id)->get();
         if(count($carpetaNueva)>0){ 
-            $autoridades = CarpetaController::getAutoridades($idCarpeta);
+            $autoridades = CarpetaController::getAutoridades($carpetaNueva[0]['numCarpeta']);
             $escolaridades = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
             $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');

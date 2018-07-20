@@ -399,11 +399,22 @@ class CarpetaController extends Controller
     }
 
     public static function getAutoridades($id){
-        $autoridades = DB::table('extra_autoridad')
+        /*$autoridades = DB::table('extra_autoridad')
             ->join('variables_persona', 'variables_persona.id', '=', 'extra_autoridad.idVariablesPersona')
             ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
             ->select('extra_autoridad.idVariablesPersona','extra_autoridad.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'extra_autoridad.antiguedad', 'extra_autoridad.rango', 'extra_autoridad.horarioLaboral', 'variables_persona.docIdentificacion', 'variables_persona.numDocIdentificacion')
             ->where('variables_persona.idCarpeta', '=', $id)
+            ->get();
+        */
+        $autoridades = DB::table('componentes.persona_fisica as per')
+            ->Join('componentes.variables_persona_fisica as var', 'var.idPersona','per.id')
+            ->Join('componentes.apariciones as apar', 'apar.idVarPersona', 'var.id')
+            ->Join('componentes.extra_autoridad as aut', 'aut.idVariablesPersona', 'apar.idVarPersona')
+            ->Join('componentes.cat_identificacion as ide', 'ide.id', 'var.docIdentificacion')
+            ->select('apar.id as idApariciones','var.id as idVarPersona','nombres', 'primerAp', 'segundoAp','antiguedad', 'rango','horarioLaboral','ide.documento as docIdentificacion','numDocIdentificacion')
+            ->where('apar.tipoInvolucrado', 'AUTORIDAD')
+            ->where('apar.activo', 1)
+            ->where('apar.idCarpeta', $id)
             ->get();
         return $autoridades;
     }

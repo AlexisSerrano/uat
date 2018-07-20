@@ -54,7 +54,7 @@
 						{!! Form::label('fechaAltaEmpresa', 'Fecha de alta de la empresa: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 						{!!Form::label('nombre',$preregistro->fechaNac ,['class'=> 'col-form-label-sm hideLabels'])!!}
 						<div class="input-group inputOculto" id="inputFechaNac">
-							{!! Form::label('fechaAltaEmpresa', 'Fecha de nacimiento: ', ['class' => 'col-form-label-sm']) !!}							
+							{!! Form::label('fechaAltaEmpresa', 'Fecha de alta de la empresa: ', ['class' => 'col-form-label-sm']) !!}							
 							{!! Form::date('fechaAltaEmpresa', $preregistro->fechaNac, ['class' => 'form-control form-control-sm', 'data-target' => '#fechanac', 'required']) !!}					
 						</div>
 						<div class="help-block with-errors"></div>	
