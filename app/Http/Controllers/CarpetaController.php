@@ -277,7 +277,7 @@ class CarpetaController extends Controller
     }
 
     public static function getDenunciantes($id){
-        $denunciantes = DB::table('componentes.apariciones as apariciones')
+        $denunciantes = DB::table('componentes.apariciones as apariciones')->distinct()
             ->leftJoin('componentes.variables_persona_fisica as variables_fisica', 'variables_fisica.id', '=', 'apariciones.idVarPersona')
             ->leftJoin('componentes.variables_persona_moral as variables_moral', 'variables_moral.id', '=', 'apariciones.idVarPersona')
             ->leftJoin('componentes.extra_denunciante_fisico as extras_fisica', 'variables_fisica.id', '=', 'extras_fisica.idVariablesPersona')
@@ -344,12 +344,15 @@ class CarpetaController extends Controller
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN variables_fisica.edad ELSE "NO APLICA" END) AS edad'),//'variables_persona.edad', 
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN ifnull(sexo.nombre,"SIN INFORMACION") ELSE "NO APLICA" END) AS sexo'),//'persona.sexo', 
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN ifnull(variables_fisica.telefono,"SIN INFORMACION") ELSE ifnull(variables_fisica.telefono,"SIN INFORMACION") END) AS telefono')//'variables_persona.telefono')
-            )
+            )->distinct()
         ->where('apariciones.idCarpeta', '=', $id)
-        ->where('apariciones.tipoInvolucrado', '!=', 'denunciante')
-        ->where('apariciones.tipoInvolucrado', '!=', 'abogado')
-        ->where('apariciones.tipoInvolucrado', '!=', 'autoridad')
+        ->where(function($query){
+            $query
+            ->orWhere('apariciones.tipoInvolucrado', '=', 'denunciado')
+            ->orWhere('apariciones.tipoInvolucrado', '=', 'conocido');
+        })
         ->get();
+        dump($denunciados);
         return $denunciados;
     }
 
