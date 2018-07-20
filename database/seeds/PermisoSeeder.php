@@ -243,7 +243,8 @@ class PermisoSeeder extends Seeder
         'getpsico','getVh_periciales','get_lesion','show_ofFinanzas','getVhFinanzas','oficio_m','oficio_P','oficio_V',
         'oficio_L','oficio_impRobo','oficio_reporteRobo','vehiculo_carpeta','get_submarcas','get_tipovehiculos',
         'carpeta_vehiculo','getVh','delete_vehiculo','getVehiculoAjax','agregar_vehiculo','oficios','intentos',
-        'getOficios','getOficio','addOficio','updateOficio','recuperar','recuperar_token','getOficiosApp']);  
+        'getOficios','getOficio','addOficio','updateOficio','recuperar','recuperar_token','getOficiosApp','lista_oficios',
+        'filtro_actas_post','filtro_actas_get']);  
 
         // Asignación de permisos a Rol de Recepción
         $recepcion->givePermissionTo(['post_showByfolio' ,'get_showByfolio','en_cola','urgentes',
