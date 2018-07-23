@@ -258,7 +258,7 @@
 			{!!Form::label('nombre',$preregistro->numDocIdentificacion ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputDocIden">
 				{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación: ', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('numDocIdentificacion', $preregistro->numDocIdentificacion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación']) !!}				
+				{!! Form::text('numDocIdentificacion', $preregistro->numDocIdentificacion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación','required']) !!}				
 			</div>
 			<div class="help-block with-errors"></div>
 		</div>
