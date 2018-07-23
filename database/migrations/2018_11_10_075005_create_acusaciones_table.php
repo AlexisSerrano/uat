@@ -23,9 +23,9 @@ class CreateAcusacionesTable extends Migration
             $table->softDeletes();
             
             $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
-            $table->foreign('idDenunciante')->references('id')->on('extra_denunciante')->onDelete('cascade');
+            //$table->foreign('idDenunciante')->references('id')->on('extra_denunciante')->onDelete('cascade');
             $table->foreign('idTipifDelito')->references('id')->on('tipif_delito')->onDelete('cascade');
-            $table->foreign('idDenunciado')->references('id')->on('extra_denunciado')->onDelete('cascade');
+           // $table->foreign('idDenunciado')->references('id')->on('extra_denunciado')->onDelete('cascade');
         });
     }
 

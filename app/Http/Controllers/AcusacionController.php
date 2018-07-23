@@ -103,7 +103,7 @@ class AcusacionController extends Controller
 
     public function storeAcusacion(AcusacionRequest $request){
         $idCarpeta=session('carpeta');
-
+        
         $comprobar=Acusacion::where('idDenunciante',$request->idDenunciante)
         ->where('idTipifDelito',$request->idTipifDelito)
         ->where('idDenunciado',$request->idDenunciado)->get();
@@ -112,11 +112,13 @@ class AcusacionController extends Controller
             Alert::warning('La acusación ya existe', 'Advertencia');
             return redirect()->back()->withInput();
         } else {
+            
             $acusacion = new Acusacion();
             $acusacion->idCarpeta = $idCarpeta;
             $acusacion->idDenunciante = $request->idDenunciante;
             $acusacion->idTipifDelito = $request->idTipifDelito;
             $acusacion->idDenunciado = $request->idDenunciado;
+          //  dd($acusacion);
             $acusacion->save();
     
             $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
