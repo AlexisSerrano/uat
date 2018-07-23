@@ -8,7 +8,7 @@
 <div id="page-content-wrapper">
 @include('fields.buttons-navegacion')
 
-	<div class="col-md-12">
+	<div class="col-md-12 margen">
 		<div id="app" style="background-color:#fff">
 				<registro :sistema="'uat'" :tipo="'abogado'" usuario="{{Auth::user()->id}}" carpeta="{{session('numCarpeta')}}"></registro>
 		</div>

@@ -7,7 +7,7 @@
 {!! Form::open(['route' => ['carpeta.vehiculo'], 'method' => 'POST'])  !!}
 {{ csrf_field() }}
 <br>
-<div class="card">
+<div class="card margen">
 	{{-- <div class="card-header row">
 		<div class="col">
 			<button type="button" class="btn btn-primary form-control" onclick="vehiculoInvolucrado();">Vehículo involucrado</button>

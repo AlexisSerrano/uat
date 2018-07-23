@@ -8,7 +8,7 @@
 	
     {!! Form::open(['route' => 'store.delito', 'method' => 'POST', 'id'=>'form'])  !!}
 	<br>
-	<ul class="nav nav-tabs" id="myTab" role="tablist">
+	<ul class="nav nav-tabs margen" id="myTab" role="tablist">
 		<li class="nav-item">
 			<a class="nav-link active disabled" id="delito-tab" data-toggle="tab" href="#delito" role="tab" aria-controls="delito" aria-selected="true">Información sobre el delito</a>
 		</li>
