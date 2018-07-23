@@ -61,7 +61,12 @@ class PreregistroAuxController extends Controller
 
     
     public function edit($id)
-    {        
+    {
+        
+        $tiposDeConstancia= array(0=>'PASAPORTE',1=>'CREDENCIAL DE TRABAJO/GAFFETE',2=>'TARJETA DE CRÉDITO/DÉBITO',3=>'TELÉFONO CELULAR',4=>'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)',5=>
+        'PERMISO DE TRÁNSITO PARA EMPLACAMIENTO DE TAXIS',6=>'FACTURA DE VEHICULO/MOTOCICLETA',7=>'TARJETA DE CIRCULACIÓN',8=>'PLACAS DE CIRCULACIÓN',9=>
+        'LICENCIA DE CONDUCIR ESTATAL',10=>'LICENCIA DE CONDUCIR FEDERAL',11=>'DOCUMENTO/BIEN EXTRAVIADO O ROBADO',12=>'CERTIFICADO DE ALUMBRAMIENTO');
+        
         $estados=CatEstado::orderBy('nombre', 'ASC')->pluck('nombre','id');
 
         $preregistro = Preregistro::find($id);            
@@ -106,6 +111,15 @@ class PreregistroAuxController extends Controller
         
         $razon=Razon::select('nombre')->where('id',$preregistro->idRazon)->get();
         $razon=$razon[0]->nombre;
+
+        //Saber si la razón es solicitud de constancia de extravio
+        if($preregistro->tipoActa){
+            if(array_search($preregistro->tipoActa, $tiposDeConstancia)){
+                $tipoActa=$preregistro->tipoActa;
+            }
+        }
+        
+
         
         //nombre del colonia
         $Colonia=DB::table('cat_colonia')
@@ -156,14 +170,12 @@ class PreregistroAuxController extends Controller
         if(count($docIdent)>0){
             $docIdent=$docIdent[0]->documento;
         }
-    
+
         //dd($docIdent);                     
         $persona= $preregistro->esEmpresa;//persona fisica o empresa
 
-        $tipoActa= $preregistro->tipoActa;
-
         if($persona==1){
-            return view('servicios.recepcion.forms.editconrecepcion-empresa', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon','identificaciones','docIdent' ));
+            return view('servicios.recepcion.forms.editconrecepcion-empresa', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon','identificaciones','docIdent','tipoActa'));
         }
         else{
             return view('servicios.recepcion.forms.editconrecepcion-persona', compact('catMunicipiosOrigen','estadoOrigen','MunicipioOrigen','idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon','identificaciones','docIdent'));
