@@ -270,6 +270,21 @@ Para mayor información acerca del tratamiento y de los derechos que puede hacer
 		</tr>
 	</tbody>
 </table>
+
+<p style="text-align:center"><span style="font-size:9px"><strong>AVISO DE PRIVACIDAD SIMPLIFICADO</strong><br />
+<strong>DEL EXPEDIENTE DE ATENCIÓN TEMPRANA</strong></span></p>
+
+<p style="text-align:justify"><span style="font-size:9px"><strong>La Fiscalía General del Estado de Veracruz</strong>, es la responsable del tratamiento de los datos personales que nos proporcione.&nbsp;<br />
+Los datos personales que recabamos a Usted, los utilizaremos para las siguientes finalidades:&nbsp;<br />
+• Identificar al usuario y conocer su problemática a fin de poder orientar en su caso, respecto a la procedencia del asunto expuesto, iniciando de ser procedente la Carpeta de Investigación correspondiente o por el contrario la canalización del ciudadano a la Unidad Integral de Procuración de Justicia, o alguna otra instancia competente;&nbsp;<br />
+• Para iniciar el expediente de atención temprana,&nbsp;<br />
+• Para la recepción de las denuncias y querellas,&nbsp;<br />
+• Para la emisión de informes.&nbsp;<br />
+De manera adicional, utilizaremos su información personal para la siguiente finalidad que nos permite y facilita brindarle una mejor atención:&nbsp;<br />
+• Generación de informes estadísticos.&nbsp;<br />
+En caso de que no desee que sus datos personales sean tratados para las finalidades adicionales, Usted puede manifestarlo al correo electrónico&nbsp;<a href="http://uat2.oo/actaoficio/direcciondetransparencia@fiscaliaveracruz.gob.mx">direcciondetransparencia@fiscaliaveracruz.gob.mx</a>&nbsp;<br />
+Le informamos que sus datos personales&nbsp;<strong>NO</strong>&nbsp;son compartidos con personas, empresas, organizaciones y autoridades distintas al sujeto obligado, salvo que sean necesarias para atender requerimientos de información de una autoridad competente, debidamente fundados y motivados.&nbsp;Para mayor información acerca del tratamiento y de los derechos que puede hacer valer, usted puede acceder al aviso de privacidad integral a través de la dirección electrónica:&nbsp;<a href="http://fiscaliaveracruz.gob.mx/">http://fiscaliaveracruz.gob.mx</a></span></p>
+           
            ',
            'pie' =>  '<p>Circuito Rafael Guízar y<br />
            Valencia No. 147,<br />

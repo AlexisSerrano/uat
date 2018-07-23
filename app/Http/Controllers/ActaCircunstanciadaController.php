@@ -328,7 +328,7 @@ class ActaCircunstanciadaController extends Controller
         'calle' =>strtr(($variable->calle),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
         'cp' => $variable->cp,
         'numExterno' => $numExterno,
-        'folio' => $unidad->abreviacion."/AH-".$acta->folio."/".$fechaactual->format('Y'),
+        'folio' => $unidad->abreviacion."/AC-".$acta->folio."/".$fechaactual->format('Y'),
         'hora' => $date->parse($acta->hora)->format('H:i'),
         'fecha' => strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'fiscal' => strtr(strtoupper($acta->fiscal),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),

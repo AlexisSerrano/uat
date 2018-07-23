@@ -11,6 +11,7 @@ use App\Models\Carpeta;
 use App\Models\Acusacion;
 use App\Http\Requests\AcusacionRequest;
 use App\Models\BitacoraNavCaso;
+use App\Models\componentes\aparicionesModel;
 
 
 class AcusacionController extends Controller
@@ -19,27 +20,65 @@ class AcusacionController extends Controller
     {
         $idCarpeta=session('carpeta');
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();
+       
         if(count($carpetaNueva)>0){ 
             $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
-            $denunciantes = DB::table('extra_denunciante')
-                ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-                ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-                ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-                ->orderBy('persona.nombres', 'ASC')
-                ->get();
-            $denunciados = DB::table('extra_denunciado')
-                ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
-                ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                ->select('extra_denunciado.id',DB::raw('(CASE WHEN extra_denunciado.alias = "SIN INFORMACION" THEN "" ELSE extra_denunciado.alias END) AS alias'),'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
-                ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-                ->orderBy('persona.nombres', 'ASC')
-                ->get();
-            $tipifdelitos = DB::table('tipif_delito')
-                ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
-                ->join('cat_agrupacion1', 'cat_agrupacion1.id', '=', 'tipif_delito.idAgrupacion1')
-                ->join('cat_agrupacion2', 'cat_agrupacion2.id', '=', 'tipif_delito.idAgrupacion2')
-                ->select('tipif_delito.id', 'cat_delito.nombre as delito', 'cat_agrupacion1.nombre as desagregacion1', 'cat_agrupacion2.nombre as desagregacion2')
+            $denunciantes = DB::table('componentes.apariciones as apariciones')
+        ->leftJoin('componentes.variables_persona_fisica as variables_fisica', 'variables_fisica.id', '=', 'apariciones.idVarPersona')
+        ->leftJoin('componentes.variables_persona_moral as variables_moral', 'variables_moral.id', '=', 'apariciones.idVarPersona')
+        ->leftJoin('componentes.extra_denunciante_fisico as extras_fisica', 'variables_fisica.id', '=', 'extras_fisica.idVariablesPersona')
+        ->leftJoin('componentes.extra_denunciante_moral as extras_moral', 'variables_moral.id', '=', 'extras_moral.idVariablesPersona')
+        ->leftJoin('componentes.persona_fisica as persona_fisica', 'persona_fisica.id', '=', 'variables_fisica.idPersona')
+        ->leftJoin('componentes.persona_moral as persona_moral', 'persona_moral.id', '=', 'variables_moral.idPersona')
+        ->select(
+            'apariciones.id as id',
+          //DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN extras_fisica.idVariablesPersona ELSE extras_moral.idVariablesPersona END) AS idVariablesPersona'),//'extra_denunciado.idVariablesPersona',
+            DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN extras_fisica.id ELSE extras_moral.id END) AS id'),//'extra_denunciado.id',
+            DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.nombres ELSE persona_moral.nombre END) AS nombres'),//'persona.nombres', 
+            DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.primerAp ELSE "" END) AS primerAp'),//'persona.primerAp', 
+            DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.segundoAp ELSE "" END) AS segundoAp')//'persona.segundoAp', 
+           // 'apariciones.esEmpresa AS esEmpresa',//'persona.esEmpresa', 
+            )->distinct()
+        ->where('apariciones.idCarpeta', '=', $carpetaNueva[0]->numCarpeta)
+        ->Where('apariciones.tipoInvolucrado', '=', 'denunciante')
+        ->get();
+        dump($denunciantes);
+       // return $denunciados;
+       //dd($denunciados);
+
+       $denunciados = DB::table('componentes.apariciones as apariciones')
+        ->leftJoin('componentes.variables_persona_fisica as variables_fisica', 'variables_fisica.id', '=', 'apariciones.idVarPersona')
+        ->leftJoin('componentes.variables_persona_moral as variables_moral', 'variables_moral.id', '=', 'apariciones.idVarPersona')
+        ->leftJoin('componentes.extra_denunciado_fisico as extras_fisica', 'variables_fisica.id', '=', 'extras_fisica.idVariablesPersona')
+        ->leftJoin('componentes.extra_denunciado_moral as extras_moral', 'variables_moral.id', '=', 'extras_moral.idVariablesPersona')
+        ->leftJoin('componentes.persona_fisica as persona_fisica', 'persona_fisica.id', '=', 'variables_fisica.idPersona')
+        ->leftJoin('componentes.persona_moral as persona_moral', 'persona_moral.id', '=', 'variables_moral.idPersona')
+        ->select(
+            'apariciones.id as id',
+            DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN extras_fisica.alias ELSE "NO APLICA" END) AS alias'),//'extra_denunciado.alias',
+            DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.nombres ELSE persona_moral.nombre END) AS nombres'),//'persona.nombres', 
+            DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.primerAp ELSE "" END) AS primerAp'),//'persona.primerAp', 
+            DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.segundoAp ELSE "" END) AS segundoAp')//'persona.segundoAp', 
+         
+            )->distinct()
+        ->where('apariciones.idCarpeta', '=', $carpetaNueva[0]->numCarpeta)
+        ->where(function($query){
+            $query
+            ->orWhere('apariciones.tipoInvolucrado', '=', 'denunciado')
+            ->orWhere('apariciones.tipoInvolucrado', '=', 'conocido');
+        })
+        ->get();
+        dump($denunciados);
+       
+    
+     
+    
+       
+       $tipifdelitos = DB::table('tipif_delito')
+       ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
+       ->join('cat_agrupacion1', 'cat_agrupacion1.id', '=', 'tipif_delito.idAgrupacion1')
+       ->join('cat_agrupacion2', 'cat_agrupacion2.id', '=', 'tipif_delito.idAgrupacion2')
+       ->select('tipif_delito.id', 'cat_delito.nombre as delito', 'cat_agrupacion1.nombre as desagregacion1', 'cat_agrupacion2.nombre as desagregacion2')
                 ->where('tipif_delito.idCarpeta', '=', $idCarpeta)
                 ->orderBy('cat_delito.nombre', 'ASC')
                 ->get();
