@@ -285,7 +285,7 @@ class CarpetaController extends Controller
             ->leftJoin('componentes.persona_fisica as persona_fisica', 'persona_fisica.id', '=', 'variables_fisica.idPersona')
             ->leftJoin('componentes.sexos as sexo', 'sexo.id', '=', 'persona_fisica.sexo')
             ->leftJoin('componentes.persona_moral as persona_moral', 'persona_moral.id', '=', 'variables_moral.idPersona')
-            ->select('apariciones.id',
+            ->select('apariciones.id as idApariciones',
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN extras_fisica.id ELSE extras_moral.id END) AS idExtra'),//'extra_denunciante.id', 
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.nombres ELSE persona_moral.nombre END) AS nombres'),//'persona.nombres', 
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.primerAp ELSE "" END) AS primerAp'),//'persona.primerAp', 
@@ -297,7 +297,8 @@ class CarpetaController extends Controller
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN variables_fisica.edad ELSE "NO APLICA" END) AS edad'),//'variables_persona.edad', 
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN sexo.nombre ELSE "NO APLICA" END) AS sexo'),//'persona.sexo', 
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN variables_fisica.telefono ELSE variables_fisica.telefono END) AS telefono'))//'variables_persona.telefono')
-            ->where('apariciones.idCarpeta', '=', $id)
+            ->where('apariciones.activo', 1)
+            ->where('apariciones.carpeta', '=', $id)
             ->where('apariciones.tipoInvolucrado', '=', 'denunciante')
             ->get();
         return $denunciantes;
@@ -332,7 +333,7 @@ class CarpetaController extends Controller
         ->leftJoin('componentes.sexos as sexo', 'sexo.id', '=', 'persona_fisica.sexo')
         ->leftJoin('componentes.persona_moral as persona_moral', 'persona_moral.id', '=', 'variables_moral.idPersona')
         ->select(
-            // 'apariciones.id AS idaparicion',//'extra_denunciado.alias',
+             'apariciones.id AS idAparicion',//'extra_denunciado.alias',
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN extras_fisica.alias ELSE "NO APLICA" END) AS alias'),//'extra_denunciado.alias',
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN extras_fisica.idVariablesPersona ELSE extras_moral.idVariablesPersona END) AS idVariablesPersona'),//'extra_denunciado.idVariablesPersona',
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN extras_fisica.id ELSE extras_moral.id END) AS id'),//'extra_denunciado.id',
@@ -345,14 +346,15 @@ class CarpetaController extends Controller
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN ifnull(sexo.nombre,"SIN INFORMACION") ELSE "NO APLICA" END) AS sexo'),//'persona.sexo', 
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN ifnull(variables_fisica.telefono,"SIN INFORMACION") ELSE ifnull(variables_fisica.telefono,"SIN INFORMACION") END) AS telefono')//'variables_persona.telefono')
             )->distinct()
-        ->where('apariciones.idCarpeta', '=', $id)
+        ->where('apariciones.carpeta', '=', $id)
         ->where(function($query){
             $query
             ->orWhere('apariciones.tipoInvolucrado', '=', 'denunciado')
             ->orWhere('apariciones.tipoInvolucrado', '=', 'conocido');
         })
+        ->where('apariciones.activo', 1)
         ->get();
-        dump($denunciados);
+        //dump($denunciados);
         return $denunciados;
     }
 
@@ -371,7 +373,7 @@ class CarpetaController extends Controller
             ->Join('componentes.extra_abogado as abo', 'abo.idVariablesPersona', 'apar.idVarPersona')
             ->select('apar.id as idApariciones','var.id as idVarPersona','nombres', 'primerAp', 'segundoAp','cedulaProf','sector','abo.tipo')
             ->where('apar.activo', 1)
-            ->where('apar.idCarpeta', $id)
+            ->where('apar.carpeta', $id)
             ->get();
         return $abogados;
 
@@ -415,71 +417,11 @@ class CarpetaController extends Controller
             ->select('apar.id as idApariciones','var.id as idVarPersona','nombres', 'primerAp', 'segundoAp','antiguedad', 'rango','horarioLaboral','ide.documento as docIdentificacion','numDocIdentificacion')
             ->where('apar.tipoInvolucrado', 'AUTORIDAD')
             ->where('apar.activo', 1)
-            ->where('apar.idCarpeta', $id)
+            ->where('apar.carpeta', $id)
             ->get();
         return $autoridades;
     }
-
-    public static function deleteAutoridad($id){
-        $autoridades = DB::table('componentes.apariciones')->where('id', $id)->update(['activo' => 0, 'carpeta' => '']);
-        return $autoridades;
-    }
-
-    public static function deleteAbogado($id){
-        try{
-
-            $carpeta = DB::table('componentes.apariciones')
-            ->where('id', $id)
-            ->select('idCarpeta')->first();
-
-            DB::beginTransaction();
-            $abogado = DB::table('componentes.apariciones')
-            ->where('id', $id)
-            ->update(['activo' => 0, 'carpeta' => '']);
-
-            
-            $involucrados = DB::table('componentes.apariciones')
-            ->where('idCarpeta', $carpeta->idCarpeta)
-            ->where('tipoInvolucrado', 'DENUNCIADO')
-            ->orWhere('tipoInvolucrado', 'CONOCIDO')
-            ->orWhere('tipoInvolucrado', 'QRR')
-            ->orWhere('tipoInvolucrado', 'DENUNCIANTE')
-            ->select('idVarPersona','esEmpresa','tipoInvolucrado')
-            ->get();
-
-            foreach ($involucrados as $inv) {
-                if ($inv->esEmpresa == 0) {
-                    if ($inv->tipoInvolucrado == "DENUNCIANTE") {
-                        DB::table('componentes.extra_denunciante_fisico')
-                        ->where('idVariablesPersona', $inv->idVarPersona)
-                        ->update(['idAbogado' => null]);
-                    }else{
-                        DB::table('componentes.extra_denunciado_fisico')
-                        ->where('idVariablesPersona', $inv->idVarPersona)
-                        ->update(['idAbogado' => null]);
-                    }
-                }else{
-                    if ($inv->tipoInvolucrado == "DENUNCIANTE") {
-                        DB::table('componentes.extra_denunciante_moral')                        
-                        ->where('idVariablesPersona', $inv->idVarPersona)
-                        ->update(['idAbogado' => null]);
-                    }else{
-                        DB::table('componentes.extra_denunciado_moral')
-                        ->where('idVariablesPersona', $inv->idVarPersona)
-                        ->update(['idAbogado' => null]);
-                    }
-                }
-            }    
-
-            DB::commit();
-            return true;
-        }catch (\PDOException $e){
-            DB::rollBack();
-            return false;
-        }
-    }
-
-
+    
     public static function getDelitos($id){
         $delitos = DB::table('tipif_delito')
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
@@ -540,7 +482,6 @@ class CarpetaController extends Controller
         }
         return $acusaciones;
     }
-
 
     public static function getVehiculos($id)
     {

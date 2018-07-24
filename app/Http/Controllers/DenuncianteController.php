@@ -343,8 +343,9 @@ class DenuncianteController extends Controller
     public function delete($id){
         DB::beginTransaction();
         try{
+            
             $acusaciones = Acusacion::where('idCarpeta',session('carpeta'))->where('idDenunciante',$id)->count();
-            $vpersonas = DB::table('extra_denunciante')
+            /*$vpersonas = DB::table('extra_denunciante')
             ->join('variables_persona','variables_persona.id','=','extra_denunciante.idVariablesPersona')
             ->where('extra_denunciante.id', '=', $id)
             ->select('variables_persona.id as id')
@@ -354,6 +355,9 @@ class DenuncianteController extends Controller
             $vp= VariablesPersona::find($vpersonas->id);
             $vp->idCarpeta = null;
             $vp->save();
+            */
+
+            $denunciante = DB::table('componentes.apariciones')->where('id', $id)->update(['activo' => 0, 'carpeta' => '']);
             $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
             $bdbitacora->denunciante = $bdbitacora->denunciante-1;
             $bdbitacora->defensa = $bdbitacora->defensa-1;

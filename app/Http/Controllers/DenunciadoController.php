@@ -465,19 +465,26 @@ class DenunciadoController extends Controller
         DB::beginTransaction();
         try{
             $acusaciones = Acusacion::where('idCarpeta',session('carpeta'))->where('idDenunciado',$id)->count();
+            /*
             $vpersonas = DB::table('extra_denunciado')
             ->join('variables_persona','variables_persona.id','=','extra_denunciado.idVariablesPersona')
             ->where('extra_denunciado.id', '=', $id)
             ->select('variables_persona.id as id')
             ->first();
+            */
 
-            $ExtraDenunciado =  ExtraDenunciado::find($id);
-            $ExtraDenunciado->delete();
+            //$ExtraDenunciado =  ExtraDenunciado::find($id);
+            //$ExtraDenunciado->delete();
+
+            $denunciado = DB::table('componentes.apariciones')->where('id', $id)->update(['activo' => 0, 'carpeta' => '']);
         
+            /*
             $vp= VariablesPersona::find($vpersonas->id);
             $vp->idCarpeta = null;
             $vp->save();
+            */
             //$acusaciones = Acusacion::where('idCarpeta',$idCarpeta)->where('idTipifDelito',$id)->count();
+
             $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
             $bdbitacora->denunciado = $bdbitacora->denunciado-1;
             $bdbitacora->defensa = $bdbitacora->defensa-1;

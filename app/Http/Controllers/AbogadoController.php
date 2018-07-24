@@ -124,40 +124,50 @@ class AbogadoController extends Controller
     }
 
     public function delete($id){
-        DB::beginTransaction();
         try{
+            DB::beginTransaction();
             $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
-            /*
-            $ExtraAbogado =  ExtraAbogado::find($id);
-            $tipo=$ExtraAbogado->$ExtraAbogado[0]['tipo'];
-            $tipo = normaliza($tipo);
-            if ($tipo=="asesor juridico") {
-                $denunciantes = DB::table('extra_denunciante')
-                ->where('idAbogado', '=', $id)
-                ->get();
-                foreach ($denunciantes as $denunciante) {
-                    $asesor= ExtraDenunciante::find($denunciante->id);
-                    $asesor->idAbogado = null;
-                    $asesor->save();
-                    $bdbitacora->defensa = $bdbitacora->defensa-1;
-                    $bdbitacora->save();
+            $carpeta = DB::table('componentes.apariciones')
+            ->where('id', $id)
+            ->select('idCarpeta')->first();
+ 
+            $abogado = DB::table('componentes.apariciones')
+            ->where('id', $id)
+            ->update(['activo' => 0, 'carpeta' => '']);
+                
+            $involucrados = DB::table('componentes.apariciones')
+            ->where('idCarpeta', $carpeta->idCarpeta)
+            ->where('tipoInvolucrado', 'DENUNCIADO')
+            ->orWhere('tipoInvolucrado', 'CONOCIDO')
+            ->orWhere('tipoInvolucrado', 'QRR')
+            ->orWhere('tipoInvolucrado', 'DENUNCIANTE')
+            ->select('idVarPersona','esEmpresa','tipoInvolucrado')
+            ->get();
+   
+            foreach ($involucrados as $inv) {
+                if ($inv->esEmpresa == 0) {
+                    if ($inv->tipoInvolucrado == "DENUNCIANTE") {
+                        DB::table('componentes.extra_denunciante_fisico')
+                        ->where('idVariablesPersona', $inv->idVarPersona)
+                        ->update(['idAbogado' => null]);
+                    }else{
+                        DB::table('componentes.extra_denunciado_fisico')
+                        ->where('idVariablesPersona', $inv->idVarPersona)
+                        ->update(['idAbogado' => null]);
+                    }
+                }else{
+                    if ($inv->tipoInvolucrado == "DENUNCIANTE") {
+                        DB::table('componentes.extra_denunciante_moral')                        
+                        ->where('idVariablesPersona', $inv->idVarPersona)
+                        ->update(['idAbogado' => null]);
+                    }else{
+                        DB::table('componentes.extra_denunciado_moral')
+                        ->where('idVariablesPersona', $inv->idVarPersona)
+                        ->update(['idAbogado' => null]);
+                    }
                 }
-            } 
-            else {
-                $denunciados = DB::table('extra_denunciado')
-                ->where('idAbogado', '=', $id)
-                ->get();
-                foreach ($denunciados as $denunciado) {
-                    $abogado= ExtraDenunciado::find($denunciado->id);
-                    $abogado->idAbogado = null;
-                    $abogado->save();
-                    $bdbitacora->defensa = $bdbitacora->defensa-1;
-                    $bdbitacora->save();
-                }
-            }
-            $ExtraAbogado->delete();
-            */
-            $ExtraAbogado = CarpetaController::deleteAbogado($id);
+            }    
+         
             $bdbitacora->abogado = $bdbitacora->abogado-1;
             $bdbitacora->save();
             DB::commit();

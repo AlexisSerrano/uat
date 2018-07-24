@@ -40,7 +40,7 @@
 
                          
                             @if(is_null(session('terminada')))
-                            <a data-denunciado-id={{$denunciado->id}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
+                            <a data-denunciado-id={{$denunciado->idAparicion}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
                                 <i class="fa fa-times"></i>
                             </a>
                         	@endif

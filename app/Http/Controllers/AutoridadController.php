@@ -63,152 +63,22 @@ class AutoridadController extends Controller
         }
     }
 
-    /* ---------------------- deprecated por componente ?
-    public function storeAutoridad(StoreAutoridad $request){
-        $idCarpeta=session('carpeta');
-        // dd($request->all());
-        DB::beginTransaction();
+    public function delete($id){
         try{
-            $comprobarPersona=Persona::where('curp',$request->curp)->get();
-            if(count($comprobarPersona)>0){
-                $comprobarPersona=$comprobarPersona[0];
-                $idPersona = $comprobarPersona->id;
-            }else{
-                $persona = new Persona();
-                $persona->nombres = $request->nombres;
-                $persona->primerAp = $request->primerAp;
-                $persona->segundoAp = $request->segundoAp;
-                $persona->fechaNacimiento = $request->fechaNacimiento;
-                $persona->rfc = $request->rfc . $request->homo;
-                $persona->curp = $request->curp;
-                if (!is_null($request->sexo)){
-                    $persona->sexo = $request->sexo;
-                }
-                if (!is_null($request->idNacionalidad)){
-                    $persona->idNacionalidad = $request->idNacionalidad;
-                }
-                if (!is_null($request->idEtnia)){
-                    $persona->idEtnia = $request->idEtnia;
-                }
-                if (!is_null($request->idLengua)){
-                    $persona->idLengua = $request->idLengua;
-                }
-                if (!is_null($request->idMunicipioOrigen)){
-                    $persona->idMunicipioOrigen = $request->idMunicipioOrigen;
-                }
-                $persona->save();
-                $idPersona = $persona->id;
-            }
-
-
-            $domicilio = new Domicilio();
-            $domicilio->idMunicipio = $request->idMunicipio;
-            $domicilio->idLocalidad = $request->idLocalidad;
-            $domicilio->idColonia = $request->idColonia;
-            $domicilio->calle = $request->calle;
-            if ($request->numExterno==null) {
-                $domicilio->numExterno = 'S/N';
-            } else {
-                $domicilio->numExterno = $request->numExterno;
-            }
-            if ($request->numInterno==null) {
-                $domicilio->numInterno = 'S/N';
-            } else {
-                $domicilio->numInterno = $request->numInterno;
-            }
-            $domicilio->save();
-            $idD1 = $domicilio->id;
-
-            $domicilio2 = new Domicilio();
-            $domicilio2->idMunicipio = $request->idMunicipio2;
-            $domicilio2->idLocalidad = $request->idLocalidad2;
-            $domicilio2->idColonia = $request->idColonia2;
-            $domicilio2->calle = $request->calle2;
-            if ($request->numExterno2==null) {
-                $domicilio2->numExterno = 'S/N';
-            } else {
-                $domicilio2->numExterno = $request->numExterno2;
-            }
-            if ($request->numInterno2==null) {
-                $domicilio2->numInterno = 'S/N';
-            } else {
-                $domicilio2->numInterno = $request->numInterno2;
-            }
-            
-            $domicilio2->save();
-            $idD2 = $domicilio2->id;
-
-            $VariablesPersona = new VariablesPersona();
-            $VariablesPersona->idCarpeta = $idCarpeta;
-            $VariablesPersona->idPersona = $idPersona;
-            $fecha = Carbon::parse($request->fechaNacimiento);
-            $VariablesPersona->edad = Carbon::createFromDate($fecha->year, $fecha->month, $fecha->day)->age;
-            $VariablesPersona->telefono = $request->telefono;
-            // $VariablesPersona->motivoEstancia = $request->motivoEstancia;
-            $VariablesPersona->idOcupacion = $request->idOcupacion;
-            $VariablesPersona->idEstadoCivil = $request->idEstadoCivil;
-            $VariablesPersona->idEscolaridad = $request->idEscolaridad;
-            $VariablesPersona->idReligion = $request->idReligion;
-            $VariablesPersona->idDomicilio = $idD1;
-            $VariablesPersona->docIdentificacion = $request->docIdentificacion;
-            $VariablesPersona->numDocIdentificacion = $request->numDocIdentificacion;
-            $VariablesPersona->lugarTrabajo = $request->lugarTrabajo;
-            $VariablesPersona->idDomicilioTrabajo = $idD2;
-            $VariablesPersona->telefonoTrabajo = $request->telefonoTrabajo;
-            $VariablesPersona->representanteLegal = "NO APLICA";
-            $VariablesPersona->save();
-            $idVariablesPersona = $VariablesPersona->id;
-
-            $narracion = new NarracionPersona();
-            $narracion->idVariablesPersona=$idVariablesPersona;
-            if (!is_null($request->narracion)){
-                $narracion->narracion=$request->narracion;
-            }
-            $narracion->tipo=0;
-            $narracion->save();
-
-
-            $ExtraAutoridad = new ExtraAutoridad();
-            $ExtraAutoridad->idVariablesPersona = $idVariablesPersona;
-            $ExtraAutoridad->antiguedad = $request->antiguedad;
-            $ExtraAutoridad->rango = $request->rango;
-            $ExtraAutoridad->horarioLaboral = $request->horarioLaboral;
-            $ExtraAutoridad->narracion = $request->narracion;
-            $ExtraAutoridad->save();
-            /*
-            Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
-            //Para mostrar modal
-            //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
-            
-            Alert::success('Autoridad registrada con éxito', 'Hecho');
+            DB::beginTransaction();
+            $idCarpeta=session('carpeta');
+            $autoridades = DB::table('componentes.apariciones')->where('id', $id)->update(['activo' => 0, 'carpeta' => '']);
             $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
-            $bdbitacora->autoridad = $bdbitacora->autoridad+1;
+            $bdbitacora->autoridad = $bdbitacora->autoridad-1;
             $bdbitacora->save();
             DB::commit();
-            //return redirect()->route('carpeta', $request->idCarpeta);
-            return redirect()->route('new.autoridad');
+            Alert::success('Registro eliminado con éxito', 'Hecho');
+            return back();
         }catch (\PDOException $e){
             DB::rollBack();
-            Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
+            Alert::error('Se presentó un problema al eliminar sus datos, intente de nuevo', 'Error');
             return back()->withInput();
         }
-        
-    }
-
-    */
-
-
-    public function delete($id){
-        $idCarpeta=session('carpeta');
-
-        $ExtraAutoridad = CarpetaController::deleteAutoridad($id);
-        $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
-        $bdbitacora->autoridad = $bdbitacora->autoridad-1;
-        $bdbitacora->save();
-        Alert::success('Registro eliminado con éxito', 'Hecho');
-        return back();
-
-
     }
     
 }
