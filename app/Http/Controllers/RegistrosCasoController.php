@@ -91,6 +91,10 @@ class RegistrosCasoController extends Controller
 
        public function editRegistros($id)
        {
+        $tiposDeConstancia= array(0=>'PASAPORTE',1=>'CREDENCIAL DE TRABAJO/GAFFETE',2=>'TARJETA DE CRÉDITO/DÉBITO',3=>'TELÉFONO CELULAR',4=>'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)',5=>
+        'PERMISO DE TRÁNSITO PARA EMPLACAMIENTO DE TAXIS',6=>'FACTURA DE VEHICULO/MOTOCICLETA',7=>'TARJETA DE CIRCULACIÓN',8=>'PLACAS DE CIRCULACIÓN',9=>
+        'LICENCIA DE CONDUCIR ESTATAL',10=>'LICENCIA DE CONDUCIR FEDERAL',11=>'DOCUMENTO/BIEN EXTRAVIADO O ROBADO',12=>'CERTIFICADO DE ALUMBRAMIENTO');
+
             $estados=CatEstado::orderBy('nombre', 'ASC')
             ->pluck('nombre','id');
             $preregistro = Preregistro::find($id);
@@ -136,6 +140,16 @@ class RegistrosCasoController extends Controller
             ->get();
             $nombreLocalidad=$nombreLocalidad[0]->nombre;
 
+
+            $tipoActa = $preregistro->tipoActa;
+            if($tipoActa){
+                if(array_search($tipoActa, $tiposDeConstancia)){
+                    $tipoActa=$preregistro->tipoActa;
+                }else{//Si el tipo de constancia de extravio es OTROS DOCUMENTOS
+                    $tipoActa='OTROS'; 
+                }
+            }
+
             //nombre del colonia
             $Colonia=DB::table('cat_colonia')
             ->where('cat_colonia.id','=',$direccionTB[0]->idColonia)
@@ -144,10 +158,17 @@ class RegistrosCasoController extends Controller
             $nombreCP=$Colonia[0]->codigoPostal;
 
 
+
             $MunicipioOrigen = DB::table('cat_municipio')        
             ->select('idEstado','idMunicipio','nombre')
             ->where('id','=', $preregistro->idMunicipioOrigen)->first();
             
+
+            $catMunicipiosOrigen=DB::table('cat_municipio')
+        ->where('cat_municipio.idEstado','=',$MunicipioOrigen->idEstado)
+        ->orderBy('nombre','asc')
+        ->pluck('nombre','id');
+
             $estadoOrigen = DB::table('cat_estado')        
             ->select('nombre')
             ->where('id','=', $MunicipioOrigen->idEstado)->first();
@@ -188,7 +209,7 @@ class RegistrosCasoController extends Controller
                 return view('servicios.recepcion.forms.editsinrecepcion-empresa', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon','identificaciones','docIdent' ));
             }
             else{
-                return view('servicios.recepcion.forms.editsinrecepcion-persona', compact('estadoOrigen','MunicipioOrigen','idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon','identificaciones','docIdent'));
+                return view('servicios.recepcion.forms.editsinrecepcion-persona', compact('catMunicipiosOrigen','estadoOrigen','MunicipioOrigen','idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon','identificaciones','docIdent','tipoActa','tiposDeConstancia'));
             }
         }
 

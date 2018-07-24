@@ -113,9 +113,12 @@ class PreregistroAuxController extends Controller
         $razon=$razon[0]->nombre;
 
         //Saber si la razón es solicitud de constancia de extravio
-        if($preregistro->tipoActa){
-            if(array_search($preregistro->tipoActa, $tiposDeConstancia)){
+        $tipoActa = $preregistro->tipoActa;
+        if($tipoActa){
+            if(array_search($tipoActa, $tiposDeConstancia)){
                 $tipoActa=$preregistro->tipoActa;
+            }else{//Si el tipo de constancia de extravio es OTROS DOCUMENTOS
+                $tipoActa='OTROS'; 
             }
         }
         
@@ -175,10 +178,10 @@ class PreregistroAuxController extends Controller
         $persona= $preregistro->esEmpresa;//persona fisica o empresa
 
         if($persona==1){
-            return view('servicios.recepcion.forms.editconrecepcion-empresa', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon','identificaciones','docIdent','tipoActa'));
+            return view('servicios.recepcion.forms.editconrecepcion-empresa', compact('idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon','identificaciones','docIdent'));
         }
         else{
-            return view('servicios.recepcion.forms.editconrecepcion-persona', compact('catMunicipiosOrigen','estadoOrigen','MunicipioOrigen','idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon','identificaciones','docIdent'));
+            return view('servicios.recepcion.forms.editconrecepcion-persona', compact('catMunicipiosOrigen','estadoOrigen','MunicipioOrigen','idEstadoSelect', 'idMunicipioSelect' ,'idLocalidadSelect', 'idColoniaSelect', 'catMunicipios', 'catLocalidades', 'catColonias', 'estados', 'preregistro','direccionTB', 'idCodigoPostalSelect', 'catCodigoPostal','nombreEstado','nombreMunicipio','nombreLocalidad', 'nombreColonia','nombreCP','razones','razon','identificaciones','docIdent','tipoActa','tiposDeConstancia'));
         }
     }
 

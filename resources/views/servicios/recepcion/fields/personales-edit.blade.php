@@ -268,13 +268,37 @@
 		<div class="form-group">
 			{!! Form::label('idRazon', 'Razón:', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$razon ,['class'=> 'col-form-label-sm hideLabels'])!!}
-			<div class="input-group inputOculto" id="inputRazon">
-				{!! Form::label('idRazon', 'Razón:', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('idRazon', $razones, $preregistro->idRazon, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una razón', 'data-validation'=> 'required']) !!}				
+			<div class="input-group inputOculto" id="inputRazon">				
+				{!! Form::label('idRazon2', 'Razón', ['class' => 'col-form-label-sm']) !!}				
+				{!! Form::select('idRazon2', $razones, $preregistro->idRazon, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una razón', 'data-validation'=> 'required']) !!}								
 			</div>
 			<div class="help-block with-errors"></div>
 		</div>
 	</div>
+	
+
+		@if( ($tipoActa) && ($preregistro->idRazon==4))
+			@if($tipoActa=='OTROS')	
+				<div class="col-6">
+					{!! Form::label('tipoAct', 'Constancia de extravio:', ['class' => 'col-form-label-sm hideLabels']) !!}
+					{!! Form::label('nombre', 'OTROS DOCUMENTOS', ['class' => 'col-form-label-sm hideLabels']) !!}
+				</div>
+				<div class="col-6">
+					{!! Form::label('otr', 'Especifique : ', ['class' => 'col-form-label-sm hideLabels']) !!}
+					{!! Form::label('otr', $preregistro->tipoActa, ['class' => 'col-form-label-sm hideLabels']) !!}
+				</div>												
+			@else
+				<div class="col-6">
+					<div class="form-group">
+						{!! Form::label('tipoAct', 'Constancia de extravio : ', ['class' => 'col-form-label-sm hideLabels']) !!}						
+						{!! Form::label('tipoAct', $tipoActa, ['class' => 'col-form-label-sm hideLabels']) !!}						
+						<div class="input-group inputOculto" id="inputRazon">														
+						</div>
+					</div>
+				</div>
+			@endif
+		@endif
+
 
 
 	
