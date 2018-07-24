@@ -421,7 +421,7 @@ class CarpetaController extends Controller
     }
 
     public static function deleteAutoridad($id){
-        $autoridades = DB::table('componentes.apariciones')->where('id', $id)->update(['activo' => 0]);
+        $autoridades = DB::table('componentes.apariciones')->where('id', $id)->update(['activo' => 0, 'carpeta' => '']);
         return $autoridades;
     }
 
@@ -435,7 +435,7 @@ class CarpetaController extends Controller
             DB::beginTransaction();
             $abogado = DB::table('componentes.apariciones')
             ->where('id', $id)
-            ->update(['activo' => 0]);
+            ->update(['activo' => 0, 'carpeta' => '']);
 
             
             $involucrados = DB::table('componentes.apariciones')

@@ -360,7 +360,7 @@ class DenuncianteController extends Controller
             $bdbitacora->acusaciones = $bdbitacora->acusaciones-$acusaciones;
             $bdbitacora->save();
             DB::commit();
-            Alert::success('Registrado eliminado con éxito', 'Hecho');
+            Alert::success('Registro eliminado con éxito', 'Hecho');
             return back();
         }
         catch (\PDOException $e){

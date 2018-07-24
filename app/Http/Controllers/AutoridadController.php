@@ -63,6 +63,7 @@ class AutoridadController extends Controller
         }
     }
 
+    /* ---------------------- deprecated por componente ?
     public function storeAutoridad(StoreAutoridad $request){
         $idCarpeta=session('carpeta');
         // dd($request->all());
@@ -178,7 +179,7 @@ class AutoridadController extends Controller
             Flash::success("Se ha registrado ".$user->name." de forma satisfactoria")->important();
             //Para mostrar modal
             //flash()->overlay('Se ha registrado '.$user->name.' de forma satisfactoria!', 'Hecho');
-            */
+            
             Alert::success('Autoridad registrada con éxito', 'Hecho');
             $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
             $bdbitacora->autoridad = $bdbitacora->autoridad+1;
@@ -191,7 +192,10 @@ class AutoridadController extends Controller
             Alert::error('Se presentó un problema al guardar su los datos, intente de nuevo', 'Error');
             return back()->withInput();
         }
+        
     }
+
+    */
 
 
     public function delete($id){
