@@ -16372,7 +16372,7 @@ exports = module.exports = __webpack_require__(14)(false);
 
 
 // module
-exports.push([module.i, "\n*{\n    font-family: \"NeoSans\";\n}\nbody{\n    background-color: #F0F0F0;\n}\n.editable{\n    background-color: #ffffff;\n    width: 80%;\n    margin-left: auto;\n    margin-right: auto;\n    border: 2px solid #E3E3E3;\n}\n.editable td, .editable th{\n    padding-left: 10px;\n    padding-right: 10px;\n}\n.font16{\n    font-size: 16px;\n}\n.font14{\n    font-size: 14px;\n}\n.font13{\n    font-size: 13px;\n}\n.font10{\n    font-size: 10px;\n}\n.format1{\n    font-weight: bold;\n    font-style: italic;\n}\n.format2{\n    font-weight: bold;\n    text-align: center;\n    display: block;\n    margin-bottom: -15px;\n}\n.noeditable{\n    font-weight: bold;\n}\n.centrado{\n    margin-left: 50px;\n    margin-right: 50px;\n}\n.justificado{\n    text-align : justify;\n}\n.negritas{\n    font-weight: bold;\n}\n.padding th{ \n    padding: 20px 60px;\n}\n#imprimir{\n    text-align: center;\n    margin-top: 10px;\n    margin-bottom: 10px;\n}\n.impre{\n    padding-left: 30px;\n    padding-right: 30px;\n}\n@media print {\n.impre {display:none\n}\n.editable{\n        border: none;\n        width: 100%;\n}\n}\n@page \n{\n    size:  auto;   /* auto es el valor inicial */\n}\n", ""]);
+exports.push([module.i, "\n*{\n    font-family: \"NeoSans\";\n}\nbody{\n    background-color: #F0F0F0;\n}\ntfoot{\n    margin-top: 0px;\n    padding-top: 0px;\n}\n.editable{\n    background-color: #ffffff;\n    width: 80%;\n    margin-left: auto;\n    margin-right: auto;\n    border: 2px solid #E3E3E3;\n}\n.editable td, .editable th{\n    padding-left: 10px;\n    padding-right: 10px;\n}\n.font16{\n    font-size: 16px;\n}\n.font14{\n    font-size: 14px;\n}\n.font13{\n    font-size: 13px;\n}\n.font10{\n    font-size: 10px;\n}\n.format1{\n    font-weight: bold;\n    font-style: italic;\n}\n.format2{\n    font-weight: bold;\n    text-align: center;\n    display: block;\n    margin-bottom: -15px;\n}\n.noeditable{\n    font-weight: bold;\n}\n.centrado{\n    margin-left: 50px;\n    margin-right: 50px;\n}\n.justificado{\n    text-align : justify;\n}\n.negritas{\n    font-weight: bold;\n}\n#imprimir{\n    text-align: center;\n    margin-top: 10px;\n    margin-bottom: 10px;\n}\n.impre{\n    padding-left: 30px;\n    padding-right: 30px;\n}\n@media print {\n.impre {display:none\n}\n.editable{\n        border: none;\n        width: 100%;\n}\n}\n@page \n{\n    size:  auto;   /* auto es el valor inicial */\n}\n", ""]);
 
 // exports
 
@@ -18813,7 +18813,7 @@ var render = function() {
       "table",
       {
         staticClass: "editable",
-        on: { mouseover: _vm.editar, mouseout: _vm.fijo }
+        on: { mouseover: _vm.editar, blur: _vm.fijo }
       },
       [
         _vm.titulo
