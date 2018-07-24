@@ -11,7 +11,7 @@ class TipoUsoSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cat_tipo_uso')->insert([
+         DB::table('cat_tipo_uso')->insert([
             ['id'=>  1,'nombre' => 'SERVICIO FEDERAL DE CARGA'],
             ['id'=>  2,'nombre' => 'SERVICIO FEDERAL DIPLOMATICO'],
             ['id'=>  3,'nombre' => 'TRANSPORTE PARTICULAR DEMOSTRA'],
@@ -33,11 +33,7 @@ class TipoUsoSeeder extends Seeder
             ['id'=> 19,'nombre' => 'TRANSPORTE ESPECIALIZADO FEDER'],
             ['id'=> 20,'nombre' => 'TRANSPORTE ESPECIALIZADO LOCAL'],
             ['id'=> 21,'nombre' => 'SERVICIO LOCAL DE CARGA'],
-            ['id'=> 22,'nombre' => 'SIN INFORMACION']
-
-
-
-
+            ['id'=> 99,'nombre' => 'SIN INFORMACION']
         ]);
     }
 }

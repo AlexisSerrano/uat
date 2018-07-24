@@ -11,19 +11,18 @@ class ClaseVehiculoSeeder extends Seeder
      */
     public function run()
     {
-        {
-            DB::table('cat_clase_vehiculo')->insert([
-                ['id' => 10,'nombre' => 'SIN INFORMACION'],
-                ['id' => 1,'nombre' => 'AUTOMOVIL'],
-                ['id' => 2,'nombre' => 'CAMIONETA'],
-                ['id' => 3,'nombre' => 'CAMION'],
-                ['id' => 4,'nombre' => 'OMNIBUS'],
-                ['id' => 5,'nombre' => 'REMOLQUE'],
-                ['id' => 6,'nombre' => 'MOTOCICLETA'],
-                ['id' => 7,'nombre' => 'OTROS'],
-                ['id' => 8,'nombre' => 'AUTO ANTIGUO'],
-                ['id' => 9,'nombre' => 'AGROINDUSTRIAL']
-            ]);
-        }
+        DB::table('cat_clase_vehiculo')->insert([
+            ['id' => 1,'nombre' => 'AUTOMOVIL'],
+            ['id' => 2,'nombre' => 'CAMIONETA'],
+            ['id' => 3,'nombre' => 'CAMION'],
+            ['id' => 4,'nombre' => 'OMNIBUS'],
+            ['id' => 5,'nombre' => 'REMOLQUE'],
+            ['id' => 6,'nombre' => 'MOTOCICLETA'],
+            ['id' => 7,'nombre' => 'OTROS'],
+            ['id' => 8,'nombre' => 'AUTO ANTIGUO'],
+            ['id' => 9,'nombre' => 'AGROINDUSTRIAL'],
+            ['id' => 99,'nombre' => 'SIN INFORMACION']
+
+        ]);
     }
 }
