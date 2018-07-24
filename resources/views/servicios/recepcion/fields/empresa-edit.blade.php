@@ -197,5 +197,31 @@
 				</div>
 			</div>
 		</div>
+
+
+		
+		@if( ($tipoActa) && ($preregistro->idRazon==4))
+			@if($tipoActa=='OTROS')	
+				<div class="col-6">
+					{!! Form::label('tipoAct', 'Constancia de extravio:', ['class' => 'col-form-label-sm hideLabels']) !!}
+					{!! Form::label('nombre', 'OTROS DOCUMENTOS', ['class' => 'col-form-label-sm hideLabels']) !!}
+				</div>
+				<div class="col-6">
+					{!! Form::label('otr', 'Especifique : ', ['class' => 'col-form-label-sm hideLabels']) !!}
+					{!! Form::label('otr', $preregistro->tipoActa, ['class' => 'col-form-label-sm hideLabels']) !!}
+				</div>												
+			@else
+				<div class="col-6">
+					<div class="form-group">
+						{!! Form::label('tipoAct', 'Constancia de extravio : ', ['class' => 'col-form-label-sm hideLabels']) !!}						
+						{!! Form::label('tipoAct', $tipoActa, ['class' => 'col-form-label-sm hideLabels']) !!}						
+						<div class="input-group inputOculto" id="inputRazon">														
+						</div>
+					</div>
+				</div>
+			@endif
+		@endif
+
+
 	</div>
 </div>
