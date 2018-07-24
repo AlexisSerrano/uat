@@ -353,6 +353,8 @@ class PreregistroController extends Controller
                 $preregistro->telefono = $request->telefono1;
                 $preregistro->fechaNac = $request->fechaAltaEmpresa;
                 $preregistro->narracion = $request->narracion;
+                $preregistro->docIdentificacion = $request->docIdentificacion;
+                $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
                 $preregistro->folio = $folio;
                 $preregistro->statusCancelacion = 0;
                 $preregistro->statusOrigen = 1;
