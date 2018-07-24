@@ -95,5 +95,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CavdSeeder::class);
         $this->call(MarcaSeeder::class);       
         $this->call(SubmarcaSeeder::class);
+        $this->call(SubmarcaSeeder2::class);
     }
 }

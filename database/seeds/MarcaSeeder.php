@@ -9,10 +9,11 @@ class MarcaSeeder extends Seeder
      *
      * @return void
      */
+    ////BASADO EN EL SISTEMA NACIONAL
     public function run()
     {
         DB::table('cat_marca')->insert([
-			['id' =>955,'nombre' => 'SIN INFORMACION'],
+			['id' =>999,'nombre' => 'SIN INFORMACION'],
 			['id' =>1,'nombre' => 'CHEVROLET'],
 			['id' =>2,'nombre' => 'CHRYSLER'],
 			['id' =>3,'nombre' => 'NISSAN'],

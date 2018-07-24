@@ -40,6 +40,7 @@ url = window.location;
 					}
 				}
 				$('#tipovv').html(html2);
+				$('#tipovv').val(json.vehiculo.TipoVehiculo).trigger('change.select2');
 				$('#tipousov').val(json.vehiculo.TipoUso).trigger('change.select2');
 				$('#procev').val(json.vehiculo.Procedencia).trigger('change.select2');
 				$('#asegurav').val(json.vehiculo.Aseguradora).trigger('change.select2');

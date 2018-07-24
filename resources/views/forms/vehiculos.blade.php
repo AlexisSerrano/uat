@@ -54,49 +54,5 @@
 <script src="{{ asset('js/selects/vehiculo.js') }}"></script>
 {{-- <script src="{{ asset('js/selects/vehiculo.js') }}"></script>--}}
 <script src="{{ asset('js/vehiculos.js') }}"></script> 
-<script>
-
-		// $("#vrr").hide();
-		// setTimeout(function(){
-		// 	console.log('llamando la carga');
-		// 	//console.log(vehiculos.document.forms["formDenuncia"]);	
-		// 	datos();
-		// },5000);
-		
-		// $("#systemVrr").hide();
-		// $("#vehiculos").hide();
-		
-		// function vehiculoInvolucrado() {
-		// 	$("#systemVrr").hide();
-		// 	$("#vehiculos").show();
-		// }
-		// localStorage.setItem('session_id', "{{Auth::user()->session_id}}");
-		
-		// function vehiculoRobado() {
-		// 	// frames['systemVrr'].location.reload();
-		// 	$("#systemVrr").show();
-		// 	$("#vehiculos").hide();
-			
-		// 	var data_vrr={
-		// 		"session_id":"{{Auth::user()->session_id}}",
-		// 		"grupo":"{{Auth::user()->grupo}}",
-		// 		"idUser":"{{Auth::user()->id}}",
-		// 		"numCarpeta":"{{session('numCarpeta')}}",
-		// 		"idCarpeta":"{{session('carpeta')}}",
-		// 		"origen":"UAT"
-		// 	};
-
-		// 	setTimeout(function() {
-		// 		var vehiculos = document.getElementById('systemVrr'); 
-		// 		vehiculos.contentWindow.postMessage( JSON.stringify(data_vrr) , 'http://192.168.137.1');
-		// 	},5000);
-			
-		// }
-
-		
-	</script>
-
-
-
 @endpush
 
