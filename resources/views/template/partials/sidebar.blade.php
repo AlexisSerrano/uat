@@ -379,13 +379,65 @@
 						</li>
 						@endif --}}
 						{{-- <button type="button" class="nav-link" data-toggle="modal" data-target="#modalRol"> --}}
-					<li class="nav-item has-treeview">
+					{{-- <li class="nav-item has-treeview"> --}}
 						{{-- <a href="{{route('cambioRol')}}" class="nav-link"> --}}
-						<a href="#" onclick="mostrarModal()" class="nav-link">
+						{{-- <a href="#" onclick="mostrarModal()" class="nav-link">
 							<i class="nav-icon fa fa-exchange"></i>
 							<p>Cambiar de rol</p>
 						</a>
-					</li>
+					</li> --}}
+
+					@if (Auth::user()->grecepcion==1 && Auth::user()->grupo!='recepcion')
+						<li class="nav-item has-treeview">
+							{{-- <a href="{{route('cambioRol')}}" class="nav-link"> --}}
+							<a href="{{route('cambioRolRecepcion')}}" class="nav-link" onclick="event.preventDefault();document.getElementById('rolrecepcion').submit();">
+								<i class="nav-icon fa fa-exchange"></i>
+								<p>Cambiar a recepción</p>
+							</a>
+						</li>						
+						<form id="rolrecepcion" action="{{ route('cambioRolRecepcion') }}" method="POST" style="display: none;">
+							{{ csrf_field() }}
+						</form>
+					@endif
+					
+					@if (Auth::user()->gorientador==1 && Auth::user()->grupo!='orientador')
+						<li class="nav-item has-treeview">
+							{{-- <a href="{{route('cambioRol')}}" class="nav-link"> --}}
+							<a href="{{route('cambioRolOrientador')}}" class="nav-link" onclick="event.preventDefault();document.getElementById('rolorientador').submit();">
+								<i class="nav-icon fa fa-exchange"></i>
+								<p>Cambiar a orientador</p>
+							</a>
+						</li>						
+						<form id="rolorientador" action="{{ route('cambioRolOrientador') }}" method="POST" style="display: none;">
+							{{ csrf_field() }}
+						</form>
+					@endif
+						
+					@if (Auth::user()->gfacilitador==1 && Auth::user()->grupo!='facilitador')
+						<li class="nav-item has-treeview">
+							{{-- <a href="{{route('cambioRol')}}" class="nav-link"> --}}
+							<a href="{{route('cambioRolFacilitador')}}" class="nav-link" onclick="event.preventDefault();document.getElementById('rolfacilitador').submit();">
+								<i class="nav-icon fa fa-exchange"></i>
+								<p>Cambiar a facilitador</p>
+							</a>
+						</li>						
+						<form id="rolfacilitador" action="{{ route('cambioRolFacilitador') }}" method="POST" style="display: none;">
+							{{ csrf_field() }}
+						</form>
+					@endif
+						
+					@if (Auth::user()->gcoordinador==1 && Auth::user()->grupo!='coordinador')
+						<li class="nav-item has-treeview">
+							{{-- <a href="{{route('cambioRol')}}" class="nav-link"> --}}
+							<a href="{{route('cambioRolCoordinador')}}" class="nav-link" onclick="event.preventDefault();document.getElementById('rolcoordinador').submit();">
+								<i class="nav-icon fa fa-exchange"></i>
+								<p>Cambiar a coordinador</p>
+							</a>
+						</li>						
+						<form id="rolcoordinador" action="{{ route('cambioRolCoordinador') }}" method="POST" style="display: none;">
+							{{ csrf_field() }}
+						</form>
+					@endif
 					{{-- </button> --}}
 				@endif
 
@@ -394,7 +446,7 @@
 						<i class="nav-icon fa fa-power-off"></i>
 						<p>Cerrar sesión</p>
 					</a>
-					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 						{{ csrf_field() }}
 					</form>
 				</li>

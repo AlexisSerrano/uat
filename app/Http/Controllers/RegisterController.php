@@ -87,50 +87,54 @@ class RegisterController extends Controller
         return view('servicios.errores.errorlogin');
     }
     
-    public function cambioRol(Request $request){
-        //dump('entra');
-        //   Alert::error('No tienes permiso de cambiarte a éste rol, comunícate con el centro de información.', 'Error');
 
-        $nombreRol = DB::table('roles')->where('id',$request->idRol)->select('name')->first();
-        $user = User::find(Auth::user()->id);
-        //  dd($nombreRol->name)
 
-        switch ($nombreRol->name) {
-            
-            case "recepcion":
-                $gGrupo = $user->grecepcion; 
-                RegisterController::validarGrupo($gGrupo,$request->idRol); 
-                return redirect(route('predenuncias.index'));    
-                break;
-            
-            case "orientador":
-                $gGrupo = $user->gorientador; 
-                RegisterController::validarGrupo($gGrupo,$request->idRol); 
-                return redirect(route('indexcarpetas'));   
-                break;
-            
-            case "facilitador":
-                $gGrupo = $user->gfacilitador; 
-                RegisterController::validarGrupo($gGrupo,$request->idRol); 
-                return redirect()->route('home');
-                break;
-            
-            case "coordinador":
-                $gGrupo = $user->gcoordinador;
-                RegisterController::validarGrupo($gGrupo,$request->idRol);
-                return redirect(route('indexcarpetas'));   
-                break;
-                
+
+    public function cambioRolRecepcion(Request $request){
+        if(Auth::user()->grecepcion==1){
+            $user = User::find(Auth::user()->id);
+            $gGrupo = $user->grecepcion; 
+            RegisterController::validarGrupo($gGrupo,4); 
+            return redirect(route('predenuncias.index'));
+        } else {
         }
-
     }
 
+    public function cambioRolOrientador(Request $request){
+        if(Auth::user()->gorientador==1){
+            $user = User::find(Auth::user()->id);
+            $gGrupo = $user->gorientador; 
+            RegisterController::validarGrupo($gGrupo,3); 
+            return redirect(route('indexcarpetas'));   
+        } else {
+        }
+    }
+    
+    public function cambioRolFacilitador(Request $request){
+        if(Auth::user()->gfacilitador==1){
+            $user = User::find(Auth::user()->id);
+            $gGrupo = $user->gfacilitador; 
+            RegisterController::validarGrupo($gGrupo,2); 
+            return redirect(route('home'));
+        } else {
+        }
+    }
+    
+    public function cambioRolCoordinador(Request $request){
+        if(Auth::user()->gcoordinador==1){
+            $user = User::find(Auth::user()->id);
+            $gGrupo = $user->gcoordinador; 
+            RegisterController::validarGrupo($gGrupo,1); 
+            return redirect(route('indexcarpetas'));   
+        } else {
+        }
+    }
 
     public static function validarGrupo($gGrupo,$idRol)
     {
         $user = User::find(Auth::user()->id);
         $nombreRol = DB::table('roles')->where('id',$idRol)->select('name')->first();
-  
+    
         if($gGrupo==1){       
             $rol_usuario = DB::table('model_has_roles')->where('model_id', Auth::user()->id)->update(['role_id' => $idRol]);
             $user->grupo = $nombreRol->name;
@@ -138,10 +142,50 @@ class RegisterController extends Controller
             $x=1;
             Alert::success('Cambio registrado con éxito', 'Hecho')->persistent("Aceptar");
         }else{
-         Alert::error('No tienes permiso de cambiarte a éste rol, comunícate con el centro de información.', 'Error')->persistent("Aceptar");
-          $x=0;
+            Alert::error('No tienes permiso de cambiarte a éste rol, comunícate con el centro de información.', 'Error')->persistent("Aceptar");
+            return redirect()->route('home');
+            $x=0;
         } 
         return $x;
     }  
+
+    // public function cambioRol(Request $request){
+    //     //dump('entra');
+    //     //   Alert::error('No tienes permiso de cambiarte a éste rol, comunícate con el centro de información.', 'Error');
+
+    //     $nombreRol = DB::table('roles')->where('id',$request->idRol)->select('name')->first();
+    //     $user = User::find(Auth::user()->id);
+    //     //  dd($nombreRol->name)
+
+    //     switch ($nombreRol->name) {
+            
+    //         case "recepcion":
+    //             $gGrupo = $user->grecepcion; 
+    //             RegisterController::validarGrupo($gGrupo,$request->idRol); 
+    //             return redirect(route('predenuncias.index'));    
+    //             break;
+            
+    //         case "orientador":
+    //             $gGrupo = $user->gorientador; 
+    //             RegisterController::validarGrupo($gGrupo,$request->idRol); 
+    //             return redirect(route('indexcarpetas'));   
+    //             break;
+            
+    //         case "facilitador":
+    //             $gGrupo = $user->gfacilitador; 
+    //             RegisterController::validarGrupo($gGrupo,$request->idRol); 
+    //             return redirect()->route('home');
+    //             break;
+            
+    //         case "coordinador":
+    //             $gGrupo = $user->gcoordinador;
+    //             RegisterController::validarGrupo($gGrupo,$request->idRol);
+    //             return redirect(route('indexcarpetas'));   
+    //             break;
+                
+    //     }
+
+    // }
+
 
 }

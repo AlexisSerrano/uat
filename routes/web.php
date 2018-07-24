@@ -316,7 +316,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/filtro', 'LibroOficioController@filtroActas')->name('filtro.actas.get')->middleware(['permission:filtro_actas_get']);
     
     /* -----------Ruta para cambio de rol------------ */
-    Route::post('rol','RegisterController@cambioRol')->name('cambioRol');
+    // Route::post('rol','RegisterController@cambioRol')->name('cambioRol');
+    Route::post('rolRecepcion','RegisterController@cambioRolRecepcion')->name('cambioRolRecepcion');
+    Route::post('rolOrientador','RegisterController@cambioRolOrientador')->name('cambioRolOrientador');
+    Route::post('rolFacilitador','RegisterController@cambioRolFacilitador')->name('cambioRolFacilitador');
+    Route::post('rolCoordinador','RegisterController@cambioRolCoordinador')->name('cambioRolCoordinador');
 
 });
 

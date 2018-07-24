@@ -31,6 +31,9 @@ class HomeController extends Controller
         if (Auth::user()->grupo=='recepcion') {
             return redirect(route('predenuncias.index'));    
         }
+        if (Auth::user()->grupo=='facilitador') {
+            return redirect(route('error.login'));    
+        }
     }
     
     

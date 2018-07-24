@@ -77,7 +77,7 @@
 
 	{{--  inicio modal para cambio de rol --}}
 	
-	@if (is_null(session('carpeta'))&&is_null(session('terminada')))
+	{{-- @if (is_null(session('carpeta'))&&is_null(session('terminada')))
 	<div class="modal" id="modalRol">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -105,7 +105,7 @@
 			</div>
 		</div>
 	</div>
-	@endif
+	@endif --}}
 	{{--  fin modal para cambio de rol --}}
 	@include('template.partials.footer')
 </div>
