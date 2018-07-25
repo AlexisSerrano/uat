@@ -11,20 +11,19 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">			  
 					<ul class="navbar-nav mr-auto">
 						<li>
-							<form class="form-inline my-2 my-lg-0" method="POST" action="{{ url('registrosfiltro') }}" id="busquedafolio">
+							<form class="form-inline " method="POST" action="{{ url('registrosfiltro') }}" id="busquedafolio">
 								@csrf
 								<div class="input-group mb-6">
-									
-									<div class="input-group-prepend">
-									
-										<button class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></button>
-									
-									</div>
 									<input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="basic-addon1" name="folio" id="folio">
 								</div>	
+								<div class="input-group mb-6">
+									
+										<button class="btn btn-default" style="margin-left: -5px;" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></button>
+									
+									</div>
 							</form>
+							
 						</li>
-							  
 						<li>
 							<button class="btn btn-secondary" style="margin-left: 10px;">Todos
 								<a   href="{{url('registros')}}"></a>
