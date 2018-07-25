@@ -48,8 +48,8 @@ class CarpetaController extends Controller
                 $buscarConsecutivo=$buscarConsecutivo[0];
                 $partesNumero=explode("/", $buscarConsecutivo->numCarpeta);
                 // dd($buscarConsecutivo);
-                $consecutivo=$partesNumero[2] + 1;
-                $NuevoNumCarpeta = $partesNumero[0].'/'.$partesNumero[1].'/'.$consecutivo.'/'.$partesNumero[3];                
+                $consecutivo=$partesNumero[3] + 1;
+                $NuevoNumCarpeta = $unidad.'/'.$consecutivo.'/'.$partesNumero[4];    
                 $buscarConsecutivo = Carpeta::where('numCarpeta',$NuevoNumCarpeta)->get();
             }
             
@@ -298,7 +298,7 @@ class CarpetaController extends Controller
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN sexo.nombre ELSE "NO APLICA" END) AS sexo'),//'persona.sexo', 
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN variables_fisica.telefono ELSE variables_fisica.telefono END) AS telefono'))//'variables_persona.telefono')
             ->where('apariciones.activo', 1)
-            ->where('apariciones.carpeta', '=', $id)
+            ->where('apariciones.idCarpeta', '=', $id)
             ->where('apariciones.tipoInvolucrado', '=', 'denunciante')
             ->get();
         return $denunciantes;
@@ -346,7 +346,7 @@ class CarpetaController extends Controller
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN ifnull(sexo.nombre,"SIN INFORMACION") ELSE "NO APLICA" END) AS sexo'),//'persona.sexo', 
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN ifnull(variables_fisica.telefono,"SIN INFORMACION") ELSE ifnull(variables_fisica.telefono,"SIN INFORMACION") END) AS telefono')//'variables_persona.telefono')
             )->distinct()
-        ->where('apariciones.carpeta', '=', $id)
+        ->where('apariciones.idCarpeta', '=', $id)
         ->where(function($query){
             $query
             ->orWhere('apariciones.tipoInvolucrado', '=', 'denunciado')
@@ -373,7 +373,7 @@ class CarpetaController extends Controller
             ->Join('componentes.extra_abogado as abo', 'abo.idVariablesPersona', 'apar.idVarPersona')
             ->select('apar.id as idApariciones','var.id as idVarPersona','nombres', 'primerAp', 'segundoAp','cedulaProf','sector','abo.tipo')
             ->where('apar.activo', 1)
-            ->where('apar.carpeta', $id)
+            ->where('apar.idCarpeta', $id)
             ->get();
         return $abogados;
 
@@ -417,7 +417,7 @@ class CarpetaController extends Controller
             ->select('apar.id as idApariciones','var.id as idVarPersona','nombres', 'primerAp', 'segundoAp','antiguedad', 'rango','horarioLaboral','ide.documento as docIdentificacion','numDocIdentificacion')
             ->where('apar.tipoInvolucrado', 'AUTORIDAD')
             ->where('apar.activo', 1)
-            ->where('apar.carpeta', $id)
+            ->where('apar.idCarpeta', $id)
             ->get();
         return $autoridades;
     }

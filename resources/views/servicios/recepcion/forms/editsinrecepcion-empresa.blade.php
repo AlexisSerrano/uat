@@ -32,8 +32,12 @@
     </div>
     <div class="row">
         <div class="text-left col">
-            <a href="{{url('registros')}}" title="" class="btn btn-secondary">Regresar</a>
-        </div>   
+            @if ($preregistro->statusCola=="0")
+                <a href="{{route('registros.orientador')}}" title="" class="btn btn-secondary">Regresar</a>
+            @else
+                <a href="{{route('devolver',$preregistro->id)}}" title="" class="btn btn-secondary">Devolver turno</a>
+            @endif
+        </div>      
         <div class="text-right col">
                 <span id="editFields" class="btn  btn-secondary">Editar</span>
             <a href="{{ url('atender/'.$preregistro->id)}}" title="" class="btn btn-secondary">Atender</a>
