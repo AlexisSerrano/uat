@@ -63,6 +63,13 @@ class AutoridadController extends Controller
         }
     }
 
+    public function edit($id){
+        return view('forms.editsPersonas')
+        ->with('idVarPersona', $id)
+        ->with('tipo', 'autoridad')
+        ->with('title','Editar autoridad');
+    }
+
     public function delete($id){
         try{
             DB::beginTransaction();
