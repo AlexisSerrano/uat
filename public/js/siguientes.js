@@ -594,28 +594,36 @@
             });       
 
             function validarDelito(){
-            var valDelito=0;
+                var valDelito=0;
 
-            if ($('.delito').val().length == 0){
-                valDelito=1;
+                if($("#idDelito").val()==undefined || $("#idDelito").val()==''){
+                    valDelito=1;
+                }
+                if($("#idAgrupacion1").val()==undefined || $("#idAgrupacion1").val()==''){
+                    valDelito=1;
+                }
+                if($("#idAgrupacion2").val()==undefined || $("#idAgrupacion2").val()==''){
+                    valDelito=1;
+                }
+                if($("#formaComision").val()==undefined || $("#formaComision").val()==''){
+                    valDelito=1;
+                }
                 
-            }
-            else{
-                if (valDelito==0) {
-                    
-                    $('.nav-link').removeClass("active");//Quito la clase active al tab actual
-                    $('#dirdelito-tab').addClass("active");//Agrego la clase active al tab actual
-                    $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
-                    $('.tab-pane').removeClass("show");
-                    $('#dirdelito').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
-                    $('#dirdelito').addClass("show"); 
-                }
-            }
-             if (valDelito==1) {
-                    toastr.error("Complete los campos faltantes para poder avanzar");
-                }
+                    if (valDelito==0) {
+                        
+                        $('.nav-link').removeClass("active");//Quito la clase active al tab actual
+                        $('#dirdelito-tab').addClass("active");//Agrego la clase active al tab actual
+                        $('.tab-pane').removeClass("active");//quito las clases del div contenedor personas para ocultar la info
+                        $('.tab-pane').removeClass("show");
+                        $('#dirdelito').addClass("active");//agrego las clases del div contenedor direcciones para mostrar la info
+                        $('#dirdelito').addClass("show"); 
+                    }
 
-        }
+                if (valDelito==1) {
+                        toastr.error("Complete los campos faltantes para poder avanzar");
+                    }
+
+            }
 
         $('#aDelito2').click(function(){
             validarDirec();

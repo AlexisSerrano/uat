@@ -30,15 +30,14 @@ class StoreDelito extends FormRequest
             'entreCalle' => 'nullable|string|min:1|max:100',
             'yCalle' => 'nullable|string|min:1|max:100',
             'calleTrasera' => 'nullable|string|min:1|max:100',
-            'puntoReferencia' => 'nullable|string|min:4|max:100',
-
+            'puntoReferencia' => 'nullable|string|min:4|max:100'
         ];
     }
 
     public function messages()
     {
         return [
-            'nombresQ.boolean' => 'A title is required',
+            'puntoReferencia.min' => 'Escriba al menos 4 caractéres'
         ];
     }
 }

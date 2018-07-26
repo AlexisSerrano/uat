@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Carpeta;
 use App\Models\CatEscolaridad;
@@ -26,7 +24,6 @@ use App\Models\Acusacion;
 use Alert;
 use DB;
 use Carbon\Carbon;
-
 class DenunciadoController extends Controller
 {
     public function showForm()
@@ -41,14 +38,12 @@ class DenunciadoController extends Controller
             return redirect()->route('home');
         }
     }
-
     public function edit($id){
         return view('forms.editsPersonas')
         ->with('idVarPersona', $id)
         ->with('tipo', 'denunciado')
         ->with('title','Editar víctima u ofendido');
     }
-
     public function delete($id){
         DB::beginTransaction();
         try{
@@ -60,10 +55,8 @@ class DenunciadoController extends Controller
             ->select('variables_persona.id as id')
             ->first();
             */
-
             //$ExtraDenunciado =  ExtraDenunciado::find($id);
             //$ExtraDenunciado->delete();
-
             $denunciado = DB::table('componentes.apariciones')->where('id', $id)->update(['activo' => 0, 'carpeta' => '']);
         
             /*
@@ -72,7 +65,6 @@ class DenunciadoController extends Controller
             $vp->save();
             */
             //$acusaciones = Acusacion::where('idCarpeta',$idCarpeta)->where('idTipifDelito',$id)->count();
-
             $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
             $bdbitacora->denunciado = $bdbitacora->denunciado-1;
             $bdbitacora->defensa = $bdbitacora->defensa-1;
@@ -88,11 +80,9 @@ class DenunciadoController extends Controller
             return back()->withInput();
         }
     }
-
     public function addbitacora(){
         $bdbitacora = BitacoraNavCaso::where('idCaso',session('carpeta'))->first();
         $bdbitacora->denunciado = $bdbitacora->denunciado+1;
         $bdbitacora->save();
     }
-
 }
