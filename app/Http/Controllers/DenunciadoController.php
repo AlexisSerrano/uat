@@ -41,7 +41,7 @@ class DenunciadoController extends Controller
     public function edit($id){
         return view('forms.editsPersonas')
         ->with('idVarPersona', $id)
-        ->with('tipo', 'denunciante')
+        ->with('tipo', 'denunciado')
         ->with('title','Editar víctima u ofendido');
     }
     public function delete($id){
