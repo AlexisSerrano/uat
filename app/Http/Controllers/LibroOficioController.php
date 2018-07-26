@@ -29,7 +29,17 @@ class LibroOficioController extends Controller
         ->paginate(10);
 
        
-        // dd($vfisica);
+        // actas circuiustaciada
+
+        $circustaciada = DB::table('uat.acta_circunstanciada as actas') 
+        ->leftJoin('componentes.variables_persona_fisica as pf', 'actas.varPersona', '=', 'pf.id') 
+        // ->leftJoin('componentes.variables_persona_moral as pm', 'actas.varPersona', '=', 'pm.id') 
+        ->leftJoin('componentes.persona_fisica as PER', 'pf.idPersona', '=', 'PER.id') 
+        ->select('actas.folio', 'actas.fecha','actas.fiscal','actas.varPersona','actas.idUnidad', 
+         'pf.id as id', 'pf.idPersona as idPersona', 'PER.nombres  AS Nombre', 'PER.primerAp AS PApellido' ,
+           'PER.segundoAp AS SApellido')
+        ->where('actas.idUnidad', '=', Auth::user()->idUnidad )
+        ->paginate(10);
 
 
 
@@ -38,6 +48,7 @@ class LibroOficioController extends Controller
          return view('tables.libOficios')
         
          -> with("actas", $actas)
+         -> with("circustaciada", $circustaciada)
          -> with("year", $year);  
     }
 
@@ -70,5 +81,4 @@ class LibroOficioController extends Controller
             return redirect('lista-ficios');
         }
     }
-
 }

@@ -297,7 +297,7 @@
 								<li class="nav-item has-treeview">
 									<a href="{{route('lista.ficios')}}" class="nav-link {{ Request::is( 'lista-oficios') ? 'active' : '' }}">
 											<i class="nav-icon fa fa-angle-right "></i>
-										<p>Libro Actas Hechos</p>
+										<p>Libro de Actas</p>
 									</a>
 								</li>
 							@endif
