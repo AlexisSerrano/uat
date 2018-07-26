@@ -52,7 +52,6 @@
 	
 
 <script src="{{ asset('js/selects/vehiculo.js') }}"></script>
-{{-- <script src="{{ asset('js/selects/vehiculo.js') }}"></script>--}}
-<script src="{{ asset('js/vehiculos.js') }}"></script> 
+
 @endpush
 
