@@ -180,7 +180,7 @@
     <div class="col-4">
         <div class="form-group">
             {!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
-            {!! Form::select('docIdentificacion',$identificaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificación','data-validation'=>'required','required']) !!}
+            {!! Form::select('docIdentificacion',$identificaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificación','data-validation'=>'required']) !!}
             <div class="help-block with-errors"></div>
         </div>
     </div>
@@ -188,7 +188,7 @@
     <div class="col-4">
         <div class="form-group">
             {!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
-            {!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación', 'data-validation'=>'custom','data-validation-optional'=>'true','required']) !!}
+            {!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación', 'data-validation'=>'required']) !!}
             <div class="help-block with-errors"></div>
         </div>
     </div>
