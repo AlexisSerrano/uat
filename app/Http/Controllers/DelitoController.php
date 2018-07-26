@@ -57,7 +57,7 @@ class DelitoController extends Controller
 
     public function storeDelito(StoreDelito $request){
         //dd($request->all());
-        DB::beginTransaction();
+         DB::beginTransaction();
         try{
             $idCarpeta=session('carpeta');
             //$idCarpeta='1';
@@ -65,12 +65,12 @@ class DelitoController extends Controller
             $domicilio->idMunicipio = $request->idMunicipio;
             $domicilio->idLocalidad = $request->idLocalidad;
             $domicilio->idColonia = $request->idColonia;
-            if (is_null($request->numInterno)) {
-                $domicilio->calle = $request->calle;
-            }else{
+            if (is_null($request->calle)) {
                 $domicilio->calle = 'SIN INFORMACION';
+            }else{
+                $domicilio->calle = $request->calle;
             }
-            if (is_null($request->numInterno)) {
+            if (is_null($request->numExterno)) {
                 $domicilio->numExterno = 'S/N';
             }else{
                 $domicilio->numExterno = $request->numExterno;
