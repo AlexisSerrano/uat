@@ -112,14 +112,17 @@ class AbogadoController extends Controller
         $idCarpeta=session('carpeta');
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();
         if(count($carpetaNueva)>0){ 
-            $defensas = CarpetaController::getDefensas($idCarpeta);
-            $abogados = DB::table('extra_abogado')
-                ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
-                ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                ->select('extra_abogado.id', 'persona.nombres', 'persona.primerAp', 'persona.segundoAp')
+            $defensas = CarpetaController::getDefensas(session('carpeta'));
+            $abogados = DB::table('componentes.persona_fisica as per')
+                ->join('componentes.variables_persona_fisica as varper', 'varper.idPersona', 'per.id')
+                ->join('componentes.apariciones as apa', 'apa.idVarPersona', 'varper.id')
+                ->join('componentes.extra_abogado as exa', 'exa.idVariablesPersona', 'varper.id')
+                ->select('apa.idAparicion','nombres','primerAp','segundoAp','tipo')
+                ->where('apa.tipoInvolucrado','abogado')
                 ->where('variables_persona.idCarpeta', '=', $idCarpeta)
                 ->orderBy('persona.nombres', 'ASC')
                 ->get();
+                
             return view('forms.defensa')->with('idCarpeta', $idCarpeta)
                 ->with('defensas', $defensas)
                 ->with('abogados', $abogados);

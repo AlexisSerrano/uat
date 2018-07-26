@@ -12,7 +12,7 @@
 		  	<a class="nav-link active " id="personales-tab" data-toggle="tab" href="#personales" role="tab" aria-controls="personales" aria-selected="true">Actas De Hechos</a>
 		</li>
 		<li class="nav-item">
-		  	<a class="nav-link " id="trabajo-tab" data-toggle="tab" href="#trabajo" role="tab" aria-controls="trabajo" aria-selected="false"></a>
+		  	<a class="nav-link " id="trabajo-tab" data-toggle="tab" href="#trabajo" role="tab" aria-controls="trabajo" aria-selected="false">Actas Circustaciadas</a>
 		</li>
 		<li class="nav-item">
 		  	<a class="nav-link " id="abogado-tab" data-toggle="tab" href="#abogado" role="tab" aria-controls="abogado" aria-selected="false"></a>
@@ -37,20 +37,20 @@
 			</div>		
 		</div>
 		
-		{{-- <div class="tab-pane fade" id="trabajo" role="tabpanel" aria-labelledby="trabajo-tab"> --}}
-			{{-- <div class="boxtwo"> --}}
-				{{-- @include('tables.actas-ofi') --}}
+		<div class="tab-pane fade" id="trabajo" role="tabpanel" aria-labelledby="trabajo-tab"> 
+			<div class="boxtwo">
+				@include('tables.actas-ofi')
 					{{-- botones --}}
-				{{-- <div class="row menu">	 --}}
-					{{-- <div class="col text-left">				 --}}
-						{{-- <a id="irpersonales" class="btn btn-secondary "><i class="fa fa-arrow-left"></i></a> --}}
-					{{-- </div> --}}
-					{{-- <div class="col text-right">
-						{{-- <a id="aAbogado" class="btn btn-secondary irextraabogado"><i class="fa fa-arrow-right"></i></a>							 --}}
-					{{-- </div>  --}}
-				{{-- </div> --}}
-			{{-- </div> --}}
-		{{-- </div> --}}
+				<div class="row menu">	
+					{{-- <div class="col text-left">				
+						<a id="irpersonales" class="btn btn-secondary "><i class="fa fa-arrow-left"></i></a>
+					</div> --}}
+					 {{-- <div class="col text-right">
+						<a id="aAbogado" class="btn btn-secondary irextraabogado"><i class="fa fa-arrow-right"></i></a>							
+					</div>  --}}
+				</div>
+			</div>
+		</div>
 
 		<div class="tab-pane fade" id="abogado" role="tabpanel" aria-labelledby="abogado-tab">
 			<div class="boxtwo">

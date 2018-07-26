@@ -31,7 +31,7 @@ class DenunciadoController extends Controller
         $idCarpeta=session('carpeta');
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();
         if(count($carpetaNueva)>0){ 
-            $denunciados = CarpetaController::getDenunciados(session('numCarpeta'));
+            $denunciados = CarpetaController::getDenunciados($idCarpeta); 
             return view('forms.denunciado')->with('idCarpeta', $idCarpeta)
                 ->with('denunciados', $denunciados);
         }else{
