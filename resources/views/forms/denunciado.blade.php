@@ -3,7 +3,6 @@
 @section('title', 'Agregar investigado')
 
 @section('content')
-@include('fields.errores')
 
 <div id="page-content-wrapper">
 @include('fields.buttons-navegacion')
