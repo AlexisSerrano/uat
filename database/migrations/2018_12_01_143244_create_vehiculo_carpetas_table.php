@@ -18,18 +18,18 @@ class CreateVehiculoCarpetasTable extends Migration
             $table->integer('idTipifDelito')->unsigned();       
             $table->string('placas', 9)->default("XXXXXXX");
             $table->integer('idEstado')->unsigned()->default(33);
-            $table->integer('idSubmarca')->unsigned()->default(24403);
+            $table->integer('idSubmarca')->unsigned()->default(1);
             $table->integer('modelo')->default(0);
             $table->string('nrpv', 50)->default("SIN INFORMACION");
-            $table->integer('idColor')->unsigned()->default(25);
+            $table->integer('idColor')->unsigned()->default(99);
             $table->string('permiso', 50)->default("SIN INFORMACION");
             $table->string('numSerie', 17)->default("SIN INFORMACION");
             $table->string('numMotor', 50)->default("SIN INFORMACION");
-            $table->integer('idTipoVehiculo')->unsigned()->default(25);
-            $table->integer('idTipoUso')->unsigned()->default(22);
+            $table->integer('idTipoVehiculo')->unsigned()->default(999);
+            $table->integer('idTipoUso')->unsigned()->default(99);
             $table->string('senasPartic', 5000)->default("SIN INFORMACION");
             $table->integer('idProcedencia')->unsigned()->default(4);
-            $table->integer('idAseguradora')->unsigned()->default(25);
+            $table->integer('idAseguradora')->unsigned()->default(99);
             
             $table->foreign('idTipifDelito')->references('id')->on('tipif_delito')->onDelete('cascade');
             $table->foreign('idEstado')->references('id')->on('cat_estado')->onDelete('cascade');

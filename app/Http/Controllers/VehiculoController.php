@@ -91,7 +91,7 @@ use Alert;
             $vehiculo->idTipifDelito = $request->idTipifDelito;
         }
         if (!is_null($request->placas)) {    
-            if ($request->placas=='SIN INFORMACION') {           
+            if ($request->placas=='XXXXXXX') {           
             }else{
                 $vehiculo->placas = $request->placas;
             }

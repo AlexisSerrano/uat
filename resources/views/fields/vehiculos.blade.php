@@ -34,7 +34,7 @@
 <div class="col-2">
     <div class="form-group">
         {!! Form::label('idSubmarca', 'Submarca', ['class' => 'col-form-label-sm']) !!}
-        {!! Form::select('idSubmarca', $submarcas, 8, ['class' => 'form-control form-control-sm']) !!}
+        {!! Form::select('idSubmarca', $submarcas, 1, ['class' => 'form-control form-control-sm']) !!}
     </div>
 </div>
 
