@@ -346,7 +346,7 @@ class CarpetaController extends Controller
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN ifnull(sexo.nombre,"SIN INFORMACION") ELSE "NO APLICA" END) AS sexo'),//'persona.sexo', 
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN ifnull(variables_fisica.telefono,"SIN INFORMACION") ELSE ifnull(variables_fisica.telefono,"SIN INFORMACION") END) AS telefono')//'variables_persona.telefono')
             )->distinct()
-        ->where('apariciones.idCarpeta', '=', $id)
+        ->where('apariciones.carpeta', '=', $id)
         ->where(function($query){
             $query
             ->orWhere('apariciones.tipoInvolucrado', '=', 'denunciado')
@@ -373,7 +373,7 @@ class CarpetaController extends Controller
             ->Join('componentes.extra_abogado as abo', 'abo.idVariablesPersona', 'apar.idVarPersona')
             ->select('apar.id as idApariciones','var.id as idVarPersona','nombres', 'primerAp', 'segundoAp','cedulaProf','sector','abo.tipo')
             ->where('apar.activo', 1)
-            ->where('apar.idCarpeta', $id)
+            ->where('apar.carpeta', $id)
             ->get();
         return $abogados;
 
@@ -417,7 +417,7 @@ class CarpetaController extends Controller
             ->select('apar.id as idApariciones','var.id as idVarPersona','nombres', 'primerAp', 'segundoAp','antiguedad', 'rango','horarioLaboral','ide.documento as docIdentificacion','numDocIdentificacion')
             ->where('apar.tipoInvolucrado', 'AUTORIDAD')
             ->where('apar.activo', 1)
-            ->where('apar.idCarpeta', $id)
+            ->where('apar.carpeta', $id)
             ->get();
         return $autoridades;
     }
