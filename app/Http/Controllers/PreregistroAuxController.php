@@ -536,8 +536,8 @@ class PreregistroAuxController extends Controller
                     $buscarConsecutivo=$buscarConsecutivo[0];
                     $partesNumero=explode("/", $buscarConsecutivo->numCarpeta);
                     // dd($buscarConsecutivo);
-                    $consecutivo=$partesNumero[2] + 1;
-                    $NuevoNumCarpeta = $partesNumero[0].'/'.$partesNumero[1].'/'.$consecutivo.'/'.$partesNumero[3];                
+                    $consecutivo=$partesNumero[3] + 1;
+                    $NuevoNumCarpeta = $unidad.'/'.$consecutivo.'/'.$partesNumero[4];                
                     $buscarConsecutivo = Carpeta::where('numCarpeta',$NuevoNumCarpeta)->get();
                 }
                 
@@ -632,13 +632,15 @@ class PreregistroAuxController extends Controller
                     $estado->statusCola = 21;
                     $estado->save();
                     session(['enturno' => 'urgente']);
-                    return redirect(url('turno').'/'.$urgente->id.'/'.$estado->idRazon);
+                    // return redirect(url('turno').'/'.$urgente->id.'/'.$estado->idRazon);
+                    return redirect()->route('edit.registros.orientador',$urgente->id);
                 }else{
                     $estado = Preregistro::find($cola->id);
                     $estado->statusCola = 20;
                     $estado->save();
                     session(['enturno' => 'cola']);
-                    return redirect(url('turno').'/'.$cola->id.'/'.$estado->idRazon);
+                    // return redirect(url('turno').'/'.$cola->id.'/'.$estado->idRazon);
+                    return redirect()->route('edit.registros.orientador',$cola->id);
                 }
             }else{
                 $anterior = session('enturno');
@@ -647,28 +649,33 @@ class PreregistroAuxController extends Controller
                     $estado->statusCola = 20;
                     $estado->save();
                     session(['enturno' => 'cola']);
-                    return redirect(url('turno').'/'.$cola->id.'/'.$estado->idRazon);
+                    // return redirect(url('turno').'/'.$cola->id.'/'.$estado->idRazon);
+                    return redirect()->route('edit.registros.orientador',$cola->id);
+
                 }
                 else if($anterior=='urgente'&&$urgente){
                     $estado = Preregistro::find($urgente->id);
                     $estado->statusCola = 21;
                     $estado->save();
                     session(['enturno' => 'cola']);
-                    return redirect(url('turno').'/'.$urgente->id.'/'.$estado->idRazon);
+                    // return redirect(url('turno').'/'.$urgente->id.'/'.$estado->idRazon);
+                    return redirect()->route('edit.registros.orientador',$urgente->id);
                 }
                 else if($anterior=='cola'&&$urgente){
                     $estado = Preregistro::find($urgente->id);
                     $estado->statusCola = 21;
                     $estado->save();
                     session(['enturno' => 'cola']);
-                    return redirect(url('turno').'/'.$urgente->id.'/'.$estado->idRazon);
+                    // return redirect(url('turno').'/'.$urgente->id.'/'.$estado->idRazon);
+                    return redirect()->route('edit.registros.orientador',$urgente->id);
                 }
                 else if($anterior=='cola'&&$cola){
                     $estado = Preregistro::find($cola->id);
                     $estado->statusCola = 20;
                     $estado->save();
                     session(['enturno' => 'cola']);
-                    return redirect(url('turno').'/'.$cola->id.'/'.$estado->idRazon);
+                    // return redirect(url('turno').'/'.$cola->id.'/'.$estado->idRazon);
+                    return redirect()->route('edit.registros.orientador',$cola->id);
                 }
             }
         }
@@ -687,32 +694,35 @@ class PreregistroAuxController extends Controller
         $idCarpeta=session('carpeta');
 
         //dd($idCarpeta);
-        $usuario=User::find(Auth::user()->id);
-        $usuario->idCarpeta=null;
-        $usuario->save();
-        
-        $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
-        $contero=$bdbitacora->denunciante+$bdbitacora->autoridad;
-
-        if($contero>0){
-            $carpeta = Carpeta::find($idCarpeta);
-            $carpeta->numCarpeta=null;
-            $carpeta->save();
-        }else{
-            $carpeta = Carpeta::find($idCarpeta);
-            $carpeta->delete();
-
+        if (!is_null($idCarpeta)) {
+            $usuario=User::find(Auth::user()->id);
+            $usuario->idCarpeta=null;
+            $usuario->save();
+            
+            $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
+            $contero=$bdbitacora->denunciante+$bdbitacora->autoridad;
+    
+            if($contero>0){
+                $carpeta = Carpeta::find($idCarpeta);
+                $carpeta->numCarpeta=null;
+                $carpeta->save();
+            }else{
+                $carpeta = Carpeta::find($idCarpeta);
+                $carpeta->delete();
+    
+            }
+            
+            session()->forget('carpeta');
+            session()->forget('preregistro');
+            session()->forget('foliopreregistro');
+            session()->forget('numCarpeta');
+            Alert::info('Los datos del caso que inicio han sido borrados y el turno fue devuelto a la cola ', 'Turno devuelto');
         }
         
-        session()->forget('carpeta');
-        session()->forget('preregistro');
-        session()->forget('foliopreregistro');
-        session()->forget('numCarpeta');
-         //dd($idCarpeta);
+        //dd($idCarpeta);
         //dd(session('carpeta'));
         
-        Alert::info('Los datos del caso que inicio han sido borrados y el turno fue devuelto a la cola ', 'Turno devuelto');
-        return redirect('registros');
+        return redirect()->route('home');
        }
 
 

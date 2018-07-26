@@ -55,6 +55,27 @@
 	</div>
 	@endif
 		
+	@if (isset($preregistro->folio)&&Request::path()=='registros/'.$preregistro->id.'/edit')	
+	<div style="color:white;margin-left:20px;">
+		<span>
+			Folio de pre-registro: 
+			<strong>
+				{{$preregistro->folio}}
+			</strong>
+		</span>
+	</div>
+	@endif
+	
+	@if (isset($preregistro->folio)&&Request::path()=='predenuncias/'.$preregistro->id.'/edit')	
+	<div style="color:white;margin-left:20px;">
+		<span>
+			Folio de pre-registro: 
+			<strong>
+				{{$preregistro->folio}}
+			</strong>
+		</span>
+	</div>
+	@endif
 	<!-- Right navbar links -->
 	<ul class="navbar-nav ml-auto">
 		<!-- Messages Dropdown Menu -->
