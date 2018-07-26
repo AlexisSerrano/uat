@@ -294,6 +294,7 @@ class CarpetaController extends Controller
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN extras_fisica.victima ELSE extras_moral.victima END) AS victima'),//'extra_denunciante.victima',
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.rfc ELSE persona_moral.rfc END) AS rfc'),//'persona.rfc', 
             'apariciones.esEmpresa AS esEmpresa',//'persona.esEmpresa', 
+            'apariciones.idVarPersona AS idVarPersona',
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN variables_fisica.edad ELSE "NO APLICA" END) AS edad'),//'variables_persona.edad', 
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN sexo.nombre ELSE "NO APLICA" END) AS sexo'),//'persona.sexo', 
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN variables_fisica.telefono ELSE variables_fisica.telefono END) AS telefono'))//'variables_persona.telefono')

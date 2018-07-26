@@ -35,7 +35,7 @@ class DenuncianteController extends Controller
         $idCarpeta=session('carpeta');
         $casoNuevo = Carpeta::where('id', $idCarpeta)->get();
         if(count($casoNuevo)>0){ 
-            $denunciantes = CarpetaController::getDenunciantes(session('numCarpeta'));
+            $denunciantes = CarpetaController::getDenunciantes(session('carpeta'));
             return view('forms.denunciante')->with('idCarpeta', $idCarpeta)
                 ->with('denunciantes', $denunciantes);
         }
@@ -44,10 +44,12 @@ class DenuncianteController extends Controller
         }
     }
 
-    public function edit($id){
+    public function edit($id,$empresa){
         return view('forms.editsPersonas')
         ->with('idVarPersona', $id)
         ->with('tipo', 'denunciante')
+        ->with('tipodenunciado', '')
+        ->with('empresa',$empresa)
         ->with('title','Editar víctima u ofendido');
     }
 
