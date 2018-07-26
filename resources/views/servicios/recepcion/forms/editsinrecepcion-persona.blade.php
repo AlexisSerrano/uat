@@ -28,7 +28,7 @@
         </div>
     <div class="row">
         <div class="text-left col">
-            @if ($preregistro->statusCola=="0")
+            @if (is_null($preregistro->statusCola))
                 <a href="{{route('registros.orientador')}}" title="" class="btn btn-secondary">Regresar</a>
             @else
                 <a href="{{route('devolver',$preregistro->id)}}" title="" class="btn btn-secondary">Devolver turno</a>

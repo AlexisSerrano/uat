@@ -52,7 +52,7 @@
 			  			<th scope="row">{{$registro->id}}</th>
 			      		<td>{{$registro->folio}}</th>
 			      		<td>{{($registro->esEmpresa==0)?'FISICA':'MORAL'}}</td>
-			      		<td>{{($registro->esEmpresa==0)?$registro->nombre.' '.$registro->primerAp.' '.$registro->segundoAp:$registro->representanteLegal}}</td>
+			      		<td>{{($registro->esEmpresa==0)?$registro->nombre.' '.$registro->primerAp.' '.$registro->segundoAp:$registro->representanteLegal.' '.$registro->primerAp.' '.$registro->segundoAp}}</td>
 						<td>{{$registro->docIdentificacion}}</td>
 						<td>{{$registro->razon}}</td>
 			      		<td><a class="btn btn-primary" href="{{url("predenuncias/".$registro->id."/edit")}}"><i class="fa fa-check" aria-hidden="true"></i></a></td>
