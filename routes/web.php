@@ -225,7 +225,7 @@ Route::middleware(['auth'])->group(function () {
     /* --------Rutas para defensa----------- */
     Route::get('agregar-defensa', 'AbogadoController@showForm2')->name('new.defensa')->middleware(['permission:new_defensa']);
     Route::post('storedefensa', 'AbogadoController@storeDefensa')->name('store.defensa')->middleware(['permission:store_defensa']);
-    // Route::get('agregar-defensa/{id}/eliminar', 'AbogadoController@delete');
+    Route::get('agregar-defensa/{id}/eliminar', 'AbogadoController@delete')->name('delete.defensa')->middleware(['permission:delete_defensa']);
     
     
     Route::get('involucrados/{idAbogado}', 'AbogadoController@getInvolucrados')->name('getinvolucrados')->middleware(['permission:getInvolucrados']);
