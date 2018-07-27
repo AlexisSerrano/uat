@@ -299,7 +299,7 @@ class CarpetaController extends Controller
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN sexo.nombre ELSE "NO APLICA" END) AS sexo'),//'persona.sexo', 
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN variables_fisica.telefono ELSE variables_fisica.telefono END) AS telefono'))//'variables_persona.telefono')
             ->where('apariciones.activo', 1)
-            ->where('apariciones.idCarpeta', '=', $id)
+            ->where('apariciones.carpeta', '=', $id)
             ->where('apariciones.tipoInvolucrado', '=', 'denunciante')
             ->get();
         return $denunciantes;
@@ -381,25 +381,109 @@ class CarpetaController extends Controller
     }
 
     public static function getDefensas($id){
-        $defensas1 = DB::table('extra_abogado')
-            ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')            
-            ->join('extra_denunciante', 'extra_denunciante.idAbogado', '=', 'extra_abogado.id')
-            ->join('variables_persona as var', 'var.id', '=', 'extra_denunciante.idVariablesPersona')
-            ->join('persona as per', 'per.id', '=', 'var.idPersona')  
-            ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
-            ->where('variables_persona.idCarpeta', '=', $id);
-        $defensas = DB::table('extra_abogado')
-            ->join('variables_persona', 'variables_persona.id', '=', 'extra_abogado.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')            
-            ->join('extra_denunciado', 'extra_denunciado.idAbogado', '=', 'extra_abogado.id')
-            ->join('variables_persona as var', 'var.id', '=', 'extra_denunciado.idVariablesPersona')
-            ->join('persona as per', 'per.id', '=', 'var.idPersona')  
-            ->select('extra_abogado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'per.nombres as nombres2', 'per.primerAp as primerAp2', 'per.segundoAp as segundoAp2')
-            ->where('variables_persona.idCarpeta', '=', $id)
-            ->union($defensas1)
+        $involucrados = DB::table('componentes.apariciones as apa')
+            ->select('apa.id as idAparicion', 'apa.idVarPersona', 'apa.tipoInvolucrado', 'apa.esEmpresa')
+            ->where('apa.tipoInvolucrado', 'denunciante')
+            ->orWhere('apa.tipoInvolucrado', 'denunciado')
+            ->where('apa.idCarpeta', $id)
             ->get();
-        return $defensas;
+
+            //dd($involucrados);
+
+        foreach ($involucrados as $inv) {
+            $tefis='';
+            $temor='';
+            $dofis='';
+            $domor='';
+
+            $contefis="select apa.id as idAparicion,CONCAT(perabo.nombres, ' ',perabo.primerAp,' ',perabo.segundoAp) as nombre_abogado, 
+            CONCAT(per.nombres, ' ',per.primerAp,' ',per.segundoAp) as nombre_involucrado 
+            from componentes.persona_fisica as per
+            inner join componentes.variables_persona_fisica as varper on varper.idPersona=per.id 
+            inner join componentes.extra_denunciante_fisico as exa on exa.idVariablesPersona=varper.id 
+            inner join componentes.extra_abogado as abo on abo.id=exa.idAbogado 
+            inner join componentes.variables_persona_fisica as varabo on varabo.idPersona=abo.idVariablesPersona 
+            inner join componentes.persona_fisica as perabo on perabo.id=varabo.idPersona 
+            inner join componentes.apariciones as apa on apa.idVarPersona=varper.id
+            where 
+            apa.activo=1 and apa.idCarpeta=".$id." and varper.id in (";
+            $contemor="select apa.id as idAparicion,CONCAT(perabo.nombres, ' ',perabo.primerAp,' ',perabo.segundoAp) as nombre_abogado,
+            per.nombre as nombre_involucrado 
+            from componentes.persona_moral as per 
+            inner join componentes.variables_persona_moral as varper on varper.idPersona=per.id 
+            inner join componentes.extra_denunciante_moral as exa on exa.idVariablesPersona=varper.id 
+            inner join componentes.extra_abogado as abo on abo.id=exa.idAbogado 
+            inner join componentes.variables_persona_fisica as varabo on varabo.idPersona=abo.idVariablesPersona 
+            inner join componentes.persona_fisica as perabo on perabo.id=varabo.idPersona 
+            inner join componentes.apariciones as apa on apa.idVarPersona=varper.id
+            where 
+            apa.activo=1 and apa.idCarpeta=".$id." and varper.id in (";
+            $condofis="select apa.id as idAparicion,CONCAT(perabo.nombres, ' ',perabo.primerAp,' ',perabo.segundoAp) as nombre_abogado,
+            CONCAT(per.nombres, ' ',per.primerAp,' ',per.segundoAp) as nombre_involucrado 
+            from componentes.persona_fisica as per 
+            inner join componentes.variables_persona_fisica as varper on varper.idPersona=per.id 
+            inner join componentes.extra_denunciado_fisico as exa on exa.idVariablesPersona=varper.id 
+            inner join componentes.extra_abogado as abo on abo.id=exa.idAbogado 
+            inner join componentes.variables_persona_fisica as varabo on varabo.idPersona=abo.idVariablesPersona 
+            inner join componentes.persona_fisica as perabo on perabo.id=varabo.idPersona 
+            inner join componentes.apariciones as apa on apa.idVarPersona=varper.id
+            where 
+            apa.activo=1 and apa.idCarpeta=".$id." and varper.id in (";
+            $condomor="select apa.id as idAparicion,CONCAT(perabo.nombres, ' ',perabo.primerAp,' ',perabo.segundoAp) as nombre_abogado,
+            per.nombre as nombre_involucrado 
+            from componentes.persona_moral as per 
+            inner join componentes.variables_persona_moral as varper on varper.idPersona=per.id 
+            inner join componentes.extra_denunciado_moral as exa on exa.idVariablesPersona=varper.id 
+            inner join componentes.extra_abogado as abo on abo.id=exa.idAbogado 
+            inner join componentes.variables_persona_fisica as varabo on varabo.idPersona=abo.idVariablesPersona 
+            inner join componentes.persona_fisica as perabo on perabo.id=varabo.idPersona 
+            inner join componentes.apariciones as apa on apa.idVarPersona=varper.id
+            where 
+            apa.activo=1 and apa.idCarpeta=".$id." and varper.id in (";
+
+            if($inv->tipoInvolucrado=='denunciante'){
+                if($inv->esEmpresa==1){
+                    if(empty($temor))
+                        $temor=$inv->idVarPersona;
+                    else
+                        $temor=$temor.','.$inv->idVarPersona;
+                }else{
+                    if(empty($tefis))
+                        $tefis=$inv->idVarPersona;
+                    else
+                        $tefis=$tefis.','.$inv->idVarPersona;
+                }
+            }else{
+                if($inv->esEmpresa==1){
+                    if(empty($domor))
+                        $domor=$inv->idVarPersona;
+                    else
+                        $domor=$domor.','.$inv->idVarPersona;
+                }else{
+                    if(empty($dofis))
+                        $dofis=$inv->idVarPersona;
+                    else
+                        $dofis=$dofis.','.$inv->idVarPersona;
+                }
+            }
+
+            if(!empty($tefis)) $query=$contefis.$tefis.")";
+            if(!empty($temor))
+                if(empty($query)) $query=$contemor.$temor.")";
+                else $query=$query." UNION ALL ".$contemor.$temor.")";
+            if(!empty($domor))
+                if(empty($query)) $query=$condomor.$domor.")";
+                else $query=$query." UNION ALL ".$condomor.$domor.")";
+            if(!empty($dofis))
+                if(empty($query)) $query=$condofis.$dofis.")";
+                else $query=$query." UNION ALL ".$condofis.$dofis.")";
+        }
+
+        //dd($query);
+        $defensas = DB::select($query);
+        //dump($defensas);
+         return $defensas;
+        
     }
 
     public static function getAutoridades($id){

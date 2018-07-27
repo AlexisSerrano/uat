@@ -108,10 +108,10 @@ class AbogadoController extends Controller
                 ->join('componentes.variables_persona_fisica as varper', 'varper.idPersona', 'per.id')
                 ->join('componentes.apariciones as apa', 'apa.idVarPersona', 'varper.id')
                 ->join('componentes.extra_abogado as exa', 'exa.idVariablesPersona', 'varper.id')
-                ->select('apa.idAparicion','nombres','primerAp','segundoAp','tipo')
+                ->select('apa.id as idAparicion','nombres','primerAp','segundoAp','tipo')
                 ->where('apa.tipoInvolucrado','abogado')
-                ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-                ->orderBy('persona.nombres', 'ASC')
+                ->where('apa.carpeta', session('numCarpeta'))
+                ->orderBy('per.nombres', 'ASC')
                 ->get();
                 
             return view('forms.defensa')->with('idCarpeta', $idCarpeta)
@@ -126,54 +126,124 @@ class AbogadoController extends Controller
     {
         $idCarpeta=session('carpeta');
         $idAbogado = $request->idAbogado;
-        $tipo = $request->tipo;
         $idInvolucrado = $request->idInvolucrado;
-        $xd = DB::table('extra_denunciante')->select('id')->where('idVariablesPersona', $idInvolucrado)->get();
-        if(count($xd)>0){
-            DB::table('extra_denunciante')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);
-            $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
-            $bdbitacora->defensa = $bdbitacora->defensa+1;
-            $bdbitacora->save();
-        }else{
-            DB::table('extra_denunciado')->where('idVariablesPersona', $idInvolucrado)->update(['idAbogado' => $idAbogado]);
-            $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
-            $bdbitacora->defensa = $bdbitacora->defensa+1;
-            $bdbitacora->save();
+
+        $abogado = DB::table('componentes.apariciones as apa')
+        ->join('componentes.extra_abogado as exa', 'exa.idVariablesPersona', 'apa.idVarPersona')
+        ->select('exa.id','exa.tipo')
+        ->where('apa.id',$idAbogado)
+        ->first();
+
+        $aparicion = DB::table('componentes.apariciones as apa')
+        ->select('apa.idVarPersona','apa.esEmpresa')
+        ->where('apa.id',$idInvolucrado)
+        ->first();
+
+        if(normaliza($abogado->tipo)=='abogado defensor'){
+            if($aparicion->esEmpresa==0){
+                DB::table('componentes.extra_denunciado_fisico')->where('idVariablesPersona', $aparicion->idVarPersona)->update(['idAbogado' => $abogado->id]);
+            }elseif($aparicion->esEmpresa==1){
+                DB::table('componentes.extra_denunciado_moral')->where('idVariablesPersona', $aparicion->idVarPersona)->update(['idAbogado' => $abogado->id]);
+            }
+        }elseif(normaliza($abogado->tipo)=='asesor juridico'){
+            if($aparicion->esEmpresa==0){
+                DB::table('componentes.extra_denunciante_fisico')->where('idVariablesPersona', $aparicion->idVarPersona)->update(['idAbogado' => $abogado->id]);
+            }elseif($aparicion->esEmpresa==1){
+                DB::table('componentes.extra_denunciante_moral')->where('idVariablesPersona', $aparicion->idVarPersona)->update(['idAbogado' => $abogado->id]);
+            }
         }
+        $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
+        $bdbitacora->defensa = $bdbitacora->defensa+1;
+        $bdbitacora->save();
+
         Alert::success('Defensa asignada con éxito', 'Hecho');
         return redirect()->route('new.defensa');
     }
     
     public function getInvolucrados(Request $request, $idAbogado){
-        $idCarpeta=session('carpeta');
+        $carpeta=session('numCarpeta');
+        $invFis=null;
         if(!is_null($request)&&!is_null($idAbogado)){
-            $tipoAbog = DB::table('extra_abogado')
-            ->select('tipo')
-            ->where('id', '=', $idAbogado)
-            ->get();
-            $tipo = $tipoAbog[0]->tipo;
+            $tipoAbog = DB::table('componentes.extra_abogado as exa')
+            ->join('componentes.apariciones as apa', 'apa.idVarPersona', 'exa.idVariablesPersona')
+            ->select('exa.tipo')
+            ->where('apa.id', $idAbogado)
+            ->first();
+            $tipo = $tipoAbog->tipo;
             $tipo = normaliza($tipo);
-            // dd($tipo);
+            
             if($tipo == "asesor juridico"){
-                $involucrados = DB::table('extra_denunciante')
-                    ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-                    ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                    ->select('variables_persona.id',DB::raw('CONCAT(persona.nombres, " ", ifnull(persona.primerAp,"")," ", ifnull(persona.segundoAp,"")) AS nombres'))
-                    ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-                    ->whereNull('extra_denunciante.idAbogado')
-                    ->orderBy('persona.nombres', 'ASC')
-                    ->get();
+                $invFis= DB::table('componentes.persona_fisica as per')
+                ->join('componentes.variables_persona_fisica as varper', 'varper.idPersona', 'per.id')
+                ->join('componentes.extra_denunciante_fisico as exa', 'exa.idVariablesPersona', 'varper.id')
+                ->join('componentes.apariciones as apa', 'apa.idVarPersona', 'varper.id')
+                ->select('apa.id as idAparicion', 'per.nombres', 'per.primerAp','per.segundoAp')
+                ->where('apa.esEmpresa', 0)
+                ->Where('apa.tipoInvolucrado', 'denunciante')
+                ->where('apa.carpeta', $carpeta)
+                ->whereNull('exa.idAbogado')
+                ->orderBy('per.nombres', 'ASC');  
+
+                $involucrados= DB::table('componentes.persona_moral as per')
+                ->join('componentes.variables_persona_moral as varper', 'varper.idPersona', 'per.id')
+                ->join('componentes.extra_denunciante_moral as exa', 'exa.idVariablesPersona', 'varper.id')
+                ->join('componentes.apariciones as apa', 'apa.idVarPersona', 'varper.id')
+                ->select('apa.id as idAparicion', 'per.nombre as nombres', DB::raw('"" as primerAp'), DB::raw('"" as segundoAp'))
+                ->where('apa.esEmpresa', 1)
+                ->Where('apa.tipoInvolucrado', 'denunciante')
+                ->where('apa.carpeta', $carpeta)
+                ->whereNull('exa.idAbogado')
+                ->orderBy('per.nombre', 'ASC')
+                ->union($invFis)
+                ->get();
+
             }elseif($tipo == "abogado defensor"){
-                $involucrados = DB::table('extra_denunciado')
-                    ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
-                    ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-                    ->select('variables_persona.id',DB::raw('CONCAT(persona.nombres, " ", ifnull(persona.primerAp,"")," ", ifnull(persona.segundoAp,"")) AS nombres'))
-                    ->where('variables_persona.idCarpeta', '=', $idCarpeta)
-                    ->whereNull('extra_denunciado.idAbogado')
-                    ->orderBy('persona.nombres', 'ASC')
-                    ->get();
+                $invFis= DB::table('componentes.persona_fisica as per')
+                ->join('componentes.variables_persona_fisica as varper', 'varper.idPersona', 'per.id')
+                ->join('componentes.extra_denunciado_fisico as exa', 'exa.idVariablesPersona', 'varper.id')
+                ->join('componentes.apariciones as apa', 'apa.idVarPersona', 'varper.id')
+                ->select('apa.id as idAparicion', 'per.nombres', 'per.primerAp','per.segundoAp')
+                ->where('apa.esEmpresa', 0)
+                ->where('apa.tipoInvolucrado', 'denunciado')
+                ->where('apa.carpeta', $carpeta)
+                ->whereNull('exa.idAbogado')
+                ->orderBy('per.nombres', 'ASC');
+                
+
+                $involucrados= DB::table('componentes.persona_moral as per')
+                ->join('componentes.variables_persona_moral as varper', 'varper.idPersona', 'per.id')
+                ->join('componentes.extra_denunciado_moral as exa', 'exa.idVariablesPersona', 'varper.id')
+                ->join('componentes.apariciones as apa', 'apa.idVarPersona', 'varper.id')
+                ->select('apa.id as idAparicion', 'per.nombre as nombres', DB::raw('"" as primerAp'), DB::raw('"" as segundoAp'))
+                ->where('apa.esEmpresa', 1)
+                ->where('apa.tipoInvolucrado', 'denunciado')
+                ->where('apa.carpeta', $carpeta)
+                ->whereNull('exa.idAbogado')
+                ->orderBy('per.nombre', 'ASC')
+                ->union($invFis)
+                ->get();
+
             }
+
             return response()->json($involucrados);
+        }
+    }
+
+    public function deleteDefensa($id){
+        try{
+            DB::beginTransaction();
+            $idCarpeta=session('carpeta');
+            $autoridades = DB::table('componentes.apariciones')->where('id', $id)->update(['activo' => 0, 'carpeta' => '']);
+            $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
+            $bdbitacora->autoridad = $bdbitacora->autoridad-1;
+            $bdbitacora->save();
+            DB::commit();
+            Alert::success('Registro eliminado con éxito', 'Hecho');
+            return back();
+        }catch (\PDOException $e){
+            DB::rollBack();
+            Alert::error('Se presentó un problema al eliminar sus datos, intente de nuevo', 'Error');
+            return back()->withInput();
         }
     }
 

@@ -15,8 +15,15 @@
             @else
                 @foreach($defensas as $defensa)
                     <tr>
-                        <td>{{ $defensa->nombres." ".$defensa->primerAp." ".$defensa->segundoAp }}</td>
-                        <td>{{ $defensa->nombres2." ".$defensa->primerAp2." ".$defensa->segundoAp2 }}</td>                             
+                        <td>{{ $defensa->nombre_abogado }}</td>  
+                        <td>{{ $defensa->nombre_involucrado }}</td>                        
+                        <td> 
+	                        @if(is_null(session('terminada')))
+                            <a data-defensa-id={{$defensa->idAparicion}} title="Eliminar defensa" class="deleteBtn btn btn-secondary btn-simple btn-xs">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        	@endif             
+                        </td>                           
                     </tr>
                 @endforeach
             @endif
