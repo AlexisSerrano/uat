@@ -282,6 +282,8 @@ class PreregistroAuxController extends Controller
                 $preregistro->telefono = $request->telefono;
                 $preregistro->conViolencia = $request->conViolencia;
                 $preregistro->narracion = $request->narracion;
+                $preregistro->docIdentificacion = $request->docIdentificacion;
+                $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
                 if (!is_null($request->idRazon)){
                     $preregistro->idRazon = $request->idRazon;
                 }
