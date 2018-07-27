@@ -9,9 +9,7 @@
 		
  <span class="datotip" id="{{$tipopersona}}"></span> 	 
 	
-	<div class="col-md-12">
-		
-		
+	<div class="col-md-12">	
 		
 		<div class="boxtwo">
 			@if($tipopersona==0)
@@ -28,13 +26,13 @@
 			
 		</div>
 				
-			
 	</div>
+
 	<div class="text-right col">
 		@if (isset($preregistro->statusCola))
-		<a href="{{route('devolver',$preregistro->id)}}" title="" class="btn btn-secondary">Devolver turno</a>
+			<a href="{{route('devolver',$preregistro->id)}}" title="" class="btn btn-secondary">Devolver turno</a>
 		@else
-		<a href="{{route('actaspendientes')}}" title="" class="btn btn-secondary">Regresar</a>
+			<a href="{{route('actaspendientes')}}" title="" class="btn btn-secondary">Regresar</a>
 		@endif
 	</div>   
 </div>

@@ -157,25 +157,25 @@
                                         <div class="col-4">
                                             <div class="form-group">
                                                 {!! Form::label('idTipoUso', 'Tipo de uso', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::select('idTipoUso', $tiposuso, 22, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un tipo de uso', 'id'=>'tipousov']) !!}
+                                                {!! Form::select('idTipoUso', $tiposuso, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione un tipo de uso', 'id'=>'tipousov']) !!}
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
                                                 {!! Form::label('idProcedencia', 'Procedencia', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::select('idProcedencia', $procedencias, 4, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione procedencia', 'id'=>'procev']) !!}
+                                                {!! Form::select('idProcedencia', $procedencias, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione procedencia', 'id'=>'procev']) !!}
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
                                                 {!! Form::label('idAseguradora', 'Aseguradora', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::select('idAseguradora', $aseguradoras, 25, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una aseguradora',  'id'=>'asegurav']) !!}
+                                                {!! Form::select('idAseguradora', $aseguradoras, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una aseguradora',  'id'=>'asegurav']) !!}
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 {!! Form::label('senasPartic', 'Señas particulares', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::textarea('senasPartic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3',  'id'=>'senasv']) !!}
+                                                {!! Form::textarea('senasPartic', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese las señas particulares','rows' => '3',  'id'=>'senasv', 'data-validation'=>'length', 'data-validation-length'=>'15-5000']) !!}
                                             </div>
                                         </div>
                                 </div>

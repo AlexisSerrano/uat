@@ -145,16 +145,16 @@
 
 	<div class="col-4">
 			<div class="form-group">
-				{!! Form::label('docIdentificacion', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::select('docIdentificacion',$identificaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificación','data-validation'=>'required','required']) !!}
+				{!! Form::label('docIdentificacionEmpresa', 'Documento de identificación', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::select('docIdentificacionEmpresa',$identificaciones, null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el docto. de identificación','data-validation'=>'required']) !!}
 				<div class="help-block with-errors"></div>
 			</div>
 		</div>
 	
 		<div class="col-4">
 			<div class="form-group">
-				{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('numDocIdentificacion', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación', 'data-validation'=>'custom','data-validation-optional'=>'true','required']) !!}
+				{!! Form::label('numDocIdentificacionEmpresa', 'Núm. de documento de identificación', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::text('numDocIdentificacionEmpresa', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación','data-validation-optional'=>'true']) !!}
 				<div class="help-block with-errors"></div>
 			</div>
 		</div>

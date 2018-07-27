@@ -3,8 +3,6 @@
 @section('title', 'Agregar abogado')
 
 @section('content')
-@include('fields.errores')
-
 <div id="page-content-wrapper">
 @include('fields.buttons-navegacion')
 

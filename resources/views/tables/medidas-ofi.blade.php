@@ -27,8 +27,10 @@
 			<table class="table table-striped table-bordered table-hover" >
 			 	<thead class="thead-active"style="text-align:center;">
 			    	<tr>
-			      		<th scope="col">Folio</th>
-                        <th scope="col">Nombre</th>
+						  <th scope="col">Folio</th>
+						  <th scope="col">Fecha</th>
+						<th scope="col">Nombre</th>
+						<th scope="col">Tipo Acta</th>
 						<th scope="col">Fiscal</th>
 						<th scope="col">Descargar</th>
 			    	</tr>
@@ -38,7 +40,9 @@
 				@forelse($actas as $acta)
 				<tr>
 					<td>UAT-XI/AH-{{$acta->folio}}/{{$year}}</td>
+					<td>{{$acta->fecha}}</td>
 					<td>{{$acta->Nombre}} {{$acta->PApellido}} {{$acta->SApellido}}</td>
+					<td>{{$acta->tipoActa}}</td>
 					<td>{{$acta->fiscal}}</td>
 					<td style="text-align:center;"><a href='{{url("getoficioah/$acta->id")}}'><button class="btn btn-secondary"><i class="fa fa-download"></i></button></a></td>
 				</tr>

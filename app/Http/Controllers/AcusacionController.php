@@ -39,7 +39,7 @@ class AcusacionController extends Controller
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.segundoAp ELSE "" END) AS segundoAp')//'persona.segundoAp', 
            // 'apariciones.esEmpresa AS esEmpresa',//'persona.esEmpresa', 
             )->distinct()
-        ->where('apariciones.idCarpeta', '=', $carpetaNueva[0]->numCarpeta)
+        ->where('apariciones.carpeta', '=', $carpetaNueva[0]->numCarpeta)
         ->Where('apariciones.tipoInvolucrado', '=', 'denunciante')
         ->get();
         dump($denunciantes);
@@ -61,7 +61,7 @@ class AcusacionController extends Controller
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.segundoAp ELSE "" END) AS segundoAp')//'persona.segundoAp', 
          
             )->distinct()
-        ->where('apariciones.idCarpeta', '=', $carpetaNueva[0]->numCarpeta)
+        ->where('apariciones.carpeta', '=', $carpetaNueva[0]->numCarpeta)
         ->where(function($query){
             $query
             ->orWhere('apariciones.tipoInvolucrado', '=', 'denunciado')
@@ -70,9 +70,6 @@ class AcusacionController extends Controller
         ->get();
         dump($denunciados);
        
-    
-     
-    
        
        $tipifdelitos = DB::table('tipif_delito')
        ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')

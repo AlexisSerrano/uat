@@ -32,8 +32,10 @@ use Alert;
         $colores      = CatColor::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $estados      = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $marcas       = CatMarca::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $submarcas    = CatSubmarca::orderBy('nombre', 'ASC')->where('idMarca',999)->pluck('nombre', 'id');
         $procedencias = CatProcedencia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
         $tiposuso     = CatTipoUso::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+        $tiposver     = CatTipoVehiculo::orderBy('nombre', 'ASC')->where('idClaseVehiculo',99)->pluck('nombre', 'id');
         $delitos = CarpetaController::getDelitos($idCarpeta);
         $tipifdelitos = DB::table('tipif_delito')
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
@@ -57,7 +59,9 @@ use Alert;
             ->with('estados', $estados)
             ->with('marcas', $marcas)
             ->with('procedencias', $procedencias)
-            ->with('tiposuso', $tiposuso);
+            ->with('tiposuso', $tiposuso)
+            ->with('tiposver', $tiposver)
+            ->with('submarcas', $submarcas);
     }
 
 
@@ -87,7 +91,7 @@ use Alert;
             $vehiculo->idTipifDelito = $request->idTipifDelito;
         }
         if (!is_null($request->placas)) {    
-            if ($request->placas=='SIN INFORMACION') {           
+            if ($request->placas=='XXXXXXX') {           
             }else{
                 $vehiculo->placas = $request->placas;
             }

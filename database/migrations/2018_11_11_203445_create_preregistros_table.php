@@ -35,7 +35,7 @@ class CreatePreregistrosTable extends Migration
             $table->string('numDocIdentificacion',50)->nullable();
             $table->string('tipoActa',300)->nullable();
             $table->boolean('conViolencia')->default(false);
-            $table->string('narracion', 2000);
+            $table->string('narracion', 5000);
             $table->string('folio',15)->unique();
             $table->string('representanteLegal',100)->default("SIN INFORMACION");
             $table->integer('statusCancelacion')->default(0);
