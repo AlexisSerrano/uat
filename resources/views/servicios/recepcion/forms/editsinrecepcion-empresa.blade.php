@@ -80,7 +80,6 @@
 
     $(document).ready(function(){
 
-
         $("#editFields").click(function(){
             $( "#saveForm" ).toggle();
             if($("#editFields").html()=="Editar"){
@@ -88,168 +87,63 @@
                 $(".inputOculto").show();
                 $("#editFields").addClass("btn-danger");
                 $("#editFields").html("Cancelar");
+                if($("#otroDoc").val() != 'OTROS DOCUMENTOS'){                        
+                    $('.tipodeActa').hide();
+                }
+                
+                if($("#idRazon").val()==2){
+                    $('.tipodeActa').hide();
+                    $('.tipodeActa1').hide();
+                }
+                                
             }else{
                 $(".hideLabels").show();
                 $(".inputOculto").hide();
                 $("#editFields").html("Editar");
-                $("#editFields").removeClass("btn-danger")                                
+                $("#editFields").removeClass("btn-danger")                   
             }          
         });
 
-        /*
-        //editar el campo al dar clic en el label de nombre
-        $(".labelCambioNombre").click(function(){
-            $('.labelCambioNombre').hide();
-            $('#inputNombre').show().css('display', 'flex');
-        });
-
-         $(".labelCambioPrimerAp").click(function(){
-            $('.llabelCambioPrimerAp').hide();
-            $('#inputPrimerAp').show().css('display', 'flex');
-        });
-        //ocultar el campo de nombre y mostrar el label anterior
-        $("#botonCambioPrimerAp").click(function(){
-            $('.labelCambioPrimerAp').show();
-            $('#inputPrimerAp').hide();
-        });
-
-         $(".labelCambioSegundoAp").click(function(){
-            $('.llabelCambioSegundoAp').hide();
-            $('#inputSegundoAp').show().css('display', 'flex');
-        });
-        //ocultar el campo de nombre y mostrar el label anterior
-        $("#botonCambioSegundoAp").click(function(){
-            $('.labelCambioSegundoAp').show();
-            $('#inputSegundoAp').hide();
-        });
-        
-        //ocultar el campo de nombre y mostrar el label anterior
-        $("#botonCambioNombre").click(function(){
-            $('.labelCambioNombre').show();
-            $('#inputNombre').hide();
-        });
-        
-        //editar el campo al dar clic en el label de rfc
-        $(".labelCambioRfc").click(function(){
-            $('.labelCambioRfc').hide();
-            $('#inputRfc').show().css('display', 'flex');
-        });
-        //ocultar el campo y mostrar el label anterior
-        $("#botonCambioRfc").click(function(){
-            $('.labelCambioRfc').show();
-            $('#inputRfc').hide();
-        });
-        
-        //editar el campo al dar clic en el label de representante legal
-        $(".labelCambioRepLegal").click(function(){
-            $('.labelCambioRepLegal').hide();
-            $('#inputRepLegal').show().css('display', 'flex');
-        });
-        //ocultar el campo y mostrar el label anterior
-        $("#botonCambioRepLegal").click(function(){
-            $('.labelCambioRepLegal').show();
-            $('#inputRepLegal').hide();
-        });
-        
-        //editar el campo al dar clic en el label de Telefono
-        $(".labelCambioTelefono").click(function(){
-            $('.labelCambioTelefono').hide();
-            $('#inputTelefono').show().css('display', 'flex');
-        });
-        //ocultar el campo y mostrar el label anterior
-        $("#botonCambioTelefono").click(function(){
-            $('.labelCambioTelefono').show();
-            $('#inputTelefono').hide();
-        });
-
-        //editar el campo al dar clic en el label de Calle
-        $(".labelCambioCalle").click(function(){
-            $('.labelCambioCalle').hide();
-            $('#inputCalle').show().css('display', 'flex');
-        });
-        //ocultar el campo y mostrar el label anterior
-        $("#botonCambioCalle").click(function(){
-            $('.labelCambioCalle').show();
-            $('#inputCalle').hide();
-        });
-
-        //editar el campo al dar clic en el label de Numero Interno
-        $(".labelCambioNumInterno").click(function(){
-            $('.labelCambioNumInterno').hide();
-            $('#inputNumInterno').show().css('display', 'flex');
-        });
-        //ocultar el campo y mostrar el label anterior
-        $("#botonCambioNumInterno").click(function(){
-            $('.labelCambioNumInterno').show();
-            $('#inputNumInterno').hide();
-        });
-
-        //editar el campo al dar clic en el label de Numero Externo
-        $(".labelCambioNumExterno").click(function(){
-            $('.labelCambioNumExterno').hide();
-            $('#inputNumExterno').show().css('display', 'flex');
-        });
-        //ocultar el campo y mostrar el label anterior
-        $("#botonCambioNumExterno").click(function(){
-            $('.labelCambioNumExterno').show();
-            $('#inputNumExterno').hide();
-        });
-
-        //editar el campo al dar clic en el label de Numero Externo
-        $(".labelCambioNarracion").click(function(){
-            $('.labelCambioNarracion').hide();
-            $('#inputNarracion').show().css('display', 'flex');
-        });
-        //ocultar el campo y mostrar el label anterior
-        $("#botonCambioNarracion").click(function(){
-            $('.labelCambioNarracion').show();
-            $('#inputNarracion').hide();
-        });
-
-        //editar el campo al dar clic en el label de Razon
-        $(".labelCambioRazon").click(function(){
-            $('.labelCambioRazon').hide();
-            $('#inputRazon').show().css('display', 'flex');
-        });
-        //ocultar el campo y mostrar el label anterior
-        $("#botonCambioRazon").click(function(){
-            $('.labelCambioRazon').show();
-            $('#inputRazon').hide();
+        $("#docIdentificacion").change(function(event){
+            $("#numDocIdentificacion").val('');
         });
 
 
-        //mostrar los select de direccion al dar clic en algun label que pertenece a un select
-        $(".labelCambioDireccion").click(function(){
-            $('.labelCambioDireccion').hide();
-            $('#inputDireccionEstado').show().css('display', 'flex');
-            $('#inputDireccionMunicipio').show().css('display', 'flex');
-            $('#inputDireccionLocalidad').show().css('display', 'flex');
-            $('#inputDireccionCp').show().css('display', 'flex');
-            $('#inputDireccionColonia').show().css('display', 'flex');
-            $("#idEstado").prop('disabled', false);   
-            $("#idMunicipio").prop('disabled', false);   
-            $("#idLocalidad").prop('disabled', false);   
-            $("#cp").prop('disabled', false);   
-            $("#idColonia").prop('disabled', false);
+        /*Funcionalidad constancia de extravio*/
+        $( "#idRazon" ).change(function() {            
+                if($("#idRazon").val()==4){                    
+                    $(".inputOculto").show();
+                    $('.tipodeActa1').show();  
+                                      
+                    if($("#otroDoc").val() == 'OTROS DOCUMENTOS'){                        
+                        $('.tipodeActa').show();
+                    }
+                    else{
+                        $("#tipoActa1").show();
+                        $("#inputRazon1").hide();
+                    }
+                }else{
+                    $('.tipodeActa').hide();
+                    $('.tipodeActa1').hide();
+                }                
         });
-        //ocultar selects al dar clic en cancelar
-        $("#botonCambioDireccion").click(function(){
-            $('.labelCambioDireccion').show();
-            $('#inputDireccionEstado').hide();
-            $('#inputDireccionMunicipio').hide();
-            $('#inputDireccionLocalidad').hide();
-            $('#inputDireccionCp').hide();
-            $('#inputDireccionColonia').hide();
-            $("#idEstado").prop('disabled', true);   
-            $("#idMunicipio").prop('disabled', true);   
-            $("#idLocalidad").prop('disabled', true);   
-            $("#cp").prop('disabled', true);   
-            $("#idColonia").prop('disabled', true);   
-            
-        }); */
+
+
+        $("#otroDoc").change(function() {                        
+            if($("#otroDoc").val() == 'OTROS DOCUMENTOS'){                
+                console.log("Mostrar el especifique")
+                $('#inputRazon1').show();
+            }else{                
+                console.log("Ocultar el especifique")
+                $('#inputRazon1').hide();
+            }
+        });
 
     });
 
+
+
+    
     $("#idEstado").change(function(event){
         if(event.target.value!=""){
             limpiarDomicilioSel(1);

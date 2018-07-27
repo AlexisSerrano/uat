@@ -269,35 +269,53 @@
 			{!! Form::label('idRazon', 'Razón:', ['class' => 'col-form-label-sm hideLabels']) !!}
 			{!!Form::label('nombre',$razon ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputRazon">				
-				{!! Form::label('idRazon2', 'Razón', ['class' => 'col-form-label-sm']) !!}				
-				{!! Form::select('idRazon2', $razones, $preregistro->idRazon, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una razón', 'data-validation'=> 'required']) !!}								
+				{!! Form::label('idRazon', 'Razón', ['class' => 'col-form-label-sm']) !!}				
+				{!! Form::select('idRazon', $razones, $preregistro->idRazon, ['class' => 'form-control form-control-sm', 'placeholder' => 'Seleccione una razón', 'data-validation'=> 'required']) !!}								
 			</div>
 			<div class="help-block with-errors"></div>
 		</div>
 	</div>
 	
 
-		@if( ($tipoActa) && ($preregistro->idRazon==4))
-			@if($tipoActa=='OTROS')	
+		
+		
+			@if( ($tipoActa) && ($preregistro->idRazon==4))
 				<div class="col-6">
 					{!! Form::label('tipoAct', 'Constancia de extravio:', ['class' => 'col-form-label-sm hideLabels']) !!}
-					{!! Form::label('nombre', 'OTROS DOCUMENTOS', ['class' => 'col-form-label-sm hideLabels']) !!}
+					{!! Form::label('nombre', $tipoActa, ['class' => 'col-form-label-sm hideLabels']) !!}
 				</div>
-				<div class="col-6">
-					{!! Form::label('otr', 'Especifique : ', ['class' => 'col-form-label-sm hideLabels']) !!}
-					{!! Form::label('otr', $preregistro->tipoActa, ['class' => 'col-form-label-sm hideLabels']) !!}
-				</div>												
-			@else
-				<div class="col-6">
-					<div class="form-group">
-						{!! Form::label('tipoAct', 'Constancia de extravio : ', ['class' => 'col-form-label-sm hideLabels']) !!}						
-						{!! Form::label('tipoAct', $tipoActa, ['class' => 'col-form-label-sm hideLabels']) !!}						
-						<div class="input-group inputOculto" id="inputRazon">														
-						</div>
-					</div>
-				</div>
+				@if($tipoActa=='OTROS DOCUMENTOS')
+					<div class="col-6">
+						{!! Form::label('otr', 'Especifique : ', ['class' => 'col-form-label-sm hideLabels']) !!}
+						{!! Form::label('otr', $preregistro->tipoActa, ['class' => 'col-form-label-sm hideLabels']) !!}
+					</div>												
+				@endif
 			@endif
-		@endif
+
+
+				<div class="input-group inputOculto tipodeActa1 col-6">
+					{!! Form::label('tipoActa11', 'Seleccione el tipo de constancia de extravío que requiere', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::select('tipoActa1', array('PASAPORTE' => 'PASAPORTE', 
+					'CREDENCIAL DE TRABAJO/GAFFETE' => 'CREDENCIAL DE TRABAJO/GAFFETE',
+					'TARJETA DE CREDITO/DEBITO' => 'TARJETA DE CREDITO/DEBITO',
+					'TELEFONO CELULAR' => 'TELEFONO CELULAR',
+					'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)' => 'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)',
+					'PERMISO DE TRANSITO PARA EMPLACAMIENTO DE TAXIS' => 'PERMISO DE TRANSITO PARA EMPLACAMIENTO DE TAXIS',
+					'FACTURA DE VEHICULO/MOTOCICLETA' => 'FACTURA DE VEHICULO/MOTOCICLETA',
+					'TARJETA DE CIRCULACION' => 'TARJETA DE CIRCULACION',
+					'PLACAS DE CIRCULACION' => 'PLACAS DE CIRCULACION',
+					'LICENCIA DE CONDUCIR ESTATAL' => 'LICENCIA DE CONDUCIR ESTATAL',
+					'LICENCIA DE CONDUCIR FEDERAL' => 'LICENCIA DE CONDUCIR FEDERAL',
+					'DOCUMENTO/BIEN EXTRAVIADO O ROBADO' => 'DOCUMENTO/BIEN EXTRAVIADO O ROBADO',
+					'CERTIFICADO DE ALUMBRAMIENTO' => 'CERTIFICADO DE ALUMBRAMIENTO',
+					'OTROS DOCUMENTOS' => 'OTROS DOCUMENTOS'), $tipoActa, ['class' => 'form-control form-control-sm','data-validation'=>'required', 'id'=>'otroDoc']) !!}
+				</div>
+
+				<div class="input-group inputOculto tipodeActa col-6" id="inputRazon1">
+					{!! Form::label('otro', 'Especifique', ['class' => 'col-form-label-sm']) !!}
+					{!! Form::text('otro', $preregistro->tipoActa, ['class' => 'form-control form-control-sm', 'placeholder' => 'Especifique', 'data-validation'=>'required']) !!}
+					<div class="help-block with-errors"></div>
+				</div>
 
 
 

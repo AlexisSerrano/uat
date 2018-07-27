@@ -63,8 +63,8 @@ class PreregistroAuxController extends Controller
     public function edit($id)
     {
         
-        $tiposDeConstancia= array(0=>'PASAPORTE',1=>'CREDENCIAL DE TRABAJO/GAFFETE',2=>'TARJETA DE CRÉDITO/DÉBITO',3=>'TELÉFONO CELULAR',4=>'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)',5=>
-        'PERMISO DE TRÁNSITO PARA EMPLACAMIENTO DE TAXIS',6=>'FACTURA DE VEHICULO/MOTOCICLETA',7=>'TARJETA DE CIRCULACIÓN',8=>'PLACAS DE CIRCULACIÓN',9=>
+        $tiposDeConstancia= array(0=>'PASAPORTE',1=>'CREDENCIAL DE TRABAJO/GAFFETE',2=>'TARJETA DE CREDITO/DEBITO',3=>'TELEFONO CELULAR',4=>'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)',5=>
+        'PERMISO DE TRANSITO PARA EMPLACAMIENTO DE TAXIS',6=>'FACTURA DE VEHICULO/MOTOCICLETA',7=>'TARJETA DE CIRCULACION',8=>'PLACAS DE CIRCULACION',9=>
         'LICENCIA DE CONDUCIR ESTATAL',10=>'LICENCIA DE CONDUCIR FEDERAL',11=>'DOCUMENTO/BIEN EXTRAVIADO O ROBADO',12=>'CERTIFICADO DE ALUMBRAMIENTO');
         
         $estados=CatEstado::orderBy('nombre', 'ASC')->pluck('nombre','id');
@@ -118,7 +118,7 @@ class PreregistroAuxController extends Controller
             if(array_search($tipoActa, $tiposDeConstancia)){
                 $tipoActa=$preregistro->tipoActa;
             }else{//Si el tipo de constancia de extravio es OTROS DOCUMENTOS
-                $tipoActa='OTROS'; 
+                $tipoActa='OTROS DOCUMENTOS'; 
             }
         }
         
@@ -240,9 +240,16 @@ class PreregistroAuxController extends Controller
                 }
                 $preregistro->docIdentificacion = $request->docIdentificacion;
                 $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
+
                 if (!is_null($request->idRazon)){
                     $preregistro->idRazon = $request->idRazon;
                 }
+
+                if (!is_null($request->tipoActa1)){
+                    $preregistro->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa1;
+                }
+                
+
                 $preregistro->idMunicipioOrigen = $request->idMunicipioOrigen;
                 $preregistro->save();
                 $id = $preregistro->id;
@@ -287,6 +294,12 @@ class PreregistroAuxController extends Controller
                 if (!is_null($request->idRazon)){
                     $preregistro->idRazon = $request->idRazon;
                 }
+
+                if (!is_null($request->tipoActa1)){
+                    $preregistro->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa1;
+                }
+
+
                 $preregistro->save();
                 $id = $preregistro->id;   
             }

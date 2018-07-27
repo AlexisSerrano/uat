@@ -91,7 +91,16 @@
                 $(".hideLabels").hide();
                 $(".inputOculto").show();
                 $("#editFields").addClass("btn-danger");
-                $("#editFields").html("Cancelar");                
+                $("#editFields").html("Cancelar");  
+                if($("#otroDoc").val() != 'OTROS DOCUMENTOS'){                        
+                    $('.tipodeActa').hide();
+                }
+                
+                if($("#idRazon").val()==2){
+                    $('.tipodeActa').hide();
+                    $('.tipodeActa1').hide();
+                }
+
             }else{
                 $(".hideLabels").show();
                 $(".inputOculto").hide();
@@ -102,6 +111,37 @@
 
         $("#docIdentificacion").change(function(event){
             $("#numDocIdentificacion").val('');
+        });
+
+
+                /*Funcionalidad constancia de extravio*/
+                $( "#idRazon" ).change(function() {            
+                if($("#idRazon").val()==4){                    
+                    $(".inputOculto").show();
+                    $('.tipodeActa1').show();  
+                                      
+                    if($("#otroDoc").val() == 'OTROS DOCUMENTOS'){                        
+                        $('.tipodeActa').show();
+                    }
+                    else{
+                        $("#tipoActa1").show();
+                        $("#inputRazon1").hide();
+                    }
+                }else{
+                    $('.tipodeActa').hide();
+                    $('.tipodeActa1').hide();
+                }                
+        });
+
+
+        $("#otroDoc").change(function() {                        
+            if($("#otroDoc").val() == 'OTROS DOCUMENTOS'){                
+                console.log("Mostrar el especifique")
+                $('#inputRazon1').show();
+            }else{                
+                console.log("Ocultar el especifique")
+                $('#inputRazon1').hide();
+            }
         });
 
     }); 

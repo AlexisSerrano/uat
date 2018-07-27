@@ -91,8 +91,8 @@ class RegistrosCasoController extends Controller
 
        public function editRegistros($id)
        {
-        $tiposDeConstancia= array(0=>'PASAPORTE',1=>'CREDENCIAL DE TRABAJO/GAFFETE',2=>'TARJETA DE CRÉDITO/DÉBITO',3=>'TELÉFONO CELULAR',4=>'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)',5=>
-        'PERMISO DE TRÁNSITO PARA EMPLACAMIENTO DE TAXIS',6=>'FACTURA DE VEHICULO/MOTOCICLETA',7=>'TARJETA DE CIRCULACIÓN',8=>'PLACAS DE CIRCULACIÓN',9=>
+        $tiposDeConstancia= array(0=>'PASAPORTE',1=>'CREDENCIAL DE TRABAJO/GAFFETE',2=>'TARJETA DE CREDITO/DEBITO',3=>'TELEFONO CELULAR',4=>'EQUIPO DE TRABAJO(CELULARES,RADIOS,ETC)',5=>
+        'PERMISO DE TRANSITO PARA EMPLACAMIENTO DE TAXIS',6=>'FACTURA DE VEHICULO/MOTOCICLETA',7=>'TARJETA DE CIRCULACION',8=>'PLACAS DE CIRCULACION',9=>
         'LICENCIA DE CONDUCIR ESTATAL',10=>'LICENCIA DE CONDUCIR FEDERAL',11=>'DOCUMENTO/BIEN EXTRAVIADO O ROBADO',12=>'CERTIFICADO DE ALUMBRAMIENTO');
 
             $estados=CatEstado::orderBy('nombre', 'ASC')
@@ -146,7 +146,7 @@ class RegistrosCasoController extends Controller
                 if(array_search($tipoActa, $tiposDeConstancia)){
                     $tipoActa=$preregistro->tipoActa;
                 }else{//Si el tipo de constancia de extravio es OTROS DOCUMENTOS
-                    $tipoActa='OTROS'; 
+                    $tipoActa='OTROS DOCUMENTOS'; 
                 }
             }
 
@@ -294,7 +294,7 @@ class RegistrosCasoController extends Controller
             $domicilio->save();
             $idD1 = $domicilio->id;
             
-            $preregistro =Preregistro::find($idDireccion);
+            $preregistro =Preregistro::find($id);
             $preregistro->esEmpresa = 1;    
             $preregistro->nombre = $request->nombres2;
             $preregistro->idDireccion = $idD1;
