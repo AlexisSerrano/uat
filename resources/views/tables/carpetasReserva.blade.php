@@ -42,7 +42,8 @@
             @else
                 @foreach($carpetas as $carpeta)
                 <tr>
-                    <td>{{ $carpeta->nombre}}</td> 
+                    {{-- <td>{{ $carpeta->nombre}}</td>  --}}
+                    <td></td> 
                     <td>{{ $carpeta->fiscalAtendio}}</td> 
                     <td>{{ $carpeta->fechaInicio}}</td>
                     <td>{{ $carpeta->horaIntervencion}}</td>

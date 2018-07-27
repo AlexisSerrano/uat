@@ -510,14 +510,14 @@ class PreregistroAuxController extends Controller
                 $idCodigoPostalSelect = $preregistro->codigoPostal;
                 // dd($idMunicipioSelect);
 
-                $estados=CatEstado::orderBy('nombre','asc')->pluck('nombre','id');
-                $municipiospre=CatMunicipio::where('idEstado','=',$idEstadoSelect)->orderBy('nombre','asc')->pluck('nombre','id');
-                $municipios=CatMunicipio::where('idEstado','=',30)->orderBy('nombre','asc')->pluck('nombre','id');
-                $localidades=CatLocalidad::where('idMunicipio','=',$idMunicipioSelect)->orderBy('nombre','asc')->pluck('nombre','id');
-                $colonias=CatColonia::where('idMunicipio','=',$idMunicipioSelect)->orderBy('nombre','asc')->pluck('nombre','id');
-                $codigoPostal=CatColonia::where('codigoPostal','=',$idCodigoPostalSelect)->orderBy('codigoPostal','asc')->pluck('codigoPostal','codigopostal');
-                $municipiosOrigen=CatMunicipio::where('idEstado',$preregistro->idEstadoOrigen)->pluck('nombre','id');
-                // dd($municipioOrigen);  
+                // $estados=CatEstado::orderBy('nombre','asc')->pluck('nombre','id');
+                // $municipiospre=CatMunicipio::where('idEstado','=',$idEstadoSelect)->orderBy('nombre','asc')->pluck('nombre','id');
+                // $municipios=CatMunicipio::where('idEstado','=',30)->orderBy('nombre','asc')->pluck('nombre','id');
+                // $localidades=CatLocalidad::where('idMunicipio','=',$idMunicipioSelect)->orderBy('nombre','asc')->pluck('nombre','id');
+                // $colonias=CatColonia::where('idMunicipio','=',$idMunicipioSelect)->orderBy('nombre','asc')->pluck('nombre','id');
+                // $codigoPostal=CatColonia::where('codigoPostal','=',$idCodigoPostalSelect)->orderBy('codigoPostal','asc')->pluck('codigoPostal','codigopostal');
+                // $municipiosOrigen=CatMunicipio::where('idEstado',$preregistro->idEstadoOrigen)->pluck('nombre','id');
+                // // dd($municipioOrigen);  
             
                 $caso = new Carpeta();
                 $caso->fechaInicio = Carbon::now();
@@ -570,13 +570,13 @@ class PreregistroAuxController extends Controller
                 $bdbitacora->save();
                 
         
-                $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
-                $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-                $etnias = CatEtnia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-                $lenguas = CatLengua::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-                $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-                $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-                $religiones = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+                // $escolaridades = CatEscolaridad::orderBy('id', 'ASC')->pluck('nombre', 'id');
+                // $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+                // $etnias = CatEtnia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+                // $lenguas = CatLengua::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+                // $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+                // $ocupaciones = CatOcupacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
+                // $religiones = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
                 
                 Alert::success('Turno tomado', 'Hecho');
                 return view('forms.denunciante-turno')->with('idCarpeta', $idCarpeta)
@@ -589,21 +589,21 @@ class PreregistroAuxController extends Controller
                 ->with('idLocalidadSelect', $idLocalidadSelect)
                 ->with('idColoniaSelect', $idColoniaSelect)
                 ->with('idCodigoPostalSelect', $idCodigoPostalSelect)
-                ->with('estados', $estados)
-                ->with('municipios', $municipios)
-                ->with('municipiospre', $municipiospre)
-                ->with('localidades', $localidades)
-                ->with('colonias', $colonias)
-                ->with('codigoPostal', $codigoPostal)
-                ->with('municipiosOrigen', $municipiosOrigen)
-                ->with('idCarpeta', $idCarpeta)
-                ->with('escolaridades',  $escolaridades)
-                ->with('estadoscivil',   $estadoscivil)
-                ->with('etnias',  $etnias)
-                ->with('lenguas',  $lenguas)
-                ->with('nacionalidades',  $nacionalidades)
-                ->with('ocupaciones',  $ocupaciones)
-                ->with('religiones',  $religiones);
+                // ->with('estados', $estados)
+                // ->with('municipios', $municipios)
+                // ->with('municipiospre', $municipiospre)
+                // ->with('localidades', $localidades)
+                // ->with('colonias', $colonias)
+                // ->with('codigoPostal', $codigoPostal)
+                // ->with('municipiosOrigen', $municipiosOrigen)
+                ->with('idCarpeta', $idCarpeta);
+                // ->with('escolaridades',  $escolaridades)
+                // ->with('estadoscivil',   $estadoscivil)
+                // ->with('etnias',  $etnias)
+                // ->with('lenguas',  $lenguas)
+                // ->with('nacionalidades',  $nacionalidades)
+                // ->with('ocupaciones',  $ocupaciones)
+                // ->with('religiones',  $religiones);
                 // ->with('identificaciones', $identificaciones);
                 break;
             

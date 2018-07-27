@@ -123,20 +123,21 @@ class ActasHechosController extends Controller
     
 
     public function showform(){
-        $estados=CatEstado::orderBy('nombre', 'ASC')
-        ->pluck('nombre','id');
-        $ocupaciones=CatOcupacion::orderBy('nombre', 'ASC')
-        ->pluck('nombre', 'id');
-        $estadocivil = CatEstadoCivil::orderBy('nombre', 'ASC')
-        ->pluck('nombre', 'id');
-        $escolaridades = CatEscolaridad::orderBy('id', 'ASC')
-        ->pluck('nombre', 'id');
-        $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')
-        ->pluck('nombre', 'id');
-        $municipios = CatMunicipio::orderBy('nombre', 'ASC')
-        ->where('idEstado',30)
-        ->pluck('nombre', 'id');
-        return view('servicios.actas.acta-hechos',compact('ocupaciones','escolaridades','estadocivil','nacionalidades','estados','municipios'));
+        // $estados=CatEstado::orderBy('nombre', 'ASC')
+        // ->pluck('nombre','id');
+        // $ocupaciones=CatOcupacion::orderBy('nombre', 'ASC')
+        // ->pluck('nombre', 'id');
+        // $estadocivil = CatEstadoCivil::orderBy('nombre', 'ASC')
+        // ->pluck('nombre', 'id');
+        // $escolaridades = CatEscolaridad::orderBy('id', 'ASC')
+        // ->pluck('nombre', 'id');
+        // $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')
+        // ->pluck('nombre', 'id');
+        // $municipios = CatMunicipio::orderBy('nombre', 'ASC')
+        // ->where('idEstado',30)
+        // ->pluck('nombre', 'id');
+        // return view('servicios.actas.acta-hechos',compact('ocupaciones','escolaridades','estadocivil','nacionalidades','estados','municipios'));
+        return view('servicios.actas.acta-hechos');
     }
 
     public function showActas(){

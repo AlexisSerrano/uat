@@ -16,11 +16,11 @@ class DatabaseSeeder extends Seeder
         $this->call(OcupacionSeeder::class);
         $this->call(EstadoCivilSeeder::class);
         $this->call(EscolaridadSeeder::class);
-        $this->call(ReligionSeeder::class);
-        $this->call(NacionalidadSeeder::class);
-        $this->call(EtniaSeeder::class);
-        $this->call(LenguaSeeder::class);
-        $this->call(ModalidadSeeder::class);
+        // $this->call(ReligionSeeder::class);
+        // $this->call(NacionalidadSeeder::class);
+        // $this->call(EtniaSeeder::class);
+        // $this->call(LenguaSeeder::class);
+        // $this->call(ModalidadSeeder::class);
         $this->call(DelitosSeeder::class);
         $this->call(UnidadSeeder::class);
          
@@ -86,12 +86,12 @@ class DatabaseSeeder extends Seeder
         $this->call(Agrupacion1Seeder::class);
         $this->call(Agrupacion2Seeder::class);
         $this->call(AseguradoraSeeder::class);
-        $this->call(TipoVehiculoSeeder::class);
         $this->call(ColorSeeder::class);
         $this->call(ProcedenciaSeeder::class);
         $this->call(TipoUsoSeeder::class);
         $this->call(OficiosSeeder::class);
         $this->call(ClaseVehiculoSeeder::class);
+        $this->call(TipoVehiculoSeeder::class);
         $this->call(CavdSeeder::class);
         $this->call(MarcaSeeder::class);       
         $this->call(SubmarcaSeeder::class);
