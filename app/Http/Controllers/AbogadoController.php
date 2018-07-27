@@ -241,10 +241,31 @@ class AbogadoController extends Controller
     public function deleteDefensa($id){
         try{
             DB::beginTransaction();
-            $idCarpeta=session('carpeta');
-            $autoridades = DB::table('componentes.apariciones')->where('id', $id)->update(['activo' => 0, 'carpeta' => '']);
-            $bdbitacora = BitacoraNavCaso::where('idCaso',$idCarpeta)->first();
-            $bdbitacora->autoridad = $bdbitacora->autoridad-1;
+            $defensa = DB::table('componentes.apariciones')->where('id', $id)->first();
+
+            if($defensa->tipoInvolucrado=='denunciante'){
+                if($defensa->esEmpresa==1)
+                    $elim = DB::table('componentes.extra_denunciante_moral exa')
+                    ->where('exa.idVarPersona', $defensa->idVarPersona)
+                    ->update(['idAbogado' => null]);
+                else
+                    $elim = DB::table('componentes.extra_denunciante_fisico exa')
+                    ->where('exa.idVarPersona', $defensa->idVarPersona)
+                    ->update(['idAbogado' => null]);
+            }else if($defensa->tipoInvolucrado=='denunciado'){
+                if($defensa->esEmpresa==1)
+                    $elim = DB::table('componentes.extra_denunciado_moral exa')
+                    ->where('exa.idVarPersona', $defensa->idVarPersona)
+                    ->update(['idAbogado' => null]);
+                else
+                    $elim = DB::table('componentes.extra_denunciado_fisico exa')
+                    ->where('exa.idVarPersona', $defensa->idVarPersona)
+                    ->update(['idAbogado' => null]);
+            }
+
+
+            $bdbitacora = BitacoraNavCaso::where('idCaso',$defensa->idCarpeta)->first();
+            $bdbitacora->autoridad = $bdbitacora->defensa-1;
             $bdbitacora->save();
             DB::commit();
             Alert::success('Registro eliminado con éxito', 'Hecho');

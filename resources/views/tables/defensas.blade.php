@@ -31,3 +31,30 @@
     </table>
 </div>
 </div>
+@push('scripts')
+   <script> 
+        $(document).ready(function() {
+            $(".deleteBtn").on("click", function(e) {
+                var id = $(this).data("defensa-id");
+            e.preventDefault()
+                swal({
+                    title: "¿Está seguro de eliminarlo?",
+                    text: "¡No podrá recuperar este registro!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Si, ¡Eliminarlo!",
+                    cancelButtonText: "No, ¡Cancelar!",
+                    closeOnConfirm: true,
+                    closeOnCancel: true },
+                    function(isConfirm){
+                if (isConfirm) {
+              
+                 window.location.href=route('delete.defensa',id);
+                //  window.location.href=route("agregar-denunciado/'.$denunciante->id.'/eliminar");
+                }
+        });
+        });
+        });
+  </script>  
+@endpush
