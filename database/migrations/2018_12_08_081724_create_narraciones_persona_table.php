@@ -18,7 +18,7 @@ class CreateNarracionesPersonaTable extends Migration
             $table->integer('idVariablesPersona')->unsigned();
             $table->Text('narracion');
             $table->tinyInteger('tipo');
-            $table->foreign('idVariablesPersona')->references('id')->on('variables_persona')->onDelete('cascade');
+            // $table->foreign('idVariablesPersona')->references('id')->on('variables_persona')->onDelete('cascade');
             $table->timestamps();
         });
     }

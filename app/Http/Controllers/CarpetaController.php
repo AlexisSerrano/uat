@@ -219,15 +219,15 @@ class CarpetaController extends Controller
     public function indexCarpetasReserva(){
         //dd(Auth::user()->id);
         $carpetas = DB::table('carpeta')
-        ->join('variables_persona','variables_persona.idCarpeta','=','carpeta.id')
-        ->leftJoin('extra_autoridad','extra_autoridad.idVariablesPersona','=','variables_persona.id')
-        ->leftJoin('extra_denunciante','extra_denunciante.idVariablesPersona','=','variables_persona.id')
-        //->join('extra_denunciado','extra_denunciado.idVariablesPersona','!=','variables_persona.id')
-        //->join('extra_abogado','extra_abogado.idVariablesPersona','=','variables_persona.id')
-        ->join('persona','persona.id','=','variables_persona.idPersona')
+        // ->join('variables_persona','variables_persona.idCarpeta','=','carpeta.id')
+        // ->leftJoin('extra_autoridad','extra_autoridad.idVariablesPersona','=','variables_persona.id')
+        // ->leftJoin('extra_denunciante','extra_denunciante.idVariablesPersona','=','variables_persona.id')
+        // ->join('extra_denunciado','extra_denunciado.idVariablesPersona','!=','variables_persona.id')
+        // ->join('extra_abogado','extra_abogado.idVariablesPersona','=','variables_persona.id')
+        // ->join('persona','persona.id','=','variables_persona.idPersona')
         ->select('carpeta.id as id',
         'carpeta.fechaInicio',
-        DB::raw("CONCAT(`persona`.`nombres`,' ',CASE WHEN `persona`.`primerAp` IS NULL  THEN '' ELSE `persona`.`primerAp` END,' ',CASE WHEN `persona`.`segundoAp` IS NULL  THEN '' ELSE `persona`.`segundoAp` END) as nombre"),
+        // DB::raw("CONCAT(`persona`.`nombres`,' ',CASE WHEN `persona`.`primerAp` IS NULL  THEN '' ELSE `persona`.`primerAp` END,' ',CASE WHEN `persona`.`segundoAp` IS NULL  THEN '' ELSE `persona`.`segundoAp` END) as nombre"),
         'carpeta.horaIntervencion',
         'carpeta.fiscalAtendio' )
         ->where('idFiscal',Auth::user()->id)

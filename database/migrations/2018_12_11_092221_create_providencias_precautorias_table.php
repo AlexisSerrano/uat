@@ -25,7 +25,7 @@ class CreateProvidenciasPrecautoriasTable extends Migration
             $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
             $table->foreign('idProvidencia')->references('id')->on('cat_providencia_precautoria');
             $table->foreign('idEjecutor')->references('id')->on('ejecutor');
-            $table->foreign('idPersona')->references('id')->on('persona');
+            // $table->foreign('idPersona')->references('id')->on('persona');
             $table->timestamps();
             $table->softDeletes();
         });

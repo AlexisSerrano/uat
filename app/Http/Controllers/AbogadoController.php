@@ -9,10 +9,7 @@ use Alert;
 use Carbon\Carbon;
 use App\Http\Requests\StoreAbogado;
 use App\Models\Carpeta;
-use App\Models\CatEstado;
-use App\Models\CatEstadoCivil;
 use App\Models\ExtraDenunciante;
-use App\Models\CatMunicipio;
 use App\Models\ExtraDenunciado;
 use App\Models\Persona;
 use App\Models\VariablesPersona;
@@ -28,15 +25,9 @@ class AbogadoController extends Controller
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();
         if(count($carpetaNueva)>0){ 
             $abogados = CarpetaController::getAbogados($carpetaNueva[0]['numCarpeta']);
-            $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $municipios=CatMunicipio::where('idEstado',30)->orderBy('nombre', 'ASC')->pluck('nombre','id');
             // dd($estados);
             return view('forms.abogado')->with('idCarpeta', $idCarpeta)
-                ->with('abogados', $abogados)
-                ->with('estados', $estados)
-                ->with('municipios', $municipios)
-                ->with('estadoscivil', $estadoscivil);
+                ->with('abogados', $abogados);
         }else{
             return redirect()->route('home');
         }

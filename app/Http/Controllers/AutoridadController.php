@@ -35,29 +35,9 @@ class AutoridadController extends Controller
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();//->where('idFiscal', Auth::user()->id)->get();
         if(count($carpetaNueva)>0){ 
             $autoridades = CarpetaController::getAutoridades($carpetaNueva[0]['numCarpeta']);
-            $escolaridades = CatEscolaridad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $estados = CatEstado::select('id', 'nombre')->orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $estadoscivil = CatEstadoCivil::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $etnias = CatEtnia::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $lenguas = CatLengua::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $municipios=CatMunicipio::where('idEstado',30)->orderBy('nombre', 'ASC')->pluck('nombre','id');
-            $nacionalidades = CatNacionalidad::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $ocupaciones=  DB::table('cat_ocupacion')->select('id','nombre')->where('id','>',2941)->pluck('nombre', 'id');
-            $religiones = CatReligion::orderBy('nombre', 'ASC')->pluck('nombre', 'id');
-            $identificaciones = CatIdentificacion::orderBy('id', 'ASC')->pluck('documento', 'id');
             //dd($ocupaciones);
             return view('forms.autoridad')->with('idCarpeta', $idCarpeta)
-                ->with('autoridades', $autoridades)
-                ->with('escolaridades', $escolaridades)
-                ->with('estados', $estados)
-                ->with('municipios', $municipios)
-                ->with('estadoscivil', $estadoscivil)
-                ->with('etnias', $etnias)
-                ->with('lenguas', $lenguas)
-                ->with('nacionalidades', $nacionalidades)
-                ->with('ocupaciones', $ocupaciones)
-                ->with('religiones', $religiones)
-                ->with('identificaciones',$identificaciones);
+                ->with('autoridades', $autoridades);
         }else{
             return redirect()->route('home');
         }
