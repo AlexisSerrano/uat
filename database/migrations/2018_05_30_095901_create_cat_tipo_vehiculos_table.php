@@ -20,7 +20,7 @@ class CreateCatTipoVehiculosTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             
-            //$table->foreign('idClaseVehiculo')->references('id')->on('cat_clase_vehiculo')->onDelete('cascade');
+            $table->foreign('idClaseVehiculo')->references('id')->on('cat_clase_vehiculo')->onDelete('cascade');
         });
     }
 

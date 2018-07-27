@@ -270,9 +270,9 @@ $("#idAbogado").change(function(event){
 		$.get(route('getinvolucrados',event.target.value), function(response, idCarpeta){
 			$("#idInvolucrado").empty();
 			$("#idInvolucrado").append("<option value=''>Seleccione un involucrado</option>");
-			console.log(event.target.value);
+			//console.log(event.target.value);
 			for(i=0; i<response.length; i++){
-				$("#idInvolucrado").append("<option value='"+response[i].id+"'> "+response[i].nombres+"</option>");
+				$("#idInvolucrado").append("<option value='"+response[i].idAparicion+"'> "+(response[i].nombres+' '+response[i].primerAp+' '+response[i].segundoAp)+"</option>");
 			}
 		});
 	}

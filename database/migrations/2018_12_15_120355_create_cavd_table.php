@@ -20,7 +20,7 @@ class CreateCavdTable extends Migration
             $table->integer('idCarpeta')->unsigned();
             $table->timestamps();
 
-            $table->foreign('idVariablesPersona')->references('id')->on('variables_persona')->onDelete('cascade');
+            // $table->foreign('idVariablesPersona')->references('id')->on('variables_persona')->onDelete('cascade');
             $table->foreign('idCavd')->references('id')->on('cat_cavd')->onDelete('cascade');
             $table->foreign('idCarpeta')->references('id')->on('carpeta')->onDelete('cascade');
         });

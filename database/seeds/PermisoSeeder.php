@@ -194,6 +194,7 @@ class PermisoSeeder extends Seeder
         Permission::create(['name' => 'getOficiosApp']);
         Permission::create(['name' => 'recuperar_token']);
         Permission::create(['name' => 'recuperar']);
+        Permission::create(['name' => 'delete_defensa']);
         
        
         //Creación de roles
@@ -224,7 +225,7 @@ class PermisoSeeder extends Seeder
         'oficio_remision','impresion_remision','formato_denuncia','get_formatoDenuncia','getToken',
         'saveOficio','acuerdo_inicio','acuerdo_documento','carpeta_detalle','resumen_denunciante',
         'resumen_denunciado','resumen_acusaciones','resumen_delito','resumen_abogado','resumen_autoridad',
-        'resumen_defensa','resumen_vehiculo','historial_carpeta','inicio_caso',
+        'resumen_defensa','resumen_vehiculo','historial_carpeta','inicio_caso','delete_defensa',
         'cancelar_caso','terminar_Caso','salir_caso','new_denunciante','store_denunciante','delete_denunciante',
         'atender','tomar_turno','turno_denunciante','devolver','observaciones','store_descripcionHechos',
         'narracion','new_narracion','getnarracion','mostrar_doc','new_denunciado','store_denunciado',
