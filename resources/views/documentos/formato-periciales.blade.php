@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="app">
-    <oficio tipo="OFICIO PERICIALES" url="{{url("OficioF-impresion")}}" id="{{session('carpeta')}}"></oficio>
+    <oficio tipo="OFICIO PERICIALES" url="{{url("oficio-periciales")}}" id="{{session('carpeta')}}"></oficio>
     </div>
 </body>
 </html>
