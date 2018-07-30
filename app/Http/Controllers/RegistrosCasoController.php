@@ -261,9 +261,16 @@ class RegistrosCasoController extends Controller
             if (!is_null($request->sexo)){
                 $preregistro->sexo = $request->sexo;
             }
-            if (!is_null($request->idRazon)){
-                $preregistro->idRazon = $request->idRazon;
+
+
+            $preregistro->idRazon = $request->idRazon;            
+
+            if ($request->idRazon==4){
+                $preregistro->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa1;
+            }elseif($request->idRazon==2){
+                $preregistro->tipoActa = null;
             }
+
             $preregistro->docIdentificacion = $request->docIdentificacion;
             $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
             
@@ -306,9 +313,16 @@ class RegistrosCasoController extends Controller
             $preregistro->conViolencia = $request->conViolencia;
             $preregistro->narracion = $request->narracion;
             $preregistro->fechaNac = $request->fechaAltaEmpresa;
-            if (!is_null($request->idRazon)){
-                $preregistro->idRazon = $request->idRazon;
+            
+
+            $preregistro->idRazon = $request->idRazon;            
+
+            if ($request->idRazon==4){
+                $preregistro->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa1;
+            }elseif($request->idRazon==2){
+                $preregistro->tipoActa = null;
             }
+
             $preregistro->save();
             $id = $preregistro->id;   
         }

@@ -313,7 +313,7 @@
 
 				<div class="input-group inputOculto tipodeActa col-6" id="inputRazon1">
 					{!! Form::label('otro', 'Especifique', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('otro', $preregistro->tipoActa, ['class' => 'form-control form-control-sm', 'placeholder' => 'Especifique', 'data-validation'=>'required']) !!}
+					{!! Form::text('otro', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Especifique', 'data-validation'=>'required']) !!}
 					<div class="help-block with-errors"></div>
 				</div>
 
