@@ -236,27 +236,27 @@ class AbogadoController extends Controller
 
             if($defensa->tipoInvolucrado=='denunciante'){
                 if($defensa->esEmpresa==1)
-                    $elim = DB::table('componentes.extra_denunciante_moral exa')
-                    ->where('exa.idVarPersona', $defensa->idVarPersona)
-                    ->update(['idAbogado' => null]);
+                    $elim = DB::table('componentes.extra_denunciante_moral as exa')
+                    ->where('exa.idVariablesPersona', $defensa->idVarPersona)
+                    ->update(['exa.idAbogado' => null]);
                 else
-                    $elim = DB::table('componentes.extra_denunciante_fisico exa')
-                    ->where('exa.idVarPersona', $defensa->idVarPersona)
-                    ->update(['idAbogado' => null]);
+                    $elim = DB::table('componentes.extra_denunciante_fisico as exa')
+                    ->where('exa.idVariablesPersona', $defensa->idVarPersona)
+                    ->update(['exa.idAbogado' => null]);
             }else if($defensa->tipoInvolucrado=='denunciado'){
                 if($defensa->esEmpresa==1)
-                    $elim = DB::table('componentes.extra_denunciado_moral exa')
-                    ->where('exa.idVarPersona', $defensa->idVarPersona)
-                    ->update(['idAbogado' => null]);
+                    $elim = DB::table('componentes.extra_denunciado_moral as exa')
+                    ->where('exa.idVariablesPersona', $defensa->idVarPersona)
+                    ->update(['exa.idAbogado' => null]);
                 else
-                    $elim = DB::table('componentes.extra_denunciado_fisico exa')
-                    ->where('exa.idVarPersona', $defensa->idVarPersona)
-                    ->update(['idAbogado' => null]);
+                    $elim = DB::table('componentes.extra_denunciado_fisico as exa')
+                    ->where('exa.idVariablesPersona', $defensa->idVarPersona)
+                    ->update(['exa.idAbogado' => null]);
             }
 
 
             $bdbitacora = BitacoraNavCaso::where('idCaso',$defensa->idCarpeta)->first();
-            $bdbitacora->autoridad = $bdbitacora->defensa-1;
+            $bdbitacora->defensa = $bdbitacora->defensa-1;
             $bdbitacora->save();
             DB::commit();
             Alert::success('Registro eliminado con éxito', 'Hecho');
