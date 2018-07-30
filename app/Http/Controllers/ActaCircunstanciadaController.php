@@ -202,16 +202,22 @@ class ActaCircunstanciadaController extends Controller
     public function addExtrasActas(Request $request){
         try{
             DB::beginTransaction();
+
+
+        
+
             $fiscaldb = DB::table('users')->where('id',$request->usuario)->first();
+            
             if($request->idExtrasActas!=""){
                 $acta = ActaCircunstanciada::find($request->idExtrasActas);
+                $operActa="UPDATE";
             }else{
                 $acta = new ActaCircunstanciada();
                 $acta->varPersona = $request->idPersona;
                 $ultimo = ActaCircunstanciada::orderBy('id','desc')->first();
                 $new = ($ultimo)?$ultimo->folio+1:1;
-
                 $acta->folio = $new;   
+                $operActa="INSERT";
             } 
             $acta->hora = Date::now()->format('H:i:s');
             $acta->fecha = Date::now()->format('Y-m-d');
@@ -221,6 +227,10 @@ class ActaCircunstanciadaController extends Controller
             $acta->idUnidad = $fiscaldb->idUnidad;
             $acta->save();
 
+            $apariciones = saveInAparicionesComponentes($request->sistema,$acta->folio,null,$request->idPersona,$request->tipo,'xxxxx','0');
+
+            saveInLogComponentes($request->sistema,$request->usuario,'apariciones',$operActa,$apariciones,null,$request->tipo);
+
             DB::commit();
             return $acta->id;
         }
@@ -228,6 +238,7 @@ class ActaCircunstanciadaController extends Controller
             DB::rollback();
             return false;
         }
+        
     }
 
     public function getExpedido($tipo){

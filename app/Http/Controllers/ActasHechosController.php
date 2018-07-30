@@ -586,13 +586,14 @@ class ActasHechosController extends Controller
             $fiscaldb = DB::table('users')->where('id',$request->usuario)->first();
             if($request->idExtrasActas!=""){
                 $acta = ActasHechos::find($request->idExtrasActas);
+                $operActa="UPDATE";
             }else{
                 $acta = new ActasHechos();
                 $acta->varPersona = $request->idPersona;
                 $ultimo = ActasHechos::orderBy('id','desc')->first();
                 $new = ($ultimo)?$ultimo->folio+1:1;
-
                 $acta->folio = $new;   
+                $operActa="INSERT";
             } 
             $acta->hora = Date::now()->format('H:i:s');
             $acta->fecha = Date::now()->format('Y-m-d');
@@ -604,6 +605,10 @@ class ActasHechosController extends Controller
             $acta->idUnidad = $fiscaldb->idUnidad;
             $acta->save();
 
+            $apariciones = saveInAparicionesComponentes($request->sistema,$acta->folio,$request->tipoActa,$request->idPersona,$request->tipo,'xxxxx',$request->empresa);
+
+            saveInLogComponentes($request->sistema,$request->usuario,'apariciones',$operActa,$apariciones,null,$request->tipo);
+
             DB::commit();
             return $acta->id;
         }
@@ -611,6 +616,7 @@ class ActasHechosController extends Controller
             DB::rollback();
             return false;
         }
+        
     }
 
     public function getExpedido($tipo){

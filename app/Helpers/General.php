@@ -577,3 +577,39 @@ bsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
 	$cadena = strtolower($cadena);
 	return utf8_encode($cadena);
 }
+
+function saveInLogComponentes(String $sistema,$usuario,$tabla,$operacion,$idAfectado,$antes,$despues){
+	try{
+		$bitacora=DB::table('componentes.bitacora')->insertGetId([
+			'sistema' => $sistema,
+			'usuario' => $usuario,
+			'tabla' => $tabla,
+			'operacion' => $operacion,			 
+			'id_afectado' => $idAfectado,
+			'antes' => $antes,
+			'despues' => $despues
+		]);
+	}catch (Exception $e){
+		dump($e);
+		throw new Exception($e);
+	}
+	return $bitacora;
+}
+
+function saveInAparicionesComponentes(String $sistema,$idCarpeta,$carpeta,$idPersona,$tipo,$nuc,$empresa){
+	try{
+		$apariciones=DB::table('componentes.apariciones')->insertGetId([
+			'sistema' => $sistema, 
+			'idCarpeta' => $idCarpeta,
+			'carpeta' => $carpeta,
+			'idVarPersona' => $idPersona,
+			'tipoInvolucrado' => $tipo,
+			'nuc' => $nuc,
+			'esEmpresa' => $empresa
+		]);
+	}
+	catch (Exception $e){
+		throw new Exception($e);
+	}
+	return $apariciones;
+}
