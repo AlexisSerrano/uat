@@ -229,33 +229,32 @@ class AbogadoController extends Controller
         }
     }
 
-    public function deleteDefensa(Request $request,$id){
-        
+    public function deleteDefensa($id){
         try{
             DB::beginTransaction();
             $defensa = DB::table('componentes.apariciones')->where('id', $id)->first();
 
             if($defensa->tipoInvolucrado=='denunciante'){
                 if($defensa->esEmpresa==1)
-                    $elim = DB::table('componentes.extra_denunciante_moral as exa')
-                    ->where('exa.idVariablesPersona', $defensa->idVarPersona)
-                    ->update(['exa.idAbogado' => null]);
+                    $elim = DB::table('componentes.extra_denunciante_moral exa')
+                    ->where('exa.idVarPersona', $defensa->idVarPersona)
+                    ->update(['idAbogado' => null]);
                 else
-                    $elim = DB::table('componentes.extra_denunciante_fisico as exa')
-                    ->where('exa.idVariablesPersona', $defensa->idVarPersona)
-                    ->update(['exa.idAbogado' => null]);
+                    $elim = DB::table('componentes.extra_denunciante_fisico exa')
+                    ->where('exa.idVarPersona', $defensa->idVarPersona)
+                    ->update(['idAbogado' => null]);
             }else if($defensa->tipoInvolucrado=='denunciado'){
-                if($defensa->esEmpresa==1){
-                    $elim = DB::table('componentes.extra_denunciado_moral as exa')
-                    ->where('exa.idVariablesPersona', $defensa->idVarPersona)
-                    ->update(['exa.idAbogado' => null]);
-                }else{
-                    $elim = DB::table('componentes.extra_denunciado_fisico as exa')
-                    ->where('exa.idVariablesPersona',$defensa->idVarPersona)
-                    ->update(['exa.idAbogado' => null]);
-                }
+                if($defensa->esEmpresa==1)
+                    $elim = DB::table('componentes.extra_denunciado_moral exa')
+                    ->where('exa.idVarPersona', $defensa->idVarPersona)
+                    ->update(['idAbogado' => null]);
+                else
+                    $elim = DB::table('componentes.extra_denunciado_fisico exa')
+                    ->where('exa.idVarPersona', $defensa->idVarPersona)
+                    ->update(['idAbogado' => null]);
             }
-          
+
+
             $bdbitacora = BitacoraNavCaso::where('idCaso',$defensa->idCarpeta)->first();
             $bdbitacora->autoridad = $bdbitacora->defensa-1;
             $bdbitacora->save();
