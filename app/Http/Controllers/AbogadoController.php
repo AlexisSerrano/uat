@@ -254,7 +254,6 @@ class AbogadoController extends Controller
                     ->update(['exa.idAbogado' => null]);
             }
 
-
             $bdbitacora = BitacoraNavCaso::where('idCaso',$defensa->idCarpeta)->first();
             $bdbitacora->defensa = $bdbitacora->defensa-1;
             $bdbitacora->save();
