@@ -1034,6 +1034,11 @@ else
 
 
     }
+
+    public function docPericiales($id){
+        return view('documentos.formato-periciales')
+        ->with('id',$id);
+    }
 }
 
 

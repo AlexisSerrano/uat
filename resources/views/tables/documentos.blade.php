@@ -156,6 +156,14 @@ $data= getOficiosImpresos();
                                         <a href="{{ route("policia.ministerial",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg" TARGET=”_blank”><i class="fa fa-print"></i></a>
                                     </td> 
                                 </tr>  
+                                <td>Oficio de Servicios Periciales</td>
+                                <td style="text-align:center;">
+                                    <span class="badge badge-info right">{{$data['policiaMinC']}}</span>
+                                </td>
+                                <td style="text-align:center;">
+                                    <a href="{{ route("oficio.periciales",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg" TARGET=”_blank”><i class="fa fa-print"></i></a>
+                                </td> 
+                            </tr>  
                             </tbody>
                         </table>
                         

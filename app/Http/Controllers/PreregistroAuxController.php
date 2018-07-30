@@ -241,12 +241,12 @@ class PreregistroAuxController extends Controller
                 $preregistro->docIdentificacion = $request->docIdentificacion;
                 $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
 
-                if (!is_null($request->idRazon)){
-                    $preregistro->idRazon = $request->idRazon;
-                }
+                $preregistro->idRazon = $request->idRazon;            
 
-                if (!is_null($request->tipoActa1)){
+                if ($request->idRazon==4){
                     $preregistro->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa1;
+                }elseif($request->idRazon==2){
+                    $preregistro->tipoActa = null;
                 }
                 
 
@@ -291,12 +291,13 @@ class PreregistroAuxController extends Controller
                 $preregistro->narracion = $request->narracion;
                 $preregistro->docIdentificacion = $request->docIdentificacion;
                 $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
-                if (!is_null($request->idRazon)){
-                    $preregistro->idRazon = $request->idRazon;
-                }
+                
+                $preregistro->idRazon = $request->idRazon;            
 
-                if (!is_null($request->tipoActa1)){
+                if ($request->idRazon==4){
                     $preregistro->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa1;
+                }elseif($request->idRazon==2){
+                    $preregistro->tipoActa = null;
                 }
 
 
