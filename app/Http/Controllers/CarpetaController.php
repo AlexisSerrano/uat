@@ -299,7 +299,7 @@ class CarpetaController extends Controller
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN sexo.nombre ELSE "NO APLICA" END) AS sexo'),//'persona.sexo', 
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN variables_fisica.telefono ELSE variables_fisica.telefono END) AS telefono'))//'variables_persona.telefono')
             ->where('apariciones.activo', 1)
-            ->where('apariciones.carpeta', '=', $id)
+            ->where('apariciones.idCarpeta', '=', $id)
             ->where('apariciones.tipoInvolucrado', '=', 'denunciante')
             ->get();
         return $denunciantes;
@@ -347,7 +347,7 @@ class CarpetaController extends Controller
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN ifnull(sexo.nombre,"SIN INFORMACION") ELSE "NO APLICA" END) AS sexo'),//'persona.sexo', 
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN ifnull(variables_fisica.telefono,"SIN INFORMACION") ELSE ifnull(variables_fisica.telefono,"SIN INFORMACION") END) AS telefono')//'variables_persona.telefono')
             )->distinct()
-        ->where('apariciones.carpeta', '=', $id)
+        ->where('apariciones.idCarpeta', '=', $id)
         ->where(function($query){
             $query
             ->orWhere('apariciones.tipoInvolucrado', '=', 'denunciado')
