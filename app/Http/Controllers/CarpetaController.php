@@ -157,18 +157,35 @@ class CarpetaController extends Controller
         if ($request->session()->has('carpeta')) {
             $id=session('carpeta');
             $carpterminadas = DB::table('acusacion')
-            ->join('extra_denunciante', 'extra_denunciante.id', '=', 'acusacion.idDenunciante')
-            ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-            ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-            ->join('extra_denunciado', 'extra_denunciado.id', '=', 'acusacion.idDenunciado')
-            ->join('variables_persona as var', 'var.id', '=', 'extra_denunciado.idVariablesPersona')
-            ->join('persona as per', 'per.id', '=', 'var.idPersona')
+            ->join('componentes.apariciones as aparicionesDenunciante', 'aparicionesDenunciante.id', '=', 'acusacion.idDenunciante')
+            ->leftJoin('componentes.variables_persona_fisica as variables_fisicaDenunciante', 'variables_fisicaDenunciante.id', '=', 'aparicionesDenunciante.idVarPersona')
+            ->leftJoin('componentes.variables_persona_moral as variables_moral-denunciante', 'variables_moral-denunciante.id', '=', 'aparicionesDenunciante.idVarPersona')
+            ->leftJoin('componentes.extra_denunciante_fisico as extra_denunciante_fisico', 'variables_fisicaDenunciante.id', '=', 'extra_denunciante_fisico.idVariablesPersona')
+            ->leftJoin('componentes.extra_denunciante_moral as extra_denunciante_moral', 'variables_moral-denunciante.id', '=', 'extra_denunciante_moral.idVariablesPersona')
+            ->leftJoin('componentes.persona_fisica as persona_fisica_denunciante', 'persona_fisica_denunciante.id', '=', 'variables_fisicaDenunciante.idPersona')
+            ->leftJoin('componentes.sexos as sexo_denunciante', 'sexo_denunciante.id', '=', 'persona_fisica_denunciante.sexo')
+            ->leftJoin('componentes.persona_moral as persona_moral_denunciante', 'persona_moral_denunciante.id', '=', 'variables_moral-denunciante.idPersona')
+            
+            ->join('componentes.apariciones as aparicionesDenunciado', 'aparicionesDenunciado.id', '=', 'acusacion.idDenunciado')
+            ->leftJoin('componentes.variables_persona_fisica as variables_fisica_denunciado', 'variables_fisica_denunciado.id', '=', 'aparicionesDenunciante.idVarPersona')
+            ->leftJoin('componentes.variables_persona_moral as variables_moral_denunciado', 'variables_moral_denunciado.id', '=', 'aparicionesDenunciado.idVarPersona')
+            ->leftJoin('componentes.extra_denunciado_fisico as extras_fisica_denunciado', 'variables_fisica_denunciado.id', '=', 'extras_fisica_denunciado.idVariablesPersona')
+            ->leftJoin('componentes.extra_denunciado_moral as extras_moral_denunciado', 'variables_moral_denunciado.id', '=', 'extras_moral_denunciado.idVariablesPersona')
+            ->leftJoin('componentes.persona_fisica as persona_fisica_denunciado', 'persona_fisica_denunciado.id', '=', 'variables_fisica_denunciado.idPersona')
+            ->leftJoin('componentes.sexos as sexo_denuncuado', 'sexo_denuncuado.id', '=', 'persona_fisica_denunciado.sexo')
+            ->leftJoin('componentes.persona_moral as persona_moral_denunciado', 'persona_moral_denunciado.id', '=', 'variables_moral_denunciado.idPersona')
+
+            // ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
+            // ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
+            // ->join('extra_denunciado', 'extra_denunciado.id', '=', 'acusacion.idDenunciado')
+            // ->join('variables_persona as var', 'var.id', '=', 'extra_denunciado.idVariablesPersona')
+            // ->join('persona as per', 'per.id', '=', 'var.idPersona')
             ->join('tipif_delito', 'tipif_delito.id', '=', 'acusacion.idTipifDelito')
             ->join('cat_delito', 'cat_delito.id', '=', 'tipif_delito.idDelito')
             ->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta')
             ->select('carpeta.id')
             ->where('carpeta.id',$id)
-            ->first();
+            ->get();
 
             $unidad=DB::table('unidad')->where('id',Auth::user()->idUnidad)->first();
             $unidad=$unidad->abreviacion;
