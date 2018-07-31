@@ -209,7 +209,7 @@ class PermisoSeeder extends Seeder
         'resumen_denunciado','resumen_acusaciones','resumen_delito','resumen_abogado','resumen_autoridad',
         'resumen_defensa','resumen_vehiculo','historial_carpeta','salir_caso','libro_gobierno_terminadas',
         'oficios', 'indexcarpetas','ir_carpetas','filtro_carpetas','libro_filtro','lista_oficios',
-        'filtro_actas_post','actaoficio','get_oficioah','actaoficioM','get_oficioahm','filtro_actas_get']);
+        'filtro_actas_post','actaoficio','get_oficioah','actaoficioM','getToken','get_oficioahm','filtro_actas_get']);
  
        
         // Asignación de permisos a Rol de Fiscal Facilitador
