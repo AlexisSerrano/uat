@@ -318,6 +318,7 @@ class CarpetaController extends Controller
             ->where('apariciones.activo', 1)
             ->where('apariciones.idCarpeta', '=', $id)
             ->where('apariciones.tipoInvolucrado', '=', 'denunciante')
+            ->where('apariciones.sistema', '=', 'uat')
             ->get();
         return $denunciantes;
     }
@@ -370,7 +371,8 @@ class CarpetaController extends Controller
             ->orWhere('apariciones.tipoInvolucrado', '=', 'denunciado')
             ->orWhere('apariciones.tipoInvolucrado', '=', 'conocido');
         })
-        ->where('apariciones.activo', 1)
+            ->where('apariciones.sistema', '=', 'uat')
+            ->where('apariciones.activo', 1)
         ->get();
         //dump($denunciados);
         return $denunciados;
