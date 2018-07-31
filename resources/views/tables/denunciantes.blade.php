@@ -52,7 +52,7 @@
                             {{-- <a href="{{ url('narracion/'.$denunciante->idVariablesPersona)}}"  rel="tooltip" title="Ampliar narracion" class="btn btn-secondary btn-simple btn-xs">
                             <i class="fa fa-edit"></i></a>   --}}
                             <a href='{{url("agregar-denunciante/edit/{$denunciante->idVarPersona}/{$denunciante->esEmpresa}")}}' title="Editar Registro" class="btn btn-secondary btn-simple btn-xs">
-                                <i class="fa fa-times">Editar</i>
+                            <i class="fa fa-edit"></i>
                             </a>
                             @if(is_null(session('terminada')))
                             <a data-denunciante-id={{$denunciante->idApariciones}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">

@@ -11,13 +11,19 @@ $barra = getNavCaso();
     </style>
 @endsection
 
-<div class="col-2">
+{{-- <div class="col-2"> --}}
     <div class="card">
         <div class="card-header"><h6>Elementos de la carpeta</h1></div>
             <div class=" panel panel-default">
                 <div class="panel-body">
                     <table class="table">
                         <tbody>
+                            <tr>
+                                <td style="padding:0;text-align:left;">
+                                    <a style="width:100%;text-align:left;" class="{{ Request::is( 'resumen/datosCarpeta') ? 'active1' : '' }} active btn btn-default datosCarpeta" href="{{route('resumen.datosCarpeta')}}">
+                                        Datos de la carpeta 
+                                </td>
+                            </tr>
                             {{-- @forelse($oficios as $oficio) --}}
                             @if($barra['cdenunciante']>0)
                             <tr>
@@ -107,7 +113,7 @@ $barra = getNavCaso();
         </div>
     </div>
     
-</div>
+{{-- </div> --}}
     
             
             

@@ -18,7 +18,6 @@ use App\Models\ExtraDenunciado;
 use App\Models\DirNotificacion;
 use App\Models\Domicilio;
 use App\Models\NarracionPersona;
-use App\Http\Requests\StoreDenunciado;
 use App\Models\BitacoraNavCaso;
 use App\Models\Acusacion;
 use Alert;

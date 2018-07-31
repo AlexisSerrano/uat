@@ -21,9 +21,6 @@ class TipifDelito extends Model
         'idAgrupacion1',
         'idAgrupacion2',
         'conViolencia',
-        // 'idArma',
-        // 'idPosibleCausa',
-        //'idModalidad',
         'formaComision',
         'fecha',
         'hora',
@@ -64,21 +61,7 @@ class TipifDelito extends Model
     {
         return $this->belongsTo('app/Models/CatAgrupacion2');
     }
-    // public function arma()
-    // {
-    //     return $this->belongsTo('app/Models/CatArma');
-    // }
-
-    // public function posibleCausa()
-    // {
-    //     return $this->belongsTo('app/Models/CatPosibleCausa');
-    // }
-
-    public function modalidad()
-    {
-        return $this->belongsTo('app/Models/CatModalidad');
-    }
-
+    
     public function zona()
     {
         return $this->belongsTo('app/Models/Domicilio');

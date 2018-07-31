@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreDenunciante;
 use DB;
 use Alert;
 use Carbon\Carbon;

@@ -18,6 +18,9 @@ class Unidad extends Model
         'id',
         'descripcion',
         'idZona',
+        'direccion',
+        'telefono',
+        'activo',
         'abreviacion'
         
     ];

@@ -12,8 +12,5 @@ class CatEstadoCivil extends Model
         'id', 'idMunicipio', 'nombre',
     ];
 
-    public function variablesPersonas()
-    {
-        return $this->hasMany('App\Models\VariablesPersona');
-    }
+    
 }

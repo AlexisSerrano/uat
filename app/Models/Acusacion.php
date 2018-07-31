@@ -22,14 +22,7 @@ class Acusacion extends Model
         'idDenunciado'
     ];
 
-    public function extraDenunciante(){
-        return $this->belongsTo('App\Models\ExtraDenunciante');
-    }
-
-    public function extraDenunciado(){
-        return $this->belongsTo('App\Models\ExtraDenunciado');
-    }
-
+    
     public function carpeta(){
         return $this->belongsTo('App\Models\Carpeta');
     }

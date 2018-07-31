@@ -12,7 +12,7 @@ class CatProcedencia extends Model
         'id', 'nombre',
     ];
 
-    // public function vehiculos(){
-    //     return $this->hasMany('App\Models\Vehiculo');
-    // }
+    public function vehiculos(){
+        return $this->hasMany('App\Models\VehiculoCarpeta');
+    }
 }

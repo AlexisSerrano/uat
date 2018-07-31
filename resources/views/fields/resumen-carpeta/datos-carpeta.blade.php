@@ -1,4 +1,46 @@
-<div class="row">
+@extends('fields.resumen-carpeta.resumen-carpeta')
+@section('detalle')
+<div class="col-10">
+        <div class="card">
+            <div class="card-header">
+                    <div class="row">
+                            <div class="col text-left"><h5>Datos de la carpeta</h5></div>
+                            <ul class="nav nav-tabs" id="myTab" aria-orientation="vertical" role="tablist">
+                               <li>
+                                    <a href="{{ route("tabla.oficios",session('carpeta'))}}" title="Oficios para impresión" class="btn btn-secondary">Oficios <i class="fa fa-font"></i></a>
+                               </li>
+                            </ul>
+                    </div>
+            </div>
+        </div>
+                <table class="table table-striped" style="text-align:rigth;">
+                    <thead class="table-secondary">
+                        <th>Fecha de inicio de la carpeta</th>
+                        <th>Fiscal que atendió</th>
+                        <th>Unidad en la que se inició la carpeta</th> 
+                        <th>Observaciones</th>                              
+                    </thead>
+                    <tbody>
+                        <tr>        
+                            <td>{!! Form::label('fecha', Jenssegers\Date\Date::parse($carpeta->fechaInicio)->format('l j \\d\\e F \\d\\e Y') , ['class' => 'col-form-label-sm']) !!}</td>
+                            <td>{{$carpeta->fiscalAtendio}}</td>
+                            <td>{{$carpeta->descripcion}}</td> 
+                            <td>{{$carpeta->descripcionHechos}}</td>                                                          
+                        </tr>
+                    </tbody>
+                </table>
+        
+    </div>
+ 
+@endsection
+     
+
+
+
+
+
+
+{{-- <div class="row">
     <div class="col-4">
         <div class="form-group">
             {!! Form::label('fecha2', 'Fecha de inicio de la carpeta:', ['class' => 'col-form-label-sm detalle']) !!}
@@ -35,4 +77,4 @@
     @endif
     
 </div>
-    
+     --}}
