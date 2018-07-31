@@ -19,8 +19,8 @@ class CatColor extends Model
         'nombre'
     ];
 
-    // public function vehiculos()
-    // {
-    //    return $this->hasMany('app/Models/Vehiculo');
-    // }
+    public function vehiculos()
+    {
+       return $this->hasMany('app/Models/VehiculoCarpeta');
+    }
 }

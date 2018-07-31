@@ -10,7 +10,6 @@ class ActaCircunstanciada extends Model
 
     public $fillable = [
         'id',
-     
         'hora',
         'fecha',
         'fiscal',
@@ -26,7 +25,6 @@ class ActaCircunstanciada extends Model
         'idEstadoCivil',
         'idEscolaridad',
         'telefono',
-      
         'narracion',
         'created_at',
         'updated_at',

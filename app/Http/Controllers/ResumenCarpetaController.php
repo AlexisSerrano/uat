@@ -13,7 +13,20 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\VariablesPersona;
 class ResumenCarpetaController extends Controller
 
+
+
 {
+
+    public function datosCarpeta(){
+        $idCarpeta=session('carpeta');
+        $carpeta=DB::table('carpeta')
+        ->join('unidad','carpeta.idUnidad','=','unidad.id')
+        ->where('carpeta.id',$idCarpeta)->first();
+        // dd($carpeta);
+return view('fields.resumen-carpeta.datos-carpeta')->with('carpeta',$carpeta);
+    }
+
+    
     public function showForm($id){   
         session(['carpeta' => $id]);
         $numcarpeta=Carpeta::where('id',$id)->first();
@@ -237,6 +250,8 @@ class ResumenCarpetaController extends Controller
                     DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN domicilio_nf.numInterno ELSE domicilio_nm.numInterno END) AS notifiNumInterno')//'notificacion.numInterno as notifiNumInterno'
                     )
                 ->where('apariciones.tipoInvolucrado','denunciante')
+                ->where('apariciones.sistema','uat')
+                
                 ->get();
                 
             // dd($denunciantes);

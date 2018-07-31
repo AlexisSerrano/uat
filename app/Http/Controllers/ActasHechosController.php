@@ -15,7 +15,6 @@ use App\Models\Preregistro;
 use App\Models\Oficio;
 use App\Models\CatIdentificacion;
 use App\Models\CatMunicipio;
-use App\Http\Requests\ActaRequest;
 use DB;
 use Alert;
 use Carbon\Carbon;
@@ -204,183 +203,7 @@ class ActasHechosController extends Controller
         return view('tables.actas-hechos', compact('actas'));
     }
 
-    public function addActas2(ActaRequest $request){
-        // DB::beginTransaction();
-        // try{
-            if($request->esEmpresa==0){
-            $acta = new ActasHechos;
-            $direccion = new Domicilio;
-            $direccion->idMunicipio = $request->idMunicipio2;
-            $direccion->idLocalidad = $request->idLocalidad2;
-            $direccion->idColonia = $request->idColonia2;
-            $direccion->calle = $request->calle;   
-            if($request->numInterno!=''){
-                $direccion->numInterno = $request->numInterno;
-            }
-            $direccion->numExterno = $request->numExterno;
-            $direccion->save();
-            $ultimo = ActasHechos::orderBy('id','desc')->first();
-            if($ultimo){
-                $new = $ultimo->folio+1;
-            }
-            else{
-                $new = 1;
-            }
-            $acta->folio = $new;
-            $acta->hora = Date::now()->format('H:i:s');
-            $acta->fecha = Date::now()->format('Y-m-d');
-            $acta->fiscal = Auth::user()->nombreC;
-            $acta->nombre = $request->nombres;
-            $acta->primer_ap = $request->primerAp;
-            $acta->segundo_ap = $request->segundoAp;
-            $acta->identificacion = $request->docIdentificacion;
-            $acta->num_identificacion = $request->numDocIdentificacion;
-            $acta->fecha_nac = $request->fechaNacimiento;
-            $acta->idDomicilio = $direccion->id;
-            $acta->idOcupacion = $request->ocupActa1;
-            $acta->idEstadoCivil = $request->estadoCivilActa1;
-            $acta->idEscolaridad = $request->escActa1;
-            $acta->telefono = $request->telefono;
-            $acta->narracion = $request->narracion;
-            $acta->expedido= ActasHechosController::getExpedido($request->tipoActa);
-            
-            // switch ($request->docIdentificacion) {
-            //     case 'CREDENCIAL PARA VOTAR': $acta->expedido ="INSTITUTO NACIONAL ELECTORAL";
-            //     break;
-            //     case 'PASAPORTE':$acta->expedido ="SECRETARÍA DE RELACIONES EXTERIORES";
-            //     break;
-            //     case 'CEDULA PROFESIONAL':$acta->expedido ="DIRECCIÓN GENERAL DE PROFESIONES";
-            //     break;
-            //     case 'CARTILLA DEL SERVICIO MILITAR NACIONAL':$acta->expedido ="SECRETARÍA DE LA DEFENSA NACIONAL";
-            //     break;
-            //     case 'TARJETA UNICA DE IDENTIDAD MILITAR':$acta->expedido ="DISPOSICIONES DE CARÁCTER GENERAL";
-            //     break;
-            //     case 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES':$acta->expedido ="INAPAM";
-            //     break;
-            //     case 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL':$acta->expedido ="IMSS";
-            //     break;
-            //     case 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR':$acta->expedido ="DIRECCIÓN GENERAL DE ACREDITACIÓN, INCORPORACIÓN Y REVALIDACIÓN";
-            //     break;
-            //     case 'LICENCIA DE CONDUCIR':$acta->expedido ="SECRETARÍA DE COMUNICACIONES Y TRANSPORTES";
-            //     break;
-            //     case 'CERTIFICADO DE MATRICULA CONSULAR':$acta->expedido ="CERTIFICADO DE MATRICULA CONSULAR";
-            //     break;
-            //     case 'ACTA DE NACIMIENTO':$acta->expedido ="REGISTRO NACIONAL DE POBLACIÓN";
-            //     break;
-            //     case 'CURP':$acta->expedido ="REGISTRO NACIONAL DE POBLACIÓN";
-            //     break;
-            //     case 'CONSTANCIA DE RESIDENCIA':$acta->expedido ="SERVICIO DE ADMINISTRACIÓN TRIBUTARIA";
-            //     break;
-            //     default:$acta->expedido = $request->expedido;
-            //     break;
-            // }
-            if (!is_null($request->tipoActa)){
-                $acta->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa;
-            }
-            $acta->save();
-
-            if (!is_null($request->idPreregistro)){
-                $preregistro = Preregistro::find($request->idPreregistro);
-                $preregistro->statusCola = 22;
-                $preregistro->save();
-            }
-            Alert::success('Acta de hechos creada exitosamente.<br> <br><br><a href="'.url("actaoficio/$acta->id").'" target="_blank" >Ver formato</a> ','Hecho')->html()->persistent("Aceptar");
-            return redirect()->route('actaspendientes');
-            //  return redirect('actas-pendientes');
-        
-        }elseif($request->esEmpresa==1){
-
-        $acta = new ActasHechos;
-        $direccion = new Domicilio;
-        $direccion->idMunicipio = $request->idMunicipio;
-        $direccion->idLocalidad = $request->idLocalidad;
-        $direccion->idColonia = $request->idColonia;
-        $direccion->calle = $request->calle2;   
-        if($request->numInterno2!=''){
-            $direccion->numInterno = $request->numInterno2;
-        }
-        $direccion->numExterno = $request->numExterno2;
-        $direccion->save();
-        $ultimo = ActasHechos::orderBy('id','desc')->first();
-        if($ultimo){
-            $new = $ultimo->folio+1;
-        }
-        else{
-            $new = 1;
-        }
-        $acta->folio = $new;
-        $acta->hora = Date::now()->format('H:i:s');
-        $acta->fecha = Date::now()->format('Y-m-d');
-        $acta->fiscal = Auth::user()->nombreC;
-        $acta->nombreEmpresa = $request->nombres2;
-        $acta->nombre = $request->nombre2;
-        $acta->primer_ap = $request->primerAp2;
-        $acta->segundo_ap = $request->segundoAp2;
-        $acta->identificacion = $request->tipoActa;
-        $acta->num_identificacion = $request->numDocIdentificacion2;
-        $acta->fecha_nac = $request->fechaAltaEmpresa;
-        $acta->idDomicilio = $direccion->id;
-        $acta->esEmpresa = 1;
-        // $acta->idOcupacion = $request->ocupActa1;
-        // $acta->idEstadoCivil = $request->estadoCivilActa1;
-        // $acta->idEscolaridad = $request->escActa1;
-        $acta->telefono = $request->telefono2;
-        $acta->narracion = $request->narracion;
-        $acta->expedido= ActasHechosController::getExpedido($request->tipoActa);
-        
-        // switch ($request->docIdentificacion2) {
-        //     case 'CREDENCIAL PARA VOTAR': $acta->expedido ="INSTITUTO NACIONAL ELECTORAL";
-        //     break;
-        //     case 'PASAPORTE':$acta->expedido ="SECRETARÍA DE RELACIONES EXTERIORES";
-        //     break;
-        //     case 'CEDULA PROFESIONAL':$acta->expedido ="DIRECCIÓN GENERAL DE PROFESIONES";
-        //     break;
-        //     case 'CARTILLA DEL SERVICIO MILITAR NACIONAL':$acta->expedido ="SECRETARÍA DE LA DEFENSA NACIONAL";
-        //     break;
-        //     case 'TARJETA UNICA DE IDENTIDAD MILITAR':$acta->expedido ="DISPOSICIONES DE CARÁCTER GENERAL";
-        //     break;
-        //     case 'TARJETA DE AFILIACION AL INSTITUTO NACIONAL DE PERSONAS ADULTAS MAYORES':$acta->expedido ="INAPAM";
-        //     break;
-        //     case 'CREDENCIAL DE SALUD EXPEDIDO POR EL INSTITUTO MEXICANO DEL SEGURO SOCIAL':$acta->expedido ="IMSS";
-        //     break;
-        //     case 'CREDENCIALES DE EDUCACION MEDIA SUPERIOR Y SUPERIOR':$acta->expedido ="DIRECCIÓN GENERAL DE ACREDITACIÓN, INCORPORACIÓN Y REVALIDACIÓN";
-        //     break;
-        //     case 'LICENCIA DE CONDUCIR':$acta->expedido ="SECRETARÍA DE COMUNICACIONES Y TRANSPORTES";
-        //     break;
-        //     case 'CERTIFICADO DE MATRICULA CONSULAR':$acta->expedido ="CERTIFICADO DE MATRICULA CONSULAR";
-        //     break;
-        //     case 'ACTA DE NACIMIENTO':$acta->expedido ="REGISTRO NACIONAL DE POBLACIÓN";
-        //     break;
-        //     case 'CURP':$acta->expedido ="REGISTRO NACIONAL DE POBLACIÓN";
-        //     break;
-        //     case 'CONSTANCIA DE RESIDENCIA':$acta->expedido ="SERVICIO DE ADMINISTRACIÓN TRIBUTARIA";
-        //     break;
-        //     default:$acta->expedido = $request->expedido;
-        //     break;
-        // }
-        if (!is_null($request->tipoActa2)){
-            $acta->tipoActa = (!is_null($request->otro))?$request->otro:$request->tipoActa2;
-        }
-         $acta->save();
-        // dd( $acta);
-        if (!is_null($request->idPreregistro)){
-            $preregistro = Preregistro::find($request->idPreregistro);
-            $preregistro->statusCola = 22;
-            $preregistro->save();
-        }
-        // DB::commit();
-        Alert::success('Acta de hechos creada exitosamente.<br> <br><br><a href="'.url("actaoficioM/$acta->id").'" target="_blank" >Ver formato</a> ','Hecho')->html()->persistent("Aceptar");
-        return redirect()->route('actaspendientes');
-        // return redirect("actaoficioM/$acta->id");
-        // $request->session()->flash('redirectoficio', url("actaoficio/$acta->id"));
-        // return redirect("actas-pendientes");
-        }   
-    // }catch (\PDOException $e){
-    //     DB::rollBack();
-    //     Alert::error('Se presentó un problema al guardar los datos, intente de nuevo', 'Error');
-    //     return back()->withInput();
-    // } 
-}      
+    
      
     
     public function actaoficio($id){
@@ -674,4 +497,112 @@ class ActasHechosController extends Controller
     public function getOficiosid($id){
         return view("servicios.actas.recuperar")->with('token','')->with('id',$id);
     }
+
+    public function getPreregistro($id){
+        $preregistro = DB::table('preregistros')
+        ->join('domicilio as dom', 'dom.id','=','preregistros.idDireccion')
+        ->join('cat_municipio as mun', 'mun.id','=','dom.idMunicipio')
+		->join('cat_estado as edo', 'edo.id','=','mun.idEstado')
+		->join('cat_localidad as loc', 'loc.id','=','dom.idLocalidad')
+		->join('cat_colonia as col', 'col.id','=','dom.idColonia')
+        ->where('preregistros.id',$id)
+        ->select(
+            'dom.id as id','mun.idEstado','dom.idMunicipio','dom.idLocalidad','calle','numExterno','numInterno',
+            'dom.idColonia','col.nombre as descColonia','edo.nombre as descEstado','mun.nombre as descMunicipio',
+            'loc.nombre as descLocalidad','col.codigoPostal','preregistros.esEmpresa','preregistros.tipoActa',
+            'preregistros.narracion'
+		)
+        ->first();
+        $dom = array(
+			'id'=>$preregistro->id,
+			'idEstado'=>array("nombre"=>$preregistro->descEstado, "id"=>$preregistro->idEstado),
+			'idMunicipio'=>array("nombre"=>$preregistro->descMunicipio, "id"=>$preregistro->idMunicipio),
+			'idLocalidad'=>array("nombre"=>$preregistro->descLocalidad, "id"=>$preregistro->idLocalidad),
+			'idColonia'=>array("nombre"=>$preregistro->descColonia, "id"=>$preregistro->idColonia),
+			'codigoPostal'=>array("codigoPostal"=>(string)$preregistro->codigoPostal, "id"=>$preregistro->codigoPostal),
+			'calle'=>$preregistro->calle,
+			'numExterno'=>$preregistro->numExterno,
+			'numInterno'=>$preregistro->numInterno
+        );
+        $extra = array(
+			'tipoActa'=>$preregistro->tipoActa,
+			'narracion'=>$preregistro->narracion
+		);
+        if($preregistro->esEmpresa){
+            $data['domicilio'] = $dom;
+            $data['extra'] = $extra;
+            var_dump($data);
+        }
+        else{
+            $data['domicilio'] = $dom;
+            $data['extra'] = $extra;
+            var_dump($data);
+        }
+    }
+
+    // $personaExisteP = DB::table('persona_fisica')
+	// 	->join('variables_persona_fisica', 'variables_persona_fisica.idPersona', '=', 'persona_fisica.id')
+	// 	->join('cat_nacionalidad','cat_nacionalidad.id','=','persona_fisica.idNacionalidad')
+	// 	->join('cat_etnia','cat_etnia.id','=','persona_fisica.idEtnia')
+	// 	->join('cat_lengua','cat_lengua.id','=','persona_fisica.idLengua')
+	// 	->join('cat_municipio','cat_municipio.id','=','persona_fisica.idMunicipioOrigen')
+	// 	->join('cat_ocupacion', 'variables_persona_fisica.idOcupacion', '=', 'cat_ocupacion.id')
+	// 	->join('cat_estado_civil', 'variables_persona_fisica.idEstadoCivil', '=', 'cat_estado_civil.id')
+	// 	->join('cat_escolaridad', 'variables_persona_fisica.idEscolaridad', '=', 'cat_escolaridad.id')
+	// 	->join('cat_religion', 'variables_persona_fisica.idReligion', '=', 'cat_religion.id')
+	// 	->join('cat_identificacion', 'variables_persona_fisica.docIdentificacion', '=', 'cat_identificacion.id')
+	// 	->join('sexos', 'persona_fisica.sexo', '=', 'sexos.id')
+	// 	->join('cat_interprete', 'variables_persona_fisica.idInterprete', '=', 'cat_interprete.id')
+	// 	->join('cat_estado', 'cat_municipio.idEstado', '=', 'cat_estado.id')
+	// 	->where($tipoBusqueda,$rfcCurp)
+	// 	->select('persona_fisica.id as id','persona_fisica.nombres','persona_fisica.primerAp','persona_fisica.segundoAp',
+	// 	'persona_fisica.fechaNacimiento','persona_fisica.rfc','persona_fisica.curp','persona_fisica.sexo',
+	// 	'variables_persona_fisica.edad','variables_persona_fisica.telefono','variables_persona_fisica.motivoEstancia',
+	// 	'variables_persona_fisica.numDocIdentificacion',/*'variables_persona_fisica.alias',*/'variables_persona_fisica.id as idVar',
+	// 	'variables_persona_fisica.idDomicilio','variables_persona_fisica.idTrabajo','variables_persona_fisica.idNotificacion',
+	// 	'cat_nacionalidad.id as idNacionalidad','cat_nacionalidad.nombre as nombreNacionalidad',
+	// 	'cat_etnia.id as idEtnia','cat_etnia.nombre as nombreEtnia',
+	// 	'cat_lengua.id as idLengua','cat_lengua.nombre as nombreLengua',
+	// 	'cat_municipio.id as idMunOrigen','cat_municipio.nombre as nombreMunOrigen','cat_municipio.idEstado as idEstado',
+	// 	'cat_ocupacion.id as idOcupacion','cat_ocupacion.nombre as nombreOcupacion',
+	// 	'cat_estado_civil.id as idEstadoCivil','cat_estado_civil.nombre as nombreEstadoCivil',
+	// 	'cat_escolaridad.id as idEscolaridad','cat_escolaridad.nombre as nombreEscolaridad',
+	// 	'cat_religion.id as idReligion','cat_religion.nombre as nombreReligion',
+	// 	'cat_identificacion.id as idIdentificacion','cat_identificacion.documento as documentoIdentificacion',
+	// 	'sexos.id as idSexo','sexos.nombre as nombreSexo',
+	// 	'cat_interprete.id as idInterprete','cat_interprete.nombre as nombreInterprete',
+	// 	'cat_estado.id as idEstado','cat_estado.nombre as nombreEstado')
+	// 	->orderBy('variables_persona_fisica.id','desc')
+	// 	->first();
+    //     if($personaExisteP){
+	// 		$data = array(
+	// 			'nombres'=>$personaExisteP->nombres,
+	// 			'primerAp'=>$personaExisteP->primerAp,
+	// 			'segundoAp'=>$personaExisteP->segundoAp,
+	// 			'fechaNacimiento'=>$personaExisteP->fechaNacimiento,
+	// 			'rfc'=>$personaExisteP->rfc,
+	// 			'curp'=>$personaExisteP->curp,
+	// 			'sexo'=>array("nombre"=>$personaExisteP->nombreSexo, "id"=>$personaExisteP->idSexo),
+	// 			'idNacionalidad' => array("nombre"=>$personaExisteP->nombreNacionalidad, "id"=>$personaExisteP->idNacionalidad),
+	// 			'idEtnia'=>array("nombre"=>$personaExisteP->nombreEtnia, "id"=>$personaExisteP->idEtnia),
+	// 			'idLengua'=>array("nombre"=>$personaExisteP->nombreLengua, "id"=>$personaExisteP->idLengua),
+	// 			'idMunicipioOrigen'=>array("nombre"=>$personaExisteP->nombreMunOrigen, "id"=>$personaExisteP->idMunOrigen),
+	// 			'idEstado'=>array("nombre"=>$personaExisteP->nombreEstado, "id"=>$personaExisteP->idEstado),
+	// 			'edad'=>$personaExisteP->edad,
+	// 			'motivoEstancia'=>$personaExisteP->motivoEstancia,
+	// 			'idOcupacion'=>array("nombre"=>$personaExisteP->nombreOcupacion, "id"=>$personaExisteP->idOcupacion),
+	// 			'idEstadoCivil'=>array("nombre"=>$personaExisteP->nombreEstadoCivil, "id"=>$personaExisteP->idEstadoCivil),
+	// 			'idEscolaridad'=>array("nombre"=>$personaExisteP->nombreEscolaridad, "id"=>$personaExisteP->idEscolaridad),
+	// 			'idReligion'=>array("nombre"=>$personaExisteP->nombreReligion, "id"=>$personaExisteP->idReligion),
+	// 			'idDomicilio'=>$personaExisteP->idDomicilio,
+	// 			'docIdentificacion'=>array("documento"=>$personaExisteP->documentoIdentificacion, "id"=>$personaExisteP->idIdentificacion),
+	// 			'idInterprete'=>array("nombre"=>$personaExisteP->nombreInterprete, "id"=>$personaExisteP->idInterprete),
+	// 			'numDocIdentificacion'=>$personaExisteP->numDocIdentificacion,
+	// 			'idDomicilioTrabajo'=>$personaExisteP->idTrabajo,
+	// 			'idDomicilioNotificacion'=>$personaExisteP->idNotificacion,
+	// 			'idPersona'=>$personaExisteP->id,
+	// 			'idVarPersona'=>$personaExisteP->idVar,
+	// 			'telefono'=>$personaExisteP->telefono
+	// 		);
+	// 	}
 }

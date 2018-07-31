@@ -16,16 +16,13 @@ class DatabaseSeeder extends Seeder
         $this->call(OcupacionSeeder::class);
         $this->call(EstadoCivilSeeder::class);
         $this->call(EscolaridadSeeder::class);
-        // $this->call(ReligionSeeder::class);
-        // $this->call(NacionalidadSeeder::class);
-        // $this->call(EtniaSeeder::class);
-        // $this->call(LenguaSeeder::class);
-        // $this->call(ModalidadSeeder::class);
+        
         $this->call(DelitosSeeder::class);
         $this->call(UnidadSeeder::class);
          
         
         $this->call(EstadoSeeder::class);
+        
         $this->call(MunicipioSeeder::class);
         
         $this->call(ColoniasChiapasSeeder::class);
@@ -49,8 +46,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ColoniasGuanajuatoSeeder::class);
 
 
-        //$this->call(LocalidadSeeder::class);
-        //$this->call(LocalidadSeeder2::class);
+        //semillas de localidades
         $this->call(LocalidadesChiapasSeeder::class);
         $this->call(LocalidadesCDMXSeeder::class);
         $this->call(LocalidadesHidalgoSeeder::class);

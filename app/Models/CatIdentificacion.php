@@ -12,7 +12,5 @@ class CatIdentificacion extends Model
         'id', 'documento',
     ];
 
-    public function personas(){
-        return $this->hasMany('App\Models\Persona');
-    }
+    
 }

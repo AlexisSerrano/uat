@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
-use App\Http\Requests\StoreAutoridad;
 use App\Models\Carpeta;
 use App\Models\CatEscolaridad;
 use App\Models\CatEstado;

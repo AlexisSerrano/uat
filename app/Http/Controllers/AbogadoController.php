@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use DB;
 use Alert;
 use Carbon\Carbon;
-use App\Http\Requests\StoreAbogado;
 use App\Models\Carpeta;
 use App\Models\ExtraDenunciante;
 use App\Models\ExtraDenunciado;

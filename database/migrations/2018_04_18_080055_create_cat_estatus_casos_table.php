@@ -14,13 +14,9 @@ class CreateCatEstatusCasosTable extends Migration
     public function up()
     {
         Schema::create('cat_estatus_casos', function (Blueprint $table) {
-
             $table->increments('id');
             $table->string('nombreEstatus', 200);
             $table->timestamps();
-
-
-
         });
     }
 

@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::post('addExtrasActas','ActasHechosController@addExtrasActas');
 Route::post('addExtrasCircunstanciadas','ActaCircunstanciadaController@addExtrasActas');
+Route::get('getPreregistro/{id}','ActasHechosController@getPreregistro');
