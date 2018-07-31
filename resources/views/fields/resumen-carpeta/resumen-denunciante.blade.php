@@ -1,6 +1,6 @@
 @extends('fields.resumen-carpeta.resumen-carpeta')
 @section('detalle')
-{{-- <div class="col-10"> --}}
+<div class="col-10">
     <div class="card">
         <div class="card-header">
             <div class="row">
@@ -8,18 +8,18 @@
             </div>
         </div>
     </div>
-    <div class="card">
-    <ul class="nav nav-tabs" id="myTab" aria-orientation="vertical" role="tablist">
-            @foreach ($denunciantes as $denunciante)
-                <li class="nav-item">
-                    <a class="nav-link" id="denunciante{{$denunciante->denuncianteid}}-tab" data-toggle="tab" href="#denunciante{{$denunciante->denuncianteid}}" role="tab" aria-controls="denunciante{{$denunciante->denuncianteid}}" aria-selected="false">
-                        {{$denunciante->pernombres." ".$denunciante->perprimerAp." ".$denunciante->persegundoAp}}
-                    </a>
-                    {{-- <a class="btn btn-secondary float-right" href="{{route('narracion',$denunciante->variaid)}}">Ampliaciones <i class="fa fa-plus-square" aria-hidden="true"></i></a> --}}
-                </li>
+        <ul class="nav nav-tabs" id="myTab" aria-orientation="vertical" role="tablist">
+        @foreach ($denunciantes as $denunciante)
+        <li class="nav-item">
+            <a class="nav-link" id="denunciante{{$denunciante->denuncianteid}}-tab" data-toggle="tab" href="#denunciante{{$denunciante->denuncianteid}}" role="tab" aria-controls="denunciante{{$denunciante->denuncianteid}}" aria-selected="false">
+                    {{$denunciante->pernombres." ".$denunciante->perprimerAp." ".$denunciante->persegundoAp}}
+                </a>
+                {{-- <a class="btn btn-secondary float-right" href="{{route('narracion',$denunciante->variaid)}}">Ampliaciones <i class="fa fa-plus-square" aria-hidden="true"></i></a> --}}
+            </li>
             @endforeach
         </ul>
-            <div class="tab-content" id="myTabContent">
+        <div class="tab-content" id="myTabContent">
+            <div class="card">
                 @foreach ($denunciantes as $denunciante)
                     <div class="tab-pane fade" id="denunciante{{$denunciante->denuncianteid}}" role="tabpanel" aria-labelledby="denunciante{{$denunciante->denuncianteid}}-tab">    
                             
@@ -199,7 +199,8 @@
                 @endforeach
             </div>
         </div>
-    
+</div>
+
     @endsection
     
    
