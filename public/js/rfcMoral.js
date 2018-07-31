@@ -1,4 +1,4 @@
-$("#nombres2").focusout(function() {
+$("#nombres2").change(function() {
 	obtenerRFC();
 });
 
@@ -99,7 +99,26 @@ function obtenerRFC(){
 	 	},error:function(data){
 	 		// console.log(data);
 	 	}
- 	});
+	 });
+	 
+
+	 toastr.info("El R.F.C. se ha modificado!", "", {
+		"closeButton": true,
+		"progressBar": true,
+		"positionClass": "toast-top-right",
+		"preventDuplicates": true,
+		"showDuration": "100",
+		"hideDuration": "100",
+		"timeOut": "3000",
+		"extendedTimeOut": "1000",
+		"showEasing": "swing",
+		"hideEasing": "linear",
+		"showMethod": "fadeIn",
+		"hideMethod": "fadeOut"
+	});
+
+
+
 }
     // function actualizarMoral(rfcOriginal, rfc, homo){
     // 	$("#rfc2").val(rfc);

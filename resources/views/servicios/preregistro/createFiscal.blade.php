@@ -78,6 +78,46 @@
 @endsection
 
 @push('scripts')
+
+<script>
+	
+	/*$( document ).ready(function() {
+    	$("#curp").change(function(){       		
+			toastr.info("El CURP ha sido modificado", "", {
+				"closeButton": true,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"showDuration": "1000",
+				"hideDuration": "1000",
+				"timeOut": "4000",
+				"extendedTimeOut": "8000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			});
+		}); 
+
+		$("#rfc2, #homo2").change(function(){       		
+			toastr.info("El RFC ha sido modificado", "", {
+				"closeButton": true,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"showDuration": "1000",
+				"hideDuration": "1000",
+				"timeOut": "4000",
+				"extendedTimeOut": "8000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			});
+		});
+	}); */
+</script>
+
 <script src="{{asset('js/preregistro.js')}}"></script> 
 <script src="{{ asset('js/rfcFisico.js') }}"></script>
 <script src="{{ asset('js/rfcMoral.js') }}"></script>

@@ -42,6 +42,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('policia-ministerial/{id}','ImpresionesController@policiaMinisterial')->name('policia.ministerial')->middleware(['permission:policia_ministerial']);
     Route::get('oficio-ministerial/{id}','ImpresionesController@getMinisterial')->middleware(['permission:datos_ministerial']);
+
+    Route::get('oficio-periciales/{id}','ImpresionesController@docPericiales')->name('oficio.periciales');
     ///////////////////////////// oficio a direccion general de transporte del estado
     Route::get('transporte-estado/{id}','ImpresionesController@transporteEdo')->name('oficio.transporte')->middleware(['permission:oficio_transporte']);
     Route::get('Oficiotransporte-estado/{id}','ImpresionesController@storeoficioTransporte')->name('storeoficio.Transporte')->middleware(['permission:storeoficio_transporte']);
