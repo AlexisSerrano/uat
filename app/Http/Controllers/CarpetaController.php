@@ -185,12 +185,14 @@ class CarpetaController extends Controller
             ->join('carpeta', 'carpeta.id', '=', 'acusacion.idCarpeta')
             ->select('carpeta.id')
             ->where('carpeta.id',$id)
+            ->where('aparicionesDenunciante.idCarpeta',$id)
+            ->where('aparicionesDenunciado.idCarpeta',$id)
             ->get();
 
             $unidad=DB::table('unidad')->where('id',Auth::user()->idUnidad)->first();
             $unidad=$unidad->abreviacion;
 
-            if($carpterminadas){
+            if($carpterminadas->isNotEmpty()){
                 $carpeta = Carpeta::find($id);
                 $carpeta->fiscalAtendio = Auth::user()->nombreC;
                 $carpeta->idEstadoCarpeta = 1;

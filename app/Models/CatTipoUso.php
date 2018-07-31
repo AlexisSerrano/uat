@@ -21,6 +21,6 @@ class CatTipoUso extends Model
 
     public function vehiculos()
     {
-       return $this->hasMany('app/Models/Vehiculo');
+       return $this->hasMany('app/Models/VehiculoCarpeta');
     }
 }
