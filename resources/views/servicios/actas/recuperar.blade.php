@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="app">
-        <reimpresion tipo="actas hechos" id="2" token2="{{$token}}"></reimpresion>
+        <reimpresion tipo="actas hechos" id={{$id}} token2="{{$token}}"></reimpresion>
     </div>
 </body>
 </html>

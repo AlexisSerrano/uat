@@ -669,6 +669,9 @@ class ActasHechosController extends Controller
     }
 
     public function getOficiosApp($token){
-        return view("servicios.actas.recuperar")->with('token',$token);
+        return view("servicios.actas.recuperar")->with('token',$token)->with('id','');
+    }
+    public function getOficiosid($id){
+        return view("servicios.actas.recuperar")->with('token','')->with('id',$id);
     }
 }

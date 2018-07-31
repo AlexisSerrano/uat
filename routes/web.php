@@ -354,8 +354,9 @@ Route::get('FormatoRegistro/{id}', 'PdfController@datos');
 
 /*nuevas componentes */
 Route::get('getOficiosApp/{token}','ActasHechosController@getOficiosApp')->name('getOficiosApp'); //sin middleware para pruebas
+Route::get('getOficiosid/{id}','ActasHechosController@getOficiosid')->name('getOficiosid');
 Route::post('recuperar_token','ActasHechosController@recuperar_token')->name('recuperar_token');    //sin middleware para pruebas
-Route::post('recuperar','ActasHechosController@recuperar')->name('recuperar')->middleware(['permission:recuperar']);
+Route::post('recuperar','ActasHechosController@recuperar')->name('recuperar') ;                             //->middleware(['permission:recuperar']);
 Route::get('actaCircunstanciada/{id}','ActaCircunstanciadaController@actaCircunstanciada')->name('actaCircunstanciada');
 Route::get('getcircunstanciada/{id}','ActaCircunstanciadaController@getcircunstanciada')->name('getcircunstanciada')->middleware(['permission:getcincunstanciada']);
 Route::get('showcircunstanciada','ActaCircunstanciadaController@showform')->name('new.actacircunstanciada')->middleware(['permission:new_actacircunstanciada']);
