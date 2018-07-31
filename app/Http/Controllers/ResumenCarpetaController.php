@@ -13,7 +13,20 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\VariablesPersona;
 class ResumenCarpetaController extends Controller
 
+
+
 {
+
+    public function datosCarpeta(){
+        $idCarpeta=session('carpeta');
+        $carpeta=DB::table('carpeta')
+        ->join('unidad','carpeta.idUnidad','=','unidad.id')
+        ->where('carpeta.id',$idCarpeta)->first();
+        // dd($carpeta);
+return view('fields.resumen-carpeta.datos-carpeta')->with('carpeta',$carpeta);
+    }
+
+    
     public function showForm($id){   
         session(['carpeta' => $id]);
         $numcarpeta=Carpeta::where('id',$id)->first();

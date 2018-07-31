@@ -20,7 +20,7 @@ $barra = getNavCaso();
                         <tbody>
                             <tr>
                                 <td style="padding:0;text-align:left;">
-                                    {{-- <a style="width:100%;text-align:left;" class="{{ Request::is( 'resumen/datosCarpeta') ? 'active1' : '' }} active btn btn-default datosCarpeta" href="{{route('resumen.datosCarpeta')}}"> --}}
+                                    <a style="width:100%;text-align:left;" class="{{ Request::is( 'resumen/datosCarpeta') ? 'active1' : '' }} active btn btn-default datosCarpeta" href="{{route('resumen.datosCarpeta')}}">
                                         Datos de la carpeta 
                                 </td>
                             </tr>

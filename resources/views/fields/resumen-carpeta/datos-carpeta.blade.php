@@ -1,6 +1,6 @@
 @extends('fields.resumen-carpeta.resumen-carpeta')
 @section('detalle')
-{{-- <div class="col-10"> --}}
+<div class="col-10">
         <div class="card">
             <div class="card-header">
                     <div class="row">
@@ -30,7 +30,7 @@
                     </tbody>
                 </table>
         
-    {{-- </div> --}}
+    </div>
  
 @endsection
      

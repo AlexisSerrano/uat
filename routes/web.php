@@ -115,6 +115,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/resumen/defensa', 'ResumenCarpetaController@detalleDefensa')->name('resumen.defensa')->middleware(['permission:resumen_defensa']);
     Route::get('/resumen/vehiculos', 'ResumenCarpetaController@detalleVehiculo')->name('resumen.vehiculo')->middleware(['permission:resumen_vehiculo']);
     Route::get('/carpeta/historial', 'ResumenCarpetaController@detalleHistorial')->name('historial.carpeta')->middleware(['permission:historial_carpeta']);
+    Route::get('/resumen/datosCarpeta', 'ResumenCarpetaController@datosCarpeta')->name('resumen.datosCarpeta')->middleware(['permission:resumen_datosCarpeta']);
     
     /**--control de la carpeta--**/
     Route::get('/crear-caso', 'CarpetaController@crearCaso')->name('inicio.caso')->middleware(['permission:inicio_caso']);
