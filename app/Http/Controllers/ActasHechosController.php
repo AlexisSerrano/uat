@@ -671,4 +671,112 @@ class ActasHechosController extends Controller
     public function getOficiosApp($token){
         return view("servicios.actas.recuperar")->with('token',$token);
     }
+
+    public function getPreregistro($id){
+        $preregistro = DB::table('preregistros')
+        ->join('domicilio as dom', 'dom.id','=','preregistros.idDireccion')
+        ->join('cat_municipio as mun', 'mun.id','=','dom.idMunicipio')
+		->join('cat_estado as edo', 'edo.id','=','mun.idEstado')
+		->join('cat_localidad as loc', 'loc.id','=','dom.idLocalidad')
+		->join('cat_colonia as col', 'col.id','=','dom.idColonia')
+        ->where('preregistros.id',$id)
+        ->select(
+            'dom.id as id','mun.idEstado','dom.idMunicipio','dom.idLocalidad','calle','numExterno','numInterno',
+            'dom.idColonia','col.nombre as descColonia','edo.nombre as descEstado','mun.nombre as descMunicipio',
+            'loc.nombre as descLocalidad','col.codigoPostal','preregistros.esEmpresa','preregistros.tipoActa',
+            'preregistros.narracion'
+		)
+        ->first();
+        $dom = array(
+			'id'=>$preregistro->id,
+			'idEstado'=>array("nombre"=>$preregistro->descEstado, "id"=>$preregistro->idEstado),
+			'idMunicipio'=>array("nombre"=>$preregistro->descMunicipio, "id"=>$preregistro->idMunicipio),
+			'idLocalidad'=>array("nombre"=>$preregistro->descLocalidad, "id"=>$preregistro->idLocalidad),
+			'idColonia'=>array("nombre"=>$preregistro->descColonia, "id"=>$preregistro->idColonia),
+			'codigoPostal'=>array("codigoPostal"=>(string)$preregistro->codigoPostal, "id"=>$preregistro->codigoPostal),
+			'calle'=>$preregistro->calle,
+			'numExterno'=>$preregistro->numExterno,
+			'numInterno'=>$preregistro->numInterno
+        );
+        $extra = array(
+			'tipoActa'=>$preregistro->tipoActa,
+			'narracion'=>$preregistro->narracion
+		);
+        if($preregistro->esEmpresa){
+            $data['domicilio'] = $dom;
+            $data['extra'] = $extra;
+            var_dump($data);
+        }
+        else{
+            $data['domicilio'] = $dom;
+            $data['extra'] = $extra;
+            var_dump($data);
+        }
+    }
+
+    // $personaExisteP = DB::table('persona_fisica')
+	// 	->join('variables_persona_fisica', 'variables_persona_fisica.idPersona', '=', 'persona_fisica.id')
+	// 	->join('cat_nacionalidad','cat_nacionalidad.id','=','persona_fisica.idNacionalidad')
+	// 	->join('cat_etnia','cat_etnia.id','=','persona_fisica.idEtnia')
+	// 	->join('cat_lengua','cat_lengua.id','=','persona_fisica.idLengua')
+	// 	->join('cat_municipio','cat_municipio.id','=','persona_fisica.idMunicipioOrigen')
+	// 	->join('cat_ocupacion', 'variables_persona_fisica.idOcupacion', '=', 'cat_ocupacion.id')
+	// 	->join('cat_estado_civil', 'variables_persona_fisica.idEstadoCivil', '=', 'cat_estado_civil.id')
+	// 	->join('cat_escolaridad', 'variables_persona_fisica.idEscolaridad', '=', 'cat_escolaridad.id')
+	// 	->join('cat_religion', 'variables_persona_fisica.idReligion', '=', 'cat_religion.id')
+	// 	->join('cat_identificacion', 'variables_persona_fisica.docIdentificacion', '=', 'cat_identificacion.id')
+	// 	->join('sexos', 'persona_fisica.sexo', '=', 'sexos.id')
+	// 	->join('cat_interprete', 'variables_persona_fisica.idInterprete', '=', 'cat_interprete.id')
+	// 	->join('cat_estado', 'cat_municipio.idEstado', '=', 'cat_estado.id')
+	// 	->where($tipoBusqueda,$rfcCurp)
+	// 	->select('persona_fisica.id as id','persona_fisica.nombres','persona_fisica.primerAp','persona_fisica.segundoAp',
+	// 	'persona_fisica.fechaNacimiento','persona_fisica.rfc','persona_fisica.curp','persona_fisica.sexo',
+	// 	'variables_persona_fisica.edad','variables_persona_fisica.telefono','variables_persona_fisica.motivoEstancia',
+	// 	'variables_persona_fisica.numDocIdentificacion',/*'variables_persona_fisica.alias',*/'variables_persona_fisica.id as idVar',
+	// 	'variables_persona_fisica.idDomicilio','variables_persona_fisica.idTrabajo','variables_persona_fisica.idNotificacion',
+	// 	'cat_nacionalidad.id as idNacionalidad','cat_nacionalidad.nombre as nombreNacionalidad',
+	// 	'cat_etnia.id as idEtnia','cat_etnia.nombre as nombreEtnia',
+	// 	'cat_lengua.id as idLengua','cat_lengua.nombre as nombreLengua',
+	// 	'cat_municipio.id as idMunOrigen','cat_municipio.nombre as nombreMunOrigen','cat_municipio.idEstado as idEstado',
+	// 	'cat_ocupacion.id as idOcupacion','cat_ocupacion.nombre as nombreOcupacion',
+	// 	'cat_estado_civil.id as idEstadoCivil','cat_estado_civil.nombre as nombreEstadoCivil',
+	// 	'cat_escolaridad.id as idEscolaridad','cat_escolaridad.nombre as nombreEscolaridad',
+	// 	'cat_religion.id as idReligion','cat_religion.nombre as nombreReligion',
+	// 	'cat_identificacion.id as idIdentificacion','cat_identificacion.documento as documentoIdentificacion',
+	// 	'sexos.id as idSexo','sexos.nombre as nombreSexo',
+	// 	'cat_interprete.id as idInterprete','cat_interprete.nombre as nombreInterprete',
+	// 	'cat_estado.id as idEstado','cat_estado.nombre as nombreEstado')
+	// 	->orderBy('variables_persona_fisica.id','desc')
+	// 	->first();
+    //     if($personaExisteP){
+	// 		$data = array(
+	// 			'nombres'=>$personaExisteP->nombres,
+	// 			'primerAp'=>$personaExisteP->primerAp,
+	// 			'segundoAp'=>$personaExisteP->segundoAp,
+	// 			'fechaNacimiento'=>$personaExisteP->fechaNacimiento,
+	// 			'rfc'=>$personaExisteP->rfc,
+	// 			'curp'=>$personaExisteP->curp,
+	// 			'sexo'=>array("nombre"=>$personaExisteP->nombreSexo, "id"=>$personaExisteP->idSexo),
+	// 			'idNacionalidad' => array("nombre"=>$personaExisteP->nombreNacionalidad, "id"=>$personaExisteP->idNacionalidad),
+	// 			'idEtnia'=>array("nombre"=>$personaExisteP->nombreEtnia, "id"=>$personaExisteP->idEtnia),
+	// 			'idLengua'=>array("nombre"=>$personaExisteP->nombreLengua, "id"=>$personaExisteP->idLengua),
+	// 			'idMunicipioOrigen'=>array("nombre"=>$personaExisteP->nombreMunOrigen, "id"=>$personaExisteP->idMunOrigen),
+	// 			'idEstado'=>array("nombre"=>$personaExisteP->nombreEstado, "id"=>$personaExisteP->idEstado),
+	// 			'edad'=>$personaExisteP->edad,
+	// 			'motivoEstancia'=>$personaExisteP->motivoEstancia,
+	// 			'idOcupacion'=>array("nombre"=>$personaExisteP->nombreOcupacion, "id"=>$personaExisteP->idOcupacion),
+	// 			'idEstadoCivil'=>array("nombre"=>$personaExisteP->nombreEstadoCivil, "id"=>$personaExisteP->idEstadoCivil),
+	// 			'idEscolaridad'=>array("nombre"=>$personaExisteP->nombreEscolaridad, "id"=>$personaExisteP->idEscolaridad),
+	// 			'idReligion'=>array("nombre"=>$personaExisteP->nombreReligion, "id"=>$personaExisteP->idReligion),
+	// 			'idDomicilio'=>$personaExisteP->idDomicilio,
+	// 			'docIdentificacion'=>array("documento"=>$personaExisteP->documentoIdentificacion, "id"=>$personaExisteP->idIdentificacion),
+	// 			'idInterprete'=>array("nombre"=>$personaExisteP->nombreInterprete, "id"=>$personaExisteP->idInterprete),
+	// 			'numDocIdentificacion'=>$personaExisteP->numDocIdentificacion,
+	// 			'idDomicilioTrabajo'=>$personaExisteP->idTrabajo,
+	// 			'idDomicilioNotificacion'=>$personaExisteP->idNotificacion,
+	// 			'idPersona'=>$personaExisteP->id,
+	// 			'idVarPersona'=>$personaExisteP->idVar,
+	// 			'telefono'=>$personaExisteP->telefono
+	// 		);
+	// 	}
 }
