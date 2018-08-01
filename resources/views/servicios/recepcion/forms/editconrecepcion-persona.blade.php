@@ -16,7 +16,7 @@
         
         </style>
                    
-{!!Form::model($preregistro, array('route' => array('predenuncias.update', $preregistro->id), 'method' => 'POST')) !!}
+{!!Form::model($preregistro, array('route' => array('predenuncias.update', $preregistro->id), 'method' => 'POST','id'=>'formData')) !!}
 <input type="hidden" name="esEmpresa" value="0">
 <div class="card container-create" id="datosPersona">
     <div class="card-header lead" align="center">
@@ -116,7 +116,11 @@
                 $(".hideLabels").show();
                 $(".inputOculto").hide();
                 $("#editFields").html("Editar");
-                $("#editFields").removeClass("btn-danger")                                
+                $("#editFields").removeClass("btn-danger")   
+                $('#formData').validate({
+                    showErrors: function(errorMap, errorList) {                        
+                    }
+                });                             
             }          
         });
          

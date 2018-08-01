@@ -26,20 +26,22 @@ class AcusacionController extends Controller
             $denunciantes = DB::table('componentes.apariciones as apariciones')
             ->leftJoin('componentes.variables_persona_fisica as variables_fisica', 'variables_fisica.id', '=', 'apariciones.idVarPersona')
             ->leftJoin('componentes.variables_persona_moral as variables_moral', 'variables_moral.id', '=', 'apariciones.idVarPersona')
-            ->leftJoin('componentes.extra_denunciante_fisico as extras_fisica', 'variables_fisica.id', '=', 'extras_fisica.idVariablesPersona')
-            ->leftJoin('componentes.extra_denunciante_moral as extras_moral', 'variables_moral.id', '=', 'extras_moral.idVariablesPersona')
+            // ->leftJoin('componentes.extra_denunciante_fisico as extras_fisica', 'variables_fisica.id', '=', 'extras_fisica.idVariablesPersona')
+            // ->leftJoin('componentes.extra_denunciante_moral as extras_moral', 'variables_moral.id', '=', 'extras_moral.idVariablesPersona')
             ->leftJoin('componentes.persona_fisica as persona_fisica', 'persona_fisica.id', '=', 'variables_fisica.idPersona')
             ->leftJoin('componentes.persona_moral as persona_moral', 'persona_moral.id', '=', 'variables_moral.idPersona')
             ->select(
                 'apariciones.id as id',
                 //DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN extras_fisica.idVariablesPersona ELSE extras_moral.idVariablesPersona END) AS idVariablesPersona'),//'extra_denunciado.idVariablesPersona',
-                DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN extras_fisica.id ELSE extras_moral.id END) AS id'),//'extra_denunciado.id',
+                // DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN extras_fisica.id ELSE extras_moral.id END) AS id'),//'extra_denunciado.id',
                 DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.nombres ELSE persona_moral.nombre END) AS nombres'),//'persona.nombres', 
                 DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.primerAp ELSE "" END) AS primerAp'),//'persona.primerAp', 
                 DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.segundoAp ELSE "" END) AS segundoAp')//'persona.segundoAp', 
                 // 'apariciones.esEmpresa AS esEmpresa',//'persona.esEmpresa', 
-            )->distinct()
-            ->where('apariciones.carpeta', '=', $carpetaNueva[0]->numCarpeta)
+            )->groupBy('apariciones.id')
+            ->where('apariciones.idCarpeta', '=', $idCarpeta)
+            ->where('apariciones.sistema', '=', 'uat')
+            ->where('apariciones.activo', '=', 1)
             ->Where('apariciones.tipoInvolucrado', '=', 'denunciante')
             ->get();
             // dump($denunciantes);
@@ -59,8 +61,11 @@ class AcusacionController extends Controller
                 DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.nombres ELSE persona_moral.nombre END) AS nombres'),//'persona.nombres', 
                 DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.primerAp ELSE "" END) AS primerAp'),//'persona.primerAp', 
                 DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.segundoAp ELSE "" END) AS segundoAp')//'persona.segundoAp', 
-            )->distinct()
-            ->where('apariciones.carpeta', '=', $carpetaNueva[0]->numCarpeta)
+            )
+            ->groupBy('apariciones.id')
+            ->where('apariciones.idCarpeta', '=', $idCarpeta)
+            ->where('apariciones.sistema', '=', 'uat')
+            ->where('apariciones.activo', '=', 1)
             ->where(function($query){
                 $query
                 ->orWhere('apariciones.tipoInvolucrado', '=', 'denunciado')

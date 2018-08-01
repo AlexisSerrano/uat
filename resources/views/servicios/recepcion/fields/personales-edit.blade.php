@@ -7,8 +7,7 @@
 			<div class="input-group inputOculto" id="inputNombre">
 				{!! Form::label('nombres', 'Nombre: ', ['class' => 'col-form-label-sm']) !!}
 				{!! Form::text('nombres', $preregistro->nombre, ['class' => 'form-control  form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}				
-			</div>
-			<div class="help-block with-errors"></div> 
+			</div>			
 		</div>
 	</div>
 	
@@ -19,8 +18,7 @@
 			<div class="input-group inputOculto" id="inputPrimerAp">
 				{!! Form::label('primerAp', 'Primer apellido: ', ['class' => 'col-form-label-sm ']) !!}
 				{!! Form::text('primerAp',$preregistro->primerAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','data-validation'=>'required']) !!}				
-			</div>
-			<div class="help-block with-errors"></div>
+			</div>			
 		</div>
 	</div>
 	
@@ -43,7 +41,7 @@
 				{!! Form::label('fechaNacimiento', 'Fecha de nacimiento: ', ['class' => 'col-form-label-sm']) !!}				
 				{!! Form::date('fechaNacimiento', $preregistro->fechaNac, ['class' => 'form-control form-control-sm', 'data-target' => '#fechanac', 'required']) !!}					
 			</div>
-			<div class="help-block with-errors"></div>	
+				
 		</div>
 	</div>
 
