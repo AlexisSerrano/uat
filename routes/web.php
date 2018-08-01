@@ -290,7 +290,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getpsico/{id}','PericialesController@getpsico')->name('getpsico')->middleware(['permission:getpsico']);
     Route::get('getVh/{id}','PericialesController@getVh')->name('getVh.periciales')->middleware(['permission:getVh_periciales']);
     Route::get('getlesion/{id}','PericialesController@getlesion')->name('get.lesion')->middleware(['permission:get_lesion']);
-    Route::get('getAcusaciones-periciales/{id}','PericialesController@pericialesTabla')->name('get.periciales-acusaciones')->middleware(['permission:get_lesion']);
+    Route::get('getAcusaciones-periciales/{id}','PericialesController@pericialesTabla')->name('get.periciales-acusaciones')->middleware(['permission:get_peracusaciones']);
     
 
     Route::get('oficio-periciales/{id}','PericialesController@docPericiales')->name('oficio.periciales');
