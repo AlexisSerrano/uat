@@ -1429,67 +1429,66 @@ Xalapa-Enríquez, Veracruz</p>',
 
    ['nombre'  =>  'FORMATO DE DENUNCIA',
    'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:100px; width:100px" /></p>
-   <p style="text-align:right">Unidad de Atención Temprana, Veracruz&nbsp;<br>
+   <p style="text-align:right">Unidad de Atención Temprana, Veracruz<br>
    <strong>"Si lo platicamos, lo solucionamos”</strong><br />
-   &nbsp;</p>',
+   </p>',
 
 
 'contenido' =>'
-<p style="text-align:right"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><em>{{$localidad}}, VERACRUZ, A&nbsp;{{$fecha}}-{{$hora}}</em></span></span></p>
+<p style="text-align:right"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><em>{{$localidad}}, VERACRUZ, A {{$fecha}}-{{$hora}}</em></span></span></p>
 
 <p><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><em>La denuncia se presenta por:</em><strong> {{$tipoDenuncia}}</strong></span></span></p>
 
 <p><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">No. de Expediente:<strong> {{$nuc}}</strong></span></span></p>
 
-<p><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Calidad Jurídica en la que se presenta:<strong>&nbsp;{{$tipoDenunciante}}</strong></span></span></p>
+<p><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Calidad Jurídica en la que se presenta:<strong>{{$tipoDenunciante}}</strong></span></span></p>
 
-<p>&nbsp;</p>
+<p></p>
 
 <p style="text-align:justify"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>a. INFORMACIÓN DEL DENUNCIANTE/QUERELLANTE</strong></span></span></p>
 
 <table align="left" cellpadding="1" cellspacing="1" style="width:875px">
 	<tbody>
 		<tr>
-			<td style="height:13px; width:329px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Nombre:&nbsp;<strong>{{$denunciante}}</strong></span></span></td>
-			<td style="height:13px; width:3px">&nbsp;</td>
-			<td style="height:13px; width:525px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Sexo:&nbsp;<strong>{{$sexo}} </strong></span></span></td>
+			<td style="height:13px; width:329px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Nombre:<strong>{{$denunciante}}</strong></span></span></td>
+			<td style="height:13px; width:3px"></td>
+			<td style="height:13px; width:525px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Sexo:<strong>{{$sexo}} </strong></span></span></td>
 		</tr>
 		<tr>
-			<td style="width:329px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Profesión:&nbsp;<strong>{{$ocupacion}} </strong></span></span></td>
-			<td style="width:3px">&nbsp;</td>
+			<td style="width:329px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Profesión:<strong>{{$ocupacion}} </strong></span></span></td>
+			<td style="width:3px"></td>
 			<td style="width:525px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Estado Civil:<strong> {{$edoCivil}}</strong></span></span></td>
 		</tr>
 		<tr>
 			<td style="width:329px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Edad<strong> {{$edad}}</strong></span></span></td>
-			<td style="width:3px">&nbsp;</td>
+			<td style="width:3px"></td>
 			<td style="width:525px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Fecha de Nacimiento:<strong>{{$fechaNac}}</strong></span></span></td>
 		</tr>
 		<tr>
 			<td style="width:329px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Nacionalidad:<strong> {{$nacionalidad}}</strong></span></span></td>
-			<td style="width:3px">&nbsp;</td>
+			<td style="width:3px"></td>
 			<td style="width:525px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Lugar de Nacimiento:<strong> {{$lugarNac}}</strong></span></span></td>
 		</tr>
 		<tr>
-			<td style="width:329px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Teléfono Trabajo:<strong> {{$telTrabajo}}</strong>&nbsp;</span></span></td>
-			<td style="width:3px">&nbsp;</td>
+			<td style="width:329px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Teléfono Trabajo:<strong> {{$telTrabajo}}</strong></span></span></td>
+			<td style="width:3px"></td>
 			<td style="width:525px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Teléfono Particular:<strong> {{$telefono}}</strong></span></span></td>
 		</tr>
 		<tr>
 			<td style="width:329px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">Correo electrónico:<strong>{{$email}}</strong></span></span></td>
-			<td style="width:3px">&nbsp;</td>
-			<td style="width:525px">&nbsp;</td>
+			<td style="width:3px"></td>
+			<td style="width:525px"></td>
 		</tr>
 	</tbody>
 </table>
 
-<p style="text-align:justify"><br />
-&nbsp;</p>
+<p style="text-align:justify"><br /></p>
 
-<p style="text-align:justify">&nbsp;</p>
+<p style="text-align:justify"></p>
 
-<p style="text-align:justify">&nbsp;</p>
+<p style="text-align:justify"></p>
 
-<p style="text-align:justify">&nbsp;</p>
+<p style="text-align:justify"></p>
 
 <table align="left" cellpadding="1" cellspacing="1" style="width:870px">
 	<tbody>
@@ -1498,7 +1497,7 @@ Xalapa-Enríquez, Veracruz</p>',
 		</tr>
 		<tr>
 			<td style="width:862px">
-			<p>&nbsp;</p>
+			<p></p>
 
 			<p><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>b. INFORMACIÓN DEL IMPUTADO(S)</strong></span></span></p>
 			</td>
@@ -1506,33 +1505,33 @@ Xalapa-Enríquez, Veracruz</p>',
 	</tbody>
 </table>
 
-<p style="text-align:justify">&nbsp;</p>
+<p style="text-align:justify"></p>
 
-<p style="text-align:justify">&nbsp;</p>
+<p style="text-align:justify"></p>
 
-<p style="text-align:justify">&nbsp;</p>
+<p style="text-align:justify"></p>
 
 <table align="left" cellpadding="1" cellspacing="1" style="width:881px">
 	<tbody>
 		<tr>
 			<td style="width:416px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>{{$denunciante}}</strong></span></span></td>
-			<td style="width:16px">&nbsp;</td>
-			<td style="width:431px">&nbsp;</td>
+			<td style="width:16px"></td>
+			<td style="width:431px"></td>
 		</tr>
 		<tr>
 			<td style="width:416px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif">{{$alias}}</span></span></td>
-			<td style="width:16px">&nbsp;</td>
-			<td style="width:431px">&nbsp;</td>
+			<td style="width:16px"></td>
+			<td style="width:431px"></td>
 		</tr>
 		<tr>
-			<td style="width:416px">&nbsp;</td>
-			<td style="width:16px">&nbsp;</td>
-			<td style="width:431px">&nbsp;</td>
+			<td style="width:416px"></td>
+			<td style="width:16px"></td>
+			<td style="width:431px"></td>
 		</tr>
 	</tbody>
 </table>
 
-<p style="text-align:justify">&nbsp;</p>
+<p style="text-align:justify"></p>
 
 <table align="left" cellpadding="1" cellspacing="1" style="width:904px">
 	<tbody>
@@ -1543,7 +1542,7 @@ Xalapa-Enríquez, Veracruz</p>',
 			<td style="width:896px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>{{$hechos}}</strong></span></span></td>
 		</tr>
 		<tr>
-			<td style="width:896px">&nbsp;</td>
+			<td style="width:896px"></td>
 		</tr>
 		<tr>
 			<td style="width:896px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>d. DERECHOS DE LA VÍCTIMA U OFENDIDO</strong></span></span></td>
@@ -1552,22 +1551,22 @@ Xalapa-Enríquez, Veracruz</p>',
 			<td style="width:896px"><span style="font-size:12px"><span style="font-family:Arial,Helvetica,sans-serif"><strong>Artículo 20 apartado C. Constitucional de los derechos de la víctima o del ofendido:</strong></span></span></td>
 		</tr>
 		<tr>
-			<td style="width:896px">&nbsp;</td>
+			<td style="width:896px"></td>
 		</tr>
 	</tbody>
 </table>
 
-<p style="text-align:justify">&nbsp;</p>
+<p style="text-align:justify"></p>
 
-<p style="text-align:justify">&nbsp;</p>
+<p style="text-align:justify"></p>
 
-<p style="text-align:justify">&nbsp;</p>
+<p style="text-align:justify"></p>
 
-<p style="text-align:justify">&nbsp;</p>
+<p style="text-align:justify"></p>
 
-<p style="text-align:justify">&nbsp;</p>
+<p style="text-align:justify"></p>
 
-<p style="text-align:justify">&nbsp;</p>
+<p style="text-align:justify"></p>
 
 <table align="left" cellpadding="1" cellspacing="1" style="width:1000px">
 	<tbody>
@@ -1676,12 +1675,12 @@ Xalapa-Enríquez, Veracruz</p>',
 			</td>
 		</tr>
 		<tr>
-			<td>&nbsp;</td>
+			<td></td>
 		</tr>
 	</tbody>
 </table>
 
-<p style="text-align:justify">&nbsp;</p>
+<p style="text-align:justify"></p>
 
 <table cellspacing="0" style="width:901px">
 	<tbody>
@@ -1700,17 +1699,17 @@ Xalapa-Enríquez, Veracruz</p>',
 	</tbody>
 </table>
 
-<p style="text-align:right">&nbsp;</p>
+<p style="text-align:right"></p>
 
-<p style="text-align:right">&nbsp;</p>
+<p style="text-align:right"></p>
 
-<p style="text-align:right">&nbsp;</p>
+<p style="text-align:right"></p>
 
-<p style="text-align:right">&nbsp;</p>
+<p style="text-align:right"></p>
 
-<p style="text-align:center">&nbsp;</p>
+<p style="text-align:center"></p>
 
-<p style="text-align:right">&nbsp;</p>
+<p style="text-align:right"></p>
 
 ',
 
@@ -1726,9 +1725,9 @@ Xalapa-Enríquez, Veracruz</p>',
 
    ['nombre'  =>  'OFICIO PERICIALES',
    'encabezado'=>'<p><img alt="" src="http://gobiernoabierto.fiscaliaveracruz.gob.mx/img/logo.png" style="float:left; height:100px; width:100px" /></p>
-   <p style="text-align:right">Unidad de Atención Temprana, Veracruz&nbsp;<br>
+   <p style="text-align:right">Unidad de Atención Temprana, Veracruz<br>
    <strong>"Si lo platicamos, lo solucionamos”</strong><br />
-   &nbsp;</p>',
+   </p>',
 
 
 'contenido' =>'<P></P>

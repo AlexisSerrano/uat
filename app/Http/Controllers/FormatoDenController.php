@@ -12,6 +12,7 @@ use App\Models\componentes\Domicilio;
 use App\Models\componentes\Trabajo;
 use App\Models\componentes\PersonaMoralModel;
 use App\Models\componentes\VariablesPersonaMoral;
+use App\Models\componentes\NacionalidadesModel;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CatOcupacion;
 use App\Models\CatEstadoCivil;
@@ -42,9 +43,9 @@ public function getFormatoDenuncia($id){
     $idCarpeta=session('carpeta');
     $carpeta=DB::table('carpeta')
     ->join('unidad','carpeta.idUnidad','=','unidad.id')
-    ->join('variables_persona','variables_persona.idCarpeta','=','carpeta.id')
-    ->join('narraciones_persona','narraciones_persona.idVariablesPersona','=','variables_persona.id')
-    ->select('carpeta.numCarpeta','narraciones_persona.narracion')
+    // ->join('variables_persona','variables_persona.idCarpeta','=','carpeta.id')
+    // ->join('narraciones_persona','narraciones_persona.idVariablesPersona','=','variables_persona.id')
+    //  ->select('carpeta.numCarpeta','carpeta.descripcionHechos')
     ->where('carpeta.id',$idCarpeta)->first();
 // datos del fiscal
     $fiscalAtiende=DB::table('users')
@@ -61,8 +62,8 @@ public function getFormatoDenuncia($id){
         $aux=$aux+1;
     }
     //datos del denunciante
-    $idCarpeta1='UIPJ/D17/VER1/22/1/2018';
-    $apariciones= aparicionesModel::where('idCarpeta',$idCarpeta1)
+    // $idCarpeta1='UIPJ/D17/VER1/22/1/2018';
+    $apariciones= aparicionesModel::where('idCarpeta',$id)
     ->where('sistema','uat')
     ->where('tipoInvolucrado','denunciante')
     ->select('id','idVarPersona','idCarpeta','esEmpresa')
@@ -72,7 +73,7 @@ public function getFormatoDenuncia($id){
 // si es persona fisica
     if ($apariciones->esEmpresa==0) {
         
-        $variablesP=VariablesPersona::where('id',$idVPersona)
+        $variablesP=VariablesPersona::where('idPersona',$idVPersona)
         ->first();
         $ocupacion=CatOcupacion::where('id',$variablesP->idOcupacion)
         ->select('nombre')
@@ -89,16 +90,16 @@ public function getFormatoDenuncia($id){
         ->select('nombre')
         ->first();
         $colonia=CatColonia::where('id',$idDirecciones->idColonia)
-        ->select('nombre')
+        ->select('nombre','codigoPostal')
         ->first();
         $datosPersona=PersonaModel::where('id',$variablesP->idPersona)
         ->first();
         $sexo=SexoModel::where('id',$datosPersona->sexo)
         ->select('nombre')
         ->first();
-        $nacionalidad=CatNacionalidad::where('id',$datosPersona->idNacionalidad)
-        ->select('nombre')
-        ->first();
+         $nacionalidad=NacionalidadesModel::where('id',$datosPersona->idNacionalidad)
+         ->select('nombre')
+         ->first();
         $municipioOrigen=CatMunicipio::where('id',$datosPersona->idMunicipioOrigen)
         ->select('nombre')
         ->first();
@@ -121,8 +122,8 @@ else
 
     }
     // datos denunciado
-    $idCarpeta2='UIPJ/D42/VER0/19/8/2018';
-    $apariciones2= aparicionesModel::where('idCarpeta',$idCarpeta2)
+    // $idCarpeta2='UIPJ/D42/VER0/19/8/2018';
+    $apariciones2= aparicionesModel::where('idCarpeta',$id)
     ->where('sistema','uat')
     ->where('tipoInvolucrado','denunciado')
     ->select('id','idVarPersona','idCarpeta','esEmpresa')
@@ -175,14 +176,15 @@ else
         'estado'=>$estado->nombre,
         'municipio'=>$municipio->nombre,
         'colonia'=>$colonia->nombre,
+        'C.P'=>$colonia->codigoPostal,
         'calle'=>$idDirecciones->calle,
-        'numExterno'=>$idDirecciones->numExterno,
-        'numInterno'=>$idDirecciones->numInterno,
+        'numE'=>$idDirecciones->numExterno,
+        'numI'=>$idDirecciones->numInterno,
         'nacionalidad'=>$nacionalidad->nombre,
         'municipioOrigen'=>$municipioOrigen->nombre,
         'telTrabajo'=>$datosTrabajo->telefono,
         'fechaNac'=>$datosPersona->fechaNacimiento,
-        'hechos'=>$carpeta->narracion,
+         'hechos'=>$carpeta->descripcionHechos,
         'denunciado'=>strtr(strtoupper($denunciado),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'sexo'=>$sexo->nombre
        );
