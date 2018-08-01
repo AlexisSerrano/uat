@@ -29,6 +29,22 @@ use App\Models\formatos\PerVehiculo;
 
 
 class PericialesController extends Controller{
+
+    public function pericialesTabla(){
+        $idCarpeta=session('carpeta');
+        
+        $carpeta=DB::table('carpeta')
+        ->join('unidad','carpeta.idUnidad','=','unidad.id')
+        ->select('carpeta.fechaInicio','carpeta.numCarpeta')
+        ->where('carpeta.id',$idCarpeta)
+        ->first();
+
+        $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
+
+        return view('tables.periciales-acusaciones')->with('acusaciones',$acusaciones);
+    }
+
+
  
     public function pericialesindex(){   
         $idCarpeta=session('carpeta');
