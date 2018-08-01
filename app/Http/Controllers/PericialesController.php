@@ -527,6 +527,9 @@ class PericialesController extends Controller{
         return view('documentos.oficioReporteAuto') ->with('id',$id);
     }
    
-
+    public function docPericiales($id){
+        return view('documentos.formato-periciales')
+        ->with('id',$id);
+    }
   
 }
