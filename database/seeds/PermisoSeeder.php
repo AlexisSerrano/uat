@@ -162,16 +162,6 @@ class PermisoSeeder extends Seeder
         Permission::create(['name' => 'filtro_carpetasReserva']);
         Permission::create(['name' => 'caratula']);
         Permission::create(['name' => 'imprimir_caratula']);
-        Permission::create(['name' => 'get_mensajes_periciales']);
-        Permission::create(['name' => 'index_periciales']);
-        Permission::create(['name' => 'store_agregar']);
-        Permission::create(['name' => 'store_psicologo']);
-        Permission::create(['name' => 'store_vehiculo']);
-        Permission::create(['name' => 'store_lesiones']);  
-        Permission::create(['name' => 'periciales_get']);
-        Permission::create(['name' => 'getpsico']);
-        Permission::create(['name' => 'getVh_periciales']);
-        Permission::create(['name' => 'get_lesion']);
         Permission::create(['name' => 'show_ofFinanzas']);
         Permission::create(['name' => 'getVhFinanzas']);
         Permission::create(['name' => 'oficio_m']);
@@ -195,6 +185,7 @@ class PermisoSeeder extends Seeder
         Permission::create(['name' => 'recuperar_token']);
         Permission::create(['name' => 'recuperar']);
         Permission::create(['name' => 'delete_defensa']);
+        Permission::create(['name' => 'resumen_datosCarpeta']);
         
        
         //Creación de roles
@@ -239,13 +230,12 @@ class PermisoSeeder extends Seeder
         'estado_edit','new_actahechos','addactas','addactas2','actaspendientes','show_actas','actaspreregistro',
         'filtroactas','filtroacta','actaoficio','get_oficioah','actaoficioM','get_oficioahm',
         'filtroactapaciente','new_actacircunstanciada','addactaCirc','getcincunstanciada','ir_carpetas',
-        'carpeta_reserva', 'carpetas_reserva','filtro_carpetas','filtro_carpetasReserva', 'caratula','imprimir_caratula','get_mensajes_periciales',
-        'index_periciales','store_agregar','store_psicologo','store_vehiculo','store_lesiones', 'periciales_get',
-        'getpsico','getVh_periciales','get_lesion','show_ofFinanzas','getVhFinanzas','oficio_m','oficio_P','oficio_V',
+        'carpeta_reserva', 'carpetas_reserva','filtro_carpetas','filtro_carpetasReserva', 'caratula','imprimir_caratula',
+        'show_ofFinanzas','getVhFinanzas','oficio_m','oficio_P','oficio_V',
         'oficio_L','oficio_impRobo','oficio_reporteRobo','vehiculo_carpeta','get_submarcas','get_tipovehiculos',
         'carpeta_vehiculo','getVh','delete_vehiculo','getVehiculoAjax','agregar_vehiculo','oficios','intentos',
         'getOficios','getOficio','addOficio','updateOficio','recuperar','recuperar_token','getOficiosApp','lista_oficios',
-        'filtro_actas_post','filtro_actas_get']);  
+        'filtro_actas_post','filtro_actas_get','resumen_datosCarpeta']);  
 
         // Asignación de permisos a Rol de Recepción
         $recepcion->givePermissionTo(['post_showByfolio' ,'get_showByfolio','en_cola','urgentes',
