@@ -279,20 +279,7 @@ Route::middleware(['auth'])->group(function () {
     
     
     /* --------Rutas para Periciales----------- */
-
-    Route::get('solicitudes/periciales','PericialesController@getMensajesP')->name('get.mensajes.periciales')->middleware(['permission:get_mensajes_periciales']);
-    Route::get('periciales','PericialesController@pericialesindex')->name('index.periciales')->middleware(['permission:index_periciales']);
-    Route::post('periciales/agregar','PericialesController@agregar')->name('store.agregar')->middleware(['permission:store_agregar']);
-    Route::post('periciales/psicologo','PericialesController@psico')->name('store.psicologo')->middleware(['permission:store_psicologo']);
-    Route::post('periciales/vehiculo','PericialesController@vehi')->name('store.vehiculo')->middleware(['permission:store_vehiculo']);
-    Route::post('periciales/lesiones','PericialesController@lesiones')->name('store.lesiones')->middleware(['permission:store_lesiones']);
-    Route::get('getpericiales/{id}','PericialesController@getpericiales')->name('periciales.get')->middleware(['permission:periciales_get']);
-    Route::get('getpsico/{id}','PericialesController@getpsico')->name('getpsico')->middleware(['permission:getpsico']);
-    Route::get('getVh/{id}','PericialesController@getVh')->name('getVh.periciales')->middleware(['permission:getVh_periciales']);
-    Route::get('getlesion/{id}','PericialesController@getlesion')->name('get.lesion')->middleware(['permission:get_lesion']);
     Route::get('getAcusaciones-periciales/{id}','PericialesController@pericialesTabla')->name('get.periciales-acusaciones')->middleware(['permission:get_peracusaciones']);
-    
-
     Route::get('oficio-periciales/{id}','PericialesController@docPericiales')->name('oficio.periciales');
     /* --------oficio finanzas------------------------*/
     Route::get('oficioFinanzas/{id}','PericialesController@getOficioF')->name('show.ofFinanzas')->middleware(['permission:show_ofFinanzas']);
