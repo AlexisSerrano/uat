@@ -8,7 +8,7 @@
 @section('content')
 @include('fields.errores')
         
-{!!Form::model($preregistro, array('route' => array('predenuncias.update', $preregistro->id), 'method' => 'POST')) !!}
+{!!Form::model($preregistro, array('route' => array('predenuncias.update', $preregistro->id), 'method' => 'POST','id'=>'formData')) !!}
         <div>
         {{-- @include('recepcion.tipo-p-edit') --}}
         <input type="hidden" name="esEmpresa" value="1">
@@ -105,7 +105,11 @@
                 $(".hideLabels").show();
                 $(".inputOculto").hide();
                 $("#editFields").html("Editar");
-                $("#editFields").removeClass("btn-danger")                                
+                $("#editFields").removeClass("btn-danger")    
+                $('#formData').validate({
+                    showErrors: function(errorMap, errorList) {                        
+                    }
+                });                            
             }          
         });
 

@@ -3,7 +3,7 @@
 @include('fields.errores')
         
 {{-- {!!Form::model($preregistro, array('route' => array('put.registro', $preregistro->id), 'method' => 'PUT')) !!} --}}
-{!!Form::model($preregistro, ['route' => ['put.registro', $preregistro->id]]) !!}
+{!!Form::model($preregistro, ['route' => ['put.registro', $preregistro->id],'id'=>'formData']) !!}
 
 <input type="hidden" name="esEmpresa" value="0">
 <div class="card container-create" id="datosPersona">
@@ -82,7 +82,11 @@
                 $(".hideLabels").show();
                 $(".inputOculto").hide();
                 $("#editFields").html("Editar");
-                $("#editFields").removeClass("btn-danger")                                
+                $("#editFields").removeClass("btn-danger")                                                
+                $('#formData').validate({
+                    showErrors: function(errorMap, errorList) {                        
+                    }
+                });
             }          
         });
 
