@@ -28,7 +28,7 @@
                     {!!Form::label('nombre',$preregistro->narracion ,['class'=> 'col-form-label-sm hideLabels'])!!}                    
                     <div class="input-group inputOculto" id="inputNarracion">
                         {!! Form::label('narracion', 'Narración: ', ['class' => 'col-form-label-sm']) !!}
-                        {{ Form::textarea('narracion', $preregistro->narracion, ['class'=>'form-control form-control-sm','size' => '30x5','style'=>'width:100% !important ']) }}
+                        {{ Form::textarea('narracion', $preregistro->narracion, ['class'=>'form-control form-control-sm','size' => '30x5','style'=>'width:100% !important','data-validation'=>'length','data-validation-length'=>'20-5000']) }}
                         <!--textarea name="narracion" id="" cols="30" rows="10" class="form-control form-control-sm" ></textarea-->                        
                     </div>
             </div>

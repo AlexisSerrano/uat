@@ -43,7 +43,7 @@
 						<td>{{$circustaciadas->Nombre}} {{$circustaciadas->PApellido}} {{$circustaciadas->SApellido}}</td>
 						<td>{{$circustaciadas->fiscal}}</td>
 						<td>{{$circustaciadas->fiscal}}</td>
-						<td style="text-align:center;"><a href='{{url("getoficioah/$circustaciadas->id")}}'><button class="btn btn-secondary"><i class="fa fa-download"></i></button></a></td>
+						<td style="text-align:center;"><a href='{{url("getOficiosid/$circustaciadas->idoficio")}}'><button class="btn btn-secondary"><i class="fa fa-download"></i></button></a></td>
 					</tr>
 				@empty
 				@endforelse 

@@ -19,7 +19,7 @@ class LibroOficioController extends Controller
         ->leftJoin('componentes.variables_persona_fisica as pf', 'actas.varPersona', '=', 'pf.id') 
         ->leftJoin('componentes.variables_persona_moral as pm', 'actas.varPersona', '=', 'pm.id') 
         ->leftJoin('componentes.persona_fisica as PER', 'pf.idPersona', '=', 'PER.id') 
-        ->select('actas.folio', 'actas.fecha','actas.fiscal', 'actas.tipoActa' ,'actas.varPersona','actas.idUnidad',          
+        ->select('actas.folio', 'actas.id as idoficio', 'actas.fecha','actas.fiscal', 'actas.tipoActa' ,'actas.varPersona','actas.idUnidad',          
         DB::raw('(CASE WHEN actas.esEmpresa = 0 THEN  pf.id ELSE pm.id END) AS id'),
         DB::raw('(CASE WHEN actas.esEmpresa = 0 THEN  pf.idPersona ELSE pm.idPersona END) AS idPersona'),
         DB::raw('(CASE WHEN actas.esEmpresa = 0 THEN  PER.nombres ELSE pm.nombreRep END) AS Nombre'),
@@ -28,14 +28,14 @@ class LibroOficioController extends Controller
         ->where('actas.idUnidad', '=', Auth::user()->idUnidad )
         ->paginate(10);
 
-       
+    //    dd($actas);
         // actas circuiustaciada
 
         $circustaciada = DB::table('uat.acta_circunstanciada as actas') 
         ->leftJoin('componentes.variables_persona_fisica as pf', 'actas.varPersona', '=', 'pf.id') 
         // ->leftJoin('componentes.variables_persona_moral as pm', 'actas.varPersona', '=', 'pm.id') 
         ->leftJoin('componentes.persona_fisica as PER', 'pf.idPersona', '=', 'PER.id') 
-        ->select('actas.folio', 'actas.fecha','actas.fiscal','actas.varPersona','actas.idUnidad', 
+        ->select('actas.folio', 'actas.id as idoficio', 'actas.fecha','actas.fiscal','actas.varPersona','actas.idUnidad', 
          'pf.id as id', 'pf.idPersona as idPersona', 'PER.nombres  AS Nombre', 'PER.primerAp AS PApellido' ,
            'PER.segundoAp AS SApellido')
         ->where('actas.idUnidad', '=', Auth::user()->idUnidad )
