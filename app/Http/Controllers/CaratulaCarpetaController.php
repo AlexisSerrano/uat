@@ -26,8 +26,8 @@ class CaratulaCarpetaController extends Controller
         ->select('unidad.descripcion','carpeta.numCarpeta')
         ->where('carpeta.id',$id)
         ->first();
-        $idCarpeta='UIPJ/D17/VER1/22/1/2018';
-        $apariciones= aparicionesModel::where('idCarpeta',$idCarpeta)
+        // $idCarpeta='UIPJ/D17/VER1/22/1/2018';
+        $apariciones= aparicionesModel::where('idCarpeta',$id)
         ->where('sistema','uat')
         ->where('tipoInvolucrado','denunciante')
         ->select('id','idVarPersona','idCarpeta','esEmpresa')
@@ -65,7 +65,7 @@ class CaratulaCarpetaController extends Controller
             ->first();
 
         $datos=array('id'=>strtr(strtoupper($id),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
-        'numeroCarpeta'=>strtr(strtoupper($idCarpeta),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+        'numeroCarpeta'=>strtr(strtoupper($carpeta->numCarpeta),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'denunciante'=>strtr(strtoupper($nombre),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'puesto'=>strtr(strtoupper($fiscalAtiende->puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
         'numeroF'=>strtr(strtoupper($fiscalAtiende->numFiscal),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"), 
