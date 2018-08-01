@@ -43,7 +43,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('policia-ministerial/{id}','ImpresionesController@policiaMinisterial')->name('policia.ministerial')->middleware(['permission:policia_ministerial']);
     Route::get('oficio-ministerial/{id}','ImpresionesController@getMinisterial')->middleware(['permission:datos_ministerial']);
 
-    Route::get('oficio-periciales/{id}','ImpresionesController@docPericiales')->name('oficio.periciales');
+   
     ///////////////////////////// oficio a direccion general de transporte del estado
     Route::get('transporte-estado/{id}','ImpresionesController@transporteEdo')->name('oficio.transporte')->middleware(['permission:oficio_transporte']);
     Route::get('Oficiotransporte-estado/{id}','ImpresionesController@storeoficioTransporte')->name('storeoficio.Transporte')->middleware(['permission:storeoficio_transporte']);
@@ -290,6 +290,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('getpsico/{id}','PericialesController@getpsico')->name('getpsico')->middleware(['permission:getpsico']);
     Route::get('getVh/{id}','PericialesController@getVh')->name('getVh.periciales')->middleware(['permission:getVh_periciales']);
     Route::get('getlesion/{id}','PericialesController@getlesion')->name('get.lesion')->middleware(['permission:get_lesion']);
+
+    Route::get('oficio-periciales/{id}','PericialesController@docPericiales')->name('oficio.periciales');
     /* --------oficio finanzas------------------------*/
     Route::get('oficioFinanzas/{id}','PericialesController@getOficioF')->name('show.ofFinanzas')->middleware(['permission:show_ofFinanzas']);
     Route::get('OficioF-impresion/{id}','PericialesController@getVhFinanzas')->name('getVhFinanzas')->middleware(['permission:getVhFinanzas']);
