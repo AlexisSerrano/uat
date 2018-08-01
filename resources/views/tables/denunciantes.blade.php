@@ -11,8 +11,6 @@
         <thead>
             <th>Nombre</th>
             <th>RFC</th>
-            {{-- <th>Edad</th>
-            <th>Sexo</th> --}}
             <th>Teléfono</th>
             <th>Tipo de persona</th>
             <th>Tipo de solicitante</th>
@@ -44,9 +42,10 @@
                         @endif
                         @if($denunciante->reguardarIdentidad!=NULL)
                             <td>SI</td>
-                            <td>{{$denunciante->reguardarIdentidad}}</td>
+                            <td>{{$denunciante->alias}}</td>
                         @else
-                            <td colspan="2" style="text-align:center">NO</td>
+                            <td style="text-align:center">NO</td>
+                            <td></td>
                         @endif
                         <td> 
                             {{-- <a href="{{ url('narracion/'.$denunciante->idVariablesPersona)}}"  rel="tooltip" title="Ampliar narracion" class="btn btn-secondary btn-simple btn-xs">

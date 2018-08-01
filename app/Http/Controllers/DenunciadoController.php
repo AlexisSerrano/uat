@@ -41,7 +41,9 @@ class DenunciadoController extends Controller
         return view('forms.editsPersonas')
         ->with('idVarPersona', $id)
         ->with('tipo', 'denunciado')
-        ->with('title','Editar víctima u ofendido');
+        ->with('tipodenunciado', 'conocido')
+        ->with('empresa',$empresa)
+        ->with('title','Editar investigado');
     }
     public function delete($id){
         DB::beginTransaction();

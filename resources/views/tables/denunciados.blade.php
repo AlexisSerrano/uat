@@ -8,10 +8,9 @@
         <thead>
             <th>Nombre</th>
             <th>RFC</th>
-            <th>Edad</th>
-            <th>Sexo</th>
             <th>Teléfono</th>
-            <th>Persona moral</th>
+            <th>Tipo de persona</th>
+            <th>Alias</th>
             <th>Opciones</th>
         </thead>
         <tbody>
@@ -20,25 +19,26 @@
             @else
                 @foreach($denunciados as $denunciado)
                     <tr>
-                    @if(is_null($denunciado->nombres))
-                        <td>{{ $denunciado->alias }}</td>
-                    @else  
-                        <td>{{ $denunciado->nombres." ".$denunciado->primerAp." ".$denunciado->segundoAp }}</td>
-                    @endif
+                        @if(is_null($denunciado->nombres))
+                            <td>SIN INFORMACIÓN</td>
+                        @else  
+                            <td>{{ $denunciado->nombres." ".$denunciado->primerAp." ".$denunciado->segundoAp }}</td>
+                        @endif
                         <td>{{ $denunciado->rfc }}</td>
-                        <td>{{ $denunciado->edad }}</td>
-                        <td>{{ $denunciado->sexo }}</td>
                         <td>{{ $denunciado->telefono }}</td>
                         @if($denunciado->esEmpresa==1)
-                            <td>SI</td>
+                            <td>PERSONA MORAL</td>
                         @else
-                            <td>NO</td>
-                        @endif  
+                            <td>PERSONA FÍSICA</td>
+                        @endif
+                        <td>{{ $denunciado->alias }}</td>
                     <td>
                         {{-- <a href="{{ url('narracion/'.$denunciado->idVariablesPersona)}}"  rel="tooltip" title="Ampliar narracion" class="btn btn-secondary btn-simple btn-xs">
                             <i class="fa fa-edit"></i></a>   --}}
 
-                         
+                            <a href='{{url("agregar-denunciado/edit/{$denunciado->idVariablesPersona}/{$denunciado->esEmpresa}")}}' title="Editar Registro" class="btn btn-secondary btn-simple btn-xs">
+                                <i class="fa fa-edit"></i>
+                                </a>
                             @if(is_null(session('terminada')))
                             <a data-denunciado-id={{$denunciado->idAparicion}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
                                 <i class="fa fa-times"></i>
