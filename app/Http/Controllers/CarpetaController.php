@@ -310,6 +310,7 @@ class CarpetaController extends Controller
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.primerAp ELSE "" END) AS primerAp'),//'persona.primerAp', 
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.segundoAp ELSE "" END) AS segundoAp'),//'persona.segundoAp', 
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN extras_fisica.resguardarIdentidad ELSE extras_moral.resguardarIdentidad END) AS reguardarIdentidad'),//'extra_denunciante.reguardarIdentidad', 
+            DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN extras_fisica.alias ELSE "NO APLICA" END) AS alias'),//'extra_denunciante.alias',
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN extras_fisica.victima ELSE extras_moral.victima END) AS victima'),//'extra_denunciante.victima',
             DB::raw('(CASE WHEN apariciones.esEmpresa = 0 THEN persona_fisica.rfc ELSE persona_moral.rfc END) AS rfc'),//'persona.rfc', 
             'apariciones.esEmpresa AS esEmpresa',//'persona.esEmpresa', 
@@ -516,7 +517,7 @@ class CarpetaController extends Controller
             ->select('apar.id as idApariciones','var.id as idVarPersona','nombres', 'primerAp', 'segundoAp','antiguedad', 'rango','horarioLaboral','ide.documento as docIdentificacion','numDocIdentificacion')
             ->where('apar.tipoInvolucrado', 'AUTORIDAD')
             ->where('apar.activo', 1)
-            ->where('apar.idCarpeta', $id)
+            ->where('apar.carpeta', $id)
             ->where('apar.sistema', 'uat')
             ->get();
         return $autoridades;
