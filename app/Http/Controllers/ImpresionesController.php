@@ -738,7 +738,7 @@ class ImpresionesController extends Controller
                $complemento1="del ciudadano";
            }
            $idCarpeta1='UIPJ/D17/VER1/22/1/2018';
-            $apariciones= aparicionesModel::where('idCarpeta',$idCarpeta1)
+            $apariciones= aparicionesModel::where('idCarpeta',$id)
             ->where('sistema','uat')
             ->where('tipoInvolucrado','denunciante')
             ->select('id','idVarPersona','idCarpeta','esEmpresa')
@@ -788,7 +788,7 @@ class ImpresionesController extends Controller
             // foreach($denunciado2 as $denunciado){
             //     $denunciados .= $denunciado->nombres.
             $idCarpeta2='UIPJ/D42/VER0/19/8/2018';
-            $apariciones2= aparicionesModel::where('idCarpeta',$idCarpeta2)
+            $apariciones2= aparicionesModel::where('idCarpeta',$id)
             ->where('sistema','uat')
             ->where('tipoInvolucrado','denunciado')
             ->select('id','idVarPersona','idCarpeta','esEmpresa')
@@ -951,7 +951,7 @@ class ImpresionesController extends Controller
 
         //datos del denunciante
     $idCarpeta1='UIPJ/D17/VER1/22/1/2018';
-    $apariciones= aparicionesModel::where('idCarpeta',$idCarpeta1)
+    $apariciones= aparicionesModel::where('idCarpeta',$id)
     ->where('sistema','uat')
     ->where('tipoInvolucrado','denunciante')
     ->select('id','idVarPersona','idCarpeta','esEmpresa')
@@ -982,7 +982,7 @@ else
     }
     // datos denunciado
     $idCarpeta2='UIPJ/D42/VER0/19/8/2018';
-    $apariciones2= aparicionesModel::where('idCarpeta',$idCarpeta2)
+    $apariciones2= aparicionesModel::where('idCarpeta',$id)
     ->where('sistema','uat')
     ->where('tipoInvolucrado','denunciado')
     ->select('id','idVarPersona','idCarpeta','esEmpresa')
@@ -1009,7 +1009,7 @@ else
         
         $TipifDelito=DB::table('tipif_delito')
         ->join('cat_delito','cat_delito.id','=','tipif_delito.idDelito')
-        ->where('tipif_delito.idCarpeta',$idCarpeta)
+        ->where('tipif_delito.idCarpeta',$id)
         ->select('cat_delito.nombre as delito')
         ->first();
 
@@ -1017,7 +1017,7 @@ else
         $fechaactual = date::now();
         $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
 
-        $datos=array('id'=> $idCarpeta,
+        $datos=array('id'=> $id,
             'fiscalAtendio'=>strtr(strtoupper($fiscalAtiende->nombreC),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'ciudad'=>$localidad,
             'puesto'=>strtr(strtoupper($fiscalAtiende->puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
