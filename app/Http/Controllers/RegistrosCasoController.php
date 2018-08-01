@@ -315,6 +315,9 @@ class RegistrosCasoController extends Controller
             $preregistro->fechaNac = $request->fechaAltaEmpresa;
             
 
+            $preregistro->docIdentificacion = $request->docIdentificacion;
+            $preregistro->numDocIdentificacion = $request->numDocIdentificacion;
+
             $preregistro->idRazon = $request->idRazon;            
 
             if ($request->idRazon==4){
