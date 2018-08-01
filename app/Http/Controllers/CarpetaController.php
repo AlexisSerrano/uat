@@ -517,7 +517,7 @@ class CarpetaController extends Controller
             ->select('apar.id as idApariciones','var.id as idVarPersona','nombres', 'primerAp', 'segundoAp','antiguedad', 'rango','horarioLaboral','ide.documento as docIdentificacion','numDocIdentificacion')
             ->where('apar.tipoInvolucrado', 'AUTORIDAD')
             ->where('apar.activo', 1)
-            ->where('apar.idCarpeta', $id)
+            ->where('apar.carpeta', $id)
             ->where('apar.sistema', 'uat')
             ->get();
         return $autoridades;

@@ -37,11 +37,11 @@ class DenunciadoController extends Controller
             return redirect()->route('home');
         }
     }
-    public function edit($id){
+    public function edit($id,$empresa){
         return view('forms.editsPersonas')
         ->with('idVarPersona', $id)
         ->with('tipo', 'denunciado')
-        ->with('tipodenunciado', 'conocido')
+        ->with('tipodenunciado', '')
         ->with('empresa',$empresa)
         ->with('title','Editar investigado');
     }
