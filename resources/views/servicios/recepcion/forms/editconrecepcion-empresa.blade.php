@@ -84,6 +84,11 @@
 <script>    
 
     $(document).ready(function(){  
+
+        if( ($("#docIdentificacion").val()) ==14){                
+            $("#inputDocIden").hide();
+            jQuery('form#numDocIdentificacion').unbind('submit');
+        }
                 
         $("#editFields").click(function(){
             $( "#saveForm" ).toggle();
@@ -115,6 +120,12 @@
 
         $("#docIdentificacion").change(function(event){
             $("#numDocIdentificacion").val('');
+            if( ($("#docIdentificacion").val()) ==14){
+                $("#inputDocIden").hide();
+                jQuery('form#numDocIdentificacion').unbind('submit');
+            }else{
+                $("#inputDocIden").show();
+            }
         });
 
 

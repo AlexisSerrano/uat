@@ -64,6 +64,11 @@
 
     $(document).ready(function(){
 
+        if( ($("#docIdentificacion").val()) ==14){                
+                $("#inputDocIden").hide();
+                jQuery('form#numDocIdentificacion').unbind('submit');
+        }
+
             $("#editFields").click(function(){
                 $( "#saveForm" ).toggle();
             if($("#editFields").html()=="Editar"){
@@ -90,11 +95,14 @@
             }          
         });
 
-
-
-
         $("#docIdentificacion").change(function(event){
             $("#numDocIdentificacion").val('');
+            if( ($("#docIdentificacion").val()) ==14){
+                $("#inputDocIden").hide();
+                jQuery('form#numDocIdentificacion').unbind('submit');
+            }else{
+                $("#inputDocIden").show();
+            }
         });
 
 
@@ -182,21 +190,6 @@
                 $("#cp").append("<option value=''>Seleccione un código postal</option>");
         }
     }
-
-    // $("#cp").focusout(function(event){
-    //     if(event.target.value!=""){
-    //         $.get("../../colonias/"+$('#cp option:selected').html()+"", function(response, cp){
-    //             $("#idColonia").empty();
-    //             $("#idColonia").append("<option value=''>Seleccione una colonia</option>");
-    //             for(i=0; i<response.length; i++){
-    //                 $("#idColonia").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
-    //             }
-    //         });
-        
-    //     }
-    // });
-
-
 
 </script>
 @endpush

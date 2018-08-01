@@ -200,20 +200,20 @@
 			</div>
 		</div>
 	
-		<div class="col-6">
-			<div class="form-group">
+
+		@if($preregistro->numDocIdentificacion)
+			<div class="col-6">
 				{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación: ', ['class' => 'col-form-label-sm hideLabels']) !!}
 				{!!Form::label('nombre',$preregistro->numDocIdentificacion ,['class'=> 'col-form-label-sm hideLabels'])!!}
-				<div class="input-group inputOculto" id="inputDocIden">
-					{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación: ', ['class' => 'col-form-label-sm']) !!}
-					{!! Form::text('numDocIdentificacion', $preregistro->numDocIdentificacion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación','required']) !!}				
-				</div>
-				<div class="help-block with-errors"></div>
+			</div>
+		@endif
+
+		<div class="form-group col-6" id="inputDocIden">
+			<div class="input-group inputOculto">
+				{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación: ', ['class' => 'col-form-label-sm']) !!}
+				{!! Form::text('numDocIdentificacion', $preregistro->numDocIdentificacion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación','required']) !!}				
 			</div>
 		</div>
-	
-
-
 
 		<div class="col-6">
 			<div class="form-group">
@@ -225,21 +225,6 @@
 				</div>
 			</div>
 		</div>
-
-
-		
-		@if( ($tipoActa) && ($preregistro->idRazon==4))
-			<div class="col-6">
-				{!! Form::label('tipoAct', 'Constancia de extravio:', ['class' => 'col-form-label-sm hideLabels']) !!}
-				{!! Form::label('nombre', $tipoActa, ['class' => 'col-form-label-sm hideLabels']) !!}
-			</div>
-			@if($tipoActa=='OTROS DOCUMENTOS')
-				<div class="col-6">
-					{!! Form::label('otr', 'Especifique : ', ['class' => 'col-form-label-sm hideLabels']) !!}
-					{!! Form::label('otr', $preregistro->tipoActa, ['class' => 'col-form-label-sm hideLabels']) !!}
-				</div>												
-			@endif
-		@endif
 
 
 		<div class="input-group inputOculto tipodeActa1 col-6">
@@ -265,6 +250,19 @@
 			{!! Form::text('otro', $preregistro->tipoActa, ['class' => 'form-control form-control-sm', 'placeholder' => 'Especifique', 'data-validation'=>'required']) !!}
 			<div class="help-block with-errors"></div>
 		</div>
+
+		@if( ($tipoActa) && ($preregistro->idRazon==4))
+			<div class="col-6">
+				{!! Form::label('tipoAct', 'Constancia de extravio:', ['class' => 'col-form-label-sm hideLabels']) !!}
+				{!! Form::label('nombre', $tipoActa, ['class' => 'col-form-label-sm hideLabels']) !!}
+			</div>
+			@if($tipoActa=='OTROS DOCUMENTOS')
+				<div class="col-6">
+					{!! Form::label('otr', 'Especifique : ', ['class' => 'col-form-label-sm hideLabels']) !!}
+					{!! Form::label('otr', $preregistro->tipoActa, ['class' => 'col-form-label-sm hideLabels']) !!}
+				</div>												
+			@endif
+		@endif
 
 	</div>
 </div>

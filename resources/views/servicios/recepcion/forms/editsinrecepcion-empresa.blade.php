@@ -80,6 +80,13 @@
 
     $(document).ready(function(){
 
+
+        if( ($("#docIdentificacion").val()) ==14){                
+            $("#inputDocIden").hide();
+            jQuery('form#numDocIdentificacion').unbind('submit');
+        }
+
+
         $("#editFields").click(function(){
             $( "#saveForm" ).toggle();
             if($("#editFields").html()=="Editar"){
@@ -110,6 +117,12 @@
 
         $("#docIdentificacion").change(function(event){
             $("#numDocIdentificacion").val('');
+            if( ($("#docIdentificacion").val()) ==14){
+                $("#inputDocIden").hide();
+                jQuery('form#numDocIdentificacion').unbind('submit');
+            }else{
+                $("#inputDocIden").show();
+            }
         });
 
 
