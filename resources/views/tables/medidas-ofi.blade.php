@@ -44,7 +44,7 @@
 					<td>{{$acta->Nombre}} {{$acta->PApellido}} {{$acta->SApellido}}</td>
 					<td>{{$acta->tipoActa}}</td>
 					<td>{{$acta->fiscal}}</td>
-					<td style="text-align:center;"><a href='{{url("getOficiosApp/$acta->id")}}'><button class="btn btn-secondary"><i class="fa fa-download"></i></button></a></td>
+					<td style="text-align:center;"><a href='{{url("getOficiosid/$acta->idoficio")}}'><button class="btn btn-secondary"><i class="fa fa-download"></i></button></a></td>
 				</tr>
 				@empty
 				@endforelse

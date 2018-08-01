@@ -6,7 +6,7 @@
 			{!!Form::label('nombre',$preregistro->nombre ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputNombre">
 				{!! Form::label('nombres', 'Nombre: ', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('nombres', $preregistro->nombre, ['class' => 'form-control  form-control-sm', 'placeholder' => 'Ingrese el nombre','required']) !!}				
+				{!! Form::text('nombres', $preregistro->nombre, ['class' => 'form-control  form-control-sm', 'placeholder' => 'Ingrese el nombre','data-validation'=>'required']) !!}				
 			</div>
 			<div class="help-block with-errors"></div> 
 		</div>
@@ -18,7 +18,7 @@
 			{!!Form::label('nombre',$preregistro->primerAp ,['class'=> 'col-form-label-sm hideLabels'])!!}
 			<div class="input-group inputOculto" id="inputPrimerAp">
 				{!! Form::label('primerAp', 'Primer apellido: ', ['class' => 'col-form-label-sm ']) !!}
-				{!! Form::text('primerAp',$preregistro->primerAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','required']) !!}				
+				{!! Form::text('primerAp',$preregistro->primerAp, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el primer apellido','data-validation'=>'required']) !!}				
 			</div>
 			<div class="help-block with-errors"></div>
 		</div>
