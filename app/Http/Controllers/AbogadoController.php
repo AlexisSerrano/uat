@@ -23,7 +23,7 @@ class AbogadoController extends Controller
         $idCarpeta=session('carpeta');
         $carpetaNueva = Carpeta::where('id', $idCarpeta)->get();
         if(count($carpetaNueva)>0){ 
-            $abogados = CarpetaController::getAbogados($carpetaNueva[0]['numCarpeta']);
+            $abogados = CarpetaController::getAbogados($idCarpeta);
             // dd($estados);
             return view('forms.abogado')->with('idCarpeta', $idCarpeta)
                 ->with('abogados', $abogados);
@@ -161,6 +161,7 @@ class AbogadoController extends Controller
     
     public function getInvolucrados(Request $request, $idAbogado){
         $carpeta=session('numCarpeta');
+        $idCarpeta=session('carpeta');
         $invFis=null;
         if(!is_null($request)&&!is_null($idAbogado)){
             $tipoAbog = DB::table('componentes.extra_abogado as exa')
@@ -179,7 +180,8 @@ class AbogadoController extends Controller
                 ->select('apa.id as idAparicion', 'per.nombres', 'per.primerAp','per.segundoAp')
                 ->where('apa.esEmpresa', 0)
                 ->Where('apa.tipoInvolucrado', 'denunciante')
-                ->where('apa.carpeta', $carpeta)
+                ->Where('apa.sistema', 'uat')
+                ->where('apa.idCarpeta', $idCarpeta)
                 ->whereNull('exa.idAbogado')
                 ->orderBy('per.nombres', 'ASC');  
 
@@ -188,9 +190,10 @@ class AbogadoController extends Controller
                 ->join('componentes.extra_denunciante_moral as exa', 'exa.idVariablesPersona', 'varper.id')
                 ->join('componentes.apariciones as apa', 'apa.idVarPersona', 'varper.id')
                 ->select('apa.id as idAparicion', 'per.nombre as nombres', DB::raw('"" as primerAp'), DB::raw('"" as segundoAp'))
-                ->where('apa.esEmpresa', 1)
+                // ->where('apa.esEmpresa', 1)
                 ->Where('apa.tipoInvolucrado', 'denunciante')
-                ->where('apa.carpeta', $carpeta)
+                ->Where('apa.sistema', 'uat')
+                ->where('apa.idCarpeta', $idCarpeta)
                 ->whereNull('exa.idAbogado')
                 ->orderBy('per.nombre', 'ASC')
                 ->union($invFis)

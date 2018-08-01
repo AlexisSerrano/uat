@@ -155,11 +155,12 @@ class LoginController extends Controller
         if (Auth::user()->grupo=='orientador'||Auth::user()->grupo=='coordinador') {
             $comprobar=Auth::user()->idCarpeta;
             if($comprobar==null){
-                $request->session()->forget('carpeta');
-                $request->session()->forget('numCarpeta');
+                session()->forget('carpeta');
+                session()->forget('terminada');
+                session()->forget('numCarpeta');
                 if (session('preregistro')!=null) {
-                    $request->session()->forget('preregistro');
-                    $request->session()->forget('foliopreregistro');
+                    session()->forget('preregistro');
+                    session()->forget('foliopreregistro');
                 }
                 return redirect(route('indexcarpetas'));
             }else{
