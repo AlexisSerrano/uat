@@ -48,45 +48,6 @@ $data= getOficiosImpresos();
                 </div>
             </div>
             <div class="card">
-                <div class="card-header" id="headingTwo">
-                    <h5 class="mb-0"><a class="btn collapsed" style="color:black;" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Vehiculos</a>
-                    </h5>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                    <table class="table table-hover"  >
-                        <thead>
-                            <th>Nombre del oficio</th>
-                            <th style="text-align:center;">N. Impresiones realizadas</th>
-                            <th style="text-align:center;">Impresión</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style="text-align:left;">Oficio de Dirección Gral. Transporte</td>
-                                <td style="text-align:center;"><span class="badge badge-info right">{{$data['gralTransporte']}}</span></td>
-                                <td style="text-align:center;"><a href=" {{ route("oficio.transporte",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg" TARGET=”_blank”><i class="fa fa-print"></i></a>
-                                </td> 
-                            </tr>
-                            <tr>
-                                <td>Oficio Finanzas</td>
-                                <td style="text-align:center;"><span class="badge badge-info right">{{$data['finanzasC']}}</span></td>
-                                <td style="text-align:center;"><a href="{{ route("show.ofFinanzas",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg" TARGET=”_blank”><i class="fa fa-print"></i></a>
-                                </td> 
-                            </tr>
-                            <tr>
-                                <td>Para reporte de robo </td>
-                                <td style="text-align:center;">
-                                    <span class="badge badge-info right"></span>
-                                </td>
-                                <td style="text-align:center;">
-                                    <a href="{{ route("oficio.impRobo",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg " TARGET=”_blank”><i class="fa fa-print"></i></a>
-                                </td> 
-                            </tr> 
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="card">
                 <div class="card-header" id="headingfour">
                     <h5 class="mb-0"><a class="btn  collapsed" style="color:black;" data-toggle="collapse" data-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
                             Solicitudes</a></h5>
@@ -122,9 +83,30 @@ $data= getOficiosImpresos();
                                     <span class="badge badge-info right">{{$data['policiaMinC']}}</span>
                                 </td>
                                 <td style="text-align:center;">
-                                    <a href="{{ route("oficio.periciales",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg" TARGET=”_blank”><i class="fa fa-print"></i></a>
+                                        <a href="{{ route("get.periciales-acusaciones",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg"><i class="fa fa-print"></i></a>
+                                    
                                 </td> 
-                            </tr>  
+                                <tr>
+                                        <td style="text-align:left;">Oficio de Dirección Gral. Transporte</td>
+                                        <td style="text-align:center;"><span class="badge badge-info right">{{$data['gralTransporte']}}</span></td>
+                                        <td style="text-align:center;"><a href=" {{ route("oficio.transporte",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg" TARGET=”_blank”><i class="fa fa-print"></i></a>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td>Oficio Finanzas</td>
+                                        <td style="text-align:center;"><span class="badge badge-info right">{{$data['finanzasC']}}</span></td>
+                                        <td style="text-align:center;"><a href="{{ route("show.ofFinanzas",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg" TARGET=”_blank”><i class="fa fa-print"></i></a>
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td>Para reporte de robo </td>
+                                        <td style="text-align:center;">
+                                            <span class="badge badge-info right"></span>
+                                        </td>
+                                        <td style="text-align:center;">
+                                            <a href="{{ route("oficio.impRobo",session('carpeta'))}}" title="imprimir"  class=" btn-secondary btn-lg " TARGET=”_blank”><i class="fa fa-print"></i></a>
+                                        </td> 
+                                    </tr>   
                         </tbody>
                     </table>       
                 </div>
@@ -171,43 +153,7 @@ $data= getOficiosImpresos();
                     </table>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-header" id="headingsix">
-                    <h5 class="mb-0"><a class="btn collapsed" style="color:black;" data-toggle="collapse" data-target="#collapsesix" aria-expanded="false" aria-controls="collapsesix">
-                            Periciales</a>
-                    </h5>
-                </div>
-                <div id="collapsesix" class="collapse" style="color:black;" aria-labelledby="headingsix" data-parent="#accordion">
-                    <div class="card-body"> 
-                        @include('tables.periciales-acusaciones')
-                        <br>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                            {!! Form::label('unidadTermino', 'Unidad termino', ['class' => 'col-form-label-sm']) !!}
-                                            {!! Form::select('unidadTermino',array('DIAS' => 'DIAS', 
-                                            'HORAS' => 'HORAS'), null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                        <div class="form-group">
-                                                {!! Form::label('unidadTermino', 'Unidad termino', ['class' => 'col-form-label-sm']) !!}
-                                                {!! Form::number('unidadTermino', null,['class' => 'form-control form-control-sm', 'data-validation'=>'required']) !!}
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <label for="observacionesPericiales" class="col-form-label-sm">Observaciones</label>
-                            <textarea name="observacionesPericiales" id="observacionesP" class="form-control form-control-sm" data-validation="length" data-validation-length= "20-5000"></textarea>
-                        </div>
-                        <div id="tablaPericiales">
-                            @include('tables.periciales-oficios')
-                        </div>
-                    </div>   
-                </div>
-            </div>
+            
             <div class="card">
                 <div class="card-header" id="headingseven">
                     <h5 class="mb-0">

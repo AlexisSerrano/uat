@@ -186,6 +186,7 @@ class PermisoSeeder extends Seeder
         Permission::create(['name' => 'recuperar']);
         Permission::create(['name' => 'delete_defensa']);
         Permission::create(['name' => 'resumen_datosCarpeta']);
+        Permission::create(['name' => 'get_peracusaciones']);
         
        
         //Creación de roles
@@ -212,7 +213,7 @@ class PermisoSeeder extends Seeder
         'get_fiscal','store_oficioDistrito','dato_fiscal_impresiones','policia_ministerial','datos_ministerial',
         'oficio_transporte' ,'storeoficio_transporte' ,'oficio_cavd','show_oficioCavd','store_oficioCavd','datos_oficioCavd',
         'not_actuaciones','impresion_actuaciones' ,'impresion_archivoTemporal','impresion_temporal',
-        'primera_invitacion','show_invitacion' ,'datos_invitacion','oficio_inicio' ,'impresion_acuerdoInicio',
+        'primera_invitacion','show_invitacion', 'get_peracusaciones','datos_invitacion','oficio_inicio' ,'impresion_acuerdoInicio',
         'oficio_remision','impresion_remision','formato_denuncia','get_formatoDenuncia','getToken',
         'saveOficio','acuerdo_inicio','acuerdo_documento','carpeta_detalle','resumen_denunciante',
         'resumen_denunciado','resumen_acusaciones','resumen_delito','resumen_abogado','resumen_autoridad',

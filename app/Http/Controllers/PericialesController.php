@@ -40,7 +40,7 @@ class PericialesController extends Controller{
         ->first();
 
         $acusaciones = CarpetaController::getAcusaciones($idCarpeta);
-
+        // dd($acusaciones);
         return view('tables.periciales-acusaciones')->with('acusaciones',$acusaciones);
     }
 
