@@ -382,6 +382,7 @@ class CarpetaController extends Controller
             ->Join('componentes.extra_abogado as abo', 'abo.idVariablesPersona', 'apar.idVarPersona')
             ->select('apar.id as idApariciones','var.id as idVarPersona','nombres', 'primerAp', 'segundoAp','cedulaProf','sector','abo.tipo')
             ->where('apar.activo', 1)
+            ->where('apar.tipoInvolucrado', 'abogado')
             ->where('apar.sistema', 'uat')
             ->where('apar.idCarpeta', $id)
             ->get();
