@@ -46,6 +46,8 @@ class AutoridadController extends Controller
         return view('forms.editsPersonas')
         ->with('idVarPersona', $id)
         ->with('tipo', 'autoridad')
+        ->with('tipodenunciado', '')
+        ->with('empresa', '0')
         ->with('title','Editar autoridad');
     }
 

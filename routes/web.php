@@ -352,7 +352,9 @@ Route::post('recuperar','ActasHechosController@recuperar')->name('recuperar') ; 
 Route::get('actaCircunstanciada/{id}','ActaCircunstanciadaController@actaCircunstanciada')->name('actaCircunstanciada');
 Route::get('getcircunstanciada/{id}','ActaCircunstanciadaController@getcircunstanciada')->name('getcircunstanciada')->middleware(['permission:getcincunstanciada']);
 Route::get('showcircunstanciada','ActaCircunstanciadaController@showform')->name('new.actacircunstanciada')->middleware(['permission:new_actacircunstanciada']);
-Route::get('agregar-autoridad/edit/{id}/{empresa}', 'AutoridadController@edit')->name('edit.autoridad');
+Route::get('agregar-autoridad/edit/{id}', 'AutoridadController@edit')->name('edit.autoridad');
 Route::get('agregar-denunciante/edit/{id}/{empresa}', 'DenuncianteController@edit')->name('edit.denunciante');
 Route::get('agregar-denunciado/edit/{id}/{empresa}', 'DenunciadoController@edit')->name('edit.denunciado');
-Route::get('agregar-abogado/edit/{id}/{empresa}', 'AbogadoController@edit')->name('edit.abogado');
+Route::get('agregar-abogado/edit/{id}', 'AbogadoController@edit')->name('edit.abogado');
+
+

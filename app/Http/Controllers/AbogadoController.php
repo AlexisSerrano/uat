@@ -36,6 +36,8 @@ class AbogadoController extends Controller
         return view('forms.editsPersonas')
         ->with('idVarPersona', $id)
         ->with('tipo', 'abogado')
+        ->with('tipodenunciado', '')
+        ->with('empresa', '0')
         ->with('title','Editar abogado');
     }
 

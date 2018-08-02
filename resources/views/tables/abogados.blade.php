@@ -25,10 +25,11 @@
                         <td>{{ $abogado->cedulaProf }}</td>
                         <td>{{ $abogado->sector }}</td>
                         <td>{{ $abogado->tipo }}</td>  
-                        {{-- <a href="{{ url('agregar-abogado/'.$abogado->id.'/eliminar')}}" title="Eliminar Registro" class="btn btn-secondary ">
-                        <i class="fa fa-times"></i></td>  --}}
                         <td> 
-	                        @if(is_null(session('terminada')))
+                            <a href='{{url("agregar-abogado/edit/{$abogado->idVarPersona}")}}' title="Editar Registro" class="btn btn-secondary btn-simple btn-xs">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            @if(is_null(session('terminada')))
                             <a data-abogado-id={{$abogado->idApariciones}} title="Eliminar abogado" class="deleteBtn btn btn-secondary btn-simple btn-xs">
                                 <i class="fa fa-times"></i>
                             </a>

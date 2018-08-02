@@ -28,8 +28,9 @@
                         <td>{{ $autoridad->numDocIdentificacion }}</td>
                         <td>
             
-                             {{-- <a href="{{ url('narracion/'.$autoridad->idVariablesPersona)}}"  rel="tooltip" title="Ampliar narracion" class="btn btn-secondary btn-simple btn-xs">
-                            <i class="fa fa-edit"></i></a>   --}}
+                            <a href='{{url("agregar-autoridad/edit/{$autoridad->idVarPersona}")}}' title="Editar Registro" class="btn btn-secondary btn-simple btn-xs">
+                                <i class="fa fa-edit"></i>
+                            </a>
                             @if(is_null(session('terminada')))
                             <a data-autoridad-id={{$autoridad->idApariciones}} title="Eliminar Registro" class="deleteBtn btn btn-secondary btn-simple btn-xs">
                                 <i class="fa fa-times"></i>
