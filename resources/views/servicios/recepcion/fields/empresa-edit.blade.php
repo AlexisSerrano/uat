@@ -74,7 +74,7 @@
 					<div class="col">
 						{!! Form::label('homo2', 'Homoclave', ['class' => 'col-form-label-sm']) !!}
 						{!! Form::label('homo2', substr($preregistro->rfc,9,3), ['class' => 'col-form-label-sm hideLabels']) !!}
-						{!! Form::text('homo2', substr($preregistro->rfc,9,3), ['class' => 'form-control form-control-sm inputOculto', 'placeholder' => 'Ingrese homoclave','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'Homoclave inválida' ,'required']) !!}
+						{!! Form::text('homo2', substr($preregistro->rfc,9,3), ['class' => 'form-control form-control-sm inputOculto', 'placeholder' => 'Ingrese homoclave','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'Homoclave inválida']) !!}
 					</div>
 				</div>
 			</div>
@@ -211,7 +211,7 @@
 		<div class="form-group col-6" id="inputDocIden">
 			<div class="input-group inputOculto">
 				{!! Form::label('numDocIdentificacion', 'Núm. de documento de identificación: ', ['class' => 'col-form-label-sm']) !!}
-				{!! Form::text('numDocIdentificacion', $preregistro->numDocIdentificacion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación','required']) !!}				
+				{!! Form::text('numDocIdentificacion', $preregistro->numDocIdentificacion, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ingrese el núm. del docto. de identificación','data-validation'=>'required']) !!}				
 			</div>
 		</div>
 

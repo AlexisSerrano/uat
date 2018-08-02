@@ -64,12 +64,12 @@
 				<div class="col">
 					{!! Form::label('rfc2', 'R.F.C. :', ['class' => 'col-form-label-sm ']) !!}
 					{!!Form::label('rfc2',substr($preregistro->rfc,0,10) ,['class'=> 'col-form-label-sm hideLabels'])!!}
-					{!! Form::text('rfc2', substr($preregistro->rfc,0,10), ['class' => 'form-control form-control-sm inputOculto', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido' ,'required']) !!}
+					{!! Form::text('rfc2', substr($preregistro->rfc,0,10), ['class' => 'form-control form-control-sm inputOculto', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido']) !!}
 				</div>
 				<div class="col">
 					{!! Form::label('homo2', 'Homoclave :', ['class' => 'col-form-label-sm ']) !!}
 					{!!Form::label('homo2',substr($preregistro->rfc,10,3) ,['class'=> 'col-form-label-sm hideLabels'])!!}
-					{!! Form::text('homo2', substr($preregistro->rfc,10,3), ['class' => 'form-control form-control-sm inputOculto', 'placeholder' => 'Ingrese el R.F.C.','data-validation'=>'required' ,'data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido']) !!}
+					{!! Form::text('homo2', substr($preregistro->rfc,10,3), ['class' => 'form-control form-control-sm inputOculto', 'placeholder' => 'Ingrese el R.F.C.','data-validation-length'=>'8','data-validation-error-msg'=>'RFC inválido']) !!}
 				</div>
 			</div>
 		</div>
