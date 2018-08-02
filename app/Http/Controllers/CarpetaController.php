@@ -398,18 +398,47 @@ class CarpetaController extends Controller
     public static function getDefensas($id){
         $involucrados = DB::table('componentes.apariciones as apa')
             ->select('apa.id as idAparicion', 'apa.idVarPersona', 'apa.tipoInvolucrado', 'apa.esEmpresa')
-            ->where('apa.tipoInvolucrado', 'denunciante')
-            ->orWhere('apa.tipoInvolucrado', 'denunciado')
             ->where('apa.idCarpeta', $id)
+            ->where('apa.activo', 1)
+            //->where('apa.tipoInvolucrado', 'denunciante')
+            //->orWhere('apa.tipoInvolucrado', 'denunciado')
             ->get();
 
             //dd($involucrados);
 
-        foreach ($involucrados as $inv) {
             $tefis='';
             $temor='';
             $dofis='';
             $domor='';
+
+        foreach ($involucrados as $inv) {
+            if(strtolower($inv->tipoInvolucrado)=='denunciante'){
+                if($inv->esEmpresa==1){
+                    if(empty($temor))
+                        $temor=$inv->idVarPersona;
+                    else
+                        $temor=$temor.','.$inv->idVarPersona;
+                }else{
+                    if(empty($tefis))
+                        $tefis=$inv->idVarPersona;
+                    else
+                        $tefis=$tefis.','.$inv->idVarPersona;
+                }
+            }elseif(strtolower($inv->tipoInvolucrado)=='denunciado'){
+                if($inv->esEmpresa==1){
+                    if(empty($domor))
+                        $domor=$inv->idVarPersona;
+                    else
+                        $domor=$domor.','.$inv->idVarPersona;
+                }else{
+                    if(empty($dofis))
+                        $dofis=$inv->idVarPersona;
+                    else
+                        $dofis=$dofis.','.$inv->idVarPersona;
+                }
+            }
+        }
+            
 
             $contefis="select apa.id as idAparicion,CONCAT(perabo.nombres, ' ',perabo.primerAp,' ',perabo.segundoAp) as nombre_abogado, 
             CONCAT(per.nombres, ' ',per.primerAp,' ',per.segundoAp) as nombre_involucrado 
@@ -456,31 +485,7 @@ class CarpetaController extends Controller
             where 
             apa.activo=1 and apa.idCarpeta=".$id." and varper.id in (";
 
-            if($inv->tipoInvolucrado=='denunciante'){
-                if($inv->esEmpresa==1){
-                    if(empty($temor))
-                        $temor=$inv->idVarPersona;
-                    else
-                        $temor=$temor.','.$inv->idVarPersona;
-                }else{
-                    if(empty($tefis))
-                        $tefis=$inv->idVarPersona;
-                    else
-                        $tefis=$tefis.','.$inv->idVarPersona;
-                }
-            }else{
-                if($inv->esEmpresa==1){
-                    if(empty($domor))
-                        $domor=$inv->idVarPersona;
-                    else
-                        $domor=$domor.','.$inv->idVarPersona;
-                }else{
-                    if(empty($dofis))
-                        $dofis=$inv->idVarPersona;
-                    else
-                        $dofis=$dofis.','.$inv->idVarPersona;
-                }
-            }
+            
 
             if(!empty($tefis)) $query=$contefis.$tefis.")";
             if(!empty($temor))
@@ -492,7 +497,7 @@ class CarpetaController extends Controller
             if(!empty($dofis))
                 if(empty($query)) $query=$condofis.$dofis.")";
                 else $query=$query." UNION ALL ".$condofis.$dofis.")";
-        }
+        
 
         //dd($query);
         $defensas = DB::select($query);
@@ -600,10 +605,10 @@ class CarpetaController extends Controller
         ->where('aparicionesDenunciante.activo',1)
         ->where('aparicionesDenunciado.idCarpeta',$id)
         ->where('aparicionesDenunciado.sistema','uat')
-        ->where('aparicionesDenunciado.tipoInvolucrado','denunciado')
+        ->where('aparicionesDenunciado.tipoInvolucrado','denunciado')->orwhere('aparicionesDenunciado.tipoInvolucrado','conocido')
         ->where('aparicionesDenunciado.activo',1)
         ->get();
-        // dump($acusaciones);
+         //dump($acusaciones);
         
         $cont=0;
         foreach ($acusaciones as $delito => $nombre) {
