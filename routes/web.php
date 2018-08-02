@@ -33,7 +33,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/impresion-Oficios/{id}','ImpresionesController@tablaOficios')->name('tabla.oficios')->middleware(['permission:tabla_oficios']);
-    Route::get('/oficio-distrito','ImpresionesController@oficioDistrito')->name('fiscal.distrito')->middleware(['permission:fiscal_distrito']);
+    Route::get('/oficio-distrito/{id}','ImpresionesController@oficioDistrito')->name('fiscal.distrito')->middleware(['permission:fiscal_distrito']);
     Route::get('/oficio-funcion/{id}','ImpresionesController@docDistrito')->name('oficio.funcion')->middleware(['permission:oficio_funcion']); 
     Route::get('fiscal/{id}', 'ImpresionesController@getFiscal')->name('get.fiscal')->middleware(['permission:get_fiscal']);
     Route::post('imprimir/Oficio-distrito','ImpresionesController@storeDistrito')->name('store.oficioDistrito')->middleware(['permission:store_oficioDistrito']);

@@ -12,7 +12,7 @@
     <ul class="nav nav-tabs" id="myTab" aria-orientation="vertical" role="tablist">
         @foreach ($vehiculos as $vehiculo)
             <li class="nav-item">
-                <a class="nav-link" id="vehiculo{{$vehiculo->idVehiculo}}-tab" data-toggle="tab" href="#vehiculo{{$vehiculo->idVehiculo}}" role="tab" aria-controls="vehiculo{{$vehiculo->idVehiculo}}" aria-selected="false">
+                <a class=" btn btn-secondary nav-link" style="color:aliceblue" id="vehiculo{{$vehiculo->idVehiculo}}-tab" data-toggle="tab" href="#vehiculo{{$vehiculo->idVehiculo}}" role="tab" aria-controls="vehiculo{{$vehiculo->idVehiculo}}" aria-selected="false">
                     {{$vehiculo->delito." ".$vehiculo->agregacion1." ".$vehiculo->agregacion2}}
                 </a>
             </li>
@@ -34,13 +34,13 @@
                             <th>Número de motor</th>
                         </thead>
                         <tr>
-                        <td>{{$vehiculo->delito}} {{$vehiculo->agregacion1}} {{$vehiculo->agregacion2}}</td>
-                        <td>{{$vehiculo->placas}}</td>
-                        <td>{{$vehiculo->modelo}}</td>
-                        <td>{{$vehiculo->nrpv}}</td>
-                        <td>{{$vehiculo->permiso}}</td>
-                        <td>{{$vehiculo->numSerie}}</td>
-                        <td>{{$vehiculo->numMotor}}</td>
+                            <td colspan="2">{{$vehiculo->delito}} {{$vehiculo->agregacion1}} {{$vehiculo->agregacion2}}</td>
+                            <td>{{$vehiculo->placas}}</td>
+                            <td>{{$vehiculo->modelo}}</td>
+                            <td>{{$vehiculo->nrpv}}</td>
+                            <td>{{$vehiculo->permiso}}</td>
+                            <td>{{$vehiculo->numSerie}}</td>
+                            <td>{{$vehiculo->numMotor}}</td>
                         </tr>
                         <tr class="table-active">
                             <th>Entidad federativa</th>
@@ -60,6 +60,8 @@
                             <td>{{$vehiculo->marca}}</td>
                             <td>{{$vehiculo->submarcas}}</td>
                             <td>{{$vehiculo->tipo_vehiculo}}</td>
+                            <td>{{$vehiculo->tipo_uso}}</td>
+
                         </tr>
                     </table>
                 </div>

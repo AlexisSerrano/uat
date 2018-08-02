@@ -13,7 +13,8 @@
             @foreach ($denunciados as $denunciado)
                 <li class="nav-item">
                     <a class="nav-link" id="denunciado{{$denunciado->denunciadoid}}-tab" data-toggle="tab" href="#denunciado{{$denunciado->denunciadoid}}" role="tab" aria-controls="denunciado{{$denunciado->denunciadoid}}" aria-selected="false">
-                     {{$denunciado->pernombres." ".$denunciado->perprimerAp." ".$denunciado->persegundoAp}}</a>
+                        {{$denunciado->pernombres." ".$denunciado->perprimerAp." ".$denunciado->persegundoAp}}
+                    </a>
                 </li>
             @endforeach    
         </ul>
@@ -21,8 +22,9 @@
         <div class="tab-content" id="myTabContent">
             @foreach ($denunciados as $denunciado)
                 <div class="tab-pane fade" id="denunciado{{$denunciado->denunciadoid}}" role="tabpanel" aria-labelledby="denunciado{{$denunciado->denunciadoid}}-tab">    
-                    @if ($denunciado->pernombres=='QUIEN O QUIENES RESULTEN RESPONSABLES')
-                        <div class="col-12" style="text-align:center"><p><h5 class="detalle">Se desconoce la información del implicado ó implicados</h5></p>
+                    @if ($denunciado->pernombres=='QUIEN RESULTE RESPONSABLE')
+                        <div class="col-12" style="text-align:center">
+                            <p><h5 class="detalle">Se desconoce la información del implicado ó implicados</h5></p>
                         </div>
                     @else
                         <div class="col-12" style="text-align:center">
@@ -36,58 +38,66 @@
                         </div>
                         @if ($denunciado->peresEmpresa==0)
                             <div id="personales-persona" class="row">
-                                    <table class="table table-striped">
-                                            <thead class="table-secondary">
-                                                <th colspan="2">Nombre</th>
-                                                <th>Sexo</th>
-                                                <th>R.F.C.</th>
-                                                <th>CURP</th>
-                                                <TH>Fecha de nacimiento</TH>
-                                            </thead>
-                                            <tr>
-                                                    @if ($denunciado->perprimerAp===null||$denunciado->perprimerAp=='SIN INFORMACION')@endif
-                                                <td colspan="2">{{$denunciado->pernombres}} {{$denunciado->perprimerAp}} {{$denunciado->pernombres}}</td>
-                                                <td>{{$denunciado->persexo}}</td>
-                                                <td>{{$denunciado->perrfc}}</td>
-                                                    @if ($denunciado->percurp===null)
+                                <table class="table table-striped">
+                                    <thead class="table-secondary">
+                                        <th colspan="2">Nombre</th>
+                                        <th>Sexo</th>
+                                        <th>R.F.C.</th>
+                                        <th>CURP</th>
+                                        <TH>Fecha de nacimiento</TH>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            @if ($denunciado->perprimerAp===null||$denunciado->perprimerAp=='SIN INFORMACION')
+                                            @endif
+                                            <td colspan="2">{{$denunciado->pernombres}} {{$denunciado->perprimerAp}} {{$denunciado->persegundoAp}}</td>
+                                            <td>{{$denunciado->persexo}}</td>
+                                            @if ($denunciado->perrfc===null||$denunciado->perrfc==='')
                                                 <td>SIN INFORMACIÓN</td>
-                                                    @else
-                                                <td>{{$denunciado->percurp}}</td>@endif
-                                                    @if ($denunciado->perfechaNacimiento===null)
+                                            @else
+                                            <td>{{$denunciado->perrfc}}</td>
+                                            @endif
+                                            @if ($denunciado->percurp===null||$denunciado->percurp==='')
                                                 <td>SIN INFORMACIÓN</td>
-                                                    @else
-                                                <td>{!!Form::label('fechaNacimiento',Jenssegers\Date\Date::parse($denunciado->perfechaNacimiento)->format('j \\d\\e F \\d\\e Y'))!!}</td>
-                                                    @endif
-                                            </tr>
-                                            <tr class="table-active">
-                                                <th>Nacionalidad</th>
-                                                <th>Etnia</th>
-                                                <th>Lengua</th>
-                                                <th colspan="2">Ocupacion</th>
-                                                <th>Estado Civil</th>
-                                            </tr>
-                                            <tr>
-                                                <td>{{$denunciado->peridNacionalidad}}</td>
-                                                <td>{{$denunciado->peridEtnia}}</td>
-                                                <td>{{$denunciado->peridLengua}}</td>
-                                                <td colspan="2">{{$denunciado->variaidOcupacion}}</td>
-                                                <td>{{$denunciado->variaidEstadoCivil}}</td>
-                                            </tr>
-                                            <tr class="table-active">
-                                                <th>Religión</th>
-                                                <th>Escolaridad</th>
-                                                <th>Telefono</th>
-                                                <th colspan="2">Documento de docIdentificación</th>
-                                                <th>Num. de documento de identificación</th>
-                                            </tr>
-                                            <tr>
-                                                <td>{{$denunciado->variaidReligion}}</td>
-                                                <td>{{$denunciado->variaidEscolaridad}}</td>
-                                                <td>{{$denunciado->variatelefono}}</td>
-                                                <td colspan="2">{{$denunciado->variadocIdentificacion}}</td>
-                                                <td>{{$denunciado->varianumDocIdentificacion}}</td>
-                                            </tr>
-                                        </table>
+                                            @else
+                                            <td>{{$denunciado->percurp}}</td>
+                                            @endif
+                                            @if ($denunciado->perfechaNacimiento===null)
+                                            <td>SIN INFORMACIÓN</td>
+                                            @else
+                                            <td>{!!Form::label('fechaNacimiento',Jenssegers\Date\Date::parse($denunciado->perfechaNacimiento)->format('j \\d\\e F \\d\\e Y'))!!}</td>
+                                            @endif
+                                        </tr>
+                                        <tr class="table-active">
+                                            <th>Nacionalidad</th>
+                                            <th>Etnia</th>
+                                            <th>Lengua</th>
+                                            <th colspan="2">Ocupacion</th>
+                                            <th>Estado Civil</th>
+                                        </tr>
+                                        <tr>
+                                            <td>{{$denunciado->peridNacionalidad}}</td>
+                                            <td>{{$denunciado->peridEtnia}}</td>
+                                            <td>{{$denunciado->peridLengua}}</td>
+                                            <td colspan="2">{{$denunciado->variaidOcupacion}}</td>
+                                            <td>{{$denunciado->variaidEstadoCivil}}</td>
+                                        </tr>
+                                        <tr class="table-active">
+                                            <th>Religión</th>
+                                            <th>Escolaridad</th>
+                                            <th>Telefono</th>
+                                            <th colspan="2">Documento de docIdentificación</th>
+                                            <th>Num. de documento de identificación</th>
+                                        </tr>
+                                        <tr>
+                                            <td>{{$denunciado->variaidReligion}}</td>
+                                            <td>{{$denunciado->variaidEscolaridad}}</td>
+                                            <td>{{$denunciado->variatelefono}}</td>
+                                            <td colspan="2">{{$denunciado->variadocIdentificacion}}</td>
+                                            <td>{{$denunciado->varianumDocIdentificacion}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>    
                         @else
                             <div id="personales-empresa" class="row">

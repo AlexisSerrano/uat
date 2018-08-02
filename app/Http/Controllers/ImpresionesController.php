@@ -315,8 +315,8 @@ class ImpresionesController extends Controller
 
     //  PARA OFICIO FISCAL DE DISTRITO
 
-    public function oficioDistrito(){
-        $idCarpeta=session('carpeta');
+    public function oficioDistrito($id){
+        $idCarpeta=$id;
         $carpeta=DB::table('carpeta')
         ->join('unidad','carpeta.idUnidad','=','unidad.id')
         ->where('carpeta.id',$idCarpeta)->first();

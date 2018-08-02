@@ -340,12 +340,6 @@ class CarpetaController extends Controller
     }
 
     public static function getDenunciados($id){
-        // $denunciados = DB::table('extra_denunciado')
-        //     ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciado.idVariablesPersona')
-        //     ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-        //     ->select('extra_denunciado.alias','extra_denunciado.idVariablesPersona','extra_denunciado.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp', 'persona.rfc', 'persona.esEmpresa', 'variables_persona.edad', 'persona.sexo', 'variables_persona.telefono')
-        //     ->where('variables_persona.idCarpeta', '=', $id)
-        //     ->get();
         $denunciados = DB::table('componentes.apariciones as apariciones')
         ->leftJoin('componentes.variables_persona_fisica as variables_fisica', 'variables_fisica.id', '=', 'apariciones.idVarPersona')
         ->leftJoin('componentes.variables_persona_moral as variables_moral', 'variables_moral.id', '=', 'apariciones.idVarPersona')

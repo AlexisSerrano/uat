@@ -930,7 +930,8 @@ class EstadoController extends Controller
                     $historial->save();
                     DB::commit();
 
-                    Alert::success('Registro modificado con éxito','Hecho');
+                    Alert::success('Registro modificado con éxito <br><a href="'.url('impresion-temporal/'.$id).'" target="_blank" >Ver formato</a> ','Hecho')->html()->persistent("Aceptar");
+
                    
                     break;
                 case '5':
@@ -955,7 +956,7 @@ class EstadoController extends Controller
                     $historial->save();
                     DB::commit();
 
-                    Alert::success('Registro modificado con éxito','Hecho');
+                    Alert::success('Registro modificado con éxito <br><a href="'.url('oficio-distrito/'.$idCarpetaAux).'" target="_blank" >Ver formato</a> ','Hecho')->html()->persistent("Aceptar");
                     break;
                 
                 default:
