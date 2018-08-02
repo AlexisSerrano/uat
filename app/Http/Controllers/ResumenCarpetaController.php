@@ -86,7 +86,8 @@ return view('fields.resumen-carpeta.datos-carpeta')->with('carpeta',$carpeta);
         ->join('unidad','carpeta.idUnidad','=','unidad.id')
         ->where('carpeta.id',$idCarpeta)->first();
         // dd($carpeta);
-        return view('fields.resumen-carpeta.resumen-carpeta')->with('carpeta',$carpeta);
+        //return view('fields.resumen-carpeta.resumen-carpeta')->with('carpeta',$carpeta);
+        return redirect(route('resumen.datosCarpeta'));
     }
     
     public function detalleHistorial(){
