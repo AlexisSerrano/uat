@@ -130,8 +130,6 @@
             }          
         });
          
-        
-
         $("#docIdentificacion").change(function(event){
             $("#numDocIdentificacion").val('');
             if( ($("#docIdentificacion").val()) ==14){
@@ -164,12 +162,12 @@
 
 
         $("#otroDoc").change(function() {                        
-            if($("#otroDoc").val() == 'OTROS DOCUMENTOS'){                
-                console.log("Mostrar el especifique")
+            if($("#otroDoc").val() == 'OTROS DOCUMENTOS'){                                
                 $('#inputRazon1').show();
-            }else{                
-                console.log("Ocultar el especifique")
+            }else{                                
                 $('#inputRazon1').hide();
+                $('#otro').val('');
+                //jQuery('form#otro').unbind('submit');
             }
         });
 
