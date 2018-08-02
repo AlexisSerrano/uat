@@ -111,7 +111,9 @@ class AbogadoController extends Controller
                 ->join('componentes.extra_abogado as exa', 'exa.idVariablesPersona', 'varper.id')
                 ->select('apa.id as idAparicion','nombres','primerAp','segundoAp','tipo')
                 ->where('apa.tipoInvolucrado','abogado')
-                ->where('apa.carpeta', session('numCarpeta'))
+                ->where('apa.sistema','uat')
+                ->where('apa.activo',1)
+                ->where('apa.idCarpeta', session('carpeta'))
                 ->orderBy('per.nombres', 'ASC')
                 ->get();
                 
