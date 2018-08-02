@@ -12,6 +12,15 @@ use App\Models\Acusacion;
 use App\Http\Requests\AcusacionRequest;
 use App\Models\BitacoraNavCaso;
 use App\Models\componentes\aparicionesModel;
+//use App\Models\VariablesPersona;
+
+
+use App\Models\componentes\VariablesPersona;
+use App\Models\componentes\PersonaModel;
+use App\Models\componentes\Domicilio;
+use App\Models\componentes\Trabajo;
+use App\Models\componentes\PersonaMoralModel;
+use App\Models\componentes\VariablesPersonaMoral;
 
 
 class AcusacionController extends Controller
@@ -148,56 +157,82 @@ class AcusacionController extends Controller
 
     public function acuerdoInicio($id){
 
-        $datos=DB::table('acusacion')
-        ->where('acusacion.id','=',$id)
-        ->join('extra_denunciante', 'extra_denunciante.id', '=', 'acusacion.idDenunciante')
-        ->join('variables_persona','variables_persona.id','=','extra_denunciante.idVariablesPersona')
-        ->join('persona','persona.id','=','variables_persona.idPersona')
+        $id=session('carpeta');
+        $carpeta=DB::table('carpeta')
+        ->join('unidad','carpeta.idUnidad','=','unidad.id')
+        ->where('carpeta.id',$id)->first();
+
+
+        $numCarpeta=$carpeta->numCarpeta;
         
-        ->join('extra_denunciado', 'extra_denunciado.id', '=', 'acusacion.idDenunciado')
-        ->join('variables_persona as variables_denunciado','variables_denunciado.id','=','extra_denunciado.idVariablesPersona')
-        ->join('persona as persona_denunciado','persona_denunciado.id','=','variables_denunciado.idPersona')
+        $apariciones= aparicionesModel::where('idCarpeta',$id)
+            ->where('sistema','uat')
+            ->where('tipoInvolucrado','denunciante')
+            ->select('id','idVarPersona','idCarpeta','esEmpresa')
+            ->first();
+            $idVPersona=$apariciones->idVarPersona;
+            if ($apariciones->esEmpresa==0) {
+                $variablesP=VariablesPersona::where('id',$idVPersona)
+                ->first();
+                $datosPersona=PersonaModel::where('id',$variablesP->idPersona)
+                ->first();
+                $denunciante=$datosPersona->nombres.' '.$datosPersona->primerAp.' '.$datosPersona->segundoAp;
+            }
+            else{
+                $variablesP=VariablesPersonaMoral::where('id',$idVPersona)
+                ->first();
+                $idPersona=$variablesP->idPersona;
+                $datosPersona=PersonaMoralModel::where('id',$idPersona)
+                ->select('nombre')
+                ->first();
+        
+                $denunciante=$datosPersona->nombre;
+            }
 
-        ->join('tipif_delito','tipif_delito.id','=','acusacion.idTipifDelito')
-        ->join('cat_delito','cat_delito.id','=','tipif_delito.idDelito')
-        ->join('cat_agrupacion1','cat_agrupacion1.id','=','tipif_delito.idAgrupacion1')
-        ->join('cat_agrupacion2','cat_agrupacion2.id','=','tipif_delito.idAgrupacion2')
+            $apariciones2= aparicionesModel::where('idCarpeta',$id)
+            ->where('sistema','uat')
+            ->where('tipoInvolucrado','denunciado')
+            ->select('id','idVarPersona','idCarpeta','esEmpresa')
+            ->first();
+            $idVPersona2=$apariciones2->idVarPersona;
 
-        ->select(
-            'extra_denunciante.idVariablesPersona',
-            'variables_persona.idPersona',
-            'persona.nombres as nombreDenunciante',
-            'persona.primerAp as primerApDenunciante',
-            'persona.segundoAp as segundoApDenunciante',
-            'persona_denunciado.nombres as nombreDenunciado',
-            'persona_denunciado.primerAp as primerApDenunciado',
-            'persona_denunciado.segundoAp as segundoApDenunciado',
-            'extra_denunciado.idVariablesPersona as extraDenunciado',
-            'tipif_delito.idDelito',
-            'cat_agrupacion1.nombre as agr1',
-            'cat_agrupacion2.nombre as agr2',
-            'cat_delito.nombre as delito' )
-            ->FIRST();
+            if($apariciones2->esEmpresa==0) {
+
+                $variablesDenunciado=VariablesPersona::where('id',$idVPersona2)
+                ->first();
+                $denuncianteFisica=PersonaModel::where('id',$variablesDenunciado->idPersona)
+                ->first();
+                $denunciados=$denuncianteFisica->nombres.' '.$denuncianteFisica->primerAp.' '.$denuncianteFisica->segundoAp;
+            }
+            else{
+                $variablesDenunciado=VariablesPersonaMoral::where('id',$idVPersona2)
+                ->first();
+                $denuncianteMoral=PersonaMoralModel::where('id',$variablesDenunciado->idPersona)
+                ->select('nombre')
+                ->first();
+                $denunciados=$denuncianteMoral->nombre;
+
+            }
             
-            $cont = 0;
+            $TipifDelito=DB::table('tipif_delito')
+            ->join('cat_delito','cat_delito.id','=','tipif_delito.idDelito')
+            ->where('tipif_delito.idCarpeta',$id)
+            ->select('cat_delito.nombre as delito')
+            ->first();
 
-            if ( $datos->agr1 == 'SIN AGRUPACION') {
-            $datos->agr1 = " ";
-            }
-            if ( $datos->agr2 == 'SIN AGRUPACION') {
-            $datos->agr2 = " ";
-            }
+            // if ( $datos->agr1 == 'SIN AGRUPACION') {
+            // $datos->agr1 = " ";
+            // }
+            // if ( $datos->agr2 == 'SIN AGRUPACION') {
+            // $datos->agr2 = " ";
+            // }
     
             $localidadAcuerdo='XALAPA';
             $entidadAcuerdo='VERACRUZ';
             $fiscalAcuerdo=strtoupper(Auth::user()->nombreC);
             // $fechaAcuerdo='OCHO DÍAS DEL MES DE JUNIO DEL AÑO DOS MIL DIECIOCHO';
             $fechaAcuerdo=strtoupper(Date::now()->format('j \\d\\i\\a\\s \\d\\e F \\d\\e Y'));
-            $carpeta=DB::table('carpeta')
-            ->join('unidad','carpeta.idUnidad','=','unidad.id')
-            ->select('carpeta.numCarpeta')
-            ->where('carpeta.id',$id)
-            ->first();
+           
 
             $puesto=Auth::user()->puesto;
            
@@ -205,9 +240,11 @@ class AcusacionController extends Controller
            
             
             $datos= array('id'=> $id,
-            'nombreDenunciante'=>$datos->nombreDenunciante.' '.$datos->primerApDenunciante.' '.$datos->segundoApDenunciante,
-            'nombreDenunciado'=>$datos->nombreDenunciado.' '.$datos->primerApDenunciado.' '.$datos->segundoApDenunciado,
-            'delito'=>$datos->delito.' '.$datos->agr1.' '.$datos->agr2,
+            'carpeta'=>$numCarpeta,
+            'nombreDenunciante'=>strtr(strtoupper($denunciante),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+            'nombreDenunciado'=>strtr(strtoupper($denunciados),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
+            'delito'=>$TipifDelito->delito,
+            // 'delito'=>$datos->delito.' '.$datos->agr1.' '.$datos->agr2,
             // 'agrupacion1'=>$datos->agr1,
             // 'agrupacion2'=>$datos->agr2,
             'localidad'=> $localidadAcuerdo,

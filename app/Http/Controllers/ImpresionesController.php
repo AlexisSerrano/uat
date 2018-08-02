@@ -160,12 +160,30 @@ class ImpresionesController extends Controller
         ->first();
 
 
-        $denunciantes = DB::table('extra_denunciante')
-        ->join('variables_persona', 'variables_persona.id', '=', 'extra_denunciante.idVariablesPersona')
-        ->join('persona', 'persona.id', '=', 'variables_persona.idPersona')
-        ->select('extra_denunciante.id','persona.nombres', 'persona.primerAp', 'persona.segundoAp','variables_persona.telefono','extra_denunciante.narracion')
-        ->where('variables_persona.idCarpeta', '=', $idCarpeta)
+        $apariciones2= aparicionesModel::where('idCarpeta',$id)
+        ->where('sistema','uat')
+        ->where('tipoInvolucrado','denunciado')
+        ->select('id','idVarPersona','idCarpeta','esEmpresa')
         ->first();
+        $idVPersona2=$apariciones2->idVarPersona;
+
+        if($apariciones2->esEmpresa==0) {
+
+            $variablesDenunciado=VariablesPersona::where('id',$idVPersona2)
+            ->first();
+            $denuncianteFisica=PersonaModel::where('id',$variablesDenunciado->idPersona)
+            ->first();
+            $denunciados=$denuncianteFisica->nombres.' '.$denuncianteFisica->primerAp.' '.$denuncianteFisica->segundoAp;
+        }
+        else{
+            $variablesDenunciado=VariablesPersonaMoral::where('id',$idVPersona2)
+            ->first();
+            $denuncianteMoral=PersonaMoralModel::where('id',$variablesDenunciado->idPersona)
+            ->select('nombre')
+            ->first();
+            $denunciados=$denuncianteMoral->nombre;
+
+        }
 
         // $cadenaDenunciantes='';
         // foreach($denunciantes as $denunciante){
@@ -490,7 +508,7 @@ class ImpresionesController extends Controller
         }
 
             $idCarpeta1='UIPJ/D17/VER1/22/1/2018';
-            $apariciones= aparicionesModel::where('idCarpeta',$idCarpeta1)
+            $apariciones= aparicionesModel::where('idCarpeta',$id)
             ->where('sistema','uat')
             ->where('tipoInvolucrado','denunciante')
             ->select('id','idVarPersona','idCarpeta','esEmpresa')
@@ -546,7 +564,7 @@ class ImpresionesController extends Controller
         $fechaactual = new Date($carpeta->fechaInicio);
         $fechahum = $fechaactual->format('l j').' de '.$fechaactual->format('F').' del año '.$fechaactual->format('Y');
         $fechahum=strtr(strtoupper($fechahum),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ");
-        $datos=array('id'=> $idCarpeta,
+        $datos=array('id'=> $id,
         'numeroCarpeta'=> $carpeta->numCarpeta,
         'ciudad'=>$localidad,
         'denunciante'=> $denunciantes,
@@ -605,7 +623,7 @@ class ImpresionesController extends Controller
         // }
         
         $idCarpeta1='UIPJ/D17/VER1/22/1/2018';
-        $apariciones= aparicionesModel::where('idCarpeta',$idCarpeta1)
+        $apariciones= aparicionesModel::where('idCarpeta',$id)
         ->where('sistema','uat')
         ->where('tipoInvolucrado','denunciante')
         ->select('id','idVarPersona','idCarpeta','esEmpresa')
@@ -821,7 +839,7 @@ class ImpresionesController extends Controller
             $dictamen='dictamen';
             
            
-            $datos=array('id'=> $idCarpeta,
+            $datos=array('id'=> $id,
             'nombreC'=>strtr(strtoupper($fiscalAtiende->nombreC),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
             'ciudad'=>$localidad,
             'puesto'=>strtr(strtoupper($fiscalAtiende->puesto),"àèìòùáéíóúçñäëïöü","ÀÈÌÒÙÁÉÍÓÚÇÑÄËÏÖÜ"),
@@ -895,7 +913,7 @@ class ImpresionesController extends Controller
         $dictamen='dictamen';
         
         
-        $datos=array('id'=> $idCarpeta,
+        $datos=array('id'=> $id,
         'nombreC'=>$fiscalAtiende->nombreC,
         'ciudad'=>$localidad,
         'puesto'=>$fiscalAtiende->puesto,
